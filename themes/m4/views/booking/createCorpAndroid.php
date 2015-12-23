@@ -3,7 +3,6 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/c
 Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/jquery.form.js', CClientScript::POS_END);
 Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/ajaxfileupload.js', CClientScript::POS_END);
 Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/bookingCorpAndroid.js', CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/main.js', CClientScript::POS_END);
 /*
  * $model BookQuickForm.
  */
@@ -197,7 +196,7 @@ $this->show_footer = false;
     </section>
 </div>
 <div id="jingle_toast" class="corpTip toast"><a href="#">请选择企业证件照片</a></div>
-<div id="jingle_toast" class="mobileTip toast"><a href="#">请选择企业证件照片</a></div>
+<div id="jingle_toast" class="mobileTip toast"><a href="#">请填写手机号</a></div>
 <div id="jingle_popup" style="top: 50%; left: 5%; right: 5%; border-radius: 3px; margin-top: -75px;" class="">
     <div>
         <div class="popup-title">提示</div>

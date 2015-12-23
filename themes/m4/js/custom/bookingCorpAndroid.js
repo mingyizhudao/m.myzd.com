@@ -198,6 +198,7 @@ $(function () {
                     },
                     error: function (fdata, status, e) {
                         //错误处理
+                        console.log(fdata);
                         enableBtnAndriod(btnSubmit);
                         alert('文件过大,病历上传失败');
                     },

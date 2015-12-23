@@ -27,6 +27,7 @@ $this->show_footer = false;
     .uploadfile input[type="file"]{position:absolute;top:5px;right:35%;width:30%;line-height:36px;opacity:0;}
     .MultiFile-list{margin-top: 10px;}
     .MultiFile-list .MultiFile-label .MultiFile-remove{color: #f00;font-size: 16px;padding-right: 10px;text-decoration: initial;}
+    .btn-yes{display: none;}
 </style>
 <div id="section_container">
     <section id="orderdetail_section" data-init="true" class="active">
@@ -140,7 +141,14 @@ $this->show_footer = false;
                             'id' => "btn-addfiles",
                             'name' => 'file', //$_FILES['BookingFiles'].
                             'accept' => 'jpeg|jpg|png',
-                            'options' => array(),
+                            'options' => array(
+                                'afterFileSelect' => 'function(e, v, m){ var inputCount = $(".MultiFile-applied").length;if (inputCount == 0) {$("#btnSubmit").removeClass("btn-block");} else {$("#btnSubmit").addClass("btn-block");} }',
+                                //'onFileSelect'=>'function(e, v, m){ alert("afterFileSelect - "+v) }',
+                                //'onFileAppend'=>'function(e, v, m){ alert("onFileAppend - "+v) }',
+                                // 'afterFileAppend'=>'function(e, v, m){ alert("afterFileAppend - "+v) }',
+                                // 'onFileRemove'=>'function(e, v, m){ alert("onFileRemove - "+v) }',
+                                'afterFileRemove' => 'function(e, v, m){ var inputCount = $(".MultiFile-applied").length - 1;if (inputCount == 0) {$("#btnSubmit").removeClass("btn-block");} else {$("#btnSubmit").addClass("btn-block");} }',
+                            ),
                             'denied' => '请上传jpg、png格式',
                             'duplicate' => '该文件已被选择',
                             'max' => 8, // max 8 files
@@ -154,8 +162,8 @@ $this->show_footer = false;
                     <?php
                     $this->endWidget();
                     ?>
-                    <div id="imgbtn" class="hide">
-                        <a id="btnSubmit" class=""><div class="btn btn-yes img-btn mt20">提交</div></a>
+                    <div id="imgbtn">
+                        <a id="btnSubmit" class="btn btn-yes btn-abs">提交</a>
                     </div>
                 </li>
             </ul>

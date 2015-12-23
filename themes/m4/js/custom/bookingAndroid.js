@@ -14,6 +14,7 @@ jQuery(function () {
         domForm.submit();
     });
 
+
     var validator = domForm.validate({
         rules: {
             'booking[doctor_name]': {
@@ -99,7 +100,7 @@ jQuery(function () {
             error.appendTo(element.parents(".ui-field-contain")); //这里的element是录入数据的对象  
         },
         submitHandler: function () {
-            disabledBtn(btnSubmit);
+            disabledBtnAndriod(btnSubmit);
             //form插件的异步无刷新提交
             actionUrl = domForm.attr('data-actionurl');
             //returnUrl = domForm.attr("data-url-return");
@@ -110,8 +111,9 @@ jQuery(function () {
                     if (data.status == 'ok') {
                         var inputCount = $(".MultiFile-applied").length - 1;
                         if (inputCount == 0) {
-                            location.href = urlReturn + '?refNo=' + data.salesOrderRefNo;
-                            enableBtn(btnSubmit);
+                            //location.href = urlReturn + '?refNo=' + data.salesOrderRefNo;
+                            enableBtnAndriod(btnSubmit);
+                            $('#success').removeClass('hide');
                         } else {
                             ajaxFileupload(data);
                         }
@@ -125,10 +127,11 @@ jQuery(function () {
                             $(inputKey).focus();
                             $(inputKey).parent().after("<div class='error'>" + errerMsg + "</div> ");
                         }
-                        enableBtn(btnSubmit);
+                        enableBtnAndriod(btnSubmit);
                     }
                 },
                 error: function (XmlHttpRequest, textStatus, errorThrown) {
+                    enableBtnAndriod(btnSubmit);
                     console.log(XmlHttpRequest);
                     console.log(textStatus);
                     console.log(errorThrown);
@@ -140,7 +143,7 @@ jQuery(function () {
         }
     });
     function ajaxFileupload(data) {
-        disabledBtn(btnSubmit);
+        disabledBtnAndriod(btnSubmit);
         $(".MultiFile-applied").attr("name", 'file');
         var successCount = 0, inputCount = 0, backCount = 0;
         inputCount = $(".MultiFile-applied").length - 1;
@@ -170,11 +173,12 @@ jQuery(function () {
                         if (inputCount == backCount) {
                             if (successCount == inputCount) {
                                 //alert("恭喜 上传成功!");
-                                location.href = urlReturn + '?refNo=' + data.salesOrderRefNo;
+                                //location.href = urlReturn + '?refNo=' + data.salesOrderRefNo;
+                                $('#success').removeClass('hide');
                             } else {
                                 //$失败操作
                             }
-                            enableBtn(btnSubmit);
+                            enableBtnAndriod(btnSubmit);
                         }
                     }
                 });

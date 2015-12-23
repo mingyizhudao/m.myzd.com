@@ -17,7 +17,7 @@ $urlApiAppNav1 = $this->createAbsoluteUrl('/api/list', array('model' => 'appnav1
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $urlSubmitForm = $this->createUrl("booking/ajaxCreate");
 $urlUploadFile = $this->createUrl("booking/ajaxUploadFile");
-$urlReturn = $this->createUrl('booking/patientBookingList');
+$urlReturn = $this->createUrl('order/view');
 $this->show_footer = false;
 ?>
 <div id="section_container">

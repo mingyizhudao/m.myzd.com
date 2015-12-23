@@ -1,7 +1,7 @@
 $('.btn_city').tap(function () {
     var title1 = $('.title1').html();
     var cityName = $('.cityTitle').html();
-    
+
     J.popup({
         html: '<div class="cityover-list">' +
                 '<header class="head-title1">' +
@@ -43,8 +43,7 @@ $('.btn_city').tap(function () {
     });
 });
 
-function readyPage(data) {
-    var url = window.location.href;
+function readyPage(data, url) {
     var results = data.results;
     innerHtml = '<div class="grid color-black">' +
             '<div class="col-1 w50 list1-left" style="height:356px;">' +

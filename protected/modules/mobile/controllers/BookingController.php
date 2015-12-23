@@ -12,11 +12,11 @@ class BookingController extends MobileController {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('createCorp', 'ajaxCreateCorp', 'ajaxUploadCorp'),
+                'actions' => array('createCorp', 'ajaxCreateCorp', 'ajaxUploadCorp', 'ajaxUploadFile'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'view', 'ajaxCreate', 'ajaxUploadFile', 'patientBookingList', 'patientBooking'),
+                'actions' => array('create', 'view', 'ajaxCreate', 'patientBookingList', 'patientBooking'),
                 'users' => array('@'),
             ),
             array('deny', // deny all users
@@ -198,7 +198,13 @@ class BookingController extends MobileController {
         } else {
             $output['error'] = 'missing parameters';
         }
-        $this->renderJsonOutput($output);
+        //$this->renderJsonOutput($output);
+        if (isset($_POST['plugin'])) {
+            echo CJSON::encode($output);
+            Yii::app()->end(200, true); //结束 返回200
+        } else {
+            $this->renderJsonOutput($output);
+        }
     }
 
     public function actionAjaxUploadFile() {

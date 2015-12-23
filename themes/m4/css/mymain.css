@@ -191,6 +191,7 @@ body {width:100%;color: #333;letter-spacing: 1px;line-height: 1.5;font-size: 14p
 .btn-block{display: block!important;width: 95%;margin: 5px 2.5%!important;padding: 10px!important;}
 .btn-yes{background-color:#19aea5!important;color: #fff!important;}
 .btn-default{border: 1px solid #ddd;background-color: #e4e4e4!important;}
+.btn-abs{width: 100%;padding: 10px;}
 #btn-sendSmsCode{background-color: #EFA429!important;color: #fff!important;height: 40px;border-radius: 0;min-width: 8em;width: 100%;margin: 0px 0!important;}
 #btn-sendSmsCode:disabled{color: #fff!important;opacity: 0.5;}
 button.btn-sendSmsCode:disabled{color: #fff!important;opacity: 0.5;}

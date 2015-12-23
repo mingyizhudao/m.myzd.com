@@ -55,6 +55,8 @@ $urlLogout = $this->createUrl('user/logout');
     $("#btn_actionsheet1").tap(function () {
         J.confirm('退出', '您确定要退出该账号？', function () {
             location.href = '<?php echo $urlLogout; ?>';
+        },function(){
+            
         });
     });
     $('#contactUs').tap(function () {

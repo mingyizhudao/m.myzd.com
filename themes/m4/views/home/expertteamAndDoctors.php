@@ -78,13 +78,17 @@ $this->show_footer = false;
         });
         //请求城市
 
+        var url = window.location.href;
+        if ((url.indexOf('cityId')) != -1) {
+            url = url.substr(0, (url.indexOf('cityId') - 1));
+        }
         $cityHtml = '';
         $.ajax({
             url: '<?php echo $urlCity; ?>',
             async: false,
             success: function (data) {
                 //console.log(data);
-                $cityHtml = readyPage(data);
+                $cityHtml = readyPage(data, url);
             }
         });
         J.hideMask();

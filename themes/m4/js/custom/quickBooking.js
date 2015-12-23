@@ -59,6 +59,8 @@ $(function () {
             // WebUploader实例
             uploader;
 
+
+
     if (!WebUploader.Uploader.support()) {
         alert('Web Uploader 不支持您的浏览器！如果你使用的是IE浏览器，请尝试升级 flash 播放器');
         throw new Error('WebUploader does not support the browser you are using.');
@@ -366,7 +368,11 @@ $(function () {
                 if (stats.successNum) {
                     //console.log(stats);
                     //location.href = uploadReturnUrl;
-                    location.hash = uploadReturnUrl;
+                    //location.href = uploadReturnUrl;
+                    J.popup({
+                        html: '<div><div class="popup-title">提示</div><div class="popup-content"><h4>提交成功！</h4><div class="mt20"><a data-target="link" href="' + uploadReturnUrl + '" class="btn btn-yes btn-block">确定</a></div></div></div>',
+                        pos: 'center'
+                    });
                 } else {
                     // 没有成功的图片，重设
                     //state = 'done';
@@ -447,8 +453,9 @@ $(function () {
                 errorinfo = "请选择jpg/jpeg/png或gif格式的图片!";
                 break;
         }
-        $("#tipPage .tipcontent p").html(errorinfo);
-        $("#toTip").trigger("click");
+        //$("#tipPage .tipcontent p").html(errorinfo);
+        //$("#toTip").trigger("click");
+        J.showToast(errorinfo, '', 2000);
         //console.log(errorinfo);
         //alert('错误信息: ' + errorinfo);
     };
@@ -487,8 +494,14 @@ $(function () {
         if ($(this).hasClass('disabled') || $(this).hasClass("ui-state-disabled")) {
             return false;
         }
+
+
+        var bool = validator.form();
+        if (bool) {
+            formAjaxSubmit();
+        }
         //触发表单提交事件 
-        domForm.submit();
+        //domForm.submit();
 //        if ( state === 'ready' ) {
 //            uploader.upload();
 //        } else if ( state === 'paused' ) {
@@ -510,12 +523,7 @@ $(function () {
     $upload.addClass('state-' + state);
     updateTotalProgress();
 
-    btnSubmit.click(function () {
-        var bool = validator.form();
-        if (bool) {
-            formAjaxSubmit();
-        }
-    });
+
 
     function formAjaxSubmit() {
         disabledBtn(btnSubmit);
@@ -524,12 +532,13 @@ $(function () {
         //returnUrl = domForm.attr("data-url-return");
         //alert("asdf");
         //btnSubmit.button("disable");
-        var formdata = domForm.serialize();
+        var formdata = domForm.serializeArray();
         $.ajax({
             type: 'post',
             url: actionUrl,
             data: formdata,
             success: function (data) {
+                console.log(data);
                 //图片上传
                 if (data.status == 'ok') {
                     fileParam.id = data.booking.id;
@@ -540,7 +549,8 @@ $(function () {
                         uploader.upload();
                     } else {
                         //没有上传文件 表单数据添加成功 页面跳转
-                        location.hash = uploadReturnUrl;
+                        //location.href = uploadReturnUrl;
+                        $('#success').removeClass('hide');
                     }
                     enableBtn(btnSubmit);
                 } else {
@@ -563,6 +573,7 @@ $(function () {
                 console.log(errorThrown);
             },
             complete: function () {
+                return;
 
             }
         });

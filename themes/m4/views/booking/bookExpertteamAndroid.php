@@ -130,6 +130,10 @@ $this->show_footer = false;
         </article>
     </section>
 </div>
+<div id="loading_popup" style="" class="loading">
+    <i class="icon spinner"></i>
+    <p>加载中...</p>
+</div>
 <script>
     Zepto(function ($) {
         $('#booking-form #booking_date_start').tap(function () {

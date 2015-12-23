@@ -132,7 +132,7 @@ $(function () {
 
     // 当有文件添加进来时执行，负责view的创建
     function addFile(file) {
-        $('#imgList').hide();
+        //$('#imgList').hide();
         var $li = $('<li id="' + file.id + '">' +
                 '<p class="title">' + file.name + '</p>' +
                 '<p class="imgWrap"></p>' +

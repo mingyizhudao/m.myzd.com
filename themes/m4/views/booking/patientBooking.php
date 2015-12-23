@@ -126,7 +126,7 @@ $this->show_footer = false;
                     ));
                     ?>
                     <input id="booking_id" type="hidden" name="booking[booking_id]" value="<?php echo $results->id; ?>" />
-                    <div class="mt10">
+                    <div class="mt30">
                         <!--图片上传区域 -->
                         <div id="uploader" class="uploader wu-example">
                             <div class="imglist">
@@ -149,7 +149,7 @@ $this->show_footer = false;
                                     <div id="filePicker2" class=""></div>
                                 </div>
                                 <div class="ui-field-contain display-block mt50">
-                                    <input class="uploadBtn state-ready btn-block font-s16" type="button" name="yt0" value="提交">
+                                    <input class="btn btn-yes uploadBtn state-ready btn-block font-s16" type="button" name="yt0" value="提交">
                                 </div>
                             </div>
                             <!--一开始就显示提交按钮就注释上面的提交 取消下面的注释 -->

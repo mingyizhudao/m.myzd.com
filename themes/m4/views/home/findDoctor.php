@@ -8,7 +8,7 @@ $this->setPageTitle('名医主刀');
 $urlApiAppNav1 = $this->createAbsoluteUrl('/api/list', array('model' => 'appnav1'));
 
 $urlHomeFindDoctor = $this->createUrl('home/findDoctor');
-$urlFindExpertteamByDiseaseId = $this->createUrl('home/FindExpertteamByDiseaseId');
+$urlFindExpertteamByDiseaseId = $this->createUrl('home/findExpertteamByDiseaseId');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $urlHomeIndex = $this->createUrl('home/index');
 $this->show_footer = false;

@@ -1,6 +1,5 @@
 <?php
 Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/quickBooking.js', CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/main.js', CClientScript::POS_END);
 Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/jquery.validate.js', CClientScript::POS_END);
 /*
  * $model BookQuickForm.
@@ -99,17 +98,6 @@ $this->show_footer = false;
                             </div>
                         </div>
                     </div>
-                </div>
-                <div id="success" class="hide">
-                    <div id="jingle_popup" class="bookingConfirm">
-                        <div class="bookingDiv">
-                            <div>预约成功</div>
-                            <div class="mt20">
-                                <a href="<?php echo $urlHomeIndex; ?>" class="btn bg-green color-black w60">确定</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="jingle_popup_mask" style="opacity: 0.3; display: block; position:fixed;"></div>
                 </div>
             </div>
         </article>

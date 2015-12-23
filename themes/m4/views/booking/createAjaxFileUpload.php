@@ -3,7 +3,6 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/c
 Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/jquery.form.js', CClientScript::POS_END);
 Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/ajaxfileupload.js', CClientScript::POS_END);
 Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/bookingAndroid.js', CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/main.js', CClientScript::POS_END);
 /*
  * $model BookQuickForm.
  */
@@ -14,7 +13,8 @@ $authActionType = AuthSmsVerify::ACTION_BOOKING;
 $urlSubmitForm = $this->createUrl("booking/ajaxCreate");
 $urlUploadFile = $this->createUrl("booking/ajaxUploadFile");
 $urlReturn = $this->createUrl('order/view');
-$this->show_footer=false;
+$urlHomeIndex = $this->createUrl('home/index');
+$this->show_footer = false;
 ?>
 <div id="section_container">
     <section id="corp_section" class="active">
@@ -29,7 +29,7 @@ $this->show_footer=false;
                             .uploadfile .ui-body-inherit{border-color: #fff;}
                             .uploadfile .ui-focus{box-shadow: 0 0 0 #fff;}
                             .uploadfile{padding-top: 20px;}
-                            .uploadfile:before{content: '选择文件';padding: 10px 15px;font-size: 14px;background-color: #428bca;color: #fff;border-radius: 5px;}
+                            .uploadfile:before{content: '选择文件';padding: 10px 15px;font-size: 14px;background-color: #19aea5;color: #fff;border-radius: 5px;}
                             .uploadfile{position:relative;}
                             .uploadfile input[type="file"]{position:absolute;top:5px;right:35%;width:30%;line-height:36px;opacity:0;}
                             .uploadfile .btn:hover, #btn-addfiles:hover{cursor:pointer;}
@@ -82,8 +82,8 @@ $this->show_footer=false;
                                 <?php echo CHtml::activeLabel($model, 'mobile'); ?>                                           
                                 <?php echo $form->numberField($model, 'mobile', array('name' => 'booking[mobile]', 'placeholder' => '请输入手机号')); ?>
                                 <?php echo $form->error($model, 'mobile'); ?> 
-                                <button id="btn-sendSmsCode" type="button" class="ui-btn ui-corner-all ui-shadow">获取验证码</button>
-                                <div id="booking_mobile-error" class="error hide">请填写手机号码</div>
+                                <button id="btn-sendSmsCode" type="button" class="ui-btn ui-corner-all ui-shadow w100 bg-green">获取验证码</button>
+<!--                                <div id="booking_mobile-error" class="error hide">请填写手机号码</div>-->
                             </div>
                             <div class="ui-field-contain">
 
@@ -125,28 +125,31 @@ $this->show_footer=false;
                                 ));
                                 ?>
                             </div>
-                            <div class="ui-field-contain">                
-                                <button id="btnSubmit" type="button" name="yt0">提交</button>
+                            <div class="ui-field-contain mt20 mb10">                
+                                <button id="btnSubmit" type="button" name="yt0" class="w100 bg-green">提交</button>
                             </div>
                         </div>
                     </div>  
                 </div>
-                <div id="success" class="" data-role="page" data-title="提交成功">
-                    <div data-role="content">
-                        <div>
-                            <h4>预约成功！</h4>
-                            <h4>我们的工作人员会尽快联系您。</h4>
-                        </div>
-                        <br />
-                        <br />
-                        <div>
-                            <a href="<?php echo $this->createUrl('home/index'); ?>" data-ajax="false" class="ui-btn">返回首页</a>
+                <div id="success" class="hide">
+                    <div id="jingle_popup" class="bookingConfirm">
+                        <div class="bookingDiv">
+                            <div>预约成功</div>
+                            <div class="mt20">
+                                <a href="<?php echo $urlHomeIndex; ?>" class="btn bg-green btn-yes color-black w60">确定</a>
+                            </div>
                         </div>
                     </div>
+                    <div id="jingle_popup_mask" style="opacity: 0.3; display: block; position:fixed;"></div>
                 </div>
             </div>
         </article>
     </section>
+</div>
+<div id="jingle_toast" class="mobileTip toast"><a href="#">请填写手机号</a></div>
+<div id="loading_popup" style="" class="loading">
+    <i class="icon spinner"></i>
+    <p>加载中...</p>
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -163,7 +166,10 @@ $this->show_footer=false;
             //$("#booking_mobile_em_").text("请输入手机号码").show();
             //domMobile.parent().addClass("error");
             //showErrorPopup('请输入手机号码', '#popupError', '#triggerPopupError');
-            $('#booking_mobile-error').removeClass('hide');
+            $('.mobileTip').show();
+            setTimeout(function () {
+                $(".mobileTip").hide();
+            }, 1000);
         } else if (domMobile.hasClass("error")) {
             // mobile input field as error, so do nothing.
         } else {
@@ -198,4 +204,5 @@ $this->show_footer=false;
             });
         }
     }
+
 </script>

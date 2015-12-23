@@ -2,7 +2,6 @@ $(function () {
 
     var domForm = $("#login-form"), // form - html dom object.;
             btnSubmit = $("#btnSubmit");
-            console.log($.validator.addMethod);
     // 手机号码验证
     $.validator.addMethod("isMobile", function (value, element) {
         var length = value.length;

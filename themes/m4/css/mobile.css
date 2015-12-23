@@ -596,3 +596,19 @@ select {
 /**** aboutus ****/
 #aboutus{font-size: 15px;letter-spacing: 2px;line-height: 1.8em;}
 .login_form{padding: 20px 10px 60px;}
+/*安卓快速预约弹窗*/
+.bookingConfirm{ top: 50%!important; left: 5%!important; right: 5%!important; border-radius: 3px!important; display: block!important; margin-top: -55px!important; position:fixed!important;}
+.bookingDiv{height: 100px!important;text-align: center!important;font-size: 20px!important;font-weight: 600!important;margin-top: 10px!important;color:#222!important;}
+/*图片提交*/
+.img-btn{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width:100%;
+    background-color: #19aea5;
+    color:#222;
+    text-align: center;
+    border-radius: 3px;
+}
+#jingle_popup_mask{z-index: 9990;}
+#jingle_popup{z-index: 9998;}
+#jingle_toast{z-index: 9999;}

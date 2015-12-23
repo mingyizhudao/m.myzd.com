@@ -5,10 +5,6 @@ $(function () {
             urlUploadFile = domForm.attr("data-url-uploadFile"),
             urlReturn = domForm.attr('data-url-return');
 
-    $('#btn-addfiles').click(function () {
-        $('#imgbtn').removeClass('hide');
-    });
-
     btnSubmit.click(function () {
         var id = $('#booking_id').attr('value');
         ajaxFileupload(id);
