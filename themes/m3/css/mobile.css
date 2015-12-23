@@ -1,0 +1,543 @@
+/**** add css ****/
+/**** 提醒框 ****/
+.confirmPage .btn{display: block;}
+.confirmPage{display: none;position: fixed;margin:0 -14px;text-align: center;top: 39px;width: 100%;min-height: 44em;z-index: 999;background-color:rgba( 0, 0, 0, 0.5 );padding: 40% 0;}
+.confirmPage .confirmcontent{width: 15em;margin: 0 auto;background-color: #fff;padding: 1em;}
+.btn {display: inline-block;padding: 6px 12px;margin-bottom: 0;font-size: 14px;font-weight: 400;line-height: 1.5em;text-align: center;white-space: nowrap;vertical-align: middle;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;background-image: none;border: 1px solid transparent;border-radius: 4px;}
+/**** home ****/
+body{margin: 0;}
+#btn-sendSmsCode{margin-top: 10px;}
+#btn-sendSmsCode.ui-btn{background-color:#EFA429;border-color: #EFA429;}
+/**** form ****/
+.ui-select .ui-btn{background-color: transparent; color: #333;}
+.ui-select .ui-btn.active,.ui-select .ui-btn:hover{background-color: transparent; color: #333;}
+.ui-checkbox .ui-btn,.ui-checkbox .ui-btn:hover{background-color: transparent;color: #333;border-color: transparent;}
+.ui-checkbox input, .ui-radio input{position: absolute;left: .466em;top: 50%;width: 29px;height: 21px;margin: -10px 0 0 0;}
+.ui-field-contain a{text-decoration: underline;}
+/*.ui-content{padding: 0 1em 2em;min-height: 540px;}*/
+.ui-header{border:0;}
+/*.home-page{padding-top: 40px;}*/
+.page-title{font-size: 20px;padding:10px 10px 10px;background-color: #e4e4e4;}
+.page-title>span{padding-left: 10px;border-left: 3px solid #19aea5;}
+.line3{border-bottom: 3px solid #333;}
+#team-bxslider .bxslider .slide{text-align: center}
+#team-bxslider .bxslider .slide a{text-decoration: none;} 
+#team-bxslider .bxslider img{width: 100px;height: 100px;border-radius: 50%;border: 1px solid #e4e4e4;display: block;margin: 0 auto;}
+#team-bxslider .bx-wrapper{margin-bottom: 10px!important;}
+#team-bxslider .bx-wrapper .bx-pager.bx-default-pager a{width: 7px;height: 7px;}
+.bx-wrapper .bx-controls-direction a {z-index: 9!important;}
+#team-bxslider .bx-viewport{height: 176px!important;padding-top: 10px;}
+#team-bxslider .bx-wrapper .bx-pager{bottom: -10px;}
+#team-bxslider .faculty{margin-top: 10px;color: #888;}
+#home-zhitongche img{display: block;margin: 0 auto;}
+/**** home-citys ****/
+#citys .city-list a{text-decoration: none;}
+#citys .cityimage{margin:10px 5px 0;}
+img{width: 100%;}
+#citys .city{background:url(http://myzd.oss-cn-hangzhou.aliyuncs.com/app%2Fhome%2Fbg-city.jpg);background-size: 100% 100%;margin:0 5px 0;text-align: center;padding: 5px 0;font-size: 14px;}
+#citys .city>span{vertical-align: middle;letter-spacing: 3px;color: #19aea5;font-size: 16px;}
+.ui-page-theme-a .ui-btn.ui-btn-active{box-shadow: 0!important;}
+.padtop1{padding-top: 1px!important;}
+.bordertop{border-top: 1px solid #dedede;}
+
+.register{padding: 10px; background-color: #EAEAEA;}
+.register a{width: 100%;}
+.reg-btn{display: inline-block;padding: 8px 0;margin-bottom: 0;font-size: 14px;font-weight: 400;line-height: 1.42857143;text-align: center;white-space: nowrap;vertical-align: middle;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;background-image: none;text-decoration: none;}
+
+/**** expertteam ****/
+body{margin:0;padding:0;font-size:14px;}
+#expertteam .section-title{padding:5px 15px;background-color:#F7F7F7;font-size:17px; color:#19aea5;border-bottom: 1px solid #abdad6;}
+#expertteam .section-title>.fa{color: #EFA429;text-shadow: 1px 1px 1px #fff;}
+#expertteam .team-introduce{line-height: 1.6;letter-spacing: 1.5px;}
+.doc-introduce{line-height: 1.7;letter-spacing: 1.5px;}
+.doc-introduce .long-title{color: #19aea5;}
+.introduce .hpname{color: #9f9fa0;}
+#expertteam .section-body{padding: 0 20px;}
+#expertteam .section-body .img100 {background-color: #fff;display: block;margin: 7px auto;width: 100px;height: 100px;border: 1px solid #ddd;border-radius: 50%;overflow: hidden;}
+#expertteam .section-body .booking{top:7px;position: fixed;right: 10px;z-index: 9999;}
+#expertteam .section-body .booking>a{text-decoration: none;}
+#expertteam .section-body .doc .doc-title>span{padding: 5px 20px;border:1px solid #eeca23;border-radius: 5px;color: #9f9fa0;}
+#expertteam .section-body .doc .doc-name{font-size: 16px;line-height: 1.7em;padding-bottom: 5px;}
+#expertteam .section-body .team-btn {line-height: 1.5em;letter-spacing: 1.5px;padding: 5px 20px;font-size: 16px;border-radius: 3px;}
+#expertteam .section-body .eteamdecs{padding: 10px 5px;line-height: 1.9em;}
+.btn-booking {color: #fff;background-color: #EFA429;border-color: #eea236;}
+.team-honor .section-body>ul{padding: 10px 0;list-style:none;}
+.team-honor .section-body>ul>li{margin-top: 5px;line-height: 1.7em;background: url(../images/icons/honour-s.png) no-repeat 0 0.2em;padding-left: 20px;}
+.star-team .ui-grid-c>.ui-block-b{width: 75%;}
+.star-team a{color: #000;}
+.star-team .team-name{font-size: 18px;color: #000;padding-bottom: 5px;}
+.star-team .team-hosiptal{padding: 0 10px 5px 0;color: #000;font-size: 15px;}
+.star-team .team-faculty{padding: 0 10px 5px 0;color: #000;font-size: 15px;}
+.star-team .team-slogan{padding: 0 15px 15px 0;color: #19aea5;font-size: 15px;}
+.section-body .team-btn {line-height: 2.5em;letter-spacing: 1.5px;padding: 5px 20px;font-size: 16px;border-radius: 3px;}
+.section-title{padding:5px 15px;font-size: 17px;}
+.section-body .img80 {display: block;margin: 10px auto 0;width: 80px;height: 80px;border: 1px solid #ddd;border-radius: 50%;z-index:0;overflow: hidden;}
+.section-body .introduce{padding:5px;}
+
+/**** faculty ****/
+.doc .ui-grid-c .ui-block-b{width: 70%;}
+.doc .expert-mtitle,.doc .expert-atitle{color: #9f9fa0;}
+.doc a{text-decoration: none;}
+.team-info .team-name{padding:15px 0 5px 5px;font-size: 18px;}
+.team-info .team-slogan{padding:5px 0 5px 5px;font-size: 15px;}
+.pd40{padding:40px 5px!important;}
+.pl10{padding-left: 10px;}
+.mt20{ margin-top: 20px;}
+//.ui-btn-icon-notext:after{margin-left: 0}
+.team-name a{text-decoration: none; color:#fff;}
+.text-write{color: #fff;}
+.team-disTags{margin-top: 10px;}
+
+
+/**** doctor ****/
+.doc-info{line-height: 1.5;letter-spacing: 1.5px;background:url(../images/background_750x480.png);background-size:100% 100%;}
+.img100 {display: block;margin: 10px auto;width: 100px;height: 100px;border: 1px solid #fff;border-radius: 50%;}
+.header-area{padding:7px;margin:0 -15px;background-color: #EBEBEB;}
+.docTags{text-align: center;}
+.docTags .doc-name{color: #000;font-size: 18px;}
+.docTags .doc-atitle,.docTags .doc-faculty,.docTags .doc-mtitle{color: #fff;font-size: 15px;}
+.mr10{margin-right: 10px;}
+.doc-hospital{padding:10px;font-size: 18px;}
+.doc-desc{padding: 10px 5px;font-size: 15px;line-height: 1.7;letter-spacing: 1.5px;}
+
+/**** register form ****/
+.mt40{margin-top: 40px;}
+.reg-header{margin-top: 18px;font-size: 18px;}
+.verify_code .ui-btn{margin-top: 10px!important;}
+
+/**** hospital ****/
+.hospital-header{background-color: #abdad6;}
+.hospital-header .bx-wrapper{margin-bottom: 0;background-color: #abdad6;}
+.hospital-header .bx-wrapper .bx-controls{display: none;}
+.hospital-header a{padding: 10px 0;font-size: 13px;display: inline-block;width: 100%;background-color: #abdad6;}
+.hospital-header a>span{display: inline-block;width: 100%;border-right: 1px solid #ddd;}
+.hospital-header a.active{background-color: #f8f8f8;color: #19aea5;}
+.hospital-header a.active>span{border: 0;}
+.hospital-list{padding: 0 5px;}
+.hospital-list .ui-grid-b>.ui-block-a{width: 66%;padding: 20px 0;}
+.hospital-list .ui-grid-b{border: 1px solid #e4e4e4;padding: 10px 0;margin-top: 10px;}
+.hospital-list .ui-grid-b img{width: 100px;height: 100px;box-shadow: 1px 1px 2px #888;}
+.hinfo-header{text-align: center;padding: 10px 0;font-size: 15px;border-bottom: 1px solid #ddd;background-color: #abdad6;}
+.department{}
+.department .ui-grid-a .ui-block-a{width: 33.33%;background-color: #9f9fa0;color: #fff;border-top: 1px solid #ddd;border-left: 1px solid #ddd;}
+.department .ui-grid-a .ui-block-b{width: 66.66%;min-height: 300px;}
+.department .ui-grid-a a:active,.department .ui-grid-a a:hover{text-decoration: none;}
+.department .deptname{padding: 15px 0;border-bottom: 1px solid #ddd;padding-right:1px;color: #fff;}
+.department .facultyname{padding: 16px 0 16px 50px;color: #717071;}
+.department .deptname.active{background-color:#f2f2f2;color:#333;margin-right: -1px;z-index: 9999;border-right: 1px solid #f2f2f2;}
+.department .ui-block-b{min-height:100%;border:1px solid #ddd;}
+.department .faculty{display:none;}
+.department .faculty.active{display:block;}
+.text-yellow{color: #eeca23;}
+/**** footerMenu ****/
+#browermode-menu .footerMenu{background-color: #e69f2e;color: #fff;font-size: 14px;padding: 10px 20px;letter-spacing: 1.7px;}
+#browermode-menu .footerMenu a{text-decoration: none;color: #fff;}
+#browermode-menu .footerMenu .borderleft{border-right: 1px solid #fff;padding-right: 10px;}
+#browermode-menu .footerMenu .tel{padding-right: 10px;}
+#browermode-menu .footerMenu .phone-img{border-radius: 0;background-size: contain;background-image: url("./icons/ic_phone.png");width: 22px;height: 22px;display: block;position: absolute;right: 155px;top: 7px;}
+
+/**** zhitongche ****/
+#zhitongche{background-color: #e9f5f4;}
+#zhitongche .section-title{padding:5px 15px;font-size:17px;letter-spacing: 2px;background:url(../images/icons/round.png) 15px center no-repeat;border-bottom: 2px solid #abdad6;}
+#zhitongche .section-title>.fa{font-size: 12px;}
+#zhitongche .section-body{padding: 10px 15px 20px;}
+#zhitongche .desc{font-size: 15px;letter-spacing: 2px;line-height: 1.5em;}
+#zhitongche .zhitongche-title{height: 92px;font-size:26px;text-align: center;color: #19aea5;background: url(../images/zhitongche/round-title.png) center center no-repeat;background-size: 100%;}
+#zhitongche .zhitongche-title.pt50{padding-top: 50px;}
+#zhitongche .zhitongche-title.pt20{padding-top: 20px;}
+#zhitongche .section-body{padding: 10px 15px 0px;}
+#zhitongche .section-body .ui-grid-a .ui-block-a{padding-right: 10px;}
+#zhitongche .section-body .ui-grid-a .ui-block-b{padding-left: 10px;}
+#zhitongche .section-body .introduce-title{font-size: 15px;color: #19aea5;margin-bottom: 3px;}
+#zhitongche .section-body .introduce-title>span{display: inline-block;width: 1.1em;height: 1.1em;font-size: 16px;border-radius: 50%;color: #fff;background-color:#19aea5;text-align: right;line-height: 1.1em;padding-right: 2px;}
+#zhitongche .section-body .introduce-title.step1{background-image: url(../images/zhitongche/step1.png);background-position: 0 center ;background-repeat: no-repeat;background-size: contain;padding-left: 1.6em;}
+#zhitongche .section-body .introduce-title.step2{background-image: url(../images/zhitongche/step2.png) ;background-position: right center ;background-repeat: no-repeat;background-size: contain;padding-right: 1.6em;}
+#zhitongche .section-body .introduce-title.step3{background-image: url(../images/zhitongche/step3.png) ;background-position: 0 center ;background-repeat: no-repeat;background-size: contain;padding-left: 1.6em;}
+#zhitongche .section-body .introduce-title.step4{background-image: url(../images/zhitongche/step4.png) ;background-position: right center ;background-repeat: no-repeat;background-size: contain;padding-right: 1.6em;}
+#zhitongche .section-body .introduce-content{padding: 5px;font-size: 13px;}
+#zhitongche .section-body .step,#zhitongche .section-body .long{padding:20px 0;background: url(../images/zhitongche/wire.png) center 0 repeat-y;}
+#zhitongche .section-body .step .introduce-content{min-height: 60px;padding: 5px 10px 5px 15px;background-color: #e9f5f4;}
+#zhitongche .section-body .step .introduce-content.bg-left{background-image: url(../images/zhitongche/bg-blue.png) ;background-repeat: no-repeat;background-size: 100% 100%;}
+#zhitongche .section-body .step .introduce-content.bg-right{background-image: url(../images/zhitongche/bg-blue-r.png) ;background-repeat: no-repeat;background-size: 100% 100%;}
+#zhitongche .section-body .long .introduce-content{background-color: #abdad6;color: #fff;border-radius: 3px;font-size: 13px;letter-spacing: 1.5px;min-height: 80px;line-height: 1.6em;}
+#zhitongche .section-body .long .mt-20{margin-top: -30px;}
+#zhitongche .qa .question{font-weight: bold;margin-top: 5px;}
+#zhitongche .qa .question .qtitle{background: url(../images/bg-question.png) no-repeat;background-size: 100% 100%;padding: 5px;color: #fff;}
+#zhitongche .qa .answer{line-height: 1.5em;color: #717071;padding-left: 30px;background: url(../images/bg-answer.png) 0 20px no-repeat;background-size: 2em;}
+#zhitongche .qa .answer>span{padding:10px 10px 20px 10px;display: inline-block;background-color: #eff7f7;min-height: 70px;margin-top: 5px;}
+#zhitongche .btn-eteam{text-align: center;}
+#zhitongche .btn-eteam>a{display: inline-block;margin: 0 auto;border-radius: 5px;box-shadow: 1px 1px 5px #888;font-size: 14px;letter-spacing: 3px;}
+/**** user ****/
+.user-header{background-color: #19aea5;padding: 20px 0;text-align: center;margin-top: -1em;color: #fff;}
+.user-header img{width: 8em;display: block;margin: 0 auto;}
+.menu-list a{position: relative;}
+.menu-list .menu-item{padding: 1.1em 0 1.1em 3.5em;font-size: 17px;border-bottom: 1px solid #ddd;background-repeat: no-repeat;background-size: 30px;background-position: 1em center;}
+.menu-list .aboutus{background-image: url(../images/icons/person_about.png);}
+.menu-list .order{background-image: url(../images/icons/person_oder.png);}
+.menu-list .password{background-image: url(../images/icons/person_password.png);}
+.logout{background-color: #d9534f;color: #fff;display: block;/*position: fixed!important;bottom: 1em;width: 93%;*/}
+.logout .menu-item{color: #fff;}
+/**** account ****/
+#account .account-list{padding: 40px 20px;text-align: center;font-size: 20px;line-height: 10em;}
+#account .account-list .borderright{border-right: 1px solid #ddd;}
+#account .account-list .bordertop{border-top: 1px solid #ddd;width:100%;}
+/**** booking ****/
+#booking a:hover{}
+#booking .booking-item{font-size: 14px;padding: 10px 5px;border: 1px solid #ddd;border-top: 3px solid #19aea5;margin: 5px;line-height: 3em;}
+#booking .booking-id{font-weight: bold;}
+#booking .booking-id>span{font-size: 20px;line-height: 2em;}
+#booking .bookinginfo{margin: 10px;padding: 10px;border: 1px solid #ddd;font-size: 14px;line-height: 3em;}
+#booking .bookinginfo>.booking-id{border-bottom: 1px solid #fff;}
+#booking .bookinginfo .ui-grid-b .ui-block-a{width: 35%;}
+#booking .bookinginfo .ui-grid-b .ui-block-b{width: 65%;}
+#booking .bookinginfo a{color: rgb(63, 81, 181);}
+
+
+/**** quickbooking ****/
+.ui-field-contain .uploadcase{margin-top: 10px;}
+.ui-field-contain .uploadcase .case-item{margin: 0 auto;}
+.ui-field-contain .uploadcase .case-item .img-content{width: 80px;margin: 0 auto;}
+.ui-field-contain .uploadcase .case-item .add{overflow: hidden;background-color: #fff;color: #ddd;border: 1px dashed #e4e4e4;text-align: center;width: 80px;height: 80px;margin: 0 auto;}
+.ui-field-contain .uploadcase .case-item .add{vertical-align: middle;font-size: 40px;padding-top: 10px;}
+.ui-field-contain .uploadcase .case-item .ui-body-inherit{border: 0;}
+.ui-field-contain .uploadcase input[type=file]{width: 80px;height: 108px;position: absolute;top: 0px;margin: 0;opacity: 0;-ms-filter: 'alpha(opacity=0)';}
+.ui-field-contain .uploadcase .case-item .addtext,.ui-field-contain .uploadcase .case-item .delete{text-align: center;margin-top: 10px;}
+.ui-field-contain .uploadcase .case-item .addtext>a,.ui-field-contain .uploadcase .case-item .delete>a{color: #00f;}
+.modal .modal-header .close{width: auto;padding:1px 3px;}
+.modal .modal-header .modal-title{text-align: center;}
+.modal .modal-content{font-size: 16px;min-height: 100px;}
+
+
+/**** genneral ****/
+a{text-decoration: none;}
+.text-right{text-align: right;}
+ul, ol {margin-top: 0;margin-bottom: 10px;}
+h4, .h4 {font-size: 18px!important;}
+h4, .h4, h5, .h5, h6, .h6 {margin: 10px 0!important;}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {font-family: inherit;font-weight: 500;line-height: 1.1;color: inherit;}
+.pt10{padding-top:10px;}
+.pt76{padding-top:76px;}
+.pr10{padding-right:10px;}
+.pb10{padding-bottom: 10px;}
+.pb20{padding-bottom: 20px;}
+.pb40{padding-bottom: 40px;}
+.mb20{margin-bottom:20px;}
+.mr20{margin-right: 20px;}
+.mt5{margin-top: 5px;}
+.mt10{margin-top: 10px;}
+.mt20{margin-top: 20px!important;}
+.mt30{margin-top: 30px;}
+.mt50{margin-top: 50px;}
+.mt67{margin-top:67px;}
+.mb10{margin-bottom: 10px;}
+.divider{margin:10px 0;border-bottom:1px solid #ddd;}
+.color-red{color: red;}
+.btn-yes {color: #fff!important;background-color: #19aea5;border:0!important;border-radius: 5px!important;}
+.btn-yes:hover, .btn-yes:focus ,.btn-yes:active{color: #fff!important;background-color: #7bc9ca;border:0;}
+.btn-default {color: #000!important;background-color: #fff!important;border: 1px solid #e4e4e4!important;border-radius: 5px!important;}
+
+/**** order ****/
+#order{line-height: 2em;font-size: 18px;}
+#order .order-content{color: #000;font-size: 16px;}
+#order .order-content span{display: inline-block;width: 5em;font-size: 16px;}
+#order .ch{text-align:center;}
+#order  .up{background-color: #e4e4e4;border:1px solid #ddd!important;border-radius:10px;background-position:center;background-repeat:no-repeat;width:190px!important;margin:5px auto 0!important;padding:10px!important;}
+#order .alipay{background-image: url(../images/icons/ic-alipay.png);}
+#order .yeepay{background-image: url(../images/icons/ic-yeepay.png);}
+#order .weixin{background-image: url(../images/icons/ic-weixin.png);}
+/*** ------- ****/
+#aboutus{font-size: 15px;letter-spacing: 2px;line-height: 1.8em;}
+.ui-icon-carat-l:after {background-image: url("../images/icons/btn-back.png");}
+.ui-select .ui-btn select{color: #333;}
+/**** mobile.css ****/
+body,a.ui-btn,p{font-weight:200;font-family: 'Microsoft YaHei', 微软雅黑, 'Microsoft Yahei', 黑体, 宋体, Arial, Simsun, Helvetica, sans-serif !important;}
+.error-popup{background-color: rgba(16, 16, 16, 0.8)!important;color: #fff!important;border: none!important;}
+form .errorMessage{color:#E21E1A;margin-top: 5px;}
+form .error{color:#E21E1A;}
+.hide{display:none !important;}
+
+.divider{border:1px solid #ededed;}
+.dotted{border:1px dotted #ededed;}
+.dashed{border:1px dashed #ededed;}
+.nobg{background-color: rgba(0, 0, 0, 0);filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0); /* IE6/IE7/8 */ -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; /*  IE8 */}
+.bg-white{background-color:#fff;}
+
+.btn-lightblue {
+    color: #fff!important;
+    background-color: #7bc9ca;
+}
+.btn-deepblue{
+    color: #FFF !important;
+    background-color: #458196!important;
+}
+
+
+.pull-left {float: left!important;}
+.pull-right{float:right!important;}
+img {vertical-align: middle;}
+.img-responsive{width:100%;}
+.media, .media-body {overflow: hidden;zoom: 1;}
+.media>.pull-left {margin-right: 0.75em;}
+.media-object {display: block;}
+
+.text-center{text-align:center;}
+
+.noborder{border:none;}
+
+.color-green{color:#19aea5;}
+.color-green2{color:#019865;}
+.color-blue{color:#3399ff;}
+
+.m-text-light{color:#777;}
+.my-label{display:inline-block;padding: 0.5em;font-size: 0.75em;color: #FFF;}
+.my-label-blue{background-color: #66CBFF;}
+
+.my-border-round{border-radius:50% !important;border:3px solid #ededed !important;}
+.m-paragraph{line-height:1.75;}
+
+.m-panel{padding:1em;}
+.m-panel>.m-sub-panel{padding:0.5em;margin-left:-1em;margin-right:-1em;border-bottom:1px solid #ededed;}
+.m-panel>.m-sub-panel:last-child{border-bottom:none;}         
+
+
+.pt1{padding-top:0.5em;}
+.pt2{padding-top:1em;}
+.pb1{padding-top:0.5em;}
+.pb2{padding-top:1em;}
+
+.mt-fix{margin-top:-1em;}
+.mt1{margin-top:0.5em;}
+.mt2{margin-top:1em;}
+
+.overlay-container{position:relative;display:block;}
+.overlay-container .overlay-shadow{
+    position:absolute;
+    bottom:0;
+    display:block;
+    width:100%;
+    background-color:rgba(0,0,0,0.6);
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=60); /* IE6/IE7/8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=60)"; /*  IE8 */
+    /* Safari 4-5, Chrome 1-9 */
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(0, 0, 0, 0.05)), to(rgba(0, 0, 0, 0.8)));
+    /* Safari 5.1, Chrome 10 */
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.8));
+    /* Firefox 3.6 */
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.8));
+    /* IE 10 */
+    background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.8));
+    /* Opera 11.10 */
+    background: -o-linear-gradient(top, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.8));
+}
+.overlay-container .overlay-shadow .overlay-caption{color:#fff;}
+
+/**** Form ****/
+form .form-result-success{display:none;}
+form.success .form-result-success{display:block;}
+form.success .ui-field-contain{display:none;}
+
+/**** jquery mobile theme fix ****/
+a.ui-btn{text-shadow:none; border:none;}
+.ui-header .ui-title, .ui-footer .ui-title{min-height:1.2em;}
+.ui-btn.nobg:after{background-color:rgba(0, 0, 0, 0); filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0); /* IE6/IE7/8 */ -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; /*  IE8 */}
+.ui-content .row, .ui-panel-inner>row{margin-left:-1em;margin-right:-1em;}
+
+.ui-page{background-color:#fff;}
+.ui-page.wheat{background-color:#fff;}
+
+
+/**** Xiu mi ****/
+#js_content,.x3-slice-plate{line-height:2;}
+
+/**** Header ****/
+.ui-header{border-bottom:2px solid #7bc9ca;color:#7bc9ca;background-color: #fff;}
+.ui-header .ui-title{margin:0 auto !important; font-weight:normal;font-size: 1.3em;padding: 0.5em 0;}
+.m-icon-logo:after{
+    background-image:url("./icons/ic_logo.png");
+}
+/* Fallback */
+.ui-nosvg .m-icon-logo:after {
+    background-image: url("./icons/ic_logo.png");
+}
+
+
+
+/**** Footer ****/
+.icon{
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size: 256px 128px;
+    -webkit-background-size: 256px 128px;
+    -moz-background-size: 256px 128px;
+    -o-background-size: 256px 128px;
+}
+.ui-headera.ui-btn:after{border-radius:0;background-size:contain;}
+.ui-footer a.ui-btn:after{border-radius:0;background-size:88px 44px;}
+.ui-footer{background-color:#F6F6F6;border-top:1px solid #ededed;border-bottom:none;border-color:#ededed;}
+.ui-footer .ui-btn{padding-top:2.7em;padding-bottom:0.5em;font-weight:200; color:#555 !important;background-color:#F6F6F6 !important;border:none !important;box-shadow:none !important;text-shadow:none !important;}
+
+.m-icon-home:after{background-image:url("http://myzd.oss-cn-hangzhou.aliyuncs.com/mobile%2Fm3-footer-icons.png");background-position: 0 0;}
+.ui-btn-active.m-icon-home:after{background-image:url("http://myzd.oss-cn-hangzhou.aliyuncs.com/mobile%2Fm3-footer-icons.png");background-position: 0 -22px;}
+
+.m-icon-hospital:after{background-image:url("./icons/ic_hospital.svg");}
+/* Fallback */
+.ui-nosvg .m-icon-hospital:after {background-image: url("./icons/ic_hospital.png");}
+.ui-btn-active.m-icon-hospital:after{background-image: url("./icons/ic_hospital_hover.svg");}
+
+/* Fallback */
+.m-icon-cloud:after {background-image:url("http://myzd.oss-cn-hangzhou.aliyuncs.com/mobile%2Fm3-footer-icons.png");background-position: -22px 0;}
+.ui-btn-active.m-icon-cloud:after{background-image:url("http://myzd.oss-cn-hangzhou.aliyuncs.com/mobile%2Fm3-footer-icons.png");background-position: -22px -22px;}
+/* Fallback */
+.m-icon-globe:after {background-image:url("http://myzd.oss-cn-hangzhou.aliyuncs.com/mobile%2Fm3-footer-icons.png");background-position: -44px 0;}
+.ui-btn-active.m-icon-globe:after{background-image:url("http://myzd.oss-cn-hangzhou.aliyuncs.com/mobile%2Fm3-footer-icons.png");background-position: -44px -22px;}
+/* Fallback */
+.m-icon-call:after {background-image:url("http://myzd.oss-cn-hangzhou.aliyuncs.com/mobile%2Fm3-footer-icons.png");background-position: -66px 0;}
+.ui-btn-active.m-icon-call:after{background-image:url("http://myzd.oss-cn-hangzhou.aliyuncs.com/mobile%2Fm3-footer-icons.png");background-position: -66px -22px;}
+
+
+#actionbar{padding:0.75em 0;font-size:0.75em;text-align:center;background-color:#096;}
+#actionbar, #actionbar a{color:#fff;text-decoration:none;}
+#actionbar .navbar>a{padding:0 1em;}
+#actionbar .navbar>a:first-child{padding-left:0;}
+#actionbar .navbar>a:last-child{padding-right:0;}
+#actionbar .navbar>a:active,#actionbar .navbar>a.active{color:#d8ff00;}
+
+
+/**** Home page ****/
+.home-header .ui-title{    
+    color: #19aea5;
+    padding-left: 3em;    
+    text-align: left;
+    background: #fff url("./icons/homelogo.png") no-repeat 10px center;
+    background-size: 1.5em;
+    -webkit-background-size: 1.5em;
+    -moz-background-size: 1.5em;
+    -o-background-size: 1.5em;
+}
+/*
+.home-header .ui-title{    
+    color:#555;
+    background: #009966 url("./icons/home_header.png") no-repeat 0 center; 
+    background-size: contain;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+}
+*/
+
+
+.home-page .navbar-dis{margin-top:0.5em;margin-bottom:0.5em;}
+.home-page .navbar-dis>ul>li>a.nav-dis{margin:0.25em !important;font-size:0.75em;color:#fff;}
+.home-page .navbar-dis>ul>li>a.nav-dis:hover{color:#fff;background-color:#2bb46c;}
+.home-page .navbar-dis>ul>li>a.ui-btn-icon-top{padding-top:3em;}
+.home-page .navbar-dis>ul>li>a.ui-btn-icon-top:after{
+    position:absolute;
+    left:50%;
+    height:2em;
+    width:2em;
+    margin-left:-1em;    
+    background-color:rgba(0,0,0,0);
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0); /* IE6/IE7/8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; /*  IE8 */
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:contain;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+}
+/*
+.ui-icon-bone:after{background-image:url("./icons/ic_bone.svg");}
+.ui-icon-baby:after{background-image:url("./icons/ic_baby.svg");}
+.ui-icon-fertility:after{background-image:url("./icons/ic_fertility.svg");}
+.ui-icon-liver:after{background-image:url("./icons/ic_liver.svg");}
+.ui-icon-cosmetic:after{background-image:url("./icons/ic_cosmetic.svg");}
+.ui-icon-cardio:after{background-image:url("./icons/ic_cardio.png");}
+.ui-icon-tumor:after{background-image:url("./icons/ic_tumor.png");}
+.ui-icon-shenjingke:after{background-image:url("http://mingyihz.oss-cn-hangzhou.aliyuncs.com/static%2Ffaculty_icon_shenjingke.png");}
+.ui-icon-xiongwaike:after{background-image:url("http://mingyihz.oss-cn-hangzhou.aliyuncs.com/static%2Ffaculty_icon_xiongwaike.png");}
+.ui-icon-miniaowaike:after{background-image:url("http://mingyihz.oss-cn-hangzhou.aliyuncs.com/static%2Ffaculty_icon_miniaowaike.png");}
+*/
+
+/**** Huizhen Page ****/
+.section-hospital .section-title,.section-doctor .section-title{padding:0.5em 1em;}
+
+.navbar-dis .ui-icon-bone,.section-disease.m-icon-bone,.section-disease.m-icon-bone .dis-info:before{background-color:#c90!important;}
+.navbar-dis .ui-icon-liver,.section-disease.m-icon-liver,.section-disease.m-icon-liver .dis-info:before {background-color:#ff842a!important;}
+.navbar-dis .ui-icon-baby,.section-disease.m-icon-baby,.section-disease.m-icon-baby .dis-info:before{background-color:#c672e1!important;}
+//.navbar-dis .ui-icon-tumor,.section-disease.m-icon-tumor,.section-disease.m-icon-tumor .dis-info:before {background-color:#5598dc!important;}
+.navbar-dis .ui-icon-tumor,.section-disease.m-icon-tumor,.section-disease.m-icon-tumor .dis-info:before {background-color:#81c220!important;}
+.navbar-dis .ui-icon-cardio,.section-disease.m-icon-cardio,.section-disease.m-icon-cardio .dis-info:before {background-color:#CF0D0D!important;}
+//.navbar-dis .ui-icon-shenjingke,.section-disease.m-icon-shenjingke,.section-disease.m-icon-shenjingke .dis-info:before{background-color:#339999!important;}
+.navbar-dis .ui-icon-xiongwaike,.section-disease.m-icon-xiongwaike,.section-disease.m-icon-xiongwaike .dis-info:before{background-color:#339999!important;}
+.navbar-dis .ui-icon-miniaowaike,.section-disease.m-icon-miniaowaike,.section-disease.m-icon-miniaowaike .dis-info:before{background-color:#339999!important;}
+
+.section-disease .dis-info{position:relative;display:block;margin:0;padding:0.5em 0 0.5em 4em;min-height:5.5em;border-bottom: 1px solid #ededed;background-color:#fff;}
+.section-disease .dis-info:before{
+    content:'';
+    position: absolute;
+    height: 100%;
+    width: 4em;
+    margin: -0.5em 0;
+    left: 0;
+    background-repeat:no-repeat;background-position:center;background-size:3em;-webkit-background-size: 3em; -moz-background-size: 3em; -o-background-size: 3em;
+}
+.ui-icon-bone:after,.section-disease.m-icon-bone .dis-info:before {background-image: url("http://mingyihz.oss-cn-hangzhou.aliyuncs.com/static%2Ffaculty_icon_guke.png");}
+.ui-icon-liver:after,.section-disease.m-icon-liver .dis-info:before {background-image: url("http://mingyihz.oss-cn-hangzhou.aliyuncs.com/static%2Ffaculty_icon_gandan.png");}
+.ui-icon-cardio:after,.section-disease.m-icon-cardio .dis-info:before {background-image: url("http://mingyihz.oss-cn-hangzhou.aliyuncs.com/static%2Ffaculty_icon_xinxueguan.png");}
+.ui-icon-tumor:after,.section-disease.m-icon-tumor .dis-info:before {background-image: url("http://mingyihz.oss-cn-hangzhou.aliyuncs.com/static%2Ffaculty_icon_zhongliu.png");}
+.ui-icon-baby:after,.section-disease.m-icon-baby .dis-info:before {background-image: url("http://mingyihz.oss-cn-hangzhou.aliyuncs.com/static%2Ffaculty_icon_fuchan.png");}
+.ui-icon-cosmetic:after,.section-disease.m-icon-cosmetic .dis-info:before {background-image: url("http://mingyihz.oss-cn-hangzhou.aliyuncs.com/static%2Ffaculty_icon_zhengxing.png");}
+.ui-icon-xiongwaike:after,.section-disease.m-icon-xiongwaike .dis-info:before {background-image: url("http://mingyihz.oss-cn-hangzhou.aliyuncs.com/static%2Ffaculty_icon_xiongwaike.png");}
+.ui-icon-miniaowaike:after,.section-disease.m-icon-miniaowaike .dis-info:before {background-image: url("http://mingyihz.oss-cn-hangzhou.aliyuncs.com/static%2Ffaculty_icon_miniaowaike.png");}
+.ui-icon-shenjingke:after,.section-disease.m-icon-shenjingke .dis-info:before {background-image: url("http://mingyihz.oss-cn-hangzhou.aliyuncs.com/static%2Ffaculty_icon_shenjingke.png");}
+
+
+.section-disease .dis-info>.dis-sub{padding:0 0.5em 0.5em 1em; border-bottom:1px solid #ccc;font-size:1em;}
+.section-disease .dis-info>.dis-list{padding:0 0.5em;font-size:0.75em;}
+
+.section-hospital,.section-doctor{margin-top:1em;}
+.section-hospital ul.hospital-list>li>a.ui-btn, .section-doctor ul.doctor-list>li>a.ui-btn{color:#333;background-color:#fff;}
+.section-hospital ul.hospital-list .h-name{margin-bottom:1em;}
+.section-hospital ul.hospital-list .h-info{font-size:0.8em;}
+.section-hospital ul.hospital-list .h-class,.section-hospital ul.hospital-list .h-type{color:#0065c9;}
+.section-hospital ul.hospital-list .h-class{margin-right:1em;}
+
+.section-doctor ul.doctor-list>li>a>div{}
+.section-doctor ul.doctor-list .ui-li-has-thumb img.d-avatar{top:40%;margin-top:-2.5em;}
+
+.section-doctor ul.doctor-list .d-name{margin-bottom:0.5em;color:#5D9A3F;}
+.section-doctor ul.doctor-list .d-hospital, .section-doctor ul.doctor-list .d-faculty{margin-bottom:0.5em;font-size:0.8em;}
+.section-doctor ul.doctor-list .d-title{display:inline-block;padding:0.5em;font-size:0.75em;color:#fff;background-color:#66cbff;}
+
+/**** Doctor view page ****/
+.ui-content>.m-panel{position:relative;padding:0.5em;background-color:#fff;border:1px solid #ededed; border-radius:0.5em;}
+.m-panel>.m-sub-panel{padding:0.5em;margin-left:-0.5em;margin-right:-0.5em;border-width:2px;}
+.m-panel>.m-sub-panel:first-child{padding-bottom:1.5em;}
+.m-panel>.m-sub-panel:last-child{padding-bottom:0;}
+.dr-view .dr-avatar{width:7em;}
+.dr-view .dr-info>div{margin:0.5em 0;}
+.dr-view .dr-info .dr-name{margin-top:0.2em;font-size:1.2em;color:#5d9a3f;}
+.dr-view .dr-hospital{color:#096;}
+.dr-view .dr-faculty{font-size:0.75em;}
+.dr-view .dr-desc{padding-left:0.5em;}
+
+/**** Hospital view page ****/
+.hp-view .hp-avatar{margin:0 auto;text-align:center;}
+.hp-view .hp-avatar>img{height:160px;}
+.hp-view .hp-name{color:#096;}
+.hp-view .hp-class,.hp-view .hp-type{display:inline-block;margin-right:1em;font-size:0.75em;color:#3399ff;}
+
+/**** Overseas hospital page ****/
+.overseas-hospital .banner-nav{margin-top:0.5em;padding:0 0.5em;}
+.overseas-hospital .banner-nav>a{text-decoration:none;}
+.overseas-hospital .overlay-container{font-weight:normal; text-align:center;}
+.overseas-hospital .overlay-container .overlay-shadow{padding:0.5em 0;}
+
+/**** Contactus page ****/
+#pContactus .tip{}
+#pContactus .sect-info .ui-field-contain, #pContactus .sect-wx .ui-field-contain{padding:0.5em 0;}
+#pContactus .sect-info .label{margin-right:1em;}
+#pContactus .contactus-form label{font-weight:bold;}
+#pContactus .sect-wx .qrcode{width:60%;}
+
