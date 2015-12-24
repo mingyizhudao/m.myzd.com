@@ -12,6 +12,7 @@
     background: #19aea5;
     border-bottom:none;
 }
+#order_section .left .previous{color: #fff;}
 .title{
     font-size:1.3em!important;
 }
@@ -338,9 +339,6 @@
 }
 .button3{
     padding:5px 15px;
-}
-#section_container{
-    /*    margin-bottom:56px;*/
 }
 .sick_list>li{
     margin:10px 60px 0;

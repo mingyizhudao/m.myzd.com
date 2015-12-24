@@ -29,7 +29,7 @@ $this->show_footer = false;
                             .uploadfile .ui-body-inherit{border-color: #fff;}
                             .uploadfile .ui-focus{box-shadow: 0 0 0 #fff;}
                             .uploadfile{padding-top: 20px;}
-                            .uploadfile:before{content: '选择文件';padding: 10px 15px;font-size: 14px;background-color: #19aea5;color: #fff;border-radius: 5px;}
+                            .uploadfile:before{content: '选择文件';padding: 10px 15px;font-size: 14px;background-color: #428bca;color: #fff;border-radius: 5px;}
                             .uploadfile{position:relative;}
                             .uploadfile input[type="file"]{position:absolute;top:5px;right:35%;width:30%;line-height:36px;opacity:0;}
                             .uploadfile .btn:hover, #btn-addfiles:hover{cursor:pointer;}

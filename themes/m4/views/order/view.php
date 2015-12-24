@@ -17,9 +17,9 @@ $this->show_footer = false;
 <div id="section_container" <?php echo $this->createPageAttributes(); ?>>
     <section id="order_section" class="active" data-init="true">
         <header class="head-title1">
-            <nav class="left">
+<!--            <nav class="left">
                 <a href="#" data-icon="previous" data-target="back"></a>
-            </nav>
+            </nav>-->
             <div class="title1">预约单</div>
         </header>
         <article id="order" class="active" data-scroll="true">
