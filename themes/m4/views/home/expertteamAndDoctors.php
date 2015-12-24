@@ -5,8 +5,7 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/c
 /**
  * $data.
  */
-$this->setPageID('pMobile');
-$this->setPageTitle('名医主刀');
+$this->setPageTitle('按照疾病找名医');
 
 $urlApiAppNav1 = $this->createAbsoluteUrl('/api/list', array('model' => 'appnav1'));
 

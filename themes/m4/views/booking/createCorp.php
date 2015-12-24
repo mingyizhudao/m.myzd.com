@@ -10,7 +10,6 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/c
 /*
  * $model BookQuickForm.
  */
-$this->setPageID('pCreateCorp');
 $this->setPageTitle('企业员工快速预约');
 $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/auth/sendSmsVerifyCode');
 $authActionType = AuthSmsVerify::ACTION_BOOKING;
@@ -27,7 +26,7 @@ $this->show_footer = false;
             <nav class="left">
                 <a href="#" data-icon="previous" data-target="back"></a>
             </nav>
-            <div class="title1">预约单</div>
+            <div class="title1"><?php echo $this->pageTitle; ?></div>
         </header>
 
         <article id="createCop_article" class="active"  data-scroll="true">

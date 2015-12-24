@@ -383,14 +383,14 @@
 
 
 /*footer*/
-.m-icon-home{background:url('../../../themes/m4/images/image/menu1_normal.png') no-repeat 50% 5px;background-size:22px 22px;padding-top:28px;}
-.active.m-icon-home{background:url('../../../themes/m4/images/image/menu1_selected.png') no-repeat 50% 5px;background-size:22px 22px;padding-top:28px;color:#19aea5!important;}
-.m-icon-expert{background:url('../../../themes/m4/images/image/menu2_normal.png') no-repeat 50% 5px;background-size:22px 22px;padding-top:28px;}
-.active.m-icon-expert{background:url('../../../themes/m4/images/image/menu2_selected.png') no-repeat 50% 5px;background-size:22px 22px;padding-top:28px;color:#19aea5!important;}
-.m-icon-hospital{background:url('../../../themes/m4/images/image/menu3_normal.png') no-repeat 50% 5px;background-size:22px 22px;padding-top:28px;}
-.active.m-icon-hospital{background:url('../../../themes/m4/images/image/menu3_selected.png') no-repeat 50% 5px;background-size:22px 22px;padding-top:28px;color:#19aea5!important;}
-.m-icon-center{background:url('../../../themes/m4/images/image/menu4_normal.png') no-repeat 50% 5px;background-size:22px 22px;padding-top:28px;}
-.active.m-icon-center{background:url('../../../themes/m4/images/image/menu4_selected.png') no-repeat 50% 5px;background-size:22px 22px;padding-top:28px;color:#19aea5!important;}
+.m-icon-home{background:url('../images/image/menu1_normal.png') no-repeat 50% 5px;background-size:22px 22px;padding-top:28px;}
+.active.m-icon-home{background:url('../images/image/menu1_selected.png') no-repeat 50% 5px;background-size:22px 22px;padding-top:28px;color:#19aea5!important;}
+.m-icon-expert{background:url('../images/image/menu2_normal.png') no-repeat 50% 5px;background-size:22px 22px;padding-top:28px;}
+.active.m-icon-expert{background:url('../images/image/menu2_selected.png') no-repeat 50% 5px;background-size:22px 22px;padding-top:28px;color:#19aea5!important;}
+.m-icon-hospital{background:url('../images/image/menu3_normal.png') no-repeat 50% 5px;background-size:22px 22px;padding-top:28px;}
+.active.m-icon-hospital{background:url('../images/image/menu3_selected.png') no-repeat 50% 5px;background-size:22px 22px;padding-top:28px;color:#19aea5!important;}
+.m-icon-center{background:url('../images/image/menu4_normal.png') no-repeat 50% 5px;background-size:22px 22px;padding-top:28px;}
+.active.m-icon-center{background:url('../images/image/menu4_selected.png') no-repeat 50% 5px;background-size:22px 22px;padding-top:28px;color:#19aea5!important;}
 
 /**** zhitongche ****/
 #zhitongche{background-color: #e9f5f4;}

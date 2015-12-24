@@ -6,13 +6,8 @@ class ExpertteamController extends MobileController {
         $this->render("index");
     }
 
-    public function actionView($id) {
-        $expteamMgr = new ExpertTeamManager();
-        $imodel = $expteamMgr->loadIExpertTeamById($id);
-        
-        $this->render('view', array(
-            'model'=>$imodel,          
-        ));
+    public function actionView($id) {        
+        $this->render('view');
     }
 
     public function actionDetail($code) {

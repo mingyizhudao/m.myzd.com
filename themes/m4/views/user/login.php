@@ -7,7 +7,6 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/c
 /**
  * $data.
  */
-$this->setPageID('pMobile');
 $this->setPageTitle('名医主刀');
 
 $urlRegister = $this->createUrl("user/register");
@@ -27,7 +26,7 @@ $this->show_footer=false;
             </div>
             <div class="logo w100 loginform">
                 <img src="<?php echo $urlResImage ?>/image/logo.png">
-                <div class="mt10 color-white">名字主刀</div>
+                <div class="mt10 color-white">名医主刀</div>
                 <?php
                 $form = $this->beginWidget('CActiveForm', array(
                     'id' => 'login-form',

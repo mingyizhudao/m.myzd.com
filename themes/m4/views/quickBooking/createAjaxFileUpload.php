@@ -9,9 +9,9 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/c
 $this->setPageTitle('快速预约');
 $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/auth/sendSmsVerifyCode');
 $authActionType = AuthSmsVerify::ACTION_BOOKING;
-$urlSubmitForm = $this->createUrl("booking/ajaxCreate");
-$urlUploadFile = $this->createUrl("booking/ajaxUploadFile");
-$urlReturn = $this->createUrl('order/view');
+$urlSubmitForm = $this->createUrl("quickBooking/ajaxCreate");
+$urlUploadFile = $this->createUrl("quickBooking/ajaxUploadFile");
+$urlReturn = $this->createUrl('home/index');
 $urlHomeIndex = $this->createUrl('home/index');
 $this->show_footer = false;
 ?>
@@ -135,7 +135,7 @@ $this->show_footer = false;
                         <div class="bookingDiv">
                             <div>预约成功</div>
                             <div class="mt20">
-                                <a href="<?php echo $urlReturn; ?>" class="btn bg-green btn-yes color-black w60">确定</a>
+                                <a href="<?php echo $urlHomeIndex; ?>" class="btn bg-green btn-yes color-black w60">确定</a>
                             </div>
                         </div>
                     </div>

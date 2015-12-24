@@ -2,8 +2,7 @@
 /**
  * $data.
  */
-$this->setPageID('pMobile');
-$this->setPageTitle('名医主刀');
+$this->setPageTitle('按照疾病找名医');
 
 $urlApiAppNav1 = $this->createAbsoluteUrl('/api/list', array('model' => 'appnav1'));
 
@@ -19,7 +18,7 @@ $this->show_footer = false;
             <nav class="left">
                 <a href="<?php echo $urlHomeIndex; ?>" data-icon="previous" data-target="link" class="color-green"></a>
             </nav>
-            <span class="title color-green" >按疾病找名医</span>
+            <span class="title color-green" ><?php echo $this->pageTitle; ?></span>
         </header>
         <article id="expert_list1_article" class="active">
             <div class="border-green"></div>

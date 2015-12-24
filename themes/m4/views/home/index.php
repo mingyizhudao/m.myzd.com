@@ -2,7 +2,6 @@
 /**
  * $data.
  */
-$this->setPageID('pMobile');
 $this->setPageTitle('名医主刀');
 
 $urlApiAppNav1 = $this->createAbsoluteUrl('/api/list', array('model' => 'appnav1', 'appv' => 15, 'api' => 5));
@@ -15,7 +14,7 @@ $results = $data->results;
 <div id="section_container" class="mb51">
     <section id="main_section" class="active" data-init="true" data-active="home">
         <header class="head-title">
-            <div class="title color-green">名医主刀</div>
+            <div class="title color-green"><?php echo $this->pageTitle; ?></div>
         </header>
         <article id="main_article" class="active" data-scroll="true">
             <div>

@@ -3,7 +3,6 @@
 /*
  * $data
  */
-$this->setPageID('pOrder');
 $this->setPageTitle('订单');
 $order = $data->results->salesOrder;
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
@@ -20,7 +19,7 @@ $this->show_footer = false;
 <!--            <nav class="left">
                 <a href="#" data-icon="previous" data-target="back"></a>
             </nav>-->
-            <div class="title1">预约单</div>
+            <div class="title1"><?php echo $this->pageTitle; ?></div>
         </header>
         <article id="order" class="active" data-scroll="true">
             <div class="order-content"><span class="color-green">请支付</span><span class="color-green pull-right"><?php echo $order->finalAmount ?>元</span></div>

@@ -4,7 +4,6 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/c
 /*
  * $model BookQuickForm.
  */
-$this->setPageID('pQuickBooking');
 $this->setPageTitle('快速预约');
 $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/auth/sendSmsVerifyCode');
 $authActionType = AuthSmsVerify::ACTION_BOOKING;
@@ -91,7 +90,7 @@ $this->show_footer = false;
                             $this->endWidget();
                             ?>
                             <div class="ui-field-contain">
-                                <?php echo $this->renderPartial('_uploadFile'); ?>
+                                <?php echo $this->renderPartial('//booking/_uploadFile'); ?>
                             </div>
                             <div class="ui-field-contain mb10">                
                                 <a id="btnSubmit" type="button" name="yt0" class="btn btn-yes btn-abs w100 bg-green">提交</a>

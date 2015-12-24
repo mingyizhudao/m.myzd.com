@@ -5,36 +5,15 @@ class HospitalController extends MobileController {
     private $_model;
 
     public function actionIndex() {
-        $values = $_GET;
-        $limit = 10;
-        if (isset($values['limit']) === false) {
-            $values['limit'] = $limit;
-        }
-        $apiService = new ApiViewHospitalSearch($values);
-        $output = $apiService->loadApiViewData();
-        $this->render('index', array(
-            'data' => $output
-        ));
+        $this->render('index');
     }
 
     public function actionView($id) {
-        //$this->show_footer=false;
-        $apiService = new ApiViewHospital($id);
-        $output = $apiService->loadApiViewData();
-
-        $this->render('view', array(
-            'data' => $output
-        ));
+        $this->render('view');
     }
 
-    public function actionDept($id) {        
-        $queryOptions = $this->parseQueryOptions(Yii::app()->request);
-        $apiService = new ApiViewHospitalDept($id, $queryOptions);
-        $output = $apiService->loadApiViewData();
-
-        $this->render('dept', array(
-            'data' => $output
-        ));
+    public function actionDept($id) {
+        $this->render('dept');
     }
 
     public function actionFacility() {

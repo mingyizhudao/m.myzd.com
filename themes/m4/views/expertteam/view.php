@@ -2,8 +2,7 @@
 /**
  * $data.
  */
-$this->setPageID('pMobile');
-$this->setPageTitle('名医主刀');
+$this->setPageTitle('明星团队');
 
 $urlApiAppNav1 = $this->createAbsoluteUrl('/api/list', array('model' => 'appnav1'));
 
@@ -20,7 +19,7 @@ $this->show_footer = false;
                 <a href="#" data-icon="previous" data-target="back"></a>
             </nav>
             <div class="grid vertical title h80p">
-                <div class="col-0 h40p color-white titleName">合作医院</div>
+                <div class="col-0 h40p color-white titleName"><?php echo $this->pageTitle; ?></div>
                 <div class="col-1 bg-white text14">
                     <div class="grid">
                         <div class="col-1 color-green text-left ml10 w80 teamName">
