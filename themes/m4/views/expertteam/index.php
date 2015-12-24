@@ -6,8 +6,7 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/c
 /**
  * $data.
  */
-$this->setPageID('pMobile');
-$this->setPageTitle('名医主刀');
+$this->setPageTitle('明星团队');
 
 $urlApiAppNav1 = $this->createAbsoluteUrl('/api/list', array('model' => 'appnav2', 'appv' => 15, 'api' => 5));
 
@@ -22,7 +21,7 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
     <section id="expert_section" class="active" data-active="expertteam">
         <header class="head-title h88p">
             <div class="grid vertical title h90p">
-                <div class="col-0 h40p color-green titleName">明星团队</div>
+                <div class="col-0 h40p color-green titleName"><?php echo $this->pageTitle; ?></div>
                 <div class="col-1" >
                     <div class="grid">
                         <div class="col-0 w50 cityover-btn">

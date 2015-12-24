@@ -22,7 +22,7 @@ $this->show_footer = false;
             <nav class="left">
                 <a href="#" data-icon="previous" data-target="back"></a>
             </nav>
-            <div class="title1">预约单</div>
+            <div class="title1"><?php echo $this->pageTitle; ?></div>
         </header>
         <article class="active" data-scroll="true">
             <div class="ml10 mr10">

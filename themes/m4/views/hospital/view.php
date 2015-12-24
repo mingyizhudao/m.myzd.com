@@ -2,8 +2,7 @@
 /**
  * $data.
  */
-$this->setPageID('pMobile');
-$this->setPageTitle('名医主刀');
+$this->setPageTitle('合作医院');
 
 $urlApiAppNav1 = $this->createAbsoluteUrl('/api/list', array('model' => 'appnav1'));
 

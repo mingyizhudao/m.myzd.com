@@ -1,8 +1,5 @@
 <?php
-$this->setPageID('pAboutus');
 $this->setPageTitle('关于我们');
-$urlResImage = Yii::app()->theme->baseUrl . "/images/";
-$showExpTeamBtn = Yii::app()->request->getQuery("showBtn", 1);
 ?>
 <div id="section_container">
     <section id="aboutus_section" data-init="true" class="active">
@@ -11,7 +8,7 @@ $showExpTeamBtn = Yii::app()->request->getQuery("showBtn", 1);
                 <a href="#" data-icon="previous" data-target="back"></a>
             </nav>
             <div class="title1">
-                <span>预约单</span>
+                <span><?php echo $this->pageTitle; ?></span>
             </div>
         </header>
 

@@ -10,8 +10,7 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/c
 /**
  * $data.
  */
-$this->setPageID('pMobile');
-$this->setPageTitle('名医主刀');
+$this->setPageTitle('预约详情');
 
 $urlApiAppNav1 = $this->createAbsoluteUrl('/api/list', array('model' => 'appnav1'));
 
@@ -29,7 +28,7 @@ $this->show_footer = false;
                 <a href="#" data-icon="previous" data-target="back" style="color:#fff;"></a>
             </nav>
             <div class="title1">
-                <span>预约单详情</span>
+                <span><?php echo $this->pageTitle; ?></span>
             </div>
         </header>
         <article id="expert_list_article" class="active"  data-scroll="true">

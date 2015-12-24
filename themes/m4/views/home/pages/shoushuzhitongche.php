@@ -1,5 +1,4 @@
 <?php
-$this->setPageID('pZhiTongChe');
 $this->setPageTitle('手术直通车');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $showExpTeamBtn = Yii::app()->request->getQuery("showBtn", 1);
@@ -12,7 +11,7 @@ $this->show_footer = false;
                 <a href="#" data-target="back" data-icon="previous"></a>
             </nav>
             <div class="title color-white">
-                手术直通车
+                <?php echo $this->pageTitle; ?>
             </div>
         </header>
         <article id="zhitongche" class="active" data-scroll="true">
