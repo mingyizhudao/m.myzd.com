@@ -3,6 +3,7 @@
 class MobileModule extends CWebModule {
 
     public function init() {
+        parent::init();
         //   $this->register_baidu_script = false;
         Yii::setPathOfAlias('mobile', dirname(__FILE__));
 

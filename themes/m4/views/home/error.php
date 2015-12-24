@@ -2,9 +2,7 @@
 <?php
 /* @var $this SiteController */
 /* @var $error array */
-
 $this->pageTitle=Yii::app()->name . ' - 访问错误';
-
 ?>
 
 <h3 class="strong">访问错误</h3>
