@@ -23,7 +23,7 @@ $this->show_footer = false;
     <section class="active">
         <header class="head-title1">
             <nav class="left">
-                <a href="#" data-icon="previous" data-target="back"></a>
+                <a href="<?php echo $urlHomeFindDoctor.'?id=1'; ?>" data-icon="previous" data-target="link"></a>
             </nav>
             <div class="title1"></div>
             <nav class="right btn_city">
@@ -57,7 +57,7 @@ $this->show_footer = false;
         var cityId = getId('cityId');
         var requestDoctorUrl = '';
         if (cityId == '') {
-            requestDoctorUrl = '<?php echo $urlDoctor; ?>?getcount=0&disease=' + diseaseId + '&page=1&api=4';
+            requestDoctorUrl = '<?php echo $urlDoctor; ?>?getcount=0&disease=' + diseaseId + '&city=1&page=1&api=4';
         } else {
             requestDoctorUrl = '<?php echo $urlDoctor; ?>?getcount=0&disease=' + diseaseId + '&city=' + cityId + '&page=1&api=4';
         }
@@ -154,8 +154,8 @@ $this->show_footer = false;
                     if (doctor.hpDeptName) {
                         innerHtml += '<span class="ml2">' + doctor.hpDeptName + '</span>';
                     }
-                    var bookingBtn = '';
-                    bookingBtn = doctor.isContracted == 1 ? '<a href="<?php echo $urlBooking; ?>?did=' + doctor.id + '" data-target="link" class="button reserve_button">预约</a>' : '';
+                    var bookingBtn = '<a href="<?php echo $urlBooking; ?>?did=' + doctor.id + '" data-target="link" class="button reserve_button">预约</a>';
+                    //bookingBtn = doctor.isContracted == 1 ? '<a href="<?php echo $urlBooking; ?>?did=' + doctor.id + '" data-target="link" class="button reserve_button">预约</a>' : '';
                     innerHtml += '</div>' +
                             '<div class="team-hospital mt5 color-gray">' +
                             '<span >' + doctor.mTitle + '/' + doctor.aTitle + '</span>' +

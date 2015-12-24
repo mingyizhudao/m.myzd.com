@@ -507,7 +507,7 @@ $(function () {
 
     function formSubmit() {
         if (getFileCountCorp() == 0) {
-            J.showToast('请选择企业证件照片', '', 2000);
+            J.showToast('请选择企业工牌照片', '', 2000);
         } else {
             var bool = validator.form();
             if (bool) {

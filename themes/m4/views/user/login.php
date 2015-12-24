@@ -10,10 +10,10 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/c
 $this->setPageID('pMobile');
 $this->setPageTitle('名医主刀');
 
-$urlRegister = $this->createUrl("/mobile/user/register");
+$urlRegister = $this->createUrl("user/register");
 $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/auth/sendSmsVerifyCode');
 $authActionType = AuthSmsVerify::ACTION_USER_LOGIN;
-$urlResImage = Yii::app()->theme->baseUrl . "/images/";
+$urlResImage = Yii::app()->theme->baseUrl . "/images";
 
 $this->show_footer=false;
 ?>
@@ -72,11 +72,6 @@ $this->show_footer=false;
                         <a id="btnSubmit" class="btn btn-yes btn-login bg-green">登录/注册</a>
                     </li>
                 </ul>
-                <div class="">                
-                    <div class="mt20 text-right">
-    <!--                    <a href='<?php echo $urlRegister ?>' data-ajax="false" data-transition="slidefade">没有账号？立即注册</a>-->
-                    </div>
-                </div>
                 <?php $this->endWidget(); ?>
             </div>
         </article>

@@ -138,7 +138,7 @@ $(function () {
                             }
                             errerMsg = data.errors[error];
                             $(inputKey).focus();
-                            $(inputKey).parent().after("<div class='error'>" + errerMsg + "</div> ");
+                            $(inputKey).after("<div class='error'>" + errerMsg + "</div> ");
                         }
                         enableBtnAndriod(btnSubmit);
                     }

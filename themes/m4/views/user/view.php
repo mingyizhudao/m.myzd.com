@@ -6,7 +6,7 @@ $this->setPageID('pMobile');
 $this->setPageTitle('名医主刀');
 
 $urlApiAppNav1 = $this->createAbsoluteUrl('/api/list', array('model' => 'appnav1'));
-$urlResImage = Yii::app()->theme->baseUrl . "/images/";
+$urlResImage = Yii::app()->theme->baseUrl . "/images";
 $urlAboutus = $this->createUrl('home/page',array('view'=>'aboutus'));
 $urlLogout = $this->createUrl('user/logout');
 ?>

@@ -118,15 +118,21 @@ class BookingController extends MobileController {
                 $form = new BookExpertTeamForm();
                 $form->setAttributes($values, true);
                 $form->setExpertTeamData();
+                $form->initModel();
+                $form->validate();
             } elseif (isset($values['doctor_id'])) {
                 // 预约医生
                 $form = new BookDoctorForm();
                 $form->setAttributes($values, true);
                 $form->setDoctorData();
+                $form->initModel();
+                $form->validate();
             } else {
                 // 快速预约
                 $form = new BookQuickForm();
                 $form->setAttributes($values, true);
+                $form->initModel();
+                $form->validate();
                 //验证码校验
                 $authMgr = new AuthManager();
                 $authSmsVerify = $authMgr->verifyCodeForBooking($form->mobile, $form->verify_code, null);
@@ -134,8 +140,7 @@ class BookingController extends MobileController {
                     $form->addError('verify_code', $authSmsVerify->getError('code'));
                 }
             }
-            $form->initModel();
-            $form->validate();
+
             //验证码校验
 //            $authMgr = new AuthManager();
 //            $authSmsVerify = $authMgr->verifyCodeForBooking($form->mobile, $form->verify_code, null);

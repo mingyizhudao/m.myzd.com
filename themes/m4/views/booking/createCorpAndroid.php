@@ -195,7 +195,7 @@ $this->show_footer = false;
         </article>
     </section>
 </div>
-<div id="jingle_toast" class="corpTip toast"><a href="#">请选择企业证件照片</a></div>
+<div id="jingle_toast" class="corpTip toast"><a href="#">请选择企业工牌照片</a></div>
 <div id="jingle_toast" class="mobileTip toast"><a href="#">请填写手机号</a></div>
 <div id="jingle_popup" style="top: 50%; left: 5%; right: 5%; border-radius: 3px; margin-top: -75px;" class="">
     <div>

@@ -549,10 +549,13 @@ $(function () {
                         uploader.upload();
                     } else {
                         //没有上传文件 表单数据添加成功 页面跳转
-                        //location.href = uploadReturnUrl;
-                        $('#success').removeClass('hide');
+                        //uploadReturnUrl = uploadReturnUrl + '?refNo=' + data.salesOrderRefNo;
+                        J.popup({
+                            html: '<div><div class="popup-title">提示</div><div class="popup-content"><h4>提交成功！</h4><div class="mt20"><a data-target="link" href="' + uploadReturnUrl + '" class="btn btn-yes btn-block">确定</a></div></div></div>',
+                            pos: 'center'
+                        });
                     }
-                    enableBtn(btnSubmit);
+                    //enableBtn(btnSubmit);
                 } else {
                     domForm.find("div.error").remove();
                     //append errorMsg
@@ -561,7 +564,7 @@ $(function () {
                         errerMsg = data.errors[error];
                         inputKey = '#booking_' + error;
                         $(inputKey).focus();
-                        $(inputKey).parent().after("<div class='error'>" + errerMsg + "</div> ");
+                        $(inputKey).after("<div class='error'>" + errerMsg + "</div> ");
                     }
                     enableBtn(btnSubmit);
                 }

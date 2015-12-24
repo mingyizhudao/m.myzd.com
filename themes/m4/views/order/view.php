@@ -11,7 +11,7 @@ $payUrl = $this->createUrl('/payment/doPingxxPay');
 $refUrl = $this->createAbsoluteUrl('order/view');
 $isApp = Yii::app()->request->getQuery('app', 0);
 $urlPatientBookingList = $this->createUrl('booking/patientBookingList');
-$urlSuccess = $this->createUrl('booking/patientBookingList');
+$urlSuccess = $this->createUrl('user/view');
 $this->show_footer = false;
 ?>
 <div id="section_container" <?php echo $this->createPageAttributes(); ?>>
@@ -60,7 +60,7 @@ $this->show_footer = false;
                     } else {
                         ?>
                         <div class="col-1">
-                            <a href="<?php echo $urlPatientBookingList; ?>" class="btn btn-default btn-block" data-target="link">暂不支付</a>
+                            <a href="<?php echo $urlSuccess; ?>" class="btn btn-default btn-block" data-target="link">暂不支付</a>
                         </div>
                         <div class="col-1">
                             <a id="pay" href="javascript:;" class="btn btn-yes btn-block">立即支付</a>

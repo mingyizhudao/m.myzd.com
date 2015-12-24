@@ -57,26 +57,34 @@ $this->show_footer = false;
                 <li>
                     <div class="grid">
                         <div class="col-0 w100p">就诊医院:</div>
-                        <div class="col-1"><?php echo $results->hospitalName; ?></div>
+                        <div class="col-0 w-div"><?php echo $results->hospitalName == '' ? '未填写' : $results->hospitalName; ?></div>
                     </div>
                 </li>
                 <li class="nopadding h15p"></li>
                 <li>
                     <div class="grid">
                         <div class="col-0 w100p">就诊科室:</div>
-                        <div class="col-1"><?php echo $results->hpDeptName; ?></div>
+                        <div class="col-0 w-div"><?php echo $results->hpDeptName == '' ? '未填写' : $results->hpDeptName; ?></div>
                     </div>
                 </li>
                 <li>
                     <div class="grid">
                         <div class="col-0 w100p">就诊专家:</div>
-                        <div class="col-1"><?php echo $results->expertName; ?></div>
+                        <div class="col-0 w-div"><?php echo $results->expertName == '' ? '未填写' : $results->expertName; ?></div>
                     </div>
                 </li>
                 <li>
                     <div class="grid">
                         <div class="col-0 w100p">意向就诊日期:</div>
-                        <div class="col-1"><?php echo $results->dateStart; ?>至<?php echo $results->dateEnd; ?></div>
+                        <div class="col-0 w-div">
+                            <?php
+                            if (!$results->dateStart || !$results->dateEnd) {
+                                echo '未填写';
+                            } else {
+                                echo $results->dateStart . '至' . $results->dateEnd;
+                            }
+                            ?>
+                        </div>
                     </div>
                 </li>
                 <li class="nopadding h15p"></li>

@@ -1739,7 +1739,10 @@ J.Cache = (function($) {
                 }
                 if($target.is('td')){
                     var dateStr = $target.data('date');
-                    var isDisabledOrNot = $target.attr('class').indexOf("disabled");
+                    var isDisabledOrNot = 0;
+                    if(dateStr){
+                        isDisabledOrNot = $target.attr('class').indexOf("disabled");
+                    }
                     if(dateStr && _this.settings.onSelect && isDisabledOrNot<0){
                         _this.settings.onSelect.call(_this,dateStr)
                     }
@@ -1767,13 +1770,12 @@ J.Cache = (function($) {
 
             if(oldDate.getTime() == newDate.getTime())return;
             transition = oldDate<newDate ? 'slideLeftRound' : 'slideRightRound';
-
             $yearText.text(date.getFullYear());
             $monthText.text(this.settings.months[date.getMonth()]);
             var newbody = _renderBody(date);
-            J.anim($calendarBody,transition,function(){
+            //J.anim($calendarBody,transition,function(){
                 $calendarBody.html(newbody);
-            });
+            //});
 
         }
         _init();

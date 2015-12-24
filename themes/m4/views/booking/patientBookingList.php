@@ -10,12 +10,13 @@ $urlApiAppNav1 = $this->createAbsoluteUrl('/api/list', array('model' => 'appnav1
 $urlPatientBooking = $this->createUrl('booking/patientBooking');
 $this->show_footer = false;
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
+$urlUserAccount = $this->createUrl('user/view');
 ?>
 <div id="section_container">
     <section id="order_section" data-init="true" class="active">
         <header class="head-title1" >
             <nav class="left">
-                <a href="#" data-icon="previous" data-target="back"></a>
+                <a href="<?php echo $urlUserAccount; ?>" data-icon="previous" data-target="link"></a>
             </nav>
             <div class="title1">
                 <span>预约单</span>
@@ -37,7 +38,7 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
                                         预约医生:
                                     </div>
                                     <div class="col-1">
-                                        <?php echo $results[$i]->expertName; ?>
+                                        <?php echo $results[$i]->expertName == '' ? '未填写' : $results[$i]->expertName; ?>
                                     </div>
                                 </div>
                                 <div class="order_list grid">
@@ -45,7 +46,7 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
                                         预约医院:
                                     </div>
                                     <div class="col-1">
-                                        <?php echo $results[$i]->hpName; ?>
+                                        <?php echo $results[$i]->hpName == '' ? '未填写' : $results[$i]->hpName; ?>
                                     </div>
                                 </div>
                                 <div class="order_list">
@@ -55,7 +56,7 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
                                     <div class="mt10 color-orange">
                                         <?php
                                         if (!$results[$i]->dateStart || !$results[$i]->dateEnd) {
-                                            echo '暂无信息';
+                                            echo '未填写';
                                         } else {
                                             echo $results[$i]->dateStart . '至' . $results[$i]->dateEnd;
                                         }

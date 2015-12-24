@@ -94,7 +94,7 @@ $this->show_footer = false;
                                 <?php echo $this->renderPartial('_uploadFile'); ?>
                             </div>
                             <div class="ui-field-contain mb10">                
-                                <button id="btnSubmit" type="button" name="yt0" class="w100 bg-green">提交</button>
+                                <a id="btnSubmit" type="button" name="yt0" class="btn btn-yes btn-abs w100 bg-green">提交</a>
                             </div>
                         </div>
                     </div>

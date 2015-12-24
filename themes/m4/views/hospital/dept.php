@@ -49,6 +49,8 @@ $this->show_footer = false;
         innerHtml = '<ul class="list">';
         if (doctors != null) {
             for (var i = 0; i < doctors.length; i++) {
+                var bookingBtn = '<a href="' + '<?php echo $urlBooking; ?>' + '?did=' + doctors[i].id + '" data-target="link" class="reserve_button button" ><span>预约</span></a>';
+                //bookingBtn = doctors[i].isContracted == 0?'':'<a href="' + '<?php echo $urlBooking; ?>' + '?did=' + doctors[i].id + '" data-target="link" class="reserve_button button" ><span>预约</span></a>';
                 innerHtml += '<li class="divider-green">' +
                         '<div class="grid">' +
                         '<div class="col-0 w100p">' +
@@ -61,9 +63,7 @@ $this->show_footer = false;
                         '</div>' +
                         '</div>' +
                         '<div class="col-1 mt10 text-right">' +
-                        '<a href="' + '<?php echo $urlBooking; ?>' + '?did=' + doctors[i].id + '" data-target="link" class="reserve_button button" >' +
-                        '<span>预约</span>' +
-                        '</a>' +
+                        bookingBtn +
                         '</div>' +
                         '</div>' +
                         '<div class="color-black ml10 text-justify">擅长:' + doctors[i].desc + '</div>' +

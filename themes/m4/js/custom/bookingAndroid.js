@@ -111,9 +111,9 @@ jQuery(function () {
                     if (data.status == 'ok') {
                         var inputCount = $(".MultiFile-applied").length - 1;
                         if (inputCount == 0) {
-                            //location.href = urlReturn + '?refNo=' + data.salesOrderRefNo;
+                            location.href = urlReturn + '?refNo=' + data.salesOrderRefNo;
                             enableBtnAndriod(btnSubmit);
-                            $('#success').removeClass('hide');
+                            //$('#success').removeClass('hide');
                         } else {
                             ajaxFileupload(data);
                         }
@@ -125,7 +125,7 @@ jQuery(function () {
                             errerMsg = data.errors[error];
                             inputKey = '#booking_' + error;
                             $(inputKey).focus();
-                            $(inputKey).parent().after("<div class='error'>" + errerMsg + "</div> ");
+                            $(inputKey).after("<div class='error'>" + errerMsg + "</div> ");
                         }
                         enableBtnAndriod(btnSubmit);
                     }
@@ -173,8 +173,8 @@ jQuery(function () {
                         if (inputCount == backCount) {
                             if (successCount == inputCount) {
                                 //alert("恭喜 上传成功!");
-                                //location.href = urlReturn + '?refNo=' + data.salesOrderRefNo;
-                                $('#success').removeClass('hide');
+                                location.href = urlReturn + '?refNo=' + data.salesOrderRefNo;
+                                //$('#success').removeClass('hide');
                             } else {
                                 //$失败操作
                             }
