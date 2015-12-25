@@ -42,7 +42,7 @@ $urlLogout = $this->createUrl('user/logout');
                     </li>
                     <li>
                         <a id="btn_actionsheet1">
-                            <img class="pl20" src="<?php echo $urlResImage ?>/image/reserve.png">
+                            <img class="pl20" src="<?php echo $urlResImage ?>/image/logout.png">
                             <span class="pl20 color-black text18">退出登录</span>
                         </a>
                     </li>

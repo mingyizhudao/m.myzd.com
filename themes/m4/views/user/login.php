@@ -60,7 +60,7 @@ $this->show_footer=false;
                                 <?php echo $form->numberField($model, 'verify_code', array('placeholder' => '输入验证码')); ?>
                             </div>
                             <div class="col-0">
-                                <a id="btn-sendSmsCode" class="btn btn-sendSmsCode ui-corner-all ui-shadow bg-green color-white">获取验证码</a>
+                                <button id="btn-sendSmsCode" class="btn btn-sendSmsCode ui-corner-all ui-shadow bg-green color-white">获取验证码</button>
                             </div>
                         </div>
                         <?php echo $form->error($model, 'verify_code'); ?>

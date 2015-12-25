@@ -155,8 +155,8 @@ $this->show_footer = false;
                                     <!-- btn 继续添加 -->
                                     <div id="filePicker2" class=""></div>
                                 </div>
-                                <div class="ui-field-contain display-block mt50">
-                                    <input class="btn btn-yes uploadBtn state-ready btn-block font-s16" type="button" name="yt0" value="提交">
+                                <div class="ui-field-contain display-block mt50 clearfix">
+                                    <button id="btnSubmit" type="button" name="yt0" class="button yy-btn block mt10 btn-yes uploadBtn state-pedding font-s16">提交</button>
                                 </div>
                             </div>
                             <!--一开始就显示提交按钮就注释上面的提交 取消下面的注释 -->

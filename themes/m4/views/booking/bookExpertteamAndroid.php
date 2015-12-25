@@ -177,7 +177,9 @@ $this->show_footer = false;
     function getStartTiem(date, days) {
         var timestamp = new Date(date).getTime();
         var newDate = new Date(timestamp + days * 24 * 3600 * 1000);
-        var startdate = [newDate.getFullYear(), newDate.getMonth() + 1, newDate.getDate()].join('-');
-        return startdate;
+        var y  = newDate.getFullYear(),m = newDate.getMonth()+1,d = newDate.getDate();
+        m = (m<10)?('0'+m):m;
+        d = (d<10)?('0'+d):d;
+        return y + '-' + m + '-' + d;
     }
 </script>

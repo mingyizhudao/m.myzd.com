@@ -495,7 +495,7 @@ button{
 .input-row>input{
     margin-right: 13px;
 }
-.yy-btn{width:90%!important;margin: 0 2.5%;display: block;}
+.yy-btn{width:90%!important;margin: 0 5%;display: block;}
 .loginform ::-webkit-input-placeholder { /* WebKit browsers */
     color: #fff;
 }
