@@ -6,7 +6,7 @@ $this->setPageTitle('名医主刀');
 
 $urlApiAppNav1 = $this->createAbsoluteUrl('/api/list', array('model' => 'appnav1', 'appv' => 15, 'api' => 5));
 
-$urlHomeFindDoctor = $this->createUrl('home/findDoctor');
+$urlDiseaseIndex = $this->createUrl('disease/index');
 $urlBooking = $this->createUrl('booking/create');
 $urlHomeZhiTongChe = $this->createUrl('home/page',array('view'=>'shoushuzhitongche'));
 $results = $data->results;
@@ -24,12 +24,12 @@ $results = $data->results;
 
                 <div class="grid pt10 color-white">
                     <div class="col-0 ml10 waike">
-                        <a href="<?php echo $urlHomeFindDoctor; ?>?id=<?php echo $results->disNavs[0]->id; ?>" data-target="link">
+                        <a href="<?php echo $urlDiseaseIndex; ?>?id=<?php echo $results->disNavs[0]->id; ?>" data-target="link">
                             <div><?php echo $results->disNavs[0]->name; ?></div>
                         </a>
                     </div>
                     <div class="col-1 ml5 guke mr10">
-                        <a href="<?php echo $urlHomeFindDoctor; ?>?id=<?php echo $results->disNavs[1]->id; ?>" data-target="link">
+                        <a href="<?php echo $urlDiseaseIndex; ?>?id=<?php echo $results->disNavs[1]->id; ?>" data-target="link">
                             <div><?php echo $results->disNavs[1]->name; ?></div>
                         </a>
                     </div>
@@ -38,33 +38,33 @@ $results = $data->results;
                     <div class="col-0 ml10 w60">
                         <div class="grid">
                             <div class="col-0 yanke1">
-                                <a href="<?php echo $urlHomeFindDoctor; ?>?id=<?php echo $results->disNavs[2]->id; ?>" data-target="link">
+                                <a href="<?php echo $urlDiseaseIndex; ?>?id=<?php echo $results->disNavs[2]->id; ?>" data-target="link">
                                     <div><?php echo $results->disNavs[2]->name; ?></div>
                                 </a>
                             </div>
                             <div class="col-0 bg-white w5p"></div>
                             <div class="col-1 kouqiang1">
-                                <a href="<?php echo $urlHomeFindDoctor; ?>?id=<?php echo $results->disNavs[3]->id; ?>" data-target="link">
+                                <a href="<?php echo $urlDiseaseIndex; ?>?id=<?php echo $results->disNavs[3]->id; ?>" data-target="link">
                                     <div><?php echo $results->disNavs[3]->name; ?></div>
                                 </a>
                             </div>
                         </div>
                         <div class="grid mt5 ">
                             <div class="col-0 fuke1">
-                                <a href="<?php echo $urlHomeFindDoctor; ?>?id=<?php echo $results->disNavs[4]->id; ?>" data-target="link">
+                                <a href="<?php echo $urlDiseaseIndex; ?>?id=<?php echo $results->disNavs[4]->id; ?>" data-target="link">
                                     <div><?php echo $results->disNavs[4]->name; ?></div>
                                 </a>
                             </div>
                             <div class="col-0 area-space bg-white w5p"></div>
                             <div class="col-1 xiaoer1">
-                                <a href="<?php echo $urlHomeFindDoctor; ?>?id=<?php echo $results->disNavs[5]->id; ?>" data-target="link">
+                                <a href="<?php echo $urlDiseaseIndex; ?>?id=<?php echo $results->disNavs[5]->id; ?>" data-target="link">
                                     <div><?php echo $results->disNavs[5]->name; ?></div>
                                 </a>
                             </div>
                         </div>
                     </div>
                     <div class="col-1 ml5 qita1">
-                        <a href="<?php echo $urlHomeFindDoctor; ?>?id=<?php echo $results->disNavs[6]->id; ?>" data-target="link">
+                        <a href="<?php echo $urlDiseaseIndex; ?>?id=<?php echo $results->disNavs[6]->id; ?>" data-target="link">
                             <div><?php echo $results->disNavs[6]->name; ?></div>
                         </a>
                     </div>
