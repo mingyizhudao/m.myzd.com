@@ -83,6 +83,7 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
         innerHtml = '';
         if (results.length > 0) {
             for (var i = 0; i < results.length; i++) {
+                var slogan = results[i].slogan == null ? '' : results[i].slogan;
                 innerHtml += '<li><a href="<?php echo $urlExpertteamView; ?>/' + results[i].id + '" data-target="link"><div class="grid">' +
                         '<div class="col-0 w100p">' +
                         '<img class="img80"  src="' + results[i].imageUrl + '">' +
@@ -90,7 +91,7 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
                         '<div class="ml10 col-1">' +
                         '<div class="team-name mt10">' + results[i].name + '</div>' +
                         '<div class="team-hospital mt5">' + results[i].hpName + '</div>' +
-                        '<div class="team-hospital mt5">' + results[i].slogan + '</div>' +
+                        '<div class="team-hospital mt5">' + slogan + '</div>' +
                         '</div>' +
                         '</div>' +
                         '</a>' +
