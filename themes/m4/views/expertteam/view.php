@@ -87,10 +87,12 @@ $this->show_footer = false;
                     '</div>' +
                     '<div class="color-black ml10 mb10 mt10 honor-mobile-team">' +
                     '<img src="<?php echo $urlResImage ?>image/honor.png">&nbsp;<span>专家荣誉</span>';
-            if (leader.honour.length > 0) {
+            if (leader.honour && leader.honour.length > 0) {
                 for (var i = 0; i < leader.honour.length; i++) {
                     innerHtml += '<div>' + (i + 1) + '.' + leader.honour[i] + '</div>';
                 }
+            }else{
+                innerHtml += '<div>暂无荣誉</div>';
             }
             innerHtml += '</div>';
             if (members) {
