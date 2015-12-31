@@ -56,6 +56,7 @@ $this->show_footer = false;
             var leader = data.results.leader;
             var team = data.results.team;
             var members = data.results.members;
+            var docFaculty = leader.hFaculty == null ? '' : '<span class="ml10 purple-title">' + leader.hFaculty + '</span>';
             innerHtml = '<div class="mt40 mb20">' +
                     '<div class="mt20 ml10">' +
                     '<div class="mt10 color-black mr10 text-justify">' + team.desc +
@@ -75,7 +76,7 @@ $this->show_footer = false;
                     '</div>' +
                     '<div class="ml10 col-1">' +
                     '<div class="team-name mt10 doctor-title">' +
-                    leader.name + '<span class="ml10 purple-title">' + leader.hFaculty + '</span>' +
+                    leader.name + docFaculty +
                     '</div>' +
                     '<div class="team-hospital mt5">' +
                     '<span class="color-gray">' + leader.mTitle + '|' + leader.aTitle + '</span>' +

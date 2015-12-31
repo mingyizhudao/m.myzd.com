@@ -6,7 +6,7 @@ $this->setPageTitle('按照疾病找名医');
 
 $urlApiAppNav1 = $this->createAbsoluteUrl('/api/list', array('model' => 'appnav1'));
 
-$urlHomeFindDoctor = $this->createUrl('home/findDoctor');
+$urlHomeFindDoctor = $this->createUrl('disease/index');
 $urlFindExpertteamByDiseaseId = $this->createUrl('disease/view');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $urlHomeIndex = $this->createUrl('home/index');
