@@ -52,16 +52,16 @@ $this->show_footer = false;
                 //bookingBtn = doctors[i].isContracted == 0?'':'<a href="' + '<?php echo $urlBooking; ?>' + '?did=' + doctors[i].id + '" data-target="link" class="reserve_button button" ><span>预约</span></a>';
                 innerHtml += '<li class="divider-green">' +
                         '<div class="grid">' +
-                        '<div class="col-0 w100p">' +
+                        '<div class="col-1 w25">' +
                         '<img class="img80"  src="' + doctors[i].imageUrl + '">' +
                         '</div>' +
-                        '<div class="ml10 col-1">' +
+                        '<div class="ml10 col-1 w50">' +
                         '<div class="team-name mt10 doctor-title">' + doctors[i].name + '</div>' +
                         '<div class="team-hospital mt20">' +
                         '<span class="color-gray">' + doctors[i].mTitle + '/' + doctors[i].aTitle + '</span>' +
                         '</div>' +
                         '</div>' +
-                        '<div class="col-1 mt10 text-right">' +
+                        '<div class="col-1 mt10 w25 text-right">' +
                         bookingBtn +
                         '</div>' +
                         '</div>' +

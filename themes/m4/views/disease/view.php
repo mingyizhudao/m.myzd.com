@@ -105,10 +105,10 @@ $this->show_footer = false;
             var innerHtml = '';
             if (leader) {
                 innerHtml += '<div class="grid mt10">' +
-                        '<div class="col-0 w100p">' +
+                        '<div class="col-1 w25">' +
                         '<img class="img80"  src="' + leader.imageUrl + '">' +
                         '</div>' +
-                        '<div class="ml10 col-1">' +
+                        '<div class="ml10 col-1 w50">' +
                         '<div class="team-name mt10 doctor-title">' + team.name +
                         '</div>' +
                         '<div class="team-hospital mt5 color-gray">' +
@@ -116,7 +116,7 @@ $this->show_footer = false;
                         '</div>' +
                         '<div class="team-slogan mt5 color-gray">' + leader.hospital + '</div>' +
                         '</div>' +
-                        '<div class="col-1 mt10 mr10 text-right">' +
+                        '<div class="col-1 mt10 mr10 w25 text-right">' +
                         '<a href="<?php echo $urlExpertteamView; ?>/' + team.id + '" data-target="link" class="button reserve_button"  >查看</a>' +
                         '</div>' +
                         '</div>' +
