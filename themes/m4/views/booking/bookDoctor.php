@@ -66,7 +66,7 @@ $this->show_footer = false;
                     </div>
                 </div>
                 <div class="pt10 pl10 pr10 bb-gray">
-                    <div>意向就诊日期:<span class = "color-red">(日期至少间隔7天)</span></div>
+                    <div>意向就诊日期:<span class = "color-green">(日期至少间隔7天)</span></div>
                     <div class="grid">
                         <div class="col-1 w45 ui-field-contain">
                             <?php echo $form->textField($model, 'date_start', array('name' => 'booking[date_start]', 'class' => 'calendar')); ?>
@@ -88,7 +88,7 @@ $this->show_footer = false;
                 <div class="pt10 pl10 pr10 ui-field-contain">
                     <div>疾病描述:</div>
                     <div>
-                        <?php echo $form->textArea($model, 'disease_detail', array('name' => 'booking[disease_detail]', 'maxlength' => 1000, 'rows' => '6')); ?>
+                        <?php echo $form->textArea($model, 'disease_detail', array('name' => 'booking[disease_detail]', 'minlength' => 10, 'maxlength' => 1000, 'rows' => '6')); ?>
                     </div>
                 </div>
                 <?php
@@ -175,9 +175,9 @@ $this->show_footer = false;
     function getStartTiem(date, days) {
         var timestamp = new Date(date).getTime();
         var newDate = new Date(timestamp + days * 24 * 3600 * 1000);
-        var y  = newDate.getFullYear(),m = newDate.getMonth()+1,d = newDate.getDate();
-        m = (m<10)?('0'+m):m;
-        d = (d<10)?('0'+d):d;
+        var y = newDate.getFullYear(), m = newDate.getMonth() + 1, d = newDate.getDate();
+        m = (m < 10) ? ('0' + m) : m;
+        d = (d < 10) ? ('0' + d) : d;
         return y + '-' + m + '-' + d;
     }
 </script>

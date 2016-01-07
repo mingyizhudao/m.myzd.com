@@ -26,7 +26,7 @@ function disabledBtn(btnSubmit) {
 //enableBtn
 function enableBtn(btnSubmit) {
     J.hideMask();
-    btnSubmit.attr("disabled", false);
+    btnSubmit.removeAttr("disabled");
 }
 //disabledBtn
 function disabledBtnAndriod(btnSubmit) {

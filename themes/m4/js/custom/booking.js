@@ -536,7 +536,7 @@ $(function () {
         messages: {
             'booking[contact_name]': {
                 required: "请填写真实姓名",
-                maxlength: "请将字数控制在45以内"
+                maxlength: "请将字数控制在50以内"
             },
             'booking[date_start]': {
                 required: '请选择开始日期'
@@ -545,10 +545,13 @@ $(function () {
                 required: '请选择截止日期'
             },
             'booking[disease_name]': {
-                required: '请填写疾病名称'
+                required: '请填写疾病名称',
+                maxlength: '病情太长（最多50个字）'
             },
             'booking[disease_detail]': {
-                required: '请填写疾病描述'
+                required: '请填写疾病描述',
+                maxlength: '病情太长（最多1000个字）',
+                minlength: '病情太短（最少10个字）'
             }
         },
 //        errorContainer: "div.error",
