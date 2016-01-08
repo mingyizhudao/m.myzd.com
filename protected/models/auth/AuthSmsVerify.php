@@ -20,6 +20,7 @@ class AuthSmsVerify extends EActiveRecord {
     const ACTION_USER_PASSWORD_RESET = 101;
     const ACTION_USER_LOGIN = 102;
     const ACTION_BOOKING = 200;
+    const ACTION_DEFAULT = 560;
     const EXPIRY_DEFAULT = 600;
     const ERROR_NONE = 0;
     const ERROR_NOT_FOUND = 1;
@@ -221,6 +222,10 @@ class AuthSmsVerify extends EActiveRecord {
 
     public function createSmsVerifyUserLogin($mobile, $userIp = null) {
         return $this->createRecord($mobile, self::ACTION_USER_LOGIN, false, $userIp);
+    }
+
+    public function createSmsVerifyDefault($mobile, $userIp = null) {
+        return $this->createRecord($mobile, self::ACTION_DEFAULT, false, $userIp);
     }
 
     /**

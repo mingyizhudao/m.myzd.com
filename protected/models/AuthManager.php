@@ -195,7 +195,7 @@ class AuthManager {
             $output['status'] = EApiViewService::RESPONSE_OK;
             $output['errorCode'] = ErrorList::ERROR_NONE;
             $output['errorMsg'] = 'success';
-            $output['results'] = array('token' => $authTokenUser->getToken(), 'isProfile'=>is_object(UserDoctorProfile::model()->getByUserId($user->getId())) ? 1 : 0);
+            $output['results'] = array('token' => $authTokenUser->getToken(), 'isProfile' => is_object(UserDoctorProfile::model()->getByUserId($user->getId())) ? 1 : 0);
         }
         return $output;
     }
@@ -267,6 +267,10 @@ class AuthManager {
     // verify code for mobile user passwordreset.
     public function verifyCodeForPasswordReset($mobile, $code, $userHostIp) {
         return $this->verifyAuthSmsCode($mobile, $code, AuthSmsVerify::ACTION_USER_PASSWORD_RESET, $userHostIp);
+    }
+
+    public function verifyCodeForDefault($mobile, $code, $userHostIp) {
+        return $this->verifyAuthSmsCode($mobile, $code, AuthSmsVerify::ACTION_DEFAULT, $userHostIp);
     }
 
     /**
