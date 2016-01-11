@@ -5,15 +5,15 @@ class WxCouponForm extends EFormModel {
     public $mobile;
     public $verify_code;
     public $coupon_code;
+    public $coupon_amount;
 
     public function rules() {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
             array('mobile, verify_code, coupon_code', 'required'),
-            array('verify_code, coupon_code', 'numerical', 'integerOnly' => true),
+            array('verify_code, coupon_code, coupon_amount', 'numerical', 'integerOnly' => true),
             array('mobile', 'length', 'max' => 11),
-            array('coupon_code', 'length', 'max' => 4),
             array('verify_code', 'checkVerifyCode'),
             array('coupon_code', 'checkCouponCode'),
         );
@@ -46,6 +46,8 @@ class WxCouponForm extends EFormModel {
             $model = $couponMgr->loadCouponCodeByCode($this->coupon_code);
             if (isset($model) === false) {
                 $this->addError('coupon_code', '你输入的优惠券码有误');
+            }else{
+                $this->coupon_amount = $model->coupon_amount;
             }
         }
     }

@@ -32,7 +32,6 @@ class WxCoupon extends EActiveRecord {
             array('mobile, coupon_code, date_created', 'required'),
             array('user_id, coupon_amount', 'numerical', 'integerOnly' => true),
             array('mobile', 'length', 'max' => 11),
-            array('coupon_code', 'length', 'max' => 4),
             array('date_used, date_updated, date_deleted', 'safe'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
@@ -58,8 +57,8 @@ class WxCoupon extends EActiveRecord {
             'id' => 'ID',
             'user_id' => 'user.id',
             'mobile' => '手机号',
-            'coupon_code' => '优惠券码（3位）',
-            'coupon_amount' => '优惠金额（500）',
+            'coupon_code' => '优惠券码',
+            'coupon_amount' => '优惠金额',
             'date_used' => '使用时间',
             'date_created' => 'Date Created',
             'date_updated' => 'Date Updated',
