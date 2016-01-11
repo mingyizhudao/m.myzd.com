@@ -298,6 +298,9 @@ class AuthManager {
             case AuthSmsVerify::ACTION_BOOKING:
                 $success = $smsVerify->createSmsVerifyBooking($mobile, $userIp);
                 break;
+            case AuthSmsVerify::ACTION_DEFAULT:
+                $success = $smsVerify->createSmsVerifyDefault($mobile, $userIp);
+                break;
             default:
                 $smsVerify->addError('action_type', 'Invalid action type');
                 break;
