@@ -2,6 +2,7 @@
 Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/jquery.form.js', CClientScript::POS_END);
 Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/jquery.validate.js', CClientScript::POS_END);
 Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/coupon.js', CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/main.js', CClientScript::POS_END);
 ?>
 <?php
 $this->setPageTitle('名医主刀');
@@ -68,7 +69,7 @@ $this->show_footer = false;
                     </li>
                     <li class="bb-none ml20 mr20 color-white">
 <!--                            <input id="btnSubmit" class="btn btn-yes btn-block" type="button" data-ajax="false"  name="yt0" value="登录/注册"> -->
-                        <a id="btnSubmit" class="btn btn-yes btn-login bg-green">提交</a>
+                        <button id="btnSubmit" class="btn btn-yes btn-abs btn-login bg-green">提交</button>
                     </li>
                 </ul>
                 <?php $this->endWidget(); ?>

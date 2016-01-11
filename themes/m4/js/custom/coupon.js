@@ -56,6 +56,7 @@ $(function () {
             error.appendTo(element.parents('li'));                        //这里的element是录入数据的对象  
         },
         submitHandler: function () {
+            disabledBtn(btnSubmit);
             //form插件的异步无刷新提交
             var actionUrl = domForm.attr('action');
             var formdata = domForm.serializeArray();
@@ -88,7 +89,7 @@ $(function () {
 
                 },
                 complete: function () {
-
+                    enableBtn(btnSubmit);
                 }
             });
         }

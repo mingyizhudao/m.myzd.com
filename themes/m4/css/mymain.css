@@ -221,3 +221,5 @@ table.table tr.noborder>td {border: none;}
 .errorMessage{color: #f00;text-align:left;}
 .strong{font-weight: bold;}
 img{max-width:100%;}
+
+#tag_close_popup{display:none;}
