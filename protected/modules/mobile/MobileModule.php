@@ -12,7 +12,7 @@ class MobileModule extends CWebModule {
         // import the module-level models and components
 
         $this->setImport(array(
-            'mobile.models.coupin.*',
+            'mobile.models.coupon.*',
             'mobile.models.*',
             'mobile.components.*',
         ));
