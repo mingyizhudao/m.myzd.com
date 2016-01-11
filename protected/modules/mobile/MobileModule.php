@@ -12,7 +12,8 @@ class MobileModule extends CWebModule {
         // import the module-level models and components
 
         $this->setImport(array(
-            // 'mobile.models.*',
+            'mobile.models.coupin.*',
+            'mobile.models.*',
             'mobile.components.*',
         ));
 
@@ -30,7 +31,6 @@ class MobileModule extends CWebModule {
 
         $this->setTheme('m4');
         $this->defaultController = 'home';
-
     }
 
     public function beforeControllerAction($controller, $action) {
