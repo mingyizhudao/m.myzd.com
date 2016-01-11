@@ -33,7 +33,7 @@ class WxCoupon extends EActiveRecord {
             array('user_id, coupon_amount', 'numerical', 'integerOnly' => true),
             array('mobile', 'length', 'max' => 11),
             array('coupon_code', 'length', 'max' => 4),
-            array('date_updated, date_deleted', 'safe'),
+            array('date_used, date_updated, date_deleted', 'safe'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
             array('id, user_id, mobile, coupon_code, coupon_amount, date_created, date_updated, date_deleted', 'safe', 'on' => 'search'),
@@ -60,6 +60,7 @@ class WxCoupon extends EActiveRecord {
             'mobile' => '手机号',
             'coupon_code' => '优惠券码（3位）',
             'coupon_amount' => '优惠金额（500）',
+            'date_used' => '使用时间',
             'date_created' => 'Date Created',
             'date_updated' => 'Date Updated',
             'date_deleted' => 'Date Deleted',
@@ -86,6 +87,7 @@ class WxCoupon extends EActiveRecord {
         $criteria->compare('id', $this->id);
         $criteria->compare('user_id', $this->user_id);
         $criteria->compare('mobile', $this->mobile, true);
+        $criteria->compare('date_used', $this->date_used, true);
         $criteria->compare('coupon_code', $this->coupon_code, true);
         $criteria->compare('coupon_amount', $this->coupon_amount);
         $criteria->compare('date_created', $this->date_created, true);
