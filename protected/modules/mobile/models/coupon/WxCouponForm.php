@@ -33,7 +33,7 @@ class WxCouponForm extends EFormModel {
     public function checkVerifyCode() {
         if (isset($this->verify_code) && isset($this->mobile)) {
             $authMgr = new AuthManager();
-            $authSmsVerify = $authMgr->verifyCodeForBooking($this->mobile, $this->verify_code, null);
+            $authSmsVerify = $authMgr->verifyCodeForDefault($this->mobile, $this->verify_code, null);
             if ($authSmsVerify->isValid() === false) {
                 $this->addError('verify_code', $authSmsVerify->getError('code'));
             }
