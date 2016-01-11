@@ -18,7 +18,8 @@ $(function () {
         rules: {
             'WxCouponForm[mobile]': {
                 required: true,
-                isMobile: true
+                isMobile: true,
+                maxlength: 11,
             },
             'WxCouponForm[verify_code]': {
                 required: true,
@@ -28,14 +29,15 @@ $(function () {
             },
             'WxCouponForm[coupon_code]': {
                 required: true,
-                max: 9999,
-                min: 1000
+                maxlength: 4,
+                minlength: 4
             }
         },
         messages: {
             'WxCouponForm[mobile]': {
                 required: "请输入手机号码",
-                isMobile: '请输入正确的中国手机号码!'
+                isMobile: '请输入正确的中国手机号码!',
+                maxlength: "请输入正确的中国手机号码!"
             },
             'WxCouponForm[verify_code]': {
                 required: "请输入短信验证码",
@@ -45,8 +47,8 @@ $(function () {
             },
             'WxCouponForm[coupon_code]': {
                 required: "请输入劵码",
-                min: "请输入四位劵码",
-                max: "请输入四位劵码"
+                maxlength: "请输入四位劵码",
+                minlength: "请输入四位劵码"
             }
         },
         errorElement: "div",
@@ -56,7 +58,6 @@ $(function () {
             error.appendTo(element.parents('li'));                        //这里的element是录入数据的对象  
         },
         submitHandler: function () {
-            //disabledBtnAndriod(btnSubmit);
             //form插件的异步无刷新提交
             var actionUrl = domForm.attr('action');
             var formdata = domForm.serializeArray();
@@ -68,17 +69,21 @@ $(function () {
                 success: function (data) {
                     console.log(data);
                     if (data.status == 'ok') {
-                        location.href = uploadReturnUrl;
-                        enableBtn(btnSubmit);
+                        $(".couponForm").hide();
+                        $('#expert_list_article').html('<div class="mt40 text-center"><h3>兑换成功</h3></div>');
                     } else {
                         domForm.find("div.error").remove();
                         //append errorMsg
                         isfocus = true;
                         for (error in data.errors) {
                             errerMsg = data.errors[error];
-                            inputKey = '#booking_' + error;
+                            inputKey = '#WxCouponForm_' + error;
                             $(inputKey).focus();
-                            $(inputKey).parent().after("<div class='error'>" + errerMsg + "</div> ");
+                            if (error == "verify_code") {
+                                $(inputKey).parent().parent().after("<div class='error'>" + errerMsg + "</div> ");
+                            } else {
+                                $(inputKey).parent().after("<div class='error'>" + errerMsg + "</div> ");
+                            }
                         }
                         enableBtn(btnSubmit);
                     }

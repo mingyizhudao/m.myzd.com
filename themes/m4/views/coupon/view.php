@@ -16,35 +16,37 @@ $this->show_footer = false;
 <div id="section_container">
     <section id="login_section" data-init="true" class="active">
         <article id="expert_list_article" class="active"  data-scroll="true">
-            <div class="w100">
+            <div class="w100 couponForm">
                 <?php
                 $form = $this->beginWidget('CActiveForm', array(
-                    'id' => 'coupon-form',
-                    'action' => $this->createUrl('coupon/ajaxCreate'),
-                    // Please note: When you enable ajax validation, make sure the corresponding
-                    // controller action is handling ajax validation correctly.
-                    // There is a call to performAjaxValidation() commented in generated controller code.
-                    // See class documentation of CActiveForm for details on this.
-                    'htmlOptions' => array('role' => 'form', 'autocomplete' => 'off', 'data-ajax' => 'false'),
-                    'enableClientValidation' => false,
-                    'clientOptions' => array(
-                        'validateOnSubmit' => true,
-                        'validateOnType' => true,
-                        'validateOnDelay' => 500,
-                        'errorCssClass' => 'error',
-                    ),
-                    'enableAjaxValidation' => false,
+                'id' => 'coupon-form',
+                'action' => $this->createUrl('coupon/ajaxCreate'),
+                // Please note: When you enable ajax validation, make sure the corresponding
+                // controller action is handling ajax validation correctly.
+                // There is a call to performAjaxValidation() commented in generated controller code.
+                // See class documentation of CActiveForm for details on this.
+                'htmlOptions' => array('role' => 'form', 'autocomplete' => 'off', 'data-ajax' => 'false'),
+                'enableClientValidation' => false,
+                'clientOptions' => array(
+                'validateOnSubmit' => true,
+                'validateOnType' => true,
+                'validateOnDelay' => 500,
+                'errorCssClass' => 'error',
+                ),
+                'enableAjaxValidation' => false,
                 ));
                 echo CHtml::hiddenField("smsverify[actionUrl]", $urlGetSmsVerifyCode);
                 echo CHtml::hiddenField("smsverify[actionType]", $authActionType);
                 ?>
                 <ul class="list bg-none">
-                    <li class="bb-none ml10">
+                    <li class="">
+                        <div>请输入手机号码</div>
                         <?php echo $form->numberField($model, 'mobile', array('placeholder' => '输入手机号码')); ?>
                         <?php echo $form->error($model, 'mobile'); ?>
                         <div class="error"></div>
                     </li>
-                    <li class="bb-none ml10">
+                    <li class="">
+                        <div>请输入验证码</div>
                         <div class="grid">
                             <div class="col-1">
                                 <?php echo $form->numberField($model, 'verify_code', array('placeholder' => '输入验证码')); ?>
@@ -56,9 +58,12 @@ $this->show_footer = false;
                         <?php echo $form->error($model, 'verify_code'); ?>
                         <div class="error"></div>
                     </li>
-                    <li class="bb-none ml10">
-                        <?php echo $form->numberField($model, 'coupon_code', array('placeholder' => '请输入劵码')); ?>
-                        <?php echo $form->error($model, 'coupon_code'); ?>
+                    <li class="">
+                        <div>请输入劵码</div>
+                        <div>
+                            <?php echo $form->numberField($model, 'coupon_code', array('placeholder' => '请输入劵码')); ?>
+                            <?php echo $form->error($model, 'coupon_code'); ?>
+                        </div>
                         <div class="error"></div>
                     </li>
                     <li class="bb-none ml20 mr20 color-white">
