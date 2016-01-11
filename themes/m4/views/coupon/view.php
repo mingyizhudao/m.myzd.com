@@ -1,36 +1,26 @@
 <?php
 Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/jquery.form.js', CClientScript::POS_END);
 Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/jquery.validate.js', CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/loginValidator.js', CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/coupon.js', CClientScript::POS_END);
 ?>
 <?php
-/**
- * $data.
- */
 $this->setPageTitle('名医主刀');
 
 $urlRegister = $this->createUrl("user/register");
 $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/auth/sendSmsVerifyCode');
-$authActionType = AuthSmsVerify::ACTION_USER_LOGIN;
+$authActionType = AuthSmsVerify::ACTION_DEFAULT;
 $urlResImage = Yii::app()->theme->baseUrl . "/images";
 
-$this->show_footer=false;
+$this->show_footer = false;
 ?>
 <div id="section_container">
     <section id="login_section" data-init="true" class="active">
-        <article id="expert_list_article" class="active login"  data-scroll="true">
-            <div class="color-white">
-                <nav class="left">
-                    <a href="#" data-target="back" data-icon="previous" class="login-back"></a>
-                </nav>
-            </div>
-            <div class="logo w100 loginform">
-                <img src="<?php echo $urlResImage ?>/image/logo.png">
-                <div class="mt10 color-white">名医主刀</div>
+        <article id="expert_list_article" class="active"  data-scroll="true">
+            <div class="w100">
                 <?php
                 $form = $this->beginWidget('CActiveForm', array(
-                    'id' => 'login-form',
-                    'action' => $this->createUrl('user/login'),
+                    'id' => 'coupon-form',
+                    'action' => $this->createUrl('coupon/ajaxCreate'),
                     // Please note: When you enable ajax validation, make sure the corresponding
                     // controller action is handling ajax validation correctly.
                     // There is a call to performAjaxValidation() commented in generated controller code.
@@ -48,10 +38,10 @@ $this->show_footer=false;
                 echo CHtml::hiddenField("smsverify[actionUrl]", $urlGetSmsVerifyCode);
                 echo CHtml::hiddenField("smsverify[actionType]", $authActionType);
                 ?>
-                <ul class="list bg-none mt40">
+                <ul class="list bg-none">
                     <li class="bb-none ml10">
-                        <?php echo $form->numberField($model, 'username', array('placeholder' => '输入手机号码')); ?>
-                        <?php echo $form->error($model, 'username'); ?>
+                        <?php echo $form->numberField($model, 'mobile', array('placeholder' => '输入手机号码')); ?>
+                        <?php echo $form->error($model, 'mobile'); ?>
                         <div class="error"></div>
                     </li>
                     <li class="bb-none ml10">
@@ -66,9 +56,14 @@ $this->show_footer=false;
                         <?php echo $form->error($model, 'verify_code'); ?>
                         <div class="error"></div>
                     </li>
+                    <li class="bb-none ml10">
+                        <?php echo $form->numberField($model, 'coupon_code', array('placeholder' => '请输入劵码')); ?>
+                        <?php echo $form->error($model, 'coupon_code'); ?>
+                        <div class="error"></div>
+                    </li>
                     <li class="bb-none ml20 mr20 color-white">
 <!--                            <input id="btnSubmit" class="btn btn-yes btn-block" type="button" data-ajax="false"  name="yt0" value="登录/注册"> -->
-                        <a id="btnSubmit" class="btn btn-yes btn-login bg-green">登录/注册</a>
+                        <a id="btnSubmit" class="btn btn-yes btn-login bg-green">提交</a>
                     </li>
                 </ul>
                 <?php $this->endWidget(); ?>
@@ -83,16 +78,16 @@ $this->show_footer=false;
             });
         });
         function sendSmsVerifyCode(domBtn) {
-            var domForm = $("#login-form");
-            var domMobile = domForm.find("#UserDoctorMobileLoginForm_username");
+            var domForm = $("#coupon-form");
+            var domMobile = domForm.find("#WxCouponForm_mobile");
             var mobile = domMobile.val();
             if (mobile.length === 0) {
-                $("#UserDoctorMobileLoginForm_username-error").remove();
-                $("#UserDoctorMobileLoginForm_username").parents('li').append("<div id='UserDoctorMobileLoginForm_username-error' class='error'>请输入手机号码</div>");
+                $("#WxCouponForm_mobile-error").remove();
+                $("#WxCouponForm_mobile").parents('li').append("<div id='WxCouponForm_mobile-error' class='error'>请输入手机号码</div>");
                 //domMobile.parent().addClass("error");
             } else if (!validatorMobile(mobile)) {
-                $("#UserDoctorMobileLoginForm_username-error").remove();
-                $("#UserDoctorMobileLoginForm_username").parents('li').append("<div id='UserDoctorMobileLoginForm_username-error' class='error'>请输入正确的中国手机号码!</div>");
+                $("#WxCouponForm_mobile-error").remove();
+                $("#WxCouponForm_mobile").parents('li').append("<div id='WxCouponForm_mobile-error' class='error'>请输入正确的中国手机号码!</div>");
             } else {
                 $(".error").html("");//删除错误信息
                 buttonTimerStart(domBtn, 60000);
