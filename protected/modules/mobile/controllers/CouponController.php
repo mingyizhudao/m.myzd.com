@@ -11,10 +11,10 @@
  *
  * @author shuming
  */
-class WxCouponController extends MobileController {
+class CouponController extends MobileController {
 
     //进入微信领奖页面
-    public function actionView() {
+    public function actionGetcoupon() {
         $form = new WxCouponForm();
         $this->render("view", array(
             'model' => $form
@@ -32,6 +32,15 @@ class WxCouponController extends MobileController {
             $output['errors'] = 'no data...';
         }
         $this->renderJsonOutput($output);
+    }
+
+    public function actionCreateList() {
+        for ($index = 6000; $index < 6501; $index++) {
+            $wx = new WxCouponCodeList();
+            $wx->coupon_code = $index . '';
+            $wx->coupon_amount = 500;
+            $wx->save();
+        }
     }
 
 }
