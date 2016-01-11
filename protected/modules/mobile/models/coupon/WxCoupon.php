@@ -32,7 +32,7 @@ class WxCoupon extends EActiveRecord {
             array('mobile, coupon_code, date_created', 'required'),
             array('user_id, coupon_amount', 'numerical', 'integerOnly' => true),
             array('mobile', 'length', 'max' => 11),
-            array('coupon_code', 'length', 'max' => 3),
+            array('coupon_code', 'length', 'max' => 4),
             array('date_updated, date_deleted', 'safe'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.

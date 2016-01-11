@@ -13,7 +13,7 @@ class WxCouponForm extends EFormModel {
             array('mobile, verify_code, coupon_code', 'required'),
             array('verify_code, coupon_code ', 'numerical', 'integerOnly' => true),
             array('mobile', 'length', 'max' => 11),
-            array('coupon_code', 'length', 'max' => 3),
+            array('coupon_code', 'length', 'max' => 4),
             array('verify_code', 'checkVerifryCode'),
             array('coupon_code', 'checkCouponCode'),
         );
