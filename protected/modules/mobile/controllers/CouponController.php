@@ -1,6 +1,5 @@
 <?php
 
-
 class CouponController extends MobileController {
 
     //进入微信领奖页面
@@ -14,8 +13,8 @@ class CouponController extends MobileController {
     //微信领奖提交
     public function actionAjaxCreate() {
         $output = array('status' => 'no');
-        if (isset($_POST['UserPasswordForm'])) {
-            $values = $_POST['UserPasswordForm'];
+        if (isset($_POST['WxCouponForm'])) {
+            $values = $_POST['WxCouponForm'];
             $couponMgr = new WxCouponManager();
             $output = $couponMgr->createWxCoupon($values);
         } else {
@@ -32,5 +31,4 @@ class CouponController extends MobileController {
 //            $wx->save();
 //        }
 //    }
-
 }

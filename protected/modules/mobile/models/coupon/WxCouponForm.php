@@ -11,7 +11,7 @@ class WxCouponForm extends EFormModel {
         // will receive user inputs.
         return array(
             array('mobile, verify_code, coupon_code', 'required'),
-            array('verify_code, coupon_code ', 'numerical', 'integerOnly' => true),
+            array('verify_code, coupon_code', 'numerical', 'integerOnly' => true),
             array('mobile', 'length', 'max' => 11),
             array('coupon_code', 'length', 'max' => 4),
             array('verify_code', 'checkVerifyCode'),
@@ -44,7 +44,7 @@ class WxCouponForm extends EFormModel {
         if (isset($this->coupon_code)) {
             $couponMgr = new WxCouponManager();
             $model = $couponMgr->loadCouponCodeByCode($this->coupon_code);
-            if (isset($model)) {
+            if (isset($model) === false) {
                 $this->addError('coupon_code', '你输入的优惠券码有误');
             }
         }

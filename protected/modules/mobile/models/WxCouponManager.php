@@ -35,4 +35,8 @@ class WxCouponManager {
         return $output;
     }
 
+    public function loadCouponCodeByCode($code) {
+        return WxCouponCodeList::model()->getByAttributes(array('coupon_code' => $code));
+    }
+
 }
