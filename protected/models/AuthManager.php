@@ -195,7 +195,7 @@ class AuthManager {
             $output['status'] = EApiViewService::RESPONSE_OK;
             $output['errorCode'] = ErrorList::ERROR_NONE;
             $output['errorMsg'] = 'success';
-            $output['results'] = array('token' => $authTokenUser->getToken(), 'isProfile'=>is_object(UserDoctorProfile::model()->getByUserId($user->getId())) ? 1 : 0);
+            $output['results'] = array('token' => $authTokenUser->getToken(), 'isProfile' => is_object(UserDoctorProfile::model()->getByUserId($user->getId())) ? 1 : 0);
         }
         return $output;
     }
@@ -269,6 +269,10 @@ class AuthManager {
         return $this->verifyAuthSmsCode($mobile, $code, AuthSmsVerify::ACTION_USER_PASSWORD_RESET, $userHostIp);
     }
 
+    public function verifyCodeForDefault($mobile, $code, $userHostIp) {
+        return $this->verifyAuthSmsCode($mobile, $code, AuthSmsVerify::ACTION_DEFAULT, $userHostIp);
+    }
+
     /**
      * 
      * @param string $mobile
@@ -293,6 +297,9 @@ class AuthManager {
                 break;
             case AuthSmsVerify::ACTION_BOOKING:
                 $success = $smsVerify->createSmsVerifyBooking($mobile, $userIp);
+                break;
+            case AuthSmsVerify::ACTION_DEFAULT:
+                $success = $smsVerify->createSmsVerifyDefault($mobile, $userIp);
                 break;
             default:
                 $smsVerify->addError('action_type', 'Invalid action type');
