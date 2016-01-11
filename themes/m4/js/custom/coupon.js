@@ -29,8 +29,7 @@ $(function () {
             },
             'WxCouponForm[coupon_code]': {
                 required: true,
-                maxlength: 4,
-                minlength: 4
+                maxlength: 50
             }
         },
         messages: {
@@ -47,8 +46,7 @@ $(function () {
             },
             'WxCouponForm[coupon_code]': {
                 required: "请输入劵码",
-                maxlength: "请输入四位劵码",
-                minlength: "请输入四位劵码"
+                maxlength: "请输入正确劵码"
             }
         },
         errorElement: "div",
@@ -61,13 +59,11 @@ $(function () {
             //form插件的异步无刷新提交
             var actionUrl = domForm.attr('action');
             var formdata = domForm.serializeArray();
-            console.log(formdata);
             domForm.ajaxSubmit({
                 type: 'post',
                 url: actionUrl,
                 data: formdata,
                 success: function (data) {
-                    console.log(data);
                     if (data.status == 'ok') {
                         $(".couponForm").hide();
                         $('#expert_list_article').html('<div class="mt40 text-center"><h3>兑换成功</h3></div>');

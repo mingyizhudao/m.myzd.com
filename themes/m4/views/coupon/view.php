@@ -109,7 +109,6 @@ $this->show_footer = false;
                     processData: false,
                     contentType: false,
                     'success': function (data) {
-                        console.log(data);
                         if (data.status === true || data.status === 'ok') {
                             //domForm[0].reset();
                         }
