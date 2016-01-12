@@ -12,7 +12,7 @@ class BookingController extends MobileController {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('createCorp', 'ajaxCreateCorp', 'ajaxUploadCorp', 'ajaxUploadFile', 'createQuickBooking', 'ajaxCreateQuickBooking'),
+                'actions' => array('createCorp', 'ajaxCreateCorp', 'ajaxUploadCorp', 'ajaxUploadFile', 'quickbook', 'ajaxQuickbook'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -185,11 +185,12 @@ class BookingController extends MobileController {
     /**
      * 快速预约
      */
-    public function actionCreateQuickBooking() {
+    public function actionQuickbook() {
         //$values = $_GET;
         //$request = Yii::app()->request;
         // 快速预约
         $form = new BookQuickForm();
+      //  var_dump($form);exit();
         $form->initModel();
         $userId = $this->getCurrentUserId();
         if (isset($userId)) {
@@ -211,7 +212,7 @@ class BookingController extends MobileController {
         }
     }
 
-    public function actionAjaxCreateQuickBooking() {
+    public function actionAjaxQuickbook() {
         $output = array('status' => 'no');
         if (isset($_POST['booking'])) {
             $values = $_POST['booking'];
