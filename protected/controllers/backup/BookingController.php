@@ -150,12 +150,10 @@ class BookingController extends WebsiteController {
     }
 
     /**
-     * Updates a particular model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id the ID of the model to be updated
+     * 快速预约
      */
     public function actionQuickbook() {
-
+        $values=$_GET;
         $this->show_header = false;
         $this->show_footer = false;
         $userId = Yii::app()->user->id;
@@ -164,7 +162,7 @@ class BookingController extends WebsiteController {
         $form->initModel($userId);
 
         if (Yii::app()->request->isPostRequest === false) {
-            $form->setValuesFromRequest($_GET);
+            $form->setValuesFromRequest($values);
             $form->loadData();
         } else {
             $this->createBooking($form);
