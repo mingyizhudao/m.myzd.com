@@ -9,6 +9,13 @@ $(function () {
         return this.optional(element) || (length == 11 && mobile.test(value));
     }, "请填写正确的手机号码");
 
+    $('#WxCouponForm_mobile').on('click',function () {
+        var container = $('#hongbao');
+        var scrollTo = $(this);
+        container.scrollTop(scrollTo.offset().top - container.offset().top + container.scrollTop());
+        container.animate({scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()});
+    });
+
     btnSubmit.click(function () {
         domForm.submit();
     });
@@ -66,8 +73,8 @@ $(function () {
                 data: formdata,
                 success: function (data) {
                     if (data.status == 'ok') {
-                        $(".couponForm").hide();
-                        $('#expert_list_article').html('<div class="mt40 text-center"><h3>兑换成功</h3></div>');
+                        $("#hongbao").removeClass('active');
+                        $('#successHongbao').addClass('active');
                     } else {
                         domForm.find("div.error").remove();
                         //append errorMsg

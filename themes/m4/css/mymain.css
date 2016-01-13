@@ -22,13 +22,15 @@ body {width:100%;color: #333;letter-spacing: 1px;line-height: 1.5;font-size: 14p
 .pt30{padding-top:30px;}
 .pt40{padding-top:40px;}
 .pt50{padding-top:50px;}
+.pt-90{padding-top: 90%;}
+.pt-140{padding-top: 140%;}
 
 .pb0{padding-bottom:0;}
 .pb5{padding-bottom:5px;}
 .pb10{padding-bottom:10px;}
 .pb15{padding-bottom:15px;}
-.pb20{padding-bottom:20px;}
-.pb30{padding-bottom:30px;}
+.pb20{padding-bottom:20px!important;}
+.pb30{padding-bottom:30px!important;}
 .pb40{padding-bottom:40px;}
 .pb50{padding-bottom:50px;}
 .pb60{padding-bottom:60px;}
@@ -104,10 +106,12 @@ body {width:100%;color: #333;letter-spacing: 1px;line-height: 1.5;font-size: 14p
 .color-green{color:#19aea5!important;}
 .color-black{color: #333!important;}
 .color-white{color: #fff!important;}
+.color-white1{color: #FCF3F5!important;}
 .color-gray{color:#9f9fa0!important;}
 .color-orange{color:#f39700!important;}
 .color-red{color:#f00!important;};
 .color-yellow{color:#eeca23!important;}
+.color-yellow1{color:#F5D623!important;}
 
 .bg-none{background-color: transparent!important;}
 .bg-green{background-color: #19aea5!important;}
@@ -115,6 +119,7 @@ body {width:100%;color: #333;letter-spacing: 1px;line-height: 1.5;font-size: 14p
 .bg-blue{background-color:#21a59c;}
 .bg-white{background-color:#fff;}
 .bg-yellow{background-color:#eeca23!important;}
+.bg-red{background-color:#BD1641;}
 
 
 /*隐藏*/
@@ -122,6 +127,7 @@ body {width:100%;color: #333;letter-spacing: 1px;line-height: 1.5;font-size: 14p
 
 
 /*字体大小*/
+.font-s12{font-size:12px!important;}
 .font-s15{font-size:15px!important;}
 .font-s16{font-size:16px;}
 .text1-6e{font-size:1.6em;}

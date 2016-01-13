@@ -609,3 +609,12 @@ select {
     text-align: center;
     border-radius: 3px;
 }
+
+/*hongbao*/
+#hongbao .bg{background: url(../images/hongbao/bg-hongbao.jpg) no-repeat;background-size: 100%;}
+#hongbao .list>li{padding:5px 20px;}
+#hongbao .activity{border:1px solid #F5D623; width:90px; font-size:18px; color:#F5D623;border-radius:3px;}
+#hongbao .img-btn{padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;background-color: #CA1947;}
+#hongbao .error{color:#EFA429;}
+#hongbao #btn-sendSmsCode{font-size: 18px;width:130px;padding-left: 0;padding-right: 0;min-width: 0;padding-top: 8px;}
+#successHongbao .success{background: url(../images/hongbao/success-hongbao.jpg) no-repeat;background-size: 100%;}
