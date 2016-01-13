@@ -19,7 +19,7 @@ return array(
     'import' => array(
         'application.models.*',
         'application.components.*',
-     //   'application.imodels.*', //@DELETE
+        //   'application.imodels.*', //@DELETE
         'application.apiservices.*',
         'application.models.base.*',
         'application.models.core.*',
@@ -28,10 +28,10 @@ return array(
         'application.models.user.*',
         'application.models.auth.*',
         'application.models.email.*',
-    //    'application.models.faculty.*', //@DELETE
+        //    'application.models.faculty.*', //@DELETE
         'application.models.doctor.*',
         'application.models.expertteam.*',
-    //    'application.models.medicalrecord.*', //@DELETE
+        //    'application.models.medicalrecord.*', //@DELETE
         'application.models.hospital.*',
         'application.models.disease.*',
         'application.models.event.*',
@@ -50,11 +50,11 @@ return array(
     ),
     'modules' => array(
         'fileupload',
-     //   'mobiledoctor',
+        //   'mobiledoctor',
         'mobile',
-        'weixinpub',        
+        'weixinpub',
         'translate', //manages translation message.
-     //   'admin', //admin module.
+        //   'admin', //admin module.
         /** user module * */
         /*   'user' => array(
           'tableUsers' => 'tbl_users',
@@ -142,59 +142,58 @@ return array(
                 //array('api/payment', 'pattern'=>'api/<action:\w+>', 'verb'=>'POST'),
                 //array('api/', 'pattern'=>'api/payment/doPay', 'verb'=>'POST'),
                 // array('api/returnPay', 'pattern'=>'api/<type:\w+>', 'verb'=>'GET'),                
-                array('api/list', 'pattern' => 'api/<model:\w+>', 'verb' => 'GET'),                
+                array('api/list', 'pattern' => 'api/<model:\w+>', 'verb' => 'GET'),
                 array('api/view', 'pattern' => 'api/<model:\w+>/<id:\d+>', 'verb' => 'GET'),
                 array('api/update', 'pattern' => 'api/<model:\w+>/<id:\d+>', 'verb' => 'PUT'),
                 array('api/delete', 'pattern' => 'api/<model:\w+>/<id:\d+>', 'verb' => 'DELETE'),
                 array('api/create', 'pattern' => 'api/<model:\w+>', 'verb' => 'POST'),
                 // mobiledoctor                
-            //    array('apimd/list', 'pattern' => 'apimd/<model:\w+>', 'verb' => 'GET'),
-            //    array('apimd/view', 'pattern' => 'apimd/<model:\w+>/<id:\d+>', 'verb' => 'GET'),
-            //    array('apimd/update', 'pattern' => 'apimd/<model:\w+>/<id:\d+>', 'verb' => 'PUT'),
-            //    array('apimd/delete', 'pattern' => 'apimd/<model:\w+>/<id:\d+>', 'verb' => 'DELETE'),
-            //    array('apimd/create', 'pattern' => 'apimd/<model:\w+>', 'verb' => 'POST'),
+                //    array('apimd/list', 'pattern' => 'apimd/<model:\w+>', 'verb' => 'GET'),
+                //    array('apimd/view', 'pattern' => 'apimd/<model:\w+>/<id:\d+>', 'verb' => 'GET'),
+                //    array('apimd/update', 'pattern' => 'apimd/<model:\w+>/<id:\d+>', 'verb' => 'PUT'),
+                //    array('apimd/delete', 'pattern' => 'apimd/<model:\w+>/<id:\d+>', 'verb' => 'DELETE'),
+                //    array('apimd/create', 'pattern' => 'apimd/<model:\w+>', 'verb' => 'POST'),
                 //'http://api.mingyizhudao.com/<action:(contactus)>' => 'mobile/app/<action>',
-            //    'http://api.mingyizhudao.com/<action:\w+>' => 'mobile/<action>',
-            //    'http://api.mingyizhudao.com' => 'mobile',
+                //    'http://api.mingyizhudao.com/<action:\w+>' => 'mobile/<action>',
+                //    'http://api.mingyizhudao.com' => 'mobile',
                 //'<action:(contactus)>' => 'site/<action>',
                 // mobile module url rewrite.
-            //    'http://m.mingyizhudao.com/<action:(contactus)>' => 'mobile/app/enquiry',
-            //    'http://m.mingyizhudao.com/<controller:\w+>' => 'mobile/<controller>',
-            //    'http://m.mingyizhudao.com' => 'mobile',
+                //    'http://m.mingyizhudao.com/<action:(contactus)>' => 'mobile/app/enquiry',
+                //    'http://m.mingyizhudao.com/<controller:\w+>' => 'mobile/<controller>',
+                //    'http://m.mingyizhudao.com' => 'mobile',
                 //@TEMP url for doctor app. - 2015-09-27 - QP
-            //    'http://mingyizhudao.com/mobiledoctor/home' => '/mobile/app/index',
-            //    '<action:(contactus|enquiry)>' => 'site/<action>',
+                //    'http://mingyizhudao.com/mobiledoctor/home' => '/mobile/app/index',
+                //    '<action:(contactus|enquiry)>' => 'site/<action>',
                 //Temp, to be removed
                 //   'overseas/elizabeth' => 'overseas/view',
                 //   'hospital/tiantanpuhua' => 'hospital/view',
-            //    'event/view/<page:\w+>' => 'event/view',
-            //    '<view:(aboutus|faq|terms|media|rules|joinus|news|bigevents|zhitongche)>' => 'site/page',
-            //    '<controller:(huizhen|marketing)>/<id:\w+>' => '<controller>/view',
+                //    'event/view/<page:\w+>' => 'event/view',
+                //    '<view:(aboutus|faq|terms|media|rules|joinus|news|bigevents|zhitongche)>' => 'site/page',
+                //    '<controller:(huizhen|marketing)>/<id:\w+>' => '<controller>/view',
                 '<controller:\w+>/<action:index>' => '<controller>/index',
                 '<controller:\w+>/<id:\d+>' => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
             ),
         ),
-
         // myzd-test.        
+//       'db' => array(
+//          'connectionString' => 'mysql:host=qpmyzdstaging91466636.mysql.rds.aliyuncs.com;dbname=myzd-test',
+//          'emulatePrepare' => true,
+//          'username' => 'supertestuser',
+//          'password' => 'Qp91466636',
+//          'charset' => 'utf8',
+//          'schemaCachingDuration' => 3600    // 开启表结构缓存（schema caching）提高性能
+//          ),
+        //本地数据库        
         'db' => array(
-            'connectionString' => 'mysql:host=qpmyzdstaging91466636.mysql.rds.aliyuncs.com;dbname=myzd-test',
+            'connectionString' => 'mysql:host=localhost;dbname=myzd-local',
             'emulatePrepare' => true,
-            'username' => 'supertestuser',
-            'password' => 'Qp91466636',
+            'username' => 'root',
+            'password' => '',
             'charset' => 'utf8',
             'schemaCachingDuration' => 3600    // 开启表结构缓存（schema caching）提高性能
         ),
-        //本地数据库        
-//        'db' => array(
-//            'connectionString' => 'mysql:host=localhost;dbname=myhz',
-//            'emulatePrepare' => true,
-//            'username' => 'root',
-//            'password' => '',
-//            'charset' => 'utf8',
-//            'schemaCachingDuration' => 3600    // 开启表结构缓存（schema caching）提高性能
-//        ),
         'errorHandler' => array(
             // use 'site/error' action to display errors
             'errorAction' => 'mobile/home/error',
@@ -262,7 +261,7 @@ return array(
         'bookingFilePath' => 'upload/booking',
         "doctorFilePath" => "upload/doctor/cert",
         "patientMRFilePath" => "upload/patient/mr",
-        // 'doctorAvatar' => 'upload/doctor/avatar',
+    // 'doctorAvatar' => 'upload/doctor/avatar',
     //    'baseUrl' => 'http://mingyizhudao.com',
     //    'baseUrlMobile' => 'http://m.mingyizhudao.com',
     //    'baseUrlApi' => 'http://api.mingyizhudao.com',
