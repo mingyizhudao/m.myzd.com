@@ -172,21 +172,23 @@ $this->show_footer = false;
 
         $('#activityRule').tap(function () {
             var innerHtml = '<div class="bg-red color-white1">' +
-                    '<div class="pb20 ml10 mr10 font-s12">' +
-                    '<div class="text-right color-yellow1 pt5">' +
-                    '<span data-target="closePopup">收起<span data-icon="arrow-down"></span></span>' +
+                    '<div class="pb20 ml10 mr10">' +
+                    '<div class="text-right color-yellow1 pt5 font-s14">' +
+                    '<span data-target="closePopup">收起<img src="<?php echo $urlResImage; ?>/hongbao/wire.png"></span>' +
                     '</div>' +
                     '<div class="grid mt10 mb10">' +
                     '<div class="col-1"></div>' +
                     '<div class="w60"><img src="<?php echo $urlResImage; ?>/hongbao/rule-hongbao.png"></div>' +
                     '<div class="col-1"></div>' +
                     '</div>' +
-                    '<div>1.本卷为一次性使用卷，不找零、不兑现、不开发票</div>' +
-                    '<div class="mt5">2.本卷仅可用于抵用预约名医主刀签约医生手术的服务费用</div>' +
-                    '<div class="mt5">3.每次预约只能使用一张抵用卷，不能累计使用</div>' +
-                    '<div class="mt5">4.手机号为红包领用的唯一凭证，使用时向客服报出手机号即可</div>' +
-                    '<div class="mt5">5.本活动最终解释权归名医主刀所有</div>' +
-                    '<div class="mt5">6.代金卷有效期:2016.01.01~2016.12.31</div>' +
+                    '<div class="mt20 font-s12">' +
+                    '<div class="mt2">1.本卷为一次性使用卷，不找零、不兑现、不开发票</div>' +
+                    '<div class="mt2">2.本卷仅可用于抵用预约名医主刀签约医生手术的服务费用</div>' +
+                    '<div class="mt2">3.每次预约只能使用一张抵用卷，不能累计使用</div>' +
+                    '<div class="mt2">4.手机号为红包领用的唯一凭证，使用时向客服报出手机号即可</div>' +
+                    '<div class="mt2">5.本活动最终解释权归名医主刀所有</div>' +
+                    '<div class="mt2">6.代金卷有效期:2016.01.01~2016.12.31</div>' +
+                    '</div>' +
                     '</div>' +
                     '</div>';
             J.popup({

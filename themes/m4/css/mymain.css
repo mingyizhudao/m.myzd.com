@@ -67,6 +67,7 @@ body {width:100%;color: #333;letter-spacing: 1px;line-height: 1.5;font-size: 14p
 .mt10{margin-top:10px;}
 .mt15{margin-top:15px;}
 .mt20{margin-top:20px;}
+.mt25{margin-top:25px;}
 .mt30{margin-top:30px;}
 .mt30{margin-top:30px;}
 .mt40{margin-top:40px;}
@@ -128,6 +129,7 @@ body {width:100%;color: #333;letter-spacing: 1px;line-height: 1.5;font-size: 14p
 
 /*字体大小*/
 .font-s12{font-size:12px!important;}
+.font-s14{font-size:14px!important;}
 .font-s15{font-size:15px!important;}
 .font-s16{font-size:16px;}
 .text1-6e{font-size:1.6em;}
