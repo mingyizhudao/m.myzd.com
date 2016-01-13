@@ -69,7 +69,7 @@ $this->show_footer = false;
                                 <?php echo $form->error($model, 'mobile'); ?> 
                                 <button id="btn-sendSmsCode" type="button" class="w100 bg-green">获取验证码</button>
                             </div>
-                            <div class="ui-field-contain">
+                            <div class="ui-field-contain mt5">
                                 <?php echo CHtml::activeLabel($model, 'verify_code'); ?>                                           
                                 <?php echo $form->numberField($model, 'verify_code', array('name' => 'booking[verify_code]', 'placeholder' => '请输入验证码')); ?>
                                 <?php echo $form->error($model, 'verify_code'); ?> 
@@ -92,7 +92,7 @@ $this->show_footer = false;
                             <div class="ui-field-contain">
                                 <?php echo $this->renderPartial('//booking/_uploadFile'); ?>
                             </div>
-                            <div class="ui-field-contain mb10">                
+                            <div class="ui-field-contain mt25 mb30">                
                                 <a id="btnSubmit" type="button" name="yt0" class="btn btn-yes btn-abs w100 bg-green">提交</a>
                             </div>
                         </div>

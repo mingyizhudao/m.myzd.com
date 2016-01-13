@@ -84,8 +84,7 @@ $this->show_footer = false;
                                 <button id="btn-sendSmsCode" type="button" class="ui-btn ui-corner-all ui-shadow w100 bg-green">获取验证码</button>
 <!--                                <div id="booking_mobile-error" class="error hide">请填写手机号码</div>-->
                             </div>
-                            <div class="ui-field-contain">
-
+                            <div class="ui-field-contain mt5">
                                 <?php echo CHtml::activeLabel($model, 'verify_code'); ?>                                           
                                 <?php echo $form->numberField($model, 'verify_code', array('name' => 'booking[verify_code]', 'placeholder' => '请输入验证码')); ?>
                                 <?php echo $form->error($model, 'verify_code'); ?> 
@@ -124,7 +123,7 @@ $this->show_footer = false;
                                 ));
                                 ?>
                             </div>
-                            <div class="ui-field-contain mt20 mb10">                
+                            <div class="ui-field-contain mt35 mb30">                
                                 <button id="btnSubmit" type="button" name="yt0" class="w100 bg-green">提交</button>
                             </div>
                         </div>
