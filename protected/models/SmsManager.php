@@ -31,7 +31,7 @@ class SmsManager {
       }
      */
 
-    protected function sendSmsTemplateViaYunTongXun($to, $values, $templateId) {
+    protected function sendSmsTemplateViaYunTongXun($to, $values = null, $templateId) {
         require_once("./protected/sdk/yuntongxun/yuntongxun.config.php");
         //require_once("./protected/sdk/yuntongxun/yuntongxun.test.php");
         require_once("./protected/sdk/yuntongxun/CCPRestSmsSDK.php");
@@ -70,6 +70,20 @@ class SmsManager {
             $templateId = '25322';  //template id, from 云通讯.
             $values = array($code, $expiry);
             return $this->sendSmsTemplateViaYunTongXun($to, $values, $templateId);
+        }
+    }
+
+    /**
+     * 领奖成功发送提示短信
+     * @param type $to
+     * @param type $data
+     * @param type $vendor
+     * @return type
+     */
+    public function sendSmsCoupon($to, $data = null, $vendor = 'yuntongxun') {
+        if ($vendor == 'yuntongxun') {
+            $templateId = '61004';  //template id, from 云通讯.
+            $error = $this->sendSmsTemplateViaYunTongXun($to, $data, $templateId);
         }
     }
 

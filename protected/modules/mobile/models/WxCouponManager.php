@@ -29,6 +29,9 @@ class WxCouponManager {
         if ($coupon->save()) {
             $output['status'] = 'ok';
             $output['id'] = $coupon->getId();
+            //领取成功 发送短信提醒
+            $smsMgr = new SmsManager();
+            $smsMgr->sendSmsCoupon($coupon->mobile);
         } else {
             $output['errors'] = $coupon->getErrors();
         }
