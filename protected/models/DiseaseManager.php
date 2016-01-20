@@ -31,8 +31,8 @@ class DiseaseManager {
     }
 
     public function loadDiseaseCategoryList() {
-        $models = DiseaseCategory::model()->getAll(array('dcDiseases'));
-
+        $models = DiseaseCategory::model()->getAllByInCondition('t.app_version', null, array('dcDiseases'));
+        
         return $models;
     }
 
