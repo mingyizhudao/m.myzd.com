@@ -186,7 +186,7 @@ abstract class EActiveRecord extends CActiveRecord {
         }
 
         $criteria = new CDbCriteria();
-        $criteria->addCondition('date_deleted is NULL');
+        $criteria->addCondition('t.date_deleted is NULL');
         $criteria->addInCondition($field, $values);
         if (is_array($with)) {
             $criteria->with = $with;
