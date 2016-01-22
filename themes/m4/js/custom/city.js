@@ -12,7 +12,7 @@ $('.btn_city').tap(function () {
                 '<nav class="right">' +
                 '<a data-target="closePopup">' +
                 '<span>' + cityName + '</span>&nbsp' +
-                '<img class="w25" src="/myzd/themes/m4/images/image/mark.png">' +
+                '<img class="w25" src="/themes/m4/images/image/mark.png">' +
                 '</a>' +
                 '</nav>' +
                 '</header>' +

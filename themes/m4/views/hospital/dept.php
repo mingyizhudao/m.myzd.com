@@ -18,7 +18,7 @@ $this->show_footer = false;
                 <a href="#" data-icon="previous" data-target="back"></a>
             </nav>
             <div class="title1">
-                
+
             </div>
         </header>
         <article id="expert_list_article" class="active articleHtml" data-scroll="true">
@@ -68,6 +68,8 @@ $this->show_footer = false;
                         '<div class="color-black ml10 text-justify">擅长:' + doctors[i].desc + '</div>' +
                         '</li>';
             }
+        } else {
+            innerHtml += '<li>暂无信息</li>';
         }
         innerHtml += '</ul>';
         $('.title1').html(department.name);
