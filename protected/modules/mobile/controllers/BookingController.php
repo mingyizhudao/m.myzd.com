@@ -84,6 +84,29 @@ class BookingController extends MobileController {
             } else {
                 $this->render('bookDoctorAndroid', array('model' => $form));
             }
+        } elseif (isset($values['hp_dept_id'])) {
+            // 预约科室
+            $form = new BookDeptForm();
+            $form->initModel();
+            $form->setHpDeptId($values['hp_dept_id']);
+            $form->setHpDeptlData();
+            $userId = $this->getCurrentUserId();
+            if (isset($userId)) {
+                $form->setUserId($userId);
+            }
+            //@TEST:
+            //    $data = $this->testDataDoctorBook();
+            //    $form->setAttributes($data, true);
+            if ($this->isUserAgentWeixin()) {
+                $form->user_agent = StatCode::USER_AGENT_WEIXIN;
+            } else {
+                $form->user_agent = StatCode::USER_AGENT_MOBILEWEB;
+            }
+            if ($this->isUserAgentIOS()) {
+                $this->render('bookDoctor', array('model' => $form));
+            } else {
+                $this->render('bookDoctorAndroid', array('model' => $form));
+            }
         }
     }
 
@@ -190,7 +213,7 @@ class BookingController extends MobileController {
         //$request = Yii::app()->request;
         // 快速预约
         $form = new BookQuickForm();
-      //  var_dump($form);exit();
+        //  var_dump($form);exit();
         $form->initModel();
         $userId = $this->getCurrentUserId();
         if (isset($userId)) {
