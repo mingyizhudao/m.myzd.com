@@ -35,6 +35,11 @@ class DoctorController extends MobileController {
         );
     }
 
+    //进入搜索医生的页面
+    public function actionSearch() {
+        $this->render('search');
+    }
+
     public function actionView($id) {
         $doctorMgr = new DoctorManager();
         $idoctor = $doctorMgr->loadIDoctor($id);
