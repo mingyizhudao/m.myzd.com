@@ -1,8 +1,9 @@
 <?php
 
-class ApiViewBookingListV4 extends EApiViewService{
+class ApiViewBookingListV4 extends EApiViewService {
+
     private $user;
-    
+
     //初始化类的时候将参数注入
     public function __construct($user) {
         parent::__construct();
@@ -14,9 +15,8 @@ class ApiViewBookingListV4 extends EApiViewService{
 
     protected function loadData() {
         // load PatientBooking by creatorId.
-        $this->loadBookings();        
+        $this->loadBookings();
     }
-
 
     //返回的参数
     protected function createOutput() {
@@ -29,16 +29,16 @@ class ApiViewBookingListV4 extends EApiViewService{
             );
         }
     }
-    
+
     //加载booking的数据
-    private function loadBookings(){
-        $models = Booking::model()->getAllByUserIdOrMobile($this->user->getId(), $this->user->getMobile());
+    private function loadBookings() {
+        $models = Booking::model()->getAllByUserIdOrMobile($this->user->getId(), $this->user->getMobile(), null, array('order' => 'id DESC'));
         $this->setBookings($models);
     }
-    
-    private function setBookings($models){
-        if(arrayNotEmpty($models)){
-            foreach($models as $model){
+
+    private function setBookings($models) {
+        if (arrayNotEmpty($models)) {
+            foreach ($models as $model) {
                 $data = new stdClass();
                 $data->id = $model->getId();
                 $data->refNo = $model->getrefNo();
@@ -47,12 +47,10 @@ class ApiViewBookingListV4 extends EApiViewService{
                 $data->hpDeptName = $model->gethpDeptName();
                 $data->dateStart = $model->getDateStart();
                 $data->dateEnd = $model->getDateEnd();
-                $data->actionUrl = Yii::app()->createAbsoluteUrl('/api/userbooking/'.$data->id);
+                $data->actionUrl = Yii::app()->createAbsoluteUrl('/api/userbooking/' . $data->id);
                 $this->results->booking[] = $data;
             }
-        }
-        else
-        {
+        } else {
             $this->results->booking = array();
         }
     }
