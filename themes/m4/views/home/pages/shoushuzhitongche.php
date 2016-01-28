@@ -2,18 +2,21 @@
 $this->setPageTitle('手术直通车');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $showExpTeamBtn = Yii::app()->request->getQuery("showBtn", 1);
+$isShowHeader = Yii::app()->request->getQuery('header', 1);
 $this->show_footer = false;
 ?>
 <div id="section_container">
     <section class="active">
-        <header class="head-title1">
-            <nav class="left">
-                <a href="#" data-target="back" data-icon="previous"></a>
-            </nav>
-            <div class="title color-white">
-                <?php echo $this->pageTitle; ?>
-            </div>
-        </header>
+        <?php if ($isShowHeader == 1) { ?>
+            <header class="head-title1">
+                <nav class="left">
+                    <a href="#" data-target="back" data-icon="previous"></a>
+                </nav>
+                <div class="title color-white">
+                    <?php echo $this->pageTitle; ?>
+                </div>
+            </header>
+        <?php } ?>
         <article id="zhitongche" class="active" data-scroll="true">
             <div>
                 <div class="page-section">
