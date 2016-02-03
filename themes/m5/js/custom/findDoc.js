@@ -174,7 +174,7 @@ $('#diseaseSelect').tap(function () {
                 success: function (data) {
                     //console.log(data);
                     readyDoc(data);
-                    $diseaseNameB = $diseaseNameB.length > 4 ? $diseaseNameB.substr(0, 3) + '...' : $deptName;
+                    $diseaseNameB = $diseaseNameB.length > 4 ? $diseaseNameB.substr(0, 3) + '...' : $diseaseNameB;
                     $('#deptTitle').html($deptName);
                     $('#diseaseTitle').html($diseaseNameB);
                     $('#diseaseTitle').attr('data-disease', $diseaseIdB);
