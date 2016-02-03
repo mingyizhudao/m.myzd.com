@@ -52,20 +52,20 @@ $this->show_footer = false;
         <li>
             <div class="grid">
                 <div class="col-0 w100p">就诊医院:</div>
-                <div class="col-0 w-div"><?php echo $results->hospitalName == '' ? '未填写' : $results->hospitalName; ?></div>
+                <div class="col-1 w-div"><?php echo $results->hospitalName == '' ? '未填写' : $results->hospitalName; ?></div>
             </div>
         </li>
         <li class="nopadding h15p"></li>
         <li>
             <div class="grid">
                 <div class="col-0 w100p">就诊科室:</div>
-                <div class="col-0 w-div"><?php echo $results->hpDeptName == '' ? '未填写' : $results->hpDeptName; ?></div>
+                <div class="col-1 w-div"><?php echo $results->hpDeptName == '' ? '未填写' : $results->hpDeptName; ?></div>
             </div>
         </li>
         <li>
             <div class="grid">
                 <div class="col-0 w100p">就诊专家:</div>
-                <div class="col-0 w-div"><?php echo $results->expertName == '' ? '未填写' : $results->expertName; ?></div>
+                <div class="col-1 w-div"><?php echo $results->expertName == '' ? '未填写' : $results->expertName; ?></div>
             </div>
         </li>
         <li class="nopadding h15p"></li>
@@ -82,7 +82,7 @@ $this->show_footer = false;
             </div>
             <div class="grid mt15">
                 <div class="col-0 w100p">影像资料:</div>
-                <div class="col-0">
+                <div class="col-1">
                 </div>
             </div>
             <div id="imgList" class="mt10">

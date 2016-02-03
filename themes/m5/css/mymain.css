@@ -194,7 +194,8 @@ body {width:100%;color: #333;letter-spacing: 1px;line-height: 1.5;font-size: 14p
 .w75{width:75%;}
 .w80{width:80%!important;}
 .w100{width:100%;}
-.w80p{width:60px;}
+.w60p{width:60px;}
+.w80p{width:80px;}
 .w90p{width:90px;}
 .w100p{width:100px;}
 .w5p{width:5px;}
@@ -202,7 +203,8 @@ body {width:100%;color: #333;letter-spacing: 1px;line-height: 1.5;font-size: 14p
 .h15p{height:15px;}
 .h12-5{height:12.5%;}
 .h25{height:25%;}
-.h80p{height:60px;}
+.h60p{height:60px;}
+.h80p{height:80px;}
 .h88p{height:88px;}
 .h90p{height:90px;}
 .h40p{height:40px;}

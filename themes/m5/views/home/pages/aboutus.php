@@ -2,7 +2,7 @@
 //$this->setPageID('pAboutus');
 $this->setPageTitle('关于我们');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
-$showExpTeamBtn = Yii::app()->request->getQuery("showBtn", 1);
+$this->show_footer = false;
 ?>
 <header class="bg-green" >
     <nav class="left">

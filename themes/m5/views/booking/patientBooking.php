@@ -33,49 +33,49 @@ $this->show_footer = false;
         <li>
             <div class="grid">
                 <div class="col-0 w100p">患者姓名:</div>
-                <div class="col-0 w-div"><?php echo $results->patientName; ?></div>
+                <div class="col-1 w-div"><?php echo $results->patientName; ?></div>
             </div>
         </li>
         <li>
             <div class="grid">
                 <div class="col-0 w100p">联系方式:</div>
-                <div class="col-0 w-div"><?php echo $results->mobile; ?></div>
+                <div class="col-1 w-div"><?php echo $results->mobile; ?></div>
             </div>
         </li>
         <li>
             <div class="grid">
                 <div class="col-0 w100p">就诊医院:</div>
-                <div class="col-0 w-div"><?php echo $results->hospitalName == '' ? '未填写' : $results->hospitalName; ?></div>
+                <div class="col-1 w-div"><?php echo $results->hospitalName == '' ? '未填写' : $results->hospitalName; ?></div>
             </div>
         </li>
         <li class="nopadding h15p"></li>
         <li>
             <div class="grid">
                 <div class="col-0 w100p">就诊科室:</div>
-                <div class="col-0 w-div"><?php echo $results->hpDeptName == '' ? '未填写' : $results->hpDeptName; ?></div>
+                <div class="col-1 w-div"><?php echo $results->hpDeptName == '' ? '未填写' : $results->hpDeptName; ?></div>
             </div>
         </li>
         <li>
             <div class="grid">
                 <div class="col-0 w100p">就诊专家:</div>
-                <div class="col-0 w-div"><?php echo $results->expertName == '' ? '未填写' : $results->expertName; ?></div>
+                <div class="col-1 w-div"><?php echo $results->expertName == '' ? '未填写' : $results->expertName; ?></div>
             </div>
         </li>
         <li class="nopadding h15p"></li>
         <li>
             <div class="grid">
                 <div class="col-0 w100p">病例名称:</div>
-                <div class="col-0 w-div"><?php echo $results->diseaseName; ?></div>
+                <div class="col-1 w-div"><?php echo $results->diseaseName; ?></div>
             </div>
         </li>
         <li class="bb-none mb10">
             <div class="grid">
                 <div class="col-0 w100p">病例描述:</div>
-                <div class="col-0 w-div"><?php echo $results->diseaseDetail; ?></div>
+                <div class="col-1 w-div"><?php echo $results->diseaseDetail; ?></div>
             </div>
             <div class="grid mt15">
                 <div class="col-0 w100p">影像资料:</div>
-                <div class="col-0">
+                <div class="col-1">
                 </div>
             </div>
             <div id="imgList" class="mt10">

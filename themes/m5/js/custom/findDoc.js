@@ -285,9 +285,9 @@ function readyDoc(data) {
                         '<a href="' + $requestDoctorView + '/' + results[i].id + '" data-target="link">' +
                         '<div class="grid pl15 pr15 pt10 pb10 bb-gray3 ' + btGray + '">' +
                         '<div class="col-1 w25">' +
-                        '<div class="w80p h80p" style="overflow:hidden;border-radius:5px;"><img class="imgDoc" src="' + results[i].imageUrl + '"></div>';
+                        '<div class="w60p h60p" style="overflow:hidden;border-radius:5px;"><img class="imgDoc" src="' + results[i].imageUrl + '"></div>';
                 if (results[i].isContracted == 1) {
-                    innerHtml += '<div class="sign w80p">签约专家</div>'
+                    innerHtml += '<div class="sign w60p">签约专家</div>'
                 }
                 innerHtml += '</div>' +
                         '<div class="ml10 col-1 w75">' +

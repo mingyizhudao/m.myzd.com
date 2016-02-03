@@ -190,14 +190,14 @@ footer .control-group li .imgCenter{
 
 /*预约医生*/
 #bookingDoc_article .imgDiv{
-    width:80px;
-    height:80px;
+    width:70px;
+    height:70px;
     border-radius: 50%;
     overflow: hidden;
 }
 #bookingDoc_article .imgDoc{
     display: block;
-    width: 80px;
+    width: 100%;
     border: 1px solid #ddd;
     z-index: 0;
 }
