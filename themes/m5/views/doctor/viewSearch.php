@@ -55,7 +55,7 @@ $this->show_footer = false;
                     //console.log(data);
                     var diseaseName = data.results.name;
                     J.popup({
-                        html: '<ul class="list"><li id="searchDoc" class="text-center">医生</li><li id="searchDept" class="text-center">科室</li></ul>',
+                        html: '<ul class="list"><li id="searchDoc" class="text-center">找医生</li><li id="searchDept" class="text-center">找科室</li></ul>',
                         pos: 'center'
                     });
                     $('#searchDoc').tap(function () {

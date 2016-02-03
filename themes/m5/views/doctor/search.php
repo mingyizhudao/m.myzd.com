@@ -25,7 +25,7 @@ $this->show_footer = false;
     <nav class="left">
         <a href="<?php echo $urlHomeIndex; ?>" data-icon="previous"></a>
     </nav>
-    <h1 class="title">找医生</h1>
+    <h1 class="title">找名医</h1>
 </header>
 <nav id="findDoc_nav" class="header-secondary bg-white">
     <div class="grid w100 color-black font-s16 color-black6">

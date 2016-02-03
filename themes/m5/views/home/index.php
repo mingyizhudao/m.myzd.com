@@ -57,7 +57,7 @@ $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
                 <div class="col-1"></div>
                 <div class="col-0 w100p">
                     <a href="<?php echo $urlDoctorSearch; ?>?disease_sub_category=2">
-                        <div class="findDoc text-center">找医生</div>
+                        <div class="findDoc text-center">找名医</div>
                     </a>
                 </div>
                 <div class="col-3"></div>

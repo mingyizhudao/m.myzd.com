@@ -358,13 +358,20 @@ footer .control-group li .imgCenter{
 
 /*搜索页面*/
 #search_header input[type=text]{
+    background: url('../images/search.png') no-repeat;
+    background-size: 16px 16px;
+    background-position-y: 1px;
+    padding-top: 0px;
+    padding-left: 18px;
+    padding-right: 0px;
+    padding-bottom: 0px;
     color:#fff;
     background-color:#06c1ae;
     margin-bottom:0px;
     border-radius: 0!important;
     -webkit-box-shadow: none!important;
     box-shadow: none!important;
-    padding: 0!important;
+    //padding: 0!important;
     height: 20px!important;
     border:none!important;
     margin-top:13px;
