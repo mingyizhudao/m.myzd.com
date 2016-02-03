@@ -6,7 +6,7 @@ $urlApiAppNav1 = $this->createAbsoluteUrl('/api/list');
 $urlCity = $this->createAbsoluteUrl('/api/city');
 $urlDisease = $this->createAbsoluteUrl('/api/diseasebycategory');
 $urlDoctor = $this->createAbsoluteUrl('/api/doctor', array('api' => 7));
-$urlloadDiseaseCategory = $this->createUrl('api/diseasecategory', array('api' => 7));
+$urlDiseasecategory = $this->createAbsoluteUrl('/api/diseasecategory', array('api' => 7));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $city = Yii::app()->request->getQuery('city', '');
 $disease = Yii::app()->request->getQuery('disease', '');
@@ -79,7 +79,7 @@ $this->show_footer = false;
 
         //ajax异步加载科室
         $deptHtml = '';
-        var urlloadDiseaseCategory = '/mingyizhudao.com/api/diseasecategory?api/7';
+        var urlloadDiseaseCategory = '<?php echo $urlDiseasecategory; ?>';
         $.ajax({
             url: urlloadDiseaseCategory,
             success: function (data) {
