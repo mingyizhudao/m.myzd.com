@@ -22,12 +22,12 @@ $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
             <ul class="bxslider">
                 <li class="slide">
                     <a href="<?php echo $urlEventZhuantiFour; ?>">
-                        <img src="<?php echo $urlResImage; ?>zhuanti/bg_mingYiZhuYi.jpg">
+                        <img class="w100" src="<?php echo $urlResImage; ?>zhuanti/bg_mingYiZhuYi.jpg">
                     </a>
                 </li>
                 <li class="slide">
                     <a href="<?php echo $urlEventZhuantiOne; ?>">
-                        <img src="<?php echo $urlResImage; ?>/zhuanti/bg_lujinsong.jpg">
+                        <img class="w100" src="<?php echo $urlResImage; ?>/zhuanti/bg_lujinsong.jpg">
                     </a>
                 </li>
             </ul>
