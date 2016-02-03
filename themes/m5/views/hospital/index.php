@@ -2,7 +2,6 @@
 Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/hospitalIndex.js', CClientScript::POS_END);
 ?>
 <?php
-$urlApiAppNav1 = $this->createAbsoluteUrl('/api/list', array('model' => 'appnav3', 'appv' => 15, 'api' => 4));
 $urlHospital = $this->createAbsoluteUrl('/api/hospital', array('api' => 6));
 $urlHospitalView = $this->createUrl('hospital/view', array('id' => ''));
 $urlCity = $this->createAbsoluteUrl('/api/city');
@@ -39,7 +38,7 @@ $page = Yii::app()->request->getQuery('page', '');
         $.ajax({
             url: '<?php echo $urlHospital; ?>' + setUrlCondition() + '&getcount=1',
             success: function (data) {
-                console.log(data);
+                //console.log(data);
                 readyHospital(data);
                 setLocationUrl();
             }
@@ -49,7 +48,7 @@ $page = Yii::app()->request->getQuery('page', '');
         $.ajax({
             url: '<?php echo $urlCity; ?>?has_team=0',
             success: function (data) {
-                console.log(data);
+                //console.log(data);
                 $cityHtml = readyCity(data);
             }
         });

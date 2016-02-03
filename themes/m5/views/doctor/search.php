@@ -67,7 +67,7 @@ $this->show_footer = false;
         $.ajax({
             url: urlAjaxLoadDoctor,
             success: function (data) {
-                console.log(data);
+                //console.log(data);
                 readyDoc(data);
                 setLocationUrl();
             }
@@ -94,7 +94,7 @@ $this->show_footer = false;
         $.ajax({
             url: requestCity,
             success: function (data) {
-                console.log(data);
+                //console.log(data);
                 $cityHtml = readyCity(data);
             }
         });

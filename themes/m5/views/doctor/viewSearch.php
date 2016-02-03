@@ -41,6 +41,9 @@ $this->show_footer = false;
 
         $('#emptyInput').tap(function () {
             $('#inputDisease').val('');
+            $('#inputDisease').addClass('w70');
+            $('#inputDisease').removeClass('w63');
+            $('.emptyImg').addClass('hide');
         });
 
         $('#btnSearch').tap(function () {
@@ -49,7 +52,7 @@ $this->show_footer = false;
             $.ajax({
                 url: '<?php echo $urlDiseaseName; ?>' + disease_name,
                 success: function (data) {
-                    console.log(data);
+                    //console.log(data);
                     var diseaseName = data.results.name;
                     J.popup({
                         html: '<ul class="list"><li id="searchDoc" class="text-center">医生</li><li id="searchDept" class="text-center">科室</li></ul>',

@@ -10,7 +10,7 @@ $this->show_footer = false;
 </header>
 <article id="zhuantiThree_article" class="active" data-scroll="true">
     <div class="pl15 pr15 mt26">
-        <div class="font-s21 color-black5">【泌尿疾病的克升】达芬奇手术机器人</div>
+        <div class="font-s21 color-black5">【泌尿疾病的克星】达芬奇手术机器人</div>
         <div class="mt21 font-s12">2015-12-09<span class="color-blue ml7">来源:名医主刀</span></div>
         <div class="mt10 text-center grid">
             <div class="col-1 w25"></div>

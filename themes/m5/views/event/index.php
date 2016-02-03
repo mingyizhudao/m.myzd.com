@@ -1,6 +1,4 @@
 <?php
-$urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
-
 $urlEventStoryOne = $this->createUrl('event/view', array('page' => 'storyOne'));
 $urlEventStoryTwo = $this->createUrl('event/view', array('page' => 'storyTwo'));
 $urlEventStoryThree = $this->createUrl('event/view', array('page' => 'storyThree'));
@@ -40,7 +38,7 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
             <li>
                 <a href="<?php echo $urlEventZhuantiThree; ?>">
                     <div class="font-s17">
-                        【泌尿疾病的克升】达芬奇手术机器人
+                        【泌尿疾病的克星】达芬奇手术机器人
                     </div>
                 </a>
             </li>

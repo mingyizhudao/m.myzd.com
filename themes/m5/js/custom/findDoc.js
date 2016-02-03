@@ -69,7 +69,7 @@ $('#deptSelect').tap(function () {
         $.ajax({
             url: requestUrl,
             success: function (data) {
-                console.log(data);
+                //console.log(data);
                 readyDoc(data);
                 $deptName = $deptName.length > 4 ? $deptName.substr(0, 3) + '...' : $deptName;
                 $('#deptTitle').html($deptName);
@@ -103,7 +103,7 @@ $('#diseaseSelect').tap(function () {
     $.ajax({
         url: $requestDisease + '/' + deptId,
         success: function (data) {
-            console.log(data);
+            //console.log(data);
             diseaseHtml = readyDisease(data);
             ajaxPage(diseaseHtml);
         }
@@ -172,7 +172,7 @@ $('#diseaseSelect').tap(function () {
             $.ajax({
                 url: requestUrl,
                 success: function (data) {
-                    console.log(data);
+                    //console.log(data);
                     readyDoc(data);
                     $diseaseNameB = $diseaseNameB.length > 4 ? $diseaseNameB.substr(0, 3) + '...' : $deptName;
                     $('#deptTitle').html($deptName);
@@ -261,7 +261,7 @@ $('#citySelect').tap(function () {
         $.ajax({
             url: requestUrl,
             success: function (data) {
-                console.log(data);
+                //console.log(data);
                 readyDoc(data);
                 $('#cityTitle').html($cityName);
                 $('#cityTitle').attr('data-city', $cityId);
@@ -345,7 +345,7 @@ function initPage(dataPage) {
             $.ajax({
                 url: $requestDoc + setUrlCondition() + '&getcount=1',
                 success: function (data) {
-                    console.log(data);
+                    //console.log(data);
                     readyDoc(data);
                     setLocationUrl();
                 }
@@ -361,7 +361,7 @@ function initPage(dataPage) {
             $.ajax({
                 url: $requestDoc + setUrlCondition() + '&getcount=1',
                 success: function (data) {
-                    console.log(data);
+                    //console.log(data);
                     readyDoc(data);
                     setLocationUrl();
                 }
@@ -378,7 +378,7 @@ function changePage() {
     $.ajax({
         url: $requestDoc + setUrlCondition() + '&getcount=1',
         success: function (data) {
-            console.log(data);
+            //console.log(data);
             readyDoc(data);
             setLocationUrl();
         }

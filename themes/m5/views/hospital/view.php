@@ -3,9 +3,6 @@
  * $data.
  */
 $this->setPageTitle('合作医院');
-
-$urlApiAppNav1 = $this->createAbsoluteUrl('/api/list', array('model' => 'appnav1'));
-
 $urlHospitalView = $this->createAbsoluteUrl('/api/list', array('model' => 'hospital'));
 $urlDepartmentView = $this->createUrl('department/view', array('id' => ''));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";

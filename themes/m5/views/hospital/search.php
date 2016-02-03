@@ -2,10 +2,7 @@
 Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/findHospital.js', CClientScript::POS_END);
 ?>
 <?php
-$urlApiAppNav1 = $this->createAbsoluteUrl('/api/list');
 //$urlDisease = $this->createAbsoluteUrl('/api/diseasebycategory');
-$urlLoadDoctor = $this->createUrl('api/doctor', array('api' => 7, 'pagesize' => 9));
-$urlloadDiseaseCategory = $this->createUrl('api/diseasecategory', array('api' => 7));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $city = Yii::app()->request->getQuery('city', '');
 $disease = Yii::app()->request->getQuery('disease', '');
@@ -51,7 +48,7 @@ $this->show_footer = false;
         $requestHospitalSearch = '<?php echo $urlHospitalSearch; ?>';
 
         $requestDepartment = '<?php echo $urlDepartmentView; ?>';
-//            $requestDisease = '<?php //echo $urlDisease;                                                   ?>';
+//            $requestDisease = '<?php //echo $urlDisease;                                                    ?>';
 
         $condition = new Array();
         $condition["city"] = '<?php echo $city ?>';
@@ -66,7 +63,7 @@ $this->show_footer = false;
         $.ajax({
             url: '<?php echo $urlHospital; ?>' + setUrlCondition() + '&getcount=1',
             success: function (data) {
-                console.log(data);
+                //console.log(data);
                 readyHospital(data);
                 setLocationUrl();
             }
@@ -78,11 +75,11 @@ $this->show_footer = false;
 
         //ajax异步加载科室
         $deptHtml = '';
-        var urlloadDiseaseCategory = '/mingyizhudao.com/api/diseasecategory?api/7';
+        var urlloadDiseaseCategory = '<?php echo $urlDiseasecategory; ?>';
         $.ajax({
             url: urlloadDiseaseCategory,
             success: function (data) {
-                console.log(data);
+                //console.log(data);
                 $deptHtml = readyDept(data);
             }
         });
@@ -93,7 +90,7 @@ $this->show_footer = false;
         $.ajax({
             url: requestCity,
             success: function (data) {
-                console.log(data);
+                //console.log(data);
                 $cityHtml = readyCity(data);
             }
         });

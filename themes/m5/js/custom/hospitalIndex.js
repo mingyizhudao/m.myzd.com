@@ -51,7 +51,7 @@ $('#selectCity').tap(function (e) {
         $.ajax({
             url: requestUrl,
             success: function (data) {
-                console.log(data);
+                //console.log(data);
                 readyHospital(data);
                 $('#cityTitle').html($cityName);
                 $('#cityTitle').attr('data-city', $cityId);
@@ -117,7 +117,7 @@ function initPage(count) {
             $.ajax({
                 url: $requestHospital + setUrlCondition() + '&getcount=1',
                 success: function (data) {
-                    console.log(data);
+                    //console.log(data);
                     readyHospital(data);
                     setLocationUrl();
                 }
@@ -133,7 +133,7 @@ function initPage(count) {
             $.ajax({
                 url: $requestHospital + setUrlCondition() + '&getcount=1',
                 success: function (data) {
-                    console.log(data);
+                    //console.log(data);
                     readyHospital(data);
                     setLocationUrl();
                 }
@@ -151,7 +151,7 @@ function changePage() {
     $.ajax({
         url: $requestHospital + setUrlCondition() + '&getcount=1',
         success: function (data) {
-            console.log(data);
+            //console.log(data);
             readyHospital(data);
             setLocationUrl();
         }

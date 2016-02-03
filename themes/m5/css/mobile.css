@@ -185,7 +185,7 @@ footer .control-group li .imgCenter{
     background-color: #efefef;
 }
 #hospital_article .button, button {
-    padding: 10px 14px;
+    padding: 10px 10px;
 }
 
 /*预约医生*/
@@ -264,7 +264,7 @@ footer .control-group li .imgCenter{
     background-color: #efefef;
 }
 #findDoc_article .button, button{
-    padding: 10px 14px;
+    padding: 10px 10px;
 }
 #findDoc_nav .grayImg>img{
     margin-left:10px;
@@ -302,7 +302,7 @@ footer .control-group li .imgCenter{
     height:10px;
 }
 #findDept_article .button, button{
-    padding: 10px 14px;
+    padding: 10px 10px;
 }
 
 /*首页*/
