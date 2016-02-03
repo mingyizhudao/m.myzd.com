@@ -13,6 +13,7 @@ class StatCode {
     const USER_ROLE_ADMIN = 9;    // 管理员
     const BK_TYPE_DOCTOR = 1;     // 预约某个医生
     const BK_TYPE_EXPERTTEAM = 2; // 预约专家团队
+    const BK_TYPE_DEPT = 3; // 预约医院科室
     const BK_TYPE_QUICKBOOK = 9;    // 快速预约
     const BK_TRAVELTYPE_PATIENT_GO = 1;    // 患者过去
     const BK_TRAVELTYPE_DOCTOR_COME = 2;   // 医生过来

@@ -111,15 +111,15 @@ class DiseaseDoctorJoin extends EActiveRecord
         public function getAllByDoctorId($doctorId){
             return $this->getAllByAttributes(array('doctor_id'=>$doctorId));
         }
- 
-        
+
+
         public function deleteAllByDoctorIdAndDiseaseIds($doctorId, $diseaseIds){
             //return $this->deleteAllByAttributes(array('doctor_id'=>));
             $criteria = new CDbCriteria();
             $criteria->compare('doctor_id',$doctorId);
             $criteria->addInCondition('disease_id', $diseaseIds);
-            
+
             return $this->deleteAll($criteria);
-        }       
+        }
         
 }

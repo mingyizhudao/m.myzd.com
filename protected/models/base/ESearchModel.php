@@ -62,7 +62,7 @@ abstract class ESearchModel {
     //@Implement.
     public function buildQueryCriteria() {
         $this->criteria = new CDbCriteria();
-        $this->criteria->alias = $this->alias;        
+        $this->criteria->alias = $this->alias;
         $this->setSelect($this->select);
         $this->criteria->with = $this->with;
         //@abstract method to be implemented.
@@ -85,7 +85,9 @@ abstract class ESearchModel {
         if (arrayNotEmpty($queryFields)) {
             foreach ($queryFields as $field) {
                 if (isset($this->searchInputs[$field])) {
-                    $this->queryParams[$field] = $this->searchInputs[$field];
+                    if (strIsEmpty($this->searchInputs[$field]) === false) {
+                        $this->queryParams[$field] = trim($this->searchInputs[$field]);
+                    }
                 }
             }
         }
@@ -96,7 +98,7 @@ abstract class ESearchModel {
         if (isset($querystring['order'])) {
             $order = $querystring['order'];
         } else {
-            $order = 'id';
+            $order = 't.id';
         }
         $this->setOrder($order);
 
@@ -148,7 +150,11 @@ abstract class ESearchModel {
     }
 
     public function setOrder($order) {
-        $this->order = $this->alias . '.' . $order;
+        if (strContains($order, '.')) {
+            $this->order = $order;
+        } else {
+            $this->order = $this->alias . '.' . $order;
+        }
     }
 
     public function setLimit($n) {

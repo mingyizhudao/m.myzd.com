@@ -22,7 +22,7 @@ class DoctorController extends MobileController {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('register', 'view', 'login', 'createPatient', 'profile', 'createPatientMR', 'createBooking'),
+                'actions' => array('register', 'search', 'viewSearch', 'view', 'login', 'createPatient', 'profile', 'createPatientMR', 'createBooking', 'ajaxSearchDoctor'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -39,17 +39,24 @@ class DoctorController extends MobileController {
     public function actionSearch() {
         $this->render('search');
     }
-    
+
     //进入搜索中间页面
     public function actionViewSearch() {
-         $this->render('viewSearch');
+        $this->render('viewSearch');
     }
-    
+
+    public function actionAjaxSearchDoctor() {
+        $values = $_GET;
+        $apiService = new ApiViewDoctorSearchV7($values);
+        $output = $apiService->loadApiViewData();
+        $this->renderJsonOutput($output);
+    }
+
     public function actionView($id) {
-        $doctorMgr = new DoctorManager();
-        $idoctor = $doctorMgr->loadIDoctor($id);
+        $apiService = new ApiViewDoctorV7($id);
+        $output = $apiService->loadApiViewData();
         $this->render('view', array(
-            'idoctor' => $idoctor
+            'data' => $output
         ));
     }
 

@@ -29,10 +29,39 @@ class DiseaseManager {
         }
         return $output;
     }
+    
+    public function loadListDiseaseV7() {
+        $output = array();
+        $dcList = DiseaseCategory::model()->getAllByInCondition('t.app_version', 7);
+        if (empty($dcList)) {
+            return $output;
+        }
+        foreach ($dcList as $dc) {
+            $catName = $dc->cat_name;
+            $subCatName = $dc->sub_cat_name;
+            $catDisJoinList = CategoryDiseaseJoin::model()->getAllBySubCatId($dc->sub_cat_id);
+            $subCatDisList = array();
+            if (arrayNotEmpty($catDisJoinList)) {
+                foreach ($catDisJoinList as $catDisJoin) {
+                    $disease = Disease::model()->getById($catDisJoin->disease_id);
+                    $dataDisease = new stdClass();
+                    $dataDisease->id = $disease->id;
+                    $dataDisease->name = $disease->name;
+                    $subCatDisList[] = $dataDisease;
+                }
+            }
+            $output[$catName][$subCatName] = $subCatDisList;
+        }
+        return $output;
+    }
 
+    public function loadDiseaseCategoryListV7() {
+        $models = DiseaseCategory::model()->getAllByInCondition('t.app_version', 7);
+        return $models;
+    }
     public function loadDiseaseCategoryList() {
         $models = DiseaseCategory::model()->getAllByInCondition('t.app_version', null, array('dcDiseases'));
-        
+
         return $models;
     }
 

@@ -11,7 +11,7 @@ class HospitalSearch extends ESearchModel {
     }
 
     public function getQueryFields() {
-        return array('disease', 'city', 'cate', 'is_show');
+        return array('disease', 'city', 'cate', 'is_show', 'disease_name');
     }
 
     public function addQueryConditions() {
@@ -37,6 +37,13 @@ class HospitalSearch extends ESearchModel {
                 $this->criteria->params[":diseaseId"] = $diseaseId;
                 $this->criteria->distinct = true;
             }
+            // DiseaseName.
+            if (isset($this->queryParams['disease_name'])) {
+                $disease_name = $this->queryParams['disease_name'];
+                $this->criteria->join = 'left join disease_hospital_join dhj on (t.`id`=dhj.`hospital_id`) left join disease d on d.id=dhj.disease_id';
+                $this->criteria->addSearchCondition('d.name', $disease_name);
+                $this->criteria->distinct = true;
+            }
             // Cate.
             if (isset($this->queryParams['cate'])) {
                 $cateId = $this->queryParams['cate'];
@@ -45,6 +52,7 @@ class HospitalSearch extends ESearchModel {
                 $this->criteria->params[":cateId"] = $cateId;
                 $this->criteria->distinct = true;
             }
+
         }
     }
 

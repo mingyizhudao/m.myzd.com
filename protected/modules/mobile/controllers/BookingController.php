@@ -103,9 +103,9 @@ class BookingController extends MobileController {
                 $form->user_agent = StatCode::USER_AGENT_MOBILEWEB;
             }
             if ($this->isUserAgentIOS()) {
-                $this->render('bookDoctor', array('model' => $form));
+                $this->render('bookDept', array('model' => $form));
             } else {
-                $this->render('bookDoctorAndroid', array('model' => $form));
+                $this->render('bookDeptAndroid', array('model' => $form));
             }
         }
     }
@@ -130,6 +130,13 @@ class BookingController extends MobileController {
                 $form = new BookDoctorForm();
                 $form->setAttributes($values, true);
                 $form->setDoctorData();
+                $form->initModel();
+                $form->validate();
+            } elseif (isset($values['hp_dept_id'])) {
+                // 预约医生
+                $form = new BookDeptForm();
+                $form->setAttributes($values, true);
+                $form->setHpDeptlData();
                 $form->initModel();
                 $form->validate();
             }

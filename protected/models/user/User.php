@@ -50,6 +50,7 @@ class User extends EActiveRecord {
             array('password', 'length', 'max' => 64),
             array('password', 'length', 'min' => 64),
             array('salt', 'length', 'min' => 40),
+            array('uid', 'length', 'is'=>32, 'on' => 'register'),
             array('password_raw', 'required', 'message' => '请填写{attribute}.', 'on' => 'register'),
             array('password_raw', 'length', 'min' => 4, 'max' => 40, 'tooShort' => '{attribute}不可少于4位.', 'tooLong' => '{attribute}不可超过40位', 'on' => 'register'),
             array('date_activated, last_login_time, date_created, date_updated, date_deleted', 'safe'),
@@ -136,6 +137,14 @@ class User extends EActiveRecord {
         ));
     }
 
+    public function beforeValidate(){
+        parent::beforeValidate();
+        if(is_null($this->uid)){
+            $this->createUID();
+        }
+        return true;
+    }
+
     /**
      * Returns the static model of the specified AR class.
      * Please note that you should have this exact method in all your CActiveRecord descendants!
@@ -165,6 +174,7 @@ class User extends EActiveRecord {
     public function createNewModel() {
         $this->createSalt();
         $this->createPassword();
+//        $this->createUID();
     }
 
     public function checkLoginPassword($passwordInput) {
@@ -193,6 +203,9 @@ class User extends EActiveRecord {
     }
 
     /*     * ****** Private Methods ******* */
+    private function createUID(){
+        $this->uid = $this->strRandom(32);
+    }
 
     private function createSalt() {
         $this->salt = $this->strRandom(40);
@@ -246,6 +259,10 @@ class User extends EActiveRecord {
 
     public function getUserMedicalRecords() {
         return $this->userMedicalRecords->with('mrBookings');
+    }
+
+    public function getUid() {
+        return $this->uid;
     }
 
     public function getUsername() {

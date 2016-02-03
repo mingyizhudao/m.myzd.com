@@ -29,7 +29,7 @@ class MobileModule extends CWebModule {
             ),
                 ), true);
 
-        $this->setTheme('m4');
+        $this->setTheme('m5');
         $this->defaultController = 'home';
     }
 

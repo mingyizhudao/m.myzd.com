@@ -10,6 +10,7 @@ class ApiViewHospitalSearch extends EApiViewService {
     private $locations;
     private $cityId;
     private $currentLocation;
+    private $count;
 
     public function __construct($searchInputs) {
         parent::__construct();
@@ -24,16 +25,27 @@ class ApiViewHospitalSearch extends EApiViewService {
         // load Hospitals.
         $this->loadHospitals();
         // load Location Navigation.
-        $this->loadLocations();
+//        $this->loadLocations();
+        if ($this->getCount) {
+            $this->loadCount();
+        }
+    }
+
+    private function loadCount() {
+        if (is_null($this->count)) {
+            $count = $this->hospitalSearch->count();
+            $this->count = $count;
+        }
     }
 
     protected function createOutput() {
         if (is_null($this->output)) {
             $this->output = array(
                 'status' => self::RESPONSE_OK,
-                'currentLocation' => $this->currentLocation,
-                'locations' => $this->locations, //@used by app.
+//                'currentLocation' => $this->currentLocation,
+//                'locations' => $this->locations, //@used by app.
                 'hospitals' => $this->hospitals,
+                'count' => $this->count,
             );
         }
     }

@@ -74,7 +74,8 @@ class Doctor extends EActiveRecord {
             array('email, search_keywords', 'length', 'max' => 100),
             array('password', 'length', 'max' => 64),
             array('salt', 'length', 'max' => 40),
-//            array('honour', 'length', 'max' => 800),
+//            array('honour', 'length', 'max' => 1500),
+//            array('career_exp', 'length', 'max' => 1000),
             array('date_activated, date_verified, last_login_time, date_created, date_updated, date_deleted', 'safe'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
@@ -91,6 +92,7 @@ class Doctor extends EActiveRecord {
         return array(
             'doctorAvatar' => array(self::HAS_ONE, 'DoctorAvatar', 'doctor_id'),
             'doctorCerts' => array(self::HAS_MANY, 'DoctorCert', 'doctor_id'),
+            'doctorExpertTeam' => array(self::HAS_ONE, 'ExpertTeam', 'leader_id'),
             //'medicalRecordAssignments' => array(self::HAS_MANY, 'MedicalRecordAssignment', 'doctor_id'),
             'doctorHospital' => array(self::BELONGS_TO, 'Hospital', 'hospital_id'),
             'doctorHpDept' => array(self::BELONGS_TO, 'HospitalDepartment', 'hp_dept_id'),
@@ -127,6 +129,7 @@ class Doctor extends EActiveRecord {
             'surgery_specialty' => Yii::t('doctor', '擅长手术'),
             'specialty' => Yii::t('doctor', '关联疾病'),
             'search_keywords' => Yii::t('doctor', '搜索关键词'),
+            'career_exp' => Yii::t('doctor', '执业经历'),
             'description' => Yii::t('doctor', '擅长描述'),
             'role' => Yii::t('doctor', '角色'),
             'honour' => Yii::t('doctor', '荣誉'),
@@ -338,6 +341,23 @@ class Doctor extends EActiveRecord {
         return $this->findAll($criteria);
     }
 
+    public function getByDoctorId($doctor_id){
+        $criteria = new CDbCriteria;
+        $criteria->addCondition('t.date_deleted is NULL');
+        $criteria->compare('doctor_id', $doctor_id);
+        $criteria->limit = 1;
+        return $this->find($criteria);
+    }
+    public function getByDiseaseId($diseaseId, $doctor_id){
+        $criteria = new CDbCriteria;
+        $criteria->join = 'left join disease_doctor_join b on (t.`id`=b.`doctor_id`)';
+        $criteria->addCondition('t.date_deleted is NULL');
+        $criteria->addNotInCondition('doctor_id', array($doctor_id));
+        $criteria->compare('b.disease_id', $diseaseId);
+        $criteria->limit = 3;
+        return $this->findAll($criteria);
+    }
+
     /*     * ****** Display Methods ******* */
 
     public function getAbsUrlAvatar($thumbnail = false) {
@@ -448,6 +468,10 @@ class Doctor extends EActiveRecord {
         return $this->doctorCity;
     }
 
+    public function getDoctorExpertTeam() {
+        return $this->doctorExpertTeam;
+    }
+
     public function getHospital() {
         return $this->doctorHospital;
     }
@@ -459,7 +483,7 @@ class Doctor extends EActiveRecord {
     public function getFaculties() {
         return $this->doctorFaculties;
     }
-    
+
     public function getDiseases() {
         return $this->doctorDiseases;
     }
@@ -547,18 +571,60 @@ class Doctor extends EActiveRecord {
     public function getHonourList() {
         return $this->honour;
     }
-
+    
     public function getDateCreated($format = null) {
         return $this->getDateAttribute($this->date_created, $format);
     }
-    
-    public function getDoctorDiseases(){
+
+    public function getDoctorDiseases() {
         return $this->doctorDiseases;
     }
-    
-    public function getIsContracted(){
+
+    public function getIsContracted() {
         return $this->is_contracted;
     }
-    
+
+    public function getIsExpteam() {
+        return isset($this->expteam_id) ? 1 : 0;
+    }
+
+    public function getExpteamId() {
+        return $this->expteam_id;
+    }
+
+    public function getCareerExp() {
+        return $this->career_exp;
+    }
+
+    public function getFileUploadRootPath() {
+        return Yii::app()->params['doctorAvatar'];
+    }
+
+    /**
+     * gets the file upload path of given foler name.
+     * @param type $folderName
+     * @return type 
+     */
+    public function getFileUploadPath($folderName = null) {
+        if ($folderName === null) {
+            return $this->getFileUploadRootPath();
+        } else {
+            return ($this->getFileUploadRootPath() . $folderName);
+        }
+    }
+
+    /**
+     * get File System Path
+     *
+     * @param string        	
+     * @return string
+     */
+    public function getFileSystemUploadPath($folderName = null) {
+        return (Yii::getPathOfAlias('webroot') . DIRECTORY_SEPARATOR . $this->getFileUploadPath($folderName));
+    }
+
+    public function getBaseUrl() {
+        return Yii::app()->getBaseUrl(true) . '/';
+    }
 
 }

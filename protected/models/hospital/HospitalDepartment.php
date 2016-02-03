@@ -185,4 +185,8 @@ class HospitalDepartment extends EActiveRecord {
         return $this->getByAttributes(array('name' => $name,'hospital_id'=>$hospitalId));
     }
 
+    public function getDescription() {
+        return $this->description;
+    }
+
 }

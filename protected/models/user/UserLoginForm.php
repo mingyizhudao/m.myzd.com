@@ -78,4 +78,8 @@ class UserLoginForm extends EFormModel {
             return false;
     }
 
+    public function setRole($role) {
+        $this->role = $role;
+    }
+
 }

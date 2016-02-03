@@ -117,8 +117,14 @@ class ApiController extends Controller {
 
             case"hospital":
                 $values = $_GET;
-                $apiService = new ApiViewHospitalSearch($values);
-                $output = $apiService->loadApiViewData();
+
+                if($api >= 7){
+                    $apiService = new ApiViewHospitalSearchV7($values);
+                    $output = $apiService->loadApiViewData();
+                } else {
+                    $apiService = new ApiViewHospitalSearch($values);
+                    $output = $apiService->loadApiViewData();
+                }
                 /*
                   $diseaseId = Yii::app()->request->getQuery('disease', null);
                   if (isset($diseaseId)) {
@@ -141,7 +147,10 @@ class ApiController extends Controller {
 
             case 'doctor':
                 $values = $_GET;
-                if($api >= 5){
+                if($api >= 7){
+                    $apiService = new ApiViewDoctorSearchV7($values);
+                    $output = $apiService->loadApiViewData();
+                }elseif ($api == 5 || $api == 6) {
                     $apiService = new ApiViewDoctorSearchV5($values);
                     $output = $apiService->loadApiViewData();
                 }elseif ($api == 4) {
@@ -194,10 +203,23 @@ class ApiController extends Controller {
                 $diseaseMgr = new DiseaseManager();
                 $output = $diseaseMgr->loadListDisease();
                 break;
+            case 'diseasename'://根据疾病名称获取疾病信息
+                $values = $_GET;
+                $apiService = new ApiViewDiseaseName($values);
+                $output = $apiService->loadApiViewData();
+                break;
             case 'city':
                 $values = $_GET;
                 $city = new ApiViewOpenCity($values);
                 $output = $city->loadApiViewData();
+                break;
+            case 'diseasecategory'://获取疾病分类
+                $apiService = new ApiViewDiseaseCategory();
+                $output = $apiService->loadApiViewData();
+                break;
+            case 'recommendeddoctors'://首页推荐的医生
+                $apiService = new ApiViewRecommendedDoctors();
+                $output = $apiService->loadApiViewData();
                 break;
             default:
                 // Model not implemented error
@@ -312,6 +334,10 @@ class ApiController extends Controller {
                     $apiSvc = new ApiViewDisease($id);
                     $output = $apiSvc->loadApiViewData();
                 }
+                break;
+            case 'diseasebycategory'://根据疾病分类获取疾病
+                $apiService = new ApiViewDiseaseByCategory($id);
+                $output = $apiService->loadApiViewData();
                 break;
             /*
               case 'diseaseinfo':
