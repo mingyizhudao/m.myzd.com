@@ -111,9 +111,8 @@ jQuery(function () {
                     if (data.status == 'ok') {
                         var inputCount = $(".MultiFile-applied").length - 1;
                         if (inputCount == 0) {
-                            //location.href = urlReturn + '?refNo=' + data.salesOrderRefNo;
                             enableBtnAndriod(btnSubmit);
-                            $('#success').removeClass('hide');
+                            location.href = urlReturn + '?refNo=' + data.salesOrderRefNo;
                         } else {
                             ajaxFileupload(data);
                         }
@@ -173,8 +172,7 @@ jQuery(function () {
                         if (inputCount == backCount) {
                             if (successCount == inputCount) {
                                 //alert("恭喜 上传成功!");
-                                //location.href = urlReturn + '?refNo=' + data.salesOrderRefNo;
-                                $('#success').removeClass('hide');
+                                location.href = urlReturn + '?refNo=' + data.salesOrderRefNo;
                             } else {
                                 //$失败操作
                             }

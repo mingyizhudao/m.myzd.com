@@ -369,10 +369,7 @@ $(function () {
                     //console.log(stats);
                     //location.href = uploadReturnUrl;
                     //location.href = uploadReturnUrl;
-                    J.popup({
-                        html: '<div><div class="popup-title">提示</div><div class="popup-content"><h4>提交成功！</h4><div class="mt20"><a data-target="link" href="' + uploadReturnUrl + '" class="btn btn-yes btn-block">确定</a></div></div></div>',
-                        pos: 'center'
-                    });
+                    location.href = uploadReturnUrl;
                 } else {
                     // 没有成功的图片，重设
                     //state = 'done';
@@ -550,10 +547,7 @@ $(function () {
                     } else {
                         //没有上传文件 表单数据添加成功 页面跳转
                         //uploadReturnUrl = uploadReturnUrl + '?refNo=' + data.salesOrderRefNo;
-                        J.popup({
-                            html: '<div><div class="popup-title">提示</div><div class="popup-content"><h4>提交成功！</h4><div class="mt20"><a data-target="link" href="' + uploadReturnUrl + '" class="btn btn-yes btn-block">确定</a></div></div></div>',
-                            pos: 'center'
-                        });
+                        location.href = uploadReturnUrl;
                     }
                     //enableBtn(btnSubmit);
                 } else {

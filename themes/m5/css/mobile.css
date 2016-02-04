@@ -425,7 +425,6 @@ header{
     margin: 10px auto 0;
     width: 80px;
     height: 80px;
-    border: 1px solid #ddd;
     border-radius: 50%;
     z-index: 0;
     overflow: hidden;

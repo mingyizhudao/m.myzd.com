@@ -9,7 +9,7 @@ $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/auth/sendSmsVerifyCode');
 $authActionType = AuthSmsVerify::ACTION_BOOKING;
 $urlSubmitForm = $this->createUrl("booking/ajaxQuickbook");
 $urlUploadFile = $this->createUrl("booking/ajaxUploadFile");
-$urlReturn = $this->createUrl('home/index');
+$urlReturn = $this->createUrl('order/view');
 $urlHomeIndex = $this->createUrl('home/index');
 $this->show_footer = false;
 ?>
