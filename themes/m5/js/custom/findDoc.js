@@ -289,9 +289,13 @@ function readyDoc(data) {
                 if (results[i].isContracted == 1) {
                     innerHtml += '<div class="sign w60p">签约专家</div>'
                 }
+                var doctorAtitle = '';
+                if (results[i].aTitle != '无') {
+                    doctorAtitle = results[i].aTitle;
+                }
                 innerHtml += '</div>' +
                         '<div class="ml10 col-1 w75">' +
-                        '<div class="mt10 color-black2 font-s16">' + results[i].name + '<span class="ml5">' + results[i].aTitle + '</span></div>' +
+                        '<div class="mt10 color-black2 font-s16">' + results[i].name + '<span class="ml5">' + doctorAtitle + '</span></div>' +
                         '<div class="mt5 color-black6">' + results[i].hpDeptName + '<span class="ml5">' + results[i].mTitle + '</span></div>' +
                         '<div class="mt5 color-black6">' + results[i].hpName + '</div>' +
                         '</div>' +

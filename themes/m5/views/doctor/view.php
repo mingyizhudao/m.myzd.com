@@ -23,7 +23,14 @@ $this->show_footer = false;
                         </div>
                     </div>
                     <div class="ml10 col-1 w50">
-                        <div class="mt10 font-s16 color-black3"><?php echo $doctor->name; ?><span class="ml10"><?php echo $doctor->aTitle; ?></span></div>
+                        <div class="mt10 font-s16 color-black3"><?php echo $doctor->name; ?>
+                            <span class="ml10"><?php
+                                if ($doctor->aTitle == '无') {
+                                    echo '';
+                                } else {
+                                    echo $doctor->aTitle;
+                                }
+                                ?></span></div>
                         <div class="mt5 color-gray4"><?php echo $navigation->cate_name; ?><span class="ml10"><?php echo $doctor->mTitle; ?></span></div>
                         <div class="mt5 color-black6"><?php echo $doctor->hospitalName; ?></div>
                     </div>
@@ -57,7 +64,7 @@ $this->show_footer = false;
                     for ($i = 0; $i < count($honour); $i++) {
                         ?>
                         <div class="bgStars color-black6">
-                            <?php echo $honour[$i]; ?>
+                        <?php echo $honour[$i]; ?>
                         </div>
                         <?php
                     }
