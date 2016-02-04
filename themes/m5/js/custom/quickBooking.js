@@ -369,7 +369,10 @@ $(function () {
                     //console.log(stats);
                     //location.href = uploadReturnUrl;
                     //location.href = uploadReturnUrl;
-                    location.href = uploadReturnUrl;
+                    J.popup({
+                        html: '<div><div class="popup-title">提示</div><div class="popup-content"><h4>提交成功！</h4><div class="mt20"><a data-target="link" href="' + uploadReturnUrl + '" class="btn btn-yes btn-block">确定</a></div></div></div>',
+                        pos: 'center'
+                    });
                 } else {
                     // 没有成功的图片，重设
                     //state = 'done';
@@ -540,14 +543,17 @@ $(function () {
                 if (data.status == 'ok') {
                     fileParam.id = data.booking.id;
                     //基本数据插入成功  判断是否有图片
-                    uploadReturnUrl = uploadReturnUrl + '?refNo=' + data.salesOrderRefNo;
+                    //uploadReturnUrl = uploadReturnUrl + '?refNo=' + data.salesOrderRefNo;
                     if (state == 'ready') {
                         //文件上传 自动跳转
                         uploader.upload();
                     } else {
                         //没有上传文件 表单数据添加成功 页面跳转
                         //uploadReturnUrl = uploadReturnUrl + '?refNo=' + data.salesOrderRefNo;
-                        location.href = uploadReturnUrl;
+                        J.popup({
+                            html: '<div><div class="popup-title">提示</div><div class="popup-content"><h4>提交成功！</h4><div class="mt20"><a data-target="link" href="' + uploadReturnUrl + '" class="btn btn-yes btn-block">确定</a></div></div></div>',
+                            pos: 'center'
+                        });
                     }
                     //enableBtn(btnSubmit);
                 } else {

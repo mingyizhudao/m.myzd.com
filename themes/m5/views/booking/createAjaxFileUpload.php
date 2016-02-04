@@ -11,7 +11,7 @@ $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/auth/sendSmsVerifyCode');
 $authActionType = AuthSmsVerify::ACTION_BOOKING;
 $urlSubmitForm = $this->createUrl("booking/ajaxQuickbook");
 $urlUploadFile = $this->createUrl("booking/ajaxUploadFile");
-$urlReturn = $this->createUrl('order/view');
+$urlReturn = $this->createUrl('home/index');
 $urlHomeIndex = $this->createUrl('home/index');
 $this->show_footer = false;
 ?>
@@ -138,6 +138,17 @@ $this->show_footer = false;
                     </div>
                 </div>
             </div>  
+        </div>
+        <div id="success" class="hide">
+            <div id="jingle_popup" class="bookingConfirm">
+                <div class="bookingDiv">
+                    <div>预约成功</div>
+                    <div class="mt20">
+                        <a href="<?php echo $urlReturn; ?>" class="btn bg-green btn-yes color-black w60">确定</a>
+                    </div>
+                </div>
+            </div>
+            <div id="jingle_popup_mask" style="opacity: 0.3; display: block; position:fixed;"></div>
         </div>
     </div>
 </article>
