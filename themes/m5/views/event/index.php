@@ -61,8 +61,8 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
                         <div class="col-1 w80 font-s17">
                             韩阿姨的一封感谢信照亮千万患者就医路
                         </div>
-                        <div class="col-1 w20">
-                            <img src="<?php echo $urlResImage; ?>gushi/storyOne-1.png" class="w100">
+                        <div class="col-1 w20 text-right">
+                            <img src="<?php echo $urlResImage; ?>gushi/storyOne-1.png" class="w60p">
                         </div>
                     </div>
                 </a>
@@ -73,8 +73,8 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
                         <div class="col-1 w80 font-s17">
                             父亲两次抗癌,只为给女儿更久的爱
                         </div>
-                        <div class="col-1 w20">
-                            <img src="<?php echo $urlResImage; ?>gushi/storyTwo-1.png" class="w100">
+                        <div class="col-1 w20 text-right">
+                            <img src="<?php echo $urlResImage; ?>gushi/storyTwo-1.png" class="w60p">
                         </div>
                     </div>
                 </a>
@@ -85,8 +85,8 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
                         <div class="col-1 w80 font-s17">
                             年轻妈妈的生命倒计时，急需寻找“续命”肺源
                         </div>
-                        <div class="col-1 w20">
-                            <img src="<?php echo $urlResImage; ?>gushi/storyThree-1.png" class="w100">
+                        <div class="col-1 w20 text-right">
+                            <img src="<?php echo $urlResImage; ?>gushi/storyThree-1.png" class="w60p">
                         </div>
                     </div>
                 </a>

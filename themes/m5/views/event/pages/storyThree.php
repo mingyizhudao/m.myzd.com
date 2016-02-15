@@ -17,18 +17,18 @@ $this->show_footer = false;
             <div class="text-indent-2 mt16">经过2周的抢救治疗，年轻妈妈的病况并没有好转，由于在溺水过程中吸入大量淤泥，再加上肺部缺氧长达12分钟，导致肺部严重损伤，并出现严重萎缩，生命岌岌可危。目前这位年轻的妈妈在湘雅三医院重症监护室气管切开靠呼吸机及ECMO维持生命，经过无锡人民医院陈静瑜教授、协和医院ICU王小亭教授和中南大学湘雅三医院ICU杨明施教授的共同诊治，诊断结果为双肺毁损实变，肺功能不可逆，急需肺移植。</div>
             <div class="mt26 color-black">陈静瑜主任也在个人微博中写到：</div>
             <div class="mt16">
-                <img src="<?php echo $urlResImage; ?>zhuanti/mmjxfy_01.png">
+                <img src="<?php echo $urlResImage; ?>zhuanti/mmjxfy_01.png" class="w100">
             </div>
             <div class="mt26">
-                <img src="<?php echo $urlResImage; ?>zhuanti/mmjxfy_02.jpg">
+                <img src="<?php echo $urlResImage; ?>zhuanti/mmjxfy_02.jpg" class="w100">
             </div>
             <div class="mt12 font-s12">（患者目前在湘雅附三院重症监护室肺气管切开靠呼吸机及ECMO维持生命）</div>
             <div class="mt26">
-                <img src="<?php echo $urlResImage; ?>zhuanti/mmjxfy_03.jpg">
+                <img src="<?php echo $urlResImage; ?>zhuanti/mmjxfy_03.jpg" class="w100">
             </div>
             <div class="mt12 font-s12">（目前双肺毁损实变急需肺移植，急需有心脑死亡爱心器官捐献的A或者O型肺源）</div>
             <div class="mt26">
-                <img src="<?php echo $urlResImage; ?>zhuanti/mmjxfy_04.jpg">
+                <img src="<?php echo $urlResImage; ?>zhuanti/mmjxfy_04.jpg" class="w100">
             </div>
             <div class="mt12 font-s12">（目前双肺毁损实变急需肺移植，急需有心脑死亡爱心器官捐献的A或者O型肺源）</div>
             <div class="mt26 bb-dashed-gray"></div>

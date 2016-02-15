@@ -23,7 +23,7 @@ $this->show_footer = false;
             <div class="text-indent-2 mt16">看到越来越多的患者通过“名医主刀”的平台，得到帮助，获得更好的治疗，我们想说，我们会尽自己最大的努力来帮助那些需要我们帮助的患者，因为我们的努力对于患者而言就是通往幸福的一条康庄大道。</div>
             <div class="text-indent-2 mt16">孟先生出院之前，我们去看望他，手术之后他恢复的非常好，孟先生虽然话不多，但眼神中有掩藏不住的喜悦与感谢，孟先生的女儿也跟我们说出院之后她们就要动身回老家，她很感谢“名医主刀”给她提供的帮助，因为我们的帮助，让她可以继续享受父亲的爱，继续拥有幸福的生活。</div>
             <div class="mt16 mb20">
-                <img src="<?php echo $urlResImage; ?>zhuanti/img5.jpg">
+                <img src="<?php echo $urlResImage; ?>zhuanti/img5.jpg" class="w100">
             </div>
         </div>
     </div>

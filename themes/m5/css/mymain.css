@@ -24,6 +24,7 @@ body {width:100%;color: #333;letter-spacing: 1px;line-height: 1.5;font-size: 14p
 .pt40{padding-top:40px;}
 .pt50{padding-top:50px;}
 .pt61{padding-top:61px;}
+.pt64{padding-top:64px;}
 .pt-90{padding-top: 90%;}
 .pt-140{padding-top: 140%;}
 
@@ -198,6 +199,7 @@ body {width:100%;color: #333;letter-spacing: 1px;line-height: 1.5;font-size: 14p
 .w80p{width:80px;}
 .w90p{width:90px;}
 .w100p{width:100px;}
+.w170p{width:170px;}
 .w5p{width:5px;}
 .h5p{height:5px;}
 .h15p{height:15px;}

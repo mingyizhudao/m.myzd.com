@@ -36,7 +36,7 @@ $this->show_footer = false;
 </header>
 <article id="expert_list_article" class="active"  data-scroll="true">
     <ul class="list">
-        <li class="border-green color-green">预约号:<?php echo $results->refNo; ?></li>
+        <li class="color-green">预约号:<?php echo $results->refNo; ?></li>
         <li>
             <div class="grid">
                 <div class="col-0 w100p">患者姓名:</div>

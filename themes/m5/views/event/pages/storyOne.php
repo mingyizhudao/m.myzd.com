@@ -17,7 +17,7 @@ $this->show_footer = false;
             <div class="text-indent-2 mt16">但是患者排队挂号的时间是非常宝贵的，多等一秒病情就加重一分，危险就多一分。中国一年有很多的患者因等排队等床位延误病情，甚至还有的在等待的过程中病情加重远离人世。</div>
             <div class="text-indent-2 mt16">7月6号韩阿姨的儿子找到了我们。在客服的帮助下，韩阿姨家人在网站提交病例了病例，我们医疗客服在专家库中为其精准匹配相关专家，当天就为其对接到北京安贞医院胸外科专家。医疗客服将韩阿姨病例资料传送到专家手中。专家当天了解其详细病情及身体状况之后第二天为其安排手术，并且手术非常成功。互联网手术直通车居然这样便捷，这让韩阿姨深深记住“名医主刀”这几个字。</div>
             <div class="mt16 mb20">
-                <img src="<?php echo $urlResImage; ?>zhuanti/hanayi.jpg">
+                <img src="<?php echo $urlResImage; ?>zhuanti/hanayi.jpg" class="w100">
             </div>
         </div>
     </div>

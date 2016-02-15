@@ -14,8 +14,8 @@ $this->show_footer = false;
         <div class="mt21 font-s12">2015-12-09<span class="color-blue ml7">来源:名医主刀</span></div>
         <div class="mt26 text-center grid">
             <div class="col-1 w25"></div>
-            <div class="col-1 w50">
-                <img class="w100" src="<?php echo $urlResImage; ?>zhuanti/lujinsong.png">
+            <div class="col-1 w50 text-center">
+                <img class="w170p" src="<?php echo $urlResImage; ?>zhuanti/lujinsong.png">
             </div>
             <div class="col-1 w25"></div>
         </div>

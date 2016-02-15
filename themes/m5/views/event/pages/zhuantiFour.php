@@ -11,7 +11,7 @@ $this->show_footer = false;
 <article id="zhuantiFour_article" class="active" data-scroll="true">
     <div class="pl15 pr15 mt26">
         <div>
-            <img src="<?php echo $urlResImage; ?>/zhuanti/gongyi.png">
+            <img src="<?php echo $urlResImage; ?>/zhuanti/gongyi.png" class="w100">
         </div>
         <div class=" mt16 font-s21 color-black5">名医主刀--百万公益金</div>
         <div class="mt21 font-s12">2015-12-09<span class="color-blue ml7">来源:名医主刀</span></div>
@@ -48,7 +48,7 @@ $this->show_footer = false;
                 <div class="col-1"></div>
             </div>
             <div class="pl20 pr20">
-                <img src="<?php echo $urlResImage; ?>/zhuanti/lineFour.png">
+                <img src="<?php echo $urlResImage; ?>/zhuanti/lineFour.png" class="w100">
             </div>
             <div class="grid">
                 <div class="col-0 w24">
@@ -84,11 +84,11 @@ $this->show_footer = false;
                         <div class="col-0 color-white">如何申请百万公益金?</div>
                         <div class="col-1"></div>
                     </div>
-                    <div class="grid pt61 color-white">
-                        <div class="col-1 w50 pl5">
+                    <div class="grid pt64 color-white">
+                        <div class="col-1 w50 plStep">
                             STEP1
                         </div>
-                        <div class="col-1 w50 text-right pr5">
+                        <div class="col-1 w50 text-right prStep">
                             STEP2
                         </div>
                     </div>
