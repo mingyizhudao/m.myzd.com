@@ -113,7 +113,7 @@ $this->show_footer = false;
                         innerHtml += '<li class="aDept" data-dept="' + results[i].id + '">' + results[i].name + '</li>';
                     }
                 }
-                innerHtml += '</ul></div><div class="col-1 w50" data-scroll="true" data- style="height:315px;">'
+                innerHtml += '</ul></div><div id="secondDept" class="col-1 w50" data-scroll="true" data- style="height:315px;">'
                 for (var i = 0; i < results.length; i++) {
                     var subCat = results[i].subCat;
                     //第一个不隐藏

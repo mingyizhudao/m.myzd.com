@@ -113,7 +113,7 @@ $('#diseaseSelect').tap(function () {
 
     function readyDisease(data) {
         var results = data.results;
-        var innerHtml = '<div class="grid color-black" data-scroll="true" style="margin-top:83px;height:315px;">' +
+        var innerHtml = '<div id="diseaseList" class="grid color-black" data-scroll="true" style="margin-top:83px;height:315px;">' +
                 '<ul class="list w100">';
         if (results) {
             var disease = results.disease;

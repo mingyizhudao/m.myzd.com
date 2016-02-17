@@ -235,7 +235,7 @@ $this->show_footer = false;
                 $(this).parents(".ui-field-contain").find("div.error").text("");
             } else {
                 $("#booking_corporate_name").val("");
-                $("#booking_corporate_name_show").parents(".ui-field-contain").find("div.error").remove();
+                $("#booking_corporate_name_show").parents(".ui-field-contain").nextAll("div.error").remove();
                 $(this).parent().after("<div class='error'>请填写医生企业名称</div> ");
             }
         });

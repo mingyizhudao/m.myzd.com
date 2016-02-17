@@ -181,8 +181,23 @@ footer .control-group li .imgCenter{
 #hospital_article #leftCity ul.list{
     background-color: #efefef;
 }
+#hospital_article #leftCity ul.list>li{
+    border-bottom: 1px solid #efefef;
+}
+#hospital_article #rightCity ul.list>li{
+    border-bottom: 1px solid #efefef;
+}
 #hospital_article .button, button {
     padding: 10px 10px;
+}
+#hospital_article select{
+    text-align: center;
+    background-color: #ffffff;
+    background-image: inherit;
+    border: 1px solid #cccccc;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+    padding: 10px 15px 10px 10px;
 }
 
 /*预约医生*/
@@ -201,7 +216,7 @@ footer .control-group li .imgCenter{
 #bookingDoc_article .bgSC{
     padding-left:25px;
     background:url('../images/shanchang.png') no-repeat;
-    background-size:24px 24px;
+    background-size:22px 22px;
 }
 #bookingDoc_article .bgHonor{
     padding-left:25px;
@@ -221,12 +236,12 @@ footer .control-group li .imgCenter{
 }
 @media screen and (max-width:375px){
     #bookingDoc_article .button{
-        padding:8px 20px;
+        padding:10px 20px 6px;
     }
 }
 @media screen and (max-width:320px){
     #bookingDoc_article .button{
-        padding:8px 15px;
+        padding:10px 15px 6px;
     }
 }
 #bookingDoc_article .list>li{
@@ -241,6 +256,15 @@ footer .control-group li .imgCenter{
     z-index: 0;
     overflow: hidden;
 }
+#findDoc_article select{
+    text-align: center;
+    background-color: #ffffff;
+    background-image: inherit;
+    border: 1px solid #cccccc;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+    padding: 10px 15px 10px 10px;
+}
 #findDoc_article .sign{
     font-size:12px;
     text-align:center;
@@ -251,6 +275,15 @@ footer .control-group li .imgCenter{
 #findDoc_article #highDept ul.list{
     background-color: #efefef;
 }
+#findDoc_article #highDept ul.list>li{
+    border-bottom: 1px solid #efefef;
+}
+#findDoc_article #secondDept ul.list>li{
+    border-bottom: 1px solid #efefef;
+}
+#findDoc_article #diseaseList ul.list>li{
+    border-bottom: 1px solid #efefef;
+}
 #findDoc_article #leftCity{
     background-color: #efefef;
 }
@@ -259,6 +292,12 @@ footer .control-group li .imgCenter{
 }
 #findDoc_article #leftCity ul.list{
     background-color: #efefef;
+}
+#findDoc_article #leftCity ul.list>li{
+    border-bottom: 1px solid #efefef;
+}
+#findDoc_article #rightCity ul.list>li{
+    border-bottom: 1px solid #efefef;
 }
 #findDoc_article .button, button{
     padding: 10px 10px;
@@ -281,11 +320,23 @@ footer .control-group li .imgCenter{
 #findDept_article #leftDept ul.list{
     background-color: #efefef;
 }
+#findDept_article #leftDept ul.list>li{
+    border-bottom: 1px solid #efefef;
+}
+#findDept_article #rightDept ul.list>li{
+    border-bottom: 1px solid #efefef;
+}
 #findDept_article #leftCity{
     background-color: #efefef;
 }
 #findDept_article #leftCity ul.list{
     background-color: #efefef;
+}
+#findDept_article #leftCity ul.list>li{
+    border-bottom: 1px solid #efefef;
+}
+#findDept_article #rightCity ul.list>li{
+    border-bottom: 1px solid #efefef;
 }
 #findDept_nav .grayImg>img{
     margin-left:10px;
@@ -294,6 +345,15 @@ footer .control-group li .imgCenter{
 }
 #findDept_article .button, button{
     padding: 10px 10px;
+}
+#findDept_article select{
+    text-align: center;
+    background-color: #ffffff;
+    background-image: inherit;
+    border: 1px solid #cccccc;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+    padding: 10px 15px 10px 10px;
 }
 
 /*首页*/
@@ -651,22 +711,22 @@ img {
 
 /*企业预约*/
 #createCop_article select {
-    height: auto;
-    font-size: 1em;
-    background-color: #FFFFFF;
-    background-image: linear-gradient(to bottom,#FFFFFF 0,#FFFFFF 100%);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.1);
+    background-color: #ffffff;
+    background-image: inherit;
+    border: 1px solid #cccccc;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
 }
 #createCop_article .error {
     color: #f00;
 }
 
 #createCopAndroid_article select {
-    height: auto;
-    font-size: 1em;
-    background-color: #FFFFFF;
-    background-image: linear-gradient(to bottom,#FFFFFF 0,#FFFFFF 100%);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.1);
+    background-color: #ffffff;
+    background-image: inherit;
+    border: 1px solid #cccccc;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
 }
 #createCopAndroid_article .error {
     color: #f00;
