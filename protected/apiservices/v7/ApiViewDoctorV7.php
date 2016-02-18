@@ -69,6 +69,7 @@ class ApiViewDoctorV7 extends EApiViewService {
         $data->description = $model->getDescription();
         $data->careerExp = $model->getCareerExp();
         $data->honour = $model->getHonourList();
+        $data->reasons = $model->getReasons();
         if($data->isExpteam){
             $this->members = ExpertTeam::model()->getById($model->getExpteamId())->getMembers();
         }
