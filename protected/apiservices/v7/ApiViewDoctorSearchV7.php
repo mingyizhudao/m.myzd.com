@@ -60,9 +60,10 @@ class ApiViewDoctorSearchV7 extends EApiViewService {
             $data->hpDeptName = $model->getHpDeptName();
             $data->desc = $model->getDescription();
             $data->imageUrl = $model->getAbsUrlAvatar();
-        //    $data->actionUrl = Yii::app()->createAbsoluteUrl('/mobile/booking/create', array('did' => $data->id, 'header' => 0, 'footer' => 0));   // @used by app.
+            //    $data->actionUrl = Yii::app()->createAbsoluteUrl('/mobile/booking/create', array('did' => $data->id, 'header' => 0, 'footer' => 0));   // @used by app.
             $data->actionUrl = $data->actionUrl = Yii::app()->createAbsoluteUrl('/api/booking');    // @user by app.
             $data->isContracted = $model->getIsContracted();
+            $data->reasons = $model->getReasons();
             $data->isExpteam = $model->getIsExpteam();
             $this->doctors[] = $data;
         }
