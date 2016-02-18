@@ -59,11 +59,10 @@ $urlUserView = $this->createUrl('user/view');
         });
     });
     $('#contactUs').tap(function () {
-        J.Popup.actionsheet([{
-                text: '拨打名医主刀热线',
-            }, {
-                text: '400-119-7900',
-            }
-        ]);
+        J.popup({
+            html: '<ul class="list text-center"><li>拨打名医主刀热线</li><li><a href="tel://4001197900">400-119-7900</a></li><li><a data-target="closePopup">取消</a></li></ul>',
+            pos: 'bottom',
+            showCloseBtn: false
+        });
     });
 </script>

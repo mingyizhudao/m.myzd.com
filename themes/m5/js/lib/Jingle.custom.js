@@ -1372,52 +1372,9 @@ J.Popup = (function ($) {
      * [{color:'red',text:'btn',handler:function(){}},{color:'red',text:'btn',handler:function(){}}]
      */
     var actionsheet = function (buttons) {
-        var markup = '<div ><ul class="list" style="text-align:center;"><li>拨打名医主刀热线</li><li><a>400-119-7900</a></li><li><a data-target="closePopup">取消</a></li></ul>';
-
-        markup += '';
-        markup += '</div>';
-        show({
-            html: markup,
-            pos: 'bottom',
-            showCloseBtn: false
-        });
-    }
-
-    var actionsheet1 = function (buttons) {
-        var markup = '<div style="height: 110px;text-align: center;font-size: 20px;font-weight: 600;margin-top: 10px;color:#221814 ">温馨提示' +
-                '<div class="mt10">确认退出登录</div>' +
-                '<div class="grid">' +
-                '<div class="col-1 mt10" style="border-top:1px solid #000;border-right:1px solid #000;">' +
-                '<a style="color:#000" data-target="closePopup" class="pt10 pb10"><div class="w-100 h-100">取消</div></a>' +
-                '</div>' +
-                '<div class="col-1 mt10" style="border-top:1px solid #000;border-left:1px solid #000;color:#19aea5;">' +
-                '<a href="centerLogin" data-target="link" style="color:#000"><div class="w-100 h-100">确认</div></a>' +
-                '</div>' +
-                '</div>' +
-                '</div>';
-
-        markup += '</div>';
-        show({
-            html: markup,
-            pos: 'center',
-            showCloseBtn: false,
-            onShow: function () {
-                $(this).find('a').each(function (i, a) {
-                    $(a).on('tap', function () {
-                        if (buttons[i] && buttons[i].handler) {
-                            buttons[i].handler.call(a);
-                        }
-                        hide();
-                    });
-                });
-            }
-        });
-    }
-
-    var actionsheet_a = function (buttons) {
         var markup = '<div class="actionsheet">';
         $.each(buttons, function (i, n) {
-            markup += '<button style="background-color: ' + n.backgroudColor + ' !important;">' + n.text + '</button>';
+            markup += '<button style="background-color: ' + n.color + ' !important;">' + n.text + '</button>';
         });
         markup += '<button class="alizarin">取消</button>';
         markup += '</div>';
@@ -1447,9 +1404,7 @@ J.Popup = (function ($) {
         confirm: confirm,
         popover: popover,
         loading: loading,
-        actionsheet: actionsheet,
-        actionsheet_a: actionsheet_a,
-        actionsheet1: actionsheet1
+        actionsheet: actionsheet
     }
 })(J.$);
 /**
