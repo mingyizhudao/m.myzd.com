@@ -39,13 +39,29 @@ $this->show_footer = false;
                     </div>
                 </div>
             </li>
+            <?php if (count($doctor->reasons) != 0) { ?>
+                <li class="baTJ">
+                    <div class="bgReason font-s16 color-black mb5 aFontSize">
+                        推荐理由
+                    </div>
+                    <?php
+                    for ($i = 0; $i < count($doctor->reasons); $i++) {
+                        ?>
+                        <div class="bgStars color-black6 bFontSize">
+                            <?php echo $doctor->reasons[$i]; ?>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                </li>
+            <?php } ?>
             <li>
                 <div class="bgSC">
-                    <div class="font-s16 color-black">擅长</div>
+                    <div class="font-s16 color-black aFontSize">擅长</div>
                     <?php
                     if (isset($doctor->description)) {
                         ?>
-                        <div class="mt5 color-black6"><?php echo $doctor->description; ?></div>
+                        <div class="mt5 color-black6 bFontSize"><?php echo $doctor->description; ?></div>
                         <?php
                     } else {
                         ?>
@@ -55,44 +71,30 @@ $this->show_footer = false;
                     ?>
                 </div>
             </li>
-            <li>
-                <div class="bgHonor font-s16 color-black mb5">
-                    荣誉
-                </div>
-                <?php
-                if (isset($honour)) {
+            <?php if (isset($honour) && !is_null($honour)) { ?>
+                <li>
+                    <div class="bgHonor font-s16 color-black mb5 aFontSize">
+                        荣誉
+                    </div>
+                    <?php
                     for ($i = 0; $i < count($honour); $i++) {
                         ?>
-                        <div class="bgStars color-black6">
-                        <?php echo $honour[$i]; ?>
+                        <div class="bgStars color-black6 bFontSize">
+                            <?php echo $honour[$i]; ?>
                         </div>
                         <?php
                     }
-                } else {
                     ?>
-                    <div class="bgStars color-black6">
-                        暂无
+                </li>
+            <?php } ?>
+            <?php if (isset($doctor->careerExp) && !is_null($doctor->careerExp)) { ?>
+                <li>
+                    <div class="bgCareer">
+                        <div class="font-s16 color-black mb5 aFontSize">执业经历</div>
+                        <div class="color-black6 bFontSize"><?php echo $doctor->careerExp; ?></div>
                     </div>
-                    <?php
-                }
-                ?>
-            </li>
-            <li>
-                <div class="bgCareer">
-                    <div class="font-s16 color-black mb5">执业经历</div>
-                    <?php
-                    if (isset($doctor->careerExp)) {
-                        ?>
-                        <div class="color-black6"><?php echo $doctor->careerExp; ?></div>
-                        <?php
-                    } else {
-                        ?>
-                        <div class="color-black6">暂无</div>
-                        <?php
-                    }
-                    ?>
-                </div>
-            </li>
+                </li>
+            <?php } ?>
         </ul>
     </div>
 </article>
