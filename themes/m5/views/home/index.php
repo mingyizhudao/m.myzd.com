@@ -20,16 +20,7 @@ $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
     <div>
         <div id="team-bxslider" class="">
             <ul class="bxslider">
-                <li class="slide">
-                    <a href="<?php echo $urlEventZhuantiFour; ?>">
-                        <img class="w100" src="<?php echo $urlResImage; ?>zhuanti/bg_mingYiZhuYi.jpg">
-                    </a>
-                </li>
-                <li class="slide">
-                    <a href="<?php echo $urlEventZhuantiOne; ?>">
-                        <img class="w100" src="<?php echo $urlResImage; ?>/zhuanti/bg_lujinsong.jpg">
-                    </a>
-                </li>
+
             </ul>
         </div>
         <div class="grid mt20">
@@ -87,6 +78,18 @@ $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
 </article>
 <script>
     $(document).ready(function () {
+        $html = '<li class="slide">' +
+                '<a href="<?php echo $urlEventZhuantiFour; ?>">' +
+                '<img class="w100" src="<?php echo $urlResImage; ?>zhuanti/bg_mingYiZhuYi.jpg">' +
+                '</a>' +
+                '</li>' +
+                '<li class="slide">' +
+                '<a href="<?php echo $urlEventZhuantiOne; ?>">' +
+                '<img class="w100" src="<?php echo $urlResImage; ?>/zhuanti/bg_lujinsong.jpg">' +
+                '</a>' +
+                '</li>';
+        $('#home_article .bxslider').html($html);
+
         $('.bxslider').bxSlider({
             mode: 'fade',
             slideMargin: 0,
