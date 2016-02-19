@@ -2,7 +2,7 @@
 
 class UserController extends MobileController {
 
-      /**
+    /**
      * @return array action filters
      */
     public function filters() {
@@ -11,7 +11,7 @@ class UserController extends MobileController {
             'postOnly + delete', // we only allow deletion via POST request
         );
     }
-    
+
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
@@ -76,6 +76,8 @@ class UserController extends MobileController {
         if (isset($user)) {
             $this->redirect(array('view'));
         }
+
+        $returnUrl = $this->getReturnUrl($this->createUrl('user/view'));
         $form = new UserDoctorMobileLoginForm();
         $form->role = StatCode::USER_ROLE_PATIENT;
         if (isset($_POST['UserDoctorMobileLoginForm'])) {
@@ -91,7 +93,8 @@ class UserController extends MobileController {
         }
         //失败 则返回登录页面
         $this->render("login", array(
-            'model' => $form
+            'model' => $form,
+            'returnUrl' => $returnUrl
         ));
     }
 
