@@ -52,20 +52,16 @@ $this->show_footer = false;
                 ?>
             </div>
         <?php } ?>
-        <div class="divSC">
-            <div class="bgSC font-s16 color-black aFontSize">擅长</div>
-            <?php
-            if (isset($doctor->description)) {
-                ?>
-                <div class="pl25 mt5 color-black6 bFontSize"><?php echo $doctor->description; ?></div>
-                <?php
-            } else {
-                ?>
-                <div class="mt5 color-black6">暂无</div>
-                <?php
-            }
+        <?php
+        if (isset($doctor->description) && (trim($doctor->description)!='')) {
             ?>
-        </div>
+            <div class="divSC">
+                <div class="bgSC font-s16 color-black aFontSize">擅长</div>
+                <div class="pl25 mt5 color-black6 bFontSize"><?php echo $doctor->description; ?></div>
+            </div>
+            <?php
+        }
+        ?>
         <?php if (isset($honour) && !is_null($honour)) { ?>
             <div class="divHonor">
                 <div class="bgHonor font-s16 color-black mb5 aFontSize">
