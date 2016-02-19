@@ -14,85 +14,77 @@ $this->show_footer = false;
 </header>
 <article id="bookingDoc_article" class="active" data-scroll="true">
     <div>
-        <ul class="list">
-            <li>
-                <div class="grid">
-                    <div class="col-1 w25">
-                        <div class="imgDiv">
-                            <img class="imgDoc" src="<?php echo $doctor->imageUrl; ?>">
-                        </div>
-                    </div>
-                    <div class="ml10 col-1 w50">
-                        <div class="mt10 font-s16 color-black3"><?php echo $doctor->name; ?>
-                            <span class="ml10"><?php
-                                if ($doctor->aTitle == '无') {
-                                    echo '';
-                                } else {
-                                    echo $doctor->aTitle;
-                                }
-                                ?></span></div>
-                        <div class="mt5 color-gray4"><?php echo $navigation->cate_name; ?><span class="ml10"><?php echo $doctor->mTitle; ?></span></div>
-                        <div class="mt5 color-black6"><?php echo $doctor->hospitalName; ?></div>
-                    </div>
-                    <div class="col-1 grid middle w25 text-right">
-                        <a href="<?php echo $urlBookingDoctor; ?>/<?php echo $doctor->id; ?>" data-target="link" class="button bg-yellow">预约</a>
-                    </div>
+        <div class="grid doctorInf">
+            <div class="col-1 w25">
+                <div class="imgDiv">
+                    <img class="imgDoc" src="<?php echo $doctor->imageUrl; ?>">
                 </div>
-            </li>
-            <li>
-                <div class="bgSC">
-                    <div class="font-s16 color-black">擅长</div>
-                    <?php
-                    if (isset($doctor->description)) {
-                        ?>
-                        <div class="mt5 color-black6"><?php echo $doctor->description; ?></div>
-                        <?php
-                    } else {
-                        ?>
-                        <div class="mt5 color-black6">暂无</div>
-                        <?php
-                    }
-                    ?>
-                </div>
-            </li>
-            <li>
-                <div class="bgHonor font-s16 color-black mb5">
-                    荣誉
+            </div>
+            <div class="ml10 col-1 w50">
+                <div class="mt10 font-s16 color-black3"><?php echo $doctor->name; ?>
+                    <span class="ml10"><?php
+                        if ($doctor->aTitle == '无') {
+                            echo '';
+                        } else {
+                            echo $doctor->aTitle;
+                        }
+                        ?></span></div>
+                <div class="mt5 color-gray4"><?php echo $navigation->cate_name; ?><span class="ml10"><?php echo $doctor->mTitle; ?></span></div>
+                <div class="mt5 color-black6"><?php echo $doctor->hospitalName; ?></div>
+            </div>
+            <div class="col-1 grid middle w25 text-right">
+                <a href="<?php echo $urlBookingDoctor; ?>/<?php echo $doctor->id; ?>" data-target="link" class="button bg-yellow">预约</a>
+            </div>
+        </div>
+        <?php if (count($doctor->reasons) != 0) { ?>
+            <div class="divTJ">
+                <div class="bgReason font-s16 color-black mb5 aFontSize">
+                    推荐理由
                 </div>
                 <?php
-                if (isset($honour)) {
-                    for ($i = 0; $i < count($honour); $i++) {
-                        ?>
-                        <div class="bgStars color-black6">
-                        <?php echo $honour[$i]; ?>
-                        </div>
-                        <?php
-                    }
-                } else {
+                for ($i = 0; $i < count($doctor->reasons); $i++) {
                     ?>
-                    <div class="bgStars color-black6">
-                        暂无
+                    <div class="bgStars color-black6 bFontSize">
+                        <?php echo $doctor->reasons[$i]; ?>
                     </div>
                     <?php
                 }
                 ?>
-            </li>
-            <li>
-                <div class="bgCareer">
-                    <div class="font-s16 color-black mb5">执业经历</div>
-                    <?php
-                    if (isset($doctor->careerExp)) {
-                        ?>
-                        <div class="color-black6"><?php echo $doctor->careerExp; ?></div>
-                        <?php
-                    } else {
-                        ?>
-                        <div class="color-black6">暂无</div>
-                        <?php
-                    }
-                    ?>
+            </div>
+        <?php } ?>
+        <?php
+        if (isset($doctor->description) && (trim($doctor->description)!='')) {
+            ?>
+            <div class="divSC">
+                <div class="bgSC font-s16 color-black aFontSize">擅长</div>
+                <div class="pl25 mt5 color-black6 bFontSize"><?php echo $doctor->description; ?></div>
+            </div>
+            <?php
+        }
+        ?>
+        <?php if (isset($honour) && !is_null($honour)) { ?>
+            <div class="divHonor">
+                <div class="bgHonor font-s16 color-black mb5 aFontSize">
+                    荣誉
                 </div>
-            </li>
-        </ul>
+                <?php
+                for ($i = 0; $i < count($honour); $i++) {
+                    ?>
+                    <div class="bgStars color-black6 bFontSize">
+                        <?php echo $honour[$i]; ?>
+                    </div>
+                    <?php
+                }
+                ?>
+            </div>
+        <?php } ?>
+        <?php if (isset($doctor->careerExp) && !is_null($doctor->careerExp)) { ?>
+            <div class="divCareer">
+                <div class="bgCareer">
+                    <div class="font-s16 color-black mb5 aFontSize">执业经历</div>
+                    <div class="color-black6 bFontSize"><?php echo $doctor->careerExp; ?></div>
+                </div>
+            </div>
+        <?php } ?>
     </div>
 </article>

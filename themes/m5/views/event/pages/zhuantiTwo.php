@@ -90,7 +90,7 @@ $this->show_footer = false;
                     </div>
                 </a>
             </div>
-            <div class="mt15 mb20 border-green pl10 pt10 pr10 pb15">
+            <div class="mt15 mb20 border-green">
                 <a href="<?php echo $urlBookingDoctor; ?>/135">
                     <div class="pl10 pt10 pr10 pb15 color-black6">
                         <div class="font-s16">

@@ -302,12 +302,26 @@ function readyDoc(data) {
                         '<div class="mt5 color-black6">' + results[i].hpName + '</div>' +
                         '</div>' +
                         '</div>' +
-                        '</a>' +
-                        '<div class="pl15 pr15 pt5 pb10 font-s12 color-black bb-gray2">' +
-                        '擅长:' + hp_dept_desc +
-                        '</div>' +
-                        '<div class="bb5-gray "></div>' +
-                        '</div>';
+                        '</a>';
+                if (results[i].reasons.length == 0) {
+                    innerHtml += '<div class="pl15 pr15 pt5 pb10 font-s12 color-black bb-gray2">' +
+                            '擅长:' + hp_dept_desc +
+                            '</div>' +
+                            '<div class="bb5-gray "></div>' +
+                            '</div>';
+                } else {
+                    innerHtml += '<div class="pl15 bb-gray2">' +
+                            '<div class="pt10 pb10 pr15 font-s12 color-black bb-gray3">' +
+                            '擅长:' + hp_dept_desc +
+                            '</div>' +
+                            '<div class="pt10 pb10 pr15 font-s12 color-black">' +
+                            '推荐理由:' + results[i].reasons[0] +
+                            '</div>' +
+                            '</div>' +
+                            '<div class="bb5-gray "></div>' +
+                            '</div>';
+                }
+
             }
         }
     } else {
