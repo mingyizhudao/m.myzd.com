@@ -13,7 +13,7 @@ $urlRegister = $this->createUrl("user/register");
 $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/auth/sendSmsVerifyCode');
 $authActionType = AuthSmsVerify::ACTION_USER_LOGIN;
 $urlResImage = Yii::app()->theme->baseUrl . "/images";
-
+$returnUrl = $returnUrl;
 $this->show_footer = false;
 ?>
 <article id="login_article" class="active"  data-scroll="true">
@@ -46,6 +46,7 @@ $this->show_footer = false;
         echo CHtml::hiddenField("smsverify[actionUrl]", $urlGetSmsVerifyCode);
         echo CHtml::hiddenField("smsverify[actionType]", $authActionType);
         ?>
+        <input type="hidden" name="returnUrl" value="<?php echo $returnUrl; ?>">
         <ul class="list bg-none mt40">
             <li class="bb-none ml10">
                 <?php echo $form->numberField($model, 'username', array('placeholder' => '输入手机号码')); ?>

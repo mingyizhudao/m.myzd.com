@@ -9,7 +9,7 @@ $this->show_footer = false;
     </nav>
     <h1 class="title"><?php echo $data->hpDeptHospital->name; ?></h1>
 </header>
-<footer>
+<footer id="hosDept_footer">
     <button id="btnSubmit" type="button" class="button btn-yellow">预约</button>
 </footer>
 <article id="hosDept_article" class="active" data-scroll="true">

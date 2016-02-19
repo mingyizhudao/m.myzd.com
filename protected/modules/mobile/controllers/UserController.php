@@ -71,13 +71,12 @@ class UserController extends MobileController {
 
     //登陆
     public function actionLogin() {
+        $returnUrl = $this->getReturnUrl($this->createUrl('user/view'));
         $user = $this->getCurrentUser();
         //用户已登陆 直接进入个人中心
         if (isset($user)) {
             $this->redirect(array('view'));
-        }
-
-        $returnUrl = $this->getReturnUrl($this->createUrl('user/view'));
+        } 
         $form = new UserDoctorMobileLoginForm();
         $form->role = StatCode::USER_ROLE_PATIENT;
         if (isset($_POST['UserDoctorMobileLoginForm'])) {
@@ -86,9 +85,11 @@ class UserController extends MobileController {
             $form->autoRegister = true;
             $userMgr = new UserManager();
             $isSuccess = $userMgr->mobileLogin($form);
+            //var_dump($returnUrl);exit;
             if ($isSuccess) {
-                $user = $this->getCurrentUser();
-                $this->redirect(array('view'));
+                $url = $_POST['returnUrl'];
+                // $user = $this->getCurrentUser();
+                $this->redirect($url);
             }
         }
         //失败 则返回登录页面

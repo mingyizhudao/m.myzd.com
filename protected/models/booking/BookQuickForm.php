@@ -71,7 +71,7 @@ class BookQuickForm extends EFormModel {
             'hp_dept_id' => '科室',
             'hp_dept_name' => '科室名称',
             'disease_name' => '疾病诊断',
-            'disease_detail' => '病情',
+            'disease_detail' => '疾病描述',
             'date_start' => '最早',
             'date_end' => '最晚',
             'appt_date' => '预约日期',

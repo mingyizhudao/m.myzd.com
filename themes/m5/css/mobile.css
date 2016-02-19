@@ -87,6 +87,9 @@ footer .control-group li .imgCenter{
 }
 
 /*医院科室*/
+#hosDept_footer{
+    border-top: 1px solid #ffffff;
+}
 #hosDept_article .bgDiv{
     padding:15px 10px 10px 10px;
 }
@@ -201,24 +204,34 @@ footer .control-group li .imgCenter{
 }
 
 /*预约医生*/
-#bookingDoc_article{
-    background-color: #eeeeee;
-}
-#bookingDoc_article .doctorInf{
-    padding: 15px;
-    background-color: #ffffff;
-}
-#bookingDoc_article .imgDiv{
+#bookingDoc_nav .imgDiv{
     width:70px;
     height:70px;
     border-radius: 50%;
     overflow: hidden;
 }
-#bookingDoc_article .imgDoc{
+#bookingDoc_nav .imgDoc{
     display: block;
     width: 100%;
     border: 1px solid #ddd;
     z-index: 0;
+}
+#bookingDoc_nav .doctorInf{
+    padding: 15px;
+    background-color: #ffffff;
+}
+@media screen and (min-width:361px){
+    #bookingDoc_nav .button{
+        padding:10px 20px 6px;
+    }
+}
+@media screen and (max-width:360px){
+    #bookingDoc_nav .button{
+        padding:10px 15px 6px;
+    }
+}
+#bookingDoc_article{
+    background-color: #eeeeee;
 }
 #bookingDoc_article .divSC{
     padding: 15px;
@@ -287,16 +300,6 @@ footer .control-group li .imgCenter{
         padding-left:25px;
         background:url('../images/career.png') no-repeat;
         background-size:21px 21px;
-    }
-}
-@media screen and (min-width:361px){
-    #bookingDoc_article .button{
-        padding:10px 20px 6px;
-    }
-}
-@media screen and (max-width:360px){
-    #bookingDoc_article .button{
-        padding:10px 15px 6px;
     }
 }
 @media screen and (max-width:360px){
@@ -444,6 +447,14 @@ footer .control-group li .imgCenter{
 }
 
 /*首页*/
+#home_article .bx-pager{
+    background-color: transparent;
+    bottom: 0px;
+    z-index: 99;
+}
+#home_article .bx-wrapper{
+    margin: 0 auto 20px;
+}
 #home_article .sliderImg img{
     width:100%;
 }
@@ -496,11 +507,8 @@ footer .control-group li .imgCenter{
 
 /*搜索页面*/
 #search_header input[type=text]{
-    background: url('../images/search.png') no-repeat;
-    background-size: 16px 16px;
-    background-position-y: 1px;
     padding-top: 0px;
-    padding-left: 18px;
+    padding-left: 0px;
     padding-right: 0px;
     padding-bottom: 0px;
     color:#fff;

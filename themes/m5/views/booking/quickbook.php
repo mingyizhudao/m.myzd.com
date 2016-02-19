@@ -99,6 +99,9 @@ $this->show_footer = false;
                     <?php
                     $this->endWidget();
                     ?>
+                    <div>
+                        上传病例或影像资料
+                    </div>
                     <div class="ui-field-contain">
                         <?php echo $this->renderPartial('//booking/_uploadFile'); ?>
                     </div>

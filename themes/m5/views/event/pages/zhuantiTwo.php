@@ -49,7 +49,7 @@ $this->show_footer = false;
                 <a href="<?php echo $urlBookingDoctor; ?>/88">
                     <div class="pl10 pt10 pr10 pb15 color-black6">
                         <div class="font-s16">
-                            <span class="color-black">徐建屏</span>
+                            <span class="color-black">许建屏</span>
                             <span class="color-gray3">主任医师</span>
                         </div>
                         <div>阜外心血管病医院</div>

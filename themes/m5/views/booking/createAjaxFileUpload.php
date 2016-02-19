@@ -114,6 +114,9 @@ $this->show_footer = false;
                     <?php
                     $this->endWidget();
                     ?>
+                    <div>
+                        上传病例或影像资料
+                    </div>
                     <div class="uploadfile text-center mt20">
                         <?php
                         $this->widget('CMultiFileUpload', array(
