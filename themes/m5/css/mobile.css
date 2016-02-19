@@ -201,6 +201,13 @@ footer .control-group li .imgCenter{
 }
 
 /*预约医生*/
+#bookingDoc_article{
+    background-color: #eeeeee;
+}
+#bookingDoc_article .doctorInf{
+    padding: 15px;
+    background-color: #ffffff;
+}
 #bookingDoc_article .imgDiv{
     width:70px;
     height:70px;
@@ -213,6 +220,12 @@ footer .control-group li .imgCenter{
     border: 1px solid #ddd;
     z-index: 0;
 }
+#bookingDoc_article .divSC{
+    padding: 15px;
+    margin: 10px 5px 0px;
+    background-color: #ffffff!important;
+    border-radius: 7px;
+}
 @media screen and (max-width:360px){
     #bookingDoc_article .bgSC{
         padding-left:25px;
@@ -221,12 +234,18 @@ footer .control-group li .imgCenter{
         background-position: 2px 2px;
     }
 }
-@media screen and (min-width:360px){
+@media screen and (min-width:361px){
     #bookingDoc_article .bgSC{
         padding-left:25px;
         background:url('../images/shanchang.png') no-repeat;
         background-size:22px 22px;
     }
+}
+#bookingDoc_article .divHonor{
+    padding: 15px;
+    margin: 10px 5px 0px;
+    background-color: #ffffff!important;
+    border-radius: 7px;
 }
 @media screen and (max-width:360px){
     #bookingDoc_article .bgHonor{
@@ -236,7 +255,7 @@ footer .control-group li .imgCenter{
         background-position: 3px 2px;
     }
 }
-@media screen and (min-width:360px){
+@media screen and (min-width:361px){
     #bookingDoc_article .bgHonor{
         padding-left:25px;
         background:url('../images/honor.png') no-repeat;
@@ -249,6 +268,12 @@ footer .control-group li .imgCenter{
     background-size:11px 11px;
     background-position:10px 3px;
 }
+#bookingDoc_article .divCareer{
+    padding: 15px;
+    margin: 10px 5px 0px;
+    background-color: #ffffff!important;
+    border-radius: 7px;
+}
 @media screen and (max-width:360px){
     #bookingDoc_article .bgCareer{
         padding-left:25px;
@@ -257,25 +282,22 @@ footer .control-group li .imgCenter{
         background-position: 2px 3px;
     }
 }
-@media screen and (min-width:360px){
+@media screen and (min-width:361px){
     #bookingDoc_article .bgCareer{
         padding-left:25px;
         background:url('../images/career.png') no-repeat;
         background-size:21px 21px;
     }
 }
-@media screen and (max-width:375px){
+@media screen and (min-width:361px){
     #bookingDoc_article .button{
         padding:10px 20px 6px;
     }
 }
-@media screen and (max-width:320px){
+@media screen and (max-width:360px){
     #bookingDoc_article .button{
         padding:10px 15px 6px;
     }
-}
-#bookingDoc_article .list>li{
-    padding:15px;
 }
 @media screen and (max-width:360px){
     #bookingDoc_article .bgReason{
@@ -285,7 +307,7 @@ footer .control-group li .imgCenter{
         background-position-y: 3px;
     }
 }
-@media screen and (min-width:360px){
+@media screen and (min-width:361px){
     #bookingDoc_article .bgReason{
         background: url('../images/reason.png') no-repeat;
         background-size: 22px 22px;
@@ -293,7 +315,11 @@ footer .control-group li .imgCenter{
         background-position-y: 2px;
     }
 }
-#bookingDoc_article .baTJ{
+#bookingDoc_article .divTJ{
+    margin: 10px 5px 0px 5px;
+    border-radius: 7px;
+    background-color: #ffffff!important;
+    padding: 15px;
     background: url('../images/tuijian.png') no-repeat;
     background-size: 37px 37px;
     background-position-y: 0;
