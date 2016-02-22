@@ -227,7 +227,7 @@ footer .control-group li .imgCenter{
 }
 @media screen and (max-width:360px){
     #bookingDoc_nav .button{
-        padding:10px 15px 6px;
+        padding:8px 17px 4px;
     }
 }
 #bookingDoc_article{
@@ -244,7 +244,7 @@ footer .control-group li .imgCenter{
         padding-left:25px;
         background:url('../images/shanchang.png') no-repeat;
         background-size:16px 16px;
-        background-position: 2px 2px;
+        background-position: 2px 0px;
     }
 }
 @media screen and (min-width:361px){
@@ -265,7 +265,7 @@ footer .control-group li .imgCenter{
         padding-left:25px;
         background:url('../images/honor.png') no-repeat;
         background-size:16px 16px;
-        background-position: 3px 2px;
+        background-position: 3px 0px;
     }
 }
 @media screen and (min-width:361px){
@@ -292,7 +292,7 @@ footer .control-group li .imgCenter{
         padding-left:25px;
         background:url('../images/career.png') no-repeat;
         background-size:16px 16px;
-        background-position: 2px 3px;
+        background-position: 2px 1px;
     }
 }
 @media screen and (min-width:361px){
@@ -307,7 +307,7 @@ footer .control-group li .imgCenter{
         background: url('../images/reason.png') no-repeat;
         background-size: 20px 20px;
         padding-left: 25px;
-        background-position-y: 3px;
+        background-position-y: 0px;
     }
 }
 @media screen and (min-width:361px){
@@ -841,6 +841,38 @@ img {
     background-color: #32C572;
 }
 
+/*手术直通车*/
+#zhitongche{background-color: #e9f5f4;}
+#zhitongche .section-title{padding:5px 15px;font-size:17px;letter-spacing: 2px;background:url(../images/icons/round.png) 15px center no-repeat;border-bottom: 2px solid #abdad6;}
+#zhitongche .section-title>.fa{font-size: 12px;}
+#zhitongche .section-body{padding: 10px 15px 20px;}
+#zhitongche .desc{font-size: 15px;letter-spacing: 2px;line-height: 1.5em;}
+#zhitongche .zhitongche-title{height: 122px;font-size:26px;text-align: center;color: #19aea5;background: url(../images/zhitongche/round-title.png) center center no-repeat;background-size: 100%;}
+#zhitongche .zhitongche-title.pt50{padding-top: 50px;}
+#zhitongche .zhitongche-title.pt20{padding-top: 20px;}
+#zhitongche .section-body{padding: 10px 15px 0px;}
+#zhitongche .section-body .ui-grid-a .ui-block-a{padding-right: 10px;}
+#zhitongche .section-body .ui-grid-a .ui-block-b{padding-left: 10px;}
+#zhitongche .section-body .introduce-title{font-size: 15px;color: #19aea5;margin-bottom: 3px;}
+#zhitongche .section-body .introduce-title>span{display: inline-block;width: 1.1em;height: 1.1em;font-size: 16px;border-radius: 50%;color: #fff;background-color:#19aea5;text-align: right;line-height: 1.1em;padding-right: 2px;}
+#zhitongche .section-body .introduce-title.step1{background-image: url(../images/zhitongche/step1.png);background-position: 0 center ;background-repeat: no-repeat;background-size: contain;padding-left: 1.6em;}
+#zhitongche .section-body .introduce-title.step2{background-image: url(../images/zhitongche/step2.png) ;background-position: right center ;background-repeat: no-repeat;background-size: contain;padding-right: 1.6em;}
+#zhitongche .section-body .introduce-title.step3{background-image: url(../images/zhitongche/step3.png) ;background-position: 0 center ;background-repeat: no-repeat;background-size: contain;padding-left: 1.6em;}
+#zhitongche .section-body .introduce-title.step4{background-image: url(../images/zhitongche/step4.png) ;background-position: right center ;background-repeat: no-repeat;background-size: contain;padding-right: 1.6em;}
+#zhitongche .section-body .introduce-content{padding: 5px;font-size: 13px;}
+#zhitongche .section-body .step,#zhitongche .section-body .long{padding:20px 0;background: url(../images/zhitongche/wire.png) center 0 repeat-y;}
+#zhitongche .section-body .step .introduce-content{min-height: 60px;padding: 5px 10px 5px 15px;background-color: #e9f5f4;}
+#zhitongche .section-body .step .introduce-content.bg-left{background-image: url(../images/zhitongche/bg-blue.png) ;background-repeat: no-repeat;background-size: 100% 100%;}
+#zhitongche .section-body .step .introduce-content.bg-right{background-image: url(../images/zhitongche/bg-blue-r.png) ;background-repeat: no-repeat;background-size: 100% 100%;}
+#zhitongche .section-body .long .introduce-content{background-color: #abdad6;color: #fff;border-radius: 3px;font-size: 13px;letter-spacing: 1.5px;min-height: 80px;line-height: 1.6em;}
+#zhitongche .section-body .long .mt-20{margin-top: -30px;}
+#zhitongche .qa .question{font-weight: bold;margin-top: 5px;}
+#zhitongche .qa .question .qtitle{background: url(../images/zhitongche/bg-question.png) no-repeat;background-size: 100% 100%;padding: 5px;color: #fff;}
+#zhitongche .qa .answer{line-height: 1.5em;color: #717071;padding-left: 30px;background: url(../images/zhitongche/bg-answer.png) 0 20px no-repeat;background-size: 2em;}
+#zhitongche .qa .answer>span{padding:10px 10px 20px 10px;display: inline-block;background-color: #eff7f7;min-height: 70px;margin-top: 5px;}
+#zhitongche .btn-eteam{text-align: center;}
+#zhitongche .btn-eteam>a{display: inline-block;margin: 0 auto;border-radius: 5px;box-shadow: 1px 1px 5px #888;font-size: 14px;letter-spacing: 3px;}
+#zhitongche .wire{background: url(../images/zhitongche/wire.png) center 0 repeat-y;}
 
 
 

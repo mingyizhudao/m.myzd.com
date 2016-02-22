@@ -37,7 +37,7 @@ $this->show_footer = false;
             <div class="mt5 color-gray4"><?php echo $doctor->hpDeptName; ?><span class="ml10"><?php echo $doctor->mTitle; ?></span></div>
             <div class="mt5 color-black6 font-s14"><?php echo $doctor->hospitalName; ?></div>
         </div>
-        <div class="col-1 grid middle w25 text-right font-s14">
+        <div class="col-1 grid middle w25 text-right font-s16">
             <a href="<?php echo $urlBookingDoctor; ?>/<?php echo $doctor->id; ?>" data-target="link" class="button bg-yellow">预约</a>
         </div>
     </div>
@@ -46,7 +46,7 @@ $this->show_footer = false;
     <div>
         <?php if (count($doctor->reasons) != 0) { ?>
             <div class="divTJ">
-                <div class="bgReason font-s16 color-black mb5 aFontSize">
+                <div class="bgReason font-s16 color-black pb5 mb5 aFontSize">
                     推荐理由
                 </div>
                 <?php
