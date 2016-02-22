@@ -19,7 +19,8 @@ $('#selectCity').tap(function (e) {
         showCloseBtn: false
     });
 
-    $('.aCity').tap(function () {
+    $('.aCity').click(function (e) {
+        e.preventDefault();
         var dataCity = $(this).attr('data-city');
         $('.aCity').each(function () {
             if (dataCity == $(this).attr('data-city')) {
@@ -37,7 +38,7 @@ $('#selectCity').tap(function (e) {
         });
     });
 
-    $('.cCity').tap(function (e) {
+    $('.cCity').click(function (e) {
         e.preventDefault();
         $cityId = $(this).attr('data-city');
         $cityName = $(this).html();

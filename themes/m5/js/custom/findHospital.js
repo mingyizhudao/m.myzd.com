@@ -29,7 +29,7 @@ $('#deptSelect').tap(function () {
         showCloseBtn: false
     });
 
-    $('.aDept').tap(function () {
+    $('.aDept').click(function () {
         var dataDept = $(this).attr('data-dept');
         $('.aDept').each(function () {
             if (dataDept == $(this).attr('data-dept')) {
@@ -47,7 +47,7 @@ $('#deptSelect').tap(function () {
         });
     });
 
-    $('.cDept').tap(function (e) {
+    $('.cDept').click(function (e) {
         e.preventDefault();
         $deptId = $(this).attr('data-dept');
         $deptName = $(this).html();
@@ -106,7 +106,7 @@ $('#citySelect').tap(function () {
         showCloseBtn: false
     });
 
-    $('.aCity').tap(function () {
+    $('.aCity').click(function () {
         var dataCity = $(this).attr('data-city');
         $('.aCity').each(function () {
             if (dataCity == $(this).attr('data-city')) {
@@ -124,7 +124,7 @@ $('#citySelect').tap(function () {
         });
     });
 
-    $('.cCity').tap(function (e) {
+    $('.cCity').click(function (e) {
         e.preventDefault();
         $deptId = $('#deptTitle').attr('data-dept');
         $cityId = $(this).attr('data-city');
