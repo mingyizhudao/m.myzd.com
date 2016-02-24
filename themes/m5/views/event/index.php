@@ -7,18 +7,33 @@ $urlEventZhuantiTwo = $this->createUrl('event/view', array('page' => 'zhuantiTwo
 $urlEventZhuantiThree = $this->createUrl('event/view', array('page' => 'zhuantiThree'));
 $urlEventZhuantiFour = $this->createUrl('event/view', array('page' => 'zhuantiFour'));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
+$isShow = Yii::app()->request->getQuery('page', 0);
+if ($isShow != 0) {
+    $this->show_footer = false;
+}
 ?>
-<header class="bg-green">
-    <ul class="control-group">
-        <li class="active">
-            <a id="zhuanti">手术专题</a>
-        </li>
-        <li>
-            <a id="story">就医故事</a>
-        </li>
-    </ul>
-</header>
-<article id="zhuanti_article" class="active" data-scroll="true" data-active="find_footer">
+<?php if ($isShow == 0) { ?>
+    <header class="bg-green">
+        <ul class="control-group">
+            <li class="active">
+                <a id="zhuanti">手术专题</a>
+            </li>
+            <li>
+                <a id="story">就医故事</a>
+            </li>
+        </ul>
+    </header>
+<?php } ?>
+<?php
+if ($isShow == 0 || $isShow == 1) {
+    $showZt = 'active';
+    $showStory = '';
+} else {
+    $showZt = '';
+    $showStory = 'active';
+}
+?>
+<article id="zhuanti_article" class="<?php echo $showZt; ?>" data-scroll="true" data-active="find_footer">
     <div>
         <ul class="list">
             <li>
@@ -52,7 +67,7 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
         </ul>
     </div>
 </article>
-<article id="story_article" data-scroll="true" data-active="find_footer">
+<article id="story_article" class="<?php echo $showStory; ?>" data-scroll="true" data-active="find_footer">
     <div>
         <ul class="list">
             <li>
