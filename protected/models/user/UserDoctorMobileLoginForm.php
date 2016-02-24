@@ -10,6 +10,7 @@ class UserDoctorMobileLoginForm extends EFormModel {
     public $_identity;
     public $authSmsVerify;    // AuthSmsVerify model.
     public $autoRegister = false;   // 自动注册
+    public $is_verify = true;
 
     // public $userExists = false;     //用户是否存在
 
@@ -37,12 +38,15 @@ class UserDoctorMobileLoginForm extends EFormModel {
     }
 
     public function authenticate() {
-        if ($this->hasErrors() === false) {   // no validation error.            
-            $this->verifyCodeForMobileLogin();
-            if ($this->authSmsVerify->isValid() === false) {
-                $this->errorFormCode = self::ERROR_VERIFYCODE_INVALID;
-                $this->addError('verify_code', $this->authSmsVerify->getError('code'));
-                return false;
+        if ($this->hasErrors() === false) {   // no validation error.  
+            //若无需验证码
+            if ($this->is_verify) {
+                $this->verifyCodeForMobileLogin();
+                if ($this->authSmsVerify->isValid() === false) {
+                    $this->errorFormCode = self::ERROR_VERIFYCODE_INVALID;
+                    $this->addError('verify_code', $this->authSmsVerify->getError('code'));
+                    return false;
+                }
             }
             $this->_identity = new MobileUserIdentity($this->username, $this->role);
             if ($this->_identity->authenticate() === false) {

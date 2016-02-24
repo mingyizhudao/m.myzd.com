@@ -2,12 +2,10 @@
 
 class BookingController extends MobileController {
 
-
-
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('createCorp', 'ajaxCreateCorp', 'ajaxUploadCorp', 'ajaxUploadFile', 'quickbook', 'ajaxQuickbook','create'),
+                'actions' => array('createCorp', 'ajaxCreateCorp', 'ajaxUploadCorp', 'ajaxUploadFile', 'quickbook', 'ajaxQuickbook', 'create'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -19,6 +17,7 @@ class BookingController extends MobileController {
             ),
         );
     }
+
     public function filterUserContext($filterChain) {
         $user = $this->loadUser();
         if (is_null($user)) {
@@ -29,7 +28,7 @@ class BookingController extends MobileController {
         }
         $filterChain->run();
     }
-    
+
     public function filters() {
         return array(
             'accessControl', // perform access control for CRUD operations
@@ -281,18 +280,9 @@ class BookingController extends MobileController {
                         $user = $this->getCurrentUser();
                         $form->mobile = $user->mobile;
                     } else {
-                        $mobile = $form->mobile;
-                        $user = User::model()->getByUsernameAndRole($mobile, StatCode::USER_ROLE_PATIENT);
-                        if (isset($user)) {
-                            $bookingUser = $user->getId();
-                        } else {
-                            // create new user.
-                            $userMgr = new UserManager();
-                            $user = $userMgr->createUserPatient($mobile);
-                            if (isset($user)) {
-                                $bookingUser = $user->getId();
-                            }
-                        }
+                        //数据验证成功 自动注册账号并登陆
+                        $this->RegisterUser($form);
+                        $bookingUser = $this->getCurrentUserId();
                     }
                     $booking->setAttributes($form->attributes, true);
                     if ($this->isUserAgentWeixin()) {
@@ -333,6 +323,18 @@ class BookingController extends MobileController {
         } else {
             $this->renderJsonOutput($output);
         }
+    }
+
+    private function RegisterUser(BookQuickForm $form) {
+        $userForm = new UserDoctorMobileLoginForm();
+        $userForm->is_verify = false;
+        $userForm->username = $form->mobile;
+        $userForm->verify_code = '123456';
+        $userForm->role = StatCode::USER_ROLE_PATIENT;
+        $userForm->autoRegister = true;
+        $userMgr = new UserManager();
+        $isSuccess = $userMgr->mobileLogin($userForm);
+        return $isSuccess;
     }
 
     public function actionAjaxUploadFile() {
