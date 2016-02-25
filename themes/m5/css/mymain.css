@@ -290,3 +290,4 @@ table.table tr.noborder>td {border: none;}
 .errorMessage{color: #f00;text-align:left;}
 
 #tag_close_popup{display:none;}
+#jingle_popup>#tag_close_popup{display:block;color: #fff}

@@ -9,9 +9,10 @@ $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/auth/sendSmsVerifyCode');
 $authActionType = AuthSmsVerify::ACTION_BOOKING;
 $urlSubmitForm = $this->createUrl("booking/ajaxQuickbook");
 $urlUploadFile = $this->createUrl("booking/ajaxUploadFile");
-$urlReturn = $this->createUrl('home/index');
+$urlReturn = $this->createUrl('order/view');
 $urlHomeIndex = $this->createUrl('home/index');
 $this->show_footer = false;
+$user = $this->getCurrentUser();
 ?>
 <style>
     .btn {display: inline-block;padding: 6px 12px;margin-bottom: 0;font-size: 14px;font-weight: 400;line-height: 1.42857143;text-align: center;white-space: nowrap;vertical-align: middle;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;background-image: none;border: 1px solid transparent;border-radius: 4px;}
@@ -66,25 +67,26 @@ $this->show_footer = false;
                         <?php echo $form->textField($model, 'contact_name', array('name' => 'booking[contact_name]', 'placeholder' => '请输入患者姓名')); ?>
                         <?php echo $form->error($model, 'contact_name'); ?> 
                     </div>
-
-                    <div class="ui-field-contain">
-                        <?php echo CHtml::activeLabel($model, 'mobile'); ?>                                           
-                        <?php echo $form->numberField($model, 'mobile', array('name' => 'booking[mobile]', 'placeholder' => '请输入手机号')); ?>
-                        <?php echo $form->error($model, 'mobile'); ?>
-                    </div>
-                    <div class="ui-field-contain mt5">
-                        <div class="grid">
-                            <div class="col-1 w50">
-                                <?php echo CHtml::activeLabel($model, 'verify_code'); ?>                                           
-                                <?php echo $form->numberField($model, 'verify_code', array('name' => 'booking[verify_code]', 'placeholder' => '请输入验证码')); ?>
-                                <?php echo $form->error($model, 'verify_code'); ?>
-                            </div>
-                            <div class="col-1 w50 pt20">
-                                <button id="btn-sendSmsCode" type="button" class="w100 bg-green border-r3">获取验证码</button>
+                    <?php if (!isset($user)) { ?>
+                        <div class="ui-field-contain">
+                            <?php echo CHtml::activeLabel($model, 'mobile'); ?>                                           
+                            <?php echo $form->numberField($model, 'mobile', array('name' => 'booking[mobile]', 'placeholder' => '请输入手机号')); ?>
+                            <div class="color-red font-s12">*若您尚未注册，此号码将作为您后期的登录账号</div>
+                            <?php echo $form->error($model, 'mobile'); ?>
+                        </div>
+                        <div class="ui-field-contain mt5">
+                            <div class="grid">
+                                <div class="col-1 w50">
+                                    <?php echo CHtml::activeLabel($model, 'verify_code'); ?>                                           
+                                    <?php echo $form->numberField($model, 'verify_code', array('name' => 'booking[verify_code]', 'placeholder' => '请输入验证码')); ?>
+                                    <?php echo $form->error($model, 'verify_code'); ?>
+                                </div>
+                                <div class="col-1 w50 pt20">
+                                    <button id="btn-sendSmsCode" type="button" class="w100 bg-green border-r3">获取验证码</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
+                    <?php } ?>
                     <div class="ui-field-contain">
                         <?php echo CHtml::activeLabel($model, 'disease_name'); ?>                                           
                         <?php echo $form->textField($model, 'disease_name', array('name' => 'booking[disease_name]', 'placeholder' => '请填写确诊疾病')); ?>
