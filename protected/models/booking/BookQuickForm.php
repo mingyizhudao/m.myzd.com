@@ -31,7 +31,7 @@ class BookQuickForm extends EFormModel {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('mobile, verify_code, bk_status, bk_type, contact_name, disease_name, disease_detail', 'required', 'message' => '请填入{attribute}'),
+            array('mobile, bk_status, bk_type, contact_name, disease_name, disease_detail', 'required', 'message' => '请填入{attribute}'),
             array('user_id, bk_status, bk_type, city_id', 'numerical', 'integerOnly' => true),
             //    array('ref_no', 'length', 'is' => 14),
             array('mobile', 'length', 'is' => 11),

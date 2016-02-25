@@ -258,27 +258,30 @@ class BookingController extends MobileController {
         $output = array('status' => 'no');
         if (isset($_POST['booking'])) {
             $values = $_POST['booking'];
-            // 快速预约
+            // 处理booking.user_id
+            $user = $this->getCurrentUser();
             $form = new BookQuickForm();
             $form->setAttributes($values, true);
             $form->initModel();
-            $form->validate();
-            //验证码校验
-            $authMgr = new AuthManager();
-            $authSmsVerify = $authMgr->verifyCodeForBooking($form->mobile, $form->verify_code, null);
-            if ($authSmsVerify->isValid() === false) {
-                $form->addError('verify_code', $authSmsVerify->getError('code'));
+            if (isset($user)) {
+                // 快速预约
+                $form->mobile = $user->username;
+                $form->validate();
+            } else {
+                $form->validate();
+                //验证码校验
+                $authMgr = new AuthManager();
+                $authSmsVerify = $authMgr->verifyCodeForBooking($form->mobile, $form->verify_code, null);
+                if ($authSmsVerify->isValid() === false) {
+                    $form->addError('verify_code', $authSmsVerify->getError('code'));
+                }
             }
             try {
                 if ($form->hasErrors() === false) {
                     $booking = new Booking();
-                    // 处理booking.user_id
-                    $userId = $this->getCurrentUserId();
                     $bookingUser = null;
-                    if (isset($userId)) {
-                        $bookingUser = $userId;
-                        $user = $this->getCurrentUser();
-                        $form->mobile = $user->mobile;
+                    if (isset($user)) {
+                        $bookingUser = $user->getId();
                     } else {
                         //数据验证成功 自动注册账号并登陆
                         $this->RegisterUser($form);
