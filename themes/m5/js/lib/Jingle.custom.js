@@ -1093,6 +1093,9 @@ J.hideToast = function () {
 J.alert = function (title, content) {
     J.Popup.alert(title, content);
 }
+J.customAlert = function (content) {
+    J.Popup.customAlert(content);
+}
 J.confirm = function (title, content, okCall, cancelCall) {
     J.Popup.confirm(title, content, okCall, cancelCall);
 }
@@ -1169,6 +1172,7 @@ J.Popup = (function ($) {
     },
     TEMPLATE = {
         alert: '<a data-target="closePopup"><img class="w100" src="{title}" /></a>',
+        customAlert: '<div class="custom-content">{content}</div>',
         confirm: '<div class="popup-title">{title}</div><div class="popup-content">{content}</div><div id="popup_btn_container"><a class="cancel" data-icon="close">{cancel}</a><a data-icon="checkmark">{ok}</a></div>',
         loading: '<i class="icon spinner"></i><p>{title}</p>'
     };
@@ -1310,6 +1314,21 @@ J.Popup = (function ($) {
     }
 
     /**
+     * alert组件
+     * @param title 标题
+     * @param content 内容
+     */
+    var customAlert = function (content) {
+        var markup = TEMPLATE.customAlert.replace('{content}', content);
+        show({
+            html: markup,
+            pos: 'center',
+            clickMask2Close: false,
+            showCloseBtn: false
+        });
+    }
+
+    /**
      * confirm 组件
      * @param title 标题
      * @param content 内容
@@ -1401,6 +1420,7 @@ J.Popup = (function ($) {
         show: show,
         close: hide,
         alert: alert,
+        customAlert: customAlert,
         confirm: confirm,
         popover: popover,
         loading: loading,

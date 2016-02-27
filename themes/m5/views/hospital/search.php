@@ -5,6 +5,7 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/c
 //$urlDisease = $this->createAbsoluteUrl('/api/diseasebycategory');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $city = Yii::app()->request->getQuery('city', '');
+$innerDeptId = Yii::app()->request->getQuery('innerDeptId', '');
 $disease = Yii::app()->request->getQuery('disease', '');
 $disease_name = Yii::app()->request->getQuery('disease_name', '');
 $disease_category = Yii::app()->request->getQuery('disease_category', '');
@@ -43,57 +44,92 @@ $this->show_footer = false;
 
 <script>
     $(document).ready(function () {
-        //请求医生
-        $requestHospital = '<?php echo $urlHospital; ?>';
-        $requestHospitalSearch = '<?php echo $urlHospitalSearch; ?>';
-
-        $requestDepartment = '<?php echo $urlDepartmentView; ?>';
-//            $requestDisease = '<?php //echo $urlDisease;                                                    ?>';
-
-        $condition = new Array();
-        $condition["city"] = '<?php echo $city ?>';
-        $condition["disease"] = '<?php echo $disease; ?>';
-        $condition["disease_name"] = '<?php echo $disease_name; ?>';
-        $condition["disease_category"] = '<?php echo $disease_category; ?>';
-        $condition["disease_sub_category"] = '<?php echo $disease_sub_category; ?>';
-        $condition["page"] = '<?php echo $page == '' ? 1 : $page; ?>';
-
-        //获取医院信息
-        J.showMask();
-        $.ajax({
-            url: '<?php echo $urlHospital; ?>' + setUrlCondition() + '&getcount=1',
-            success: function (data) {
-                //console.log(data);
-                readyHospital(data);
-                setLocationUrl();
-            }
-        });
-
-        $deptId = '';
-        $deptName = '科室';
-
-
-        //ajax异步加载科室
+        var innerDeptId = '<?php echo $innerDeptId; ?>';
+        var diseaseData = '';
         $deptHtml = '';
         var urlloadDiseaseCategory = '<?php echo $urlDiseasecategory; ?>';
         $.ajax({
             url: urlloadDiseaseCategory,
+            async: false,
             success: function (data) {
                 //console.log(data);
-                $deptHtml = readyDept(data);
+                diseaseData = data;
+                var results = data.results;
+                if (results.length > 0) {
+                    for (var i = 0; i < results.length; i++) {
+                        if (innerDeptId == results[i].id) {
+                            var innerDept = '<ul class="list" style="max-height:365px;overflow:scroll;" data-scroll="true">';
+                            var subCat = results[i].subCat;
+                            //console.log(subCat);
+                            if (subCat.length > 0) {
+                                for (var j = 0; j < subCat.length; j++) {
+                                    innerDept += '<li class="selectDept" data-dept="' + subCat[j].id + '">' + subCat[j].name + '</li>';
+                                }
+                            }
+                            innerDept += '</ul>';
+                            J.customAlert(innerDept);
+                            return;
+                        }
+                    }
+                }
             }
         });
 
-        //ajax异步加载地区
-        $cityHtml = ''
-        var requestCity = '<?php echo $urlCity; ?>?has_team=0';
-        $.ajax({
-            url: requestCity,
-            success: function (data) {
-                //console.log(data);
-                $cityHtml = readyCity(data);
-            }
+        //选择二级科室
+        $('.selectDept').click(function (e) {
+            e.preventDefault();
+            ready($(this).attr('data-dept'), $(this).html());
         });
+
+        //ready();
+        function ready(readyDeptId, readyDeptName) {
+            //请求医生
+            $requestHospital = '<?php echo $urlHospital; ?>';
+            $requestHospitalSearch = '<?php echo $urlHospitalSearch; ?>';
+
+            $requestDepartment = '<?php echo $urlDepartmentView; ?>';
+//            $requestDisease = '<?php //echo $urlDisease;           ?>';
+
+            $condition = new Array();
+            $condition["city"] = '<?php echo $city ?>';
+            $condition["innerDeptId"] = '<?php echo $innerDeptId; ?>';
+            $condition["disease"] = '<?php echo $disease; ?>';
+            $condition["disease_name"] = '<?php echo $disease_name; ?>';
+            $condition["disease_category"] = '<?php echo $disease_category; ?>';
+            $condition["disease_sub_category"] = readyDeptId;
+            $condition["page"] = '<?php echo $page == '' ? 1 : $page; ?>';
+
+            //首次进入，更新科室
+            $('#deptTitle').html(readyDeptName);
+            $('#deptTitle').attr('data-dept', readyDeptId);
+            //获取医院信息
+            J.showMask();
+            $.ajax({
+                url: '<?php echo $urlHospital; ?>' + setUrlCondition() + '&getcount=1',
+                success: function (data) {
+                    //console.log(data);
+                    readyHospital(data);
+                    setLocationUrl();
+                }
+            });
+
+            $deptId = readyDeptId;
+            $deptName = readyDeptName;
+
+            //ajax异步加载科室
+            $deptHtml = readyDept(diseaseData);
+
+            //ajax异步加载地区
+            $cityHtml = ''
+            var requestCity = '<?php echo $urlCity; ?>?has_team=0';
+            $.ajax({
+                url: requestCity,
+                success: function (data) {
+                    //console.log(data);
+                    $cityHtml = readyCity(data);
+                }
+            });
+        }
 
         function readyDept(data) {
             var results = data.results;

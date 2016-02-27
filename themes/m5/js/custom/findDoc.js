@@ -310,7 +310,7 @@ function readyDoc(data) {
                     innerHtml += '<div class="pl15 pr15 pt5 pb10 font-s12 color-black bb-gray2">' +
                             '擅长:' + hp_dept_desc +
                             '</div>' +
-                            '<div class="bb5-gray "></div>' +
+                            '<div class="bb10-gray "></div>' +
                             '</div>';
                 } else {
                     innerHtml += '<div class="pl15 bb-gray2">' +
@@ -321,7 +321,7 @@ function readyDoc(data) {
                             '推荐理由:' + results[i].reasons[0] +
                             '</div>' +
                             '</div>' +
-                            '<div class="bb5-gray "></div>' +
+                            '<div class="bb10-gray "></div>' +
                             '</div>';
                 }
 

@@ -11,10 +11,16 @@ $urlDoctorSearch = $this->createAbsoluteUrl('doctor/search');
 $urlBookingQuickbook = $this->createAbsoluteUrl('booking/quickbook');
 $urlEventZhuantiOne = $this->createUrl('event/view', array('page' => 'zhuantiOne'));
 $urlEventZhuantiFour = $this->createUrl('event/view', array('page' => 'zhuantiFour'));
+$urlEventZhuantiFive = $this->createUrl('event/view', array('page' => 'zhuantiFive'));
+$urlEventZhuantiSix = $this->createUrl('event/view', array('page' => 'zhuantiSix'));
 $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
 ?>
-<header class="bg-green">
-    <h1 class="title">名医主刀</h1>
+<header id="home_header" class="bg-green">
+    <a href="<?php echo $urlDoctorViewSearch; ?>" class="text-center">
+        <div class="searchDiv color-green5">
+            搜疾病
+        </div>
+    </a>
 </header>
 <article id="home_article" data-active="home_footer" class="active" data-scroll="true">
     <div>
@@ -23,55 +29,92 @@ $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
 
             </ul>
         </div>
-        <div class="grid mt20">
-            <div class="col-1 w10"></div>
-            <div class="col-1 w80">
-                <a href="<?php echo $urlDoctorViewSearch; ?>" class="text-center">
-                    <div class="searchDiv" data-icon="search">
-                        请输入疾病名称
+        <div class="grid">
+            <div class="w33">
+                <a href="<?php echo $urlHospitalSearch; ?>?innerDeptId=1">
+                    <div class="text-center">
+                        <img class="w54p" src="<?php echo $urlResImage; ?>wai.png">
                     </div>
+                    <div class="color-black text-center font-s16">外科</div>
                 </a>
             </div>
-            <div class="col-1 w10"></div>
-        </div>
-        <div class="grid mtSize">
-            <div class="col-1 w50 grid">
-                <div class="col-3"></div>
-                <div class="col-0 w100p">
-                    <a href="<?php echo $urlHospitalSearch; ?>?disease_sub_category=1">
-                        <div class="findDept text-center">找科室</div>
-                    </a>
-                </div>
-                <div class="col-1"></div>
+            <div class="w33">
+                <a href="<?php echo $urlHospitalSearch; ?>?innerDeptId=2">
+                    <div class="text-center">
+                        <img class="w54p" src="<?php echo $urlResImage; ?>gu.png">
+                    </div>
+                    <div class="color-black text-center font-s16">骨科</div>
+                </a>
             </div>
-            <div class="col-1 w50 grid">
-                <div class="col-1"></div>
-                <div class="col-0 w100p">
+            <div class="w33">
+                <a href="<?php echo $urlHospitalSearch; ?>?innerDeptId=3">
+                    <div class="text-center">
+                        <img class="w54p" src="<?php echo $urlResImage; ?>fu.png">
+                    </div>
+                    <div class="color-black text-center font-s16">妇产科</div>
+                </a>
+            </div>
+        </div>
+        <div class="grid mt15">
+            <div class="w33">
+                <a href="<?php echo $urlHospitalSearch; ?>?innerDeptId=4">
+                    <div class="text-center">
+                        <img class="w54p" src="<?php echo $urlResImage; ?>xiao.png">
+                    </div>
+                    <div class="color-black text-center font-s16">小儿外科</div>
+                </a>
+            </div>
+            <div class="w33">
+                <a href="<?php echo $urlHospitalSearch; ?>?innerDeptId=5">
+                    <div class="text-center">
+                        <img class="w54p" src="<?php echo $urlResImage; ?>wu.png">
+                    </div>
+                    <div class="color-black text-center font-s16">五官科</div>
+                </a>
+            </div>
+            <div class="w33">
+                <a href="<?php echo $urlHospitalSearch; ?>?innerDeptId=6">
+                    <div class="text-center">
+                        <img class="w54p" src="<?php echo $urlResImage; ?>nei.png">
+                    </div>
+                    <div class="color-black text-center font-s16">内科</div>
+                </a>
+            </div>
+        </div>
+        <div class="grid bt5-gray bb5-gray mt15">
+            <div class="w45 br-gray">
+                <a href="<?php echo $urlBookingQuickbook; ?>">
+                    <div class="text-center pt20">
+                        <img class="w75p" src="<?php echo $urlResImage; ?>shoushuzhitongche.png">
+                    </div>
+                    <div class="mt10 mb20 color-black text-center font-s16">手术直通车</div>
+                </a>
+            </div>
+            <div class="w55">
+                <div class="bb-gray">
                     <a href="<?php echo $urlDoctorSearch; ?>?disease_sub_category=2">
-                        <div class="findDoc text-center">找名医</div>
+                        <div class="grid pt15 pb15">
+                            <div class="col-0 text-center pl20 pr20">
+                                <img class="w46p" src="<?php echo $urlResImage; ?>findDoctor.png">
+                            </div>
+                            <div class="col-1 color-black font-s16 vertical-center">
+                                找名医
+                            </div>
+                        </div>
                     </a>
                 </div>
-                <div class="col-3"></div>
-            </div>
-        </div>
-        <div class="grid mtSize mb20">
-            <div class="col-1 w50 grid">
-                <div class="col-3"></div>
-                <div class="col-0 w100p">
+                <div>
                     <a href="<?php echo $urlHomeMyzy; ?>">
-                        <div class="myzy text-center">名医主义</div>
+                        <div class="grid pt15 pb15">
+                            <div class="col-0 text-center pl20 pr20">
+                                <img class="w44p" src="<?php echo $urlResImage; ?>mygy.png">
+                            </div>
+                            <div class="col-1 color-black font-s16 vertical-center">
+                                名医公益
+                            </div>
+                        </div>
                     </a>
                 </div>
-                <div class="col-1"></div>
-            </div>
-            <div class="col-1 w50 grid">
-                <div class="col-1"></div>
-                <div class="col-0 w100p">
-                    <a href="<?php echo $urlBookingQuickbook; ?>">
-                        <div class="quickBooking text-center">快速预约</div>
-                    </a>
-                </div>
-                <div class="col-3"></div>
             </div>
         </div>
     </div>
@@ -79,8 +122,18 @@ $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
 <script>
     $(document).ready(function () {
         $html = '<li class="slide">' +
+                '<a href="<?php echo $urlEventZhuantiFive; ?>">' +
+                '<img class="w100" src="<?php echo $urlResImage; ?>zhuanti/Five/bg_kataerwangzi.jpg">' +
+                '</a>' +
+                '</li>' +
+                '<li class="slide">' +
+                '<a href="<?php echo $urlEventZhuantiSix; ?>">' +
+                '<img class="w100" src="<?php echo $urlResImage; ?>/zhuanti/Six/bg_six.jpg">' +
+                '</a>' +
+                '</li>' +
+                '<li class="slide">' +
                 '<a href="<?php echo $urlEventZhuantiFour; ?>">' +
-                '<img class="w100" src="<?php echo $urlResImage; ?>zhuanti/bg_mingYiZhuYi.jpg">' +
+                '<img class="w100" src="<?php echo $urlResImage; ?>/zhuanti/bg_mingYiZhuYi.jpg">' +
                 '</a>' +
                 '</li>' +
                 '<li class="slide">' +

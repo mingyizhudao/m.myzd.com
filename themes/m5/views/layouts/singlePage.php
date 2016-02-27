@@ -13,6 +13,7 @@
         Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/app.css');
         Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/mobile.css?ts=' . time());
         Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/mymain.css?ts=' . time());
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/lib/Jingle.custom.js?ts=' . time(), CClientScript::POS_END);
         ?>
         <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/js/lib/zepto.min.js"></script>
         <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/js/main.js"></script>
@@ -43,7 +44,6 @@
         <!-- /footer -->
         <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/js/lib/iscroll.js"></script>
         <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/js/lib/template.min.js"></script>
-        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/js/lib/Jingle.custom.js"></script>
         <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/js/lib/zepto.touch2mouse.js"></script>
         <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/js/lib/app.js"></script>
     </body>

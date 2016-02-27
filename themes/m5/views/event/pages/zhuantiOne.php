@@ -1,13 +1,16 @@
 <?php
+$showHeader = Yii::app()->request->getQuery('header', 1);
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
-<header class="bg-green">
-    <nav class="left">
-        <a href="" data-icon="previous" data-target="back"></a>
-    </nav>
-    <div class="title"></div>
-</header>
+<?php if ($showHeader == 1) { ?>
+    <header class="bg-green">
+        <nav class="left">
+            <a href="" data-icon="previous" data-target="back"></a>
+        </nav>
+        <div class="title"></div>
+    </header>
+<?php } ?>
 <article id="zhuantiOne_article" class="active" data-scroll="true">
     <div class="pl15 pr15 mt26">
         <div class="font-s21 color-black5">【医生专访 陆劲松】"深夜10点的病房"</div>

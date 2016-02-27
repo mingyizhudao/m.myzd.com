@@ -1,31 +1,59 @@
 <?php
-$urlEventStoryOne = $this->createUrl('event/view', array('page' => 'storyOne'));
-$urlEventStoryTwo = $this->createUrl('event/view', array('page' => 'storyTwo'));
-$urlEventStoryThree = $this->createUrl('event/view', array('page' => 'storyThree'));
-$urlEventZhuantiOne = $this->createUrl('event/view', array('page' => 'zhuantiOne'));
-$urlEventZhuantiTwo = $this->createUrl('event/view', array('page' => 'zhuantiTwo'));
-$urlEventZhuantiThree = $this->createUrl('event/view', array('page' => 'zhuantiThree'));
-$urlEventZhuantiFour = $this->createUrl('event/view', array('page' => 'zhuantiFour'));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
-$isShow = Yii::app()->request->getQuery('page', 0);
-if ($isShow != 0) {
+$showHeader = Yii::app()->request->getQuery('header', 1);
+$showPage = Yii::app()->request->getQuery('page', 0);
+$showApp = Yii::app()->request->getQuery('app', 1);
+if ($showApp == 1) {
+    $urlEventStoryOne = $this->createUrl('event/view', array('page' => 'storyOne'));
+} else {
+    $urlEventStoryOne = $this->createUrl('event/view', array('page' => 'storyOne', 'header' => '0'));
+}
+if ($showApp == 1) {
+    $urlEventStoryTwo = $this->createUrl('event/view', array('page' => 'storyTwo'));
+} else {
+    $urlEventStoryTwo = $this->createUrl('event/view', array('page' => 'storyTwo', 'header' => '0'));
+}
+if ($showApp == 1) {
+    $urlEventStoryThree = $this->createUrl('event/view', array('page' => 'storyThree'));
+} else {
+    $urlEventStoryThree = $this->createUrl('event/view', array('page' => 'storyThree', 'header' => '0'));
+}
+if ($showApp == 1) {
+    $urlEventZhuantiOne = $this->createUrl('event/view', array('page' => 'zhuantiOne'));
+} else {
+    $urlEventZhuantiOne = $this->createUrl('event/view', array('page' => 'zhuantiOne', 'header' => '0'));
+}
+if ($showApp == 1) {
+    $urlEventZhuantiTwo = $this->createUrl('event/view', array('page' => 'zhuantiTwo'));
+} else {
+    $urlEventZhuantiTwo = $this->createUrl('event/view', array('page' => 'zhuantiTwo', 'header' => '0'));
+}
+if ($showApp == 1) {
+    $urlEventZhuantiThree = $this->createUrl('event/view', array('page' => 'zhuantiThree'));
+} else {
+    $urlEventZhuantiThree = $this->createUrl('event/view', array('page' => 'zhuantiThree', 'header' => '0'));
+}
+if ($showApp == 1) {
+    $urlEventZhuantiFour = $this->createUrl('event/view', array('page' => 'zhuantiFour'));
+} else {
+    $urlEventZhuantiFour = $this->createUrl('event/view', array('page' => 'zhuantiFour', 'header' => '0'));
+}
+if ($showApp == 1) {
+    $urlEventZhuantiFive = $this->createUrl('event/view', array('page' => 'zhuantiFive'));
+} else {
+    $urlEventZhuantiFive = $this->createUrl('event/view', array('page' => 'zhuantiFive', 'header' => '0'));
+}
+if ($showApp == 1) {
+    $urlEventZhuantiSix = $this->createUrl('event/view', array('page' => 'zhuantiSix'));
+} else {
+    $urlEventZhuantiSix = $this->createUrl('event/view', array('page' => 'zhuantiSix', 'header' => '0'));
+}
+if ($showHeader == 0) {
     $this->show_footer = false;
 }
 ?>
-<?php if ($isShow == 0) { ?>
-    <header class="bg-green">
-        <ul class="control-group">
-            <li class="active">
-                <a id="zhuanti">手术专题</a>
-            </li>
-            <li>
-                <a id="story">就医故事</a>
-            </li>
-        </ul>
-    </header>
-<?php } ?>
 <?php
-if ($isShow == 0 || $isShow == 1) {
+if ($showPage == 0) {
     $showZt = 'active';
     $showStory = '';
 } else {
@@ -33,9 +61,42 @@ if ($isShow == 0 || $isShow == 1) {
     $showStory = 'active';
 }
 ?>
+<?php if ($showHeader == 1) { ?>
+    <header class="bg-green">
+        <ul class="control-group">
+            <li class="<?php echo $showZt; ?>">
+                <a id="zhuanti">手术专题</a>
+            </li>
+            <li class="<?php echo $showStory; ?>">
+                <a id="story">就医故事</a>
+            </li>
+        </ul>
+    </header>
+<?php } ?>
 <article id="zhuanti_article" class="<?php echo $showZt; ?>" data-scroll="true" data-active="find_footer">
     <div>
         <ul class="list">
+            <li>
+                <a href="<?php echo $urlEventZhuantiFive; ?>">
+                    <div class="font-s17">
+                        【卡塔尔王子中国寻医记】
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="<?php echo $urlEventZhuantiSix; ?>">
+                    <div class="font-s17">
+                        【80%的人忽视的身体小肿块，险些成癌】
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="<?php echo $urlEventZhuantiFour; ?>">
+                    <div class="font-s17">
+                        【名医主刀--百万公益金】
+                    </div>
+                </a>
+            </li>
             <li>
                 <a href="<?php echo $urlEventZhuantiOne; ?>">
                     <div class="font-s17">
@@ -54,13 +115,6 @@ if ($isShow == 0 || $isShow == 1) {
                 <a href="<?php echo $urlEventZhuantiThree; ?>">
                     <div class="font-s17">
                         【泌尿疾病的克星】达芬奇手术机器人
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="<?php echo $urlEventZhuantiFour; ?>">
-                    <div class="font-s17">
-                        【名医主刀--百万公益金】
                     </div>
                 </a>
             </li>

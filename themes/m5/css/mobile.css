@@ -447,6 +447,22 @@ footer .control-group li .imgCenter{
 }
 
 /*首页*/
+#home_header{
+    line-height: normal;
+    display: inline;
+}
+#home_header .searchDiv{
+    background: url('../images/searchBlack.png') no-repeat;
+    background-position: 5px 5px;
+    background-size: 14px;
+    margin: 8px auto 0px;
+    width:90%;
+    border-radius:5px;
+    color:#333;
+    padding:5px 5px 5px 25px!important;
+    background-color: #fff;
+    text-align: left;
+}
 #home_article .bx-pager{
     background-color: transparent;
     bottom: 0px;
@@ -458,42 +474,34 @@ footer .control-group li .imgCenter{
 #home_article .sliderImg img{
     width:100%;
 }
-#home_article .searchDiv{
-    width:100%;
-    border:1px solid #C7C7C7;
-    border-radius:30px;
-    color:#C7C7C7;
-    text-align:center;
-    padding:5px!important;
-}
-#home_article .findDept{
+/*#home_article .findDept{
     background:url('../images/findDept.png') no-repeat;
     background-size:100px 110px;
     width:100px;
     height:110px;
     padding-top:75px;
-}
-#home_article .findDoc{
+}*/
+/*#home_article .findDoc{
     background:url('../images/findDoc.png') no-repeat;
     background-size:100px 110px;
     width:100px;
     height:110px;
     padding-top:75px;
-}
-#home_article .myzy{
+}*/
+/*#home_article .myzy{
     background:url('../images/myzy.png') no-repeat;
     background-size:100px 110px;
     width:100px;
     height:110px;
     padding-top:10px;
-}
-#home_article .quickBooking{
+}*/
+/*#home_article .quickBooking{
     background:url('../images/quickBooking.png') no-repeat;
     background-size:100px 110px;
     width:100px;
     height:110px;
     padding-top:10px;
-}
+}*/
 @media screen and (min-width:300px){
     #home_article .mtSize{
         margin-top:20px;
@@ -778,6 +786,26 @@ img {
     background: url('../images/zhuanti/step.png') no-repeat;
     background-size: 100% 100%;
     height: 115px;
+}
+@media screen and (max-width:360px){
+    #zhuantiSix_article .widthDoc{
+        width: 90%;
+    }
+}
+@media screen and (min-width:361px){
+    #zhuantiSix_article .widthDoc{
+        width:80%;
+    }
+}
+@media screen and (min-width:400px){
+    #zhuantiSix_article .widthDoc{
+        width:75%;
+    }
+}
+@media screen and (min-width:420px){
+    #zhuantiSix_article .widthDoc{
+        width:70%;
+    }
 }
 @media screen and (min-width:300px){
     #zhuantiFour_article .plStep{

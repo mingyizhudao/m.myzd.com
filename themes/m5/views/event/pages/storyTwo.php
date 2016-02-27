@@ -1,13 +1,16 @@
 <?php
+$showHeader = Yii::app()->request->getQuery('header', 1);
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
-<header class="bg-green">
-    <nav class="left">
-        <a href="" data-icon="previous" data-target="back"></a>
-    </nav>
-    <div class="title"></div>
-</header>
+<?php if ($showHeader == 1) { ?>
+    <header class="bg-green">
+        <nav class="left">
+            <a href="" data-icon="previous" data-target="back"></a>
+        </nav>
+        <div class="title"></div>
+    </header>
+<?php } ?>
 <article class="active" data-scroll="true">
     <div class="pl15 pr15 mt26">
         <div class="font-s21 color-black5">父亲两次抗癌,只为给女儿更久的爱</div>
