@@ -55,22 +55,26 @@ $this->show_footer = false;
                 //console.log(data);
                 diseaseData = data;
                 var results = data.results;
-                if (results.length > 0) {
-                    for (var i = 0; i < results.length; i++) {
-                        if (innerDeptId == results[i].id) {
-                            var innerDept = '<ul class="list" style="max-height:365px;overflow:scroll;" data-scroll="true">';
-                            var subCat = results[i].subCat;
-                            //console.log(subCat);
-                            if (subCat.length > 0) {
-                                for (var j = 0; j < subCat.length; j++) {
-                                    innerDept += '<li class="selectDept" data-dept="' + subCat[j].id + '">' + subCat[j].name + '</li>';
+                if (innerDeptId != '') {
+                    if (results.length > 0) {
+                        for (var i = 0; i < results.length; i++) {
+                            if (innerDeptId == results[i].id) {
+                                var innerDept = '<ul class="list" style="max-height:365px;overflow:scroll;" data-scroll="true">';
+                                var subCat = results[i].subCat;
+                                //console.log(subCat);
+                                if (subCat.length > 0) {
+                                    for (var j = 0; j < subCat.length; j++) {
+                                        innerDept += '<li class="selectDept" data-dept="' + subCat[j].id + '">' + subCat[j].name + '</li>';
+                                    }
                                 }
+                                innerDept += '</ul>';
+                                J.customAlert(innerDept);
+                                return;
                             }
-                            innerDept += '</ul>';
-                            J.customAlert(innerDept);
-                            return;
                         }
                     }
+                } else {
+                    ready('', '科室');
                 }
             }
         });
@@ -88,7 +92,7 @@ $this->show_footer = false;
             $requestHospitalSearch = '<?php echo $urlHospitalSearch; ?>';
 
             $requestDepartment = '<?php echo $urlDepartmentView; ?>';
-//            $requestDisease = '<?php //echo $urlDisease;           ?>';
+//            $requestDisease = '<?php //echo $urlDisease;             ?>';
 
             $condition = new Array();
             $condition["city"] = '<?php echo $city ?>';
