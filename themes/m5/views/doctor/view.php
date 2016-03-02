@@ -2,7 +2,6 @@
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $urlBookingDoctor = $this->createAbsoluteUrl('booking/create', array('did' => ''));
 $doctor = $data->results->doctor;
-$navigation = $data->results->navigation;
 $honour = $doctor->honour;
 $this->show_footer = false;
 ?>
@@ -34,7 +33,16 @@ $this->show_footer = false;
                         echo $doctor->aTitle;
                     }
                     ?></span></div>
-            <div class="mt5 color-gray4"><?php echo $doctor->hpDeptName; ?><span class="ml10"><?php echo $doctor->mTitle; ?></span></div>
+            <?php if ($doctor->hpDeptName == '') {
+                ?>
+                <div class="mt5 color-gray4"><?php echo $doctor->mTitle; ?></div>
+                <?php
+            } else {
+                ?>
+                <div class="mt5 color-gray4"><?php echo $doctor->hpDeptName; ?><span class="ml10"><?php echo $doctor->mTitle; ?></span></div>
+            <?php }
+            ?>
+
             <div class="mt5 color-black6 font-s14"><?php echo $doctor->hospitalName; ?></div>
         </div>
         <div class="col-1 grid middle w25 text-right font-s16">
