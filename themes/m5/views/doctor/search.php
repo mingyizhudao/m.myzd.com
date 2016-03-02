@@ -101,7 +101,7 @@ $this->show_footer = false;
 
         function readyDept(data) {
             var results = data.results;
-            var innerHtml = '<div class="grid color-black" style="margin-top:83px;height:315px;">' +
+            var innerHtml = '<div class="grid color-black" style="margin-top:93px;height:315px;">' +
                     '<div id="highDept" class="col-1 w50" data-scroll="true" style="height:315px;width: 50%;">' +
                     '<ul class="list">';
             if (results.length > 0) {
@@ -136,7 +136,7 @@ $this->show_footer = false;
 
         function readyCity(data) {
             var results = data.results;
-            var innerHtml = '<div class="grid color-black" style="margin-top:83px;height:315px;">' +
+            var innerHtml = '<div class="grid color-black" style="margin-top:93px;height:315px;">' +
                     '<div id="leftCity" class="col-1 w50" data-scroll="true" style="height:315px;width: 50%;">' +
                     '<ul class="list">';
             if (results.length > 0) {

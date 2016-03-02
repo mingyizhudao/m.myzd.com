@@ -561,6 +561,9 @@ header{
 .header-secondary {
     height: 40px;
 }
+#findDoc_nav.header-secondary {
+    height: 50px;
+}
 
 /**** order ****/
 #order{line-height: 2em;font-size: 18px;padding: 1em;}

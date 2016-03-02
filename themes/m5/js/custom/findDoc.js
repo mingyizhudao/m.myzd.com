@@ -1,4 +1,7 @@
 $('#deptSelect').tap(function () {
+    deptSelect();
+});
+function deptSelect() {
     var deptName = $('#deptTitle').html();
     var deptId = $('#deptTitle').attr('data-dept');
     var diseaseName = $('#diseaseTitle').html();
@@ -16,6 +19,7 @@ $('#deptSelect').tap(function () {
             '<div class="grid w100 color-black font-s16 color-black6">' +
             '<div id="deptSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
             '<span id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="../../themes/m5/images/gray.png">' +
+            '<div style="position: fixed;top: 74px; left:14.54%;"><img id="remindImg" class="w14p" src="../../themes/m5/images/upperTriangleWhite.png"></div>' +
             '</div>' +
             '<div id="diseaseSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
             '<span id="diseaseTitle" data-disease="' + diseaseId + '">' + diseaseName + '</span><img src="../../themes/m5/images/gray.png">' +
@@ -38,6 +42,11 @@ $('#deptSelect').tap(function () {
     $('.aDept').click(function (e) {
         e.preventDefault();
         var dataDept = $(this).attr('data-dept');
+        if (dataDept != 1) {
+            $('#remindImg').attr('src', '../../themes/m5/images/upperTriangleGray.png');
+        } else {
+            $('#remindImg').attr('src', '../../themes/m5/images/upperTriangleWhite.png');
+        }
         $('.aDept').each(function () {
             if (dataDept == $(this).attr('data-dept')) {
                 $(this).addClass('bg-white');
@@ -85,8 +94,7 @@ $('#deptSelect').tap(function () {
             }
         });
     });
-
-});
+}
 $('#diseaseSelect').tap(function () {
     var deptName = $('#deptTitle').html();
     var deptId = $('#deptTitle').attr('data-dept');
@@ -98,7 +106,7 @@ $('#diseaseSelect').tap(function () {
 
     //是否选择科室
     if (deptId == '') {
-        J.showToast('请先选择科室', '', 1000);
+        deptSelect();
         return;
     }
 
@@ -114,7 +122,7 @@ $('#diseaseSelect').tap(function () {
 
     function readyDisease(data) {
         var results = data.results;
-        var innerHtml = '<div id="diseaseList" class="grid color-black" data-scroll="true" style="margin-top:83px;height:315px;">' +
+        var innerHtml = '<div id="diseaseList" class="grid color-black" data-scroll="true" style="margin-top:93px;height:315px;">' +
                 '<ul class="list w100">';
         if (results) {
             var disease = results.disease;
@@ -143,6 +151,7 @@ $('#diseaseSelect').tap(function () {
                 '</div>' +
                 '<div id="diseaseSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
                 '<span id="diseaseTitle" data-disease="' + diseaseId + '">' + diseaseName + '</span><img src="../../themes/m5/images/gray.png">' +
+                '<div style="position: fixed;top: 74px; left:47.75%;"><img class="w14p" src="../../themes/m5/images/upperTriangleWhite.png"></div>' +
                 '</div>' +
                 '<div id="citySelect" data-target="closePopup" class="col-1 w33 bb-gray grid middle grayImg">' +
                 '<span id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="../../themes/m5/images/gray.png">' +
@@ -214,6 +223,7 @@ $('#citySelect').tap(function () {
             '</div>' +
             '<div id="citySelect" data-target="closePopup" class="col-1 w33 bb-gray grid middle grayImg">' +
             '<span id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="../../themes/m5/images/gray.png">' +
+            '<div style="position: fixed;top: 74px; left:81.6%;"><img class="w14p" src="../../themes/m5/images/upperTriangleWhite.png"></div>' +
             '</div>' +
             '</div>' +
             '</nav>' +
@@ -252,7 +262,7 @@ $('#citySelect').tap(function () {
         $diseaseId = $('#diseaseTitle').attr('data-disease');
         $cityId = $(this).attr('data-city');
         $cityName = $(this).html();
-        $condition["disease_sub_category"] = '';
+        //$condition["disease_sub_category"] = '';
         $condition["disease"] = $diseaseId;
         $condition["disease_name"] = '';
         $condition["city"] = $cityId;
@@ -279,7 +289,7 @@ $('#citySelect').tap(function () {
 //医生页面
 function readyDoc(data) {
     var results = data.results;
-    var innerHtml = '<div class="pt10"></div>';
+    var innerHtml = '<div class="pt20"></div>';
     if (results) {
         if (results.length > 0) {
             for (var i = 0; i < results.length; i++) {
@@ -300,10 +310,25 @@ function readyDoc(data) {
                 }
                 innerHtml += '</div>' +
                         '<div class="ml10 col-1 w75">' +
-                        '<div class="mt10 color-black2 font-s16">' + results[i].name + '<span class="ml5">' + doctorAtitle + '</span></div>' +
-                        '<div class="mt5 color-black6">' + results[i].hpDeptName + '<span class="ml5">' + results[i].mTitle + '</span></div>' +
-                        '<div class="mt5 color-black6">' + results[i].hpName + '</div>' +
-                        '</div>' +
+                        '<div class="mt10 color-black2 font-s16">' + results[i].name + '<span class="ml5">' + doctorAtitle + '</span></div>';
+                //科室为空，则不显示
+                if (results[i].hpDeptName == "" || results[i].hpDeptName == null) {
+                    if (results[i].mTitle == "" || results[i].mTitle == null) {
+                        innerHtml += '';
+                    } else {
+                        innerHtml += '<div class="mt5 color-black6">' + results[i].mTitle + '</div>';
+                    }
+                } else {
+                    if (results[i].mTitle == "" || results[i].mTitle == null) {
+                        innerHtml += '<div class="mt5 color-black6">' + results[i].hpDeptName + '</div>';
+                    } else {
+                        innerHtml += '<div class="mt5 color-black6">' + results[i].hpDeptName + '<span class="ml5">' + results[i].mTitle + '</span></div>';
+                    }
+                }
+                if (results[i].hpName != "" && results[i].hpName != null) {
+                    innerHtml += '<div class="mt5 color-black6">' + results[i].hpName + '</div>';
+                }
+                innerHtml += '</div>' +
                         '</div>' +
                         '</a>';
                 if (results[i].reasons.length == 0) {
