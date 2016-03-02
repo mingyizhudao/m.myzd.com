@@ -215,7 +215,7 @@ class Doctor extends EActiveRecord {
 
     public function afterFind() {
         // convert json string to array.
-        $this->honour = CJSON::decode($this->honour);
+        $this->honour = explode('#', $this->honour);
         return parent::afterFind();
     }
 
