@@ -99,7 +99,7 @@ $this->show_footer = false;
             $.ajax({
                 url: '<?php echo $urlCityName; ?>/' + '<?php echo $city; ?>',
                 success: function (data) {
-                    console.log(data);
+                    //console.log(data);
                     var cityName = data.results.name;
                     cityName = cityName.length > 4 ? cityName.substr(0, 3) + '...' : cityName;
                     $('#cityTitle').html(cityName);

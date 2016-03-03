@@ -15,7 +15,7 @@ $('#deptTitle').tap(function () {
             '<span class="pl6"><img class="w10p" src="../../themes/m5/images/triangleWhite.png"></span>' +
             '</h1>' +
             '<nav id="selectCity" class="right">' +
-            '<div class="grid mt20" data-target="closePopup">' +
+            '<div class="grid mt17" data-target="closePopup">' +
             '<div class="font-s16 col-0" id="cityTitle" data-city="' + cityId + '">' + cityName +
             '</div>' +
             '<div class="col-0 cityImg"></div>' +
@@ -124,7 +124,7 @@ $('#selectCity').tap(function () {
             '<span class="pl6"><img class="w10p" src="../../themes/m5/images/triangleWhite.png"></span>' +
             '</h1>' +
             '<nav id="selectCity" class="right">' +
-            '<div class="grid mt20" data-target="closePopup">' +
+            '<div class="grid mt17" data-target="closePopup">' +
             '<div class="font-s16 col-0" id="cityTitle" data-city="' + cityId + '">' + cityName +
             '</div>' +
             '<div class="col-0 cityImg"></div>' +

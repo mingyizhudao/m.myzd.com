@@ -1,10 +1,11 @@
 <?php
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/hospitalIndex.js', CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/hospitalIndex.js?ts=' . time(), CClientScript::POS_END);
 ?>
 <?php
 $urlHospital = $this->createAbsoluteUrl('/api/hospital', array('api' => 6));
 $urlHospitalView = $this->createUrl('hospital/view', array('id' => ''));
 $urlCity = $this->createAbsoluteUrl('/api/city');
+$urlCityName = $this->createAbsoluteUrl('/api/city');
 
 $urlHospitalIndex = $this->createUrl('hospital/index');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
@@ -15,7 +16,7 @@ $page = Yii::app()->request->getQuery('page', '');
     <h1 class="title">推荐医院</h1>
     <nav id="selectCity" class="right">
         <div class="grid mt17">
-            <div id="cityTitle" class="font-s16 col-0" data-city="1">北京</div>
+            <div id="cityTitle" class="font-s16 col-0" data-city="1"></div>
             <div class="col-0 cityImg"></div>
         </div>
     </nav>
@@ -35,6 +36,23 @@ $page = Yii::app()->request->getQuery('page', '');
         $condition["city"] = '<?php echo $city ?>';
         $condition["page"] = '<?php echo $page == '' ? 1 : $page; ?>';
         J.showMask();
+
+        //返回时，更新城市
+        if ('<?php echo $city ?>' != 1) {
+            $.ajax({
+                url: '<?php echo $urlCityName; ?>/' + '<?php echo $city; ?>',
+                success: function (data) {
+                    //console.log(data);
+                    var cityName = data.results.name;
+                    cityName = cityName.length > 4 ? cityName.substr(0, 3) + '...' : cityName;
+                    $('#cityTitle').html(cityName);
+                    $('#cityTitle').attr('data-city', data.results.id);
+                }
+            });
+        } else {
+            $('#cityTitle').html('北京');
+        }
+
         $.ajax({
             url: '<?php echo $urlHospital; ?>' + setUrlCondition() + '&getcount=1',
             success: function (data) {
