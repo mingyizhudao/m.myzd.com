@@ -6,7 +6,7 @@ Yii::app()->clientScript->registerScriptFile('http://myzd.oss-cn-hangzhou.aliyun
 <?php
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $urlDoctorViewSearch = $this->createAbsoluteUrl('doctor/viewSearch');
-$urlHospitalSearch = $this->createAbsoluteUrl('hospital/search');
+$urlHospitalTop = $this->createAbsoluteUrl('hospital/top');
 $urlDoctorSearch = $this->createAbsoluteUrl('doctor/search');
 $urlBookingQuickbook = $this->createAbsoluteUrl('booking/quickbook');
 $urlEventZhuantiOne = $this->createUrl('event/view', array('page' => 'zhuantiOne'));
@@ -31,7 +31,7 @@ $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
         </div>
         <div class="grid">
             <div class="w33">
-                <a href="<?php echo $urlHospitalSearch; ?>?innerDeptId=1">
+                <a href="<?php echo $urlHospitalTop; ?>?innerDeptId=1">
                     <div class="text-center">
                         <img class="w54p" src="<?php echo $urlResImage; ?>wai.png">
                     </div>
@@ -39,7 +39,7 @@ $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
                 </a>
             </div>
             <div class="w33">
-                <a href="<?php echo $urlHospitalSearch; ?>?innerDeptId=2">
+                <a href="<?php echo $urlHospitalTop; ?>?innerDeptId=2">
                     <div class="text-center">
                         <img class="w54p" src="<?php echo $urlResImage; ?>gu.png">
                     </div>
@@ -47,7 +47,7 @@ $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
                 </a>
             </div>
             <div class="w33">
-                <a href="<?php echo $urlHospitalSearch; ?>?innerDeptId=3">
+                <a href="<?php echo $urlHospitalTop; ?>?innerDeptId=3">
                     <div class="text-center">
                         <img class="w54p" src="<?php echo $urlResImage; ?>fu.png">
                     </div>
@@ -57,7 +57,7 @@ $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
         </div>
         <div class="grid mt15">
             <div class="w33">
-                <a href="<?php echo $urlHospitalSearch; ?>?innerDeptId=4">
+                <a href="<?php echo $urlHospitalTop; ?>?innerDeptId=4">
                     <div class="text-center">
                         <img class="w54p" src="<?php echo $urlResImage; ?>xiao.png">
                     </div>
@@ -65,7 +65,7 @@ $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
                 </a>
             </div>
             <div class="w33">
-                <a href="<?php echo $urlHospitalSearch; ?>?innerDeptId=5">
+                <a href="<?php echo $urlHospitalTop; ?>?innerDeptId=5">
                     <div class="text-center">
                         <img class="w54p" src="<?php echo $urlResImage; ?>wu.png">
                     </div>
@@ -73,7 +73,7 @@ $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
                 </a>
             </div>
             <div class="w33">
-                <a href="<?php echo $urlHospitalSearch; ?>?innerDeptId=6">
+                <a href="<?php echo $urlHospitalTop; ?>?innerDeptId=6">
                     <div class="text-center">
                         <img class="w54p" src="<?php echo $urlResImage; ?>nei.png">
                     </div>

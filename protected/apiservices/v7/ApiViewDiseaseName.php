@@ -22,11 +22,17 @@ class ApiViewDiseaseName extends EApiViewService {
     }
     public function loadDisease(){
         $disease = new Disease();
-        $model = $disease->getByName($this->disease_name);
         $data = new stdClass();
-        if (isset($model)) {
-            $data->id = $model->getId();
-            $data->name = $model->getName();
+        if(!empty($this->disease_name)){
+            $model = $disease->getByName($this->disease_name);
+            if (isset($model)) {
+                $data->id = $model->getId();
+                $data->name = $model->getName();
+                $categoryDiseaseJoin = CategoryDiseaseJoin::model()->getByAttributes(array('disease_id'=>$model->getId()));
+                $data->subCatId = $categoryDiseaseJoin->getSubCatId();
+                $diseaseCategory = DiseaseCategory::model()->getByAttributes(array('sub_cat_id'=>$data->subCatId, 'app_version'=>7));
+                $data->subCatName = $diseaseCategory->getSubCategoryName();
+            }
         }
         $this->setDisease($data);
     }

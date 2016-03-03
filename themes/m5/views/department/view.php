@@ -9,21 +9,28 @@ $this->show_footer = false;
     </nav>
     <h1 class="title"><?php echo $data->hpDeptHospital->name; ?></h1>
 </header>
-<footer id="hosDept_footer">
-    <button id="btnSubmit" type="button" class="button btn-yellow">预约</button>
-</footer>
+<nav id="hosDept_nav" class="header-secondary">
+    <div class="pb3 bb-gray4 bg-white w100 grid">
+        <div id="deptInf" class="col-0 font-s16 color-green pt5" data-dept="<?php echo $data->id; ?>"><?php echo $data->name; ?></div>
+        <div class="col-1 pt4 text-right mr15">
+            <button id="btnSubmit" type="button" class="button bg-yellow">预约</button>
+        </div>
+    </div>
+</nav>
 <article id="hosDept_article" class="active" data-scroll="true">
     <div class="bgDiv">
-        <div class="pb3 bb-green">
-            <div id="deptInf" class="font-s16 color-green" data-dept="<?php echo $data->id; ?>"><?php echo $data->name; ?></div>
+        <div class="pt15 pb10">
+            <img class="w100" src="<?php echo $urlResImage; ?>deptStep.png">
         </div>
         <div class="mt10">
             科室介绍：
-            <?php if (empty($data->description)) {
+            <?php
+            if (empty($data->description)) {
                 echo '暂无';
             } else {
                 echo $data->description;
-            } ?>
+            }
+            ?>
         </div>
     </div>
 </article>

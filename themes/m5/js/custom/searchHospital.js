@@ -1,127 +1,14 @@
-$('#deptTitle').tap(function () {
-    //滚动距离
-    $scrollLength = '';
-    var deptName = $('#deptTitle').html();
-    var deptId = $('#deptTitle').attr('data-dept');
-    $deptId = deptId;
-    var cityName = $('#cityTitle').html();
-    var cityId = $('#cityTitle').attr('data-city');
-    var innerPage = '<div id="findDoc_section">' +
-            '<header id="findDept_header" class="bg-green">' +
-            '<nav class="left">' +
-            '<a href="#" data-icon="previous" data-target="back"></a>' +
-            '</nav>' +
-            '<h1 class="title"><span id="deptTitle" data-target="closePopup" data-dept="' + deptId + '">' + deptName + '</span>' +
-            '<span class="pl6"><img class="w10p" src="../../themes/m5/images/triangleWhite.png"></span>' +
-            '</h1>' +
-            '<nav id="selectCity" class="right">' +
-            '<div class="grid mt20" data-target="closePopup">' +
-            '<div class="font-s16 col-0" id="cityTitle" data-city="' + cityId + '">' + cityName +
-            '</div>' +
-            '<div class="col-0 cityImg"></div>' +
-            '</div>' +
-            '</nav>' +
-            '</header>' +
-            '<article id="findDept_article" class="active" style="position:static;">' + readyDept($diseaseData) +
-            '</article>' +
-            '</div>';
-    J.popup({
-        html: innerPage,
-        pos: 'top',
-        showCloseBtn: false
-    });
-
-    //滚动到此时的二级科室位置
-    if ($scrollLength > 6) {
-        $("#rightDept").scrollTop(312);
-    }
-
-    $('.aDept').click(function () {
-        var dataDept = $(this).attr('data-dept');
-        $('.aDept').each(function () {
-            if (dataDept == $(this).attr('data-dept')) {
-                $(this).addClass('bg-white');
-            } else {
-                $(this).removeClass('bg-white');
-            }
-        });
-        $('.bDept').each(function () {
-            if (dataDept == $(this).attr('data-dept')) {
-                $(this).removeClass('hide');
-            } else {
-                $(this).addClass('hide');
-            }
-        });
-    });
-
-    $('.cDept').click(function (e) {
-        e.preventDefault();
-        $deptId = $(this).attr('data-dept');
-        $deptName = $(this).html();
-        $condition["disease_sub_category"] = $deptId;
-        $condition["disease_name"] = '';
-        $condition["city"] = '';
-        $condition["page"] = 1;
-        setTimeout(function () {
-            J.closePopup();
-        }, 100);
-        var requestUrl = $requestHospital + setUrlCondition() + '&getcount=1';
-        J.showMask();
-        $.ajax({
-            url: requestUrl,
-            success: function (data) {
-                //console.log(data);
-                readyHospital(data);
-                $('#deptTitle').html($deptName);
-                $('#deptTitle').attr('data-dept', $deptId);
-                $('#cityTitle').html('地区');
-                $('#cityTitle').attr('data-disease', '');
-                setLocationUrl();
-            }
-        });
-    });
-});
-function readyDept(data) {
-    //console.log(data);
-    var results = data.results;
-    var innerHtml = '<div class="grid color-black" style="margin-top:43px;height:315px;">';
-    if (results.length > 0) {
-        innerHtml += '<div id="rightDept" class="col-1 w50" data-scroll="true" data- style="height:315px;">'
-        for (var i = 0; i < results.length; i++) {
-            var subCat = results[i].subCat;
-            var number = 0;
-            if (results[i].id == $innerDeptId) {
-                innerHtml += '<ul class="bDept list" data-dept="' + results[i].id + '">';
-                if (subCat.length > 0) {
-                    for (var j = 0; j < subCat.length; j++) {
-                        number++;
-                        if ($deptId == subCat[j].id) {
-                            $scrollLength = number;
-                            innerHtml += '<li class="cDept color-green bg-gray3" data-dept="' + subCat[j].id + '">' + subCat[j].name + '</li>';
-                        } else {
-                            innerHtml += '<li class="cDept" data-dept="' + subCat[j].id + '">' + subCat[j].name + '</li>';
-                        }
-                    }
-                }
-                innerHtml += '</ul>';
-            }
-        }
-    }
-    innerHtml += '</div></div>';
-    return innerHtml;
-}
 $('#selectCity').tap(function () {
     var deptName = $('#deptTitle').html();
     var deptId = $('#deptTitle').attr('data-dept');
     var cityName = $('#cityTitle').html();
     var cityId = $('#cityTitle').attr('data-city');
     var innerPage = '<div id="findDoc_section">' +
-            '<header id="findDept_header" class="bg-green">' +
+            '<header id="searchDept_header" class="bg-green">' +
             '<nav class="left">' +
             '<a href="#" data-icon="previous" data-target="back"></a>' +
             '</nav>' +
             '<h1 class="title"><span id="deptTitle" data-target="closePopup" data-dept="' + deptId + '">' + deptName + '</span>' +
-            '<span class="pl6"><img class="w10p" src="../../themes/m5/images/triangleWhite.png"></span>' +
             '</h1>' +
             '<nav id="selectCity" class="right">' +
             '<div class="grid mt20" data-target="closePopup">' +
@@ -131,7 +18,7 @@ $('#selectCity').tap(function () {
             '</div>' +
             '</nav>' +
             '</header>' +
-            '<article id="findDept_article" class="active" style="position:static;">' + $cityHtml +
+            '<article id="searchDept_article" class="active" style="position:static;">' + $cityHtml +
             '</article>' +
             '</div>';
 
@@ -164,7 +51,6 @@ $('#selectCity').tap(function () {
         $deptId = $('#deptTitle').attr('data-dept');
         $cityId = $(this).attr('data-city');
         $cityName = $(this).html();
-        $condition["disease_sub_category"] = $deptId;
         $condition["disease_name"] = '';
         $condition["city"] = $cityId;
         $condition["page"] = 1;
@@ -180,6 +66,8 @@ $('#selectCity').tap(function () {
                 readyHospital(data);
                 $('#cityTitle').html($cityName);
                 $('#cityTitle').attr('data-city', $cityId);
+                console.log($('#deptTitle').html());
+                $condition["disease_name"] = $diseaseName;
                 setLocationUrl();
             }
         });
@@ -198,12 +86,13 @@ function setLocationUrl() {
     }
     urlCondition = urlCondition.substring(1);
     urlCondition = "?" + urlCondition;
-    var newUrl = $requestHospitalTop + urlCondition;
+    var newUrl = $requestHospitalSearch + urlCondition;
     history.pushState(stateObject, title, newUrl);
 }
 
 //医院页面
 function readyHospital(data) {
+    //console.log(data);
     var results = data.results;
     var innerHtml = '<div id="hospitalPage"><div><img class="w100" src="../../themes/m5/images/hospitalDept.png"><ul class="list">';
     if (results) {
@@ -247,7 +136,7 @@ function readyHospital(data) {
         }
     }
     innerHtml += '</ul></div></div>';
-    $('#findDept_article').html(innerHtml);
+    $('#searchDept_article').html(innerHtml);
     initPage(dataPage);
     J.hideMask();
 }

@@ -12,6 +12,7 @@ body {width:100%;color: #333;letter-spacing: 1px;line-height: 1.5;font-size: 14p
 .nopadding{padding:0 !important;}
 .pad1{padding: 1em;}
 .pad5{padding:5px;}
+.pad10{padding:10px;}
 .pad20{padding: 20px;}
 
 .pt0{padding-top:0!important;}
@@ -47,6 +48,7 @@ body {width:100%;color: #333;letter-spacing: 1px;line-height: 1.5;font-size: 14p
 .pl2{padding-left: 2px;}
 .pl3{padding-left: 3px;}
 .pl5{padding-left: 5px;}
+.pl6{padding-left: 6px;}
 .pl8{padding-left: 8px;}
 .pl10{padding-left: 10px;}
 .pl12{padding-left: 12px;}
@@ -89,6 +91,7 @@ body {width:100%;color: #333;letter-spacing: 1px;line-height: 1.5;font-size: 14p
 .mt14{margin-top:14px;}
 .mt15{margin-top:15px;}
 .mt16{margin-top:16px;}
+.mt17{margin-top:17px;}
 .mt20{margin-top:20px;}
 .mt21{margin-top:21px;}
 .mt25{margin-top:25px;}
@@ -99,6 +102,7 @@ body {width:100%;color: #333;letter-spacing: 1px;line-height: 1.5;font-size: 14p
 .mt40{margin-top:40px;}
 .mt42{margin-top:42px!important;}
 .mt50{margin-top:50px;}
+.mt90{margin-top:90px;}
 .mt150{margin-top: 150px;}
 
 .mb0{margin-bottom:0!important;}
@@ -128,6 +132,8 @@ body {width:100%;color: #333;letter-spacing: 1px;line-height: 1.5;font-size: 14p
 .ml13{margin-left: 13px!important;}
 .ml15{margin-left: 15px!important;}
 .ml10{margin-left: 10px!important;}
+.ml20{margin-left: 20px!important;}
+.ml30{margin-left: 30px!important;}
 .ml40{margin-left: 40px!important;}
 .ml20{margin-left:20px!important;}
 
@@ -173,6 +179,7 @@ body {width:100%;color: #333;letter-spacing: 1px;line-height: 1.5;font-size: 14p
 .bg-green{background-color: #06c1ae!important;}
 .bg-gray{background-color: rgb(248, 248, 248);}
 .bg-gray2{background-color: #eeeeee;}
+.bg-gray3{background-color: #f0f1f5;}
 .bg-blue{background-color:#21a59c;}
 .bg-blue2{background-color:#2796c3;}
 .bg-white{background-color:#fff;}
@@ -233,6 +240,8 @@ body {width:100%;color: #333;letter-spacing: 1px;line-height: 1.5;font-size: 14p
 .w75{width:75%;}
 .w80{width:80%!important;}
 .w100{width:100%;}
+.w10p{width:10px;}
+.w11p{width:11px;}
 .w14p{width:14px;}
 .w15p{width:15px;}
 .w20p{width:20px;}

@@ -34,7 +34,7 @@ class HospitalDepartmentSearch extends ESearchModel {
             // Disease.
             if (isset($this->queryParams['disease'])) {
                 $diseaseId = $this->queryParams['disease'];
-                $this->criteria->join = 'left join disease_hospital_join dhj on (t.`id`=dhj.`hospital_id`)';
+                $this->criteria->join .= 'left join disease_hospital_join dhj on (t.`id`=dhj.`hospital_id`)';
                 $this->criteria->addCondition("dhj.disease_id=:diseaseId");
                 $this->criteria->params[":diseaseId"] = $diseaseId;
                 $this->criteria->distinct = true;

@@ -5,6 +5,9 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $urlDiseaseName = $this->createAbsoluteUrl('/api/diseasename', array('api' => 7, 'disease_name' => ''));
 $this->show_footer = false;
 ?>
+<style>
+    #jingle_toast{top:30%;}
+</style>
 <header id="search_header" class="bg-green">
     <nav class="left">
         <a href="#" data-icon="previous" data-target="back"></a>
@@ -49,11 +52,16 @@ $this->show_footer = false;
         $('#btnSearch').tap(function () {
             //根据疾病名称，异步查询全名
             var disease_name = $("input[name='disease_name']").val();
+            if (disease_name == '') {
+                J.showToast('请输入疾病名称', '', 1000);
+                return;
+            }
             $.ajax({
                 url: '<?php echo $urlDiseaseName; ?>' + disease_name,
                 success: function (data) {
                     //console.log(data);
                     var diseaseName = data.results.name;
+                    var diseaseId = data.results.id;
                     J.popup({
                         html: '<ul class="list"><li id="searchDoc" class="text-center">找医生</li><li id="searchDept" class="text-center">找科室</li></ul>',
                         pos: 'center'
@@ -64,7 +72,7 @@ $this->show_footer = false;
                     });
                     $('#searchDept').tap(function () {
                         J.hideMask();
-                        location.href = '<?php echo $searchDept; ?>?disease_name=' + diseaseName + '&page=1';
+                        location.href = '<?php echo $searchDept; ?>?disease=' + diseaseId + '&disease_name=' + diseaseName + '&page=1';
                     });
                 }
             });

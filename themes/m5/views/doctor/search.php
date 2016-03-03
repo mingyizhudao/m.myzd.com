@@ -7,6 +7,9 @@ $urlCity = $this->createAbsoluteUrl('/api/city');
 $urlDisease = $this->createAbsoluteUrl('/api/diseasebycategory');
 $urlDoctor = $this->createAbsoluteUrl('/api/doctor', array('api' => 7));
 $urlDiseasecategory = $this->createAbsoluteUrl('/api/diseasecategory', array('api' => 7));
+$urlDeptName = $this->createAbsoluteUrl('/api/subcategory');
+$urlDiseaseName = $this->createAbsoluteUrl('/api/disease');
+$urlCityName = $this->createAbsoluteUrl('/api/city');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $city = Yii::app()->request->getQuery('city', '');
 $disease = Yii::app()->request->getQuery('disease', '');
@@ -61,6 +64,49 @@ $this->show_footer = false;
         $condition["disease_category"] = '<?php echo $disease_category; ?>';
         $condition["disease_sub_category"] = '<?php echo $disease_sub_category; ?>';
         $condition["page"] = '<?php echo $page == '' ? 1 : $page; ?>';
+
+        //首次进入，更新科室
+        if ('<?php echo $disease_sub_category; ?>' != '') {
+            $.ajax({
+                url: '<?php echo $urlDeptName; ?>/' + '<?php echo $disease_sub_category; ?>',
+                success: function (data) {
+                    //console.log(data);
+                    var deptName = data.results.name;
+                    deptName = deptName.length > 4 ? deptName.substr(0, 3) + '...' : deptName;
+                    $('#deptTitle').html(deptName);
+                    $('#deptTitle').attr('data-dept', data.results.id);
+                }
+            });
+        }
+
+
+        //首次进入，更新疾病
+        if ('<?php echo $disease; ?>' != '') {
+            $.ajax({
+                url: '<?php echo $urlDiseaseName; ?>/' + '<?php echo $disease; ?>',
+                success: function (data) {
+                    //console.log(data);
+                    var diseaseName = data.disease.name;
+                    diseaseName = diseaseName.length > 4 ? diseaseName.substr(0, 3) + '...' : diseaseName;
+                    $('#diseaseTitle').html(diseaseName);
+                    $('#diseaseTitle').attr('data-disease', data.disease.id);
+                }
+            });
+        }
+
+        //首次进入，更新城市
+        if ('<?php echo $city; ?>' != '') {
+            $.ajax({
+                url: '<?php echo $urlCityName; ?>/' + '<?php echo $city; ?>',
+                success: function (data) {
+                    console.log(data);
+                    var cityName = data.results.name;
+                    cityName = cityName.length > 4 ? cityName.substr(0, 3) + '...' : cityName;
+                    $('#cityTitle').html(cityName);
+                    $('#cityTitle').attr('data-city', data.results.id);
+                }
+            });
+        }
 
         var urlAjaxLoadDoctor = '<?php echo $urlDoctor; ?>' + setUrlCondition() + '&getcount=1';
         J.showMask();

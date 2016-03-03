@@ -88,20 +88,20 @@ footer .control-group li .imgCenter{
 
 /*医院科室*/
 #hosDept_footer{
-    border-top: 1px solid #ffffff;
+    //border-top: 1px solid #ffffff;
 }
 #hosDept_article .bgDiv{
     padding:15px 10px 10px 10px;
 }
 #hosDept_article .bgDiv img{
-    width:18px;
-    height:15px;
+    //width:18px;
+    //height:15px;
 }
-#hosDept_article #deptInf{
+#hosDept_nav #deptInf{
     background: url('../images/dept.png') no-repeat;
     background-size: 18px 15px;
-    padding-left: 20px;
-    background-position-y: 3px;
+    padding-left: 30px;
+    background-position: 10px 10px;
 }
 
 /*预约单*/
@@ -165,7 +165,7 @@ footer .control-group li .imgCenter{
     background: url('../images/cityLogo.png') no-repeat;
     background-size: 15px 8px;
     width:15px;
-    background-position-y: 6px;
+    background-position-y: 5px;
 }
 #hospital_article .list>li.nextImg {
     background: url('../images/nextImg.png') no-repeat;
@@ -399,6 +399,23 @@ footer .control-group li .imgCenter{
 }
 
 /*找科室*/
+#findDept_header nav span:not(.button)>.icon {
+    font-size: 1em;
+    float: right;
+}
+#findDept_header nav.selectCity {
+    padding: 0px 10px;
+}
+#findDept_header #cityTitle{
+    line-height: 1em;
+}
+#findDept_header .cityImg{
+    //margin-top: 17px;
+    background: url('../images/cityLogo.png') no-repeat;
+    background-size: 15px 8px;
+    width:15px;
+    background-position-y: 5px;
+}
 #findDept_article .list>li{
     border-bottom:1px solid #c2c2c2;
 }
@@ -406,6 +423,9 @@ footer .control-group li .imgCenter{
     background: url('../images/nextImg.png') no-repeat;
     background-position: 95% 50%;
     background-size: 8px 15px;
+}
+#findDept_article #leftDept{
+    background-color: #efefef;
 }
 #findDept_article #leftDept ul.list{
     background-color: #efefef;
@@ -446,6 +466,57 @@ footer .control-group li .imgCenter{
     padding: 10px 15px 10px 10px;
 }
 
+/*搜索科室*/
+#searchDept_header nav span:not(.button)>.icon {
+    font-size: 1em;
+    float: right;
+}
+#searchDept_header nav.selectCity {
+    padding: 0px 10px;
+}
+#searchDept_header #cityTitle{
+    line-height: 1em;
+}
+#searchDept_header .cityImg{
+    //margin-top: 17px;
+    background: url('../images/cityLogo.png') no-repeat;
+    background-size: 15px 8px;
+    width:15px;
+    background-position-y: 5px;
+}
+#searchDept_article .list>li{
+    border-bottom:1px solid #c2c2c2;
+}
+#searchDept_article .list>li.nextImg{
+    background: url('../images/nextImg.png') no-repeat;
+    background-position: 95% 50%;
+    background-size: 8px 15px;
+}
+#searchDept_article #leftCity{
+    background-color: #efefef;
+}
+#searchDept_article #leftCity ul.list{
+    background-color: #efefef;
+}
+#searchDept_article #leftCity ul.list>li{
+    border-bottom: 1px solid #efefef;
+}
+#searchDept_article #rightCity ul.list>li{
+    border-bottom: 1px solid #efefef;
+}
+#searchDept_article .button, button{
+    padding: 10px 10px;
+}
+#searchDept_article select{
+    text-align: center;
+    background-color: #ffffff;
+    background-image: inherit;
+    border: 1px solid #cccccc;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+    padding: 10px 15px 10px 10px;
+}
+
 /*首页*/
 #home_header{
     line-height: normal;
@@ -474,34 +545,6 @@ footer .control-group li .imgCenter{
 #home_article .sliderImg img{
     width:100%;
 }
-/*#home_article .findDept{
-    background:url('../images/findDept.png') no-repeat;
-    background-size:100px 110px;
-    width:100px;
-    height:110px;
-    padding-top:75px;
-}*/
-/*#home_article .findDoc{
-    background:url('../images/findDoc.png') no-repeat;
-    background-size:100px 110px;
-    width:100px;
-    height:110px;
-    padding-top:75px;
-}*/
-/*#home_article .myzy{
-    background:url('../images/myzy.png') no-repeat;
-    background-size:100px 110px;
-    width:100px;
-    height:110px;
-    padding-top:10px;
-}*/
-/*#home_article .quickBooking{
-    background:url('../images/quickBooking.png') no-repeat;
-    background-size:100px 110px;
-    width:100px;
-    height:110px;
-    padding-top:10px;
-}*/
 @media screen and (min-width:300px){
     #home_article .mtSize{
         margin-top:20px;

@@ -14,7 +14,7 @@ $page = Yii::app()->request->getQuery('page', '');
 <header id="hospital_header" class="bg-green">
     <h1 class="title">推荐医院</h1>
     <nav id="selectCity" class="right">
-        <div class="grid mt20">
+        <div class="grid mt17">
             <div id="cityTitle" class="font-s16 col-0" data-city="1">北京</div>
             <div class="col-0 cityImg"></div>
         </div>

@@ -339,13 +339,14 @@ class ApiController extends Controller {
                 $apiService = new ApiViewDiseaseByCategory($id);
                 $output = $apiService->loadApiViewData();
                 break;
-            /*
-              case 'diseaseinfo':
-              $apiSvc = new ApiViewDiseaseInfo($id);
-              $output = $apiSvc->loadApiViewData();
-              break;
-             * 
-             */
+            case 'subcategory':
+                $apiService = new ApiViewSubCategory($id);
+                $output = $apiService->loadApiViewData();
+                break;
+            case 'city':
+                $apiService = new ApiViewCity($id);
+                $output = $apiService->loadApiViewData();
+                break;
             default:
                 $this->_sendResponse(501, sprintf('Mode <b>view</b> is not implemented for model <b>%s</b>', $model));
                 Yii::app()->end();

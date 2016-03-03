@@ -171,7 +171,9 @@ $('#diseaseSelect').tap(function () {
             e.preventDefault();
             $diseaseNameB = $(this).html();
             $diseaseIdB = $(this).attr('data-disease');
-            $condition["disease_sub_category"] = '';
+            $deptId = $('#deptTitle').attr('data-dept');
+            $deptName = $('#deptTitle').html();
+            //$condition["disease_sub_category"] = '';
             $condition["disease_name"] = '';
             $condition["city"] = '';
             $condition["disease"] = $diseaseIdB;

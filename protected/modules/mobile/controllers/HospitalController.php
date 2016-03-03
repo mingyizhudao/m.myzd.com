@@ -45,6 +45,11 @@ class HospitalController extends MobileController {
         $this->render('search');
     }
 
+    //进入科室的页面
+    public function actionTop() {
+        $this->render('top');
+    }
+
     private function parseQueryOptions($request) {
         $options = array();
         $options['limit'] = $request->getParam('limit', null);

@@ -1,13 +1,18 @@
 <?php
+$showApp = Yii::app()->request->getQuery('app', 1);
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
-<header class="bg-green">
-    <nav class="left">
-        <a href="" data-icon="previous" data-target="back"></a>
-    </nav>
-    <h1 class="title">名医主义</h1>
-</header>
+<?php if ($showApp == 1) {
+    ?>
+    <header class="bg-green">
+        <nav class="left">
+            <a href="" data-icon="previous" data-target="back"></a>
+        </nav>
+        <h1 class="title">名医主义</h1>
+    </header>
+<?php }
+?>
 <footer id="myzy_footer">
     <div class="w100 text-center color-white mt5">
         <div>
