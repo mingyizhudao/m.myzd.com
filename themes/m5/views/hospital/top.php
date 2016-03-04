@@ -72,7 +72,7 @@ $this->show_footer = false;
                     if (results.length > 0) {
                         for (var i = 0; i < results.length; i++) {
                             if ($innerDeptId == results[i].id) {
-                                var innerDept = '<div class="grid bg-white"><div class="col-0 font-s15 pl10 pt10 pb10">请您选择' + results[i].name + '的具体科室</div><div class="col-1 text-right"><img id="backHome" class="w11p mr10 mt15" src="<?php echo $urlResImage; ?>closeBlack.png"></div></div><ul class="list" style="max-height:290px;overflow:scroll;" data-scroll="true">';
+                                var innerDept = '<div class="grid bg-white"><div class="col-0 font-s15 pl10 pt10 pb10 color-green">请您选择' + results[i].name + '的具体科室</div><div class="col-1 text-right"><img id="backHome" class="w11p mr10 mt15" src="<?php echo $urlResImage; ?>closeBlack.png"></div></div><ul class="list" style="max-height:290px;overflow:scroll;" data-scroll="true">';
                                 var subCat = results[i].subCat;
                                 //console.log(subCat);
                                 if (subCat.length > 0) {

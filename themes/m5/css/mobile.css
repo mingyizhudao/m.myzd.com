@@ -933,6 +933,16 @@ img {
     }
 }
 
+/*常见问题*/
+#commonProblem_article .list>li.nextImg {
+    background: url('../images/nextImg.png') no-repeat;
+    background-position: 95% 50%;
+    background-size: 8px 15px;
+}
+#commonProblem_article .list>li{
+    padding:15px 10px;
+}
+
 /*企业预约*/
 #createCop_article select {
     background-color: #ffffff;

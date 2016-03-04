@@ -38,30 +38,30 @@ $this->show_footer = false;
     </header>
 <?php }
 ?>
-<article class="active" data-scroll="true">
+<article id="commonProblem_article" class="active" data-scroll="true">
     <div>
         <ul class="list">
-            <li>
+            <li class="nextImg">
                 <a class="font-s16" href="<?php echo $urlAboutLogin; ?>">
                     1.关于注册/登录
                 </a>
             </li>
-            <li>
+            <li class="nextImg">
                 <a class="font-s16" href="<?php echo $urlAboutBooking; ?>">
                     2.关于预约
                 </a>
             </li>
-            <li>
+            <li class="nextImg">
                 <a class="font-s16" href="<?php echo $urlAboutCost; ?>">
                     3.关于费用
                 </a>
             </li>
-            <li>
+            <li class="nextImg">
                 <a class="font-s16" href="<?php echo $urlAboutPlatform; ?>">
                     4.关于平台
                 </a>
             </li>
-            <li>
+            <li class="nextImg">
                 <a class="font-s16" href="<?php echo $urlAboutAgreement; ?>">
                     5.名医主刀服务协议
                 </a>

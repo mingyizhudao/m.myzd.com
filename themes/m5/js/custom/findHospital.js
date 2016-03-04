@@ -95,9 +95,9 @@ $('#deptTitle').tap(function () {
 function readyDept(data) {
     //console.log(data);
     var results = data.results;
-    var innerHtml = '<div class="grid color-black" style="margin-top:43px;height:315px;">';
+    var innerHtml = '<div class="grid color-black" style="margin-top:43px;">';
     if (results.length > 0) {
-        innerHtml += '<div id="rightDept" class="col-1 w50" data-scroll="true" data- style="height:315px;">'
+        innerHtml += '<div id="rightDept" class="col-1 w50" data-scroll="true" style="max-height:315px;">'
         for (var i = 0; i < results.length; i++) {
             var subCat = results[i].subCat;
             var number = 0;
