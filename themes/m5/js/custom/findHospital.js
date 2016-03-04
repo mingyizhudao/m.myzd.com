@@ -82,7 +82,7 @@ $('#deptTitle').tap(function () {
             success: function (data) {
                 //console.log(data);
                 readyHospital(data);
-                $deptName = $deptName.length > 4 ? $deptName.substr(0, 3) + '...' : $deptName;
+                $deptName = $deptName.length > 5 ? $deptName.substr(0, 4) + '...' : $deptName;
                 $('#deptTitle').html($deptName);
                 $('#deptTitle').attr('data-dept', $deptId);
                 $('#cityTitle').html('地区');

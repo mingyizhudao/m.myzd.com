@@ -11,7 +11,7 @@ $this->show_footer = false;
             </div>
         </a>
     </nav>
-    <h1 class="title"><?php echo $data->hpDeptHospital->name; ?></h1>
+    <h1 class="title"><?php echo mb_strimwidth($data->hpDeptHospital->name, 0, 39, '...') ?></h1>
     <nav class="right">
         <a onclick="javascript:history.go(0)">
             <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
