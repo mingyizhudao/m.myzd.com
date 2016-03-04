@@ -2,6 +2,8 @@
 
 class UserController extends MobileController {
 
+    public $current_page;
+
     /**
      * @return array action filters
      */
@@ -19,7 +21,7 @@ class UserController extends MobileController {
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('logout', 'view', 'changePassword'),
+                'actions' => array('logout', 'view', 'commonProblem', 'index', 'changePassword'),
                 'users' => array('@'),
             ),
             array('deny', // deny all users
@@ -69,6 +71,15 @@ class UserController extends MobileController {
         $this->render('view', array('user' => $user));
     }
 
+    public function actionCommonProblem() {
+        $this->render('commonProblem');
+    }
+
+    public function actionIndex($page) {
+        $this->current_page = $page;
+        $this->render('index');
+    }
+
     //登陆
     public function actionLogin() {
         $returnUrl = $this->getReturnUrl($this->createUrl('user/view'));
@@ -76,7 +87,7 @@ class UserController extends MobileController {
         //用户已登陆 直接进入个人中心
         if (isset($user)) {
             $this->redirect(array('view'));
-        } 
+        }
         $form = new UserDoctorMobileLoginForm();
         $form->role = StatCode::USER_ROLE_PATIENT;
         if (isset($_POST['UserDoctorMobileLoginForm'])) {

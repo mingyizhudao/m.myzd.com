@@ -24,6 +24,7 @@ body {width:100%;color: #333;letter-spacing: 1px;line-height: 1.5;font-size: 14p
 .pt15{padding-top:15px;}
 .pt17{padding-top:17px;}
 .pt20{padding-top:20px;}
+.pt25{padding-top:25px;}
 .pt30{padding-top:30px;}
 .pt40{padding-top:40px;}
 .pt50{padding-top:50px;}
@@ -197,7 +198,7 @@ body {width:100%;color: #333;letter-spacing: 1px;line-height: 1.5;font-size: 14p
 .font-s12{font-size:12px!important;}
 .font-s14{font-size:14px!important;}
 .font-s15{font-size:15px!important;}
-.font-s16{font-size:16px;}
+.font-s16{font-size:16px!important;}
 .font-s17{font-size:17px;}
 .font-s18{font-size:18px!important;}
 .font-s21{font-size:21px!important;}

@@ -10,6 +10,7 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images";
 $urlAboutus = $this->createUrl('home/page', array('view' => 'aboutus'));
 $urlLogout = $this->createUrl('user/logout');
 $urlUserView = $this->createUrl('user/view');
+$urlUserCommonProblem = $this->createUrl('user/commonProblem');
 ?>
 <header class="bg-white">
     <h1 class="title color-green">个人中心</h1>
@@ -25,6 +26,12 @@ $urlUserView = $this->createUrl('user/view');
                 <a data-target="link" href="<?php echo $this->createUrl('booking/patientBookingList') ?>">
                     <img class="pl20" src="<?php echo $urlResImage ?>/image/reserve.png">
                     <span class="pl20 color-black text18">预约单</span>
+                </a>
+            </li>
+            <li>
+                <a href="<?php echo $urlUserCommonProblem; ?>">
+                    <img class="pl20" src="<?php echo $urlResImage ?>/image/commonProblem.png">
+                    <span class="pl20 color-black text18">常见问题</span>
                 </a>
             </li>
             <li>
