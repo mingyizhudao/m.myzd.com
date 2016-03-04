@@ -30,9 +30,18 @@ $this->show_footer = false;
 </style>
 <header class="bg-green" >
     <nav class="left">
-        <a href="#" data-icon="previous" data-target="back" style="color:#fff;"></a>
+        <a href="" data-target="back">
+            <div class="pl5">
+                <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+            </div>
+        </a>
     </nav>
     <h1 class="title"><?php echo $this->pageTitle; ?></h1>
+    <nav class="right">
+        <a onclick="javascript:history.go(0)">
+            <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
+        </a>
+    </nav>
 </header>
 <article id="expert_list_article" class="active"  data-scroll="true">
     <ul class="list">

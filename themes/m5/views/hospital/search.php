@@ -20,7 +20,17 @@ $this->show_footer = false;
 ?>
 <header id="searchDept_header" class="bg-green">
     <nav class="left">
-        <a href="<?php echo $urlHomeIndex; ?>" data-icon="previous"></a>
+        <a href="<?php echo $urlHomeIndex; ?>">
+            <div class="pl5">
+                <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+            </div>
+        </a>
+        <a>
+            <span class="ml20 pb2 br-white"></span>
+        </a>
+        <a onclick="javascript:history.go(0)">
+            <img src="<?php echo $urlResImage; ?>refresh.png" class="w24p ml20">
+        </a>
     </nav>
     <h1 class="title">
         <span id="deptTitle" class="" data-dept=""></span>
@@ -41,6 +51,9 @@ $this->show_footer = false;
 
 <script>
     $(document).ready(function () {
+        //返回首页
+        $homeIndex = '<?php echo $urlHomeIndex; ?>';
+
         //请求医生
         $requestHospital = '<?php echo $urlHospital; ?>';
         $requestHospitalSearch = '<?php echo $urlHospitalSearch; ?>';

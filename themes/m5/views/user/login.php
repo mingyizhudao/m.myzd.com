@@ -12,14 +12,18 @@ $this->setPageTitle('名医主刀');
 $urlRegister = $this->createUrl("user/register");
 $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/auth/sendSmsVerifyCode');
 $authActionType = AuthSmsVerify::ACTION_USER_LOGIN;
-$urlResImage = Yii::app()->theme->baseUrl . "/images";
+$urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $returnUrl = $returnUrl;
 $this->show_footer = false;
 ?>
 <article id="login_article" class="active"  data-scroll="true">
     <div class="color-white">
         <nav class="left">
-            <a href="#" data-target="back" data-icon="previous" class="login-back"></a>
+            <a href="" data-target="back">
+                <div class="pl10 pt10">
+                    <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                </div>
+            </a>
         </nav>
     </div>
     <div class="logo w100 loginform">

@@ -10,7 +10,11 @@ $this->show_footer = false;
         <?php if ($isShowHeader == 1) { ?>
             <header class="bg-green">
                 <nav class="left">
-                    <a href="#" data-target="back" data-icon="previous"></a>
+                    <a href="" data-target="back">
+                        <div class="pl5">
+                            <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                        </div>
+                    </a>
                 </nav>
                 <div class="title color-white">
                     <?php echo $this->pageTitle; ?>

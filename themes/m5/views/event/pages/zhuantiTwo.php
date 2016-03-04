@@ -1,14 +1,24 @@
 <?php
 $showHeader = Yii::app()->request->getQuery('header', 1);
+$urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $urlBookingDoctor = $this->createAbsoluteUrl('booking/create', array('did' => ''));
 $this->show_footer = false;
 ?>
 <?php if ($showHeader == 1) { ?>
     <header class="bg-green">
         <nav class="left">
-            <a href="" data-icon="previous" data-target="back"></a>
+            <a href="" data-target="back">
+                <div class="pl5">
+                    <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                </div>
+            </a>
         </nav>
         <div class="title"></div>
+        <nav class="right">
+            <a onclick="javascript:history.go(0)">
+                <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
+            </a>
+        </nav>
     </header>
 <?php } ?>
 <article id="zhuantiTwo_article" class="active" data-scroll="true">

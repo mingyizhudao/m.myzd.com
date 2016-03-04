@@ -71,6 +71,11 @@ if ($showPage == 0) {
                 <a id="story">就医故事</a>
             </li>
         </ul>
+        <nav class="right">
+            <a onclick="javascript:history.go(0)">
+                <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
+            </a>
+        </nav>
     </header>
 <?php } ?>
 <article id="zhuanti_article" class="<?php echo $showZt; ?>" data-scroll="true" data-active="find_footer">

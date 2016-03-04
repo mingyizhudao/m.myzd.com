@@ -16,11 +16,13 @@ body {width:100%;color: #333;letter-spacing: 1px;line-height: 1.5;font-size: 14p
 .pad20{padding: 20px;}
 
 .pt0{padding-top:0!important;}
+.pt1{padding-top:1px;}
 .pt2{padding-top:2px;}
 .pt3{padding-top:3px;}
 .pt4{padding-top:4px;}
 .pt5{padding-top:5px;}
 .pt10{padding-top:10px;}
+.pt11{padding-top:11px;}
 .pt15{padding-top:15px;}
 .pt17{padding-top:17px;}
 .pt20{padding-top:20px;}
@@ -34,6 +36,7 @@ body {width:100%;color: #333;letter-spacing: 1px;line-height: 1.5;font-size: 14p
 .pt-140{padding-top: 140%;}
 
 .pb0{padding-bottom:0;}
+.pb2{padding-bottom:2px;}
 .pb3{padding-bottom:3px;}
 .pb5{padding-bottom:5px;}
 .pb10{padding-bottom:10px;}
@@ -246,6 +249,7 @@ body {width:100%;color: #333;letter-spacing: 1px;line-height: 1.5;font-size: 14p
 .w14p{width:14px;}
 .w15p{width:15px;}
 .w20p{width:20px;}
+.w24p{width:24px;}
 .w25p{width:25px;}
 .w30p{width:30px;}
 .w44p{width:44px;}
@@ -287,6 +291,7 @@ body {width:100%;color: #333;letter-spacing: 1px;line-height: 1.5;font-size: 14p
 .bb-dashed-gray{border-bottom:1px dashed #dfdfdf;}
 .bb-gray2{border-bottom:1px solid #e1e1e1;}
 .bb-gray3{border-bottom:1px solid #f2f2f2;}
+.br-white{border-right:1px solid #ffffff;}
 .bt-white{border-top:1px solid #ffffff;}
 .bt-gray{border-top:1px solid #e1e1e1;}
 .bt-gray2{border-top:1px solid #e1e1e1;}

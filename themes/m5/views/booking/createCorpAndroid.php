@@ -17,10 +17,7 @@ $urlReturn = $this->createUrl('home/index');
 $this->show_footer = false;
 ?>
 <header class="bg-green">
-    <nav class="left">
-        <a href="#" data-icon="previous" data-target="back"></a>
-    </nav>
-    <div class="title"><?php echo $this->pageTitle; ?></div>
+    <h1 class="title"><?php echo $this->pageTitle; ?></h1>
 </header>
 <article id="createCopAndroid_article" class="active" data-scroll="true">
     <div class="ml10 mr10">

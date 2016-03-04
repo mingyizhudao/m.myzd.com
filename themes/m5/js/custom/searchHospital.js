@@ -6,7 +6,17 @@ $('#selectCity').tap(function () {
     var innerPage = '<div id="findDoc_section">' +
             '<header id="searchDept_header" class="bg-green">' +
             '<nav class="left">' +
-            '<a href="#" data-icon="previous" data-target="back"></a>' +
+            '<a href="' + $homeIndex + '">' +
+            '<div class="pl5">' +
+            '<img src="../../themes/m5/images/back.png" class="w11p">' +
+            '</div>' +
+            '</a>' +
+            '<a>' +
+            '<span class="ml20 pb2 br-white"></span>' +
+            '</a>' +
+            '<a onclick="javascript:history.go(0)">' +
+            '<img src="../../themes/m5/images/refresh.png" class="w24p ml20">' +
+            '</a>' +
             '</nav>' +
             '<h1 class="title"><span id="deptTitle" data-target="closePopup" data-dept="' + deptId + '">' + deptName + '</span>' +
             '</h1>' +

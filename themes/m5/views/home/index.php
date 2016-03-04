@@ -16,11 +16,22 @@ $urlEventZhuantiSix = $this->createUrl('event/view', array('page' => 'zhuantiSix
 $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
 ?>
 <header id="home_header" class="bg-green">
-    <a href="<?php echo $urlDoctorViewSearch; ?>" class="text-center">
-        <div class="searchDiv color-green5">
-            搜疾病
+    <div class="grid">
+        <div class="col-1 w15"></div>
+        <div class="col-1 w70 pt1">
+            <a href="<?php echo $urlDoctorViewSearch; ?>" class="text-center">
+                <div class="searchDiv color-green5">
+                    搜疾病
+                </div>
+            </a>
         </div>
-    </a>
+        <div class="col-1 w15 text-right pt11 pr15">
+            <a onclick="javascript:history.go(0)">
+                <img src="<?php echo $urlResImage; ?>refresh.png" class="w24p">
+            </a>
+        </div>
+    </div>
+
 </header>
 <article id="home_article" data-active="home_footer" class="active" data-scroll="true">
     <div>

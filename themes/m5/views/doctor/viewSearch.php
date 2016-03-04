@@ -10,7 +10,11 @@ $this->show_footer = false;
 </style>
 <header id="search_header" class="bg-green">
     <nav class="left">
-        <a href="#" data-icon="previous" data-target="back"></a>
+        <a href="" data-target="back">
+            <div class="pl5">
+                <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+            </div>
+        </a>
     </nav>
     <div class="title">
         <input id="inputDisease" type="text" name="disease_name" class="w70" placeholder="请输入疾病名称">

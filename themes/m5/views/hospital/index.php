@@ -13,6 +13,11 @@ $city = Yii::app()->request->getQuery('city', '');
 $page = Yii::app()->request->getQuery('page', '');
 ?>
 <header id="hospital_header" class="bg-green">
+    <nav class="left">
+        <a onclick="javascript:history.go(0)">
+            <img src="<?php echo $urlResImage; ?>refresh.png" class="w24p">
+        </a>
+    </nav>
     <h1 class="title">推荐医院</h1>
     <nav id="selectCity" class="right">
         <div class="grid mt17">

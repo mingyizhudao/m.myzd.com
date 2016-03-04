@@ -11,9 +11,18 @@ function deptSelect() {
     var innerPage = '<div id="findDoc_section">' +
             '<header class="bg-green">' +
             '<nav class="left">' +
-            '<a href="#" data-icon="previous" data-target="back"></a>' +
+            '<a href="' + $homeIndex + '">' +
+            '<div class="pl5">' +
+            '<img src="../../themes/m5/images/back.png" class="w11p">' +
+            '</div>' +
+            '</a>' +
             '</nav>' +
             '<h1 class="title">找名医</h1>' +
+            '<nav class="right">' +
+            '<a onclick="javascript:history.go(0)">' +
+            '<img src="../../themes/m5/images/refresh.png" class="w24p">' +
+            '</a>' +
+            '</nav>' +
             '</header>' +
             '<nav id="findDoc_nav" class="header-secondary bg-white">' +
             '<div class="grid w100 color-black font-s16 color-black6">' +
@@ -140,9 +149,18 @@ $('#diseaseSelect').tap(function () {
         var innerPage = '<div id="findDoc_section">' +
                 '<header class="bg-green">' +
                 '<nav class="left">' +
-                '<a href="#" data-icon="previous" data-target="back"></a>' +
+                '<a href="' + $homeIndex + '">' +
+                '<div class="pl5">' +
+                '<img src="../../themes/m5/images/back.png" class="w11p">' +
+                '</div>' +
+                '</a>' +
                 '</nav>' +
                 '<h1 class="title">找名医</h1>' +
+                '<nav class="right">' +
+                '<a onclick="javascript:history.go(0)">' +
+                '<img src="../../themes/m5/images/refresh.png" class="w24p">' +
+                '</a>' +
+                '</nav>' +
                 '</header>' +
                 '<nav id="findDoc_nav" class="header-secondary bg-white">' +
                 '<div class="grid w100 color-black font-s16 color-black6">' +
@@ -211,9 +229,18 @@ $('#citySelect').tap(function () {
     var innerPage = '<div id="findDoc_section">' +
             '<header class="bg-green">' +
             '<nav class="left">' +
-            '<a href="#" data-icon="previous" data-target="back"></a>' +
+            '<a href="' + $homeIndex + '">' +
+            '<div class="pl5">' +
+            '<img src="../../themes/m5/images/back.png" class="w11p">' +
+            '</div>' +
+            '</a>' +
             '</nav>' +
             '<h1 class="title">找名医</h1>' +
+            '<nav class="right">' +
+            '<a onclick="javascript:history.go(0)">' +
+            '<img src="../../themes/m5/images/refresh.png" class="w24p">' +
+            '</a>' +
+            '</nav>' +
             '</header>' +
             '<nav id="findDoc_nav" class="header-secondary bg-white">' +
             '<div class="grid w100 color-black font-s16 color-black6">' +

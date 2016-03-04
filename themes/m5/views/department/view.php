@@ -5,9 +5,18 @@ $this->show_footer = false;
 ?>
 <header class="bg-green">
     <nav class="left">
-        <a href="#" data-icon="previous" data-target="back"></a>
+        <a href="" data-target="back">
+            <div class="pl5">
+                <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+            </div>
+        </a>
     </nav>
     <h1 class="title"><?php echo $data->hpDeptHospital->name; ?></h1>
+    <nav class="right">
+        <a onclick="javascript:history.go(0)">
+            <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
+        </a>
+    </nav>
 </header>
 <nav id="hosDept_nav" class="header-secondary">
     <div class="pb3 bg-white w100 grid">

@@ -26,9 +26,18 @@ $this->show_footer = false;
 </style>
 <header class="bg-green">
     <nav class="left">
-        <a href="<?php echo $urlHomeIndex; ?>" data-icon="previous"></a>
+        <a href="<?php echo $urlHomeIndex; ?>">
+            <div class="pl5">
+                <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+            </div>
+        </a>
     </nav>
     <h1 class="title">找名医</h1>
+    <nav class="right">
+        <a onclick="javascript:history.go(0)">
+            <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
+        </a>
+    </nav>
 </header>
 <nav id="findDoc_nav" class="header-secondary bg-white">
     <div class="grid w100 color-black font-s16 color-black6">
@@ -50,6 +59,9 @@ $this->show_footer = false;
 </article>
 <script>
     $(document).ready(function () {
+        //返回首页
+        $homeIndex = '<?php echo $urlHomeIndex; ?>'
+
         //请求医生
         $requestDoc = '<?php echo $urlDoctor; ?>';
         $requestDisease = '<?php echo $urlDisease; ?>';

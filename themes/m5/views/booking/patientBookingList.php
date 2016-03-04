@@ -9,13 +9,22 @@ $urlApiAppNav1 = $this->createAbsoluteUrl('/api/list', array('model' => 'appnav1
 $urlPatientBooking = $this->createUrl('booking/patientBooking');
 $this->show_footer = false;
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
-$urlUserAccount = $this->createUrl('user/view');
+$urlUserView = $this->createUrl('user/view');
 ?>
 <header class="bg-green" >
     <nav class="left">
-        <a href="<?php echo $urlUserAccount; ?>" data-icon="previous" data-target="link"></a>
+        <a href="<?php echo $urlUserView; ?>">
+            <div class="pl5">
+                <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+            </div>
+        </a>
     </nav>
     <h1 class="title"><?php echo $this->pageTitle; ?></h1>
+    <nav class="right">
+        <a onclick="javascript:history.go(0)">
+            <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
+        </a>
+    </nav>
 </header>
 
 <article id="orderList_article" class="active"  data-scroll="true">

@@ -22,7 +22,17 @@ $this->show_footer = false;
 ?>
 <header id="findDept_header" class="bg-green">
     <nav class="left">
-        <a href="<?php echo $urlHomeIndex; ?>" data-icon="previous"></a>
+        <a href="<?php echo $urlHomeIndex; ?>">
+            <div class="pl5">
+                <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+            </div>
+        </a>
+        <a>
+            <span class="ml20 pb2 br-white"></span>
+        </a>
+        <a onclick="javascript:history.go(0)">
+            <img src="<?php echo $urlResImage; ?>refresh.png" class="w24p ml20">
+        </a>
     </nav>
     <h1 class="title">
         <span id="deptTitle" class="" data-dept="">科室</span>
@@ -44,6 +54,9 @@ $this->show_footer = false;
 
 <script>
     $(document).ready(function () {
+        //返回首页
+        $homeIndex = '<?php echo $urlHomeIndex; ?>';
+
         $innerDeptId = '<?php echo $innerDeptId; ?>';
         $diseaseData = '';
         $deptHtml = '';
@@ -108,6 +121,7 @@ $this->show_footer = false;
             $condition["page"] = '<?php echo $page == '' ? 1 : $page; ?>';
 
             //首次进入，更新科室
+            readyDeptName = readyDeptName.length > 5 ? readyDeptName.substr(0, 4) + '...' : readyDeptName;
             $('#deptTitle').html(readyDeptName);
             $('#deptTitle').attr('data-dept', readyDeptId);
             //获取医院信息

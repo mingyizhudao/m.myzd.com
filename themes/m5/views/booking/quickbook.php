@@ -11,6 +11,7 @@ $urlSubmitForm = $this->createUrl("booking/ajaxQuickbook");
 $urlUploadFile = $this->createUrl("booking/ajaxUploadFile");
 $urlReturn = $this->createUrl('order/view');
 $urlHomeIndex = $this->createUrl('home/index');
+$urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 $user = $this->getCurrentUser();
 ?>
@@ -19,9 +20,18 @@ $user = $this->getCurrentUser();
 </style>
 <header class="bg-green">
     <nav class="left">
-        <a href="" data-icon="previous" data-target="back"></a>
+        <a href="" data-target="back">
+            <div class="pl5">
+                <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+            </div>
+        </a>
     </nav>
     <h1 class="title">快速预约</h1>
+    <nav class="right">
+        <a onclick="javascript:history.go(0)">
+            <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
+        </a>
+    </nav>
 </header>
 <article id="quickBookIos_article" class="active" data-scroll="true">
     <div class="ml10 mr10 mt10">
