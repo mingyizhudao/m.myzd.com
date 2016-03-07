@@ -21,7 +21,7 @@ $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
         <div class="col-1 w70 pt1">
             <a href="<?php echo $urlDoctorViewSearch; ?>" class="text-center">
                 <div class="searchDiv color-green5">
-                    搜疾病
+                    搜疾病或医生
                 </div>
             </a>
         </div>

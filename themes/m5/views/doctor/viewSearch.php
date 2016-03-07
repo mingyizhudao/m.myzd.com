@@ -14,7 +14,7 @@ $this->show_footer = false;
 <header id="search_header" class="bg-white">
     <div class="grid w100">
         <div class="col-1 w80 ml15">
-            <input id="inputDisease" type="text" name="disease_name" class="w100" placeholder="请输入疾病名称">
+            <input id="inputDisease" type="text" name="disease_name" class="w100" placeholder="请输入疾病或医生姓名">
             <span class="pr5 emptyImg hide">
                 <a id="emptyInput">
                     <img src="<?php echo $urlResImage; ?>close.png" class="w15p">
@@ -53,7 +53,7 @@ $this->show_footer = false;
             $.ajax({
                 url: '<?php echo $urlSearch; ?>' + disease_name,
                 success: function (data) {
-                    console.log(data);
+                    //console.log(data);
                     readyPage(data, disease_name);
                 }
             });
@@ -99,6 +99,11 @@ $this->show_footer = false;
             } else {
 
             }
+            //若无查询到信息
+            if (doctors == undefined && diseases == undefined) {
+                innerHtml += '<div class="pl15 color-black6 pt5">对不起,暂没有搜索到"' + disease_name + '"的相关信息</div>';
+            }
+
             innerHtml += '</div>';
             $('#search_atricle').html(innerHtml);
 
