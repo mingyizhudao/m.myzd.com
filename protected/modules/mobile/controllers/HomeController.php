@@ -19,11 +19,16 @@ class HomeController extends MobileController {
 
         $apiService = new ApiViewAppNav1V5();
         $data = $apiService->loadApiViewData();
-        $this->render('index', array(
+        $this->render('view', array(
             'data' => $data
         ));
     }
-    public function actionFindExpertteamByDiseaseId(){
+
+    public function actionView() {
+        $this->render('view');
+    }
+
+    public function actionFindExpertteamByDiseaseId() {
         $this->render('expertteamAndDoctors');
     }
 
@@ -113,7 +118,7 @@ class HomeController extends MobileController {
 
     public function actionEnquiry() {
         $this->redirect(array('booking/create'));
-        
+
         $form = new ContactEnquiryForm;
         $this->performAjaxValidation($form);
         $accessAgent = '';

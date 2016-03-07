@@ -11,7 +11,7 @@ $disease_category = Yii::app()->request->getQuery('disease_category', '');
 $disease_sub_category = Yii::app()->request->getQuery('disease_sub_category', '');
 $page = Yii::app()->request->getQuery('page', '');
 
-$urlHomeIndex = $this->createUrl('home/index');
+$urlHomeView = $this->createUrl('home/view');
 $urlHospitalTop = $this->createUrl('hospital/top');
 $urlDepartmentView = $this->createUrl('department/view', array('id' => ''));
 $urlCity = $this->createAbsoluteUrl('/api/city');
@@ -22,7 +22,7 @@ $this->show_footer = false;
 ?>
 <header id="findDept_header" class="bg-green">
     <nav class="left">
-        <a href="<?php echo $urlHomeIndex; ?>">
+        <a href="<?php echo $urlHomeView; ?>">
             <div class="pl5">
                 <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
             </div>
@@ -55,7 +55,7 @@ $this->show_footer = false;
 <script>
     $(document).ready(function () {
         //返回首页
-        $homeIndex = '<?php echo $urlHomeIndex; ?>';
+        $homeView = '<?php echo $urlHomeView; ?>';
 
         $innerDeptId = '<?php echo $innerDeptId; ?>';
         $diseaseData = '';
@@ -94,7 +94,7 @@ $this->show_footer = false;
 
         $('#backHome').click(function (e) {
             e.preventDefault();
-            location.href = '<?php echo $urlHomeIndex; ?>';
+            location.href = '<?php echo $urlHomeView; ?>';
         });
 
         //选择二级科室

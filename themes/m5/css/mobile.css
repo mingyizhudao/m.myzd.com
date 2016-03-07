@@ -562,44 +562,68 @@ footer .control-group li .imgCenter{
 }
 
 /*搜索页面*/
+header#search_header{
+    border-bottom: inherit;
+}
 #search_header input[type=text]{
-    padding-top: 0px;
-    padding-left: 0px;
-    padding-right: 0px;
-    padding-bottom: 0px;
-    color:#fff;
-    background-color:#06c1ae;
+    color:#0c0c0c;
+    background-color:#E7E8EA;
     margin-bottom:0px;
-    border-radius: 0!important;
+    border-radius: 5px!important;
     -webkit-box-shadow: none!important;
     box-shadow: none!important;
-    //padding: 0!important;
+    padding: 15px!important;
     height: 20px!important;
     border:none!important;
-    margin-top:13px;
+    margin-top: 7px;
 }
 #search_header .borderLine{
-    height:5px;
-    border-bottom:1px solid #fff;
-    border-left:1px solid #fff;
-    border-right:1px solid #fff;
+    /*    height:5px;
+        border-bottom:1px solid #fff;
+        border-left:1px solid #fff;
+        border-right:1px solid #fff;*/
 }
 #search_header .lineDiv{
-    position:fixed;
-    top:33px;
-    width:100%;
+    /*    position:fixed;
+        top:33px;
+        width:100%;*/
 }
 #search_header .title ::-webkit-input-placeholder { /* WebKit browsers */
-    color: #fff;
+    color: #000;
 }
 #search_header .title :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color: #fff;
+    color: #000;
 }
 #search_header .title ::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color: #fff;
+    color: #000;
 }
 #search_header .title :-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #000;
+}
+#search_atricle .list>li{
+    //padding: 15px 10px;
+}
+#search_atricle .blueButton{
+    padding: 5px 8px;
+    background-color: #00B7EE;
     color: #fff;
+}
+#search_atricle .greenButton{
+    padding: 5px 8px;
+    background-color: #06C1AE;
+    color: #fff;
+}
+#search_atricle #moreDoctor{
+    background: url('../images/searchBlue.png') no-repeat;
+    background-size: 16px;
+    background-position: 10px 18px;
+    padding-left: 35px;
+}
+#search_atricle #moreDisease{
+    background: url('../images/searchBlue.png') no-repeat;
+    background-size: 16px;
+    background-position: 10px 18px;
+    padding-left: 35px;
 }
 
 /*应用于所有页面*/

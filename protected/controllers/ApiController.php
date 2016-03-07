@@ -221,6 +221,11 @@ class ApiController extends Controller {
                 $apiService = new ApiViewRecommendedDoctors();
                 $output = $apiService->loadApiViewData();
                 break;
+            case 'search':
+                $values = $_GET;
+                $apiService = new ApiViewSearch($values);
+                $output = $apiService->loadApiViewData();
+                break;
             default:
                 // Model not implemented error
                 //$this->_sendResponse(501, sprintf('Error: Mode <b>list</b> is not implemented for model <b>%s</b>', $model));

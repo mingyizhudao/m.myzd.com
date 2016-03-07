@@ -28,6 +28,7 @@ body {width:100%;color: #333;letter-spacing: 1px;line-height: 1.5;font-size: 14p
 .pt20{padding-top:20px;}
 .pt25{padding-top:25px;}
 .pt30{padding-top:30px;}
+.pt33{padding-top:33px;}
 .pt40{padding-top:40px;}
 .pt50{padding-top:50px;}
 .pt61{padding-top:61px;}
@@ -156,10 +157,12 @@ body {width:100%;color: #333;letter-spacing: 1px;line-height: 1.5;font-size: 14p
 .color-black5{color:#1d1d1d!important;}
 .color-black6{color:#666666!important;}
 .color-black7{color:#5C5C5C!important;}
+.color-black8{color:#0c0c0c!important;}
 .color-blue{color:#019aea!important;}
 .color-blue2{color:#2795c3!important;}
 .color-blue3{color:#329cd0!important;}
 .color-blue4{color:#0b68ab!important;}
+.color-blue5{color:#50b3e7!important;}
 .color-white{color: #fff!important;}
 .color-white1{color: #FCF3F5!important;}
 .color-gray{color:#868686!important;}
@@ -248,6 +251,7 @@ body {width:100%;color: #333;letter-spacing: 1px;line-height: 1.5;font-size: 14p
 .w11p{width:11px;}
 .w14p{width:14px;}
 .w15p{width:15px;}
+.w16p{width:16px;}
 .w20p{width:20px;}
 .w24p{width:24px;}
 .w25p{width:25px;}

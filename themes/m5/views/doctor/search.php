@@ -18,7 +18,7 @@ $disease_category = Yii::app()->request->getQuery('disease_category', '');
 $disease_sub_category = Yii::app()->request->getQuery('disease_sub_category', '');
 $page = Yii::app()->request->getQuery('page', '');
 $urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('id' => ''));
-$urlHomeIndex = $this->createUrl('home/index');
+$urlHomeView = $this->createUrl('home/view');
 $urlDoctorSearch = $this->createUrl('doctor/search');
 $this->show_footer = false;
 ?>
@@ -26,7 +26,7 @@ $this->show_footer = false;
 </style>
 <header class="bg-green">
     <nav class="left">
-        <a href="<?php echo $urlHomeIndex; ?>">
+        <a href="<?php echo $urlHomeView; ?>">
             <div class="pl5">
                 <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
             </div>
@@ -60,7 +60,7 @@ $this->show_footer = false;
 <script>
     $(document).ready(function () {
         //返回首页
-        $homeIndex = '<?php echo $urlHomeIndex; ?>'
+        $homeView = '<?php echo $urlHomeView; ?>'
 
         //请求医生
         $requestDoc = '<?php echo $urlDoctor; ?>';

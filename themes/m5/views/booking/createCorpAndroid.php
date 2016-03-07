@@ -13,7 +13,7 @@ $authActionType = AuthSmsVerify::ACTION_BOOKING;
 $urlSubmitForm = $this->createUrl("booking/ajaxCreateCorp");
 $urlUploadFile = $this->createUrl("booking/ajaxUploadFile");
 $urlUplaodCorpFile = $this->createUrl('booking/ajaxUploadCorp');
-$urlReturn = $this->createUrl('home/index');
+$urlReturn = $this->createUrl('home/view');
 $this->show_footer = false;
 ?>
 <header class="bg-green">

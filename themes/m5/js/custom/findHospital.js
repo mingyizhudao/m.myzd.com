@@ -9,7 +9,7 @@ $('#deptTitle').tap(function () {
     var innerPage = '<div id="findDoc_section">' +
             '<header id="findDept_header" class="bg-green">' +
             '<nav class="left">' +
-            '<a href="' + $homeIndex + '">' +
+            '<a href="' + $homeView + '">' +
             '<div class="pl5">' +
             '<img src="../../themes/m5/images/back.png" class="w11p">' +
             '</div>' +
@@ -88,6 +88,7 @@ $('#deptTitle').tap(function () {
                 $('#cityTitle').html('地区');
                 $('#cityTitle').attr('data-disease', '');
                 setLocationUrl();
+                $('#findDept_article').scrollTop(0);
             }
         });
     });
@@ -129,7 +130,7 @@ $('#selectCity').tap(function () {
     var innerPage = '<div id="findDoc_section">' +
             '<header id="findDept_header" class="bg-green">' +
             '<nav class="left">' +
-            '<a href="' + $homeIndex + '">' +
+            '<a href="' + $homeView + '">' +
             '<div class="pl5">' +
             '<img src="../../themes/m5/images/back.png" class="w11p">' +
             '</div>' +
@@ -202,6 +203,7 @@ $('#selectCity').tap(function () {
                 $('#cityTitle').html($cityName);
                 $('#cityTitle').attr('data-city', $cityId);
                 setLocationUrl();
+                $('#findDept_article').scrollTop(0);
             }
         });
     });
@@ -285,6 +287,7 @@ function initPage(dataPage) {
                     //console.log(data);
                     readyHospital(data);
                     setLocationUrl();
+                    $('#findDept_article').scrollTop(0);
                 }
             });
         } else {
@@ -301,6 +304,7 @@ function initPage(dataPage) {
                     //console.log(data);
                     readyHospital(data);
                     setLocationUrl();
+                    $('#findDept_article').scrollTop(0);
                 }
             });
         } else {
@@ -319,6 +323,7 @@ function changePage() {
             //console.log(data);
             readyHospital(data);
             setLocationUrl();
+            $('#findDept_article').scrollTop(0);
         }
     });
 }

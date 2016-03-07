@@ -6,7 +6,7 @@ $('#selectCity').tap(function () {
     var innerPage = '<div id="findDoc_section">' +
             '<header id="searchDept_header" class="bg-green">' +
             '<nav class="left">' +
-            '<a href="' + $homeIndex + '">' +
+            '<a href="' + $homeView + '">' +
             '<div class="pl5">' +
             '<img src="../../themes/m5/images/back.png" class="w11p">' +
             '</div>' +
@@ -79,6 +79,7 @@ $('#selectCity').tap(function () {
                 console.log($('#deptTitle').html());
                 $condition["disease_name"] = $diseaseName;
                 setLocationUrl();
+                $('#searchDept_article').scrollTop(0);
             }
         });
     });
@@ -163,6 +164,7 @@ function initPage(dataPage) {
                     //console.log(data);
                     readyHospital(data);
                     setLocationUrl();
+                    $('#searchDept_article').scrollTop(0);
                 }
             });
         } else {
@@ -179,6 +181,7 @@ function initPage(dataPage) {
                     //console.log(data);
                     readyHospital(data);
                     setLocationUrl();
+                    $('#searchDept_article').scrollTop(0);
                 }
             });
         } else {
@@ -197,6 +200,7 @@ function changePage() {
             //console.log(data);
             readyHospital(data);
             setLocationUrl();
+            $('#searchDept_article').scrollTop(0);
         }
     });
 }

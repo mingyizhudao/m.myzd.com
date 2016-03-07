@@ -62,6 +62,7 @@ $('#selectCity').tap(function (e) {
                 $('#cityTitle').html($cityName);
                 $('#cityTitle').attr('data-city', $cityId);
                 setLocationUrl();
+                $('#hospital_article').scrollTop(0);
             }
         });
     });
@@ -126,6 +127,7 @@ function initPage(count) {
                     //console.log(data);
                     readyHospital(data);
                     setLocationUrl();
+                    $('#hospital_article').scrollTop(0);
                 }
             });
         } else {
@@ -142,6 +144,7 @@ function initPage(count) {
                     //console.log(data);
                     readyHospital(data);
                     setLocationUrl();
+                    $('#hospital_article').scrollTop(0);
                 }
             });
         } else {
@@ -160,6 +163,7 @@ function changePage() {
             //console.log(data);
             readyHospital(data);
             setLocationUrl();
+            $('#hospital_article').scrollTop(0);
         }
     });
 }

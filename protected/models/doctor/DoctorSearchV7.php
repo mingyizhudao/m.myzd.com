@@ -12,12 +12,17 @@ class DoctorSearchV7 extends ESearchModel {
     }
 
     public function getQueryFields() {
-        return array('city', 'disease', 'hospital', 'hpdept', 'mtitle', 'disease_name', 'disease_category', 'is_contracted', 'disease_sub_category');
+        return array('name', 'city', 'disease', 'hospital', 'hpdept', 'mtitle', 'disease_name', 'disease_category', 'is_contracted', 'disease_sub_category');
     }
 
     public function addQueryConditions() {
         $this->criteria->addCondition('t.date_deleted is NULL');
         if ($this->hasQueryParams()) {
+            // Doctor.Name
+            if (isset($this->queryParams['name'])) {
+                $name = $this->queryParams['name'];
+                $this->criteria->addSearchCondition('name', $name);
+            }
             // Doctor.medical_title
             if (isset($this->queryParams['mtitle'])) {
                 $mtitle = $this->queryParams['mtitle'];

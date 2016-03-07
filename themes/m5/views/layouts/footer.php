@@ -3,7 +3,7 @@ $urlExpertteam = $this->createUrl('expertteam/index');
 $urlHospital = $this->createUrl('hospital/index');
 $urlBooking = $this->createUrl('booking/create');
 
-$urlHomeIndex = $this->createUrl('home/index');
+$urlHomeView = $this->createUrl('home/view');
 $urlHospitalIndex = $this->createUrl('hospital/index');
 $urlEventIndex = $this->createUrl('event/index');
 $urlUserView = $this->createUrl('user/view');
@@ -12,7 +12,7 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 <footer>
     <ul class="control-group w100">
         <li class="w25" data-active="home_footer">
-            <a href="<?php echo $urlHomeIndex; ?>">
+            <a href="<?php echo $urlHomeView; ?>">
                 <div class="imgHome">
                 </div>
                 首页
