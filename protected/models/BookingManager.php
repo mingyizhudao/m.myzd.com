@@ -385,7 +385,8 @@ class BookingManager {
                 $patient = PatientInfo::model()->getById($model->patient_id);
                 if (isset($patient)) {
                     $adminBooking->patient_mobile = $patient->mobile;
-                    $adminBooking->patient_age = $patient->age . '岁' . strIsEmpty($patient->age_month) ? 0 : $patient->age_month . '月';
+                    $patientAgeStr = strIsEmpty($patient->age_month) ? '0' : $patient->age_month;
+                    $adminBooking->patient_age = $patient->age . '岁' . $patientAgeStr . '月';
                     $adminBooking->patient_name = $patient->name;
                     $adminBooking->patient_state = $patient->state_name;
                     $adminBooking->patient_city = $patient->city_name;
