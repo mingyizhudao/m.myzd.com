@@ -106,7 +106,6 @@ class OrderManager {
         $order->created_by = Yii::app()->user->id;
         $order->date_open = date('Y-m-d H:i:s');
         $order->setAmount($order->getOrderTypeDefaultAmount());
-        $order->createRefNo2($order->bk_ref_no);
         $order->save();
         return $order;
     }
