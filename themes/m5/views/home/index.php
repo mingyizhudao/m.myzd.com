@@ -2,6 +2,7 @@
 Yii::app()->clientScript->registerCssFile('http://myzd.oss-cn-hangzhou.aliyuncs.com/static/mobile/js/jquery.bxslider/jquery.bxslider.css');
 Yii::app()->clientScript->registerScriptFile('http://myzd.oss-cn-hangzhou.aliyuncs.com/static/mobile/js/jquery.bxslider/jquery.bxslider.min.js', CClientScript::POS_END);
 Yii::app()->clientScript->registerScriptFile('http://myzd.oss-cn-hangzhou.aliyuncs.com/static/mobile/js/jquery-1.9.1.min.js', CClientScript::POS_HEAD);
+Yii::app()->clientScript->registerScriptFile('http://dl.ntalker.com/js/xn6/ntkfstat.js?siteid=kf_9138', CClientScript::POS_HEAD);
 ?>
 <?php
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
@@ -17,8 +18,8 @@ $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
 ?>
 <header id="home_header" class="bg-green">
     <div class="grid">
-        <div class="col-1 w15"></div>
-        <div class="col-1 w70 pt1">
+        <div class="col-2 w15"></div>
+        <div class="col-6 w70 pt1">
             <a href="<?php echo $urlDoctorViewSearch; ?>" class="text-center">
                 <div class="searchDiv color-green5">
                     搜疾病、医生
@@ -41,7 +42,7 @@ $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
             </ul>
         </div>
         <div class="grid">
-            <div class="w33">
+            <div class="col-1 w33">
                 <a href="<?php echo $urlHospitalTop; ?>?innerDeptId=1">
                     <div class="text-center">
                         <img class="w54p" src="<?php echo $urlResImage; ?>wai.png">
@@ -49,7 +50,7 @@ $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
                     <div class="color-black text-center font-s16">外科</div>
                 </a>
             </div>
-            <div class="w33">
+            <div class="col-1 w33">
                 <a href="<?php echo $urlHospitalTop; ?>?innerDeptId=2">
                     <div class="text-center">
                         <img class="w54p" src="<?php echo $urlResImage; ?>gu.png">
@@ -57,7 +58,7 @@ $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
                     <div class="color-black text-center font-s16">骨科</div>
                 </a>
             </div>
-            <div class="w33">
+            <div class="col-1 w33">
                 <a href="<?php echo $urlHospitalTop; ?>?innerDeptId=3">
                     <div class="text-center">
                         <img class="w54p" src="<?php echo $urlResImage; ?>fu.png">
@@ -67,7 +68,7 @@ $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
             </div>
         </div>
         <div class="grid mt15">
-            <div class="w33">
+            <div class="col-1 w33">
                 <a href="<?php echo $urlHospitalTop; ?>?innerDeptId=4">
                     <div class="text-center">
                         <img class="w54p" src="<?php echo $urlResImage; ?>xiao.png">
@@ -75,7 +76,7 @@ $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
                     <div class="color-black text-center font-s16">小儿外科</div>
                 </a>
             </div>
-            <div class="w33">
+            <div class="col-1 w33">
                 <a href="<?php echo $urlHospitalTop; ?>?innerDeptId=5">
                     <div class="text-center">
                         <img class="w54p" src="<?php echo $urlResImage; ?>wu.png">
@@ -83,7 +84,7 @@ $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
                     <div class="color-black text-center font-s16">五官科</div>
                 </a>
             </div>
-            <div class="w33">
+            <div class="col-1 w33">
                 <a href="<?php echo $urlHospitalTop; ?>?innerDeptId=6">
                     <div class="text-center">
                         <img class="w54p" src="<?php echo $urlResImage; ?>nei.png">
@@ -93,7 +94,7 @@ $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
             </div>
         </div>
         <div class="grid bt5-gray bb5-gray mt15">
-            <div class="w45 br-gray">
+            <div class="col-1 w45 br-gray">
                 <a href="<?php echo $urlBookingQuickbook; ?>">
                     <div class="text-center pt20">
                         <img class="w75p" src="<?php echo $urlResImage; ?>shoushuzhitongche.png">
@@ -101,7 +102,7 @@ $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
                     <div class="mt10 mb20 color-black text-center font-s16">手术直通车</div>
                 </a>
             </div>
-            <div class="w55">
+            <div class="col-1 w55">
                 <div class="bb-gray">
                     <a href="<?php echo $urlDoctorSearch; ?>?disease_sub_category=2">
                         <div class="grid pt15 pb15">
@@ -115,16 +116,14 @@ $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
                     </a>
                 </div>
                 <div>
-                    <a href="<?php echo $urlHomeMyzy; ?>">
-                        <div class="grid pt15 pb15">
-                            <div class="col-0 text-center pl20 pr20">
-                                <img class="w44p" src="<?php echo $urlResImage; ?>mygy.png">
-                            </div>
-                            <div class="col-1 color-black font-s16 vertical-center">
-                                名医公益
-                            </div>
+                    <div class="grid pt15 pb15" onclick="NTKF.im_openInPageChat('kf_9138_1451451713805');">
+                        <div class="col-0 text-center pl20 pr20">
+                            <img class="w44p" src="<?php echo $urlResImage; ?>onlineService.png">
                         </div>
-                    </a>
+                        <div class="col-1 color-black font-s16 vertical-center">
+                            在线客服
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

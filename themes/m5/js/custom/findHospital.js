@@ -145,8 +145,8 @@ $('#selectCity').tap(function () {
             '<h1 class="title"><span id="deptTitle" data-target="closePopup" data-dept="' + deptId + '">' + deptName + '</span>' +
             '<span class="pl6"><img class="w10p" src="../../themes/m5/images/triangleWhite.png"></span>' +
             '</h1>' +
-            '<nav id="selectCity" class="right">' +
-            '<div class="grid mt17" data-target="closePopup">' +
+            '<nav id="selectCity" class="right" data-target="closePopup">' +
+            '<div class="grid mt17">' +
             '<div class="font-s16 col-0" id="cityTitle" data-city="' + cityId + '">' + cityName +
             '</div>' +
             '<div class="col-0 cityImg"></div>' +

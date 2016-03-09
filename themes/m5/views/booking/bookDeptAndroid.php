@@ -92,12 +92,14 @@ $this->show_footer = false;
                     </div>
                 </div>
             </div>
-            <div class="ui-field-contain bb-gray">
-                <div class="grid pt20 pb20">
+            <div class="ui-field-contain">
+                <div class="grid pt20">
                     <div class="col-0 w90p color-black4">疾病描述:</div>
-                    <div class="col-1 mr15">
-                        <?php echo $form->textArea($model, 'disease_detail', array('name' => 'booking[disease_detail]', 'minlength' => 10, 'maxlength' => 1000, 'rows' => '6')); ?>
-                    </div>
+                </div>
+            </div>
+            <div class="ui-field-contain bb-gray">
+                <div class="col-1 mr15 pb20">
+                    <?php echo $form->textArea($model, 'disease_detail', array('name' => 'booking[disease_detail]', 'minlength' => 10, 'maxlength' => 1000, 'rows' => '6')); ?>
                 </div>
             </div>
         </div>

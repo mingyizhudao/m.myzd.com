@@ -9,8 +9,8 @@ $('#selectCity').tap(function (e) {
             '</a>' +
             '</nav>' +
             '<h1 class="title">推荐医院</h1>' +
-            '<nav id="selectCity" class="right">' +
-            '<div class="grid mt17" data-target="closePopup">' +
+            '<nav id="selectCity" class="right" data-target="closePopup">' +
+            '<div class="grid mt17">' +
             '<div id="cityTitle" class="font-s16 col-0" data-city="' + cityId + '">' + cityName + '</div>' +
             '<div class="col-0 cityImg"></div>' +
             '</div>' +

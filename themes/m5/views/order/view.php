@@ -17,7 +17,7 @@ $this->show_footer = false;
     <section id="order_section" class="active" data-init="true">
         <?php if ($isApp == 1) { ?>
             <header class="bg-green">
-                <div class="title"><?php echo $this->pageTitle; ?><?php echo $isApp;?></div>
+                <div class="title"><?php echo $this->pageTitle; ?></div>
             </header>
         <?php } ?>
         <article id="order" class="active" data-scroll="true">

@@ -127,7 +127,7 @@ footer .control-group li .imgCenter{
     -webkit-box-shadow: none!important;
     box-shadow: none!important;
     padding: 0!important;
-    height: 20px!important;
+    height: 60px!important;
 }
 #bookingIos_article .ui-field-contain div.error {
     color: #f00;
@@ -149,7 +149,7 @@ footer .control-group li .imgCenter{
     -webkit-box-shadow: none!important;
     box-shadow: none!important;
     padding: 0!important;
-    height: 20px!important;
+    height: 60px!important;
 }
 #bookingAndroid_article .ui-field-contain div.error {
     color: #f00;
@@ -562,68 +562,44 @@ footer .control-group li .imgCenter{
 }
 
 /*搜索页面*/
-header#search_header{
-    border-bottom: inherit;
-}
 #search_header input[type=text]{
-    color:#0c0c0c;
-    background-color:#E7E8EA;
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    color:#fff;
+    background-color:#06c1ae;
     margin-bottom:0px;
-    border-radius: 5px!important;
+    border-radius: 0!important;
     -webkit-box-shadow: none!important;
     box-shadow: none!important;
-    padding: 15px!important;
+    //padding: 0!important;
     height: 20px!important;
     border:none!important;
-    margin-top: 7px;
+    margin-top:13px;
 }
 #search_header .borderLine{
-    /*    height:5px;
-        border-bottom:1px solid #fff;
-        border-left:1px solid #fff;
-        border-right:1px solid #fff;*/
+    height:5px;
+    border-bottom:1px solid #fff;
+    border-left:1px solid #fff;
+    border-right:1px solid #fff;
 }
 #search_header .lineDiv{
-    /*    position:fixed;
-        top:33px;
-        width:100%;*/
+    position:fixed;
+    top:33px;
+    width:100%;
 }
 #search_header .title ::-webkit-input-placeholder { /* WebKit browsers */
-    color: #000;
+    color: #fff;
 }
 #search_header .title :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color: #000;
+    color: #fff;
 }
 #search_header .title ::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color: #000;
+    color: #fff;
 }
 #search_header .title :-ms-input-placeholder { /* Internet Explorer 10+ */
-    color: #000;
-}
-#search_atricle .list>li{
-    //padding: 15px 10px;
-}
-#search_atricle .blueButton{
-    padding: 5px 8px;
-    background-color: #00B7EE;
     color: #fff;
-}
-#search_atricle .greenButton{
-    padding: 5px 8px;
-    background-color: #06C1AE;
-    color: #fff;
-}
-#search_atricle #moreDoctor{
-    background: url('../images/searchBlue.png') no-repeat;
-    background-size: 16px;
-    background-position: 10px 18px;
-    padding-left: 35px;
-}
-#search_atricle #moreDisease{
-    background: url('../images/searchBlue.png') no-repeat;
-    background-size: 16px;
-    background-position: 10px 18px;
-    padding-left: 35px;
 }
 
 /*应用于所有页面*/
