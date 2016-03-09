@@ -19,13 +19,13 @@ class HomeController extends MobileController {
 
         $apiService = new ApiViewAppNav1V5();
         $data = $apiService->loadApiViewData();
-        $this->render('view', array(
+        $this->render('index', array(
             'data' => $data
         ));
     }
 
     public function actionView() {
-        $this->render('view');
+        $this->render('index');
     }
 
     public function actionFindExpertteamByDiseaseId() {
