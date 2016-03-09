@@ -78,6 +78,7 @@ class OrderManager {
             }
             $order->description = '预约号:' . $model->getRefNo() . '。' . $description . '!  订单号:' . $order->ref_no;
         } elseif ($model instanceof AdminBooking) {
+            $order->createRefNo($model->ref_no, $model->id, AdminBooking::BK_TYPE_CRM);
             $order->bk_type = AdminBooking::BK_TYPE_CRM;
             $order->patient_mobile = $model->patient_mobile;
             $order->patient_age = $model->patient_age;
