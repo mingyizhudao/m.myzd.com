@@ -8,19 +8,18 @@ $order = $data->results->salesOrder;
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $payUrl = $this->createUrl('/payment/doPingxxPay');
 $refUrl = $this->createAbsoluteUrl('order/view');
-$isApp = Yii::app()->request->getQuery('app', 0);
+$isApp = Yii::app()->request->getQuery('app', 1);
 $urlPatientBookingList = $this->createUrl('booking/patientBookingList');
 $urlSuccess = $this->createUrl('user/view');
 $this->show_footer = false;
 ?>
 <div id="section_container" <?php echo $this->createPageAttributes(); ?>>
     <section id="order_section" class="active" data-init="true">
-        <header class="bg-green">
-<!--            <nav class="left">
-                <a href="#" data-icon="previous" data-target="back"></a>
-            </nav>-->
-            <div class="title"><?php echo $this->pageTitle; ?></div>
-        </header>
+        <?php if ($isApp == 1) { ?>
+            <header class="bg-green">
+                <div class="title"><?php echo $this->pageTitle; ?><?php echo $isApp;?></div>
+            </header>
+        <?php } ?>
         <article id="order" class="active" data-scroll="true">
             <div class="order-content"><span class="color-green">请支付</span><span class="color-green pull-right"><?php echo $order->finalAmount ?>元</span></div>
             <div class="divider"></div>
@@ -67,25 +66,25 @@ $this->show_footer = false;
                     <?php } ?>
                     <div class="clearfix"></div>
                 </div>
-                
 
-                                <!--            <section class="block">
-                                    <div class="content2">
-                                        <div class="app">
-                                            <div class="ch">
-                                                <span class="up" onclick="wap_pay('upacp_wap')">银联 WAP</span>
-                                                <span class="up" onclick="wap_pay('alipay_pc_direct')">支付宝 即时到账</span>
-                                                <span class="up alipay" onclick="wap_pay('alipay_wap')">&nbsp;</span>
-                                                <span class="up weixin" onclick="wap_pay('wx_pub')">&nbsp;</span>
-                                                <span class="up" onclick="wap_pay('bfb_wap')">百度钱包 WAP</span>
-                                                <span class="up" onclick="wap_pay('jdpay_wap')">京东支付 WAP</span>
-                                                <span class="up" onclick="wap_pay('yeepay_wap')">易宝支付 WAP</span>
+
+                                    <!--            <section class="block">
+                                        <div class="content2">
+                                            <div class="app">
+                                                <div class="ch">
+                                                    <span class="up" onclick="wap_pay('upacp_wap')">银联 WAP</span>
+                                                    <span class="up" onclick="wap_pay('alipay_pc_direct')">支付宝 即时到账</span>
+                                                    <span class="up alipay" onclick="wap_pay('alipay_wap')">&nbsp;</span>
+                                                    <span class="up weixin" onclick="wap_pay('wx_pub')">&nbsp;</span>
+                                                    <span class="up" onclick="wap_pay('bfb_wap')">百度钱包 WAP</span>
+                                                    <span class="up" onclick="wap_pay('jdpay_wap')">京东支付 WAP</span>
                                                     <span class="up" onclick="wap_pay('yeepay_wap')">易宝支付 WAP</span>
-                                                <span class="up yeepay" onclick="wap_pay('yeepay_wap')">&nbsp;</span>
+                                                        <span class="up" onclick="wap_pay('yeepay_wap')">易宝支付 WAP</span>
+                                                    <span class="up yeepay" onclick="wap_pay('yeepay_wap')">&nbsp;</span>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </section>-->
+                                    </section>-->
                 <?php
             }
             ?>
