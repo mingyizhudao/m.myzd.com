@@ -1,27 +1,30 @@
 <?php
 
 /**
- * This is the model class for table "admin_task".
+ * This is the model class for table "admin_user_region_join".
  *
- * The followings are the available columns in table 'admin_task':
+ * The followings are the available columns in table 'admin_user_region_join':
  * @property integer $id
- * @property string $subject
- * @property string $content
- * @property string $url
+ * @property integer $admin_user_role
+ * @property integer $booking_type
+ * @property integer $admin_user_id
+ * @property string $state_id
+ * @property string $city_id
+ * @property integer $default
  * @property string $date_created
  * @property string $date_updated
  * @property string $date_deleted
  *
  * The followings are the available model relations:
- * @property AdminTaskJoin[] $adminTaskJoins
+ * @property AdminUser $adminUser
  */
-class AdminTask extends EActiveRecord {
+class AdminUserRegionJoin extends EActiveRecord {
 
     /**
      * @return string the associated database table name
      */
     public function tableName() {
-        return 'admin_task';
+        return 'admin_user_region_join';
     }
 
     /**
@@ -31,13 +34,12 @@ class AdminTask extends EActiveRecord {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('content, url, date_created', 'required'),
-            array('subject, url', 'length', 'max' => 100),
-            array('content', 'length', 'max' => 500),
+            array(' date_created', 'required'),
+            array('admin_user_role, booking_type, admin_user_id, state_id, city_id, default', 'numerical', 'integerOnly' => true),
             array('date_updated, date_deleted', 'safe'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
-            array('id, subject, content, url, date_created, date_updated, date_deleted', 'safe', 'on' => 'search'),
+            array('id, admin_user_role, booking_type, admin_user_id, state_id, city_id, default, date_created, date_updated, date_deleted', 'safe', 'on' => 'search'),
         );
     }
 
@@ -48,7 +50,7 @@ class AdminTask extends EActiveRecord {
         // NOTE: you may need to adjust the relation name and the related
         // class name for the relations automatically generated below.
         return array(
-            'adminTaskJoins' => array(self::HAS_MANY, 'AdminTaskJoin', 'admin_task_id'),
+            'adminUser' => array(self::BELONGS_TO, 'AdminUser', 'admin_user_id'),
         );
     }
 
@@ -58,9 +60,12 @@ class AdminTask extends EActiveRecord {
     public function attributeLabels() {
         return array(
             'id' => 'ID',
-            'subject' => '标题',
-            'content' => '内容',
-            'url' => '操作链接',
+            'admin_user_role' => 'Admin User Role',
+            'booking_type' => 'booking=1,patientbooking=2',
+            'admin_user_id' => 'Admin User',
+            'state_id' => 'State',
+            'city_id' => 'City',
+            'default' => '1=yes 0=no',
             'date_created' => 'Date Created',
             'date_updated' => 'Date Updated',
             'date_deleted' => 'Date Deleted',
@@ -85,9 +90,12 @@ class AdminTask extends EActiveRecord {
         $criteria = new CDbCriteria;
 
         $criteria->compare('id', $this->id);
-        $criteria->compare('subject', $this->subject, true);
-        $criteria->compare('content', $this->content, true);
-        $criteria->compare('url', $this->url, true);
+        $criteria->compare('admin_user_role', $this->admin_user_role);
+        $criteria->compare('booking_type', $this->booking_type);
+        $criteria->compare('admin_user_id', $this->admin_user_id);
+        $criteria->compare('state_id', $this->state_id, true);
+        $criteria->compare('city_id', $this->city_id, true);
+        $criteria->compare('default', $this->default);
         $criteria->compare('date_created', $this->date_created, true);
         $criteria->compare('date_updated', $this->date_updated, true);
         $criteria->compare('date_deleted', $this->date_deleted, true);
@@ -101,10 +109,22 @@ class AdminTask extends EActiveRecord {
      * Returns the static model of the specified AR class.
      * Please note that you should have this exact method in all your CActiveRecord descendants!
      * @param string $className active record class name.
-     * @return AdminTask the static model class
+     * @return AdminUserRegionJoin the static model class
      */
     public static function model($className = __CLASS__) {
         return parent::model($className);
+    }
+
+    public function getByStateIdAndBookingTypeAndRole($stateId, $bookingType, $role) {
+        return $this->getByAttributes(array('state_id' => $stateId, 'booking_type' => $bookingType, 'admin_user_role' => $role));
+    }
+
+    public function getByCityIdAndBookingTypeAndRole($cityId, $bookingType, $role) {
+        return $this->getByAttributes(array('city_id' => $cityId, 'booking_type' => $bookingType, 'admin_user_role' => $role));
+    }
+
+    public function getDefaultUser($bookingType, $role) {
+        return $this->getByAttributes(array('booking_type' => $bookingType, 'admin_user_role' => $role, 'default' => 1));
     }
 
 }
