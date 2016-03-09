@@ -2,7 +2,6 @@
 Yii::app()->clientScript->registerCssFile('http://myzd.oss-cn-hangzhou.aliyuncs.com/static/mobile/js/jquery.bxslider/jquery.bxslider.css');
 Yii::app()->clientScript->registerScriptFile('http://myzd.oss-cn-hangzhou.aliyuncs.com/static/mobile/js/jquery.bxslider/jquery.bxslider.min.js', CClientScript::POS_END);
 Yii::app()->clientScript->registerScriptFile('http://myzd.oss-cn-hangzhou.aliyuncs.com/static/mobile/js/jquery-1.9.1.min.js', CClientScript::POS_HEAD);
-Yii::app()->clientScript->registerScriptFile('http://dl.ntalker.com/js/xn6/ntkfstat.js?siteid=kf_9138', CClientScript::POS_HEAD);
 ?>
 <?php
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
