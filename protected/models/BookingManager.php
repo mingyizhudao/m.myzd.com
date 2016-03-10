@@ -392,6 +392,7 @@ class BookingManager {
                     $adminBooking->patient_city = $patient->city_name;
                     $adminBooking->disease_name = $patient->disease_name;
                     $adminBooking->disease_detail = $patient->disease_detail;
+                    $adminBooking->booking_detail = $patient->name;
                 }
             }
             $adminBooking->booking_status = $model->status;
@@ -414,6 +415,7 @@ class BookingManager {
             $adminBooking->booking_type = AdminBooking::BK_TYPE_BK;
             $adminBooking->patient_id = $model->user_id;
             $adminBooking->patient_name = $model->contact_name;
+            $adminBooking->booking_detail = $model->contact_name;
             $adminBooking->patient_mobile = $model->mobile;
             $adminBooking->booking_status = $model->bk_status;
             if (strIsEmpty($model->expteam_id) == false) {
