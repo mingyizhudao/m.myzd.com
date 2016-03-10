@@ -5,47 +5,23 @@ $showPage = Yii::app()->request->getQuery('page', 0);
 $showApp = Yii::app()->request->getQuery('app', 1);
 if ($showApp == 1) {
     $urlEventStoryOne = $this->createUrl('event/view', array('page' => 'storyOne'));
-} else {
-    $urlEventStoryOne = $this->createUrl('event/view', array('page' => 'storyOne', 'header' => '0'));
-}
-if ($showApp == 1) {
     $urlEventStoryTwo = $this->createUrl('event/view', array('page' => 'storyTwo'));
-} else {
-    $urlEventStoryTwo = $this->createUrl('event/view', array('page' => 'storyTwo', 'header' => '0'));
-}
-if ($showApp == 1) {
     $urlEventStoryThree = $this->createUrl('event/view', array('page' => 'storyThree'));
-} else {
-    $urlEventStoryThree = $this->createUrl('event/view', array('page' => 'storyThree', 'header' => '0'));
-}
-if ($showApp == 1) {
     $urlEventZhuantiOne = $this->createUrl('event/view', array('page' => 'zhuantiOne'));
-} else {
-    $urlEventZhuantiOne = $this->createUrl('event/view', array('page' => 'zhuantiOne', 'header' => '0'));
-}
-if ($showApp == 1) {
     $urlEventZhuantiTwo = $this->createUrl('event/view', array('page' => 'zhuantiTwo'));
-} else {
-    $urlEventZhuantiTwo = $this->createUrl('event/view', array('page' => 'zhuantiTwo', 'header' => '0'));
-}
-if ($showApp == 1) {
     $urlEventZhuantiThree = $this->createUrl('event/view', array('page' => 'zhuantiThree'));
-} else {
-    $urlEventZhuantiThree = $this->createUrl('event/view', array('page' => 'zhuantiThree', 'header' => '0'));
-}
-if ($showApp == 1) {
     $urlEventZhuantiFour = $this->createUrl('event/view', array('page' => 'zhuantiFour'));
-} else {
-    $urlEventZhuantiFour = $this->createUrl('event/view', array('page' => 'zhuantiFour', 'header' => '0'));
-}
-if ($showApp == 1) {
     $urlEventZhuantiFive = $this->createUrl('event/view', array('page' => 'zhuantiFive'));
-} else {
-    $urlEventZhuantiFive = $this->createUrl('event/view', array('page' => 'zhuantiFive', 'header' => '0'));
-}
-if ($showApp == 1) {
     $urlEventZhuantiSix = $this->createUrl('event/view', array('page' => 'zhuantiSix'));
 } else {
+    $urlEventStoryOne = $this->createUrl('event/view', array('page' => 'storyOne', 'header' => '0'));
+    $urlEventStoryTwo = $this->createUrl('event/view', array('page' => 'storyTwo', 'header' => '0'));
+    $urlEventStoryThree = $this->createUrl('event/view', array('page' => 'storyThree', 'header' => '0'));
+    $urlEventZhuantiOne = $this->createUrl('event/view', array('page' => 'zhuantiOne', 'header' => '0'));
+    $urlEventZhuantiTwo = $this->createUrl('event/view', array('page' => 'zhuantiTwo', 'header' => '0'));
+    $urlEventZhuantiThree = $this->createUrl('event/view', array('page' => 'zhuantiThree', 'header' => '0'));
+    $urlEventZhuantiFour = $this->createUrl('event/view', array('page' => 'zhuantiFour', 'header' => '0'));
+    $urlEventZhuantiFive = $this->createUrl('event/view', array('page' => 'zhuantiFive', 'header' => '0'));
     $urlEventZhuantiSix = $this->createUrl('event/view', array('page' => 'zhuantiSix', 'header' => '0'));
 }
 if ($showHeader == 0) {
@@ -62,7 +38,7 @@ if ($showPage == 0) {
 }
 ?>
 <?php if ($showHeader == 1) { ?>
-    <header class="bg-green">
+    <header class="bg-green text-center">
         <ul class="control-group">
             <li class="<?php echo $showZt; ?>">
                 <a id="zhuanti">手术专题</a>

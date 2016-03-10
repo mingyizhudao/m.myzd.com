@@ -17,11 +17,11 @@ class UserController extends MobileController {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('register', 'ajaxRegister', 'login', 'ajaxForgetPassword'),
+                'actions' => array('register', 'ajaxRegister', 'login', 'commonProblem', 'index', 'ajaxForgetPassword'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('logout', 'view', 'commonProblem', 'index', 'changePassword'),
+                'actions' => array('logout', 'view', 'changePassword'),
                 'users' => array('@'),
             ),
             array('deny', // deny all users
