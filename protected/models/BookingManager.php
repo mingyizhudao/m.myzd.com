@@ -395,6 +395,7 @@ class BookingManager {
                     $adminBooking->booking_detail = $patient->name;
                 }
             }
+            $adminBooking->travel_type = $model->travel_type;
             $adminBooking->booking_status = $model->status;
             //一开始创建时 只能以下级医生作为标准给其默认值
             if (strIsEmpty($model->creator_id) === false) {
