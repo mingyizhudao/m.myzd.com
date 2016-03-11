@@ -932,6 +932,35 @@ img {
         padding-right: 15px;
     }
 }
+#zhuantiRobot_article .titleBlue{
+    background: url('../images/zhuanti/Robot/titleBlue.png') no-repeat;
+    background-size: auto 100%;
+}
+#zhuantiRobot_article .borderLeft{
+    background: url('../images/zhuanti/Robot/borderLeft.png') no-repeat;
+    background-size: 1em 100%;
+    padding-left: 20px;
+    background-color: #EFEFEF;
+}
+#zhuantiRobot_article .signDoctor{
+    background: url('../images/zhuanti/Robot/signDoctor.png') no-repeat;
+    width: 48px;
+    height: 52px;
+    background-size: 100%;
+    margin-right: -8px;
+    margin-top: -60px;
+}
+#zhuantiRobot_article .robotDoctor{
+    background: url('../images/zhuanti/Robot/robotDoctor.png') no-repeat;
+    width: 48px;
+    height: 52px;
+    background-size: 100%;
+    margin-right: -8px;
+    margin-top: -75px;
+}
+#zhuantiRobot_article .divShadow{
+    box-shadow: 2px 2px 2px #cccccc;
+}
 
 /*常见问题*/
 #commonProblem_article .list>li.nextImg {
