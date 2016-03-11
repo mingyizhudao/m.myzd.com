@@ -59,7 +59,7 @@ if ($showPage == 0) {
 <article id="zhuanti_article" class="<?php echo $showZt; ?>" data-scroll="true" data-active="find_footer">
     <div>
         <ul class="list">
-            <li>
+            <li class="hide">
                 <a href="<?php echo $urlEventZhuantiRobot; ?>">
                     <div class="font-s17">
                         【机器人微创手术】
