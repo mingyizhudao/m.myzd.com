@@ -248,10 +248,10 @@ class Booking extends EActiveRecord {
     public function getAllByUserIdOrMobile($userId, $mobile, $with = null, $options = null,$bk_status=0) {
         $criteria = new CDbCriteria();
         $criteria->compare("t.user_id", $userId, false, 'AND');
+        $criteria->compare("t.mobile", $mobile, false, 'OR');
         if($bk_status>0){
             $criteria->compare("t.bk_status", $bk_status, false, 'AND');
         }
-        $criteria->compare("t.mobile", $mobile, false, 'OR');
         $criteria->addCondition("t.date_deleted is NULL");
         if (isset($with) && is_array($with))
             $criteria->with = $with;
