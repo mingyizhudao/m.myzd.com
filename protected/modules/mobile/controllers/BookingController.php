@@ -528,8 +528,12 @@ class BookingController extends MobileController {
     //病人预约列表查询
     public function actionPatientBookingList() {
         $value=$_GET;
+        if($value)
+          $bk_status=$value['status'];
+        else
+          $bk_status=0;
         $user = $this->getCurrentUser();
-        $booking = new ApiViewBookingListV4($user);
+        $booking = new ApiViewBookingListV4($user,$bk_status);
         $output = $booking->loadApiViewData();
         //print_r($output);exit;
         $this->render('patientBookingList', array(

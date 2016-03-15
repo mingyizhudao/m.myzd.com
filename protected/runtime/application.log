@@ -1377,3 +1377,208 @@ Stack trace:
 REQUEST_URI=/themes/m5/images/exitLogin.png
 HTTP_REFERER=http://m.bendi.com/mobile/user/view
 ---
+2016/03/15 04:02:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message '无法解析请求 "favicon.ico"。' in D:\wamp\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 D:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\m_myzd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2016/03/15 04:02:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message '无法解析请求 "favicon.ico"。' in D:\wamp\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 D:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\m_myzd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2016/03/15 04:02:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message '无法解析请求 "themes/m5/images/arrangementIn.png"。' in D:\wamp\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/m5/image...')
+#1 D:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\m_myzd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/m5/images/arrangementIn.png
+HTTP_REFERER=http://m.bendi.com/mobile/user/view
+---
+2016/03/15 04:02:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message '无法解析请求 "themes/m5/images/waitEvaluate.png"。' in D:\wamp\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/m5/image...')
+#1 D:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\m_myzd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/m5/images/waitEvaluate.png
+HTTP_REFERER=http://m.bendi.com/mobile/user/view
+---
+2016/03/15 04:02:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message '无法解析请求 "themes/m5/images/waitConfirm.png"。' in D:\wamp\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/m5/image...')
+#1 D:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\m_myzd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/m5/images/waitConfirm.png
+HTTP_REFERER=http://m.bendi.com/mobile/user/view
+---
+2016/03/15 04:02:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message '无法解析请求 "themes/m5/images/commonProblem.png"。' in D:\wamp\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/m5/image...')
+#1 D:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\m_myzd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/m5/images/commonProblem.png
+HTTP_REFERER=http://m.bendi.com/mobile/user/view
+---
+2016/03/15 04:02:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message '无法解析请求 "themes/m5/images/waitPay.png"。' in D:\wamp\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/m5/image...')
+#1 D:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\m_myzd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/m5/images/waitPay.png
+HTTP_REFERER=http://m.bendi.com/mobile/user/view
+---
+2016/03/15 04:02:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message '无法解析请求 "themes/m5/images/headImg.png"。' in D:\wamp\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/m5/image...')
+#1 D:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\m_myzd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/m5/images/headImg.png
+HTTP_REFERER=http://m.bendi.com/mobile/user/view
+---
+2016/03/15 04:02:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message '无法解析请求 "themes/m5/images/bookingOrder.png"。' in D:\wamp\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/m5/image...')
+#1 D:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\m_myzd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/m5/images/bookingOrder.png
+HTTP_REFERER=http://m.bendi.com/mobile/user/view
+---
+2016/03/15 04:02:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message '无法解析请求 "themes/m5/images/nextGray.png"。' in D:\wamp\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/m5/image...')
+#1 D:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\m_myzd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/m5/images/nextGray.png
+HTTP_REFERER=http://m.bendi.com/mobile/user/view
+---
+2016/03/15 04:02:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message '无法解析请求 "themes/m5/images/nextBlack.png"。' in D:\wamp\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/m5/image...')
+#1 D:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\m_myzd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/m5/images/nextBlack.png
+HTTP_REFERER=http://m.bendi.com/mobile/user/view
+---
+2016/03/15 04:02:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message '无法解析请求 "themes/m5/images/service.png"。' in D:\wamp\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/m5/image...')
+#1 D:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\m_myzd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/m5/images/service.png
+HTTP_REFERER=http://m.bendi.com/mobile/user/view
+---
+2016/03/15 04:02:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message '无法解析请求 "themes/m5/images/contactService.png"。' in D:\wamp\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/m5/image...')
+#1 D:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\m_myzd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/m5/images/contactService.png
+HTTP_REFERER=http://m.bendi.com/mobile/user/view
+---
+2016/03/15 04:02:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message '无法解析请求 "themes/m5/images/aboutUs.png"。' in D:\wamp\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/m5/image...')
+#1 D:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\m_myzd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/m5/images/aboutUs.png
+HTTP_REFERER=http://m.bendi.com/mobile/user/view
+---
+2016/03/15 04:02:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message '无法解析请求 "themes/m5/images/exitLogin.png"。' in D:\wamp\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/m5/image...')
+#1 D:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\m_myzd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/m5/images/exitLogin.png
+HTTP_REFERER=http://m.bendi.com/mobile/user/view
+---
+2016/03/15 04:02:29 [error] [php] Undefined index: status (D:\wamp\www\m_myzd\protected\modules\mobile\controllers\BookingController.php:531)
+Stack trace:
+#0 D:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): BookingController->runAction()
+#1 D:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 D:\wamp\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 D:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): BookingController->filterAccessControl()
+#4 D:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 D:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\wamp\www\yii\framework\web\CController.php(265): BookingController->runActionWithFilters()
+#7 D:\wamp\www\yii\framework\web\CWebApplication.php(282): BookingController->run()
+#8 D:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 D:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\wamp\www\m_myzd\index.php(13): CWebApplication->run()
+REQUEST_URI=/mobile/booking/patientBookingList
+in D:\wamp\www\m_myzd\protected\modules\mobile\controllers\BookingController.php (531)
+in D:\wamp\www\m_myzd\index.php (13)
+2016/03/15 04:02:59 [error] [php] Undefined variable: bk_status (D:\wamp\www\m_myzd\protected\modules\mobile\controllers\BookingController.php:535)
+Stack trace:
+#0 D:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): BookingController->runAction()
+#1 D:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 D:\wamp\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 D:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): BookingController->filterAccessControl()
+#4 D:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 D:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\wamp\www\yii\framework\web\CController.php(265): BookingController->runActionWithFilters()
+#7 D:\wamp\www\yii\framework\web\CWebApplication.php(282): BookingController->run()
+#8 D:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 D:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\wamp\www\m_myzd\index.php(13): CWebApplication->run()
+REQUEST_URI=/mobile/booking/patientBookingList
+in D:\wamp\www\m_myzd\protected\modules\mobile\controllers\BookingController.php (535)
+in D:\wamp\www\m_myzd\index.php (13)
+2016/03/15 04:03:37 [error] [php] Undefined variable: bk_status (D:\wamp\www\m_myzd\protected\apiservices\ApiViewBookingListV4.php:35)
+Stack trace:
+#0 D:\wamp\www\m_myzd\protected\modules\mobile\controllers\BookingController.php(537): ApiViewBookingListV4->loadApiViewData()
+#1 D:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): BookingController->actionPatientBookingList()
+#2 D:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 D:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): BookingController->runAction()
+#4 D:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 D:\wamp\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#6 D:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): BookingController->filterAccessControl()
+#7 D:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#8 D:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#9 D:\wamp\www\yii\framework\web\CController.php(265): BookingController->runActionWithFilters()
+#10 D:\wamp\www\yii\framework\web\CWebApplication.php(282): BookingController->run()
+#11 D:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#12 D:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#13 D:\wamp\www\m_myzd\index.php(13): CWebApplication->run()
+REQUEST_URI=/mobile/booking/patientBookingList
+in D:\wamp\www\m_myzd\protected\apiservices\ApiViewBookingListV4.php (35)
+in D:\wamp\www\m_myzd\protected\apiservices\ApiViewBookingListV4.php (18)
+in D:\wamp\www\m_myzd\protected\apiservices\EApiViewService.php (20)
+2016/03/15 04:06:22 [error] [php] Undefined property: ApiViewBookingListV4::$bk_status (D:\wamp\www\m_myzd\protected\apiservices\ApiViewBookingListV4.php:34)
+Stack trace:
+#0 D:\wamp\www\m_myzd\protected\modules\mobile\controllers\BookingController.php(537): ApiViewBookingListV4->loadApiViewData()
+#1 D:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): BookingController->actionPatientBookingList()
+#2 D:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 D:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): BookingController->runAction()
+#4 D:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 D:\wamp\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#6 D:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): BookingController->filterAccessControl()
+#7 D:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#8 D:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#9 D:\wamp\www\yii\framework\web\CController.php(265): BookingController->runActionWithFilters()
+#10 D:\wamp\www\yii\framework\web\CWebApplication.php(282): BookingController->run()
+#11 D:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#12 D:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#13 D:\wamp\www\m_myzd\index.php(13): CWebApplication->run()
+REQUEST_URI=/mobile/booking/patientBookingList?status=2
+in D:\wamp\www\m_myzd\protected\apiservices\ApiViewBookingListV4.php (34)
+in D:\wamp\www\m_myzd\protected\apiservices\ApiViewBookingListV4.php (17)
+in D:\wamp\www\m_myzd\protected\apiservices\EApiViewService.php (20)
