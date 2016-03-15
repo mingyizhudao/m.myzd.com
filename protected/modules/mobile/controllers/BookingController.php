@@ -535,7 +535,7 @@ class BookingController extends MobileController {
         $user = $this->getCurrentUser();
         $booking = new ApiViewBookingListV4($user,$bk_status);
         $output = $booking->loadApiViewData();
-        //print_r($output);exit;
+        print_r($output);exit;
         $this->render('patientBookingList', array(
             'data' => $output
         ));
