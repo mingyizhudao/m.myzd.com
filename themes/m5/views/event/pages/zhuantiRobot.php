@@ -29,7 +29,7 @@ $this->show_footer = false;
         <div class="bb-blue mt30"></div>
         <div class="grid mt-12">
             <div class="col-1"></div>
-            <div class="col-0 color-blue6 font-s16 bg-white pl10 pr10">
+            <div class="col-0 color-blue6 font-s16 bg-white pl10 pr10 font-w800">
                 机器人微创手术
             </div>
             <div class="col-1"></div>
@@ -198,116 +198,113 @@ $this->show_footer = false;
         <div class="bb-blue mt30"></div>
         <div class="grid mt-12">
             <div class="col-1"></div>
-            <div class="col-0 color-blue6 font-s16 bg-white pl10 pr10">
+            <div class="col-0 color-blue6 font-s16 bg-white pl10 pr10 font-w800">
                 相关医生推荐
             </div>
             <div class="col-1"></div>
         </div>
         <div class="grid mt20">
             <div class="col-1"></div>
-            <div class="col-0 w80 border-gray">
-                <a class="color-black" href="<?php echo $urlBookingDoctor; ?>/3208">
-                    <div class="">
-                        <div class="grid pt10">
-                            <div class="col-1"></div>
-                            <div class="col-0 br50 w60p h60p overflow-hidden">
-                                <img class="" src="http://admin.mingyizd.com/resource/doctor/avatar/03208.jpg">
+            <div class="col-0 w80 doctorBg">
+                <div class="doctorBorder">
+                    <a class="color-black" href="<?php echo $urlBookingDoctor; ?>/3208">
+                        <div class="">
+                            <div class="grid pt10">
+                                <div class="col-1"></div>
+                                <div class="col-0 br50 w60p h60p overflow-hidden">
+                                    <img class="" src="http://admin.mingyizd.com/resource/doctor/avatar/03208.jpg">
+                                </div>
+                                <div class="col-1"></div>
                             </div>
-                            <div class="col-1"></div>
+                            <div class="text-center">
+                                <div>
+                                    <span class="font-w800">田增民</span>
+                                    <span class="color-gray7">主任医师</span>
+                                    <span class="color-gray7">教授</span>
+                                </div>
+                                <div class="color-blue6 pt5">
+                                    神经外科
+                                </div>
+                                <div class="pt5 pb5">
+                                    中国人民解放军海军总医院
+                                </div>
+                            </div>
+                            <div class="pl5 pr5 pb10 text-justify">
+                                <span class="color-black6">擅长</span>：脑外伤救治、脑肿瘤及功能性疾病等领域的治疗，如机器人辅助脑定位手术、现代立体定向手术临床应用、脑肿瘤内放疗的系列研究、脑内窥镜手术。
+                            </div>
                         </div>
-                        <div class="pull-right signDoctor"></div>
-                        <div class="clearfix"></div>
-                        <div class="text-center">
-                            <div>
-                                <span class="font-w800">田增民</span>
-                                <span class="color-gray7">主任医师</span>
-                                <span class="color-gray7">教授</span>
-                            </div>
-                            <div class="color-blue6 pt5">
-                                神经外科
-                            </div>
-                            <div class="pt5 pb5">
-                                中国人民解放军海军总医院
-                            </div>
-                        </div>
-                        <div class="pull-right robotDoctor"></div>
-                        <div class="pl5 pr5 pb10">
-                            擅长:脑外伤救治、脑肿瘤及功能性疾病等领域的治疗，如机器人辅助脑定位手术、现代立体定向手术临床应用、脑肿瘤内放疗的系列研究、脑内窥镜手术。
-                        </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
             </div>
             <div class="col-1"></div>
         </div>
         <div class="grid mt20">
             <div class="col-1"></div>
-            <div class="col-0 w80 border-gray">
-                <a class="color-black" href="<?php echo $urlBookingDoctor; ?>/3209">
-                    <div class="">
-                        <div class="grid pt10">
-                            <div class="col-1"></div>
-                            <div class="col-0 br50 w60p h60p overflow-hidden">
-                                <img class="" src="http://admin.mingyizd.com/resource/doctor/avatar/03209.jpg">
+            <div class="col-0 w80 doctorBg">
+                <div class="doctorBorder">
+                    <a class="color-black" href="<?php echo $urlBookingDoctor; ?>/3209">
+                        <div class="">
+                            <div class="grid pt10">
+                                <div class="col-1"></div>
+                                <div class="col-0 br50 w60p h60p overflow-hidden">
+                                    <img class="" src="http://admin.mingyizd.com/resource/doctor/avatar/03209.jpg">
+                                </div>
+                                <div class="col-1"></div>
                             </div>
-                            <div class="col-1"></div>
+                            <div class="text-center">
+                                <div>
+                                    <span class="font-w800">赵全军</span>
+                                    <span class="color-gray7">主任医师</span>
+                                    <span class="color-gray7">教授</span>
+                                </div>
+                                <div class="color-blue6 pt5">
+                                    神经外科
+                                </div>
+                                <div class="pt5 pb5">
+                                    中国人民解放军第306医院
+                                </div>
+                            </div>
+                            <div class="pl5 pr5 pb10 text-justify">
+                                <span class="color-black6">擅长</span>：1.难治性癫痫的外科治疗，如癫痫、原发性癫痫、继发性癫痫、复杂癫痫发作时的急救措施；2.脑功能性疾病的立体定向手术治疗，如小儿脑瘫、帕金森、扭转痉挛、小脑萎缩、脑出血后遗症、脑梗塞后遗症、肌张力障碍、...
+                            </div>
                         </div>
-                        <div class="pull-right signDoctor"></div>
-                        <div class="clearfix"></div>
-                        <div class="text-center">
-                            <div>
-                                <span class="font-w800">赵全军</span>
-                                <span class="color-gray7">主任医师</span>
-                                <span class="color-gray7">教授</span>
-                            </div>
-                            <div class="color-blue6 pt5">
-                                神经外科
-                            </div>
-                            <div class="pt5 pb5">
-                                中国人民解放军第306医院
-                            </div>
-                        </div>
-                        <div class="pull-right robotDoctor"></div>
-                        <div class="pl5 pr5 pb10">
-                            擅长:1.难治性癫痫的外科治疗，如癫痫、原发性癫痫、继发性癫痫、复杂癫痫发作时的急救措施；2.脑功能性疾病的立体定向手术治疗，如小儿脑瘫、帕金森、扭转痉挛、小脑萎缩、脑出血后遗症、脑梗塞后遗症、肌张力障碍、...
-                        </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
             </div>
             <div class="col-1"></div>
         </div>
         <div class="grid mt20 mb50">
             <div class="col-1"></div>
-            <div class="col-0 w80 border-gray">
-                <a class="color-black" href="<?php echo $urlBookingDoctor; ?>/3207">
-                    <div class="">
-                        <div class="grid pt10">
-                            <div class="col-1"></div>
-                            <div class="col-0 br50 w60p h60p overflow-hidden">
-                                <img class="" src="http://admin.mingyizd.com/resource/doctor/avatar/03207.jpg">
+            <div class="col-0 w80 doctorBg">
+                <div class="doctorBorder">
+                    <a class="color-black" href="<?php echo $urlBookingDoctor; ?>/3207">
+                        <div class="">
+                            <div class="grid pt10">
+                                <div class="col-1"></div>
+                                <div class="col-0 br50 w60p h60p overflow-hidden">
+                                    <img class="" src="http://admin.mingyizd.com/resource/doctor/avatar/03207.jpg">
+                                </div>
+                                <div class="col-1"></div>
                             </div>
-                            <div class="col-1"></div>
+                            <div class="text-center">
+                                <div>
+                                    <span class="font-w800">卢旺盛</span>
+                                    <span class="color-gray7">主任医师</span>
+                                    <span class="color-gray7">副教授</span>
+                                </div>
+                                <div class="color-blue6 pt5">
+                                    神经外科
+                                </div>
+                                <div class="pt5 pb5">
+                                    北京天坛普华医院
+                                </div>
+                            </div>
+                            <div class="pl5 pr5 pb10 text-justify">
+                                <span class="color-black6">擅长</span>：1.颅内动脉瘤、脑血管畸形和颈动脉狭窄、颅内动脉狭窄的介入治疗，脑血管病的外科治疗，以及外周血管介入治疗，肿瘤介入治疗，非血管内介入治疗；2.癫痫的外科治疗；脑卒中后遗症、帕金森病、脑瘫及肌张力障碍的...
+                            </div>
                         </div>
-                        <div class="pull-right signDoctor"></div>
-                        <div class="clearfix"></div>
-                        <div class="text-center">
-                            <div>
-                                <span class="font-w800">卢旺盛</span>
-                                <span class="color-gray7">主任医师</span>
-                                <span class="color-gray7">副教授</span>
-                            </div>
-                            <div class="color-blue6 pt5">
-                                神经外科
-                            </div>
-                            <div class="pt5 pb5">
-                                北京天坛普华医院
-                            </div>
-                        </div>
-                        <div class="pull-right robotDoctor"></div>
-                        <div class="pl5 pr5 pb10">
-                            擅长:1.颅内动脉瘤、脑血管畸形和颈动脉狭窄、颅内动脉狭窄的介入治疗，脑血管病的外科治疗，以及外周血管介入治疗，肿瘤介入治疗，非血管内介入治疗；2.癫痫的外科治疗；脑卒中后遗症、帕金森病、脑瘫及肌张力障碍的...
-                        </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
             </div>
             <div class="col-1"></div>
         </div>

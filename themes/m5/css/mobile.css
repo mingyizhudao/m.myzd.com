@@ -942,24 +942,30 @@ img {
     padding-left: 20px;
     background-color: #EFEFEF;
 }
-#zhuantiRobot_article .signDoctor{
-    background: url('../images/zhuanti/Robot/signDoctor.png') no-repeat;
-    width: 48px;
-    height: 52px;
-    background-size: 100%;
-    margin-right: -8px;
-    margin-top: -60px;
+#zhuantiRobot_article .doctorBg{
+    padding: 0px 8px;
+    background: url('../images/zhuanti/Robot/doctorBg.png') no-repeat;
+    background-size: 48px auto;
+    background-position-x: 100%;
 }
-#zhuantiRobot_article .robotDoctor{
-    background: url('../images/zhuanti/Robot/robotDoctor.png') no-repeat;
-    width: 48px;
-    height: 52px;
-    background-size: 100%;
-    margin-right: -8px;
-    margin-top: -75px;
+#zhuantiRobot_article .doctorBorder{
+    border-bottom: 1px solid #e4e4e4;
+    border-top: 1px solid #e4e4e4;
+    border-left: 1px solid #e4e4e4;
 }
 #zhuantiRobot_article .divShadow{
     box-shadow: 2px 2px 2px #cccccc;
+}
+#zhuantiXinxg_article .titleBg{
+    background: url('../images/zhuanti/Xinxg/xinxgTitle.png') no-repeat;
+    background-size: 100% 100%;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+#zhuantiXinxg_article .lineBg{
+    background: url('../images/zhuanti/Xinxg/lineBg.png') no-repeat;
+    background-size: 100% 100%;
+    height: 7px;
 }
 
 /*常见问题*/
