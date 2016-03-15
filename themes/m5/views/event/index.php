@@ -13,6 +13,8 @@ if ($showApp == 1) {
     $urlEventZhuantiFour = $this->createUrl('event/view', array('page' => 'zhuantiFour'));
     $urlEventZhuantiFive = $this->createUrl('event/view', array('page' => 'zhuantiFive'));
     $urlEventZhuantiSix = $this->createUrl('event/view', array('page' => 'zhuantiSix'));
+    $urlEventZhuantiRobot = $this->createUrl('event/view', array('page' => 'zhuantiRobot'));
+    $urlEventZhuantiXinxg = $this->createUrl('event/view', array('page' => 'zhuantiXinxg'));
 } else {
     $urlEventStoryOne = $this->createUrl('event/view', array('page' => 'storyOne', 'header' => '0'));
     $urlEventStoryTwo = $this->createUrl('event/view', array('page' => 'storyTwo', 'header' => '0'));
@@ -23,6 +25,8 @@ if ($showApp == 1) {
     $urlEventZhuantiFour = $this->createUrl('event/view', array('page' => 'zhuantiFour', 'header' => '0'));
     $urlEventZhuantiFive = $this->createUrl('event/view', array('page' => 'zhuantiFive', 'header' => '0'));
     $urlEventZhuantiSix = $this->createUrl('event/view', array('page' => 'zhuantiSix', 'header' => '0'));
+    $urlEventZhuantiRobot = $this->createUrl('event/view', array('page' => 'zhuantiRobot', 'header' => '0'));
+    $urlEventZhuantiXinxg = $this->createUrl('event/view', array('page' => 'zhuantiXinxg', 'header' => '0'));
 }
 if ($showHeader == 0) {
     $this->show_footer = false;
@@ -57,6 +61,13 @@ if ($showPage == 0) {
 <article id="zhuanti_article" class="<?php echo $showZt; ?>" data-scroll="true" data-active="find_footer">
     <div>
         <ul class="list">
+            <li>
+                <a href="<?php echo $urlEventZhuantiRobot; ?>">
+                    <div class="font-s17">
+                        【机器人微创手术】
+                    </div>
+                </a>
+            </li>
             <li>
                 <a href="<?php echo $urlEventZhuantiFive; ?>">
                     <div class="font-s17">
@@ -96,6 +107,13 @@ if ($showPage == 0) {
                 <a href="<?php echo $urlEventZhuantiThree; ?>">
                     <div class="font-s17">
                         【泌尿疾病的克星】达芬奇手术机器人
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="<?php echo $urlEventZhuantiXinxg; ?>">
+                    <div class="font-s17">
+                        【警惕心血管病】
                     </div>
                 </a>
             </li>
