@@ -45,7 +45,7 @@
  * @property User $user
  */
 class Booking extends EActiveRecord {
-
+    public $num;
     /**
      * @return string the associated database table name
      */
@@ -261,7 +261,25 @@ class Booking extends EActiveRecord {
 
         return $this->findAll($criteria);
     }
-
+    
+    public function getBookByUserIdOrMobileAndStatus($userId, $mobile, $with = null, $options = null) {
+        $criteria = new CDbCriteria();
+        $criteria->compare("t.user_id", $userId, false, 'AND');
+        $criteria->compare("t.mobile", $mobile, false, 'OR');
+        $criteria->addCondition("t.date_deleted is NULL");
+        if (isset($with) && is_array($with))
+            $criteria->with = $with;
+        if (isset($options['offset']))
+            $criteria->offset = $options['offset'];
+        if (isset($options['limit']))
+            $criteria->limit = $options['limit'];
+        if (isset($options['order']))
+            $criteria->order = $options['order'];
+    
+        return $this->findAll($criteria);
+    }
+    
+    
     public function setIsCorporate($v = 1) {
         $this->is_corporate = $v;
     }
@@ -421,7 +439,11 @@ class Booking extends EActiveRecord {
     public function getBkStatus() {
         return StatCode::getBookingStatus($this->bk_status);
     }
-
+    
+    public function getBkStatusNum() {
+        return $this->bk_status;
+    }
+    
     public function setBkStatus($v) {
         $this->bk_status = $v;
     }
@@ -513,5 +535,30 @@ class Booking extends EActiveRecord {
     public function getUserAgent() {
         return $this->user_agent;
     }
-
+    
+    /**
+     * 获得用户手术单个状态数量
+     * @param unknown $userId
+     */
+    public function getCountBkStatusByUserId($userId){
+        $criteria = new CDbCriteria();
+        $criteria->select = 't.bk_status,count(t.bk_status) num';//默认*
+        $criteria->addCondition("t.user_id=".$userId);
+        $criteria->addCondition("t.date_deleted is NULL");
+        $criteria->group='t.bk_status';
+        return $this->findAll($criteria);
+    }
+    
+    /**
+     * 根据用户ID和手术单状态获得匹配的手术单信息
+     * @param unknown $userId
+     * @param unknown $bkStatus
+     */
+    public function getBookingByUserIdAndBkStatus($userId,$bkStatus){
+        $criteria = new CDbCriteria();
+        $criteria->addCondition("t.user_id=".$userId,"and");
+        $criteria->addCondition("t.bk_status=".$bkStatus);
+        $criteria->addCondition("t.date_deleted is NULL");
+        return $this->findAll($criteria);
+    }
 }

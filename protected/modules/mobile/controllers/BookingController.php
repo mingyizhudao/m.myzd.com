@@ -9,7 +9,7 @@ class BookingController extends MobileController {
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('view', 'ajaxCreate', 'patientBookingList', 'patientBooking'),
+                'actions' => array('view', 'ajaxCreate', 'patientBookingList', 'patientBooking','bookingDetails'),
                 'users' => array('@'),
             ),
             array('deny', // deny all users
@@ -527,9 +527,11 @@ class BookingController extends MobileController {
 
     //病人预约列表查询
     public function actionPatientBookingList() {
+        $value=$_GET;
         $user = $this->getCurrentUser();
         $booking = new ApiViewBookingListV4($user);
         $output = $booking->loadApiViewData();
+        //print_r($output);exit;
         $this->render('patientBookingList', array(
             'data' => $output
         ));
@@ -611,6 +613,35 @@ class BookingController extends MobileController {
             'disease_name' => '小腿骨折',
             'disease_detail' => '小腿都碎了啊！咋办啊'
         );
+    }
+    
+    public function actionBookingDetails($id){
+        $value=$_GET;
+        $user = $this->getCurrentUser();
+        $booking = new ApiViewBookingV4($user, $id);
+        $output = $booking->loadApiViewData();
+        if($value['status']=1){//待支付1000
+            //print_r($output);exit;
+            $view='payDeposit';
+        }
+        elseif($value['status']=2){//安排中
+            $view='arrange';
+        }
+        elseif($value['status']=3){//待确认20000
+            $view='payConfirm';
+        }
+        elseif($value['status']=4){//待点评
+            $view='review';
+        }
+        elseif($value['status']=8){//已完成
+            $view='complete';
+        }
+        else{
+            $view='cancel';
+        }
+        $this->render($view, array(
+            'data' => $output
+        ));
     }
 
 }

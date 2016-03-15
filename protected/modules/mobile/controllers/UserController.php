@@ -68,7 +68,10 @@ class UserController extends MobileController {
 
     public function actionView() {
         $user = $this->getCurrentUser();
-        $this->render('view', array('user' => $user));
+        //print_r($user);exit;
+        $booking = new Booking();
+        $BkStatusNum = $booking->getCountBkStatusByUserId($user['id']);
+        $this->render('pages/view', array('user' => $user,'BkStatusNum' => $BkStatusNum));
     }
 
     public function actionCommonProblem() {

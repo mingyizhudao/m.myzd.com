@@ -3,7 +3,7 @@
 class BookingSearch extends ESearchModel {
 
     public function __construct($searchInputs, $with = null) {
-        parent::__construct($searchInputs, $with);
+        parent::__construct($searchInputs, $with);        
     }
 
     public function model() {
