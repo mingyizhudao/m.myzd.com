@@ -71,7 +71,7 @@ class UserController extends MobileController {
         //print_r($user);exit;
         $booking = new Booking();
         $BkStatusNum = $booking->getCountBkStatusByUserId($user['id']);
-        $this->render('pages/view', array('user' => $user,'BkStatusNum' => $BkStatusNum));
+        $this->render('view', array('user' => $user,'BkStatusNum' => $BkStatusNum));
     }
 
     public function actionCommonProblem() {
