@@ -194,32 +194,15 @@ class BookingController extends MobileController {
                         $output['errors'] = $booking->getErrors();
                         throw new CException('error saving data.');
                     }
-                    //自动生成一张adminbooking
-                    $bookingMgr = new BookingManager();
-                    $adminBooking = $bookingMgr->createAdminBooking($booking);
-                    if ($adminBooking->hasErrors()) {
-                        $output['errors'] = $adminBooking->getErrors();
-                        throw new CException('error saving data.');
-                    }
-
-                    $taskMgr = new TaskManager();
-                    $task = $taskMgr->createTaskBooking($adminBooking);
-                    if ($task == false) {
-                        $output['errors'] = 'task data error.';
-                        throw new CException('error saving data.');
-                    }
-                    //预约单保存成功  生成一张支付单
-                    $orderMgr = new OrderManager();
-                    $salesOrder = $orderMgr->createSalesOrder($adminBooking);
-//                    //预约单保存成功  生成一张支付单
-//                    $orderMgr = new OrderManager();
-//                    $salesOrder = $orderMgr->createSalesOrder($booking);
-                    if ($salesOrder->hasErrors() === false) {
+                    $apiRequest = new ApiRequestUrl();
+                    $remote_url = $apiRequest->getUrlAdminSalesBookingCreate() . '?type=' . StatCode::TRANS_TYPE_BK . '&id=' . $booking->id;
+                    $data = $this->send_get($remote_url);
+                    if ($data['status'] == "ok") {
                         $output['status'] = 'ok';
-                        $output['salesOrderRefNo'] = $salesOrder->getRefNo();
+                        $output['salesOrderRefNo'] = $data['salesOrderRefNo'];
                         $output['booking']['id'] = $booking->getId();
                     } else {
-                        $output['errors'] = $salesOrder->getErrors();
+                        //$output['errors'] = $salesOrder->getErrors();
                         throw new CException('error saving data.');
                     }
                 } else {
@@ -315,32 +298,16 @@ class BookingController extends MobileController {
                         $output['errors'] = $booking->getErrors();
                         throw new CException('error saving data.');
                     }
-                    //自动生成一张adminbooking
-                    $bookingMgr = new BookingManager();
-                    $adminBooking = $bookingMgr->createAdminBooking($booking);
-                    if ($adminBooking->hasErrors()) {
-                        $output['errors'] = $adminBooking->getErrors();
-                        throw new CException('error saving data.');
-                    }
-
-                    $taskMgr = new TaskManager();
-                    $task = $taskMgr->createTaskBooking($adminBooking);
-                    if ($task == false) {
-                        $output['errors'] = 'task data error.';
-                        throw new CException('error saving data.');
-                    }
-                    //预约单保存成功  生成一张支付单
-                    $orderMgr = new OrderManager();
-                    $salesOrder = $orderMgr->createSalesOrder($adminBooking);
-//                    //预约单保存成功  生成一张支付单
-//                    $orderMgr = new OrderManager();
-//                    $salesOrder = $orderMgr->createSalesOrder($booking);
-                    if ($salesOrder->hasErrors() === false) {
+                    
+                    $apiRequest = new ApiRequestUrl();
+                    $remote_url = $apiRequest->getUrlAdminSalesBookingCreate() . '?type=' . StatCode::TRANS_TYPE_BK . '&id=' . $booking->id;
+                    $data = $this->send_get($remote_url);
+                    if ($data['status'] == "ok") {
                         $output['status'] = 'ok';
-                        $output['salesOrderRefNo'] = $salesOrder->getRefNo();
+                        $output['salesOrderRefNo'] = $data['salesOrderRefNo'];
                         $output['booking']['id'] = $booking->getId();
                     } else {
-                        $output['errors'] = $salesOrder->getErrors();
+                        //$output['errors'] = $salesOrder->getErrors();
                         throw new CException('error saving data.');
                     }
                 } else {
@@ -535,7 +502,7 @@ class BookingController extends MobileController {
         $user = $this->getCurrentUser();
         $booking = new ApiViewBookingListV4($user,$bk_status);
         $output = $booking->loadApiViewData();
-        print_r($output);exit;
+        //print_r($output);exit;
         $this->render('patientBookingList', array(
             'data' => $output
         ));
