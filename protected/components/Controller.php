@@ -159,4 +159,13 @@ abstract class Controller extends CController {
         return $request->hostInfo . $request->url;
     }
 
+    /**
+     * 模拟get进行url请求
+     * @param string $url
+     */
+    function send_get($url) {
+        $result = file_get_contents($url, false);
+        return json_decode($result, true);
+    }
+
 }
