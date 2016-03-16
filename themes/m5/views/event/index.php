@@ -7,6 +7,7 @@ if ($showApp == 1) {
     $urlEventStoryOne = $this->createUrl('event/view', array('page' => 'storyOne'));
     $urlEventStoryTwo = $this->createUrl('event/view', array('page' => 'storyTwo'));
     $urlEventStoryThree = $this->createUrl('event/view', array('page' => 'storyThree'));
+    $urlEventEightHour = $this->createUrl('event/view', array('page' => 'storyEightHour'));
     $urlEventZhuantiOne = $this->createUrl('event/view', array('page' => 'zhuantiOne'));
     $urlEventZhuantiTwo = $this->createUrl('event/view', array('page' => 'zhuantiTwo'));
     $urlEventZhuantiThree = $this->createUrl('event/view', array('page' => 'zhuantiThree'));
@@ -19,6 +20,7 @@ if ($showApp == 1) {
     $urlEventStoryOne = $this->createUrl('event/view', array('page' => 'storyOne', 'header' => '0'));
     $urlEventStoryTwo = $this->createUrl('event/view', array('page' => 'storyTwo', 'header' => '0'));
     $urlEventStoryThree = $this->createUrl('event/view', array('page' => 'storyThree', 'header' => '0'));
+    $urlEventEightHour = $this->createUrl('event/view', array('page' => 'storyEightHour', 'header' => '0'));
     $urlEventZhuantiOne = $this->createUrl('event/view', array('page' => 'zhuantiOne', 'header' => '0'));
     $urlEventZhuantiTwo = $this->createUrl('event/view', array('page' => 'zhuantiTwo', 'header' => '0'));
     $urlEventZhuantiThree = $this->createUrl('event/view', array('page' => 'zhuantiThree', 'header' => '0'));
@@ -123,6 +125,18 @@ if ($showPage == 0) {
 <article id="story_article" class="<?php echo $showStory; ?>" data-scroll="true" data-active="find_footer">
     <div>
         <ul class="list">
+            <li>
+                <a href="<?php echo $urlEventEightHour; ?>">
+                    <div class="grid">
+                        <div class="col-1 w80 font-s17">
+                            8小时冒雪夜行驰援，医者仁心只为救死扶伤
+                        </div>
+                        <div class="col-1 w20 text-right">
+                            <img src="<?php echo $urlResImage; ?>gushi/eightHour/eightHour.png" class="w60p">
+                        </div>
+                    </div>
+                </a>
+            </li>
             <li>
                 <a href="<?php echo $urlEventStoryOne; ?>">
                     <div class="grid">
