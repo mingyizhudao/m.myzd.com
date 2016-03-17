@@ -624,27 +624,30 @@ class BookingController extends MobileController {
         $user = $this->getCurrentUser();
         $booking = new ApiViewBookingV4($user, $id);
         $output = $booking->loadApiViewData();
-        if($value['status']=1){//待支付1000
+        $model='';
+        if($value['status']==1){//待支付1000
             //print_r($output);exit;
             $view='payDeposit';
         }
-        elseif($value['status']=2){//安排中
+        elseif($value['status']==2){//安排中
             $view='arrange';
         }
-        elseif($value['status']=3){//待确认20000
+        elseif($value['status']==3){//待确认20000
             $view='payConfirm';
         }
-        elseif($value['status']=4){//待点评
+        elseif($value['status']==4){//待点评
             $view='review';
+            $model=new CommentForm();
         }
-        elseif($value['status']=8){//已完成
+        elseif($value['status']==8){//已完成
             $view='complete';
         }
         else{
             $view='cancel';
         }
         $this->render($view, array(
-            'data' => $output
+            'data' => $output,
+            'model' => $model
         ));
     }
 
