@@ -1099,6 +1099,9 @@ J.customAlert = function (content) {
 J.confirm = function (title, content, okCall, cancelCall) {
     J.Popup.confirm(title, content, okCall, cancelCall);
 }
+J.customConfirm = function (title, content, ok, cancel, okCall, cancelCall) {
+    J.Popup.customConfirm(title, content, ok, cancel, okCall, cancelCall);
+}
 /**
  * 弹出窗口
  * @param options
@@ -1174,6 +1177,7 @@ J.Popup = (function ($) {
         alert: '<a data-target="closePopup"><img class="w100" src="{title}" /></a>',
         customAlert: '<div class="custom-content">{content}</div>',
         confirm: '<div class="popup-title">{title}</div><div class="popup-content">{content}</div><div id="popup_btn_container"><a class="cancel" data-icon="close">{cancel}</a><a data-icon="checkmark">{ok}</a></div>',
+        customConfirm: '<div class="popup-title">{title}</div><div class="popup-content">{content}</div><div id="popup_btn_container">{cancel}{ok}</div>',
         loading: '<i class="icon spinner"></i><p>{title}</p>'
     };
 
@@ -1352,6 +1356,31 @@ J.Popup = (function ($) {
             cancelCall.call(this);
         });
     }
+    
+    /**
+     * customConfirm 自定义组件
+     * @param title 标题
+     * @param content 内容
+     * @param okCall 确定按钮handler
+     * @param cancelCall 取消按钮handler
+     */
+    var customConfirm = function (title, content, ok, cancel, okCall, cancelCall) {
+        var markup = TEMPLATE.customConfirm.replace('{title}', title).replace('{content}', content).replace('{cancel}', ok).replace('{ok}', cancel);
+        show({
+            html: markup,
+            pos: 'center',
+            clickMask2Close: false,
+            showCloseBtn: false
+        });
+        $('#popup_btn_container [data="ok"]').tap(function () {
+            hide();
+            okCall.call(this);
+        });
+        $('#popup_btn_container [data="cancel"]').tap(function () {
+            hide();
+            cancelCall.call(this);
+        });
+    }
 
     /**
      * 带箭头的弹出框
@@ -1422,6 +1451,7 @@ J.Popup = (function ($) {
         alert: alert,
         customAlert: customAlert,
         confirm: confirm,
+        customConfirm: customConfirm,
         popover: popover,
         loading: loading,
         actionsheet: actionsheet
