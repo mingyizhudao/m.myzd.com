@@ -9,7 +9,7 @@ class BookingController extends MobileController {
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('view', 'ajaxCreate', 'patientBookingList', 'patientBooking','bookingDetails'),
+                'actions' => array('view', 'ajaxCreate', 'patientBookingList', 'patientBooking','bookingDetails','testView'),
                 'users' => array('@'),
             ),
             array('deny', // deny all users
@@ -617,5 +617,9 @@ class BookingController extends MobileController {
             'model' => $model
         ));
     }
-
+    
+    public function actionTestView() {
+        $this->render("review");
+    }
+    
 }
