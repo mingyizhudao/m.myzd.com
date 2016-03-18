@@ -590,6 +590,7 @@ class BookingController extends MobileController {
         $value=$_GET;
         $user = $this->getCurrentUser();
         $booking = new ApiViewBookingV4($user, $id);
+        
         $output = $booking->loadApiViewData();
         $model='';
         if($value['status']==1){//待支付1000

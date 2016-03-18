@@ -46,30 +46,24 @@ class CommentController extends MobileController {
      */
     public function actionAjaxAddComment(){
         $output = array('status' => 'no');
+        $user = $this->getCurrentUser();
         if (isset($_POST['comment'])) {
             //给form赋值
             $values = $_POST['comment'];
-        $user = $this->getCurrentUser();
-        $id=154;
-        $booking = new Booking();
-        $bookingInfo = $booking->getById($id);
-        $bookType=$bookingInfo->bk_type;
-        $userId=$user->id;
-        $userName=$user->username;
-        print_r($user);exit;
-        }
-        /*if (isset($_POST['comment'])) {
-            //给form赋值
-            $values = $_POST['comment'];
+            $id=$values['id'];
+            $booking = new Booking();
+            $bookingInfo = $booking->getById($id);
+            $bookType=$bookingInfo->bk_type;
+            $userId=$user['id'];
+            $userName=$user->username;
             $form = new CommentForm();
             $form->setAttributes($values, true);
-            $form->initModel();
-            //数据校验之后再检测验证码
             $form->validate();
             //form数据校验
             if ($form->hasErrors() === false) {
                 $comment = new Comment();
                 $comment->setAttributes($form->attributes, true);
+                $comment->setAttributes(array('bk_type'=>$bookType,'bk_id'=>$id,'user_id'=>$userId,'user_name'=>$userName), true);
                 $comment->setIsCorporate();
                 if ($comment->save()) {
                     $output['status'] = 'ok';
@@ -81,7 +75,7 @@ class CommentController extends MobileController {
                 $output['errors'] = $form->getErrors();
             }
         }
-        $this->renderJsonOutput($output);*/
+        $this->renderJsonOutput($output);
     }
     
     public function actionTest(){
