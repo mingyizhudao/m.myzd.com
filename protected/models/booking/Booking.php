@@ -45,7 +45,9 @@
  * @property User $user
  */
 class Booking extends EActiveRecord {
+    
     public $num;
+   
     /**
      * @return string the associated database table name
      */
@@ -549,7 +551,8 @@ class Booking extends EActiveRecord {
         $criteria->addCondition("t.user_id=".$userId);
         $criteria->addCondition("t.date_deleted is NULL");
         $criteria->group='t.bk_status';
-        return $this->findAll($criteria);
+        $this->num=null;
+        return $this->findAll($criteria);        
     }
     
     /**
