@@ -22,7 +22,7 @@ class CommentForm extends EFormModel {
             array('comment_text', 'required', 'message' => '请输入{attribute}'),
             array('service, post_operative', 'required', 'message' => '请选择{attribute}星级'),
             array('service, post_operative, user_id, bk_type, bk_id', 'numerical', 'integerOnly' => true),
-            array('user_id， bk_id', 'length', 'is' => 11),
+            array('user_id, bk_id', 'length', 'is' => 11),
             array('user_name', 'length', 'max' => 30),
             array('comment_text', 'length', 'max' => 1000),
             array('id, user_id, user_name, bk_type, bk_id, service, post_operative, comment_text, display_order, date_created, date_updated, date_deleted', 'safe'),

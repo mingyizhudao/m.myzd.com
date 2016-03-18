@@ -53,9 +53,9 @@ class CommentController extends MobileController {
             $id=$values['id'];
             $booking = new Booking();
             $bookingInfo = $booking->getById($id);
-            $bookType=$bookingInfo->bk_type;
+            $bookType=$bookingInfo['bk_type'];
             $userId=$user['id'];
-            $userName=$user->username;
+            $userName=$user['username'];
             $form = new CommentForm();
             $form->setAttributes($values, true);
             $form->validate();
@@ -64,7 +64,6 @@ class CommentController extends MobileController {
                 $comment = new Comment();
                 $comment->setAttributes($form->attributes, true);
                 $comment->setAttributes(array('bk_type'=>$bookType,'bk_id'=>$id,'user_id'=>$userId,'user_name'=>$userName), true);
-                $comment->setIsCorporate();
                 if ($comment->save()) {
                     $output['status'] = 'ok';
                     $output['comment']['id'] = $comment->getId();

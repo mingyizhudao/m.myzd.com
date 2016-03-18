@@ -17,7 +17,7 @@ class Comment extends EActiveRecord {
         return array(
             array('service, post_operative, user_id, user_name, bk_type, bk_id', 'required'),
             array('service, post_operative, user_id, bk_type, bk_id', 'numerical', 'integerOnly' => true),
-            array('user_id， bk_id', 'length', 'is' => 11),
+            array('user_id, bk_id', 'length', 'max' => 11),
             array('user_name', 'length', 'max' => 30),
             array('comment_text', 'length', 'max' => 1000),
             array('date_created, date_updated, date_deleted', 'safe'),
@@ -85,10 +85,6 @@ class Comment extends EActiveRecord {
         return parent::model($className);
     }
     
-    public function beforeValidate() {
-        $this->createRefNumber();
-        return parent::beforeValidate();
-    }
     
     public function beforeSave() {
     
@@ -131,17 +127,18 @@ class Comment extends EActiveRecord {
         return $this->display_order;
     }
     
-    public function getDateCreated() {
-        return $this->date_created;
+    public function getDateStart($format = null) {
+        return $this->getDateAttribute($this->date_start, $format);
     }
     
-    public function getDateUpdated() {
-        return $this->date_updated;
+    public function getDateEnd($format = null) {
+        return $this->getDateAttribute($this->date_end, $format);
     }
     
-    public function getDateDeleted() {
-        return $this->date_deleted;
+    public function getApptDate($format = null) {
+        return $this->getDatetimeAttribute($this->appt_date, $format);
     }
+    
     
     /**
      * 根据评价CommentIds查询数据

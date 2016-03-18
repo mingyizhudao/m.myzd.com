@@ -416,7 +416,6 @@ class BookingController extends MobileController {
             $form->initModel();
             //数据校验之后再检测验证码
             $form->validate();
-
             //验证码校验
             $authMgr = new AuthManager();
             $authSmsVerify = $authMgr->verifyCodeForBooking($form->mobile, $form->verify_code, null);
