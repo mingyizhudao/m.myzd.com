@@ -8,8 +8,8 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/c
  */
 $this->setPageTitle('支付订单');
 $urlSubmitForm = $this->createUrl("comment/ajaxAddComment");
-$urlReturn = $this->createUrl('order/view');
 $urlId = Yii::app()->request->getQuery('id', '');
+$urlReturn = $this->createAbsoluteUrl('booking/patientBookingList');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
@@ -33,11 +33,17 @@ $this->show_footer = false;
     #evaluate_article.bg{
         background-color: #EAEFF1;
     }
-    #evaluate_article .btnFull-yellow{
-        background-color: #fe8c08;
+    #evaluate_article .btnFull-green{
+        background-color: #19aea5;
         width: 100%;
         display: block;
         margin: 5px auto;
+    }
+    #evaluate_article [disabled="true"].btnFull-green{
+        background-color: rgba(185,180,182,.2);
+    }
+    #evaluate_article .ui-field-contain div.error{
+        color: #f00;
     }
 </style>
 <header class="bg-green">
@@ -82,37 +88,41 @@ $this->show_footer = false;
                 </div>
             </div>
             <div class='mt10'>
-                主刀医生:刘跃武
+                主刀医生:<?php echo $data->results->expertName; ?>
             </div>
-            <div class='grid mt10'>
-                <div class='col-0 pt3'>
-                    服务效率:
-                </div>
-                <div class='col-1'>
-                    <span data-star='1' class='serviceStar pl10'><img src='<?php echo $urlResImage; ?>star.png' class='w20p'></span>
-                    <span data-star='2' class='serviceStar pl10'><img src='<?php echo $urlResImage; ?>star.png' class='w20p'></span>
-                    <span data-star='3' class='serviceStar pl10'><img src='<?php echo $urlResImage; ?>star.png' class='w20p'></span>
-                    <span data-star='4' class='serviceStar pl10'><img src='<?php echo $urlResImage; ?>star.png' class='w20p'></span>
-                    <span data-star='5' class='serviceStar pl10'><img src='<?php echo $urlResImage; ?>star.png' class='w20p'></span>
-                    <?php echo $form->hiddenField($model, 'service', array('name' => 'comment[service]')); ?>
+            <div class="ui-field-contain">
+                <div class='grid mt10'>
+                    <div class='col-0 pt3'>
+                        服务效率:
+                    </div>
+                    <div class='col-1'>
+                        <span data-star='1' class='serviceStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                        <span data-star='2' class='serviceStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                        <span data-star='3' class='serviceStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                        <span data-star='4' class='serviceStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                        <span data-star='5' class='serviceStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                        <?php echo $form->hiddenField($model, 'service', array('name' => 'comment[service]', 'value' => 5)); ?>
+                    </div>
                 </div>
             </div>
-            <div class='grid mt10'>
-                <div class='col-0 pt3'>
-                    手术效果:
-                </div>
-                <div class='col-1 color-gray'>
-                    <span data-star='1' class='operationStar pl10'><img src='<?php echo $urlResImage; ?>star.png' class='w20p'></span>
-                    <span data-star='2' class='operationStar pl10'><img src='<?php echo $urlResImage; ?>star.png' class='w20p'></span>
-                    <span data-star='3' class='operationStar pl10'><img src='<?php echo $urlResImage; ?>star.png' class='w20p'></span>
-                    <span data-star='4' class='operationStar pl10'><img src='<?php echo $urlResImage; ?>star.png' class='w20p'></span>
-                    <span data-star='5' class='operationStar pl10'><img src='<?php echo $urlResImage; ?>star.png' class='w20p'></span>
-                    <?php echo $form->hiddenField($model, 'post_operative', array('name' => 'comment[post_operative]')); ?>
+            <div class="ui-field-contain">
+                <div class='grid mt10'>
+                    <div class='col-0 pt3'>
+                        手术效果:
+                    </div>
+                    <div class='col-1 color-gray'>
+                        <span data-star='1' class='operationStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                        <span data-star='2' class='operationStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                        <span data-star='3' class='operationStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                        <span data-star='4' class='operationStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                        <span data-star='5' class='operationStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                        <?php echo $form->hiddenField($model, 'post_operative', array('name' => 'comment[post_operative]', 'value' => 5)); ?>
+                    </div>
                 </div>
             </div>
             <div class="ui-field-contain">
                 <div class="pt10 pb10 mt10 bt-gray5 bb-gray5">
-                    <?php echo $form->textArea($model, 'comment_text', array('name' => 'comment[comment_text]', 'minlength' => 10, 'maxlength' => 1000, 'rows' => '6', 'placeholder' => '请您对此次服务给予评价，谢谢！11')); ?>
+                    <?php echo $form->textArea($model, 'comment_text', array('name' => 'comment[comment_text]', 'minlength' => 10, 'maxlength' => 1000, 'rows' => '6', 'placeholder' => '请您对此次服务给予评价，谢谢！')); ?>
                 </div>
             </div>
             <div class="pt20 pb30 text-center color-blue">
@@ -124,7 +134,7 @@ $this->show_footer = false;
             ?>
         </div>
         <div class="ml10 mr10 mt10 font-s12 letter-s1">
-            <div>订单编号:MYZD20160119012</div>
+            <div>订单编号:<?php echo $data->results->refNo; ?></div>
             <div class="grid">
                 <div class="col-0">
                     已付手术预约金:1000元
@@ -142,8 +152,9 @@ $this->show_footer = false;
                 </div>
             </div>
         </div>
+        <?php //var_dump($data); ?>
         <div class="pl10 pr10 pt20">
-            <button id="btnSubmit" type="button" class="button btnFull-yellow font-s16">预约</button>
+            <button id="btnSubmit" type="button" class="button btnFull-green font-s16">提交</button>
         </div>
     </div>
 </article>
@@ -173,13 +184,14 @@ $this->show_footer = false;
                 }
             });
         });
-        $btnSubmit = $("#btnSubmit");
-        $domForm = $("#comment-form");
-        $btnSubmit.click(function () {
-            $domForm.submit();
+        var btnSubmit = $("#btnSubmit");
+        var domForm = $("#comment-form");
+        var uploadReturnUrl = domForm.attr('data-url-return');
+        btnSubmit.click(function () {
+            domForm.submit();
         });
         //表单验证板块
-        var validator = $domForm.validate({
+        var validator = domForm.validate({
             rules: {
                 'comment[comment_text]': {
                     required: true,
@@ -188,9 +200,9 @@ $this->show_footer = false;
             },
             messages: {
                 'comment[comment_text]': {
-                    required: '请填写疾病描述',
-                    maxlength: '病情太长（最多1000个字）',
-                    minlength: '病情太短（最少10个字）'
+                    required: '请填写服务评价',
+                    maxlength: '评价太长（最多1000个字）',
+                    minlength: '评价太短（最少10个字）'
                 }
             },
             errorElement: "div",
@@ -199,12 +211,12 @@ $this->show_footer = false;
                 error.appendTo(element.parents(".ui-field-contain")); //这里的element是录入数据的对象  
             },
             submitHandler: function () {
-                disabledBtn($btnSubmit);
+                disabledBtn(btnSubmit);
                 //form插件的异步无刷新提交
-                var actionUrl = $domForm.attr('data-actionurl');
-                var formdata = $domForm.serializeArray();
+                var actionUrl = domForm.attr('data-actionurl');
+                var formdata = domForm.serializeArray();
                 console.log(formdata);
-                $domForm.ajaxSubmit({
+                domForm.ajaxSubmit({
                     type: 'post',
                     url: actionUrl,
                     data: formdata,
@@ -212,13 +224,12 @@ $this->show_footer = false;
                         console.log(data);
                         //图片上传
                         if (data.status == 'ok') {
-                            uploadReturnUrl = uploadReturnUrl + '?refNo=' + data.salesOrderRefNo;
                             location.href = uploadReturnUrl;
-                            enableBtn($btnSubmit);
+                            enableBtn(btnSubmit);
                         } else {
 
                         }
-                        enableBtn($btnSubmit);
+                        enableBtn(btnSubmit);
                     }
                 });
             }
