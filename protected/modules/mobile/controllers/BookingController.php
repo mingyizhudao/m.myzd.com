@@ -589,7 +589,6 @@ class BookingController extends MobileController {
         $value=$_GET;
         $user = $this->getCurrentUser();
         $booking = new ApiViewBookingV4($user, $id);
-        
         $output = $booking->loadApiViewData();
         $model='';
         if($value['status']==1){//待支付1000
@@ -604,6 +603,10 @@ class BookingController extends MobileController {
         }
         elseif($value['status']==4){//待点评
             $view='review';
+            $salesOrder = new SalesOrder();
+            //print_r($output);exit;
+            $orderInfo = $salesOrder->getByRefNo($output->results->refNo);
+            print_r($orderInfo);exit;
             $model=new CommentForm();
         }
         elseif($value['status']==8){//已完成
