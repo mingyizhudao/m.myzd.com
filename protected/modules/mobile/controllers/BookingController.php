@@ -626,7 +626,6 @@ class BookingController extends MobileController {
             $comment = new Comment();
             $bookingComment = $comment->getBookingIds($output->results->id);
             $output->results->bookingComment=$bookingComment;
-            print_r($output);exit;
             $view='complete';
         }
         else{
