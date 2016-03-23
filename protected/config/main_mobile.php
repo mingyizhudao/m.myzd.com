@@ -41,6 +41,7 @@ return array(
         'application.models.app.*',
         'application.models.patient.*',
         'application.models.sales.*',
+        'application.models.comment.*',
         'application.models.messagequeue.*',
         'application.models.weixin.*',
         //    'application.sdk.alipaydirect.*',

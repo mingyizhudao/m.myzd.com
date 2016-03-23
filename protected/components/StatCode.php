@@ -17,10 +17,10 @@ class StatCode {
     const BK_TYPE_QUICKBOOK = 9;    // 快速预约
     const BK_TRAVELTYPE_PATIENT_GO = 1;    // 患者过去
     const BK_TRAVELTYPE_DOCTOR_COME = 2;   // 医生过来
-    const BK_STATUS_NEW = 1;         // 待处理
-    const BK_STATUS_PROCESSING = 2;   // 处理中
-    const BK_STATUS_CONFIRMED_DOCTOR = 3;   // 已确认专家
-    const BK_STATUS_PATIENT_ACCEPTED = 4;   // 患者已接受
+    const BK_STATUS_NEW = 1;         // 待支付 旧版待处理
+    const BK_STATUS_PROCESSING = 2;   //安排中 旧版处理中
+    const BK_STATUS_CONFIRMED_DOCTOR = 3;   //待确认 旧版已确认专家
+    const BK_STATUS_PATIENT_ACCEPTED = 4;   //待点评 旧版患者已接受
     const BK_STATUS_DONE = 8;        // 已完成
     const BK_STATUS_CANCELLED = 9;   // 已取消
     const DR_C_TITLE_ZHUREN = 1;        // 主任
@@ -109,10 +109,10 @@ class StatCode {
     // Booking.status
     public static function getOptionsBookingStatus() {
         return array(
-            self::BK_STATUS_NEW => '待处理',
-            self::BK_STATUS_PROCESSING => '处理中',
-            self::BK_STATUS_CONFIRMED_DOCTOR => '专家已确认',
-            self::BK_STATUS_PATIENT_ACCEPTED => '患者已接受',
+            self::BK_STATUS_NEW => '待支付',
+            self::BK_STATUS_PROCESSING => '安排中',
+            self::BK_STATUS_CONFIRMED_DOCTOR => '待确认',
+            self::BK_STATUS_PATIENT_ACCEPTED => '待点评',
             self::BK_STATUS_DONE => '已完成',
             self::BK_STATUS_CANCELLED => '已取消'
         );

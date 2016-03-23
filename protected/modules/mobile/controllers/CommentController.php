@@ -65,8 +65,15 @@ class CommentController extends MobileController {
                 $comment->setAttributes($form->attributes, true);
                 $comment->setAttributes(array('bk_type'=>$bookType,'bk_id'=>$id,'user_id'=>$userId,'user_name'=>$userName), true);
                 if ($comment->save()) {
-                    $output['status'] = 'ok';
-                    $output['comment']['id'] = $comment->getId();
+                    //$date_updated=new CDbExpression("NOW()");
+                    $updBkStatus=$booking->updateAllByAttributes(array('bk_status'=>'8','date_updated'=>new CDbExpression("NOW()")), array('id'=>$id));
+                    if($updBkStatus){
+                        $output['status'] = 'ok';
+                        $output['comment']['id'] = $comment->getId();
+                    }
+                    else{
+                        $output['errors'] = $comment->getErrors();
+                    }
                 } else {
                     $output['errors'] = $comment->getErrors();
                 }

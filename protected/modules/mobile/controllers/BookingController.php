@@ -596,20 +596,37 @@ class BookingController extends MobileController {
             $view='payDeposit';
         }
         elseif($value['status']==2){//安排中
+            $salesOrder = new SalesOrder();
+            $orderInfo = $salesOrder->getByBkIdAndBkTypeAndOrderType($output->results->id,$output->results->bkType,'deposit','','','');
+            $output->results->orderinfo=$orderInfo;
             $view='arrange';
         }
         elseif($value['status']==3){//待确认20000
+            $orderInfo = $salesOrder->getByBkIdAndBkTypeAndOrderType($output->results->id,$output->results->bkType,'deposit','','','');
+            $output->results->orderinfo=$orderInfo;
             $view='payConfirm';
         }
         elseif($value['status']==4){//待点评
             $view='review';
             $salesOrder = new SalesOrder();
-            //print_r($output);exit;
-            $orderInfo = $salesOrder->getByRefNo($output->results->refNo);
-            print_r($orderInfo);exit;
+            $depositOrderInfo = $salesOrder->getByBkIdAndBkTypeAndOrderType($output->results->id,$output->results->bkType,'deposit','','','');
+            $surgeryOrderInfo = $salesOrder->getByBkIdAndBkTypeAndOrderType($output->results->id,$output->results->bkType,'surgery','','','');
+            //$orderInfo = $salesOrder->getByRefNo($output->results->refNo);
+            $output->results->depositOrderInfo=$depositOrderInfo;
+            $output->results->surgeryOrderInfo=$surgeryOrderInfo;
             $model=new CommentForm();
         }
         elseif($value['status']==8){//已完成
+            $salesOrder = new SalesOrder();
+            $depositOrderInfo = $salesOrder->getByBkIdAndBkTypeAndOrderType($output->results->id,$output->results->bkType,'deposit','','','');
+            $surgeryOrderInfo = $salesOrder->getByBkIdAndBkTypeAndOrderType($output->results->id,$output->results->bkType,'surgery','','','');
+            //$orderInfo = $salesOrder->getByRefNo($output->results->refNo);
+            $output->results->depositOrderInfo=$depositOrderInfo;
+            $output->results->surgeryOrderInfo=$surgeryOrderInfo;
+            $comment = new Comment();
+            $bookingComment = $comment->getBookingIds($output->results->id);
+            $output->results->bookingComment=$bookingComment;
+            print_r($output);exit;
             $view='complete';
         }
         else{

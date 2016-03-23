@@ -402,5 +402,26 @@ class SalesOrder extends EActiveRecord {
         } else
             return $date->format($format);
     }
-
+    
+    private function setBookingSalesOrders(SalesOrder $model){
+        if (arrayNotEmpty($models)) {
+            foreach ($models as $model) {
+                $data = new stdClass();
+                $data->id = $model->getId();
+                $data->refNo = $model->getrefNo();
+                $data->bkStatus = $model->getBkStatusNum();
+                $data->bkStatusText = $model->getBkStatus();
+                $data->contact_name = $model->getContactName();
+                $data->expertName = $model->getExpertNameBooked();
+                $data->hpName = $model->gethospitalName();
+                $data->hpDeptName = $model->gethpDeptName();
+                $data->dateStart = $model->getDateStart();
+                $data->dateEnd = $model->getDateEnd();
+                $data->actionUrl = Yii::app()->createAbsoluteUrl('/api/userbooking/' . $data->id);
+                $this->results->booking[] = $data;
+            }
+        } else {
+            $this->results->booking = array();
+        }
+    }
 }

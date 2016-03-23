@@ -456,6 +456,10 @@ class Booking extends EActiveRecord {
     public function getBookingType() {
         return StatCode::getBookingType($this->bk_type);
     }
+    
+    public function getBkType(){
+        return $this->bk_type;
+    }
 
     public function getDoctorName() {
         if (strIsEmpty($this->doctor_name) === false) {
@@ -567,4 +571,5 @@ class Booking extends EActiveRecord {
         $criteria->addCondition("t.date_deleted is NULL");
         return $this->findAll($criteria);
     }
+    
 }

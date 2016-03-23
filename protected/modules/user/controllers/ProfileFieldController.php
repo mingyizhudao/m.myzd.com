@@ -409,11 +409,11 @@ class ProfileFieldController extends Controller
 				{
 					$sql = '';
 				    $connection->createCommand(
-				    	"CREATE TEMPORARY TABLE ".Profile::model()->tableName()."_backup (".implode(',',$attr).")"
+				    	"CREATE TEMPORARY TABLE ".Profile::model()->tableName()."_ (".implode(',',$attr).")"
 				    )->execute();
 				    
 				    $connection->createCommand(
-				    	"INSERT INTO ".Profile::model()->tableName()."_backup SELECT ".implode(',',$attr)." FROM ".Profile::model()->tableName()
+				    	"INSERT INTO ".Profile::model()->tableName()."_ SELECT ".implode(',',$attr)." FROM ".Profile::model()->tableName()
 				    )->execute();
 				    
 				    $connection->createCommand(
@@ -425,11 +425,11 @@ class ProfileFieldController extends Controller
 				    )->execute();
 				    
 				    $connection->createCommand(
-				    	"INSERT INTO ".Profile::model()->tableName()." SELECT ".implode(',',$attr)." FROM ".Profile::model()->tableName()."_backup"
+				    	"INSERT INTO ".Profile::model()->tableName()." SELECT ".implode(',',$attr)." FROM ".Profile::model()->tableName()."_"
 				    )->execute();
 				    
 				    $connection->createCommand(
-				    	"DROP TABLE ".Profile::model()->tableName()."_backup"
+				    	"DROP TABLE ".Profile::model()->tableName()."_"
 				    )->execute();
 				    
 				    $transaction->commit();

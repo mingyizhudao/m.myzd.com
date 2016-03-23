@@ -165,7 +165,7 @@ class Comment extends EActiveRecord {
             $criteria->with = $with;
         }
         $criteria->addCondition('t.date_deleted is NULL');
-        $criteria->addInCondition('t.bk_id', $BookingIds);
+        $criteria->addCondition('t.bk_id='.$BookingIds);
         return $this->find($criteria);
     }
 }
