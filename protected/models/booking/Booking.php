@@ -364,7 +364,7 @@ class Booking extends EActiveRecord {
                 return "DR";
             case StatCode::BK_TYPE_EXPERTTEAM :
                 return "ET";
-            case self::BK_TYPE_DEPT :
+            case StatCode::BK_TYPE_DEPT :
                return "HP";
             case StatCode::BK_TYPE_QUICKBOOK :
                 return "QB";
