@@ -593,6 +593,9 @@ class BookingController extends MobileController {
         $model='';
         if($value['status']==1){//待支付1000
             //print_r($output);exit;
+            $salesOrder = new SalesOrder();
+            $depositOrderInfo = $salesOrder->getByBkIdAndBkTypeAndOrderType($output->results->id,$output->results->bkType,'deposit','','','');
+            $output->results->depositOrderInfo=$depositOrderInfo;
             $view='payDeposit';
         }
         elseif($value['status']==2){//安排中
