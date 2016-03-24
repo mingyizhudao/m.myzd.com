@@ -635,6 +635,12 @@ class BookingController extends MobileController {
             $view='complete';
         }
         else{
+            $salesOrder = new SalesOrder();
+            $depositOrderInfo = $salesOrder->getByBkIdAndBkTypeAndOrderType($output->results->id,$output->results->bkType,'deposit','','','');
+            $surgeryOrderInfo = $salesOrder->getByBkIdAndBkTypeAndOrderType($output->results->id,$output->results->bkType,'service','','','');
+            //$orderInfo = $salesOrder->getByRefNo($output->results->refNo);
+            $output->results->depositOrderInfo=$depositOrderInfo;
+            $output->results->surgeryOrderInfo=$surgeryOrderInfo;
             $view='cancel';
         }
         $this->render($view, array(
