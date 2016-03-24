@@ -591,7 +591,7 @@ class BookingController extends MobileController {
         $booking = new ApiViewBookingV4($user, $id);
         $output = $booking->loadApiViewData();
         $salesOrder = new SalesOrder();
-        $orderInfo = $salesOrder->getByRefNo($output->results->refNo);
+        $orderInfo = $salesOrder->getByBkRefNo($output->results->refNo);
         $output->results->orderInfo=$orderInfo;
         $model='';
         if($value['status']==1){//待支付1000
