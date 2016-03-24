@@ -590,57 +590,30 @@ class BookingController extends MobileController {
         $user = $this->getCurrentUser();
         $booking = new ApiViewBookingV4($user, $id);
         $output = $booking->loadApiViewData();
+        $salesOrder = new SalesOrder();
+        $orderInfo = $salesOrder->getByRefNo($output->results->refNo);
+        $output->results->orderInfo=$orderInfo;
         $model='';
         if($value['status']==1){//待支付1000
-            //print_r($output);exit;
-            $salesOrder = new SalesOrder();
-            $depositOrderInfo = $salesOrder->getByBkIdAndBkTypeAndOrderType($output->results->id,1,'deposit','','','');
-            $output->results->depositOrderInfo=$depositOrderInfo;
             $view='payDeposit';
         }
         elseif($value['status']==2){//安排中
-            $salesOrder = new SalesOrder();
-            $orderInfo = $salesOrder->getByBkIdAndBkTypeAndOrderType($output->results->id,1,'deposit','','','');
-            $output->results->orderinfo=$orderInfo;
             $view='arrange';
         }
         elseif($value['status']==3){//待确认20000
-            $salesOrder = new SalesOrder();
-            $depositOrderInfo = $salesOrder->getByBkIdAndBkTypeAndOrderType($output->results->id,1,'deposit','','','');
-            $surgeryOrderInfo = $salesOrder->getByBkIdAndBkTypeAndOrderType($output->results->id,1,'service','','','');
-            $output->results->depositOrderInfo=$depositOrderInfo;
-            $output->results->surgeryOrderInfo=$surgeryOrderInfo;
             $view='payConfirm';
         }
         elseif($value['status']==4){//待点评
             $view='review';
-            $salesOrder = new SalesOrder();
-            $depositOrderInfo = $salesOrder->getByBkIdAndBkTypeAndOrderType($output->results->id,1,'deposit','','','');
-            $surgeryOrderInfo = $salesOrder->getByBkIdAndBkTypeAndOrderType($output->results->id,1,'service','','','');
-            //$orderInfo = $salesOrder->getByRefNo($output->results->refNo);
-            $output->results->depositOrderInfo=$depositOrderInfo;
-            $output->results->surgeryOrderInfo=$surgeryOrderInfo;
             $model=new CommentForm();
         }
         elseif($value['status']==8){//已完成
-            $salesOrder = new SalesOrder();
-            $depositOrderInfo = $salesOrder->getByBkIdAndBkTypeAndOrderType($output->results->id,1,'deposit','','','');
-            $surgeryOrderInfo = $salesOrder->getByBkIdAndBkTypeAndOrderType($output->results->id,1,'service','','','');
-            //$orderInfo = $salesOrder->getByRefNo($output->results->refNo);
-            $output->results->depositOrderInfo=$depositOrderInfo;
-            $output->results->surgeryOrderInfo=$surgeryOrderInfo;
             $comment = new Comment();
             $bookingComment = $comment->getBookingIds($output->results->id);
             $output->results->bookingComment=$bookingComment;
             $view='complete';
         }
         else{
-            $salesOrder = new SalesOrder();
-            $depositOrderInfo = $salesOrder->getByBkIdAndBkTypeAndOrderType($output->results->id,1,'deposit','','','');
-            $surgeryOrderInfo = $salesOrder->getByBkIdAndBkTypeAndOrderType($output->results->id,1,'service','','','');
-            //$orderInfo = $salesOrder->getByRefNo($output->results->refNo);
-            $output->results->depositOrderInfo=$depositOrderInfo;
-            $output->results->surgeryOrderInfo=$surgeryOrderInfo;
             $view='cancel';
         }
         $this->render($view, array(
