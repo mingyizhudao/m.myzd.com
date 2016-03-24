@@ -225,7 +225,7 @@ class SalesOrder extends EActiveRecord {
     }
     
     public function getByBkRefNo($bkRefNo) {
-        return $this->getByAttributes(array('bk_ref_no' => $bkRefNo));
+        return $this->getAllByAttributes(array('bk_ref_no' => $bkRefNo));
     }
     
     public function initFromBk($model) {
