@@ -2,10 +2,12 @@
 /*
  * $model DoctorForm.
  */
-$this->setPageTitle('支付订单');
+$this->setPageTitle('订单详情');
+$urlPatientBooking = $this->createUrl('booking/patientBooking', array('id' => ''));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
-$data = 1; //安排专家中
+$bookingComment = $data->results->bookingComment;
+$results = $data->results;
 ?>
 <style>
     .bt-gray5{
@@ -27,7 +29,7 @@ $data = 1; //安排专家中
             </div>
         </a>
     </nav>
-    <h1 class="title">支付订单</h1>
+    <h1 class="title">订单详情</h1>
     <nav class="right">
         <a onclick="javascript:history.go(0)">
             <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
@@ -48,48 +50,66 @@ $data = 1; //安排专家中
                     服务效率:
                 </div>
                 <div class='col-1'>
-                    <span data-star='1' class='serviceStar pl10'><img src='<?php echo $urlResImage; ?>star.png' class='w20p'></span>
-                    <span data-star='2' class='serviceStar pl10'><img src='<?php echo $urlResImage; ?>star.png' class='w20p'></span>
-                    <span data-star='3' class='serviceStar pl10'><img src='<?php echo $urlResImage; ?>star.png' class='w20p'></span>
-                    <span data-star='4' class='serviceStar pl10'><img src='<?php echo $urlResImage; ?>star.png' class='w20p'></span>
-                    <span data-star='5' class='serviceStar pl10'><img src='<?php echo $urlResImage; ?>star.png' class='w20p'></span>
+                    <?php
+                    $service = $bookingComment->service;
+                    for ($i = 1; $i <= 5; $i++) {
+                        if ($service >= $i) {
+                            ?>
+                            <span class='pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                            <?php
+                        } else {
+                            ?>
+                            <span class='pl10'><img src='<?php echo $urlResImage; ?>star.png' class='w20p'></span>
+                            <?php
+                        }
+                    }
+                    ?>
                 </div>
             </div>
             <div class='grid mt10'>
                 <div class='col-0 pt3'>
                     手术效果:
                 </div>
-                <div class='col-1 color-gray'>
-                    <span data-star='1' class='operationStar pl10'><img src='<?php echo $urlResImage; ?>star.png' class='w20p'></span>
-                    <span data-star='2' class='operationStar pl10'><img src='<?php echo $urlResImage; ?>star.png' class='w20p'></span>
-                    <span data-star='3' class='operationStar pl10'><img src='<?php echo $urlResImage; ?>star.png' class='w20p'></span>
-                    <span data-star='4' class='operationStar pl10'><img src='<?php echo $urlResImage; ?>star.png' class='w20p'></span>
-                    <span data-star='5' class='operationStar pl10'><img src='<?php echo $urlResImage; ?>star.png' class='w20p'></span>
+                <div class='col-1'>
+                    <?php
+                    $postOperative = $bookingComment->post_operative;
+                    for ($i = 1; $i <= 5; $i++) {
+                        if ($postOperative >= $i) {
+                            ?>
+                            <span class='pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                            <?php
+                        } else {
+                            ?>
+                            <span class='pl10'><img src='<?php echo $urlResImage; ?>star.png' class='w20p'></span>
+                            <?php
+                        }
+                    }
+                    ?>
                 </div>
             </div>
             <div class="pt10 pb10 mt10 bt-gray5 bb-gray5">
-                如果您无法简介的表达你的想法，那只能说明你还不够了解它，你觉得我说的对不对呀
+                <?php echo $bookingComment->comment_text; ?>
             </div>
             <div class="mt10 font-s12 letter-s1">
-                <div>订单编号:MYZD20160119012</div>
+                <div>订单编号:<?php echo $data->results->refNo; ?></div>
                 <div class="grid">
                     <div class="col-0">
-                        已付手术预约金:1000元
+                        已付手术预约金:<?php echo $data->results->depositOrderInfo->final_amount; ?>元
                     </div>
                     <div class="col-1 text-right">
-                        2016-02-23 23:23:23
+                        <?php echo $data->results->depositOrderInfo->date_closed; ?>
                     </div>
                 </div>
                 <div class="grid">
                     <div class="col-0">
-                        已付平台服务费:20000元
+                        已付平台服务费:<?php echo $data->results->surgeryOrderInfo->final_amount; ?>元
                     </div>
                     <div class="col-1 text-right">
-                        2016-02-23 23:23:23
+                        <?php echo $data->results->surgeryOrderInfo->date_closed; ?>
                     </div>
                 </div>
                 <div class="text-right pt10 pb10">
-                    <a class="color-green">
+                    <a href="<?php echo $urlPatientBooking; ?>/<?php echo $bookingComment->bk_id; ?>" class="color-green">
                         查看详情>
                     </a>
                 </div>

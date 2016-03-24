@@ -37,7 +37,7 @@ $results = $data->results;
                 <img src="<?php echo $urlResImage; ?>payOrderImg.png" class="w20p mr10">
             </div>
             <div class="col-1 pt3">
-                当前状态:安排专家中
+                当前状态:安排专家中...
             </div>
         </div>
         <div class="mt20 ml10 mr10 bbb">
@@ -72,8 +72,8 @@ $results = $data->results;
         <div class="font-s12 letter-s1 ml20 mr20 mt10">
             <div>订单编号:<?php echo $results->refNo; ?></div>
             <div>
-                <span>已付手术预约金:1000元</span>
-                <span><?php echo $results->dateCreated; ?></span>
+                <span>已付手术预约金:<?php echo $data->results->orderinfo->final_amount; ?>元</span>
+                <span><?php echo $data->results->orderinfo->date_closed; ?></span>
             </div>
         </div>
         <input id="ref_no" type="hidden" name="order[ref_no]" value="<?php echo $results->refNo; ?>" />

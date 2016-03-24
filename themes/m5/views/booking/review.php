@@ -6,7 +6,7 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/c
 /*
  * $model DoctorForm.
  */
-$this->setPageTitle('支付订单');
+$this->setPageTitle('订单详情');
 $urlSubmitForm = $this->createUrl("comment/ajaxAddComment");
 $urlId = Yii::app()->request->getQuery('id', '');
 $urlReturn = $this->createAbsoluteUrl('booking/patientBookingList');
@@ -54,7 +54,7 @@ $this->show_footer = false;
             </div>
         </a>
     </nav>
-    <h1 class="title">支付订单</h1>
+    <h1 class="title">订单详情</h1>
     <nav class="right">
         <a onclick="javascript:history.go(0)">
             <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
@@ -137,22 +137,21 @@ $this->show_footer = false;
             <div>订单编号:<?php echo $data->results->refNo; ?></div>
             <div class="grid">
                 <div class="col-0">
-                    已付手术预约金:1000元
+                    已付手术预约金:<?php echo $data->results->depositOrderInfo->final_amount; ?>元
                 </div>
                 <div class="col-1 text-right">
-                    2016-02-23 23:23:23
+                    <?php echo $data->results->depositOrderInfo->date_closed; ?>
                 </div>
             </div>
             <div class="grid">
                 <div class="col-0">
-                    已付平台服务费:20000元
+                    已付平台服务费:<?php echo $data->results->surgeryOrderInfo->final_amount; ?>元
                 </div>
                 <div class="col-1 text-right">
-                    2016-02-23 23:23:23
+                    <?php echo $data->results->surgeryOrderInfo->date_closed; ?>
                 </div>
             </div>
         </div>
-        <?php //var_dump($data); ?>
         <div class="pl10 pr10 pt20">
             <button id="btnSubmit" type="button" class="button btnFull-green font-s16">提交</button>
         </div>
