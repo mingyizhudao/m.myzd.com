@@ -11,6 +11,7 @@ $urlSubmitForm = $this->createUrl("booking/ajaxQuickbook");
 $urlUploadFile = $this->createUrl("booking/ajaxUploadFile");
 $urlReturn = $this->createUrl('order/view');
 $urlHomeView = $this->createUrl('home/view');
+$urlBackBtn = Yii::app()->request->getQuery('backBtn', '1');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 $user = $this->getCurrentUser();
@@ -19,13 +20,17 @@ $user = $this->getCurrentUser();
     .btn {display: inline-block;padding: 6px 12px;margin-bottom: 0;font-size: 14px;font-weight: 400;line-height: 1.42857143;text-align: center;white-space: nowrap;vertical-align: middle;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;background-image: none;border: 1px solid transparent;border-radius: 4px;}
 </style>
 <header class="bg-green">
-    <nav class="left">
-        <a href="" data-target="back">
-            <div class="pl5">
-                <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
-            </div>
-        </a>
-    </nav>
+    <?php if ($urlBackBtn == 1) {
+        ?>
+        <nav class="left">
+            <a href="" data-target="back">
+                <div class="pl5">
+                    <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                </div>
+            </a>
+        </nav>
+        <?php }
+    ?>
     <h1 class="title">快速预约</h1>
     <nav class="right">
         <a onclick="javascript:history.go(0)">
