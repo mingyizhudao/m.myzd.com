@@ -602,8 +602,10 @@ class BookingController extends MobileController {
             $view='arrange';
         }
         elseif($value['status']==3){//待确认20000
-            $orderInfo = $salesOrder->getByBkIdAndBkTypeAndOrderType($output->results->id,$output->results->bkType,'deposit','','','');
-            $output->results->orderinfo=$orderInfo;
+            $depositOrderInfo = $salesOrder->getByBkIdAndBkTypeAndOrderType($output->results->id,$output->results->bkType,'deposit','','','');
+            $surgeryOrderInfo = $salesOrder->getByBkIdAndBkTypeAndOrderType($output->results->id,$output->results->bkType,'surgery','','','');
+            $output->results->depositOrderInfo=$depositOrderInfo;
+            $output->results->surgeryOrderInfo=$surgeryOrderInfo;
             $view='payConfirm';
         }
         elseif($value['status']==4){//待点评
