@@ -166,19 +166,12 @@ $urlUserCommonProblem = $this->createUrl('user/commonProblem');
 </article>
 <script>
     $("#btn_actionsheet1").tap(function () {
-//        J.confirm('退出', '您确定要退出该账号？', function () {
-//            location.href = '<?php //echo $urlLogout;   ?>';
-//        }, function () {
-//            setTimeout(function () {
-//                location.href = '<?php //echo $urlUserView;   ?>';
-//            }, 200);
-//        });
         J.customConfirm('退出',
                 '<div class="mb10">您确定要退出该账号？</div>',
                 '<a id="closeLogout" class="w50">取消</a>',
-                '<a data="ok" class="color-green w50">暂不参与</a>',
+                '<a data="ok" class="color-green w50">退出</a>',
                 function () {
-                    location.href = '';
+                    location.href = '<?php echo $urlLogout; ?>';
                 });
         $('#closeLogout').click(function () {
             J.closePopup();
