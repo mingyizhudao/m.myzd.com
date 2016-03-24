@@ -34,8 +34,20 @@ $results = $data->results;
         </a>
     </nav>
 </header>
+<?php
+$orderInfos = $data->results->orderInfo;
+if (!empty($orderInfos)) {
+    for ($i = 0; $i < count($orderInfos); $i++) {
+        if ($orderInfos[$i]->order_type == 'deposit') {
+            $orderInfo = $orderInfos[$i];
+        } else if ($orderInfos[$i]->order_type == 'service') {
+            $serviceInfo = $orderInfos[$i];
+        }
+    }
+}
+?>
 <footer class="bg-white grid">
-    <div class="col-1 w60 color-green middle grid">¥<?php echo $data->results->surgeryOrderInfo->final_amount; ?>元</div>
+    <div class="col-1 w60 color-green middle grid">¥<?php echo $serviceInfo->final_amount; ?>元</div>
     <div id="pay" class="col-1 w40 bg-green color-white middle grid">支付</div>
 </footer>
 <article id='payOrder_article' class="active" data-scroll="true">
@@ -80,8 +92,8 @@ $results = $data->results;
         <div class="font-s12 letter-s1 ml20 mr20 mt10">
             <div>订单编号:<?php echo $results->refNo; ?></div>
             <div>
-                <span>已付手术预约金:<?php echo $data->results->depositOrderInfo->final_amount; ?>元</span>
-                <span><?php echo $data->results->depositOrderInfo->date_closed; ?></span>
+                <span>已付手术预约金:<?php echo $orderInfo->final_amount; ?>元</span>
+                <span><?php echo $orderInfo->date_closed; ?></span>
             </div>
         </div>
         <input id="ref_no" type="hidden" name="order[ref_no]" value="<?php echo $results->refNo; ?>" />
@@ -93,13 +105,11 @@ $results = $data->results;
                 J.customConfirm('<div class="font-s16">提示</div>',
                         '<div class="mb10">您确定暂不支付手术预约金?</div><div>（稍后可在"订单-待支付"里完成）</div>',
                         '<a data="cancel" class="w50">取消</a>',
-                        '<a data="ok" class="color-green w50">确定</a>',
-                        function () {
+                        '<a data="ok" class="color-green w50">确定</a>', function () {
                             location.href = '<?php echo $urlPatientBookingList; ?>' + '?status=' + '<?php echo $status; ?>';
-                        },
-                        function () {
-                            J.hideMask();
-                        });
+                        }, function () {
+                    J.hideMask();
+                });
             });
             var orderno = document.getElementById('ref_no').value;
             var amount = 0.01;

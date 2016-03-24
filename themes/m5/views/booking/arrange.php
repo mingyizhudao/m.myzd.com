@@ -71,9 +71,19 @@ $results = $data->results;
         </div>
         <div class="font-s12 letter-s1 ml20 mr20 mt10">
             <div>订单编号:<?php echo $results->refNo; ?></div>
+            <?php
+            $orderInfos = $data->results->orderInfo;
+            if (!empty($orderInfos)) {
+                for ($i = 0; $i < count($orderInfos); $i++) {
+                    if ($orderInfos[$i]->order_type == 'deposit') {
+                        $orderInfo = $orderInfos[$i];
+                    }
+                }
+            }
+            ?>
             <div>
-                <span>已付手术预约金:<?php echo $data->results->orderinfo->final_amount; ?>元</span>
-                <span><?php echo $data->results->orderinfo->date_closed; ?></span>
+                <span>已付手术预约金:<?php echo $orderInfo->final_amount;   ?>元</span>
+                <span><?php echo $orderInfo->date_closed;   ?></span>
             </div>
         </div>
         <input id="ref_no" type="hidden" name="order[ref_no]" value="<?php echo $results->refNo; ?>" />

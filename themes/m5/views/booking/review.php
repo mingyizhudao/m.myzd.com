@@ -133,22 +133,34 @@ $this->show_footer = false;
             $this->endWidget();
             ?>
         </div>
+        <?php
+        $orderInfos = $data->results->orderInfo;
+        if (!empty($orderInfos)) {
+            for ($i = 0; $i < count($orderInfos); $i++) {
+                if ($orderInfos[$i]->order_type == 'deposit') {
+                    $orderInfo = $orderInfos[$i];
+                } else if ($orderInfos[$i]->order_type == 'service') {
+                    $serviceInfo = $orderInfos[$i];
+                }
+            }
+        }
+        ?>
         <div class="ml10 mr10 mt10 font-s12 letter-s1">
             <div>订单编号:<?php echo $data->results->refNo; ?></div>
             <div class="grid">
                 <div class="col-0">
-                    已付手术预约金:<?php echo $data->results->depositOrderInfo->final_amount; ?>元
+                    已付手术预约金:<?php echo $orderInfo->final_amount; ?>元
                 </div>
                 <div class="col-1 text-right">
-                    <?php echo $data->results->depositOrderInfo->date_closed; ?>
+                    <?php echo $orderInfo->date_closed; ?>
                 </div>
             </div>
             <div class="grid">
                 <div class="col-0">
-                    已付平台服务费:<?php echo $data->results->surgeryOrderInfo->final_amount; ?>元
+                    已付平台服务费:<?php echo $serviceInfo->final_amount; ?>元
                 </div>
                 <div class="col-1 text-right">
-                    <?php echo $data->results->surgeryOrderInfo->date_closed; ?>
+                    <?php echo $serviceInfo->date_closed; ?>
                 </div>
             </div>
         </div>

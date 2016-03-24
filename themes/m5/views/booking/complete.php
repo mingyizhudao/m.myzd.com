@@ -90,22 +90,34 @@ $results = $data->results;
             <div class="pt10 pb10 mt10 bt-gray5 bb-gray5">
                 <?php echo $bookingComment->comment_text; ?>
             </div>
+            <?php
+            $orderInfos = $data->results->orderInfo;
+            if (!empty($orderInfos)) {
+                for ($i = 0; $i < count($orderInfos); $i++) {
+                    if ($orderInfos[$i]->order_type == 'deposit') {
+                        $orderInfo = $orderInfos[$i];
+                    } else if ($orderInfos[$i]->order_type == 'service') {
+                        $serviceInfo = $orderInfos[$i];
+                    }
+                }
+            }
+            ?>
             <div class="mt10 font-s12 letter-s1">
                 <div>订单编号:<?php echo $data->results->refNo; ?></div>
                 <div class="grid">
                     <div class="col-0">
-                        已付手术预约金:<?php echo $data->results->depositOrderInfo->final_amount; ?>元
+                        已付手术预约金:<?php echo $orderInfo->final_amount; ?>元
                     </div>
                     <div class="col-1 text-right">
-                        <?php echo $data->results->depositOrderInfo->date_closed; ?>
+                        <?php echo $orderInfo->date_closed; ?>
                     </div>
                 </div>
                 <div class="grid">
                     <div class="col-0">
-                        已付平台服务费:<?php echo $data->results->surgeryOrderInfo->final_amount; ?>元
+                        已付平台服务费:<?php echo $serviceInfo->final_amount; ?>元
                     </div>
                     <div class="col-1 text-right">
-                        <?php echo $data->results->surgeryOrderInfo->date_closed; ?>
+                        <?php echo $serviceInfo->date_closed; ?>
                     </div>
                 </div>
                 <div class="text-right pt10 pb10">

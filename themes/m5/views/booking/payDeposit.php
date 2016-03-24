@@ -35,7 +35,17 @@ $results = $data->results;
     </nav>
 </header>
 <footer class="bg-white grid">
-    <div class="col-1 w60 color-green middle grid">¥<?php echo $data->results->depositOrderInfo->final_amount; ?>元</div>
+    <?php
+    $orderInfos = $data->results->orderInfo;
+    if (!empty($orderInfos)) {
+        for ($i = 0; $i < count($orderInfos); $i++) {
+            if ($orderInfos[$i]->order_type == 'deposit') {
+                $orderInfo = $orderInfos[$i];
+            }
+        }
+    }
+    ?>
+    <div class="col-1 w60 color-green middle grid">¥<?php echo $orderInfo->final_amount; ?>元</div>
     <div id="pay" class="col-1 w40 bg-green color-white middle grid">支付</div>
 </footer>
 <article id='payOrder_article' class="active" data-scroll="true">
