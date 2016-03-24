@@ -602,8 +602,9 @@ class BookingController extends MobileController {
             $view='arrange';
         }
         elseif($value['status']==3){//待确认20000
+            $salesOrder = new SalesOrder();
             $depositOrderInfo = $salesOrder->getByBkIdAndBkTypeAndOrderType($output->results->id,$output->results->bkType,'deposit','','','');
-            $surgeryOrderInfo = $salesOrder->getByBkIdAndBkTypeAndOrderType($output->results->id,$output->results->bkType,'surgery','','','');
+            $surgeryOrderInfo = $salesOrder->getByBkIdAndBkTypeAndOrderType($output->results->id,$output->results->bkType,'service','','','');
             $output->results->depositOrderInfo=$depositOrderInfo;
             $output->results->surgeryOrderInfo=$surgeryOrderInfo;
             $view='payConfirm';
@@ -612,7 +613,7 @@ class BookingController extends MobileController {
             $view='review';
             $salesOrder = new SalesOrder();
             $depositOrderInfo = $salesOrder->getByBkIdAndBkTypeAndOrderType($output->results->id,$output->results->bkType,'deposit','','','');
-            $surgeryOrderInfo = $salesOrder->getByBkIdAndBkTypeAndOrderType($output->results->id,$output->results->bkType,'surgery','','','');
+            $surgeryOrderInfo = $salesOrder->getByBkIdAndBkTypeAndOrderType($output->results->id,$output->results->bkType,'service','','','');
             //$orderInfo = $salesOrder->getByRefNo($output->results->refNo);
             $output->results->depositOrderInfo=$depositOrderInfo;
             $output->results->surgeryOrderInfo=$surgeryOrderInfo;
@@ -621,7 +622,7 @@ class BookingController extends MobileController {
         elseif($value['status']==8){//已完成
             $salesOrder = new SalesOrder();
             $depositOrderInfo = $salesOrder->getByBkIdAndBkTypeAndOrderType($output->results->id,$output->results->bkType,'deposit','','','');
-            $surgeryOrderInfo = $salesOrder->getByBkIdAndBkTypeAndOrderType($output->results->id,$output->results->bkType,'surgery','','','');
+            $surgeryOrderInfo = $salesOrder->getByBkIdAndBkTypeAndOrderType($output->results->id,$output->results->bkType,'service','','','');
             //$orderInfo = $salesOrder->getByRefNo($output->results->refNo);
             $output->results->depositOrderInfo=$depositOrderInfo;
             $output->results->surgeryOrderInfo=$surgeryOrderInfo;
