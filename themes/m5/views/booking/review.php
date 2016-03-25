@@ -8,7 +8,6 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/c
  */
 $this->setPageTitle('订单详情');
 $urlSubmitForm = $this->createUrl("comment/ajaxAddComment");
-$urlId = Yii::app()->request->getQuery('id', '');
 $urlReturn = $this->createAbsoluteUrl('booking/patientBookingList');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
@@ -77,7 +76,8 @@ $this->show_footer = false;
                 ),
                 'enableAjaxValidation' => false,
             ));
-            echo $form->hiddenField($model, 'id', array('name' => 'comment[id]', 'value' => $urlId));
+            echo $form->hiddenField($model, 'id', array('name' => 'comment[id]', 'value' => $data->results->id));
+            echo $form->hiddenField($model, 'disease_detail', array('name' => 'comment[disease_detail]', 'value' => $data->results->diseaseName));
             ?>
             <div class="grid pt20 color-green font-s18">
                 <div class='col-1 w50'>
@@ -93,30 +93,30 @@ $this->show_footer = false;
             <div class="ui-field-contain">
                 <div class='grid mt10'>
                     <div class='col-0 pt3'>
-                        服务效率:
+                        治疗效果:
                     </div>
                     <div class='col-1'>
-                        <span data-star='1' class='serviceStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
-                        <span data-star='2' class='serviceStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
-                        <span data-star='3' class='serviceStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
-                        <span data-star='4' class='serviceStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
-                        <span data-star='5' class='serviceStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
-                        <?php echo $form->hiddenField($model, 'service', array('name' => 'comment[service]', 'value' => 5)); ?>
+                        <span data-star='1' class='effectStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                        <span data-star='2' class='effectStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                        <span data-star='3' class='effectStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                        <span data-star='4' class='effectStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                        <span data-star='5' class='effectStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                        <?php echo $form->hiddenField($model, 'effect', array('name' => 'comment[effect]', 'value' => 5)); ?>
                     </div>
                 </div>
             </div>
             <div class="ui-field-contain">
                 <div class='grid mt10'>
                     <div class='col-0 pt3'>
-                        手术效果:
+                        医生态度:
                     </div>
                     <div class='col-1 color-gray'>
-                        <span data-star='1' class='operationStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
-                        <span data-star='2' class='operationStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
-                        <span data-star='3' class='operationStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
-                        <span data-star='4' class='operationStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
-                        <span data-star='5' class='operationStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
-                        <?php echo $form->hiddenField($model, 'post_operative', array('name' => 'comment[post_operative]', 'value' => 5)); ?>
+                        <span data-star='1' class='doctorAttitudeStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                        <span data-star='2' class='doctorAttitudeStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                        <span data-star='3' class='doctorAttitudeStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                        <span data-star='4' class='doctorAttitudeStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                        <span data-star='5' class='doctorAttitudeStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                        <?php echo $form->hiddenField($model, 'doctor_attitude', array('name' => 'comment[doctor_attitude]', 'value' => 5)); ?>
                     </div>
                 </div>
             </div>
@@ -172,10 +172,10 @@ $this->show_footer = false;
 <script>
     $(document).ready(function () {
         //服务效率
-        $('.serviceStar').click(function () {
+        $('.effectStar').click(function () {
             var number = Number($(this).attr('data-star'));
-            $('input[id="comment_service"]').attr('value', number);
-            $('.serviceStar').each(function () {
+            $('input[id="comment_effect"]').attr('value', number);
+            $('.effectStar').each(function () {
                 if ($(this).attr('data-star') <= number) {
                     $(this).html("<img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'>");
                 } else {
@@ -184,10 +184,10 @@ $this->show_footer = false;
             });
         });
         //手术效果
-        $('.operationStar').click(function () {
+        $('.doctorAttitudeStar').click(function () {
             var number = Number($(this).attr('data-star'));
-            $('input[id="comment_post_operative"]').attr('value', number);
-            $('.operationStar').each(function () {
+            $('input[id="comment_doctor_attitude"]').attr('value', number);
+            $('.doctorAttitudeStar').each(function () {
                 if ($(this).attr('data-star') <= number) {
                     $(this).html("<img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'>");
                 } else {

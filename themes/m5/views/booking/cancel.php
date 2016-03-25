@@ -85,30 +85,34 @@ $results = $data->results;
             <div>订单编号:<?php echo $results->refNo; ?></div>
             <?php
             if (isset($orderInfo)) {
-                ?>
-                <div class = "grid">
-                    <div class = "col-0">
-                        已付手术预约金:<?php echo $orderInfo->final_amount; ?>元
+                if ($orderInfo->is_paid == 1) {
+                    ?>
+                    <div class = "grid">
+                        <div class = "col-0">
+                            已付手术预约金:<?php echo $orderInfo->final_amount; ?>元
+                        </div>
+                        <div class="col-1 text-right">
+                            <?php echo $orderInfo->date_closed; ?>
+                        </div>
                     </div>
-                    <div class="col-1 text-right">
-                        <?php echo $orderInfo->date_closed; ?>
-                    </div>
-                </div>
-                <?php
+                    <?php
+                }
             }
             ?>
             <?php
             if (isset($serviceInfo)) {
-                ?>
-                <div class="grid">
-                    <div class="col-0">
-                        已付平台服务费:<?php echo $serviceInfo->final_amount; ?>元
+                if ($serviceInfo->is_paid == 1) {
+                    ?>
+                    <div class="grid">
+                        <div class="col-0">
+                            已付平台服务费:<?php echo $serviceInfo->final_amount; ?>元
+                        </div>
+                        <div class="col-1 text-right">
+                            <?php echo $serviceInfo->date_closed; ?>
+                        </div>
                     </div>
-                    <div class="col-1 text-right">
-                        <?php echo $serviceInfo->date_closed; ?>
-                    </div>
-                </div>
-                <?php
+                    <?php
+                }
             }
             ?>
         </div>

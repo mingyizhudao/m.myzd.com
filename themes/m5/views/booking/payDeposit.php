@@ -13,19 +13,44 @@ $this->show_footer = false;
 $results = $data->results;
 ?>
 <style>
+
     #payOrder_article .list>li{padding: 10px;}
     #payOrder_article .bbb{box-shadow: 2px 2px 2px #cccccc}
     #payOrder_article .list>li:first-child{border-top: inherit;}
     article#payOrder_article{background-color: #eaeff1;}
     .popup-title{color: #333333;}
 </style>
+<?php
+$orderInfos = $data->results->orderInfo;
+if (!empty($orderInfos)) {
+    for ($i = 0; $i < count($orderInfos); $i++) {
+        if ($orderInfos[$i]->order_type == 'deposit') {
+            $orderInfo = $orderInfos[$i];
+        }
+    }
+}
+?>
 <header class="bg-green">
     <nav class="left">
-        <a id="noPay">
-            <div class="pl5">
-                <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
-            </div>
-        </a>
+        <?php
+        if ($orderInfo->is_paid == 0) {
+            ?>
+            <a id="noPay">
+                <div class="pl5">
+                    <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                </div>
+            </a>
+            <?php
+        } else {
+            ?>
+            <a href="" data-target="back">
+                <div class="pl5">
+                    <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                </div>
+            </a>
+            <?php
+        }
+        ?>
     </nav>
     <h1 class="title">支付订单</h1>
     <nav class="right">
@@ -35,18 +60,14 @@ $results = $data->results;
     </nav>
 </header>
 <footer class="bg-white grid">
+    <div class="col-1 w60 color-green middle grid">¥<?php echo $orderInfo->final_amount; ?>元</div>
     <?php
-    $orderInfos = $data->results->orderInfo;
-    if (!empty($orderInfos)) {
-        for ($i = 0; $i < count($orderInfos); $i++) {
-            if ($orderInfos[$i]->order_type == 'deposit') {
-                $orderInfo = $orderInfos[$i];
-            }
-        }
+    if ($orderInfo->is_paid == 0) {
+        echo '<div id="pay" class="col-1 w40 bg-green color-white middle grid">支付</div>';
+    } else {
+        echo '<div class="col-1 w40 bg-gray4 color-white middle grid">已支付</div>';
     }
     ?>
-    <div class="col-1 w60 color-green middle grid">¥<?php echo $orderInfo->final_amount; ?>元</div>
-    <div id="pay" class="col-1 w40 bg-green color-white middle grid">支付</div>
 </footer>
 <article id='payOrder_article' class="active" data-scroll="true">
     <div>

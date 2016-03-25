@@ -47,13 +47,13 @@ $results = $data->results;
             </div>
             <div class='grid mt10'>
                 <div class='col-0 pt3'>
-                    服务效率:
+                    治疗效果:
                 </div>
                 <div class='col-1'>
                     <?php
-                    $service = $bookingComment->service;
+                    $effect = $bookingComment->effect;
                     for ($i = 1; $i <= 5; $i++) {
-                        if ($service >= $i) {
+                        if ($effect >= $i) {
                             ?>
                             <span class='pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
                             <?php
@@ -68,13 +68,13 @@ $results = $data->results;
             </div>
             <div class='grid mt10'>
                 <div class='col-0 pt3'>
-                    手术效果:
+                    医生态度:
                 </div>
                 <div class='col-1'>
                     <?php
-                    $postOperative = $bookingComment->post_operative;
+                    $doctorAttitude = $bookingComment->doctor_attitude;
                     for ($i = 1; $i <= 5; $i++) {
-                        if ($postOperative >= $i) {
+                        if ($doctorAttitude >= $i) {
                             ?>
                             <span class='pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
                             <?php

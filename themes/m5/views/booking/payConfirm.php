@@ -19,21 +19,6 @@ $results = $data->results;
     article#payOrder_article{background-color: #eaeff1;}
     .popup-title{color: #333333;}
 </style>
-<header class="bg-green">
-    <nav class="left">
-        <a id="noPay">
-            <div class="pl5">
-                <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
-            </div>
-        </a>
-    </nav>
-    <h1 class="title">支付订单</h1>
-    <nav class="right">
-        <a onclick="javascript:history.go(0)">
-            <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
-        </a>
-    </nav>
-</header>
 <?php
 $orderInfos = $data->results->orderInfo;
 if (!empty($orderInfos)) {
@@ -46,9 +31,44 @@ if (!empty($orderInfos)) {
     }
 }
 ?>
+<header class="bg-green">
+    <nav class="left">
+        <?php
+        if ($serviceInfo->is_paid == 0) {
+            ?>
+            <a id="noPay">
+                <div class="pl5">
+                    <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                </div>
+            </a>
+            <?php
+        } else {
+            ?>
+            <a href="" data-target="back">
+                <div class="pl5">
+                    <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                </div>
+            </a>
+            <?php
+        }
+        ?>
+    </nav>
+    <h1 class="title">支付订单</h1>
+    <nav class="right">
+        <a onclick="javascript:history.go(0)">
+            <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
+        </a>
+    </nav>
+</header>
 <footer class="bg-white grid">
     <div class="col-1 w60 color-green middle grid">¥<?php echo $serviceInfo->final_amount; ?>元</div>
-    <div id="pay" class="col-1 w40 bg-green color-white middle grid">支付</div>
+    <?php
+    if ($serviceInfo->is_paid == 0) {
+        echo '<div id="pay" class="col-1 w40 bg-green color-white middle grid">支付</div>';
+    } else {
+        echo '<div class="col-1 w40 bg-gray4 color-white middle grid">已支付</div>';
+    }
+    ?>
 </footer>
 <article id='payOrder_article' class="active" data-scroll="true">
     <div>
@@ -103,7 +123,7 @@ if (!empty($orderInfos)) {
 <script type="text/javascript">
             $('#noPay').tap(function () {
                 J.customConfirm('<div class="font-s16">提示</div>',
-                        '<div class="mb10">您确定暂不支付手术预约金?</div><div>（稍后可在"订单-待支付"里完成）</div>',
+                        '<div class="mb10">您确定暂不支付手术服务费?</div><div>（稍后可在"订单-待确认"里完成）</div>',
                         '<a data="cancel" class="w50">取消</a>',
                         '<a data="ok" class="color-green w50">确定</a>', function () {
                             location.href = '<?php echo $urlPatientBookingList; ?>' + '?status=' + '<?php echo $status; ?>';
