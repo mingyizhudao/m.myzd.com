@@ -15,15 +15,15 @@ class Comment extends EActiveRecord {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('service, post_operative, user_id, user_name, bk_type, bk_id', 'required'),
-            array('service, post_operative, user_id, bk_type, bk_id', 'numerical', 'integerOnly' => true),
+            array('effect, doctor_attitude,disease_detail, user_id, user_name, bk_type, bk_id', 'required'),
+            array('effect, doctor_attitude, user_id, bk_type, bk_id', 'numerical', 'integerOnly' => true),
             array('user_id, bk_id', 'length', 'max' => 11),
             array('user_name', 'length', 'max' => 30),
             array('comment_text', 'length', 'max' => 1000),
             array('date_created, date_updated, date_deleted', 'safe'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
-            array('id, user_id, user_name, bk_type, bk_id, service, post_operative, comment_text, display_order, date_created, date_updated, date_deleted', 'safe', 'on' => 'search'),
+            array('id, user_id, user_name, bk_type, bk_id, effect, doctor_attitude, comment_text, disease_detail, display_order, date_created, date_updated, date_deleted', 'safe', 'on' => 'search'),
         );
     }
 
@@ -48,9 +48,10 @@ class Comment extends EActiveRecord {
             'user_name' => '用户名',
             'bk_type' => '预约类型',
             'bk_id' => '关联预约表预约ID',
-            'service' => '服务效率',
-            'post_operative' => '术后效果',
+            'effect' => '服务效率',
+            'doctor_attitude' => '术后效果',
             'comment_text' => '评价描述',
+            'disease_detail' => '疾病详情',
             'display_order' => '默认排序',
             'date_created' => '创建日期',
             'date_updated' => '修改日期',
@@ -68,8 +69,8 @@ class Comment extends EActiveRecord {
         $criteria->compare('user_name', $this->user_name);
         $criteria->compare('bk_type', $this->bk_type, true);
         $criteria->compare('bk_id', $this->bk_id, true);
-        $criteria->compare('service', $this->service, true);
-        $criteria->compare('post_operative', $this->post_operative);
+        $criteria->compare('effect', $this->effect, true);
+        $criteria->compare('doctor_attitude', $this->doctor_attitude);
         $criteria->compare('comment_text', $this->comment_text);
         $criteria->compare('display_order', $this->display_order);
         $criteria->compare('date_created', $this->date_created, true);
@@ -111,16 +112,20 @@ class Comment extends EActiveRecord {
         return $this->bk_id;
     }
     
-    public function getService() {
-        return $this->service;
+    public function getEffect() {
+        return $this->effect;
     }
     
-    public function getPostOperative() {
-        return $this->post_operative;
+    public function getDoctorAttitude() {
+        return $this->doctor_attitude;
     }
     
     public function getCommentText() {
         return $this->comment_text;
+    }
+    
+    public function getDiseaseDetail(){
+        return $this->disease_detail;
     }
     
     public function getDisplayOrder() {
