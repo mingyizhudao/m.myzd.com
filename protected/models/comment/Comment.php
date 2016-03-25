@@ -72,6 +72,7 @@ class Comment extends EActiveRecord {
         $criteria->compare('effect', $this->effect, true);
         $criteria->compare('doctor_attitude', $this->doctor_attitude);
         $criteria->compare('comment_text', $this->comment_text);
+        $criteria->compare('disease_detail', $this->disease_detail);
         $criteria->compare('display_order', $this->display_order);
         $criteria->compare('date_created', $this->date_created, true);
         $criteria->compare('date_updated', $this->date_updated, true);
