@@ -265,14 +265,19 @@ body {width:100%;color: #333;letter-spacing: 1px;line-height: 1.5;font-size: 14p
 .w80{width:80%!important;}
 .w85{width:85%!important;}
 .w100{width:100%;}
+.w8p{width:8px;}
 .w10p{width:10px;}
 .w11p{width:11px;}
 .w14p{width:14px;}
 .w15p{width:15px;}
 .w16p{width:16px;}
+.w19p{width:19px;}
 .w20p{width:20px;}
+.w21p{width:21px;}
+.w23p{width:23px;}
 .w24p{width:24px;}
 .w25p{width:25px;}
+.w26p{width:26px;}
 .w30p{width:30px;}
 .w44p{width:44px;}
 .w46p{width:46px;}
@@ -302,11 +307,9 @@ body {width:100%;color: #333;letter-spacing: 1px;line-height: 1.5;font-size: 14p
 .max-w125p{max-width: 125px;}
 .max-w128p{max-width: 128px;}
 
-
 /*浮动*/
 .pull-left{float: left;}
 .pull-right{float: right!important;}
-
 
 /*border*/
 .border-r3{border-radius: 3px!important;}
@@ -315,6 +318,7 @@ body {width:100%;color: #333;letter-spacing: 1px;line-height: 1.5;font-size: 14p
 .br-gray{border-right:1px solid #dfdfdf;}
 .bb-gray{border-bottom:1px solid #dfdfdf;}
 .bb-gray4{border-bottom:1px solid #cccccc;}
+.bb-gray5{border-bottom: 1px solid #ececec;}
 .bb-dashed-gray{border-bottom:1px dashed #dfdfdf;}
 .bb-gray2{border-bottom:1px solid #e1e1e1;}
 .bb-gray3{border-bottom:1px solid #f2f2f2;}
@@ -324,6 +328,7 @@ body {width:100%;color: #333;letter-spacing: 1px;line-height: 1.5;font-size: 14p
 .bt-gray2{border-top:1px solid #e1e1e1;}
 .bt-gray3{border-top:1px solid #D6D6D6;}
 .bt-gray4{border-top:1px dashed #C9C9C9;}
+.bt-gray5{border-top: 1px solid #ececec;}
 .border-none{border:none!important;}
 .bb-none{border-bottom: none!important;}
 .border-bottom{border-bottom: 1px solid #e4e4e4;}
@@ -345,7 +350,6 @@ body {width:100%;color: #333;letter-spacing: 1px;line-height: 1.5;font-size: 14p
 .bt-yellow{border-top: 1px solid #73543b;}
 .br3{border-radius: 3px;}
 .br50{border-radius: 50%;}
-
 
 /*按钮*/
 .btn-yellow{background-color:#fe8c08;width:60%;display:block;margin:5px auto;}
