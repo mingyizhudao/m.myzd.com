@@ -12,39 +12,6 @@ $urlReturn = $this->createAbsoluteUrl('booking/patientBookingList');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
-<style>
-    .bt-gray5{
-        border-top: 1px solid #ececec;
-    }
-    .bb-gray5{
-        border-bottom: 1px solid #ececec;
-    }
-
-    #evaluate_article textarea{
-        margin-bottom:0px;
-        border: none!important;
-        border-radius: 0!important;
-        -webkit-box-shadow: none!important;
-        box-shadow: none!important;
-        padding: 0!important;
-        height: 60px!important;
-    }
-    #evaluate_article.bg{
-        background-color: #EAEFF1;
-    }
-    #evaluate_article .btnFull-green{
-        background-color: #19aea5;
-        width: 100%;
-        display: block;
-        margin: 5px auto;
-    }
-    #evaluate_article [disabled="true"].btnFull-green{
-        background-color: rgba(185,180,182,.2);
-    }
-    #evaluate_article .ui-field-contain div.error{
-        color: #f00;
-    }
-</style>
 <header class="bg-green">
     <nav class="left">
         <a href="" data-target="back">
@@ -60,7 +27,7 @@ $this->show_footer = false;
         </a>
     </nav>
 </header>
-<article id='evaluate_article' class="active bg" data-scroll="true">
+<article id='review_article' class="active bg" data-scroll="true">
     <div class=''>
         <div class="bg-white pl10 pr10">
             <?php

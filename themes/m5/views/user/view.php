@@ -13,33 +13,6 @@ $urlUserView = $this->createUrl('user/view');
 $urlPatientBookingList = $this->createUrl('booking/patientBookingList');
 $urlUserCommonProblem = $this->createUrl('user/commonProblem');
 ?>
-<style>
-    .w8p{width:8px;}
-    .w19p{width:19px;}
-    .w21p{width:21px;}
-    .w23p{width:23px;}
-    .w26p{width:26px;}
-
-    header#user_header{
-        border-bottom: inherit;
-    }
-    #user_article .orderNext{
-        background: url('<?php echo $urlResImage; ?>nextGray.png') no-repeat;
-        background-size: 9px;
-        background-position: 95% 50%;
-    }
-    #user_article .nextImg{
-        background: url('<?php echo $urlResImage; ?>nextBlack.png') no-repeat;
-        background-size: 8px;
-        background-position: 95% 50%;
-    }
-    #user_article .bookingOrder{
-        background: url('<?php echo $urlResImage; ?>bookingOrder.png') no-repeat;
-        background-size:26px;
-        padding: 3px 0px 1px 35px;
-    }
-
-</style>
 <header id="user_header" class="bg-green">
     <h1 class="title color-white">个人中心</h1>
 </header>

@@ -10,16 +10,6 @@ $bookingComment = $data->results->bookingComment;
 $results = $data->results;
 ?>
 <style>
-    .bt-gray5{
-        border-top: 1px solid #ececec;
-    }
-    .bb-gray5{
-        border-bottom: 1px solid #ececec;
-    }
-
-    #evaluate_article.bg{
-        background-color: #EAEFF1;
-    }
 </style>
 <header class="bg-green">
     <nav class="left">
@@ -36,7 +26,7 @@ $results = $data->results;
         </a>
     </nav>
 </header>
-<article id='evaluate_article' class="active bg" data-scroll="true">
+<article id='complete_article' class="active bg" data-scroll="true">
     <div class=''>
         <div class="bg-white pl10 pr10">
             <div class="pt20 color-green font-s18">

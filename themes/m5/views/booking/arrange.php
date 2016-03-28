@@ -9,10 +9,6 @@ $this->show_footer = false;
 $results = $data->results;
 ?>
 <style>
-    #payOrder_article .list>li{padding: 10px;}
-    #payOrder_article .bbb{box-shadow: 2px 2px 2px #cccccc}
-    #payOrder_article .list>li:first-child{border-top: inherit;}
-    article#payOrder_article{background-color: #eaeff1;}
     .popup-title{color: #333333;}
 </style>
 <header class="bg-green">
