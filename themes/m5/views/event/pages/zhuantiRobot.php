@@ -1,7 +1,7 @@
 <?php
 $showHeader = Yii::app()->request->getQuery('header', 1);
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
-$urlBookingDoctor = $this->createAbsoluteUrl('booking/create', array('did' => ''));
+$urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('id' => ''));
 $this->show_footer = false;
 ?>
 <?php if ($showHeader == 1) { ?>
@@ -207,9 +207,7 @@ $this->show_footer = false;
             <div class="col-1"></div>
             <div class="col-0 w80 doctorBg">
                 <div class="doctorBorder">
-                    <?php if ($showHeader == 1) { ?>
-                        <a class="color-black" href="<?php echo $urlBookingDoctor; ?>/3208">
-                        <?php } ?>
+                    <a class="color-black" href="<?php echo $urlDoctorView; ?>/3208">
                         <div class="">
                             <div class="grid pt10">
                                 <div class="col-1"></div>
@@ -235,9 +233,7 @@ $this->show_footer = false;
                                 <span class="color-black6">擅长</span>：脑外伤救治、脑肿瘤及功能性疾病等领域的治疗，如机器人辅助脑定位手术、现代立体定向手术临床应用、脑肿瘤内放疗的系列研究、脑内窥镜手术。
                             </div>
                         </div>
-                        <?php if ($showHeader == 1) { ?>
-                        </a>
-                    <?php } ?>
+                    </a>
                 </div>
             </div>
             <div class="col-1"></div>
@@ -246,9 +242,7 @@ $this->show_footer = false;
             <div class="col-1"></div>
             <div class="col-0 w80 doctorBg">
                 <div class="doctorBorder">
-                    <?php if ($showHeader == 1) { ?>
-                        <a class="color-black" href="<?php echo $urlBookingDoctor; ?>/3209">
-                        <?php } ?>
+                    <a class="color-black" href="<?php echo $urlDoctorView; ?>/3209">
                         <div class="">
                             <div class="grid pt10">
                                 <div class="col-1"></div>
@@ -274,9 +268,7 @@ $this->show_footer = false;
                                 <span class="color-black6">擅长</span>：1.难治性癫痫的外科治疗，如癫痫、原发性癫痫、继发性癫痫、复杂癫痫发作时的急救措施；2.脑功能性疾病的立体定向手术治疗，如小儿脑瘫、帕金森、扭转痉挛、小脑萎缩、脑出血后遗症、脑梗塞后遗症、肌张力障碍、...
                             </div>
                         </div>
-                        <?php if ($showHeader == 1) { ?>
-                        </a>
-                    <?php } ?>
+                    </a>
                 </div>
             </div>
             <div class="col-1"></div>
@@ -285,9 +277,7 @@ $this->show_footer = false;
             <div class="col-1"></div>
             <div class="col-0 w80 doctorBg">
                 <div class="doctorBorder">
-                    <?php if ($showHeader == 1) { ?>
-                        <a class="color-black" href="<?php echo $urlBookingDoctor; ?>/3207">
-                        <?php } ?>
+                    <a class="color-black" href="<?php echo $urlDoctorView; ?>/3207">
                         <div class="">
                             <div class="grid pt10">
                                 <div class="col-1"></div>
@@ -313,9 +303,7 @@ $this->show_footer = false;
                                 <span class="color-black6">擅长</span>：1.颅内动脉瘤、脑血管畸形和颈动脉狭窄、颅内动脉狭窄的介入治疗，脑血管病的外科治疗，以及外周血管介入治疗，肿瘤介入治疗，非血管内介入治疗；2.癫痫的外科治疗；脑卒中后遗症、帕金森病、脑瘫及肌张力障碍的...
                             </div>
                         </div>
-                        <?php if ($showHeader == 1) { ?>
-                        </a>
-                        <?php } ?>
+                    </a>
                 </div>
             </div>
             <div class="col-1"></div>

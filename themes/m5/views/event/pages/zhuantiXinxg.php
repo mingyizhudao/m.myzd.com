@@ -1,7 +1,7 @@
 <?php
 $showHeader = Yii::app()->request->getQuery('header', 1);
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
-$urlBookingDoctor = $this->createAbsoluteUrl('booking/create', array('did' => ''));
+$urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('id' => ''));
 $this->show_footer = false;
 ?>
 <?php if ($showHeader == 1) { ?>
@@ -236,9 +236,7 @@ $this->show_footer = false;
             <div class="grid mt20">
                 <div class="col-1"></div>
                 <div class="col-0 w80 border-gray">
-                    <?php if ($showHeader == 1) { ?>
-                        <a class="color-black" href="<?php echo $urlBookingDoctor; ?>/88">
-                        <?php } ?>
+                    <a class="color-black" href="<?php echo $urlDoctorView; ?>/88">
                         <div class="">
                             <div class="grid pt10">
                                 <div class="col-1"></div>
@@ -267,18 +265,14 @@ $this->show_footer = false;
                                 <span class="font-w800">许建屏教授心血管明星专家团队：</span>由北京阜外心外科成人中心主任许建屏教授领衔，心胸外科主任医师高峰、副主任医师陈雷博士联袂组成。旨在打造国内顶级的心血管疾病专家团队，依托阜外医院和安贞医院雄厚的心血管诊疗平台，为全国的心血管疾病患者提供最专业、最权威、最可靠的医疗服务。
                             </div>
                         </div>
-                        <?php if ($showHeader == 1) { ?>
-                        </a>
-                    <?php } ?>
+                    </a>
                 </div>
                 <div class="col-1"></div>
             </div>
             <div class="grid mt20 mb50">
                 <div class="col-1"></div>
                 <div class="col-0 w80 border-gray">
-                    <?php if ($showHeader == 1) { ?>
-                        <a class="color-black" href="<?php echo $urlBookingDoctor; ?>/2906">
-                        <?php } ?>
+                    <a class="color-black" href="<?php echo $urlDoctorView; ?>/2906">
                         <div class="">
                             <div class="grid pt10">
                                 <div class="col-1"></div>
@@ -307,9 +301,7 @@ $this->show_footer = false;
                                 <span class="font-w800">傅剑华专家团队：</span>由广州中山大学附属肿瘤医院心胸外科的傅剑华教授领衔，主要擅长于食管癌、肺癌及胸部肿瘤复杂的外科手术治疗及胸腔镜微创治疗，对食管癌/肺癌的综合治疗、胸部肿瘤非血管介入手术、早期食管癌内镜微创手术等有深人的研究。
                             </div>
                         </div>
-                        <?php if ($showHeader == 1) { ?>
-                        </a>
-                    <?php } ?>
+                    </a>
                 </div>
                 <div class="col-1"></div>
             </div>
