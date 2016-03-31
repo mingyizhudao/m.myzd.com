@@ -59,7 +59,9 @@ $this->show_footer = false;
                 推荐专家
             </div>
             <div class="mt15 border-green">
-                <a href="<?php echo $urlBookingDoctor; ?>/88">
+                <?php if ($showHeader == 1) { ?>
+                    <a href="<?php echo $urlBookingDoctor; ?>/88">
+                    <?php } ?>
                     <div class="pl10 pt10 pr10 pb15 color-black6">
                         <div class="font-s16">
                             <span class="color-black">许建屏</span>
@@ -71,10 +73,14 @@ $this->show_footer = false;
                             <span>成人心脏病,先天性心脏病</span>
                         </div>
                     </div>
-                </a>
+                    <?php if ($showHeader == 1) { ?>
+                    </a>
+                <?php } ?>
             </div>
             <div class="mt15 border-green">
-                <a href="<?php echo $urlBookingDoctor; ?>/46">
+                <?php if ($showHeader == 1) { ?>
+                    <a href="<?php echo $urlBookingDoctor; ?>/46">
+                    <?php } ?>
                     <div class="pl10 pt10 pr10 pb15 color-black6">
                         <div class="font-s16">
                             <span class="color-black">王良旭</span>
@@ -86,10 +92,14 @@ $this->show_footer = false;
                             <span>先天性心脏病,冠心病</span>
                         </div>
                     </div>
-                </a>
+                    <?php if ($showHeader == 1) { ?>
+                    </a>
+                <?php } ?>
             </div>
             <div class="mt15 border-green">
-                <a href="<?php echo $urlBookingDoctor; ?>/48">
+                <?php if ($showHeader == 1) { ?>
+                    <a href="<?php echo $urlBookingDoctor; ?>/48">
+                    <?php } ?>
                     <div class="pl10 pt10 pr10 pb15 color-black6">
                         <div class="font-s16">
                             <span class="color-black">梅举</span>
@@ -101,10 +111,14 @@ $this->show_footer = false;
                             <span>主动脉夹层,腹主动脉瘤</span>
                         </div>
                     </div>
-                </a>
+                    <?php if ($showHeader == 1) { ?>
+                    </a>
+                <?php } ?>
             </div>
             <div class="mt15 mb20 border-green">
-                <a href="<?php echo $urlBookingDoctor; ?>/135">
+                <?php if ($showHeader == 1) { ?>
+                    <a href="<?php echo $urlBookingDoctor; ?>/135">
+                    <?php } ?>
                     <div class="pl10 pt10 pr10 pb15 color-black6">
                         <div class="font-s16">
                             <span class="color-black">刘永民</span>
@@ -116,7 +130,9 @@ $this->show_footer = false;
                             <span>先天性心脏病,冠心病</span>
                         </div>
                     </div>
-                </a>
+                    <?php if ($showHeader == 1) { ?>
+                    </a>
+                <?php } ?>
             </div>
         </div>
     </div>

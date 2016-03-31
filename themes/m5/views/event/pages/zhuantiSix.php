@@ -272,7 +272,9 @@ $this->show_footer = false;
             <div class="grid mt20">
                 <div class="col-1"></div>
                 <div class="col-0 widthDoc">
-                    <a class="color-black" href="<?php echo $urlBookingDoctor; ?>/82">
+                    <?php if ($showHeader == 1) { ?>
+                        <a class="color-black" href="<?php echo $urlBookingDoctor; ?>/82">
+                        <?php } ?>
                         <div class="bg-yellow3">
                             <div class="grid pt10">
                                 <div class="col-1"></div>
@@ -311,14 +313,18 @@ $this->show_footer = false;
                                 </div>
                             </div>
                         </div>
-                    </a>
+                        <?php if ($showHeader == 1) { ?>
+                        </a>
+                    <?php } ?>
                 </div>
                 <div class="col-1"></div>
             </div>
             <div class="grid mt20">
                 <div class="col-1"></div>
                 <div class="col-0 widthDoc">
-                    <a class="color-black" href="<?php echo $urlBookingDoctor; ?>/3054">
+                    <?php if ($showHeader == 1) { ?>
+                        <a class="color-black" href="<?php echo $urlBookingDoctor; ?>/3054">
+                        <?php } ?>
                         <div class="bg-yellow3">
                             <div class="grid pt10">
                                 <div class="col-1"></div>
@@ -357,14 +363,18 @@ $this->show_footer = false;
                                 </div>
                             </div>
                         </div>
-                    </a>
+                        <?php if ($showHeader == 1) { ?>
+                        </a>
+                    <?php } ?>
                 </div>
                 <div class="col-1"></div>
             </div>
             <div class="grid mt20">
                 <div class="col-1"></div>
                 <div class="col-0 widthDoc">
-                    <a class="color-black" href="<?php echo $urlBookingDoctor; ?>/369">
+                    <?php if ($showHeader == 1) { ?>
+                        <a class="color-black" href="<?php echo $urlBookingDoctor; ?>/369">
+                        <?php } ?>
                         <div class="bg-yellow3">
                             <div class="grid pt10">
                                 <div class="col-1"></div>
@@ -403,14 +413,18 @@ $this->show_footer = false;
                                 </div>
                             </div>
                         </div>
-                    </a>
+                        <?php if ($showHeader == 1) { ?>
+                        </a>
+                    <?php } ?>
                 </div>
                 <div class="col-1"></div>
             </div>
             <div class="grid mt20 mb50">
                 <div class="col-1"></div>
                 <div class="col-0 widthDoc">
-                    <a class="color-black" href="<?php echo $urlBookingDoctor; ?>/295">
+                    <?php if ($showHeader == 1) { ?>
+                        <a class="color-black" href="<?php echo $urlBookingDoctor; ?>/295">
+                        <?php } ?>
                         <div class="bg-yellow3">
                             <div class="grid pt10">
                                 <div class="col-1"></div>
@@ -449,7 +463,9 @@ $this->show_footer = false;
                                 </div>
                             </div>
                         </div>
-                    </a>
+                        <?php if ($showHeader == 1) { ?>
+                        </a>
+                    <?php } ?>
                 </div>
                 <div class="col-1"></div>
             </div>
