@@ -3,18 +3,13 @@ $('#selectCity').tap(function (e) {
     var cityName = $('#cityTitle').html();
     var cityId = $('#cityTitle').attr('data-city');
     var innerPage = '<header id="hospital_header" class="bg-green">' +
-            '<nav class="left">' +
-            '<a onclick="javascript:history.go(0)">' +
-            '<img src="../../themes/m5/images/refresh.png"  class="w24p">' +
-            '</a>' +
-            '</nav>' +
-            '<h1 class="title">推荐医院</h1>' +
-            '<nav id="selectCity" class="right" data-target="closePopup">' +
+            '<nav id="selectCity" class="left" data-target="closePopup">' +
             '<div class="grid mt17">' +
             '<div id="cityTitle" class="font-s16 col-0" data-city="' + cityId + '">' + cityName + '</div>' +
             '<div class="col-0 cityImg"></div>' +
             '</div>' +
             '</nav>' +
+            '<h1 class="title">推荐</h1>' +
             '</header>' +
             '<article id="hospital_article" class="active" style="position:static;">' + $cityHtml + '</article>';
 
@@ -75,10 +70,12 @@ function readyHospital(data) {
     var innerHtml = '<div><div><img src="../../themes/m5/images/hospital.png" class="w100"></div><ul class="list">';
     if (hospitals.length > 0) {
         for (var i = 0; i < hospitals.length; i++) {
-            innerHtml += '<li class="nextImg">' +
+            innerHtml += '<li>' +
                     '<a href="' + $requestHospitalView + '/' + hospitals[i].id + '">' +
-                    '<div class="font-s16 color-black">' + hospitals[i].name + '</div>' +
-                    '<div class="color-black6">' + hospitals[i].hpClass + '</div>' +
+                    '<div class="pl10">' +
+                    '<div class="font-s16 color-black10">' + hospitals[i].name + '</div>' +
+                    '<div class="color-black6 pt3">' + hospitals[i].hpClass + '</div>' +
+                    '</div>' +
                     '</a>' +
                     '</li>';
         }

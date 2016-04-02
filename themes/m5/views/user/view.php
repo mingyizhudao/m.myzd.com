@@ -19,122 +19,186 @@ $urlUserCommonProblem = $this->createUrl('user/commonProblem');
 <article id="user_article" data-active="user_footer" class="active"  data-scroll="true">
     <div>
         <div class="bg-green">
-            <div class="grid font-s16 w100 pt20 pb20">
-                <div class="col-0 w80p ml30 mr30">
-                    <img src="<?php echo $urlResImage ?>headImg.png" class="w80p">
+            <div class="w100 pt20 pb10 text-center">
+                <img src="<?php echo $urlResImage ?>headImg.png" class="w80p">
+            </div>
+            <div class="font-s16 text-center color-white pb10">
+                您好,<?php echo $user->username; ?>
+            </div>
+        </div>
+        <div class="bg-white">
+            <div class="grid pad10 bb-gray orderNext">
+                <div class="col-1 w60 font-s15">
+                    全部订单
                 </div>
-                <div class="col-1 vertical-center color-white">
-                    您好,<?php echo $user->username; ?>
+                <div class="grid col-1 w40 text-right">
+                    <div class="col-1"></div>
+                    <a href="<?php echo $urlPatientBookingList; ?>" class="color-gray">
+                        <div class="col-0 pr20">查看全部订单</div>
+                    </a>
+                </div>
+            </div>
+            <?php
+            $waitPayNum = 0;
+            $arrangementInNum = 0;
+            $waitConfirmNum = 0;
+            $waitEvaluateNum = 0;
+            for ($i = 0; $i < count($data); $i++) {
+                if ($data[$i]->bkStatus == 1) {
+                    $waitPayNum = $data[$i]->num;
+                } else if ($data[$i]->bkStatus == 2) {
+                    $arrangementInNum = $data[$i]->num;
+                } else if ($data[$i]->bkStatus == 3) {
+                    $waitConfirmNum = $data[$i]->num;
+                } else if ($data[$i]->bkStatus == 4) {
+                    $waitEvaluateNum = $data[$i]->num;
+                }
+            }
+            ?>
+            <div class="grid text-center pt10 pb10">
+                <div class="col-1 w25">
+                    <a href="<?php echo $urlPatientBookingList; ?>?status=1">
+                        <div class="waitPay">
+                            <?php
+                            if ($waitPayNum != 0) {
+                                ?>
+                                <div class="grid">
+                                    <div class="col-1"></div>
+                                    <div class="col-0 dataNum">
+                                        <?php echo $waitPayNum; ?>
+                                    </div>
+                                    <div class="col-1"></div>
+                                </div>
+                                <?php
+                            }
+                            ?>
+                        </div>
+                        <div class="color-gray pt10">
+                            待支付
+                        </div>
+                    </a>
+                </div>
+                <div class="col-1 w25">
+                    <a href="<?php echo $urlPatientBookingList; ?>?status=2">
+                        <div class="arrangementIn">
+                            <?php
+                            if ($arrangementInNum != 0) {
+                                ?>
+                                <div class="grid">
+                                    <div class="col-1"></div>
+                                    <div class="col-0 dataNum">
+                                        <?php echo $arrangementInNum; ?>
+                                    </div>
+                                    <div class="col-1"></div>
+                                </div>
+                                <?php
+                            }
+                            ?>
+                        </div>
+                        <div class="color-gray pt10">
+                            安排中
+                        </div>
+                    </a>
+                </div>
+                <div class="col-1 w25">
+                    <a href="<?php echo $urlPatientBookingList; ?>?status=3">
+                        <div class="waitConfirm">
+                            <?php
+                            if ($waitConfirmNum != 0) {
+                                ?>
+                                <div class="grid">
+                                    <div class="col-1"></div>
+                                    <div class="col-0 dataNum">
+                                        <?php echo $waitConfirmNum; ?>
+                                    </div>
+                                    <div class="col-1"></div>
+                                </div>
+                                <?php
+                            }
+                            ?>
+                        </div>
+                        <div class="color-gray pt10">
+                            待确认
+                        </div>
+                    </a>
+                </div>
+                <div class="col-1 w25">
+                    <a href="<?php echo $urlPatientBookingList; ?>?status=4">
+                        <div class="waitEvaluate">
+                            <?php
+                            if ($waitEvaluateNum != 0) {
+                                ?>
+                                <div class="grid">
+                                    <div class="col-1"></div>
+                                    <div class="col-0 dataNum">
+                                        <?php echo $waitEvaluateNum; ?>
+                                    </div>
+                                    <div class="col-1"></div>
+                                </div>
+                                <?php
+                            }
+                            ?>
+                        </div>
+                        <div class="color-gray pt10">
+                            待评价
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
-        <div class="bb10-gray"></div>
-        <div class="grid pad10 bb-gray orderNext">
-            <div class="col-1 w60 font-s15 bookingOrder">
-                手术预约单
-            </div>
-            <div class="grid col-1 w40 text-right">
-                <div class="col-1"></div>
-                <a href="<?php echo $urlPatientBookingList; ?>" class="color-gray">
-                    <div class="col-0 pr20 pt5">全部订单</div>
-                </a>
-            </div>
+        <div class="mt10 bg-white">
+            <a href='<?php echo $urlUserCommonProblem; ?>'>
+                <div class="pad10 color-black grid">
+                    <div class="col-0">
+                        <img src="<?php echo $urlResImage; ?>commonProblem.png" class="w26p">
+                    </div>
+                    <div class="col-1 pl10 pt2 font-s16">
+                        常见问题
+                    </div>
+                </div>
+            </a>
         </div>
-        <div class="grid text-center pt10 pb10">
-            <div class="col-1 w25">
-                <a href="<?php echo $urlPatientBookingList; ?>?status=1">
-                    <div>
-                        <img src="<?php echo $urlResImage; ?>waitPay.png" class="w19p">
+        <div class="mt5 bg-white">
+            <a id="aboutus">
+                <div class="pad10 color-black grid">
+                    <div class="col-0">
+                        <img src="<?php echo $urlResImage; ?>aboutUs.png" class="w26p">
                     </div>
-                    <div class="color-gray pt3">
-                        待支付
+                    <div class="col-1 pl10 pt2 font-s16">
+                        关于我们
                     </div>
-                </a>
-            </div>
-            <div class="col-1 w25">
-                <a href="<?php echo $urlPatientBookingList; ?>?status=2">
-                    <div>
-                        <img src="<?php echo $urlResImage; ?>arrangementIn.png" class="w23p">
+                </div>
+            </a>
+            <a href=''>
+                <div class="pad10 color-black grid hide">
+                    <div class="col-0">
+                        <img src="<?php echo $urlResImage; ?>service.png" class="w26p">
                     </div>
-                    <div class="color-gray">
-                        安排中
+                    <div class="col-1 pl10 pt2 font-s16">
+                        服务介绍
                     </div>
-                </a>
-            </div>
-            <div class="col-1 w25">
-                <a href="<?php echo $urlPatientBookingList; ?>?status=3">
-                    <div>
-                        <img src="<?php echo $urlResImage; ?>waitConfirm.png" class="w19p">
-                    </div>
-                    <div class="color-gray pt1">
-                        待确认
-                    </div>
-                </a>
-            </div>
-            <div class="col-1 w25">
-                <a href="<?php echo $urlPatientBookingList; ?>?status=4">
-                    <div>
-                        <img src="<?php echo $urlResImage; ?>waitEvaluate.png" class="w21p">
-                    </div>
-                    <div class="color-gray pt1">
-                        待评价
-                    </div>
-                </a>
-            </div>
+                </div>
+            </a>
         </div>
-        <div class="bb10-gray"></div>
-        <a href='<?php echo $urlUserCommonProblem; ?>'>
-            <div class="pad10 color-black nextImg grid">
-                <div class="col-0">
-                    <img src="<?php echo $urlResImage; ?>commonProblem.png" class="w26p">
+        <div class="mt5 bg-white">
+            <a id="contactUs">
+                <div class="pad10 color-black grid">
+                    <div class="col-0">
+                        <img src="<?php echo $urlResImage; ?>contactService.png" class="w26p">
+                    </div>
+                    <div class="col-1 pl10 pt2 font-s16">
+                        联系客服
+                    </div>
                 </div>
-                <div class="col-1 pl10 pt2 font-s16">
-                    常见问题
-                </div>
-            </div>
-        </a>
-        <div class="bb10-gray"></div>
-        <a id="aboutus">
-            <div class="pad10 color-black nextImg grid">
-                <div class="col-0">
-                    <img src="<?php echo $urlResImage; ?>aboutUs.png" class="w26p">
-                </div>
-                <div class="col-1 pl10 pt2 font-s16">
-                    关于我们
-                </div>
-            </div>
-        </a>
-        <a href=''>
-            <div class="pad10 color-black nextImg grid hide">
-                <div class="col-0">
-                    <img src="<?php echo $urlResImage; ?>service.png" class="w26p">
-                </div>
-                <div class="col-1 pl10 pt2 font-s16">
-                    服务介绍
-                </div>
-            </div>
-        </a>
-        <div class="bb10-gray"></div>
-        <a id="contactUs">
-            <div class="pad10 color-black nextImg grid">
-                <div class="col-0">
-                    <img src="<?php echo $urlResImage; ?>contactService.png" class="w26p">
-                </div>
-                <div class="col-1 pl10 pt2 font-s16">
-                    联系客服
-                </div>
-            </div>
-        </a>
-        <a id="btn_actionsheet1">
-            <div class="pad10 color-black nextImg grid">
-                <div class="col-0">
-                    <img src="<?php echo $urlResImage; ?>exitLogin.png" class="w20p ml2">
-                </div>
-                <div class="col-1 pl10 pt2 font-s16">
+            </a>
+        </div>
+        <div class="mt5 bg-white">
+            <a id="btn_actionsheet1">
+                <div class="pad10 font-s16 text-center color-black">
                     退出登录
                 </div>
-            </div>
-        </a>
+            </a>
+        </div>
     </div>
 </article>
 <script>

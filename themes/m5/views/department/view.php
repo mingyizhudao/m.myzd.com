@@ -11,35 +11,39 @@ $this->show_footer = false;
             </div>
         </a>
     </nav>
-    <h1 class="title"><?php echo mb_strimwidth($data->hpDeptHospital->name, 0, 39, '...') ?></h1>
+    <h1 id="deptInf" class="title" data-dept="<?php echo $data->id; ?>"><?php echo $data->name; ?></h1>
     <nav class="right">
         <a onclick="javascript:history.go(0)">
             <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
         </a>
     </nav>
 </header>
-<nav id="hosDept_nav" class="header-secondary">
-    <div class="pb3 bg-white w100 grid">
-        <div id="deptInf" class="col-0 font-s16 color-green pt5 vertical-center" data-dept="<?php echo $data->id; ?>"><?php echo $data->name; ?></div>
-        <div class="col-1 pt10 text-right mr15">
-            <button id="btnSubmit" type="button" class="button bg-yellow">预约</button>
-        </div>
-    </div>
-</nav>
+<footer id="hosDept_footer">
+    <button id="btnSubmit" type="button" class="button btn-yellow font-s16 state-pedding">预约</button>
+</footer>
 <article id="hosDept_article" class="active" data-scroll="true">
-    <div class="bgDiv">
-        <div class="pt15 pb10">
-            <img class="w100" src="<?php echo $urlResImage; ?>deptStep.png">
+    <div class="">
+        <div class="bg-white">
+            <div class="color-yellow4 bb-gray pad10">
+                预约流程
+            </div>
+            <div class="pt15 pb10">
+                <img class="w100" src="<?php echo $urlResImage; ?>dept/deptStep.png">
+            </div>
         </div>
-        <div class="mt10 text-justify">
-            科室介绍：
-            <?php
-            if (empty($data->description)) {
-                echo '暂无';
-            } else {
-                echo $data->description;
-            }
-            ?>
+        <div class="mt15 text-justify bg-white">
+            <div class="color-blue8 bb-gray pad10">
+                科室介绍
+            </div>
+            <div class="pl20 pr20 pt5 pb20">
+                <?php
+                if (empty($data->description)) {
+                    echo '暂无';
+                } else {
+                    echo $data->description;
+                }
+                ?>
+            </div>
         </div>
     </div>
 </article>

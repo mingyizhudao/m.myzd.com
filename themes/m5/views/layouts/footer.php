@@ -22,7 +22,7 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
             <a href="<?php echo $urlHospitalIndex; ?>?city=1">
                 <div class="imgHospital">
                 </div>
-                推荐医院
+                推荐
             </a>
         </li>
         <li class="w25" data-active="find_footer">
@@ -36,7 +36,7 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
             <a href="<?php echo $urlUserView; ?>">
                 <div class="imgCenter">
                 </div>
-                个人中心
+                个人
             </a>
         </li>
     </ul>

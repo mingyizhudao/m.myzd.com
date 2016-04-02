@@ -73,7 +73,7 @@ $this->show_footer = false;
                     </div>
                 </a>
             </div>
-            <div class="mt15 border-green">
+            <div class="mt15 border-green hide">
                 <a href="<?php echo $urlDoctorView; ?>/46">
                     <div class="pl10 pt10 pr10 pb15 color-black6">
                         <div class="font-s16">

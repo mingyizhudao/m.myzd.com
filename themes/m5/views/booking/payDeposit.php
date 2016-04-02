@@ -55,10 +55,10 @@ if (!empty($orderInfos)) {
     </nav>
 </header>
 <footer class="bg-white grid">
-    <div class="col-1 w60 color-green middle grid">¥<?php echo $orderInfo->final_amount; ?>元</div>
+    <div class="col-1 w60 middle grid">¥<?php echo $orderInfo->final_amount; ?>元</div>
     <?php
     if ($orderInfo->is_paid == 0) {
-        echo '<div id="pay" class="col-1 w40 bg-green color-white middle grid">支付</div>';
+        echo '<div id="pay" class="col-1 w40 bg-yellow5 color-white middle grid">支付订单</div>';
     } else {
         echo '<div class="col-1 w40 bg-gray4 color-white middle grid">已支付</div>';
     }
@@ -66,44 +66,37 @@ if (!empty($orderInfos)) {
 </footer>
 <article id='payOrder_article' class="active" data-scroll="true">
     <div>
-        <div class="grid pl10 pr10 mt20 color-green font-s18">
-            <div class="col-0">
-                <img src="<?php echo $urlResImage; ?>payOrderImg.png" class="w20p mr10">
-            </div>
-            <div class="col-1 pt3">
-                当前状态:待支付手术预约金
-            </div>
-        </div>
-        <div class="mt20 ml10 mr10 bbb">
-            <ul class="list">
-                <li class="grid">
-                    <div class="col-0">就诊专家</div>
-                    <div class="col-1 text-right"><?php echo $results->expertName; ?></div>
-                </li>
-                <li class="grid">
-                    <div class="col-0">就诊医院</div>
-                    <div class="col-1 text-right"><?php echo $results->hospitalName; ?></div>
-                </li>
-                <li class="grid">
-                    <div class="col-0">就诊科室</div>
-                    <div class="col-1 text-right"><?php echo $results->hpDeptName; ?></div>
-                </li>
-                <li class="grid">
-                    <div class="col-0">疾病名称</div>
-                    <div class="col-1 text-right"><?php echo $results->diseaseName; ?></div>
-                </li>
-                <li>
-                    <div>疾病描述</div>
-                    <div class="w100"><?php echo $results->diseaseDetail; ?></div>
-                </li>
-                <li>
-                    <div class="text-right">
-                        <a  href="<?php echo $urlPatientBooking; ?>/<?php echo $results->id; ?>" class="color-green">查看详情<span data-icon="play"></span></a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div class="font-s12 letter-s1 ml20 mr20 mt10">
+        <ul class="list">
+            <li class="font-s16">
+                当前状态：<span class="color-yellow5">待支付手术预约金</span>
+            </li>
+            <li class="grid">
+                <div class="col-0 color-black6">就诊专家</div>
+                <div class="col-1 text-right"><?php echo $results->expertName; ?></div>
+            </li>
+            <li class="grid">
+                <div class="col-0 color-black6">就诊医院</div>
+                <div class="col-1 text-right"><?php echo $results->hospitalName; ?></div>
+            </li>
+            <li class="grid">
+                <div class="col-0 color-black6">就诊科室</div>
+                <div class="col-1 text-right"><?php echo $results->hpDeptName; ?></div>
+            </li>
+            <li class="grid">
+                <div class="col-0 color-black6">疾病名称</div>
+                <div class="col-1 text-right"><?php echo $results->diseaseName; ?></div>
+            </li>
+            <li>
+                <div class="color-black6">疾病描述</div>
+                <div class="w100"><?php echo $results->diseaseDetail; ?></div>
+            </li>
+            <li>
+                <a href="<?php echo $urlPatientBooking; ?>/<?php echo $results->id; ?>" class="color-black6">
+                    <div class="text-center">查看订单详情</div>
+                </a>
+            </li>
+        </ul>
+        <div class="font-s12 letter-s1 pad10 bg-white mt10 color-gray4">
             <div>订单编号:<?php echo $results->refNo; ?></div>
         </div>
         <input id="ref_no" type="hidden" name="order[ref_no]" value="<?php echo $results->refNo; ?>" />
@@ -112,10 +105,10 @@ if (!empty($orderInfos)) {
 <script type="text/javascript" src="http://myzd.oss-cn-hangzhou.aliyuncs.com/static/mobile/js/pingpp-one/pingpp-one.js"></script>
 <script type="text/javascript">
             $('#noPay').tap(function () {
-                J.customConfirm('<div class="font-s16">提示</div>',
+                J.customConfirm('',
                         '<div class="mb10">您确定暂不支付手术预约金?</div><div>（稍后可在"订单-待支付"里完成）</div>',
                         '<a data="cancel" class="w50">取消</a>',
-                        '<a data="ok" class="color-green w50">确定</a>',
+                        '<a data="ok" class="w50">确定</a>',
                         function () {
                             location.href = '<?php echo $urlPatientBookingList; ?>' + '?status=' + '<?php echo $status; ?>';
                         },
