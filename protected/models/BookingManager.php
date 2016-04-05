@@ -641,31 +641,29 @@ class BookingManager {
     public function actionCancelBooking($id,$userId){
         $output = array('status' => 'no');
         $booking = new Booking();
-        if (empty($id)) {
-            //未拿到预定id处理
-            $output['status'] = EApiViewService::RESPONSE_VALIDATION_ERRORS;
-            $output['message'] = 'Orders not found ID';
-            return $output;
-        }
         $output = $booking->getByIdAndUserId($id,$userId);
         if(!isset($output) === false){
             if($output['bk_status'] == 1){
                 $booking->updateAllByAttributes(array('bk_status'=>'9','date_updated'=>new CDbExpression("NOW()")), array('id'=>$id));
-                $output['status'] = EApiViewService::RESPONSE_NO;
+                $output['status'] = 'ok';
+                $output['error_code'] = EApiViewService::RESPONSE_NO;
                 $output['message'] = 'Unpaid deposit';
                  
             }else if($output['bk_status'] ==2){
                 $booking->updateAllByAttributes(array('bk_status'=>'9','date_updated'=>new CDbExpression("NOW()")), array('id'=>$id));
-                $output['status'] = EApiViewService::RESPONSE_NO;
+                $output['status'] = 'ok';
+                $output['error_code'] = EApiViewService::RESPONSE_NO;
                 $output['message'] = 'pay deposit';
                  
             }else{
-                $output['status'] = EApiViewService::RESPONSE_VALIDATION_ERRORS;
+                $output['status'] = 'no';
+                $output['error_code'] = EApiViewService::RESPONSE_VALIDATION_ERRORS;
                 $output['message'] = 'Order status does not meet';
             }
     
         }else{
-            $output['status'] = EApiViewService::RESPONSE_VALIDATION_ERRORS;
+            $output['status'] = 'no';
+            $output['error_code'] = EApiViewService::RESPONSE_VALIDATION_ERRORS;
             $output['message'] = 'order information is not found';
         }
         return $output;
