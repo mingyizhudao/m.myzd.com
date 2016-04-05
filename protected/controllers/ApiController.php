@@ -512,9 +512,14 @@ class ApiController extends Controller {
         if($model=='booking'){
             $bookingMgr = new BookingManager();
             $userId = $this->getCurrentUserId();
+            if(empty($userId) || empty($id)){
+                $output['status'] = 'no';
+                $output['error_code'] = EApiViewService::RESPONSE_VALIDATION_ERRORS;
+                $output['message'] = 'Wrong parameters';
+                $this->renderJsonOutput($output);
+            }
             $output = $bookingMgr->actionCancelBooking($id,$userId);
-            print_r($output);
-           // $this->renderJsonOutput($output);
+            $this->renderJsonOutput($output);
         }
     }
 
