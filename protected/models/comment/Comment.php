@@ -47,9 +47,10 @@ class Comment extends EActiveRecord {
             'user_id' => '用户ID',
             'user_name' => '用户名',
             'bk_type' => '预约类型',
+            'doctor_id' => '医生id',
             'bk_id' => '关联预约表预约ID',
             'effect' => '服务效率',
-            'doctor_attitude' => '术后效果',
+            'doctor_attitude' => '医生态度',
             'comment_text' => '评价描述',
             'disease_detail' => '疾病详情',
             'display_order' => '默认排序',
@@ -107,6 +108,10 @@ class Comment extends EActiveRecord {
     
     public function getBkType() {
         return $this->bk_type;
+    }
+    
+    public function getDoctorId() {
+        return $this->doctor_id;
     }
     
     public function getBkId() {
@@ -173,5 +178,12 @@ class Comment extends EActiveRecord {
         $criteria->addCondition('t.date_deleted is NULL');
         $criteria->addCondition('t.bk_id='.$BookingIds);
         return $this->find($criteria);
+    }
+    
+    /*
+     * 
+     */
+    public function getAllByDoctorId($doctorId){
+        return $this->getAllByAttributes(array('doctor_id'=>$doctorId));
     }
 }

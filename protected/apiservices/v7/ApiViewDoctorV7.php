@@ -5,6 +5,7 @@ class ApiViewDoctorV7 extends EApiViewService {
     private $doctor_id;
     private $members;
     private $subCatId;
+    private $comment;
     public function __construct($id) {
         parent::__construct();
         $this->doctor_id = $id;
@@ -13,6 +14,7 @@ class ApiViewDoctorV7 extends EApiViewService {
     protected function loadData() {
         $this->loadDoctor();
         $this->loadRelatedDoctors();
+        $this->loadDoctorsComment();
     }
 
     protected function createOutput() {
@@ -119,5 +121,40 @@ class ApiViewDoctorV7 extends EApiViewService {
         $data->sub_cate_id = $model->getSubCategoryId();
         $data->getSubCategoryName = $model->getSubCategoryName();
         $this->results->navigation = $data;
+    }    
+
+   /**
+     * 读取医生评价
+     */
+    private function loadDoctorsComment(){
+        
+        if (isset($this->doctor_id)) {
+            $comment = Comment::model()->getAllByDoctorId($this->doctor_id);
+            if (arrayNotEmpty($comment)) {
+                $this->setDoctorComments($comment);
+            }
+        }
     }
+    
+    /**
+     * 评价表赋值
+     */
+    public function setDoctorComments($comments){
+        foreach($comments as $comment){
+            $data = new stdClass();
+            $data->id = $comment->getId();
+            $data->user_id = $comment->getUseriId();
+            $data->user_name = $comment->getUserName();
+            $data->bk_type = $comment->getBkType();
+            $data->doctor_id = $comment->getDoctorId();
+            $data->bk_id = $comment->getBkId();
+            $data->effect = $comment->getEffect();
+            $data->doctor_attitude = $comment->getDoctorAttitude();
+            $data->comment_text = $comment->getCommentText();
+            $data->disease_detail = $comment->getDiseaseDetail();
+            $data->display_order = $comment->getDisplayOrder();
+            $this->results->comment[] = $data;
+        }
+    }
+    
 }
