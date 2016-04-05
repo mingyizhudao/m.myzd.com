@@ -509,6 +509,13 @@ class ApiController extends Controller {
     }
 
     public function actionUpdate($model, $id) {
+        if($model=='booking'){
+            $bookingMgr = new BookingManager();
+            $userId = $this->getCurrentUserId();
+            $output = $bookingMgr->actionCancelBooking($id,$userId);
+            print_r($output);
+           // $this->renderJsonOutput($output);
+        }
     }
 
     public function actionDelete($model, $id) {
@@ -687,5 +694,4 @@ class ApiController extends Controller {
     private function getApiVersionFromRequest() {
         return Yii::app()->request->getParam("api", 1);
     }
-
 }
