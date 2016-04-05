@@ -20,7 +20,7 @@ $this->show_footer = false;
             </div>
         </a>
     </nav>
-    <h1 class="title">订单详情</h1>
+    <h1 class="title">评价</h1>
     <nav class="right">
         <a onclick="javascript:history.go(0)">
             <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
@@ -29,7 +29,7 @@ $this->show_footer = false;
 </header>
 <article id='review_article' class="active bg" data-scroll="true">
     <div class=''>
-        <div class="bg-white pl10 pr10">
+        <div>
             <?php
             $form = $this->beginWidget('CActiveForm', array(
                 'id' => 'comment-form',
@@ -46,93 +46,100 @@ $this->show_footer = false;
             echo $form->hiddenField($model, 'id', array('name' => 'comment[id]', 'value' => $data->results->id));
             echo $form->hiddenField($model, 'disease_detail', array('name' => 'comment[disease_detail]', 'value' => $data->results->diseaseName));
             ?>
-            <div class="grid pt20 color-green font-s18">
-                <div class='col-1 w50'>
-                    当前状态:
-                </div>
-                <div class='col-1 w50 text-right'>
-                    待评价
-                </div>
-            </div>
-            <div class='mt10'>
+            <div class="mt20 mb10 font-s18 text-center">
                 主刀医生:<?php echo $data->results->expertName; ?>
             </div>
-            <div class="ui-field-contain">
-                <div class='grid mt10'>
-                    <div class='col-0 pt3'>
-                        治疗效果:
+            <div class="bg-white pl20 pr20">
+                <div class="ui-field-contain">
+                    <div class='grid pt10'>
+                        <div class='col-0 pt3'>
+                            治疗效果:
+                        </div>
+                        <div class='col-1'>
+                            <span data-star='1' class='effectStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                            <span data-star='2' class='effectStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                            <span data-star='3' class='effectStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                            <span data-star='4' class='effectStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                            <span data-star='5' class='effectStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                            <?php echo $form->hiddenField($model, 'effect', array('name' => 'comment[effect]', 'value' => 5)); ?>
+                        </div>
                     </div>
-                    <div class='col-1'>
-                        <span data-star='1' class='effectStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
-                        <span data-star='2' class='effectStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
-                        <span data-star='3' class='effectStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
-                        <span data-star='4' class='effectStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
-                        <span data-star='5' class='effectStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
-                        <?php echo $form->hiddenField($model, 'effect', array('name' => 'comment[effect]', 'value' => 5)); ?>
+                </div>
+                <div class="ui-field-contain">
+                    <div class='grid pt10 pb10'>
+                        <div class='col-0 pt3'>
+                            医生态度:
+                        </div>
+                        <div class='col-1 color-gray'>
+                            <span data-star='1' class='doctorAttitudeStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                            <span data-star='2' class='doctorAttitudeStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                            <span data-star='3' class='doctorAttitudeStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                            <span data-star='4' class='doctorAttitudeStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                            <span data-star='5' class='doctorAttitudeStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                            <?php echo $form->hiddenField($model, 'doctor_attitude', array('name' => 'comment[doctor_attitude]', 'value' => 5)); ?>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="ui-field-contain">
-                <div class='grid mt10'>
-                    <div class='col-0 pt3'>
-                        医生态度:
-                    </div>
-                    <div class='col-1 color-gray'>
-                        <span data-star='1' class='doctorAttitudeStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
-                        <span data-star='2' class='doctorAttitudeStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
-                        <span data-star='3' class='doctorAttitudeStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
-                        <span data-star='4' class='doctorAttitudeStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
-                        <span data-star='5' class='doctorAttitudeStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
-                        <?php echo $form->hiddenField($model, 'doctor_attitude', array('name' => 'comment[doctor_attitude]', 'value' => 5)); ?>
+            <div class="ui-field-contain mt20 ml10 mr10">
+                <div class="bg-white pl10 pr10">
+                    <div class="pt10 pb10 mt10">
+                        <?php echo $form->textArea($model, 'comment_text', array('name' => 'comment[comment_text]', 'minlength' => 10, 'maxlength' => 1000, 'rows' => '6', 'placeholder' => '术后评价，给更多病友参考')); ?>
                     </div>
                 </div>
             </div>
-            <div class="ui-field-contain">
-                <div class="pt10 pb10 mt10 bt-gray5 bb-gray5">
-                    <?php echo $form->textArea($model, 'comment_text', array('name' => 'comment[comment_text]', 'minlength' => 10, 'maxlength' => 1000, 'rows' => '6', 'placeholder' => '请您对此次服务给予评价，谢谢！')); ?>
-                </div>
-            </div>
-            <div class="pt20 pb30 text-center color-blue">
-                <div class="font-s16">术后评价,给更多病友参考。</div>
-                <div>祝您早日康复</div>
+            <div class="pl10 pr10 pt10 pb20">
+                <button id="btnSubmit" type="button" class="button btnFull-yellow font-s16">提交评价</button>
             </div>
             <?php
             $this->endWidget();
             ?>
         </div>
         <?php
+        $alreadyPayCost = 0;
         $orderInfos = $data->results->orderInfo;
         if (!empty($orderInfos)) {
             for ($i = 0; $i < count($orderInfos); $i++) {
                 if ($orderInfos[$i]->order_type == 'deposit') {
                     $orderInfo = $orderInfos[$i];
                 } else if ($orderInfos[$i]->order_type == 'service') {
-                    $serviceInfo = $orderInfos[$i];
+                    if ($orderInfos[$i]->is_paid == 1) {
+                        $alreadyPayCost+=$orderInfos[$i]->final_amount;
+                    }
                 }
             }
         }
         ?>
-        <div class="ml10 mr10 mt10 font-s12 letter-s1">
+        <div class="font-s12 letter-s1 bg-white pad10 color-gray4">
             <div>订单编号:<?php echo $data->results->refNo; ?></div>
-            <div class="grid">
-                <div class="col-0">
-                    已付手术预约金:<?php echo $orderInfo->final_amount; ?>元
+            <?php
+            if ($orderInfo->is_paid == 1) {
+                ?>
+                <div class="grid">
+                    <div class="col-0">
+                        已付手术预约金:<?php echo $orderInfo->final_amount; ?>元
+                    </div>
+                    <div class="col-1 pl20">
+                        <div>
+                            <?php echo mb_strimwidth($orderInfo->date_closed, 0, 10, ''); ?>
+                        </div>
+                        <div>
+                            <?php echo mb_strimwidth($orderInfo->date_closed, 11, 19, ''); ?>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-1 text-right">
-                    <?php echo $orderInfo->date_closed; ?>
+                <?php
+            }
+            ?>
+            <?php
+            if ($alreadyPayCost != 0) {
+                ?>
+                <div class="grid">
+                    已付平台服务费:<?php echo $alreadyPayCost; ?>元
                 </div>
-            </div>
-            <div class="grid">
-                <div class="col-0">
-                    已付平台服务费:<?php echo $serviceInfo->final_amount; ?>元
-                </div>
-                <div class="col-1 text-right">
-                    <?php echo $serviceInfo->date_closed; ?>
-                </div>
-            </div>
-        </div>
-        <div class="pl10 pr10 pt20">
-            <button id="btnSubmit" type="button" class="button btnFull-green font-s16">提交</button>
+                <?php
+            }
+            ?>
         </div>
     </div>
 </article>

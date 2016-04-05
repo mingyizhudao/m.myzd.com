@@ -1,6 +1,6 @@
 <?php
 $showHeader = Yii::app()->request->getQuery('header', 1);
-$urlBookingDoctor = $this->createAbsoluteUrl('booking/create', array('did' => ''));
+$urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('id' => ''));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
@@ -272,7 +272,7 @@ $this->show_footer = false;
             <div class="grid mt20">
                 <div class="col-1"></div>
                 <div class="col-0 widthDoc">
-                    <a class="color-black" href="<?php echo $urlBookingDoctor; ?>/82">
+                    <a class="color-black" href="<?php echo $urlDoctorView; ?>/82">
                         <div class="bg-yellow3">
                             <div class="grid pt10">
                                 <div class="col-1"></div>
@@ -318,7 +318,7 @@ $this->show_footer = false;
             <div class="grid mt20">
                 <div class="col-1"></div>
                 <div class="col-0 widthDoc">
-                    <a class="color-black" href="<?php echo $urlBookingDoctor; ?>/3054">
+                    <a class="color-black" href="<?php echo $urlDoctorView; ?>/3054">
                         <div class="bg-yellow3">
                             <div class="grid pt10">
                                 <div class="col-1"></div>
@@ -364,7 +364,7 @@ $this->show_footer = false;
             <div class="grid mt20">
                 <div class="col-1"></div>
                 <div class="col-0 widthDoc">
-                    <a class="color-black" href="<?php echo $urlBookingDoctor; ?>/369">
+                    <a class="color-black" href="<?php echo $urlDoctorView; ?>/369">
                         <div class="bg-yellow3">
                             <div class="grid pt10">
                                 <div class="col-1"></div>
@@ -410,7 +410,7 @@ $this->show_footer = false;
             <div class="grid mt20 mb50">
                 <div class="col-1"></div>
                 <div class="col-0 widthDoc">
-                    <a class="color-black" href="<?php echo $urlBookingDoctor; ?>/295">
+                    <a class="color-black" href="<?php echo $urlDoctorView; ?>/295">
                         <div class="bg-yellow3">
                             <div class="grid pt10">
                                 <div class="col-1"></div>

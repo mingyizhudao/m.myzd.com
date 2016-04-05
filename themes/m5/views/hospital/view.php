@@ -23,10 +23,10 @@ $this->show_footer = false;
         </a>
     </nav>
 </header>
-<article id="hospitalView_article" class="active articleHtml"  data-scroll="true">
-    <ul class="list dpt">
+<article id="hospitalView_article" class="active articleHtml articleBg" data-scroll="true">
+    <div>
 
-    </ul>
+    </div>
 </article>
 <script>
     $(document).ready(function () {
@@ -45,37 +45,58 @@ $this->show_footer = false;
     function readyPage(data) {
         var hospital = data.results.hospital;
         var departments = data.results.departments;
-        innerHtml = '<ul class="list dpt">';
+        innerHtml = '<div>';
         if (departments != null) {
             for (var dpt in departments) {
-                innerHtml += '<li><div class="mb5">';
-                if (dpt == '口腔科') {
-                    innerHtml += '<span class="kouQ text18 color-green mt5">' + dpt + '</span>';
+                innerHtml += '<div class="mt5 bg-white"><div class="grid pad10 bb-gray">';
+                if (dpt == '内科') {
+                    innerHtml += '<div class="col-0">' +
+                            '<img src="<?php echo $urlResImage; ?>dept/neike.png" class="w25p">' +
+                            '</div>' +
+                            '<div class="col-1 pl5 font-s16">' + dpt + '</div>';
                 } else if (dpt == '外科') {
-                    innerHtml += '<span class="waiK text18 color-green mt5">' + dpt + '</span>';
+                    innerHtml += '<div class="col-0">' +
+                            '<img src="<?php echo $urlResImage; ?>dept/waike.png" class="w25p">' +
+                            '</div>' +
+                            '<div class="col-1 pl5 font-s16">' + dpt + '</div>';
                 } else if (dpt == '妇产科') {
-                    innerHtml += '<span class="fuC text18 color-green mt5">' + dpt + '</span>';
-                } else if (dpt == '眼科') {
-                    innerHtml += '<span class="yanK text18 color-green mt5">' + dpt + '</span>';
+                    innerHtml += '<div class="col-0">' +
+                            '<img src="<?php echo $urlResImage; ?>dept/fuchanke.png" class="w25p">' +
+                            '</div>' +
+                            '<div class="col-1 pl5 font-s16">' + dpt + '</div>';
                 } else if (dpt == '骨科') {
-                    innerHtml += '<span class="guK text18 color-green mt5">' + dpt + '</span>';
+                    innerHtml += '<div class="col-0">' +
+                            '<img src="<?php echo $urlResImage; ?>dept/guke.png" class="w25p">' +
+                            '</div>' +
+                            '<div class="col-1 pl5 font-s16">' + dpt + '</div>';
                 } else if (dpt == '小儿外科') {
-                    innerHtml += '<span class="xiaoE text18 color-green mt5">' + dpt + '</span>';
+                    innerHtml += '<div class="col-0">' +
+                            '<img src="<?php echo $urlResImage; ?>dept/xiaoerwaike.png" class="w25p">' +
+                            '</div>' +
+                            '<div class="col-1 pl5 font-s16">' + dpt + '</div>';
+                } else if (dpt == '五官科') {
+                    innerHtml += '<div class="col-0">' +
+                            '<img src="<?php echo $urlResImage; ?>dept/wuguanke.png" class="w25p">' +
+                            '</div>' +
+                            '<div class="col-1 pl5 font-s16">' + dpt + '</div>';
                 } else {
-                    innerHtml += '<span class="other text18 color-green mt5">' + dpt + '</span>';
+                    innerHtml += '<div class="col-0">' +
+                            '<img src="<?php echo $urlResImage; ?>dept/neike.png" class="w25p">' +
+                            '</div>' +
+                            '<div class="col-1 pl5 font-s16">' + dpt + '</div>';
                 }
                 innerHtml += '</div>' +
-                        '<div class="dptStyle">';
+                        '<div class="dptStyle pad10">';
                 for (var i = 0; i < departments[dpt].length; i++) {
                     innerHtml += '<a href="<?php echo $urlDepartmentView ?>/' + departments[dpt][i].id + '" data-target="link">' +
-                            '<div  class="color-black ml10 button2">' + departments[dpt][i].name + '</div>' +
+                            '<div class="ml20 button2">' + departments[dpt][i].name + '</div>' +
                             '</a>';
                 }
-                innerHtml += '</div></li>';
+                innerHtml += '</div></div>';
 
             }
         }
-        innerHtml += '</ul>';
+        innerHtml += '</div>';
         if (hospital.name.length > 13) {
             $('.title').addClass('font-s16');
         }

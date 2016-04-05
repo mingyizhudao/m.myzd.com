@@ -1,7 +1,7 @@
 <?php
 $showHeader = Yii::app()->request->getQuery('header', 1);
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
-$urlBookingDoctor = $this->createAbsoluteUrl('booking/create', array('did' => ''));
+$urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('id' => ''));
 $this->show_footer = false;
 ?>
 <?php if ($showHeader == 1) { ?>
@@ -59,7 +59,7 @@ $this->show_footer = false;
                 推荐专家
             </div>
             <div class="mt15 border-green">
-                <a href="<?php echo $urlBookingDoctor; ?>/88">
+                <a href="<?php echo $urlDoctorView; ?>/88">
                     <div class="pl10 pt10 pr10 pb15 color-black6">
                         <div class="font-s16">
                             <span class="color-black">许建屏</span>
@@ -73,8 +73,8 @@ $this->show_footer = false;
                     </div>
                 </a>
             </div>
-            <div class="mt15 border-green">
-                <a href="<?php echo $urlBookingDoctor; ?>/46">
+            <div class="mt15 border-green hide">
+                <a href="<?php echo $urlDoctorView; ?>/46">
                     <div class="pl10 pt10 pr10 pb15 color-black6">
                         <div class="font-s16">
                             <span class="color-black">王良旭</span>
@@ -89,7 +89,7 @@ $this->show_footer = false;
                 </a>
             </div>
             <div class="mt15 border-green">
-                <a href="<?php echo $urlBookingDoctor; ?>/48">
+                <a href="<?php echo $urlDoctorView; ?>/48">
                     <div class="pl10 pt10 pr10 pb15 color-black6">
                         <div class="font-s16">
                             <span class="color-black">梅举</span>
@@ -104,7 +104,7 @@ $this->show_footer = false;
                 </a>
             </div>
             <div class="mt15 mb20 border-green">
-                <a href="<?php echo $urlBookingDoctor; ?>/135">
+                <a href="<?php echo $urlDoctorView; ?>/135">
                     <div class="pl10 pt10 pr10 pb15 color-black6">
                         <div class="font-s16">
                             <span class="color-black">刘永民</span>

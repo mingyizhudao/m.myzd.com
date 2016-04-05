@@ -28,92 +28,108 @@ $results = $data->results;
 </header>
 <article id='complete_article' class="active bg" data-scroll="true">
     <div class=''>
-        <div class="bg-white pl10 pr10">
-            <div class="pt20 color-green font-s18">
-                感谢您的评价:祝您早日康复!
-            </div>
-            <div class='mt10'>
+        <div>
+            <div class='mt20 mb20 text-center font-s16'>
                 主刀医生:刘跃武
             </div>
-            <div class='grid mt10'>
-                <div class='col-0 pt3'>
-                    治疗效果:
-                </div>
-                <div class='col-1'>
-                    <?php
-                    $effect = $bookingComment->effect;
-                    for ($i = 1; $i <= 5; $i++) {
-                        if ($effect >= $i) {
-                            ?>
-                            <span class='pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
-                            <?php
-                        } else {
-                            ?>
-                            <span class='pl10'><img src='<?php echo $urlResImage; ?>star.png' class='w20p'></span>
-                            <?php
+            <div class="pt10 bg-white">
+                <div class='grid pl20 pr20'>
+                    <div class='col-0 pt3'>
+                        治疗效果
+                    </div>
+                    <div class='col-1 pl20'>
+                        <?php
+                        $effect = $bookingComment->effect;
+                        for ($i = 1; $i <= 5; $i++) {
+                            if ($effect >= $i) {
+                                ?>
+                                <span class='pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                                <?php
+                            } else {
+                                ?>
+                                <span class='pl10'><img src='<?php echo $urlResImage; ?>star.png' class='w20p'></span>
+                                <?php
+                            }
                         }
-                    }
-                    ?>
+                        ?>
+                    </div>
                 </div>
-            </div>
-            <div class='grid mt10'>
-                <div class='col-0 pt3'>
-                    医生态度:
-                </div>
-                <div class='col-1'>
-                    <?php
-                    $doctorAttitude = $bookingComment->doctor_attitude;
-                    for ($i = 1; $i <= 5; $i++) {
-                        if ($doctorAttitude >= $i) {
-                            ?>
-                            <span class='pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
-                            <?php
-                        } else {
-                            ?>
-                            <span class='pl10'><img src='<?php echo $urlResImage; ?>star.png' class='w20p'></span>
-                            <?php
+                <div class='grid pl20 pr20 pt10 pb10'>
+                    <div class='col-0 pt3'>
+                        医生态度
+                    </div>
+                    <div class='col-1 pl20'>
+                        <?php
+                        $doctorAttitude = $bookingComment->doctor_attitude;
+                        for ($i = 1; $i <= 5; $i++) {
+                            if ($doctorAttitude >= $i) {
+                                ?>
+                                <span class='pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                                <?php
+                            } else {
+                                ?>
+                                <span class='pl10'><img src='<?php echo $urlResImage; ?>star.png' class='w20p'></span>
+                                <?php
+                            }
                         }
-                    }
-                    ?>
+                        ?>
+                    </div>
                 </div>
-            </div>
-            <div class="pt10 pb10 mt10 bt-gray5 bb-gray5">
-                <?php echo $bookingComment->comment_text; ?>
+                <div class="pad20 bt-gray5">
+                    <?php echo $bookingComment->comment_text; ?>
+                </div>
             </div>
             <?php
+            $alreadyPayCost = 0;
             $orderInfos = $data->results->orderInfo;
             if (!empty($orderInfos)) {
                 for ($i = 0; $i < count($orderInfos); $i++) {
                     if ($orderInfos[$i]->order_type == 'deposit') {
                         $orderInfo = $orderInfos[$i];
                     } else if ($orderInfos[$i]->order_type == 'service') {
-                        $serviceInfo = $orderInfos[$i];
+                        if ($orderInfos[$i]->is_paid == 1) {
+                            $alreadyPayCost+=$orderInfos[$i]->final_amount;
+                        }
                     }
                 }
             }
             ?>
-            <div class="mt10 font-s12 letter-s1">
-                <div>订单编号:<?php echo $data->results->refNo; ?></div>
-                <div class="grid">
-                    <div class="col-0">
-                        已付手术预约金:<?php echo $orderInfo->final_amount; ?>元
+            <div class="mt10 font-s12 letter-s1 bg-white color-gray4">
+                <a href="<?php echo $urlPatientBooking; ?>/<?php echo $bookingComment->bk_id; ?>" class="color-black6">
+                    <div class="text-center font-s14 pb10 pl20 pr20 pt10">
+                        查看订单详情
                     </div>
-                    <div class="col-1 text-right">
-                        <?php echo $orderInfo->date_closed; ?>
-                    </div>
-                </div>
-                <div class="grid">
-                    <div class="col-0">
-                        已付平台服务费:<?php echo $serviceInfo->final_amount; ?>元
-                    </div>
-                    <div class="col-1 text-right">
-                        <?php echo $serviceInfo->date_closed; ?>
-                    </div>
-                </div>
-                <div class="text-right pt10 pb10">
-                    <a href="<?php echo $urlPatientBooking; ?>/<?php echo $bookingComment->bk_id; ?>" class="color-green">
-                        查看详情>
-                    </a>
+                </a>
+                <div class="pl20 pt10 pr20 pb10 bt-gray">
+                    <div class="pt10">订单编号:<?php echo $data->results->refNo; ?></div>
+                    <?php
+                    if ($orderInfo->is_paid == 1) {
+                        ?>
+                        <div class="grid">
+                            <div class="col-0">
+                                已付手术预约金:<?php echo $orderInfo->final_amount; ?>元
+                            </div>
+                            <div class="col-1 pl20">
+                                <div>
+                                    <?php echo mb_strimwidth($orderInfo->date_closed, 0, 10, ''); ?>
+                                </div>
+                                <div>
+                                    <?php echo mb_strimwidth($orderInfo->date_closed, 11, 19, ''); ?>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                    <?php
+                    if ($alreadyPayCost != 0) {
+                        ?>
+                        <div class="grid">
+                            已付平台服务费:<?php echo $alreadyPayCost; ?>元
+                        </div>
+                        <?php
+                    }
+                    ?>
                 </div>
             </div>
         </div>

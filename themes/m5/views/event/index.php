@@ -62,64 +62,46 @@ if ($showPage == 0) {
 <?php } ?>
 <article id="zhuanti_article" class="<?php echo $showZt; ?>" data-scroll="true" data-active="find_footer">
     <div>
-        <ul class="list">
-            <li>
-                <a href="<?php echo $urlEventZhuantiRobot; ?>">
-                    <div class="font-s17">
-                        【机器人微创手术】
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="<?php echo $urlEventZhuantiFive; ?>">
-                    <div class="font-s17">
-                        【卡塔尔王子中国寻医记】
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="<?php echo $urlEventZhuantiSix; ?>">
-                    <div class="font-s17">
-                        【80%的人忽视的身体小肿块，险些成癌】
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="<?php echo $urlEventZhuantiFour; ?>">
-                    <div class="font-s17">
-                        【名医主刀--百万公益金】
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="<?php echo $urlEventZhuantiOne; ?>">
-                    <div class="font-s17">
-                        【医生专访 陆劲松】"深夜10点的病房"
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="<?php echo $urlEventZhuantiTwo; ?>">
-                    <div class="font-s17">
-                        【预防冬季冠心病发作】名医专家有妙招
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="<?php echo $urlEventZhuantiThree; ?>">
-                    <div class="font-s17">
-                        【泌尿疾病的克星】达芬奇手术机器人
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="<?php echo $urlEventZhuantiXinxg; ?>">
-                    <div class="font-s17">
-                        【警惕心血管病】
-                    </div>
-                </a>
-            </li>
-        </ul>
+        <div class="mt10">
+            <a href="<?php echo $urlEventZhuantiRobot; ?>">
+                <img src="<?php echo $urlResImage; ?>zhuanti/banner/robot.jpg" class="w100">
+            </a>
+        </div>
+        <div class="mt10">
+            <a href="<?php echo $urlEventZhuantiFive; ?>">
+                <img src="<?php echo $urlResImage; ?>zhuanti/banner/Qatar.jpg" class="w100">
+            </a>
+        </div>
+        <div class="mt10">
+            <a href="<?php echo $urlEventZhuantiSix; ?>">
+                <img src="<?php echo $urlResImage; ?>zhuanti/banner/tumor.jpg" class="w100">
+            </a>
+        </div>
+        <div class="mt10">
+            <a href="<?php echo $urlEventZhuantiFour; ?>">
+                <img src="<?php echo $urlResImage; ?>zhuanti/banner/winterSon.jpg" class="w100">
+            </a>
+        </div>
+        <div class="mt10">
+            <a href="<?php echo $urlEventZhuantiOne; ?>">
+                <img src="<?php echo $urlResImage; ?>zhuanti/banner/lujinsong.jpg" class="w100">
+            </a>
+        </div>
+        <div class="mt10">
+            <a href="<?php echo $urlEventZhuantiTwo; ?>">
+                <img src="<?php echo $urlResImage; ?>zhuanti/banner/coronaryHeartDisease.jpg" class="w100">
+            </a>
+        </div>
+        <div class="mt10">
+            <a href="<?php echo $urlEventZhuantiThree; ?>">
+                <img src="<?php echo $urlResImage; ?>zhuanti/banner/DaVinciRobot.jpg" class="w100">
+            </a>
+        </div>
+        <div class="mt10 mb10">
+            <a href="<?php echo $urlEventZhuantiXinxg; ?>">
+                <img src="<?php echo $urlResImage; ?>zhuanti/banner/cardiovascular.jpg" class="w100">
+            </a>
+        </div>
     </div>
 </article>
 <article id="story_article" class="<?php echo $showStory; ?>" data-scroll="true" data-active="find_footer">
