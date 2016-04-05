@@ -10,6 +10,10 @@ class ApiViewSearch extends EApiViewService {
     private $doctorCount;     // count no. of Doctors.
     private $diseases;
     private $diseaseCount;     // count no. of Diseases.
+    
+    private $hospitalSearch;
+    private $hospitals;
+    private $hospitalCount;    // count no. of Hospital.
 
     public function __construct($searchInputs) {
         parent::__construct();
@@ -20,12 +24,16 @@ class ApiViewSearch extends EApiViewService {
         $this->doctorSearch->addSearchCondition("t.date_deleted is NULL");
         $this->diseaseSearch = new DiseaseSearch($this->searchInputs);
         $this->diseaseSearch->addSearchCondition("t.date_deleted is NULL");
+        $this->hospitalSearch = new HospitalSearch($this->searchInputs);
+        $this->hospitalSearch->addSearchCondition("t.date_deleted is NULL");
+
     }
 
     protected function loadData() {
         // load Doctors.
         $this->loadDoctors();
         $this->loadDiseases();
+        $this->loadHospitals();
     }
 
     protected function createOutput() {
@@ -57,6 +65,15 @@ class ApiViewSearch extends EApiViewService {
         }
     }
 
+    private function loadHospitals() {
+        if (is_null($this->doctors)) {
+            $models = $this->hospitalSearch->search();
+            if (arrayNotEmpty($models)) {
+                $this->setHospitals($models);
+            }
+        }
+    }
+    
     private function setDoctors(array $models) {
         foreach ($models as $model) {
             $data = new stdClass();
@@ -76,6 +93,15 @@ class ApiViewSearch extends EApiViewService {
             $data->id = $model->getId();
             $data->name = $model->getName();
             $this->results->diseases[] = $data;
+        }
+    }
+    
+    private function setHospitals(array $models) {
+        foreach ($models as $model) {
+            $data = new stdClass();
+            $data->id = $model->getId();
+            $data->name = $model->getName();
+            $this->results->hospitals[] = $data;
         }
     }
 
