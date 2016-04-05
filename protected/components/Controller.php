@@ -167,5 +167,39 @@ abstract class Controller extends CController {
         $result = file_get_contents($url, false);
         return json_decode($result, true);
     }
+    
+    /**
+     * 参数处理
+     * @param unknown $attrs
+     * @return multitype:Ambigous <>
+     */
+    public function filterRequestParams($attrs=array()){
+        //echo Yii::app()->request->isPostRequest();exit;
+        $requestType = strtolower($_SERVER['REQUEST_METHOD']);
+    
+        $inputs=array();
+        switch($requestType){
+            case 'get':
+                $inputs = $_GET;
+                break;
+            case 'post':
+                $inputs = json_decode($this->getPostData(),true);
+                break;
+            case 'put':
+                $inputs = json_decode($this->getPostData(),true);
+                break;
+    
+        }
+        $i=array();
+    
+        if(arrayNotEmpty($inputs)){
+            foreach($attrs as $attr){
+                if(isset($inputs[$attr])){
+                    $i[$attr]=$inputs[$attr];
+                }
+            }
+        }
+        return $i;
+    }
 
 }
