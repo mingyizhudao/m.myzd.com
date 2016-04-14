@@ -48,6 +48,14 @@ $this->show_footer = false;
                 innerHtml += '<div class="grid text-center pb10">';
                 for (var j = 0; j < 3; j++) {
                     if (number < doctors.length) {
+                        var hpDeptName = doctors[number].hpDeptName;
+                        var hpName = doctors[number].hpName;
+                        if (hpDeptName == null || hpDeptName == '') {
+                            hpDeptName = '';
+                        }
+                        if (hpName == null || hpName == '') {
+                            hpName = '';
+                        }
                         innerHtml += '<div class="col-1 w33 border-gray br5 ml3 mr3">' +
                                 '<a href="<?php echo $urlDoctorView; ?>/' + doctors[number].id + '/is_commonweal/1">' +
                                 '<div class="pb10 color-black">' +
@@ -59,8 +67,8 @@ $this->show_footer = false;
                                 '<div class="col-1"></div>' +
                                 '</div>' +
                                 '<div>' + doctors[number].name + '</div>' +
-                                '<div class="font-s12">' + doctors[number].hpDeptName + '</div>' +
-                                '<div class="font-s12">' + doctors[number].hpName + '</div>' +
+                                '<div class="font-s12">' + hpDeptName + '</div>' +
+                                '<div class="font-s12">' + hpName + '</div>' +
                                 '</div>' +
                                 '</a>' +
                                 '</div>';
