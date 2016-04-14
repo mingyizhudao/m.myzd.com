@@ -34,7 +34,7 @@ $this->show_footer = false;
         $.ajax({
             url: '<?php echo $urlCommonwealDoctors; ?>',
             success: function (data) {
-                console.log(data);
+                //console.log(data);
                 readyPage(data);
             }
         });
@@ -49,7 +49,7 @@ $this->show_footer = false;
                 for (var j = 0; j < 3; j++) {
                     if (number < doctors.length) {
                         innerHtml += '<div class="col-1 w33 border-gray br5 ml3 mr3">' +
-                                '<a href="<?php echo $urlDoctorView; ?>/' + doctors[number].id + '">' +
+                                '<a href="<?php echo $urlDoctorView; ?>/' + doctors[number].id + '/is_commonweal/1">' +
                                 '<div class="pb10 color-black">' +
                                 '<div class="grid pt10">' +
                                 '<div class="col-1"></div>' +

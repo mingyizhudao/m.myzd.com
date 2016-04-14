@@ -45,9 +45,9 @@
  * @property User $user
  */
 class Booking extends EActiveRecord {
-    
+
     public $num;
-   
+
     /**
      * @return string the associated database table name
      */
@@ -71,7 +71,7 @@ class Booking extends EActiveRecord {
             array('disease_detail', 'length', 'max' => 1000),
             array('remark', 'length', 'max' => 500),
             array('submit_via', 'length', 'max' => 10),
-            array('date_start, date_end, appt_date, date_created, date_updated, date_deleted, user_agent', 'safe'),
+            array('date_start, date_end, appt_date, date_created, date_updated, date_deleted, user_agent, is_commonweal', 'safe'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
             array('id, ref_no, user_id, mobile, contact_name, contact_email, bk_status, bk_type, doctor_id, doctor_name, expteam_id, expteam_name, city_id, hospital_id, hospital_name, hp_dept_id, hp_dept_name, disease_name, disease_detail, date_start, date_end, appt_date, remark, submit_via, date_created, date_updated, date_deleted', 'safe', 'on' => 'search'),
@@ -247,11 +247,11 @@ class Booking extends EActiveRecord {
         return $this->find($criteria);
     }
 
-    public function getAllByUserIdOrMobile($userId, $mobile, $with = null, $options = null,$bk_status=0) {
+    public function getAllByUserIdOrMobile($userId, $mobile, $with = null, $options = null, $bk_status = 0) {
         $criteria = new CDbCriteria();
         $criteria->compare("t.user_id", $userId, false, 'AND');
         $criteria->compare("t.mobile", $mobile, false, 'OR');
-        if($bk_status>0){
+        if ($bk_status > 0) {
             $criteria->compare("t.bk_status", $bk_status, false, 'AND');
         }
         $criteria->addCondition("t.date_deleted is NULL");
@@ -266,7 +266,7 @@ class Booking extends EActiveRecord {
 
         return $this->findAll($criteria);
     }
-    
+
     public function getBookByUserIdOrMobileAndStatus($userId, $mobile, $with = null, $options = null) {
         $criteria = new CDbCriteria();
         $criteria->compare("t.user_id", $userId, false, 'AND');
@@ -280,11 +280,10 @@ class Booking extends EActiveRecord {
             $criteria->limit = $options['limit'];
         if (isset($options['order']))
             $criteria->order = $options['order'];
-    
+
         return $this->findAll($criteria);
     }
-    
-    
+
     public function setIsCorporate($v = 1) {
         $this->is_corporate = $v;
     }
@@ -365,7 +364,7 @@ class Booking extends EActiveRecord {
             case StatCode::BK_TYPE_EXPERTTEAM :
                 return "ET";
             case StatCode::BK_TYPE_DEPT :
-               return "HP";
+                return "HP";
             case StatCode::BK_TYPE_QUICKBOOK :
                 return "QB";
             default:
@@ -388,9 +387,9 @@ class Booking extends EActiveRecord {
     }
 
     public function getExpertNameBooked() {
-        if(!is_object($this->getExpertBooked())){
+        if (!is_object($this->getExpertBooked())) {
             return $this->getExpertBooked();
-        }elseif ($this->getExpertBooked() !== null) {
+        } elseif ($this->getExpertBooked() !== null) {
             return $this->getExpertBooked()->getName();
         } else {
             return '';
@@ -444,11 +443,11 @@ class Booking extends EActiveRecord {
     public function getBkStatus() {
         return StatCode::getBookingStatus($this->bk_status);
     }
-    
+
     public function getBkStatusNum() {
         return $this->bk_status;
     }
-    
+
     public function setBkStatus($v) {
         $this->bk_status = $v;
     }
@@ -456,8 +455,8 @@ class Booking extends EActiveRecord {
     public function getBookingType() {
         return StatCode::getBookingType($this->bk_type);
     }
-    
-    public function getBkType(){
+
+    public function getBkType() {
         return $this->bk_type;
     }
 
@@ -544,32 +543,32 @@ class Booking extends EActiveRecord {
     public function getUserAgent() {
         return $this->user_agent;
     }
-    
+
     /**
      * 获得用户手术单个状态数量
      * @param unknown $userId
      */
-    public function getCountBkStatusByUserId($userId){
+    public function getCountBkStatusByUserId($userId) {
         $criteria = new CDbCriteria();
-        $criteria->select = 't.bk_status,count(t.bk_status) num';//默认*
-        $criteria->addCondition("t.user_id=".$userId);
+        $criteria->select = 't.bk_status,count(t.bk_status) num'; //默认*
+        $criteria->addCondition("t.user_id=" . $userId);
         $criteria->addCondition("t.date_deleted is NULL");
-        $criteria->group='t.bk_status';
-        $this->num=null;
-        return $this->findAll($criteria);        
+        $criteria->group = 't.bk_status';
+        $this->num = null;
+        return $this->findAll($criteria);
     }
-    
+
     /**
      * 根据用户ID和手术单状态获得匹配的手术单信息
      * @param unknown $userId
      * @param unknown $bkStatus
      */
-    public function getBookingByUserIdAndBkStatus($userId,$bkStatus){
+    public function getBookingByUserIdAndBkStatus($userId, $bkStatus) {
         $criteria = new CDbCriteria();
-        $criteria->addCondition("t.user_id=".$userId,"and");
-        $criteria->addCondition("t.bk_status=".$bkStatus);
+        $criteria->addCondition("t.user_id=" . $userId, "and");
+        $criteria->addCondition("t.bk_status=" . $bkStatus);
         $criteria->addCondition("t.date_deleted is NULL");
         return $this->findAll($criteria);
     }
-    
+
 }

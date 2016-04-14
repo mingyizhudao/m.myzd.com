@@ -9,7 +9,7 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/c
  * $data.
  */
 $this->setPageTitle('预约单');
-
+$isCommonweal = Yii::app()->request->getQuery('is_commonweal', '0');
 $urlApiAppNav1 = $this->createAbsoluteUrl('/api/list', array('model' => 'appnav1'));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $urlSubmitForm = $this->createUrl("booking/ajaxCreate");
@@ -64,6 +64,7 @@ $this->show_footer = false;
             'enableAjaxValidation' => false,
         ));
         echo $form->hiddenField($model, 'doctor_id', array('name' => 'booking[doctor_id]'));
+        echo $form->hiddenField($model, 'is_commonweal', array('name' => 'booking[is_commonweal]', 'value' => $isCommonweal));
         ?>
         <div class="grid pt20 pb20 bb-gray">
             <div class="col-0 w100p pl15 color-black4">就诊专家:</div>
