@@ -17,7 +17,7 @@ class UserController extends MobileController {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('register', 'ajaxRegister', 'login', 'commonProblem', 'index', 'captcha', 'ajaxForgetPassword'),
+                'actions' => array('register', 'ajaxRegister', 'login', 'commonProblem', 'index', 'captcha', 'captchaCode', 'ajaxForgetPassword'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -106,10 +106,20 @@ class UserController extends MobileController {
         $this->render('index');
     }
 
+    public function actionCaptchaCode() {
+        $model = new UserDoctorMobileLoginForm;
+        $values = $_POST['UserDoctorMobileLoginForm'];
+        $model->setAttributes($values, true);
+        echo (CActiveForm::validate($model));
+        Yii::app()->end();
+    }
+
     //登陆
     public function actionLogin() {
         $returnUrl = $this->getReturnUrl($this->createUrl('user/view'));
         $user = $this->getCurrentUser();
+        print_r($_POST['UserDoctorMobileLoginForm']);
+        exit;
         //用户已登陆 直接进入个人中心
         if (isset($user)) {
             $this->redirect(array('view'));
@@ -128,6 +138,10 @@ class UserController extends MobileController {
                 // $user = $this->getCurrentUser();
                 $this->redirect($url);
             }
+        }
+        if (isset($_GET['ajax']) && $_GET['ajax'] === 'login-form') {
+            echo CJSON::decode(CJSON::encode(CActiveForm::validate($model)));
+            exit;
         }
         //失败 则返回登录页面
         $this->render("login", array(
