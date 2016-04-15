@@ -5,15 +5,29 @@ class BookingController extends MobileController {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('createCorp', 'ajaxCreateCorp', 'ajaxUploadCorp', 'ajaxUploadFile', 'quickbook', 'ajaxQuickbook', 'create'),
+                'actions' => array('createCorp', 'ajaxCreateCorp', 'ajaxUploadCorp', 'ajaxUploadFile', 'captcha', 'actionAjaxCaptchaCode', 'quickbook', 'ajaxQuickbook', 'create'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('view', 'ajaxCreate', 'patientBookingList', 'patientBooking','bookingDetails','testView'),
+                'actions' => array('view', 'ajaxCreate', 'patientBookingList', 'patientBooking', 'bookingDetails', 'testView'),
                 'users' => array('@'),
             ),
             array('deny', // deny all users
                 'users' => array('*'),
+            ),
+        );
+    }
+
+    public function actions() {
+        return array(
+            // captcha action renders the CAPTCHA image displayed on the contact page
+            'captcha' => array(
+                'class' => 'CCaptchaAction',
+                'backColor' => 0xFFFFFF,
+                'maxLength' => 6,
+                'offset' => 0,
+                'testLimit' => 0,
+                'height' => 34
             ),
         );
     }
@@ -224,6 +238,14 @@ class BookingController extends MobileController {
         }
     }
 
+    public function actionAjaxCaptchaCode() {
+        $model = new BookQuickForm;
+        $values = $_POST['booking'];
+        $model->setAttributes($values, true);
+        echo (CActiveForm::validate($model));
+        Yii::app()->end();
+    }
+
     /**
      * 快速预约
      */
@@ -298,7 +320,7 @@ class BookingController extends MobileController {
                         $output['errors'] = $booking->getErrors();
                         throw new CException('error saving data.');
                     }
-                    
+
                     $apiRequest = new ApiRequestUrl();
                     $remote_url = $apiRequest->getUrlAdminSalesBookingCreate() . '?type=' . StatCode::TRANS_TYPE_BK . '&id=' . $booking->id;
                     $data = $this->send_get($remote_url);
@@ -493,13 +515,13 @@ class BookingController extends MobileController {
 
     //病人预约列表查询
     public function actionPatientBookingList() {
-        $value=$_GET;
-        if($value)
-          $bk_status=$value['status'];
+        $value = $_GET;
+        if ($value)
+            $bk_status = $value['status'];
         else
-          $bk_status=0;
+            $bk_status = 0;
         $user = $this->getCurrentUser();
-        $booking = new ApiViewBookingListV4($user,$bk_status);
+        $booking = new ApiViewBookingListV4($user, $bk_status);
         $output = $booking->loadApiViewData();
         //print_r($output);exit;
         $this->render('patientBookingList', array(
@@ -584,46 +606,41 @@ class BookingController extends MobileController {
             'disease_detail' => '小腿都碎了啊！咋办啊'
         );
     }
-    
-    public function actionBookingDetails($id){
-        $value=$_GET;
+
+    public function actionBookingDetails($id) {
+        $value = $_GET;
         $user = $this->getCurrentUser();
         $booking = new ApiViewBookingV4($user, $id);
         $output = $booking->loadApiViewData();
         $salesOrder = new SalesOrder();
         $orderInfo = $salesOrder->getByBkRefNo($output->results->refNo);
-        $output->results->orderInfo=$orderInfo;
-        $model='';
-        if($value['status']==1){//待支付1000
-            $view='payDeposit';
-        }
-        elseif($value['status']==2){//安排中
-            $view='arrange';
-        }
-        elseif($value['status']==3){//待确认20000
-            $view='payConfirm';
-        }
-        elseif($value['status']==4){//待点评
-            $view='review';
-            $model=new CommentForm();
-        }
-        elseif($value['status']==8){//已完成
+        $output->results->orderInfo = $orderInfo;
+        $model = '';
+        if ($value['status'] == 1) {//待支付1000
+            $view = 'payDeposit';
+        } elseif ($value['status'] == 2) {//安排中
+            $view = 'arrange';
+        } elseif ($value['status'] == 3) {//待确认20000
+            $view = 'payConfirm';
+        } elseif ($value['status'] == 4) {//待点评
+            $view = 'review';
+            $model = new CommentForm();
+        } elseif ($value['status'] == 8) {//已完成
             $comment = new Comment();
             $bookingComment = $comment->getBookingIds($output->results->id);
-            $output->results->bookingComment=$bookingComment;
-            $view='complete';
-        }
-        else{
-            $view='cancel';
+            $output->results->bookingComment = $bookingComment;
+            $view = 'complete';
+        } else {
+            $view = 'cancel';
         }
         $this->render($view, array(
             'data' => $output,
             'model' => $model
         ));
     }
-    
+
     public function actionTestView() {
         $this->render("review");
     }
-    
+
 }
