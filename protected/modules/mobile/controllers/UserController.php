@@ -106,9 +106,10 @@ class UserController extends MobileController {
         $this->render('index');
     }
 
-    public function actionCaptchaCode() {
+    public function actionAjaxCaptchaCode() {
         $model = new UserDoctorMobileLoginForm;
-        $values = $_POST['UserDoctorMobileLoginForm'];
+//        $values['captcha_code'] = 'mdtufa';
+          $values = $_POST['UserDoctorMobileLoginForm'];
         $model->setAttributes($values, true);
         echo (CActiveForm::validate($model));
         Yii::app()->end();
