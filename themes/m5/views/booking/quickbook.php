@@ -29,7 +29,7 @@ $user = $this->getCurrentUser();
                 </div>
             </a>
         </nav>
-        <?php }
+    <?php }
     ?>
     <h1 class="title">快速预约</h1>
     <nav class="right">
@@ -89,6 +89,24 @@ $user = $this->getCurrentUser();
                             <div class="color-red font-s12">*若您尚未注册，此号码将作为您后期的登录账号</div>
                             <?php echo $form->error($model, 'mobile'); ?>
                         </div>
+
+
+                        <div class="ui-field-contain mt5">
+                            <div class="grid">
+                                <div class="col-1 w50">
+                                    <?php echo CHtml::activeLabel($model, 'captcha_code'); ?>                                           
+                                    <?php echo $form->textField($model, 'captcha_code', array('name' => 'booking[captcha_code]', 'placeholder' => '请输入验证码')); ?>
+                                    <?php echo $form->error($model, 'captcha_code'); ?>
+                                </div>
+                                <div class="col-1 w50 pt20">
+                                    <!--<button id="btn-sendSmsCode" type="button" class="w100 bg-green border-r3">获取验证码</button>-->
+                                    <?php $this->widget('CCaptcha', array('showRefreshButton' => false, 'clickableImage' => true, 'imageOptions' => array('alt' => '点击换图', 'title' => '点击换图', 'style' => 'cursor:pointer'))); ?>
+                                </div>
+                            </div>
+                        </div>
+
+
+
                         <div class="ui-field-contain mt5">
                             <div class="grid">
                                 <div class="col-1 w50">
@@ -168,8 +186,7 @@ $user = $this->getCurrentUser();
                 'success': function (data) {
                     if (data.status === true) {
                         //domForm[0].reset();
-                    }
-                    else {
+                    } else {
                         console.log(data);
                     }
                 },
