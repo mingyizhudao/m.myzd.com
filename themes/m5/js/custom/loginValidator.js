@@ -23,6 +23,9 @@ $(function () {
                 required: true,
                 isMobile: true
             },
+            'UserDoctorMobileLoginForm[captcha_code]': {
+                required: true
+            },
             'UserDoctorMobileLoginForm[verify_code]': {
                 required: true,
                 digits: true,
@@ -34,6 +37,9 @@ $(function () {
             'UserDoctorMobileLoginForm[username]': {
                 required: "请输入手机号码",
                 isMobile: '请输入正确的中国手机号码!'
+            },
+            'UserDoctorMobileLoginForm[captcha_code]': {
+                required: "请输入图形验证码"
             },
             'UserDoctorMobileLoginForm[verify_code]': {
                 required: "请输入短信验证码",

@@ -10,6 +10,7 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/c
 $this->setPageTitle('名医主刀');
 
 $urlRegister = $this->createUrl("user/register");
+$urlUserAjaxCaptchaCode = $this->createUrl("user/ajaxCaptchaCode");
 $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/auth/sendSmsVerifyCode');
 $authActionType = AuthSmsVerify::ACTION_USER_LOGIN;
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
@@ -58,12 +59,12 @@ $this->show_footer = false;
                 <div class="error"></div>
             </li>
             <li class="bb-none ml10">
-                <div class="grid">
+                <div id="captchaCode" class="grid">
                     <div class="col-1">
-                        <?php  echo $form->textField($model, 'captcha_code', array('placeholder' => '输入图形验证码')); ?>
+                        <?php echo $form->textField($model, 'captcha_code', array('placeholder' => '输入图形验证码')); ?>
                     </div>
-                    <div class="col-0">
-                       <?php $this->widget('CCaptcha', array('showRefreshButton' => false, 'clickableImage' => true, 'imageOptions' => array('alt' => '点击换图', 'title' => '点击换图', 'style' => 'cursor:pointer'))); ?>
+                    <div class="col-0 w112p">
+                        <?php $this->widget('CCaptcha', array('showRefreshButton' => false, 'clickableImage' => true, 'imageOptions' => array('alt' => '点击换图', 'title' => '点击换图', 'style' => 'cursor:pointer', 'class' => 'h40p'))); ?>
                     </div>
                 </div>
                 <?php echo $form->error($model, 'captcha_code'); ?>
@@ -74,7 +75,7 @@ $this->show_footer = false;
                     <div class="col-1">
                         <?php echo $form->numberField($model, 'verify_code', array('placeholder' => '输入验证码')); ?>
                     </div>
-                    <div class="col-0">
+                    <div class="col-0 w112p">
                         <button id="btn-sendSmsCode" class="btn btn-sendSmsCode ui-corner-all ui-shadow bg-green color-white">获取验证码</button>
                     </div>
                 </div>
@@ -93,13 +94,15 @@ $this->show_footer = false;
     $(document).ready(function () {
         $("#btn-sendSmsCode").click(function (e) {
             e.preventDefault();
-            sendSmsVerifyCode($(this));
+            checkCaptchaCode($(this));
         });
     });
-    function sendSmsVerifyCode(domBtn) {
+    function checkCaptchaCode(domBtn) {
         var domForm = $("#login-form");
+        var actionUrl = domForm.attr('data-actionurl');
         var domMobile = domForm.find("#UserDoctorMobileLoginForm_username");
         var mobile = domMobile.val();
+        $('#UserDoctorMobileLoginForm_captcha_code-error').remove();
         if (mobile.length === 0) {
             $("#UserDoctorMobileLoginForm_username-error").remove();
             $("#UserDoctorMobileLoginForm_username").parents('li').append("<div id='UserDoctorMobileLoginForm_username-error' class='error'>请输入手机号码</div>");
@@ -108,37 +111,56 @@ $this->show_footer = false;
             $("#UserDoctorMobileLoginForm_username-error").remove();
             $("#UserDoctorMobileLoginForm_username").parents('li').append("<div id='UserDoctorMobileLoginForm_username-error' class='error'>请输入正确的中国手机号码!</div>");
         } else {
-            $(".error").html("");//删除错误信息
-            buttonTimerStart(domBtn, 60000);
-            var actionUrl = domForm.find("input[name='smsverify[actionUrl]']").val();
-            var actionType = domForm.find("input[name='smsverify[actionType]']").val();
-            var formData = new FormData();
-            formData.append("AuthSmsVerify[mobile]", mobile);
-            formData.append("AuthSmsVerify[actionType]", actionType);
-            $.ajax({
-                type: 'post',
-                url: actionUrl,
-                data: formData,
-                dataType: "json",
-                processData: false,
-                contentType: false,
-                'success': function (data) {
-                    console.log(data);
-                    if (data.status === true || data.status === 'ok') {
-                        //domForm[0].reset();
+            //check验证码
+            domForm.ajaxSubmit({
+                url: '<?php echo $urlUserAjaxCaptchaCode; ?>',
+                success: function (data) {
+                    //console.log(data);
+                    var error = eval('(' + data + ')').UserDoctorMobileLoginForm_captcha_code;
+                    if (error) {
+                        $('#captchaCode').after('<div id="UserDoctorMobileLoginForm_captcha_code-error" class="error">' + error + '</div>');
+                    } else {
+                        sendSmsVerifyCode(domBtn, domForm, mobile);
                     }
-                    else {
-                        console.log(data);
-                    }
-                },
-                'error': function (data) {
-                    console.log(data);
-                },
-                'complete': function () {
                 }
             });
+
+
         }
     }
+
+    function sendSmsVerifyCode(domBtn, domForm, mobile) {
+        $(".error").html("");//删除错误信息
+        buttonTimerStart(domBtn, 60000);
+        var actionUrl = domForm.find("input[name='smsverify[actionUrl]']").val();
+        var actionType = domForm.find("input[name='smsverify[actionType]']").val();
+        var formData = new FormData();
+        formData.append("AuthSmsVerify[mobile]", mobile);
+        formData.append("AuthSmsVerify[actionType]", actionType);
+        $.ajax({
+            type: 'post',
+            url: actionUrl,
+            data: formData,
+            dataType: "json",
+            processData: false,
+            contentType: false,
+            'success': function (data) {
+                console.log(data);
+                if (data.status === true || data.status === 'ok') {
+                    //domForm[0].reset();
+                }
+                else {
+                    console.log(data);
+                }
+            },
+            'error': function (data) {
+                console.log(data);
+            },
+            'complete': function () {
+            }
+        });
+    }
+
     function buttonTimerStart(domBtn, timer) {
         timer = timer / 1000 //convert to second.
         var interval = 1000;
