@@ -5,7 +5,7 @@ class BookingController extends MobileController {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('createCorp', 'ajaxCreateCorp', 'ajaxUploadCorp', 'ajaxUploadFile', 'captcha', 'AjaxCaptchaCode', 'quickbook', 'ajaxQuickbook', 'create'),
+                'actions' => array('createCorp', 'ajaxCreateCorp', 'ajaxUploadCorp', 'ajaxUploadFile', 'captcha', 'AjaxCaptchaCode','AjaxCorpCaptchaCode', 'quickbook', 'ajaxQuickbook', 'create'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -238,7 +238,13 @@ class BookingController extends MobileController {
         }
     }
 
- 
+    public function actionAjaxCaptchaCode() {
+        $model = new BookQuickForm;
+        $values = $_POST['booking'];
+        $model->setAttributes($values, true);
+        echo (CActiveForm::validate($model));
+        Yii::app()->end();
+    }
 
     /**
      * 快速预约
@@ -409,15 +415,13 @@ class BookingController extends MobileController {
         }
     }
 
-    public function actionAjaxCaptchaCode() {
-        $model = new UserDoctorMobileLoginForm;
-        $values['captcha_code'] = 'mdtufa';
-//          $values = $_POST['UserDoctorMobileLoginForm'];
+       public function actionAjaxCorpCaptchaCode() {
+        $model = new BookCorpForm;
+        $values = $_POST['BookCorpForm'];
         $model->setAttributes($values, true);
         echo (CActiveForm::validate($model));
         Yii::app()->end();
     }
-
     
     //进入公司快速预约页面
     public function actionCreateCorp() {
