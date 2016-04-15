@@ -17,7 +17,7 @@ class UserController extends MobileController {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('register', 'ajaxRegister', 'login', 'commonProblem', 'index', 'ajaxForgetPassword'),
+                'actions' => array('register', 'ajaxRegister', 'login', 'commonProblem', 'index', 'captcha', 'ajaxForgetPassword'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -26,6 +26,20 @@ class UserController extends MobileController {
             ),
             array('deny', // deny all users
                 'users' => array('*'),
+            ),
+        );
+    }
+
+    public function actions() {
+        return array(
+            // captcha action renders the CAPTCHA image displayed on the contact page
+            'captcha' => array(
+                'class' => 'CCaptchaAction',
+                'backColor' => 0xFFFFFF,
+                'maxLength' => 6,
+                'offset' => 0,
+                'testLimit' => 0,
+                'height' => 34
             ),
         );
     }
@@ -71,16 +85,16 @@ class UserController extends MobileController {
         //print_r($user);exit;
         $booking = new Booking();
         $bookingModels = $booking->getCountBkStatusByUserId($user['id']);
-        $output=array();
-        foreach($bookingModels as $model){
+        $output = array();
+        foreach ($bookingModels as $model) {
             $data = new stdClass();
             //$data->id =$model->id;
-            $data->num=$model->num;
-            $data->bkStatus=$model->bk_status;
-            $data->bkStatusText=$model->getBkStatus();
-            $output[]=$data;
-        } 
-        $this->render('view', array('user' => $user,'data' => $output));
+            $data->num = $model->num;
+            $data->bkStatus = $model->bk_status;
+            $data->bkStatusText = $model->getBkStatus();
+            $output[] = $data;
+        }
+        $this->render('view', array('user' => $user, 'data' => $output));
     }
 
     public function actionCommonProblem() {

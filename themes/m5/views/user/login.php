@@ -60,6 +60,18 @@ $this->show_footer = false;
             <li class="bb-none ml10">
                 <div class="grid">
                     <div class="col-1">
+                        <?php  echo $form->textField($model, 'captcha_code', array('placeholder' => '输入图形验证码')); ?>
+                    </div>
+                    <div class="col-0">
+                       <?php $this->widget('CCaptcha', array('showRefreshButton' => false, 'clickableImage' => true, 'imageOptions' => array('alt' => '点击换图', 'title' => '点击换图', 'style' => 'cursor:pointer'))); ?>
+                    </div>
+                </div>
+                <?php echo $form->error($model, 'captcha_code'); ?>
+                <div class="error"></div>
+            </li>
+            <li class="bb-none ml10">
+                <div class="grid">
+                    <div class="col-1">
                         <?php echo $form->numberField($model, 'verify_code', array('placeholder' => '输入验证码')); ?>
                     </div>
                     <div class="col-0">
