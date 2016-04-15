@@ -118,8 +118,6 @@ class UserController extends MobileController {
     public function actionLogin() {
         $returnUrl = $this->getReturnUrl($this->createUrl('user/view'));
         $user = $this->getCurrentUser();
-        print_r($_POST['UserDoctorMobileLoginForm']);
-        exit;
         //用户已登陆 直接进入个人中心
         if (isset($user)) {
             $this->redirect(array('view'));
@@ -138,10 +136,6 @@ class UserController extends MobileController {
                 // $user = $this->getCurrentUser();
                 $this->redirect($url);
             }
-        }
-        if (isset($_GET['ajax']) && $_GET['ajax'] === 'login-form') {
-            echo CJSON::decode(CJSON::encode(CActiveForm::validate($model)));
-            exit;
         }
         //失败 则返回登录页面
         $this->render("login", array(
