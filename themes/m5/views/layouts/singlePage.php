@@ -17,7 +17,7 @@
         ?>
         <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/js/lib/zepto.min.js"></script>
         <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/js/main.js"></script>
-        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/js/statistics.js"></script>
+        <script type="text/javascript" src="<?php //echo Yii::app()->theme->baseUrl ?>/js/statistics.js"></script>
     </head>
     <body>
         <div id="section_container">
