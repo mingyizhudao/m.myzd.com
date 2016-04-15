@@ -102,6 +102,15 @@ $this->show_footer = false;
                 <?php echo $form->textField($model, 'contact_name', array('name' => 'booking[contact_name]', 'placeholder' => '请输入患者姓名')); ?>
                 <?php echo $form->error($model, 'contact_name'); ?> 
             </li>
+            
+            <li>
+                <?php echo CHtml::activeLabel($model, 'captcha_code'); ?>                                           
+                <?php echo $form->textField($model, 'captcha_code', array('name' => 'booking[captcha_code]', 'placeholder' => '请输入图形验证码')); ?>
+                <?php echo $form->error($model, 'captcha_code'); ?> 
+                <button id="btn-sendSmsCode" class="btn btn-sendSmsCode ui-corner-all ui-shadow"> <?php $this->widget('CCaptcha', array('showRefreshButton' => false, 'clickableImage' => true, 'imageOptions' => array('alt' => '点击换图', 'title' => '点击换图', 'style' => 'cursor:pointer'))); ?></button>
+            </li>
+            
+            
             <li>
                 <?php echo CHtml::activeLabel($model, 'mobile'); ?>                                           
                 <?php echo $form->numberField($model, 'mobile', array('name' => 'booking[mobile]', 'placeholder' => '请输入手机号')); ?>
