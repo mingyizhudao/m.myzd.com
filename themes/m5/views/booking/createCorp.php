@@ -193,6 +193,7 @@ $this->show_footer = false;
         var domMobile = $("#booking_mobile");
         var mobile = domMobile.val();
         var captchaCode = $('#booking_captcha_code').val();
+        $('#booking_captcha_code-error').remove();
         $('#BookCorpForm_captcha_captcha_code-error').remove();
         if (mobile.length === 0) {
             //$("#booking_mobile_em_").text("请输入手机号码").show();
@@ -214,7 +215,7 @@ $this->show_footer = false;
                     console.log(data);
                     var error = eval('(' + data + ')').BookCorpForm_captcha_code;
                     if (error) {
-                        $('#captchaCode').after('<div id="BookCorpForm_captcha_captcha_code-error" class="error">' + error + '</div>');
+                        $('#captchaCode').after('<div id="BookCorpForm_captcha_captcha_code-error" class="error">图形验证码不正确</div>');
                     } else {
                         sendSmsVerifyCode(domBtn, mobile);
                     }
