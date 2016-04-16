@@ -1,7 +1,7 @@
 <?php
 Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/jquery.form.js', CClientScript::POS_END);
 Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/jquery.validate.js', CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/loginValidator.js', CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/loginValidator.js?ts=' . time(), CClientScript::POS_END);
 ?>
 <?php
 /**
@@ -102,7 +102,6 @@ $this->show_footer = false;
         var actionUrl = domForm.attr('data-actionurl');
         var domMobile = domForm.find("#UserDoctorMobileLoginForm_username");
         var mobile = domMobile.val();
-        $('#UserDoctorMobileLoginForm_captcha_code-error').remove();
         if (mobile.length === 0) {
             $("#UserDoctorMobileLoginForm_username-error").remove();
             $("#UserDoctorMobileLoginForm_username").parents('li').append("<div id='UserDoctorMobileLoginForm_username-error' class='error'>请输入手机号码</div>");
@@ -111,6 +110,7 @@ $this->show_footer = false;
             $("#UserDoctorMobileLoginForm_username-error").remove();
             $("#UserDoctorMobileLoginForm_username").parents('li').append("<div id='UserDoctorMobileLoginForm_username-error' class='error'>请输入正确的中国手机号码!</div>");
         } else {
+            $('#UserDoctorMobileLoginForm_captcha_code-error').remove();
             //check验证码
             domForm.ajaxSubmit({
                 url: '<?php echo $urlUserAjaxCaptchaCode; ?>',
