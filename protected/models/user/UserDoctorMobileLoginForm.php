@@ -25,7 +25,7 @@ class UserDoctorMobileLoginForm extends EFormModel {
     public function rules() {
         return array(
             array('username, verify_code', 'required', 'message' => '请输入{attribute}'), // username and password are required
-            array('captcha_code', 'captcha', 'allowEmpty' => !CCaptcha::checkRequirements()),
+            array('captcha_code', 'captcha', 'allowEmpty' => !CCaptcha::checkRequirements(),'message'=>'图形验证码不正确！'),
         );
     }
 
