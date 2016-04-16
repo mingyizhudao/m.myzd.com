@@ -1,6 +1,7 @@
 $(function () {
 
     var domForm = $("#login-form"), // form - html dom object.;
+            urlCheckCode = domForm.attr('data-checkCode'),
             btnSubmit = $("#btnSubmit");
     // 手机号码验证
     $.validator.addMethod("isMobile", function (value, element) {
@@ -8,12 +9,26 @@ $(function () {
         var mobile = /^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
         return this.optional(element) || (length == 11 && mobile.test(value));
     }, "请填写正确的手机号码");
-    
-    btnSubmit.click(function(){
+
+    btnSubmit.click(function () {
         var bool = validator.form();
-        if(bool){
-            domForm.submit();
+        //check验证码
+        if (bool) {
+            domForm.ajaxSubmit({
+                url: urlCheckCode,
+                success: function (data) {
+                    //console.log(data);
+                    var error = eval('(' + data + ')').UserDoctorMobileLoginForm_captcha_code;
+                    if (error) {
+                        $('#UserDoctorMobileLoginForm_captcha_code-error').remove();
+                        $('#captchaCode').after('<div id="UserDoctorMobileLoginForm_captcha_code-error" class="error">图形验证码不正确</div>');
+                    } else {
+                        domForm.submit();
+                    }
+                }
+            });
         }
+
     });
     //登陆页面表单验证模块
     var validator = domForm.validate({

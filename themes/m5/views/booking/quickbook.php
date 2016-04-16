@@ -47,7 +47,7 @@ $user = $this->getCurrentUser();
                     <?php
                     $form = $this->beginWidget('CActiveForm', array(
                         'id' => 'booking-form',
-                        'htmlOptions' => array("enctype" => "multipart/form-data", 'data-actionUrl' => $urlSubmitForm, 'data-url-uploadFile' => $urlUploadFile, 'data-url-return' => $urlReturn),
+                        'htmlOptions' => array("enctype" => "multipart/form-data", 'data-actionUrl' => $urlSubmitForm, 'data-url-uploadFile' => $urlUploadFile, 'data-url-return' => $urlReturn, 'data-checkCode' => $urlBookingAjaxCaptchaCode),
                         'enableClientValidation' => false,
                         'clientOptions' => array(
                             'validateOnSubmit' => true,
@@ -144,6 +144,7 @@ $user = $this->getCurrentUser();
         </div>
     </div>
 </article>
+<div id="jingle_toast" class="mobileTip toast"><a href="#">请填写手机号</a></div>
 <script type="text/javascript">
     $(document).ready(function () {
         $("#btn-sendSmsCode").click(function (e) {
@@ -156,19 +157,24 @@ $user = $this->getCurrentUser();
         var domMobile = $("#booking_mobile");
         var mobile = domMobile.val();
         var captchaCode = $('#booking_captcha_code').val();
-        $('#booking_captcha_code-error').remove();
-        $('#BookQuickForm_captcha_code-error').remove();
         if (mobile.length === 0) {
             //$("#booking_mobile_em_").text("请输入手机号码").show();
             //domMobile.parent().addClass("error");
             //showErrorPopup('请输入手机号码', '#popupError', '#triggerPopupError');
-            J.showToast('请输入手机号码', '', '2000');
+            $('.mobileTip').show();
+            setTimeout(function () {
+                $(".mobileTip").hide();
+            }, 1000);
         } else if (domMobile.hasClass("error")) {
 
             // mobile input field as error, so do nothing.
         } else if (captchaCode == '') {
+            $('#booking_captcha_code-error').remove();
+            $('#BookQuickForm_captcha_code-error').remove();
             $('#captchaCode').after('<div id="BookQuickForm_captcha_code-error" class="error">请填写图形验证码</div>');
         } else {
+            $('#booking_captcha_code-error').remove();
+            $('#BookQuickForm_captcha_code-error').remove();
             var domForm = $('#booking-form');
             var formdata = domForm.serializeArray();
             //check图形验证码
@@ -180,7 +186,7 @@ $user = $this->getCurrentUser();
                     //console.log(data);
                     var error = eval('(' + data + ')').BookQuickForm_captcha_code;
                     if (error) {
-                        $('#captchaCode').after('<div id="BookQuickForm_captcha_code-error" class="error">图形验证码不正确</div>');
+                        $('#captchaCode').after('<div id="BookQuickForm_captcha_code-error" class="error">' + error + '</div>');
                     } else {
                         sendSmsVerifyCode(domBtn, mobile);
                     }

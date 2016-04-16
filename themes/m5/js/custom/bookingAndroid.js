@@ -11,7 +11,26 @@ jQuery(function () {
             btnSubmit = $("#btnSubmit");
 
     btnSubmit.click(function () {
-        domForm.submit();
+        var urlCheckCode = domForm.attr('data-checkCode');
+        var formdata = domForm.serializeArray();
+        var bool = validator.form();
+        if (bool) {
+            $.ajax({
+                type: 'post',
+                url: urlCheckCode,
+                data: formdata,
+                success: function (data) {
+                    //console.log(data);
+                    var error = eval('(' + data + ')').BookQuickForm_captcha_code;
+                    if (error) {
+                        $('#BookQuickForm_captcha_code-error').remove();
+                        $('#captchaCode').after('<div id="BookQuickForm_captcha_code-error" class="error">' + error + '</div>');
+                    } else {
+                        formAjaxSubmit();
+                    }
+                }
+            });
+        }
     });
 
 
@@ -105,49 +124,51 @@ jQuery(function () {
             element.parents(".ui-field-contain").find("div.error").remove();
             error.appendTo(element.parents(".ui-field-contain")); //这里的element是录入数据的对象  
         },
-        submitHandler: function () {
-            disabledBtnAndriod(btnSubmit);
-            //form插件的异步无刷新提交
-            actionUrl = domForm.attr('data-actionurl');
-            //returnUrl = domForm.attr("data-url-return");
-            domForm.ajaxSubmit({
-                type: 'post',
-                url: actionUrl,
-                success: function (data) {
-                    if (data.status == 'ok') {
-                        var inputCount = $(".MultiFile-applied").length - 1;
-                        if (inputCount == 0) {
-                            location.href = urlReturn + '?refNo=' + data.salesOrderRefNo;
-                            enableBtnAndriod(btnSubmit);
-                            //$('#success').removeClass('hide');
-                        } else {
-                            ajaxFileupload(data);
-                        }
-                    } else {
-                        domForm.find("div.error").remove();
-                        //append errorMsg
-                        isfocus = true;
-                        for (error in data.errors) {
-                            errerMsg = data.errors[error];
-                            inputKey = '#booking_' + error;
-                            $(inputKey).focus();
-                            $(inputKey).after("<div class='error'>" + errerMsg + "</div> ");
-                        }
-                        enableBtnAndriod(btnSubmit);
-                    }
-                },
-                error: function (XmlHttpRequest, textStatus, errorThrown) {
-                    enableBtnAndriod(btnSubmit);
-                    console.log(XmlHttpRequest);
-                    console.log(textStatus);
-                    console.log(errorThrown);
-                },
-                complete: function () {
-                    //    btnSubmit.button("enable");
-                }
-            });
-        }
     });
+
+    function formAjaxSubmit() {
+        disabledBtnAndriod(btnSubmit);
+        //form插件的异步无刷新提交
+        actionUrl = domForm.attr('data-actionurl');
+        //returnUrl = domForm.attr("data-url-return");
+        domForm.ajaxSubmit({
+            type: 'post',
+            url: actionUrl,
+            success: function (data) {
+                if (data.status == 'ok') {
+                    var inputCount = $(".MultiFile-applied").length - 1;
+                    if (inputCount == 0) {
+                        location.href = urlReturn + '?refNo=' + data.salesOrderRefNo;
+                        enableBtnAndriod(btnSubmit);
+                        //$('#success').removeClass('hide');
+                    } else {
+                        ajaxFileupload(data);
+                    }
+                } else {
+                    domForm.find("div.error").remove();
+                    //append errorMsg
+                    isfocus = true;
+                    for (error in data.errors) {
+                        errerMsg = data.errors[error];
+                        inputKey = '#booking_' + error;
+                        $(inputKey).focus();
+                        $(inputKey).after("<div class='error'>" + errerMsg + "</div> ");
+                    }
+                    enableBtnAndriod(btnSubmit);
+                }
+            },
+            error: function (XmlHttpRequest, textStatus, errorThrown) {
+                enableBtnAndriod(btnSubmit);
+                console.log(XmlHttpRequest);
+                console.log(textStatus);
+                console.log(errorThrown);
+            },
+            complete: function () {
+                //    btnSubmit.button("enable");
+            }
+        });
+    }
+
     function ajaxFileupload(data) {
         disabledBtnAndriod(btnSubmit);
         $(".MultiFile-applied").attr("name", 'file');

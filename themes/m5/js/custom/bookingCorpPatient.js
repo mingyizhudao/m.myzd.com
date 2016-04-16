@@ -507,11 +507,30 @@ $(function () {
 
     function formSubmit() {
         if (getFileCountCorp() == 0) {
-            J.showToast('请选择企业工牌照片', '', 2000);
+            $(".corpTip").show();
+            setTimeout(function () {
+                $(".corpTip").hide();
+            }, 1000);
         } else {
+            var urlCheckCode = domForm.attr('data-checkCode');
+            var formdata = domForm.serializeArray();
             var bool = validator.form();
             if (bool) {
-                formAjaxSubmit();
+                $.ajax({
+                    type: 'post',
+                    url: urlCheckCode,
+                    data: formdata,
+                    success: function (data) {
+                        //console.log(data);
+                        var error = eval('(' + data + ')').BookCorpForm_captcha_code;
+                        if (error) {
+                            $('#BookCorpForm_captcha_captcha_code-error').remove();
+                            $('#captchaCode').after('<div id="BookCorpForm_captcha_captcha_code-error" class="error">' + error + '</div>');
+                        } else {
+                            formAjaxSubmit();
+                        }
+                    }
+                });
             }
         }
 
@@ -656,7 +675,7 @@ $(function () {
                             pos: 'center'
                         });
                     }
-                    
+
                 } else {
                     domForm.find("div.error").remove();
                     //append errorMsg

@@ -494,11 +494,25 @@ $(function () {
         if ($(this).hasClass('disabled') || $(this).hasClass("ui-state-disabled")) {
             return false;
         }
-
-
+        var urlCheckCode = domForm.attr('data-checkCode');
+        var formdata = domForm.serializeArray();
         var bool = validator.form();
         if (bool) {
-            formAjaxSubmit();
+            $.ajax({
+                type: 'post',
+                url: urlCheckCode,
+                data: formdata,
+                success: function (data) {
+                    //console.log(data);
+                    var error = eval('(' + data + ')').BookQuickForm_captcha_code;
+                    if (error) {
+                        $('#BookQuickForm_captcha_code-error').remove();
+                        $('#captchaCode').after('<div id="BookQuickForm_captcha_code-error" class="error">' + error + '</div>');
+                    } else {
+                        formAjaxSubmit();
+                    }
+                }
+            });
         }
         //触发表单提交事件 
         //domForm.submit();

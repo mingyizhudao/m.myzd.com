@@ -59,7 +59,7 @@ class BookCorpForm extends EFormModel {
             array('remark', 'length', 'max' => 500),
             array('id, ref_no, user_id, mobile, verify_code,contact_name, contact_email, bk_status, bk_type, doctor_id, doctor_name, expteam_id, city_id, hospital_id, hospital_name, hp_dept_id, hp_dept_name, disease_name, disease_detail, date_start, date_end, appt_date, remark, date_created', 'safe'),
             //     array('verify_code', checkVerifryCode)
-            array('captcha_code', 'captcha', 'allowEmpty' => !CCaptcha::checkRequirements()),
+            array('captcha_code', 'captcha', 'allowEmpty' => !CCaptcha::checkRequirements(), 'message' => '图形验证码不正确！'),
         );
     }
 
