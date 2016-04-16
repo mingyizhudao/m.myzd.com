@@ -11,6 +11,7 @@ $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/auth/sendSmsVerifyCode');
 $authActionType = AuthSmsVerify::ACTION_BOOKING;
 $urlSubmitForm = $this->createUrl("booking/ajaxQuickbook");
 $urlUploadFile = $this->createUrl("booking/ajaxUploadFile");
+$urlBookingAjaxCaptchaCode = $this->createUrl("booking/ajaxCaptchaCode");
 $urlReturn = $this->createUrl('order/view');
 $urlHomeView = $this->createUrl('home/view');
 $urlBackBtn = Yii::app()->request->getQuery('backBtn', '1');
@@ -105,6 +106,19 @@ $user = $this->getCurrentUser();
                             <!--                                <div id="booking_mobile-error" class="error hide">请填写手机号码</div>-->
                         </div>
                         <div class="ui-field-contain mt5">
+                            <div id="captchaCode" class="grid">
+                                <div class="col-1 w50">
+                                    <?php echo CHtml::activeLabel($model, 'captcha_code'); ?>                                           
+                                    <?php echo $form->textField($model, 'captcha_code', array('name' => 'booking[captcha_code]', 'placeholder' => '请输入图形验证码')); ?>
+                                    <?php echo $form->error($model, 'captcha_code'); ?>
+                                </div>
+                                <div class="col-1 w50 pt20">
+                                    <!--<button id="btn-sendSmsCode" type="button" class="w100 bg-green border-r3">获取验证码</button>-->
+                                    <?php $this->widget('CCaptcha', array('showRefreshButton' => false, 'clickableImage' => true, 'imageOptions' => array('alt' => '点击换图', 'title' => '点击换图', 'style' => 'cursor:pointer', 'class' => 'w100 h40p border-input br5'))); ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-field-contain mt5">
                             <div class="grid">
                                 <div class="col-1 w50">
                                     <?php echo CHtml::activeLabel($model, 'verify_code'); ?>                                           
@@ -181,13 +195,15 @@ $user = $this->getCurrentUser();
     $(document).ready(function () {
         $("#btn-sendSmsCode").click(function (e) {
             e.preventDefault();
-            sendSmsVerifyCode($(this));
+            checkCaptchaCode($(this));
         });
     });
     $()
-    function sendSmsVerifyCode(domBtn) {
+    function checkCaptchaCode(domBtn) {
         var domMobile = $("#booking_mobile");
         var mobile = domMobile.val();
+        var captchaCode = $('#booking_captcha_code').val();
+        $('#BookQuickForm_captcha_code-error').remove();
         if (mobile.length === 0) {
             //$("#booking_mobile_em_").text("请输入手机号码").show();
             //domMobile.parent().addClass("error");
@@ -198,37 +214,59 @@ $user = $this->getCurrentUser();
             }, 1000);
         } else if (domMobile.hasClass("error")) {
             // mobile input field as error, so do nothing.
+        } else if (captchaCode == '') {
+            $('#captchaCode').after('<div id="BookQuickForm_captcha_code-error" class="error">请填写图形验证码</div>');
         } else {
-            $('#booking_mobile-error').addClass('hide');
-            buttonTimerStart(domBtn, 60000);
-            $domForm = $("#booking-form");
-            var actionUrl = $domForm.find("input[name='smsverify[actionUrl]']").val();
-            var actionType = $domForm.find("input[name='smsverify[actionType]']").val();
-            var formData = new FormData();
-            formData.append("AuthSmsVerify[mobile]", mobile);
-            formData.append("AuthSmsVerify[actionType]", actionType);
+            var domForm = $('#booking-form');
+            var formdata = domForm.serializeArray();
+            //check图形验证码
             $.ajax({
                 type: 'post',
-                url: actionUrl,
-                data: formData,
-                dataType: "json",
-                processData: false,
-                contentType: false,
-                'success': function (data) {
-                    if (data.status === true) {
-                        //domForm[0].reset();
+                url: '<?php echo $urlBookingAjaxCaptchaCode; ?>',
+                data: formdata,
+                success: function (data) {
+                    //console.log(data);
+                    var error = eval('(' + data + ')').BookQuickForm_captcha_code;
+                    if (error) {
+                        $('#captchaCode').after('<div id="BookQuickForm_captcha_code-error" class="error">' + error + '</div>');
+                    } else {
+                        sendSmsVerifyCode(domBtn, mobile);
                     }
-                    else {
-                        console.log(data);
-                    }
-                },
-                'error': function (data) {
-                    console.log(data);
-                },
-                'complete': function () {
                 }
             });
         }
+    }
+
+    function sendSmsVerifyCode(domBtn, mobile) {
+        $('#booking_mobile-error').addClass('hide');
+        buttonTimerStart(domBtn, 60000);
+        $domForm = $("#booking-form");
+        var actionUrl = $domForm.find("input[name='smsverify[actionUrl]']").val();
+        var actionType = $domForm.find("input[name='smsverify[actionType]']").val();
+        var formData = new FormData();
+        formData.append("AuthSmsVerify[mobile]", mobile);
+        formData.append("AuthSmsVerify[actionType]", actionType);
+        $.ajax({
+            type: 'post',
+            url: actionUrl,
+            data: formData,
+            dataType: "json",
+            processData: false,
+            contentType: false,
+            'success': function (data) {
+                if (data.status === true) {
+                    //domForm[0].reset();
+                }
+                else {
+                    console.log(data);
+                }
+            },
+            'error': function (data) {
+                console.log(data);
+            },
+            'complete': function () {
+            }
+        });
     }
 
 </script>

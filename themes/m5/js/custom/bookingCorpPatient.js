@@ -547,6 +547,9 @@ $(function () {
                 required: true,
                 isMobile: true
             },
+            'booking[captcha_code]': {
+                required: true
+            },
             'booking[verify_code]': {
                 required: true,
                 digits: true,
@@ -590,6 +593,9 @@ $(function () {
             'booking[contact_name]': {
                 required: '请填写患者姓名',
                 maxlength: '患者姓名太长'
+            },
+            'booking[captcha_code]': {
+                required: "请填写图形验证码"
             },
             'booking[mobile]': {
                 required: "请填写手机号码",

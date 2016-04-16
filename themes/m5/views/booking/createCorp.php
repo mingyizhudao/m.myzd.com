@@ -16,6 +16,7 @@ $authActionType = AuthSmsVerify::ACTION_BOOKING;
 $urlSubmitForm = $this->createUrl("booking/ajaxCreateCorp");
 $urlUploadFile = $this->createUrl("booking/ajaxUploadFile");
 $urlUplaodCorpFile = $this->createUrl('booking/ajaxCreateCorp');
+$urlAjaxCorpCaptchaCode = $this->createUrl('booking/ajaxCorpCaptchaCode');
 $urlReturn = $this->createUrl('home/view');
 $this->show_footer = false;
 ?>
@@ -102,15 +103,20 @@ $this->show_footer = false;
                 <?php echo $form->textField($model, 'contact_name', array('name' => 'booking[contact_name]', 'placeholder' => '请输入患者姓名')); ?>
                 <?php echo $form->error($model, 'contact_name'); ?> 
             </li>
-            
+
             <li>
-                <?php echo CHtml::activeLabel($model, 'captcha_code'); ?>                                           
-                <?php echo $form->textField($model, 'captcha_code', array('name' => 'booking[captcha_code]', 'placeholder' => '请输入图形验证码')); ?>
-                <?php echo $form->error($model, 'captcha_code'); ?> 
-                <button id="btn-sendSmsCode" class="btn btn-sendSmsCode ui-corner-all ui-shadow"> <?php $this->widget('CCaptcha', array('showRefreshButton' => false, 'clickableImage' => true, 'imageOptions' => array('alt' => '点击换图', 'title' => '点击换图', 'style' => 'cursor:pointer'))); ?></button>
+                <div id="captchaCode" class="grid">
+                    <div class="col-1 w50">
+                        <?php echo CHtml::activeLabel($model, 'captcha_code'); ?>                                           
+                        <?php echo $form->textField($model, 'captcha_code', array('name' => 'booking[captcha_code]', 'placeholder' => '请输入图形验证码')); ?>
+                        <?php echo $form->error($model, 'captcha_code'); ?> 
+                    </div>
+                    <div class="col-1 w50 pt20">
+                        <?php $this->widget('CCaptcha', array('showRefreshButton' => false, 'clickableImage' => true, 'imageOptions' => array('alt' => '点击换图', 'title' => '点击换图', 'style' => 'cursor:pointer', 'class' => 'w100 h40p border-input br5'))); ?>
+                    </div>
+                </div>
             </li>
-            
-            
+
             <li>
                 <?php echo CHtml::activeLabel($model, 'mobile'); ?>                                           
                 <?php echo $form->numberField($model, 'mobile', array('name' => 'booking[mobile]', 'placeholder' => '请输入手机号')); ?>
@@ -171,7 +177,7 @@ $this->show_footer = false;
     $(document).ready(function () {
         $("#btn-sendSmsCode").click(function (e) {
             e.preventDefault();
-            sendSmsVerifyCode($(this));
+            checkCaptchaCode($(this));
         });
         $(".optional-btn").click(function () {
             var state = $(".optional").is(':visible');
@@ -183,47 +189,72 @@ $this->show_footer = false;
         });
     });
 
-    function sendSmsVerifyCode(domBtn) {
+    function checkCaptchaCode(domBtn) {
         var domMobile = $("#booking_mobile");
         var mobile = domMobile.val();
+        var captchaCode = $('#booking_captcha_code').val();
+        $('#BookCorpForm_captcha_captcha_code-error').remove();
         if (mobile.length === 0) {
             //$("#booking_mobile_em_").text("请输入手机号码").show();
             //domMobile.parent().addClass("error");
             J.showToast('请输入手机号码', '', 3000);
         } else if (domMobile.hasClass("error")) {
             // mobile input field as error, so do nothing.
+        } else if (captchaCode == '') {
+            $('#captchaCode').after('<div id="BookCorpForm_captcha_captcha_code-error" class="error">请填写图形验证码</div>');
         } else {
-            buttonTimerStart(domBtn, 60000);
-            $domForm = $("#booking-form");
-            var actionUrl = $domForm.find("input[name='smsverify[actionUrl]']").val();
-            var actionType = $domForm.find("input[name='smsverify[actionType]']").val();
-            var formData = new FormData();
-            formData.append("AuthSmsVerify[mobile]", mobile);
-            formData.append("AuthSmsVerify[actionType]", actionType);
-
+            var domForm = $('#booking-form');
+            var formdata = domForm.serializeArray();
+            //check图形验证码
             $.ajax({
                 type: 'post',
-                url: actionUrl,
-                data: formData,
-                dataType: "json",
-                processData: false,
-                contentType: false,
-                'success': function (data) {
-                    if (data.status === true) {
-                        //domForm[0].reset();
-                    }
-                    else {
-                        console.log(data);
-                    }
-                },
-                'error': function (data) {
+                url: '<?php echo $urlAjaxCorpCaptchaCode; ?>',
+                data: formdata,
+                success: function (data) {
                     console.log(data);
-                },
-                'complete': function () {
+                    var error = eval('(' + data + ')').BookCorpForm_captcha_code;
+                    if (error) {
+                        $('#captchaCode').after('<div id="BookCorpForm_captcha_captcha_code-error" class="error">' + error + '</div>');
+                    } else {
+                        sendSmsVerifyCode(domBtn, mobile);
+                    }
                 }
             });
         }
     }
+
+    function sendSmsVerifyCode(domBtn, mobile) {
+        buttonTimerStart(domBtn, 60000);
+        $domForm = $("#booking-form");
+        var actionUrl = $domForm.find("input[name='smsverify[actionUrl]']").val();
+        var actionType = $domForm.find("input[name='smsverify[actionType]']").val();
+        var formData = new FormData();
+        formData.append("AuthSmsVerify[mobile]", mobile);
+        formData.append("AuthSmsVerify[actionType]", actionType);
+
+        $.ajax({
+            type: 'post',
+            url: actionUrl,
+            data: formData,
+            dataType: "json",
+            processData: false,
+            contentType: false,
+            'success': function (data) {
+                if (data.status === true) {
+                    //domForm[0].reset();
+                }
+                else {
+                    console.log(data);
+                }
+            },
+            'error': function (data) {
+                console.log(data);
+            },
+            'complete': function () {
+            }
+        });
+    }
+
     function buttonTimerStart(domBtn, timer) {
         timer = timer / 1000 //convert to second.
         var interval = 1000;

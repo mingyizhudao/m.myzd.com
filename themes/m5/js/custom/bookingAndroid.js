@@ -33,6 +33,9 @@ jQuery(function () {
                 required: true,
                 maxlength: 50
             },
+            'booking[captcha_code]': {
+                required: true
+            },
             'booking[mobile]': {
                 required: true,
                 isMobile: true
@@ -73,6 +76,9 @@ jQuery(function () {
             'booking[contact_name]': {
                 required: '请填写患者姓名',
                 maxlength: '患者姓名太长'
+            },
+            'booking[captcha_code]': {
+                required: "请填写图形验证码"
             },
             'booking[mobile]': {
                 required: "请填写手机号码",

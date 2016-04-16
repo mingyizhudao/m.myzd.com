@@ -5,7 +5,7 @@ class BookingController extends MobileController {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('createCorp', 'ajaxCreateCorp', 'ajaxUploadCorp', 'ajaxUploadFile', 'captcha', 'AjaxCaptchaCode','AjaxCorpCaptchaCode', 'quickbook', 'ajaxQuickbook', 'create'),
+                'actions' => array('createCorp', 'ajaxCreateCorp', 'ajaxUploadCorp', 'ajaxUploadFile', 'captcha', 'ajaxCaptchaCode', 'ajaxCorpCaptchaCode', 'quickbook', 'ajaxQuickbook', 'create'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -415,14 +415,14 @@ class BookingController extends MobileController {
         }
     }
 
-       public function actionAjaxCorpCaptchaCode() {
-        $model = new BookCorpForm;
-        $values = $_POST['BookCorpForm'];
+    public function actionAjaxCorpCaptchaCode() {
+        $model = new BookCorpForm();
+        $values = $_POST['booking'];
         $model->setAttributes($values, true);
         echo (CActiveForm::validate($model));
         Yii::app()->end();
     }
-    
+
     //进入公司快速预约页面
     public function actionCreateCorp() {
         $form = new BookCorpForm();
