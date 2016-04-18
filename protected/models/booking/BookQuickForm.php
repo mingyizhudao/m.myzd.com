@@ -23,7 +23,6 @@ class BookQuickForm extends EFormModel {
     public $user_agent;
     public $submit_via;
     public $verify_code;
-    public $captcha_code;
 
     /**
      * @return array validation rules for model attributes.
@@ -46,7 +45,6 @@ class BookQuickForm extends EFormModel {
             array('user_agent', 'length', 'max' => 20),
             array('submit_via', 'length', 'max' => 10),
             array('id, ref_no, verify_code, user_id, mobile, contact_name, contact_email, bk_status, bk_type, doctor_name, city_id, hospital_name, hp_dept_name, disease_name, disease_detail, date_start, date_end, appt_date, remark, submit_via, date_created', 'safe'),
-            array('captcha_code', 'captcha', 'allowEmpty' => !CCaptcha::checkRequirements(), 'message' => '图形验证码不正确！'),
         );
     }
 
