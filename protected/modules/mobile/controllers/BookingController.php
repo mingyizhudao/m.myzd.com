@@ -18,19 +18,6 @@ class BookingController extends MobileController {
         );
     }
 
-    public function actions() {
-        return array(
-            // captcha action renders the CAPTCHA image displayed on the contact page
-            'captcha' => array(
-                'class' => 'CCaptchaAction',
-                'backColor' => 0xFFFFFF,
-                'maxLength' => 6,
-                'offset' => 0,
-                'testLimit' => 0,
-                'height' => 34
-            ),
-        );
-    }
 
     public function filterUserContext($filterChain) {
         $user = $this->loadUser();
