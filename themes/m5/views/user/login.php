@@ -64,7 +64,7 @@ $this->show_footer = false;
                         <?php echo $form->textField($model, 'captcha_code', array('placeholder' => '输入图形验证码')); ?>
                     </div>
                     <div class="col-0 w112p">
-                        <a href="javascript:void(0);"><img id="vailcode" src="<?php echo $this->createUrl('user/getCaptcha'); ?>" onclick="this.src = '<?php echo $this->createUrl('user/getCaptcha'); ?>/' + Math.random()"></a>
+                        <a href="javascript:void(0);"><img id="vailcode" src="" onclick="this.src = '<?php echo $this->createUrl('user/getCaptcha'); ?>/' + Math.random()"></a>
                     </div>
                 </div>
                 <?php echo $form->error($model, 'captcha_code'); ?>
@@ -92,7 +92,7 @@ $this->show_footer = false;
 </article>
 <script>
    function vailcode() {
-        $("#vailcode").attr("src", "<?php echo $this->createUrl('site/getCaptcha'); ?>/" + Math.random());
+        $("#vailcode").attr("src", "<?php echo $this->createUrl('user/getCaptcha'); ?>/" + Math.random());
     }
     $(document).ready(function () {
         vailcode();
