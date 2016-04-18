@@ -30,7 +30,6 @@ class UserController extends MobileController {
         );
     }
 
-
     //进入患者注册页面
     public function actionRegister() {
         $userRole = StatCode::USER_ROLE_PATIENT;
@@ -94,19 +93,25 @@ class UserController extends MobileController {
     }
 
     public function actionAjaxCaptchaCode() {
-        if (isset($_POST['UserDoctorMobileLoginForm'])) {
-            $model = new UserDoctorMobileLoginForm;
+        if (strcmp($_REQUEST['captcha_code'], Yii::app()->session['code']) != 0) {
+            $output['status'] = 'no';
+            $output['error'] = '验证码错误';
+            $this->renderJsonOutput($output);
+        } else {
+            if (isset($_POST['UserDoctorMobileLoginForm'])) {
+                $model = new UserDoctorMobileLoginForm;
 //        $values['captcha_code'] = 'mdtufa';
-            $values = $_POST['UserDoctorMobileLoginForm'];
-        }
-        if (isset($_POST['UserVerifyCodeLoginForm'])) {
-            $model = new UserVerifyCodeLoginForm;
-            $values = $_POST['UserVerifyCodeLoginForm'];
-        }
+                $values = $_POST['UserDoctorMobileLoginForm'];
+            }
+            if (isset($_POST['UserVerifyCodeLoginForm'])) {
+                $model = new UserVerifyCodeLoginForm;
+                $values = $_POST['UserVerifyCodeLoginForm'];
+            }
 
-        $model->setAttributes($values, true);
-        echo (CActiveForm::validate($model));
-        Yii::app()->end();
+            $model->setAttributes($values, true);
+            echo (CActiveForm::validate($model));
+            Yii::app()->end();
+        }
     }
 
     //登陆
