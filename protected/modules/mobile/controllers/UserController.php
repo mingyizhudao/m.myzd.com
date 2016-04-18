@@ -17,7 +17,7 @@ class UserController extends MobileController {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('register', 'ajaxRegister', 'login', 'commonProblem', 'index', 'captcha', 'ajaxCaptchaCode', 'ajaxForgetPassword'),
+                'actions' => array('register', 'ajaxRegister', 'login', 'commonProblem', 'index', 'getCaptcha', 'valiCaptcha', 'captcha', 'ajaxCaptchaCode', 'ajaxForgetPassword'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -107,9 +107,16 @@ class UserController extends MobileController {
     }
 
     public function actionAjaxCaptchaCode() {
-        $model = new UserDoctorMobileLoginForm;
+        if (isset($_POST['UserDoctorMobileLoginForm'])) {
+            $model = new UserDoctorMobileLoginForm;
 //        $values['captcha_code'] = 'mdtufa';
-          $values = $_POST['UserDoctorMobileLoginForm'];
+            $values = $_POST['UserDoctorMobileLoginForm'];
+        }
+        if (isset($_POST['UserVerifyCodeLoginForm'])) {
+            $model = new UserVerifyCodeLoginForm;
+            $values = $_POST['UserVerifyCodeLoginForm'];
+        }
+
         $model->setAttributes($values, true);
         echo (CActiveForm::validate($model));
         Yii::app()->end();
