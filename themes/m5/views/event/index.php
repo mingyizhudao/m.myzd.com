@@ -112,57 +112,55 @@ if ($showPage == 0) {
     </div>
 </article>
 <article id="story_article" class="<?php echo $showStory; ?>" data-scroll="true" data-active="find_footer">
-    <div>
-        <ul class="list">
-            <li>
-                <a href="<?php echo $urlEventEightHour; ?>">
-                    <div class="grid">
-                        <div class="col-1 w80 font-s17">
-                            8小时冒雪夜行驰援，医者仁心只为救死扶伤
-                        </div>
-                        <div class="col-1 w20 text-right">
-                            <img src="<?php echo $urlResImage; ?>gushi/eightHour/eightHour.png" class="w60p">
-                        </div>
+    <div class="text-justify">
+        <div class="mt10 bg-white">
+            <a href="<?php echo $urlEventEightHour; ?>">
+                <div class="grid color-black10">
+                    <div class="col-1 w40">
+                        <img src="<?php echo $urlResImage; ?>gushi/eightHour/eightHour.png">
                     </div>
-                </a>
-            </li>
-            <li>
-                <a href="<?php echo $urlEventStoryOne; ?>">
-                    <div class="grid">
-                        <div class="col-1 w80 font-s17">
-                            韩阿姨的一封感谢信照亮千万患者就医路
-                        </div>
-                        <div class="col-1 w20 text-right">
-                            <img src="<?php echo $urlResImage; ?>gushi/storyOne-1.png" class="w60p">
-                        </div>
+                    <div class="col-1 w60 font-s17 vertical-center pl20 pr20">
+                        8小时冒雪夜行驰援，医者仁心只为救死扶伤
                     </div>
-                </a>
-            </li>
-            <li>
-                <a href="<?php echo $urlEventStoryTwo; ?>">
-                    <div class="grid">
-                        <div class="col-1 w80 font-s17">
-                            父亲两次抗癌,只为给女儿更久的爱
-                        </div>
-                        <div class="col-1 w20 text-right">
-                            <img src="<?php echo $urlResImage; ?>gushi/storyTwo-1.png" class="w60p">
-                        </div>
+                </div>
+            </a>
+        </div>
+        <div class="mt10 bg-white">
+            <a href="<?php echo $urlEventStoryOne; ?>">
+                <div class="grid color-black10">
+                    <div class="col-1 w40">
+                        <img src="<?php echo $urlResImage; ?>gushi/storyOne-1.png">
                     </div>
-                </a>
-            </li>
-            <li>
-                <a href="<?php echo $urlEventStoryThree; ?>">
-                    <div class="grid">
-                        <div class="col-1 w80 font-s17">
-                            年轻妈妈的生命倒计时，急需寻找“续命”肺源
-                        </div>
-                        <div class="col-1 w20 text-right">
-                            <img src="<?php echo $urlResImage; ?>gushi/storyThree-1.png" class="w60p">
-                        </div>
+                    <div class="col-1 w60 font-s17 vertical-center pl20 pr20">
+                        韩阿姨的一封感谢信照亮千万患者就医路
                     </div>
-                </a>
-            </li>
-        </ul>
+                </div>
+            </a>
+        </div>
+        <div class="mt10 bg-white">
+            <a href="<?php echo $urlEventStoryTwo; ?>">
+                <div class="grid color-black10">
+                    <div class="col-1 w40">
+                        <img src="<?php echo $urlResImage; ?>gushi/storyTwo-1.png">
+                    </div>
+                    <div class="col-1 w60 font-s17 vertical-center pl20 pr20">
+                        父亲两次抗癌,只为给女儿更久的爱
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="mt10 bg-white mb10">
+            <a href="<?php echo $urlEventStoryThree; ?>">
+                <div class="grid color-black10">
+                    <div class="col-1 w40">
+                        <img src="<?php echo $urlResImage; ?>gushi/storyThree-1.png">
+                    </div>
+                    <div class="col-1 w60 font-s17 vertical-center pl20 pr20">
+                        年轻妈妈的生命倒计时，急需寻找“续命”肺源
+                    </div>
+                </div>
+            </a>
+        </div>
     </div>
 </article>
 <script>
