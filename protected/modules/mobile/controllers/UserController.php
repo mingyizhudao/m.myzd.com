@@ -30,19 +30,6 @@ class UserController extends MobileController {
         );
     }
 
-    public function actions() {
-        return array(
-            // captcha action renders the CAPTCHA image displayed on the contact page
-            'captcha' => array(
-                'class' => 'CCaptchaAction',
-                'backColor' => 0xFFFFFF,
-                'maxLength' => 6,
-                'offset' => 0,
-                'testLimit' => 0,
-                'height' => 34
-            ),
-        );
-    }
 
     //进入患者注册页面
     public function actionRegister() {
