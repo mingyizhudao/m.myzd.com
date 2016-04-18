@@ -91,7 +91,11 @@ $this->show_footer = false;
     </div>
 </article>
 <script>
+   function vailcode() {
+        $("#vailcode").attr("src", "<?php echo $this->createUrl('site/getCaptcha'); ?>/" + Math.random());
+    }
     $(document).ready(function () {
+        vailcode();
         $("#btn-sendSmsCode").click(function (e) {
             e.preventDefault();
             checkCaptchaCode($(this));
