@@ -28,7 +28,6 @@ class UserRegisterForm extends EFormModel {
             array('verify_code', 'required', 'message' => '请输入{attribute}'),
             array('verify_code', 'length', 'is' => 6, 'message' => '{attribute}不正确'),
             array('verify_code', 'numerical', 'integerOnly' => true, 'message' => '{attribute}不正确'),
-            array('captcha_code', 'captcha', 'allowEmpty' => !CCaptcha::checkRequirements(), 'caseSensitive' => false, 'on' => 'getSmsCode','message'=>'图形验证码不正确！'),
         );
     }
 
