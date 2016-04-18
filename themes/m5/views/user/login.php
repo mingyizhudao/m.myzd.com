@@ -64,7 +64,7 @@ $this->show_footer = false;
                         <?php echo $form->textField($model, 'captcha_code', array('placeholder' => '输入图形验证码')); ?>
                     </div>
                     <div class="col-0 w112p">
-                        <?php $this->widget('CCaptcha', array('showRefreshButton' => false, 'clickableImage' => true, 'imageOptions' => array('alt' => '点击换图', 'title' => '点击换图', 'style' => 'cursor:pointer', 'class' => 'h40p'))); ?>
+                        <a href="javascript:void(0);"><img id="vailcode" src="<?php echo $this->createUrl('user/getCaptcha'); ?>" onclick="this.src = '<?php echo $this->createUrl('user/getCaptcha'); ?>/' + Math.random()"></a>
                     </div>
                 </div>
                 <?php echo $form->error($model, 'captcha_code'); ?>
