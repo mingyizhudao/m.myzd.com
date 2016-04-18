@@ -23,15 +23,15 @@ abstract class MobileController extends WebsiteController {
         return $this->jqPageId;
     }
 
-    public function setPageTitle($title, $siteName = false) {        
+    public function setPageTitle($title, $siteName = false) {
         parent::setPageTitle($title, $siteName);
     }
 
     public function getPageTitle() {
         return $this->pageTitle;
     }
-    
-    public function showBrowserModeMenu() {        
+
+    public function showBrowserModeMenu() {
         if ($this->id == 'home') {
             if (isset($_GET['bm'])) {
                 return $_GET['bm'] == 1;
@@ -72,6 +72,23 @@ abstract class MobileController extends WebsiteController {
         } else {
             return $data;
         }
+    }
+
+    public function actionValiCaptcha() {
+        $output = array('status' => 'no');
+        if (strcmp($_REQUEST['co_code'], Yii::app()->session['code']) != 0) {
+            $output['status'] = 'no';
+            $output['error'] = '验证码错误';
+        } else {
+            $output['status'] = 'ok';
+        }
+        $this->renderJsonOutput($output);
+    }
+
+    //获取验证码
+    public function actionGetCaptcha() {
+        $captcha = new CaptchaManage;
+        $captcha->showImg();
     }
 
 }
