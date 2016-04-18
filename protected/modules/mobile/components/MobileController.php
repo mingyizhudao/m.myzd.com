@@ -78,7 +78,7 @@ abstract class MobileController extends WebsiteController {
         $output = array('status' => 'no');
         if (strcmp($_REQUEST['co_code'], Yii::app()->session['code']) != 0) {
             $output['status'] = 'no';
-            $output['error'] = '验证码错误';
+            $output['error'] = '图形验证码错误';
         } else {
             $output['status'] = 'ok';
         }
