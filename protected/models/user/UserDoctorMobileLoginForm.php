@@ -11,7 +11,6 @@ class UserDoctorMobileLoginForm extends EFormModel {
     public $authSmsVerify;    // AuthSmsVerify model.
     public $autoRegister = false;   // 自动注册
     public $is_verify = true;
-    public $captcha_code;
 
     // public $userExists = false;     //用户是否存在
 
@@ -25,7 +24,6 @@ class UserDoctorMobileLoginForm extends EFormModel {
     public function rules() {
         return array(
             array('username, verify_code', 'required', 'message' => '请输入{attribute}'), // username and password are required
-            array('captcha_code', 'captcha', 'allowEmpty' => !CCaptcha::checkRequirements(),'message'=>'图形验证码不正确！'),
         );
     }
 

@@ -10,7 +10,7 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/c
 $this->setPageTitle('名医主刀');
 
 $urlRegister = $this->createUrl("user/register");
-$urlUserAjaxCaptchaCode = $this->createUrl("user/ajaxCaptchaCode");
+$urlUserValiCaptcha = $this->createUrl("user/valiCaptcha");
 $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/auth/sendSmsVerifyCode');
 $authActionType = AuthSmsVerify::ACTION_USER_LOGIN;
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
@@ -38,7 +38,7 @@ $this->show_footer = false;
             // controller action is handling ajax validation correctly.
             // There is a call to performAjaxValidation() commented in generated controller code.
             // See class documentation of CActiveForm for details on this.
-            'htmlOptions' => array('role' => 'form', 'autocomplete' => 'off', 'data-ajax' => 'false', 'data-checkCode' => $urlUserAjaxCaptchaCode),
+            'htmlOptions' => array('role' => 'form', 'autocomplete' => 'off', 'data-ajax' => 'false', 'data-checkCode' => $urlUserValiCaptcha),
             'enableClientValidation' => false,
             'clientOptions' => array(
                 'validateOnSubmit' => true,
@@ -61,10 +61,10 @@ $this->show_footer = false;
             <li class="bb-none ml10">
                 <div id="captchaCode" class="grid">
                     <div class="col-1">
-                        <?php echo $form->textField($model, 'captcha_code', array('placeholder' => '输入图形验证码')); ?>
+                        <input type="text" id="UserDoctorMobileLoginForm_captcha_code" name="UserDoctorMobileLoginForm[captcha_code]" placeholder="输入图形验证码">
                     </div>
                     <div class="col-0 w112p">
-                        <a href="javascript:void(0);"><img id="vailcode" src="" onclick="this.src = '<?php echo $this->createUrl('user/getCaptcha'); ?>/' + Math.random()"></a>
+                        <a href="javascript:void(0);"><img id="vailcode" class="h40p" src="" onclick="this.src = '<?php echo $this->createUrl('user/getCaptcha'); ?>/' + Math.random()"></a>
                     </div>
                 </div>
                 <?php echo $form->error($model, 'captcha_code'); ?>
@@ -91,7 +91,7 @@ $this->show_footer = false;
     </div>
 </article>
 <script>
-   function vailcode() {
+    function vailcode() {
         $("#vailcode").attr("src", "<?php echo $this->createUrl('user/getCaptcha'); ?>/" + Math.random());
     }
     $(document).ready(function () {
@@ -104,6 +104,7 @@ $this->show_footer = false;
     function checkCaptchaCode(domBtn) {
         var domForm = $("#login-form");
         var actionUrl = domForm.attr('data-actionurl');
+        var captchaCode = $('#UserDoctorMobileLoginForm_captcha_code').val();
         var domMobile = domForm.find("#UserDoctorMobileLoginForm_username");
         var mobile = domMobile.val();
         if (mobile.length === 0) {
@@ -113,23 +114,23 @@ $this->show_footer = false;
         } else if (!validatorMobile(mobile)) {
             $("#UserDoctorMobileLoginForm_username-error").remove();
             $("#UserDoctorMobileLoginForm_username").parents('li').append("<div id='UserDoctorMobileLoginForm_username-error' class='error'>请输入正确的中国手机号码!</div>");
+        } else if (captchaCode == '') {
+            $('#UserDoctorMobileLoginForm_captcha_code-error').remove();
+            $('#captchaCode').after('<div id="UserDoctorMobileLoginForm_captcha_code-error" class="error">请输入图形验证码</div>');
         } else {
             $('#UserDoctorMobileLoginForm_captcha_code-error').remove();
             //check验证码
             domForm.ajaxSubmit({
-                url: '<?php echo $urlUserAjaxCaptchaCode; ?>',
+                url: '<?php echo $urlUserValiCaptcha; ?>?co_code=' + captchaCode,
                 success: function (data) {
                     //console.log(data);
-                    var error = eval('(' + data + ')').UserDoctorMobileLoginForm_captcha_code;
-                    if (error) {
-                        $('#captchaCode').after('<div id="UserDoctorMobileLoginForm_captcha_code-error" class="error">' + error + '</div>');
-                    } else {
+                    if (data.status == 'ok') {
                         sendSmsVerifyCode(domBtn, domForm, mobile);
+                    } else {
+                        $('#captchaCode').after('<div id="UserDoctorMobileLoginForm_captcha_code-error" class="error">' + data.error + '</div>');
                     }
                 }
             });
-
-
         }
     }
 

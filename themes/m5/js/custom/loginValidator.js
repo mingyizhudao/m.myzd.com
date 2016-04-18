@@ -14,16 +14,16 @@ $(function () {
         var bool = validator.form();
         //check验证码
         if (bool) {
+            var captchaCode = $('#UserDoctorMobileLoginForm_captcha_code').val();
             domForm.ajaxSubmit({
-                url: urlCheckCode,
+                url: urlCheckCode + '?co_code=' + captchaCode,
                 success: function (data) {
                     //console.log(data);
-                    var error = eval('(' + data + ')').UserDoctorMobileLoginForm_captcha_code;
-                    if (error) {
+                    if (data.status == 'ok') {
+                        domForm.submit();
+                    } else {
                         $('#UserDoctorMobileLoginForm_captcha_code-error').remove();
                         $('#captchaCode').after('<div id="UserDoctorMobileLoginForm_captcha_code-error" class="error">图形验证码不正确</div>');
-                    } else {
-                        domForm.submit();
                     }
                 }
             });
