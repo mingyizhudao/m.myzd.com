@@ -138,8 +138,10 @@ class UserController extends MobileController {
             }
         }
         //失败 则返回登录页面
+        $captcha_code = isset($values['captcha_code'])? $values['captcha_code']:'';
         $this->render("login", array(
             'model' => $form,
+            'captcha_code' => $captcha_code,
             'returnUrl' => $returnUrl
         ));
     }

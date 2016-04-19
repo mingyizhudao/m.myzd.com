@@ -61,7 +61,7 @@ $this->show_footer = false;
             <li class="bb-none ml10">
                 <div id="captchaCode" class="grid">
                     <div class="col-1">
-                        <input type="text" id="UserDoctorMobileLoginForm_captcha_code" name="UserDoctorMobileLoginForm[captcha_code]" placeholder="输入图形验证码">
+                        <input type="text" id="UserDoctorMobileLoginForm_captcha_code" name="UserDoctorMobileLoginForm[captcha_code]" placeholder="输入图形验证码" value="<?php echo empty($captcha_code) ? '' : $captcha_code; ?>">
                     </div>
                     <div class="col-0 w112p">
                         <a href="javascript:void(0);"><img id="vailcode" class="h40p" src="" onclick="this.src = '<?php echo $this->createUrl('user/getCaptcha'); ?>/' + Math.random()"></a>
@@ -102,6 +102,8 @@ $this->show_footer = false;
         });
     });
     function checkCaptchaCode(domBtn) {
+        //清楚错误信息
+        $('.errorMessage').remove();
         var domForm = $("#login-form");
         var actionUrl = domForm.attr('data-actionurl');
         var captchaCode = $('#UserDoctorMobileLoginForm_captcha_code').val();
