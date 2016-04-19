@@ -498,21 +498,26 @@ $(function () {
         var formdata = domForm.serializeArray();
         var bool = validator.form();
         if (bool) {
-            $.ajax({
-                type: 'post',
-                url: urlCheckCode,
-                data: formdata,
-                success: function (data) {
-                    //console.log(data);
-                    var error = eval('(' + data + ')').BookQuickForm_captcha_code;
-                    if (error) {
-                        $('#BookQuickForm_captcha_code-error').remove();
-                        $('#captchaCode').after('<div id="BookQuickForm_captcha_code-error" class="error">' + error + '</div>');
-                    } else {
-                        formAjaxSubmit();
+            if ($('#checkUser').attr('value') == 1) {
+                formAjaxSubmit();
+            } else {
+                var captchaCode = $('#booking_captcha_code').val();
+                $.ajax({
+                    type: 'post',
+                    url: urlCheckCode + '?co_code=' + captchaCode,
+                    data: formdata,
+                    success: function (data) {
+                        //console.log(data);
+                        if (data.status == 'ok') {
+                            formAjaxSubmit();
+                        } else {
+                            $('#booking_captcha_code-error').remove();
+                            $('#captchaCode').after('<div id="booking_captcha_code-error" class="error">' + data.error + '</div>');
+                            $('#booking_captcha_code').focus();
+                        }
                     }
-                }
-            });
+                });
+            }
         }
         //触发表单提交事件 
         //domForm.submit();

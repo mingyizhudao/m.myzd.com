@@ -37,7 +37,7 @@ class AuthController extends WebsiteController {
     public function actionSendSmsVerifyCode() {
         if (isset($_REQUEST['captcha_code']) && strcmp($_REQUEST['captcha_code'], Yii::app()->session['code']) != 0) {
             $output['status'] = 'no';
-            $output['errors'] = array('captcha_code' => '验证码错误');
+            $output['errors'] = array('captcha_code' => '图形验证码错误');
             $this->renderJsonOutput($output);
         } else {
             $errors = array();

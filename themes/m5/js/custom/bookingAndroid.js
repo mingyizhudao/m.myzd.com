@@ -4,36 +4,37 @@ jQuery(function () {
         var mobile = /^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
         return this.optional(element) || (length == 11 && mobile.test(value));
     }, "请填写正确的手机号码");
-
     var domForm = $("#booking-form"),
             urlUploadFile = domForm.attr("data-url-uploadFile"),
             urlReturn = domForm.attr("data-url-return"),
             btnSubmit = $("#btnSubmit");
-
     btnSubmit.click(function () {
         var urlCheckCode = domForm.attr('data-checkCode');
         var formdata = domForm.serializeArray();
         var bool = validator.form();
         if (bool) {
-            $.ajax({
-                type: 'post',
-                url: urlCheckCode,
-                data: formdata,
-                success: function (data) {
-                    //console.log(data);
-                    var error = eval('(' + data + ')').BookQuickForm_captcha_code;
-                    if (error) {
-                        $('#BookQuickForm_captcha_code-error').remove();
-                        $('#captchaCode').after('<div id="BookQuickForm_captcha_code-error" class="error">' + error + '</div>');
-                    } else {
-                        formAjaxSubmit();
+            if ($('#checkUser').attr('value') == 1) {
+                formAjaxSubmit();
+            } else {
+                var captchaCode = $('#booking_captcha_code').val();
+                $.ajax({
+                    type: 'post',
+                    url: urlCheckCode + '?co_code=' + captchaCode,
+                    data: formdata,
+                    success: function (data) {
+                        //console.log(data);
+                        if (data.status == 'ok') {
+                            formAjaxSubmit();
+                        } else {
+                            $('#booking_captcha_code-error').remove();
+                            $('#captchaCode').after('<div id="booking_captcha_code-error" class="error">' + data.error + '</div>');
+                            $('#booking_captcha_code').focus();
+                        }
                     }
-                }
-            });
+                });
+            }
         }
     });
-
-
     var validator = domForm.validate({
         rules: {
             'booking[doctor_name]': {
@@ -125,7 +126,6 @@ jQuery(function () {
             error.appendTo(element.parents(".ui-field-contain")); //这里的element是录入数据的对象  
         },
     });
-
     function formAjaxSubmit() {
         disabledBtnAndriod(btnSubmit);
         //form插件的异步无刷新提交

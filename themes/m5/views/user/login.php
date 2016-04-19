@@ -124,19 +124,18 @@ $this->show_footer = false;
                 url: '<?php echo $urlUserValiCaptcha; ?>?co_code=' + captchaCode,
                 success: function (data) {
                     //console.log(data);
-                    if (data.status == 'ok') {
-                        sendSmsVerifyCode(domBtn, domForm, mobile);
-                    } else {
-                        $('#captchaCode').after('<div id="UserDoctorMobileLoginForm_captcha_code-error" class="error">' + data.error + '</div>');
-                    }
+//                    if (data.status == 'ok') {
+                    sendSmsVerifyCode(domBtn, domForm, mobile, captchaCode);
+//                    } else {
+//                        $('#captchaCode').after('<div id="UserDoctorMobileLoginForm_captcha_code-error" class="error">' + data.error + '</div>');
+//                    }
                 }
             });
         }
     }
 
-    function sendSmsVerifyCode(domBtn, domForm, mobile) {
+    function sendSmsVerifyCode(domBtn, domForm, mobile, captchaCode) {
         $(".error").html("");//删除错误信息
-        buttonTimerStart(domBtn, 60000);
         var actionUrl = domForm.find("input[name='smsverify[actionUrl]']").val();
         var actionType = domForm.find("input[name='smsverify[actionType]']").val();
         var formData = new FormData();
@@ -144,7 +143,7 @@ $this->show_footer = false;
         formData.append("AuthSmsVerify[actionType]", actionType);
         $.ajax({
             type: 'post',
-            url: actionUrl,
+            url: actionUrl + '?captcha_code=' + captchaCode,
             data: formData,
             dataType: "json",
             processData: false,
@@ -153,9 +152,13 @@ $this->show_footer = false;
                 console.log(data);
                 if (data.status === true || data.status === 'ok') {
                     //domForm[0].reset();
+                    buttonTimerStart(domBtn, 60000);
                 }
                 else {
                     console.log(data);
+                    if (data.errors.captcha_code != undefined) {
+                        $('#captchaCode').after('<div id="UserDoctorMobileLoginForm_captcha_code-error" class="error">' + data.errors.captcha_code + '</div>');
+                    }
                 }
             },
             'error': function (data) {

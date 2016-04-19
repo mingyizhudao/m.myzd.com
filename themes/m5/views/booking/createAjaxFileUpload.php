@@ -11,7 +11,7 @@ $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/auth/sendSmsVerifyCode');
 $authActionType = AuthSmsVerify::ACTION_BOOKING;
 $urlSubmitForm = $this->createUrl("booking/ajaxQuickbook");
 $urlUploadFile = $this->createUrl("booking/ajaxUploadFile");
-$urlBookingAjaxCaptchaCode = $this->createUrl("booking/ajaxCaptchaCode");
+$urlUserValiCaptcha = $this->createUrl("user/valiCaptcha");
 $urlReturn = $this->createUrl('order/view');
 $urlHomeView = $this->createUrl('home/view');
 $urlBackBtn = Yii::app()->request->getQuery('backBtn', '1');
@@ -61,7 +61,7 @@ $user = $this->getCurrentUser();
                     <?php
                     $form = $this->beginWidget('CActiveForm', array(
                         'id' => 'booking-form',
-                        'htmlOptions' => array("enctype" => "multipart/form-data", 'data-actionUrl' => $urlSubmitForm, 'data-url-uploadFile' => $urlUploadFile, 'data-url-return' => $urlReturn, 'data-checkCode' => $urlBookingAjaxCaptchaCode),
+                        'htmlOptions' => array("enctype" => "multipart/form-data", 'data-actionUrl' => $urlSubmitForm, 'data-url-uploadFile' => $urlUploadFile, 'data-url-return' => $urlReturn, 'data-checkCode' => $urlUserValiCaptcha),
                         'enableClientValidation' => false,
                         'clientOptions' => array(
                             'validateOnSubmit' => true,
@@ -97,6 +97,7 @@ $user = $this->getCurrentUser();
                         <?php echo $form->textField($model, 'contact_name', array('name' => 'booking[contact_name]', 'placeholder' => '请输入患者姓名')); ?>
                         <?php echo $form->error($model, 'contact_name'); ?> 
                     </div>
+                    <div id="checkUser" class="hide" value="<?php echo isset($user); ?>"></div>
                     <?php if (!isset($user)) { ?>
                         <div class="ui-field-contain">
                             <?php echo CHtml::activeLabel($model, 'mobile'); ?>                                           
@@ -108,13 +109,12 @@ $user = $this->getCurrentUser();
                         <div class="ui-field-contain mt5">
                             <div id="captchaCode" class="grid">
                                 <div class="col-1 w50">
-                                    <?php echo CHtml::activeLabel($model, 'captcha_code'); ?>                                           
-                                    <?php echo $form->textField($model, 'captcha_code', array('name' => 'booking[captcha_code]', 'placeholder' => '请输入图形验证码')); ?>
-                                    <?php echo $form->error($model, 'captcha_code'); ?>
+                                    <div>请输入图形验证码</div>
+                                    <input type="text" id="booking_captcha_code" name="booking[captcha_code]" placeholder="请输入图形验证码">
                                 </div>
                                 <div class="col-1 w50 pt20">
                                     <!--<button id="btn-sendSmsCode" type="button" class="w100 bg-green border-r3">获取验证码</button>-->
-                                    <?php $this->widget('CCaptcha', array('showRefreshButton' => false, 'clickableImage' => true, 'imageOptions' => array('alt' => '点击换图', 'title' => '点击换图', 'style' => 'cursor:pointer', 'class' => 'w100 h40p border-input br5'))); ?>
+                                    <a href="javascript:void(0);"><img id="vailcode" class="h40p" src="" onclick="this.src = '<?php echo $this->createUrl('user/getCaptcha'); ?>/' + Math.random()"></a>
                                 </div>
                             </div>
                         </div>
@@ -193,12 +193,15 @@ $user = $this->getCurrentUser();
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
+        vailcode();
         $("#btn-sendSmsCode").click(function (e) {
             e.preventDefault();
             checkCaptchaCode($(this));
         });
     });
-    $()
+    function vailcode() {
+        $("#vailcode").attr("src", "<?php echo $this->createUrl('user/getCaptcha'); ?>/" + Math.random());
+    }
     function checkCaptchaCode(domBtn) {
         var domMobile = $("#booking_mobile");
         var mobile = domMobile.val();
@@ -215,34 +218,30 @@ $user = $this->getCurrentUser();
             // mobile input field as error, so do nothing.
         } else if (captchaCode == '') {
             $('#booking_captcha_code-error').remove();
-            $('#BookQuickForm_captcha_code-error').remove();
-            $('#captchaCode').after('<div id="BookQuickForm_captcha_code-error" class="error">请填写图形验证码</div>');
+            $('#captchaCode').after('<div id="booking_captcha_code-error" class="error">请填写图形验证码</div>');
         } else {
             $('#booking_captcha_code-error').remove();
-            $('#BookQuickForm_captcha_code-error').remove();
             var domForm = $('#booking-form');
             var formdata = domForm.serializeArray();
             //check图形验证码
             $.ajax({
                 type: 'post',
-                url: '<?php echo $urlBookingAjaxCaptchaCode; ?>',
+                url: '<?php echo $urlUserValiCaptcha; ?>?co_code=' + captchaCode,
                 data: formdata,
                 success: function (data) {
                     //console.log(data);
-                    var error = eval('(' + data + ')').BookQuickForm_captcha_code;
-                    if (error) {
-                        $('#captchaCode').after('<div id="BookQuickForm_captcha_code-error" class="error">' + error + '</div>');
+                    if (data.status == 'ok') {
+                        sendSmsVerifyCode(domBtn, mobile, captchaCode);
                     } else {
-                        sendSmsVerifyCode(domBtn, mobile);
+                        $('#captchaCode').after('<div id="booking_captcha_code-error" class="error">' + data.error + '</div>');
                     }
                 }
             });
         }
     }
 
-    function sendSmsVerifyCode(domBtn, mobile) {
+    function sendSmsVerifyCode(domBtn, mobile, captchaCode) {
         $('#booking_mobile-error').addClass('hide');
-        buttonTimerStart(domBtn, 60000);
         $domForm = $("#booking-form");
         var actionUrl = $domForm.find("input[name='smsverify[actionUrl]']").val();
         var actionType = $domForm.find("input[name='smsverify[actionType]']").val();
@@ -251,17 +250,21 @@ $user = $this->getCurrentUser();
         formData.append("AuthSmsVerify[actionType]", actionType);
         $.ajax({
             type: 'post',
-            url: actionUrl,
+            url: actionUrl + '?captcha_code=' + captchaCode,
             data: formData,
             dataType: "json",
             processData: false,
             contentType: false,
             'success': function (data) {
                 if (data.status === true) {
+                    buttonTimerStart(domBtn, 60000);
                     //domForm[0].reset();
                 }
                 else {
                     console.log(data);
+                    if (data.errors.captcha_code != undefined) {
+                        $('#captchaCode').after('<div id="booking_captcha_code-error" class="error">' + data.errors.captcha_code + '</div>');
+                    }
                 }
             },
             'error': function (data) {

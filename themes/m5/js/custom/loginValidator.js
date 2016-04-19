@@ -23,7 +23,8 @@ $(function () {
                         domForm.submit();
                     } else {
                         $('#UserDoctorMobileLoginForm_captcha_code-error').remove();
-                        $('#captchaCode').after('<div id="UserDoctorMobileLoginForm_captcha_code-error" class="error">图形验证码不正确</div>');
+                        $('#captchaCode').after('<div id="UserDoctorMobileLoginForm_captcha_code-error" class="error">' + data.error + '</div>');
+                        $('#UserDoctorMobileLoginForm_captcha_code').focus();
                     }
                 }
             });

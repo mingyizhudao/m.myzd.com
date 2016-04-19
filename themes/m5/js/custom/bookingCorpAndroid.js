@@ -137,18 +137,19 @@ $(function () {
             var formdata = domForm.serializeArray();
             var bool = validator.form();
             if (bool) {
+                var captchaCode = $('#booking_captcha_code').val();
                 $.ajax({
                     type: 'post',
-                    url: urlCheckCode,
+                    url: urlCheckCode + '?co_code=' + captchaCode,
                     data: formdata,
                     success: function (data) {
                         //console.log(data);
-                        var error = eval('(' + data + ')').BookCorpForm_captcha_code;
-                        if (error) {
-                            $('#BookCorpForm_captcha_captcha_code-error').remove();
-                            $('#captchaCode').after('<div id="BookCorpForm_captcha_captcha_code-error" class="error">' + error + '</div>');
-                        } else {
+                        if (data.status == 'ok') {
                             formAjaxSubmit();
+                        } else {
+                            $('#booking_captcha_code-error').remove();
+                            $('#captchaCode').after('<div id="booking_captcha_code-error" class="error">' + data.error + '</div>');
+                            $('#booking_captcha_code').focus();
                         }
                     }
                 });
