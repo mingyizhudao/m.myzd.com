@@ -124,11 +124,11 @@ $this->show_footer = false;
                 url: '<?php echo $urlUserValiCaptcha; ?>?co_code=' + captchaCode,
                 success: function (data) {
                     //console.log(data);
-//                    if (data.status == 'ok') {
-                    sendSmsVerifyCode(domBtn, domForm, mobile, captchaCode);
-//                    } else {
-//                        $('#captchaCode').after('<div id="UserDoctorMobileLoginForm_captcha_code-error" class="error">' + data.error + '</div>');
-//                    }
+                    if (data.status == 'ok') {
+                        sendSmsVerifyCode(domBtn, domForm, mobile, captchaCode);
+                    } else {
+                        $('#captchaCode').after('<div id="UserDoctorMobileLoginForm_captcha_code-error" class="error">' + data.error + '</div>');
+                    }
                 }
             });
         }
