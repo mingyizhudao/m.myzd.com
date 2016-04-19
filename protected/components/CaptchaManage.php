@@ -13,6 +13,7 @@ class CaptchaManage
         $this->width = $width;
         $this->height = $height;
         $this->codeNum = $codeNum;
+        ob_clean();
     }
 
     public function showImg()
