@@ -641,15 +641,15 @@ class BookingManager {
     public function actionCancelBooking($id,$userId){
         $output = array('status' => 'no');
         $booking = new Booking();
-        $output = $booking->getByIdAndUserId($id,$userId);
-        if(!isset($output) === false){
-            if($output['bk_status'] == 1){
+        $bookingInfo = $booking->getByIdAndUserId($id,$userId);
+        if(!isset($bookingInfo) === false){
+            if($bookingInfo['bk_status'] == 1){
                 $booking->updateAllByAttributes(array('bk_status'=>'9','date_updated'=>new CDbExpression("NOW()")), array('id'=>$id));
                 $output['status'] = 'ok';
                 $output['error_code'] = EApiViewService::RESPONSE_NO;
                 $output['message'] = 'Unpaid deposit';
                  
-            }else if($output['bk_status'] ==2){
+            }else if($bookingInfo['bk_status'] ==2){
                 $booking->updateAllByAttributes(array('bk_status'=>'9','date_updated'=>new CDbExpression("NOW()")), array('id'=>$id));
                 $output['status'] = 'ok';
                 $output['error_code'] = EApiViewService::RESPONSE_NO;
