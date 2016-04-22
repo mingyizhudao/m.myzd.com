@@ -22,7 +22,7 @@ class DoctorController extends MobileController {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('register', 'search', 'viewSearch', 'view', 'login', 'createPatient', 'profile', 'createPatientMR', 'createBooking', 'ajaxSearchDoctor'),
+                'actions' => array('register', 'search', 'viewSearch', 'viewSearchMore', 'view', 'login', 'createPatient', 'profile', 'createPatientMR', 'createBooking', 'ajaxSearchDoctor'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -43,6 +43,11 @@ class DoctorController extends MobileController {
     //进入搜索中间页面
     public function actionViewSearch() {
         $this->render('viewSearch');
+    }
+
+    //进入搜索更多页面
+    public function actionViewSearchMore() {
+        $this->render('viewSearchMore');
     }
 
     public function actionAjaxSearchDoctor() {
