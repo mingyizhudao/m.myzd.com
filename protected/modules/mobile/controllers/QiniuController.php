@@ -38,4 +38,29 @@ class QiniuController extends MobileController {
         $this->renderJsonOutput($output);
     }
 
+    //保存企业证件信息
+    public function actionAjaxCorpIc() {
+        $output = array('status' => 'no');
+        if (isset($_POST['corp'])) {
+            $values = $_POST['corp'];
+            $form = new BookingFileForm();
+            $form->setAttributes($values, true);
+            $form->user_id = $this->getCurrentUserId();
+            $form->initModel();
+            if ($form->validate()) {
+                $file = new BookingCorpIc();
+                $file->setAttributes($form->attributes, true);
+                if ($file->save()) {
+                    $output['status'] = 'ok';
+                    $output['fileId'] = $file->getId();
+                } else {
+                    $output['errors'] = $file->getErrors();
+                }
+            }
+        } else {
+            $output['errors'] = 'no data....';
+        }
+        $this->renderJsonOutput($output);
+    }
+
 }
