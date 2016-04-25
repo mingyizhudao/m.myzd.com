@@ -31,6 +31,14 @@ class ApiViewDiagnosisDoctor extends EApiViewService {
         $tt= $this->searchInputs;
         $tt['id'] = $doctorList;
         $this->doctorSearch = new DoctorSearchV7($tt);
+        if($this->searchInputs['citys']){
+            $cityArray = array(1,73,200,254,186);
+            if(in_array($this->searchInputs['citys'], $cityArray)){
+                $this->doctorSearch->criteria->addCondition('t.city_id ='.$this->searchInputs['citys']);
+            }else{
+                $this->doctorSearch->criteria->addNotInCondition('t.city_id', $cityArray);
+            }
+        }
         $this->doctorSearch->criteria->addInCondition('t.id',$doctorList);
         $models = $this->doctorSearch->search();
         if (arrayNotEmpty($models)) {
@@ -56,7 +64,7 @@ class ApiViewDiagnosisDoctor extends EApiViewService {
             $data->hpDeptName = $model->getHpDeptName();
             $data->isContracted = $model->getIsContracted();
             $temp[] = $data;
-        }
+        }  
         $this->results->page[] = $temp;
     }
 
