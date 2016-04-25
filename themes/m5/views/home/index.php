@@ -113,10 +113,10 @@ $urlHomeMyyz = $this->createUrl('home/page', array('view' => 'myyz'));
                 </div>
             </div>
             <div class="grid mt10 bg-white">
-                <div class="col-1 w50 br-gray2 grid middle">
+                <div class="col-1 w40 br-gray2 grid middle">
                     <a href="<?php echo $urlBookingQuickbook; ?>">
                         <div class="pl10 pr10 text-center">
-                            <div class="text-center">
+                            <div class="text-center pt10">
                                 <img class="w68p" src="<?php echo $urlResImage; ?>shoushuzhitongche.png">
                             </div>
                             <div class="color-black10 pt10 font-s16">手术直通车</div>
@@ -124,7 +124,7 @@ $urlHomeMyyz = $this->createUrl('home/page', array('view' => 'myyz'));
                         </div>
                     </a>
                 </div>
-                <div class="col-1 w50">
+                <div class="col-1 w60">
                     <div class="bb-gray6">
                         <a href="<?php echo $urlDoctorSearch; ?>?disease_sub_category=2">
                             <div class="grid pt15 pb15 pl10 pr10">
@@ -138,14 +138,25 @@ $urlHomeMyyz = $this->createUrl('home/page', array('view' => 'myyz'));
                             </div>
                         </a>
                     </div>
-                    <div>
-                        <div class="grid pt15 pb15 pl10 pr10" onclick="NTKF.im_openInPageChat('kf_9138_1451451713805');">
-                            <div class="col-0 color-black">
+                    <div class="grid">
+                        <div class="col-1 w50 pt15 pb15 pl5 pr5 br-gray2">
+                            <a href="<?php echo $urlHomeMyyz; ?>">
+                                <div class="text-center">
+                                    <img class="w38p" src="<?php echo $urlResImage; ?>myyz.png">
+                                </div>
+                                <div class="color-black text-center">
+                                    <div class="color-black10 font-s16">名医义诊</div>
+                                    <div class="color-gray4 font-s12">中国好医生</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-1 w50 pt15 pb15 pl5 pr5" onclick="NTKF.im_openInPageChat('kf_9138_1451451713805');">
+                            <div class="text-center">
+                                <img class="w38p" src="<?php echo $urlResImage; ?>onlineService.png">
+                            </div>
+                            <div class="color-black text-center">
                                 <div class="color-black10 font-s16">在线客服</div>
                                 <div class="color-gray4 font-s12">咨询了解我们</div>
-                            </div>
-                            <div class="col-1 text-center">
-                                <img class="w46p" src="<?php echo $urlResImage; ?>onlineService.png">
                             </div>
                         </div>
                     </div>
