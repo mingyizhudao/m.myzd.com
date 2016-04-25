@@ -42,7 +42,8 @@ $this->show_footer = false;
             ajaxPage();
         }
 
-        $("input").keyup(function () {
+        document.addEventListener('input', function (e) {
+            e.preventDefault();
             disease_name = $("input[name='disease_name']").val();
             if (disease_name == '') {
                 $('#search_atricle').html('');
