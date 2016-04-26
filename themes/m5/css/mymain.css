@@ -6,6 +6,7 @@ body {width:100%;color: #222;letter-spacing: 1px;line-height: 1.5;font-size: 14p
 @media (min-width: 1200px){.container {width: 1200px;}}
 @media (max-width: 768px){}
 #site-content{min-height: 550px;}
+body {-webkit-overflow-scrolling: touch;overflow-scrolling: touch;}
 
 
 /*内边距*/
