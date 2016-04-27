@@ -29,7 +29,7 @@ class BookingFileForm extends EFormModel {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('booking_id, user_id, uid, file_name, file_url, file_ext, file_size, has_remote, remote_file_key, remote_domain, mime_type', 'required'),
+            array('booking_id,user_id, uid, file_name, file_url, file_ext, file_size, has_remote, remote_file_key, remote_domain, mime_type', 'required'),
             array('user_id, file_size, has_remote, booking_id', 'numerical', 'integerOnly' => true),
             array('uid', 'length', 'max' => 32),
             array('remote_file_key', 'length', 'max' => 40),
