@@ -5,7 +5,6 @@ class ApiViewDiagnosisDoctor extends EApiViewService {
     public $doctorSearch;
     
     public function __construct($value) {
-        print_r($value);exit;
         $this->searchInputs = $value;
         
         

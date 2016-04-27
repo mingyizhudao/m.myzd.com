@@ -70,6 +70,7 @@ class ApiViewDoctorV7 extends EApiViewService {
         $data->isExpteam = $model->getIsExpteam();
         $data->description = $model->getDescription();
         $data->careerExp = $model->getCareerExp();
+        $data->isFreeClinic = $model->getIsFreeClinic();
         $data->honour = $model->getHonourList();
         $data->reasons = $model->getReasons();
         if($data->isExpteam){
@@ -108,7 +109,6 @@ class ApiViewDoctorV7 extends EApiViewService {
             $data->hpDeptId = $doctor->getHpDeptId();
             $data->hpDeptName = $doctor->getHpDeptName();
             $data->isExpteam = $doctor->getIsExpteam();
-
             $this->results->related[] = $data;
         }
     }
