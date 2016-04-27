@@ -170,6 +170,8 @@ body {-webkit-overflow-scrolling: touch;overflow-scrolling: touch;}
 .color-green7{color:#24a59d!important;}
 .color-green8{color:#3CAE6C!important;}
 .color-green9{color:#41ab66!important;}
+.color-green10{color:#00A978!important;}
+.color-green11{color:#329f9e!important;}
 .color-black{color: #333333!important;}
 .color-black2{color:#003333!important;}
 .color-black3{color:#030210!important;}
@@ -322,6 +324,7 @@ body {-webkit-overflow-scrolling: touch;overflow-scrolling: touch;}
 .w55p{width:55px;}
 .w56p{width:56px;}
 .w60p{width:60px;}
+.w63p{width:63px;}
 .w68p{width:68px;}
 .w75p{width:75px;}
 .w80p{width:80px;}
@@ -342,6 +345,7 @@ body {-webkit-overflow-scrolling: touch;overflow-scrolling: touch;}
 .h21p{height:21px;}
 .h35p{height:35px;}
 .h40p{height:40px;}
+.h55p{height:55px;}
 .h60p{height:60px;}
 .h70p{height:70px;}
 .h80p{height:80px;}
@@ -386,6 +390,7 @@ body {-webkit-overflow-scrolling: touch;overflow-scrolling: touch;}
 .border-green{border: 1px solid #21D443;}
 .bt-green{border-top: 1px solid #3c9a91;}
 .bb-green{border-bottom:1px solid #06c1ae;}
+.bb2-green{border-bottom: 2px solid #00A978;}
 .border-gray{border: 1px solid #e4e4e4;}
 .border-grayD{border: 1px dashed #e4e4e4;}
 .bb10-gray{border-bottom:10px solid #efefef;}
@@ -406,7 +411,7 @@ body {-webkit-overflow-scrolling: touch;overflow-scrolling: touch;}
 .br50{border-radius: 50%;}
 
 /*按钮*/
-.btn-yellow{background-color:#fe8c08;width:60%;display:block;margin:5px auto;}
+.btn-yellow{background-color:#fe8c08;width:80%;display:block;margin:5px auto;}
 .btn-green{background-color:#19aea5;color:#fff;border-radius:3px;}
 /**** btn ****/
 .btn{border-radius: 5px;border:none;text-align: center;padding: 3px 5px;}
@@ -438,6 +443,7 @@ button.btn-sendSmsCode:disabled{color: #fff!important;opacity: 0.5;}
 .divider{border-bottom: 1px solid #888;}
 .divider-green{border-bottom:1px solid #19aea5!important;}
 a,a:hover{text-decoration: none;}
+.a-underline {text-decoration: underline;}
 ul,ol{list-style: none;}
 table.table tr.noborder>td {border: none;}
 .form-result-success {display: none;}

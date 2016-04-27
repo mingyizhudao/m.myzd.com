@@ -17,6 +17,7 @@ if ($showApp == 1) {
     $urlEventZhuantiRobot = $this->createUrl('event/view', array('page' => 'zhuantiRobot'));
     $urlEventZhuantiXinxg = $this->createUrl('event/view', array('page' => 'zhuantiXinxg'));
     $urlEventZhuantiMygy = $this->createUrl('event/view', array('page' => 'mygy'));
+    $urlEventZhuantiShapingHealth = $this->createUrl('event/view', array('page' => 'shapingHealth'));
 } else {
     $urlEventStoryOne = $this->createUrl('event/view', array('page' => 'storyOne', 'header' => '0'));
     $urlEventStoryTwo = $this->createUrl('event/view', array('page' => 'storyTwo', 'header' => '0'));
@@ -31,6 +32,7 @@ if ($showApp == 1) {
     $urlEventZhuantiRobot = $this->createUrl('event/view', array('page' => 'zhuantiRobot', 'header' => '0'));
     $urlEventZhuantiXinxg = $this->createUrl('event/view', array('page' => 'zhuantiXinxg', 'header' => '0'));
     $urlEventZhuantiMygy = $this->createUrl('event/view', array('page' => 'mygy', 'header' => '0'));
+    $urlEventZhuantiShapingHealth = $this->createUrl('event/view', array('page' => 'shapingHealth', 'header' => '0'));
 }
 if ($showHeader == 0) {
     $this->show_footer = false;
@@ -64,6 +66,11 @@ if ($showPage == 0) {
 <?php } ?>
 <article id="zhuanti_article" class="<?php echo $showZt; ?>" data-scroll="true" data-active="find_footer">
     <div>
+        <div class="mt10">
+            <a href="<?php echo $urlEventZhuantiShapingHealth; ?>">
+                <img src="<?php echo $urlResImage; ?>zhuanti/shapingHealth/banner.jpg" class="w100">
+            </a>
+        </div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiMygy; ?>">
                 <img src="<?php echo $urlResImage; ?>zhuanti/mygy/mygy.jpg" class="w100">
