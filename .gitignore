@@ -1,1 +1,5 @@
 /assets/
+/.settings/
+/.buildpath
+/.gitignore
+/.project

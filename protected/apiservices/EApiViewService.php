@@ -87,5 +87,13 @@ abstract class EApiViewService {
     protected function throwNoDataException($msg = self::RESPONSE_NO_DATA) {
         throw new CException($msg);
     }
+    
+    public function printr($data){
+        echo '<pre>';
+        print_r(CJSON::decode(CJSON::encode($data)));
+        echo '</pre>';
+        exit;
+        
+    }
 
 }

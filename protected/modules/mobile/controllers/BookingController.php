@@ -76,6 +76,11 @@ class BookingController extends MobileController {
         } elseif (isset($values['did'])) {
             // 预约医生
             $form = new BookDoctorForm();
+            $doctor = Doctor::model()->getById($values['doctor_id']);
+            if (isset($doctor) && $doctor->is_free_clinic == 1) {
+                $form->is_free_clinic = 1;
+                $form->bk_status = StatCode::BK_STATUS_PROCESSING;
+            }
             $form->initModel();
             $form->setDoctorId($values['did']);
             $form->setDoctorData();
@@ -141,6 +146,11 @@ class BookingController extends MobileController {
             } elseif (isset($values['doctor_id'])) {
                 // 预约医生
                 $form = new BookDoctorForm();
+                $doctor = Doctor::model()->getById($values['doctor_id']);
+                if (isset($doctor) && $doctor->is_free_clinic == 1) {
+                    $form->is_free_clinic = 1;
+                    $form->bk_status = StatCode::BK_STATUS_PROCESSING;
+                }
                 $form->setAttributes($values, true);
                 $form->setDoctorData();
                 $form->initModel();

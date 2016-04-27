@@ -179,24 +179,24 @@ return array(
             ),
         ),
 
-        // myzd-test.        
-//        'db' => array(
-//            'connectionString' => 'mysql:host=qpmyzdstaging91466636.mysql.rds.aliyuncs.com;dbname=myzd-test',
-//            'emulatePrepare' => true,
-//            'username' => 'supertestuser',
-//            'password' => 'Qp91466636',
-//            'charset' => 'utf8',
-//            'schemaCachingDuration' => 3600    // 开启表结构缓存（schema caching）提高性能
-//        ),
-        //本地数据库        
-        'db' => array(
-            'connectionString' => 'mysql:host=localhost;dbname=myzd_local',
-            'emulatePrepare' => true,
-            'username' => 'root',
-            'password' => '',
-            'charset' => 'utf8',
-            'schemaCachingDuration' => 3600    // 开启表结构缓存（schema caching）提高性能
-        ),
+//         myzd-test.        
+       'db' => array(
+           'connectionString' => 'mysql:host=qpmyzdstaging91466636.mysql.rds.aliyuncs.com;dbname=myzd-test',
+           'emulatePrepare' => true,
+           'username' => 'supertestuser',
+           'password' => 'Qp91466636',
+           'charset' => 'utf8',
+           'schemaCachingDuration' => 3600    // 开启表结构缓存（schema caching）提高性能
+       ),
+        //本地数据库         
+//         'db' => array(
+//             'connectionString' => 'mysql:host=localhost;dbname=myzd_local',
+//             'emulatePrepare' => true,
+//             'username' => 'root',
+//             'password' => '',
+//             'charset' => 'utf8',
+//             'schemaCachingDuration' => 3600    // 开启表结构缓存（schema caching）提高性能
+//         ),
         'errorHandler' => array(
             // use 'site/error' action to display errors
             'errorAction' => 'mobile/home/error',
@@ -218,7 +218,7 @@ return array(
                 array(
                     'class' => 'CFileLogRoute',
                     'logFile' => 'trace.log',
-                    'levels' => 'trace',
+                    'levels' => 'error, warning, trace, info',
                 ),
                 array(// configuration for the toolbar (yiidebugtb extension)
                     'class' => 'XWebDebugRouter',
@@ -226,16 +226,15 @@ return array(
                     'levels' => 'error, warning, trace, profile, info',
                     'allowedIPs' => array('127.0.0.1', '::1', '192.168.1.54', '192\.168\.1[0-5]\.[0-9]{3}'),
                 ),
-            /*
-              array(
-              // log db command in firebug.
-              'class' => 'CWebLogRoute',
-              'categories' => 'system.db.CDbCommand',
-              'showInFireBug' => true,
-              'ignoreAjaxInFireBug' => false,
-              ),
-             * 
-             */
+           
+                  array(
+                  // log db command in firebug.
+                  'class' => 'CWebLogRoute',
+                  'categories' => 'system.db.CDbCommand',
+                  'showInFireBug' => true,
+                  'ignoreAjaxInFireBug' => false,
+                  ),
+            
             ),
         ),
         'session' => array(
