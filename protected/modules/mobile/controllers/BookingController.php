@@ -640,8 +640,8 @@ class BookingController extends MobileController {
         }
         $output->results->orderInfo = $orderInfo;
         $model = '';
-        if ($value['status'] == 1 || $value['status'] == 2 || $value['status'] == 5){
-            //订单待支付/安排中/待确认
+        if ($value['status'] == 1 || $value['status'] == 2 || $value['status'] == 5 ||  $value['status'] == 9 ){
+            //订单待支付/安排中/待确认/已取消
             $view = 'payDeposit';
         }else if($value['status'] == 6){
             $view = 'review';
