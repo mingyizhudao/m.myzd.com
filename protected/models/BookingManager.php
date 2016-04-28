@@ -644,6 +644,7 @@ class BookingManager {
         $userInfo = $user->loadUserById($userId);
         $booking = new Booking();
         $bookingInfo = $booking->getBookingByMobileORUserIdANDBkId($userInfo->id,$userInfo->username,$id);
+        $bookingInfo = CJSON::decode(CJSON::encode($bookingInfo));
         if(!isset($bookingInfo) === false){
             if($bookingInfo['bk_status'] == 1){
                 $booking->updateAllByAttributes(array('bk_status'=>'9','date_updated'=>new CDbExpression("NOW()")), array('id'=>$id));

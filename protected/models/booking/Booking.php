@@ -589,7 +589,7 @@ class Booking extends EActiveRecord {
         $criteria->addCondition("t.user_id=".$userId." OR t.mobile=".$mobile,"AND");
         $criteria->addCondition("t.id=" . $id,"AND");
         $criteria->addCondition("t.date_deleted is NULL");
-        return $this->findAll($criteria);
+        return $this->find($criteria);
     }
         
 }
