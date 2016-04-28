@@ -8,9 +8,11 @@ $urlPatientBookingList = $this->createUrl('booking/patientBookingList');
 $status = Yii::app()->request->getQuery('status', 0);
 $payUrl = $this->createUrl('/payment/doPingxxPay');
 $refUrl = $this->createAbsoluteUrl('order/view');
+$urlBookingPayView = $this->createAbsoluteUrl('booking/payView');
 $BK_STATUS_NEW = StatCode::BK_STATUS_NEW;
 $BK_STATUS_PROCESSING = StatCode::BK_STATUS_PROCESSING;
 $BK_STATUS_CONFIRMED_DOCTOR = StatCode::BK_STATUS_CONFIRMED_DOCTOR;
+$BK_STATUS_CANCELLED = StatCode::BK_STATUS_CANCELLED;
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 $results = $data->results;
@@ -22,7 +24,7 @@ $orderInfo = $results->orderInfo;
 <header class="bg-green">
     <nav class="left">
         <?php
-        if (($results->bkStatus == '待支付') && ($results->depositAmount != $results->depositTotalAmount)) {
+        if (($results->bkStatusCode == $BK_STATUS_NEW) && ($results->depositAmount != $results->depositTotalAmount)) {
             ?>
             <a id="noPayDeposit">
                 <div class="pl5">
@@ -30,7 +32,7 @@ $orderInfo = $results->orderInfo;
                 </div>
             </a>
             <?php
-        } else if (($results->bkStatus == '待确认') && ($results->serviceAmount != $results->serviceTotalAmount)) {
+        } else if (($results->bkStatusCode == $BK_STATUS_CONFIRMED_DOCTOR) && ($results->serviceAmount != $results->serviceTotalAmount)) {
             ?>
             <a id="noPayService">
                 <div class="pl5">
@@ -57,7 +59,7 @@ $orderInfo = $results->orderInfo;
     </nav>
 </header>
 <?php
-if (($results->bkStatus == '待支付') && ($results->depositAmount != $results->depositTotalAmount)) {
+if (($results->bkStatusCode == $BK_STATUS_NEW) && ($results->depositAmount != $results->depositTotalAmount)) {
     for ($i = 0; $i < count($orderInfo); $i++) {
         if ($orderInfo[$i]->order_type == 'deposit') {
             $deposit = $orderInfo[$i]->final_amount;
@@ -66,13 +68,13 @@ if (($results->bkStatus == '待支付') && ($results->depositAmount != $results-
     }
     ?>
     <footer class="bg-white grid">
-        <div class="col-1 w60 middle grid">¥<?php echo $deposit; ?>元</div>
+        <div class="col-1 w60 middle grid"><?php echo $deposit; ?>元</div>
         <div id="payDeposit" data-refNo="<?php echo $refNo; ?>" class="col-1 w40 bg-yellow5 color-white middle grid">支付订单</div>
     </footer>
     <?php
-} else if ($results->bkStatus == '安排中') {
+} else if (($results->bkStatusCode == $BK_STATUS_PROCESSING) || ($results->bkStatusCode == $BK_STATUS_CANCELLED)) {
     echo '';
-} else if (($results->bkStatus == '待确认') && ($results->serviceAmount != $results->serviceTotalAmount)) {
+} else if (($results->bkStatusCode == $BK_STATUS_CONFIRMED_DOCTOR) && ($results->serviceAmount != $results->serviceTotalAmount)) {
     ?>
     <footer class="bg-white grid">
         <div class="col-1 w60 middle grid">还需支付<?php echo $results->serviceTotalAmount - $results->serviceAmount; ?>元</div>
@@ -85,8 +87,8 @@ if (($results->bkStatus == '待支付') && ($results->depositAmount != $results-
 ?>
 <article id='payOrder_article' class="active" data-scroll="true">
     <div>
-        <?php var_dump($results); ?>
-        <?php //var_dump($orderInfo); ?>
+        <?php //var_dump($results); ?>
+        <?php //var_dump($orderInfo);  ?>
         <ul class="list">
             <li class="font-s16">
                 当前状态：<span class="color-yellow5"><?php echo $results->bkStatus; ?></span>
@@ -135,29 +137,41 @@ if (($results->bkStatus == '待支付') && ($results->depositAmount != $results-
 </article>
 <script>
     $(document).ready(function () {
-        $('#noPayDeposit').click(function () {
+        $('#noPayDeposit').tap(function () {
             J.customConfirm('',
                     '<div class="mb10">您确定暂不支付手术预约金?</div><div>（稍后可在"订单-待支付"里完成）</div>',
-                    '<a data="cancel" class="w50">取消</a>',
-                    '<a data="ok" class="w50">确定</a>', function () {
-                        location.href = '<?php echo $urlPatientBookingList; ?>' + '?status=0';
+                    '<a id="colosePopup" class="w50">取消</a>',
+                    '<a id="returnPatientBookingList" class="w50">确定</a>', function () {
                     }, function () {
-                J.hideMask();
+            });
+            $('#colosePopup').click(function () {
+                J.closePopup();
+            });
+            $('#returnPatientBookingList').click(function () {
+                location.href = '<?php echo $urlPatientBookingList; ?>' + '?status=0';
             });
         });
         $('#noPayService').click(function () {
             J.customConfirm('',
                     '<div class="mb10">您确定暂不支付手术咨询费?</div><div>（稍后可在"订单-待确认"里完成）</div>',
-                    '<a data="cancel" class="w50">取消</a>',
-                    '<a data="ok" class="w50">确定</a>', function () {
+                    '<a id="colosePopup" class="w50">取消</a>',
+                    '<a id="returnPatientBookingList" class="w50">确定</a>', function () {
                         location.href = '<?php echo $urlPatientBookingList; ?>' + '?status=0';
                     }, function () {
-                J.hideMask();
+            });
+            $('#colosePopup').click(function () {
+                J.closePopup();
+            });
+            $('#returnPatientBookingList').click(function () {
+                location.href = '<?php echo $urlPatientBookingList; ?>' + '?status=0';
             });
         });
         $('#payDeposit').click(function () {
             var refNo = $(this).attr('data-refNo');
             location.href = '<?php echo $refUrl; ?>/refNo/' + refNo;
+        });
+        $('#payService').click(function () {
+            location.href = '<?php echo $urlBookingPayView; ?>/id/' + '<?php echo $results->id; ?>';
         });
     });
 </script>

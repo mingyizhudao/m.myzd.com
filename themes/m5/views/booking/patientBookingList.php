@@ -6,6 +6,7 @@ $this->setPageTitle('预约单');
 $showStatus = Yii::app()->request->getQuery('status', 0);
 $urlBookingDetails = $this->createUrl('booking/bookingDetails');
 $urlPatientBookingList = $this->createUrl('booking/patientBookingList');
+$urlApiUpdate = $this->createAbsoluteUrl('/api');
 $this->show_footer = false;
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $urlUserView = $this->createUrl('user/view');
@@ -26,9 +27,9 @@ $urlUserView = $this->createUrl('user/view');
             echo '待支付';
         } else if ($showStatus == 2) {
             echo '安排中';
-        } else if ($showStatus == 3) {
+        } else if ($showStatus == 5) {
             echo '待确认';
-        } else if ($showStatus == 4) {
+        } else if ($showStatus == 6) {
             echo '待点评';
         } else if ($showStatus == 8) {
             echo '已完成';
@@ -59,9 +60,9 @@ $urlUserView = $this->createUrl('user/view');
                 } else if ($results[$i]->bkStatus == 2) {
                     $icon = 'arrangementIn';
                     $padding = 'pt5';
-                } else if ($results[$i]->bkStatus == 3) {
+                } else if ($results[$i]->bkStatus == 5) {
                     $icon = 'waitConfirm';
-                } else if ($results[$i]->bkStatus == 4) {
+                } else if ($results[$i]->bkStatus == 6) {
                     $icon = 'waitEvaluate';
                 } else if ($results[$i]->bkStatus == 8) {
                     $icon = 'alreadyEvaluate';
@@ -79,7 +80,7 @@ $urlUserView = $this->createUrl('user/view');
                                 <?php
                                 if (($results[$i]->bkStatus == 1) || ($results[$i]->bkStatus == 2)) {
                                     ?>
-                                    <div class="cancelOrder" data-refNo="<?php echo $results[$i]->refNo; ?>">
+                                    <div class="cancelOrder" data-id="<?php echo $results[$i]->id; ?>">
                                         取消订单
                                     </div>
                                     <?php
@@ -118,7 +119,7 @@ $urlUserView = $this->createUrl('user/view');
                 <?php
             }
         } else {
-            echo'<div class="font-s16 pt10"></div>暂无订单';
+            echo'<div class="font-s16 pad10">暂无订单</div>';
         }
         ?>
     </div>
@@ -126,8 +127,44 @@ $urlUserView = $this->createUrl('user/view');
 <script>
     $(document).ready(function () {
         $('.cancelOrder').tap(function () {
-            var refNo = $(this).attr('data-refNo');
-            alert(refNo);
+            var id = $(this).attr('data-id');
+            var cancelOrder = $(this);
+            J.customConfirm('',
+                    '<div class="mb10">确认取消该订单？</div>',
+                    '<a id="closePopup" class="w50">取消</a>',
+                    '<a id="confirmChange" class="w50">确定</a>',
+                    function () {
+                    }, function () {
+            }
+            );
+            $('#closePopup').click(function () {
+                J.closePopup();
+            });
+            $('#confirmChange').click(function () {
+                $.ajax({
+                    type: 'put',
+                    url: '<?php echo $urlApiUpdate; ?>/booking/' + id,
+                    success: function (data) {
+                        J.closePopup();
+                        //console.log(data);
+                        if (data.status == 'ok') {
+                            //history.go(0);
+                            var order = cancelOrder.parents('.orderDiv');
+                            order.removeClass('waitPay');
+                            order.removeClass('arrangementIn');
+                            order.addClass('alreadyCancel');
+                            var urlOrder = order.find('a').attr('href');
+                            //console.log(urlOrder);
+                            order.find('a').attr('href', urlOrder.substr(0, urlOrder.length - 1) + '9');
+                            cancelOrder.remove();
+                        }
+                    },
+                    error: function (data) {
+                        J.closePopup();
+                        console.log(data);
+                    }
+                });
+            });
         });
 
         $('#selectStatus').tap(function () {
@@ -153,8 +190,8 @@ $urlUserView = $this->createUrl('user/view');
                     + '<li><a href="<?php echo $urlPatientBookingList; ?>">全部</a></li>'
                     + '<li><a href="<?php echo $urlPatientBookingList; ?>?status=1">待支付</a></li>'
                     + '<li><a href="<?php echo $urlPatientBookingList; ?>?status=2">安排中</a></li>'
-                    + '<li><a href="<?php echo $urlPatientBookingList; ?>?status=3">待确认</a></li>'
-                    + '<li><a href="<?php echo $urlPatientBookingList; ?>?status=4">待点评</a></li>'
+                    + '<li><a href="<?php echo $urlPatientBookingList; ?>?status=5">待确认</a></li>'
+                    + '<li><a href="<?php echo $urlPatientBookingList; ?>?status=6">待评价</a></li>'
                     + '<li><a href="<?php echo $urlPatientBookingList; ?>?status=8">已完成</a></li>'
                     + '<li><a href="<?php echo $urlPatientBookingList; ?>?status=9">已取消</a></li>'
                     + '</ul>'

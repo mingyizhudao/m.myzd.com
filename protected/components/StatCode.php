@@ -19,8 +19,8 @@ class StatCode {
     const BK_TRAVELTYPE_DOCTOR_COME = 2;   // 医生过来
     const BK_STATUS_NEW = 1;         // 待支付 旧版待处理
     const BK_STATUS_PROCESSING = 2;   //安排中 旧版处理中
-    const BK_STATUS_CONFIRMED_DOCTOR = 3;   //待确认 旧版已确认专家
-    const BK_STATUS_PATIENT_ACCEPTED = 4;   //待点评 旧版患者已接受
+    const BK_STATUS_CONFIRMED_DOCTOR = 5;   //待确认 旧版已确认专家
+    const BK_STATUS_PATIENT_ACCEPTED = 6;   //待点评 旧版患者已接受
     const BK_STATUS_DONE = 8;        // 已完成
     const BK_STATUS_CANCELLED = 9;   // 已取消
     const DR_C_TITLE_ZHUREN = 1;        // 主任
@@ -46,6 +46,8 @@ class StatCode {
     const USER_AGENT_APP_IOS = 'ios';
     const APP_NAME_MYZD='myzd'; // 患者版
     const APP_NAME_MOBILEDOCTOR='md';   // 医生版
+    const HAS_REMOTE = 1;
+    const HASNOT_REMOTE = 0;
 
     // gender.
 
