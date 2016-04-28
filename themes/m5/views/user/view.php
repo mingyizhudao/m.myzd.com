@@ -219,12 +219,14 @@ $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
         J.customConfirm('退出',
                 '<div class="mb10">您确定要退出该账号？</div>',
                 '<a id="closeLogout" class="w50">取消</a>',
-                '<a data="ok" class="color-green w50">退出</a>',
+                '<a id="logout" class="color-green w50">退出</a>',
                 function () {
-                    location.href = '<?php echo $urlLogout; ?>';
                 });
         $('#closeLogout').click(function () {
             J.closePopup();
+        });
+        $('#logout').click(function () {
+            location.href = '<?php echo $urlLogout; ?>';
         });
     });
     $('#aboutus').tap(function () {
@@ -232,9 +234,12 @@ $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
     });
     $('#contactUs').tap(function () {
         J.popup({
-            html: '<ul class="list text-center"><li>拨打名医主刀热线</li><li><a href="tel://4006277120">400-6277-120</a></li><li><a id="close">取消</a></li></ul>',
+            html: '<ul class="list text-center"><li>拨打名医主刀热线</li><li><a id="call">400-6277-120</a></li><li><a id="close">取消</a></li></ul>',
             pos: 'bottom',
             showCloseBtn: false
+        });
+        $('#call').tap(function () {
+            location.href = 'tel://4006277120';
         });
         $('#close').click(function () {
             J.closePopup();
