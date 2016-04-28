@@ -5,7 +5,7 @@ class BookingController extends MobileController {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('createCorp', 'ajaxCreateCorp', 'ajaxUploadCorp', 'ajaxUploadFile', 'captcha', 'ajaxCaptchaCode', 'ajaxCorpCaptchaCode', 'quickbook', 'ajaxQuickbook', 'create'),
+                'actions' => array('createCorp', 'ajaxCreateCorp', 'ajaxUploadCorp', 'ajaxUploadFile', 'captcha', 'ajaxCaptchaCode', 'ajaxCorpCaptchaCode', 'quickbook', 'ajaxQuickbook', 'create','PayView'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -662,6 +662,17 @@ class BookingController extends MobileController {
 
     public function actionTestView() {
         $this->render("review");
+    }
+    
+    public function actionPayView(){
+        $value = $_GET;
+        $user = $this->getCurrentUser();
+        $booking = new ApiViewBookingV4($user, $value['id']);
+        $bookingInfo = $booking->loadApiViewData();
+        if($booking){
+           $payList = SalesOrder::model()->getOrderByBkIdAndrefNo($value['id'],$bookingInfo->results->refNo);
+        }
+        $this->renderJsonOutput($payList);
     }
 
 }

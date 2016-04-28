@@ -429,8 +429,9 @@ class SalesOrder extends EActiveRecord {
         }
     }
     
-    public function getOrderByBkIdAndUid($BkId,$Uid){
-        return $this->getAllByAttributes(array('bk_id' => $BkId, 'user_id' => $Uid));
-    
+    public function getOrderByBkIdAndrefNo($BkId,$refNo){
+       return $this->getAllByAttributes(array('bk_id' => $BkId, 'bk_ref_no' => $refNo));
+        
     }
+    
 }

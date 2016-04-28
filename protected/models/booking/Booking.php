@@ -549,6 +549,9 @@ class Booking extends EActiveRecord {
         return $this->user_agent;
     }
 
+    public function getBkStatusCode() {
+        return $this->bk_status;
+    }
     /**
      * 获得用户手术单个状态数量
      * @param unknown $userId
