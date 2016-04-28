@@ -11,6 +11,7 @@ $urlSubmitForm = $this->createUrl("comment/ajaxAddComment");
 $urlReturn = $this->createAbsoluteUrl('booking/patientBookingList');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
+$orderInfo = $data->results->orderInfo;
 ?>
 <header class="bg-green">
     <nav class="left">
@@ -95,49 +96,18 @@ $this->show_footer = false;
             $this->endWidget();
             ?>
         </div>
-        <?php
-        $alreadyPayCost = 0;
-        $orderInfos = $data->results->orderInfo;
-        if (!empty($orderInfos)) {
-            for ($i = 0; $i < count($orderInfos); $i++) {
-                if ($orderInfos[$i]->order_type == 'deposit') {
-                    $orderInfo = $orderInfos[$i];
-                } else if ($orderInfos[$i]->order_type == 'service') {
-                    if ($orderInfos[$i]->is_paid == 1) {
-                        $alreadyPayCost+=$orderInfos[$i]->final_amount;
-                    }
-                }
-            }
-        }
-        ?>
+
         <div class="font-s12 letter-s1 bg-white pad10 color-gray4">
             <div>订单编号:<?php echo $data->results->refNo; ?></div>
             <?php
-            if ($orderInfo->is_paid == 1) {
-                ?>
-                <div class="grid">
-                    <div class="col-0">
-                        已付手术预约金:<?php echo $orderInfo->final_amount; ?>元
-                    </div>
-                    <div class="col-1 pl20">
-                        <div>
-                            <?php echo mb_strimwidth($orderInfo->date_closed, 0, 10, ''); ?>
-                        </div>
-                        <div>
-                            <?php echo mb_strimwidth($orderInfo->date_closed, 11, 19, ''); ?>
-                        </div>
-                    </div>
-                </div>
-                <?php
-            }
-            ?>
-            <?php
-            if ($alreadyPayCost != 0) {
-                ?>
-                <div class="grid">
-                    已付平台服务费:<?php echo $alreadyPayCost; ?>元
-                </div>
-                <?php
+            for ($i = 0; $i < count($orderInfo); $i++) {
+                if ($orderInfo[$i]->is_paid == 1) {
+                    if ($orderInfo[$i]->order_type == 'deposit') {
+                        echo '<div class="bt-gray pad10">已支付手术预约金：' . $orderInfo[$i]->final_amount . '元</div>';
+                    } else {
+                        echo '<div class="bt-gray pad10">已支付手术咨询费：' . $orderInfo[$i]->final_amount . '元</div>';
+                    }
+                }
             }
             ?>
         </div>
