@@ -251,8 +251,13 @@ class Booking extends EActiveRecord {
         $criteria = new CDbCriteria();
         $criteria->compare("t.user_id", $userId, false, 'AND');
         $criteria->compare("t.mobile", $mobile, false, 'OR');
-        if ($bk_status > 0) {
-            $criteria->compare("t.bk_status", $bk_status, false, 'AND');
+        if($bk_status){
+            if($bk_status == 6 || $bk_status == 8){
+                $criteria->compare("t.bk_status", 6, false, 'OR');
+                $criteria->compare("t.bk_status", 8, false, 'AND');
+            }else{
+                $criteria->compare("t.bk_status", $bk_status, false, 'AND');
+            }
         }
         $criteria->addCondition("t.date_deleted is NULL");
         if (isset($with) && is_array($with))

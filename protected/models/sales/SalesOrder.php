@@ -428,4 +428,9 @@ class SalesOrder extends EActiveRecord {
             $this->results->booking = array();
         }
     }
+    
+    public function getOrderByBkIdAndUid($BkId,$Uid){
+        return $this->getAllByAttributes(array('bk_id' => $BkId, 'user_id' => $Uid));
+    
+    }
 }

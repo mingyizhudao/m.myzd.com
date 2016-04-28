@@ -619,15 +619,36 @@ class BookingController extends MobileController {
         $output = $booking->loadApiViewData();
         $salesOrder = new SalesOrder();
         $orderInfo = $salesOrder->getByBkRefNo($output->results->refNo);
+        $modelo = CJSON::decode(CJSON::encode($orderInfo)) ;
+        if (isset($modelo)) {
+            if (is_array($modelo)) {
+                $output->results->serviceAmount = 0;
+                $output->results->serviceTotalAmount = 0;
+                $output->results->depositAmount = 0;
+                $output->results->depositTotalAmount = 0;
+                foreach ($modelo as $k => $v) {
+                    if ($v['order_type'] == SalesOrder::ORDER_TYPE_DEPOSIT) {} else {
+                        if($v['is_paid'] == 1){
+                            $output->results->serviceAmount = intval($v['final_amount'] + $output->results->serviceAmount) ;
+                        }
+                            $output->results->serviceTotalAmount = intval( $v['final_amount']+$output->results->serviceTotalAmount);
+                    }
+                    if ($v['order_type'] == SalesOrder::ORDER_TYPE_SERVICE) {} else {
+                        if($v['is_paid'] == 1){
+                         $output->results->depositAmount = intval($v['final_amount']);
+                        }
+                         $output->results->depositTotalAmount= intval($v['final_amount']);
+                    }
+        
+                }
+            }
+        }
         $output->results->orderInfo = $orderInfo;
         $model = '';
-        if ($value['status'] == 1) {//待支付1000
+        if ($value['status'] == 1 || $value['status'] == 2 || $value['status'] == 5){
+            //订单待支付/安排中/待确认
             $view = 'payDeposit';
-        } elseif ($value['status'] == 2) {//安排中
-            $view = 'arrange';
-        } elseif ($value['status'] == 3) {//待确认20000
-            $view = 'payConfirm';
-        } elseif ($value['status'] == 4) {//待点评
+        }else if($value['status'] == 6){
             $view = 'review';
             $model = new CommentForm();
         } elseif ($value['status'] == 8) {//已完成
