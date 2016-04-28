@@ -68,9 +68,8 @@ class UserController extends MobileController {
 
     public function actionView() {
         $user = $this->getCurrentUser();
-        //print_r($user);exit;
         $booking = new Booking();
-        $bookingModels = $booking->getCountBkStatusByUserId($user['id']);
+        $bookingModels = $booking->getBookingByMobileORUserId($user['id'], $user['mobile']);
         $output = array();
         foreach ($bookingModels as $model) {
             $data = new stdClass();

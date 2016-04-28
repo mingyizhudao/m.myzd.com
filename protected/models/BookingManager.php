@@ -640,8 +640,10 @@ class BookingManager {
     
     public function actionCancelBooking($id,$userId){
         $output = array('status' => 'no');
+        $user = new UserManager();
+        $userInfo = $user->loadUserById($userId);
         $booking = new Booking();
-        $bookingInfo = $booking->getByIdAndUserId($id,$userId);
+        $bookingInfo = $booking->getBookingByMobileORUserIdANDBkId($userInfo->id,$userInfo->username,$id);
         if(!isset($bookingInfo) === false){
             if($bookingInfo['bk_status'] == 1){
                 $booking->updateAllByAttributes(array('bk_status'=>'9','date_updated'=>new CDbExpression("NOW()")), array('id'=>$id));

@@ -252,12 +252,7 @@ class Booking extends EActiveRecord {
         $criteria->compare("t.user_id", $userId, false, 'AND');
         $criteria->compare("t.mobile", $mobile, false, 'OR');
         if($bk_status){
-            if($bk_status == 6 || $bk_status == 8){
-                $criteria->compare("t.bk_status", 6, false, 'OR');
-                $criteria->compare("t.bk_status", 8, false, 'AND');
-            }else{
-                $criteria->compare("t.bk_status", $bk_status, false, 'AND');
-            }
+           $criteria->compare("t.bk_status", $bk_status, false, 'AND');
         }
         $criteria->addCondition("t.date_deleted is NULL");
         if (isset($with) && is_array($with))
@@ -578,5 +573,23 @@ class Booking extends EActiveRecord {
         $criteria->addCondition("t.date_deleted is NULL");
         return $this->findAll($criteria);
     }
-
+    
+    public function getBookingByMobileORUserId($userId , $mobile){
+        $criteria = new CDbCriteria();
+        $criteria->select = 't.bk_status,count(t.bk_status) num'; //默认*
+        $criteria->addCondition('t.user_id='.$userId.' OR t.mobile='.$mobile);
+        $criteria->addCondition("t.date_deleted is NULL");
+        $criteria->group = 't.bk_status';
+        $this->num = null;
+        return $this->findAll($criteria);
+    }
+    
+    public function getBookingByMobileORUserIdANDBkId($userId , $mobile ,$id){
+        $criteria = new CDbCriteria();
+        $criteria->addCondition("t.user_id=".$userId." OR t.mobile=".$mobile,"AND");
+        $criteria->addCondition("t.id=" . $id,"AND");
+        $criteria->addCondition("t.date_deleted is NULL");
+        return $this->findAll($criteria);
+    }
+        
 }

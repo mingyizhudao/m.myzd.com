@@ -672,7 +672,9 @@ class BookingController extends MobileController {
         if($booking){
            $payList = SalesOrder::model()->getOrderByBkIdAndrefNo($value['id'],$bookingInfo->results->refNo);
         }
-        $this->renderJsonOutput($payList);
+          $this->render('payView', array(
+            'data' => $payList
+        ));
     }
 
 }
