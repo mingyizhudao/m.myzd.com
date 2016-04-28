@@ -87,7 +87,7 @@ $this->show_footer = false;
                 <div class="grid mt10 pb20">
                     <div class="col-1"></div>
                     <div class="col-0 w80">
-                        <a href="tel://4001197900" class="color-black">
+                        <a href="tel://4006277120" class="color-black">
                             <img src="<?php echo $urlResImage; ?>/hongbao/telephone-hongbao.png">
                         </a>
                     </div>

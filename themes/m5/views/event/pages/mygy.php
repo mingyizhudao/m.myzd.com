@@ -51,7 +51,7 @@ $this->show_footer = false;
                         <div class="col-1 w50 grid">
                             <div class="col-0 text-center">
                                 <div>选择名医并预约</div>
-                                <div>或拨打400-119-7900</div>
+                                <div>或拨打400-6277-120</div>
                                 <div class="color-red6">第一步</div>
                             </div>
                             <div class="col-1"></div>

@@ -195,7 +195,7 @@ $this->show_footer = false;
                 <div class="grid">
                     <div class="col-1"></div>
                     <div class="col-0 pl10 pr10 bg-yellow2 font-w800">
-                        400-119-7900
+                        400-6277-120
                     </div>
                     <div class="col-1"></div>
                 </div>

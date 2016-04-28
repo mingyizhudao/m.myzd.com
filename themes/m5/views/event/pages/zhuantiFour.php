@@ -110,7 +110,7 @@ $this->show_footer = false;
                         <div>1.网站</div>
                         <div>2.APP</div>
                         <div>3.微信公众号(在搜索栏中输入"名医主刀"即可)</div>
-                        <div>4.服务热线400-119-7900</div>
+                        <div>4.服务热线400-6277-120</div>
                     </div>
                     <div class="col-0 w20"></div>
                     <div class="col-1 w40">

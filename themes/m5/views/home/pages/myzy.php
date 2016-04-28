@@ -25,7 +25,7 @@ $this->show_footer = false;
 <footer id="myzy_footer">
     <div class="w100 text-center color-white mt5">
         <div>
-            申请热线:400-119-7900
+            申请热线:400-6277-120
         </div>
         <div>
             名医助手为您服务
