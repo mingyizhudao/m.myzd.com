@@ -8,9 +8,10 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $urlDoctorViewSearch = $this->createAbsoluteUrl('doctor/viewSearch');
 $urlHospitalTop = $this->createAbsoluteUrl('hospital/top');
 $urlDoctorSearch = $this->createAbsoluteUrl('doctor/search');
-$urlBookingQuickbook = $this->createAbsoluteUrl('booking/quickbook');
+$urlOperationTrain = $this->createUrl('home/page', array('view' => 'operationTrain'));
 $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
 $urlHomeMyyz = $this->createUrl('home/page', array('view' => 'myyz'));
+$urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
 ?>
 <article id="home_article" data-active="home_footer" class="active bg-gray5" data-scroll="true">
     <div>
@@ -112,53 +113,41 @@ $urlHomeMyyz = $this->createUrl('home/page', array('view' => 'myyz'));
                     </div>
                 </div>
             </div>
-            <div class="grid mt10 bg-white">
-                <div class="col-1 w40 br-gray2 grid middle">
-                    <a href="<?php echo $urlBookingQuickbook; ?>">
-                        <div class="pl10 pr10 text-center">
-                            <div class="text-center pt10">
-                                <img class="w68p" src="<?php echo $urlResImage; ?>shoushuzhitongche.png">
+            <div id="team-bxslider" class="">
+                <ul class="bxslider">
+
+                </ul>
+            </div>
+            <div class="grid bg-white">
+                <div class="col-1 w33 br-gray2">
+                    <a href="<?php echo $urlDoctorSearch; ?>?disease_sub_category=2">
+                        <div class="pad10 text-center">
+                            <div class="text-center">
+                                <img class="w55p h55p" src="<?php echo $urlResImage; ?>findDoctor.png">
+                            </div>
+                            <div class="color-black10 pt10 font-s16">找名医</div>
+                            <div class="color-gray4 font-s12">各地名医推荐</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-1 w33 br-gray2">
+                    <a href="<?php echo $urlOperationTrain; ?>">
+                        <div class="pad10 text-center">
+                            <div class="text-center">
+                                <img class="w55p h55p" src="<?php echo $urlResImage; ?>shoushuzhitongche.png">
                             </div>
                             <div class="color-black10 pt10 font-s16">手术直通车</div>
                             <div class="color-gray4 font-s12">直接预约名医</div>
                         </div>
                     </a>
                 </div>
-                <div class="col-1 w60">
-                    <div class="bb-gray6">
-                        <a href="<?php echo $urlDoctorSearch; ?>?disease_sub_category=2">
-                            <div class="grid pt15 pb15 pl10 pr10">
-                                <div class="col-0 color-black">
-                                    <div class="color-black10 font-s16">找名医</div>
-                                    <div class="color-gray4 font-s12">各地名医推荐</div>
-                                </div>
-                                <div class="col-1 text-center">
-                                    <img class="w46p" src="<?php echo $urlResImage; ?>findDoctor.png">
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="grid">
-                        <div class="col-1 w50 pt15 pb15 pl5 pr5 br-gray2">
-                            <a href="<?php echo $urlHomeMyyz; ?>">
-                                <div class="text-center">
-                                    <img class="w38p" src="<?php echo $urlResImage; ?>myyz.png">
-                                </div>
-                                <div class="color-black text-center">
-                                    <div class="color-black10 font-s16">名医义诊</div>
-                                    <div class="color-gray4 font-s12">中国好医生</div>
-                                </div>
-                            </a>
+                <div class="col-1 w33" onclick="NTKF.im_openInPageChat('kf_9138_1451451713805');">
+                    <div class="pad10 text-center">
+                        <div class="text-center">
+                            <img class="w55p h55p" src="<?php echo $urlResImage; ?>onlineService.png">
                         </div>
-                        <div class="col-1 w50 pt15 pb15 pl5 pr5" onclick="NTKF.im_openInPageChat('kf_9138_1451451713805');">
-                            <div class="text-center">
-                                <img class="w38p" src="<?php echo $urlResImage; ?>onlineService.png">
-                            </div>
-                            <div class="color-black text-center">
-                                <div class="color-black10 font-s16">在线客服</div>
-                                <div class="color-gray4 font-s12">咨询了解我们</div>
-                            </div>
-                        </div>
+                        <div class="color-black10 pt10 font-s16">在线客服</div>
+                        <div class="color-gray4 font-s12">咨询了解我们</div>
                     </div>
                 </div>
             </div>
@@ -167,6 +156,26 @@ $urlHomeMyyz = $this->createUrl('home/page', array('view' => 'myyz'));
 </article>
 <script>
     $(document).ready(function () {
+        //轮播图
+        var html = '<li class="slide">' +
+                '<a href="<?php echo $urlHomeMyyz; ?>">' +
+                '<img class="w100" src="<?php echo $urlResImage; ?>banner/myyz.jpg">' +
+                '</a>' +
+                '</li>' +
+                '<li class="slide">' +
+                '<a href="<?php echo $urlMygy; ?>">' +
+                '<img class="w100" src="<?php echo $urlResImage; ?>banner/mygy.jpg">' +
+                '</a>' +
+                '</li>';
+        $('#home_article .bxslider').html(html);
+
+        $('.bxslider').bxSlider({
+            mode: 'fade',
+            slideMargin: 0,
+            controls: false,
+            auto: true
+        });
+        
         var height = $('.titleImg').height() - 110;
         $('.titlePosition').css({"margin-top": height + "px"});
     });

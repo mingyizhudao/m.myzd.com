@@ -27,14 +27,14 @@ function deptSelect() {
             '<nav id="findDoc_nav" class="header-secondary bg-white">' +
             '<div class="grid w100 color-black font-s16 color-black6">' +
             '<div id="deptSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
-            '<span id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="../../themes/m5/images/gray.png">' +
+            '<span id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="../../themes/m5/images/lowerTriangleGray.png">' +
             '<div style="position: fixed;top: 74px; left:14.54%;"><img id="remindImg" class="w14p" src="../../themes/m5/images/upperTriangleWhite.png"></div>' +
             '</div>' +
             '<div id="diseaseSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
-            '<span id="diseaseTitle" data-disease="' + diseaseId + '">' + diseaseName + '</span><img src="../../themes/m5/images/gray.png">' +
+            '<span id="diseaseTitle" data-disease="' + diseaseId + '">' + diseaseName + '</span><img src="../../themes/m5/images/lowerTriangleGray.png">' +
             '</div>' +
             '<div id="citySelect" data-target="closePopup" class="col-1 w33 bb-gray grid middle grayImg">' +
-            '<span id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="../../themes/m5/images/gray.png">' +
+            '<span id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="../../themes/m5/images/lowerTriangleGray.png">' +
             '</div>' +
             '</div>' +
             '</nav>' +
@@ -166,14 +166,14 @@ $('#diseaseSelect').tap(function () {
                 '<nav id="findDoc_nav" class="header-secondary bg-white">' +
                 '<div class="grid w100 color-black font-s16 color-black6">' +
                 '<div id="deptSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
-                '<span id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="../../themes/m5/images/gray.png">' +
+                '<span id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="../../themes/m5/images/lowerTriangleGray.png">' +
                 '</div>' +
                 '<div id="diseaseSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
-                '<span id="diseaseTitle" data-disease="' + diseaseId + '">' + diseaseName + '</span><img src="../../themes/m5/images/gray.png">' +
+                '<span id="diseaseTitle" data-disease="' + diseaseId + '">' + diseaseName + '</span><img src="../../themes/m5/images/lowerTriangleGray.png">' +
                 '<div style="position: fixed;top: 74px; left:47.75%;"><img class="w14p" src="../../themes/m5/images/upperTriangleWhite.png"></div>' +
                 '</div>' +
                 '<div id="citySelect" data-target="closePopup" class="col-1 w33 bb-gray grid middle grayImg">' +
-                '<span id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="../../themes/m5/images/gray.png">' +
+                '<span id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="../../themes/m5/images/lowerTriangleGray.png">' +
                 '</div>' +
                 '</div>' +
                 '</nav>' +
@@ -247,13 +247,13 @@ $('#citySelect').tap(function () {
             '<nav id="findDoc_nav" class="header-secondary bg-white">' +
             '<div class="grid w100 color-black font-s16 color-black6">' +
             '<div id="deptSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
-            '<span id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="../../themes/m5/images/gray.png">' +
+            '<span id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="../../themes/m5/images/lowerTriangleGray.png">' +
             '</div>' +
             '<div id="diseaseSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
-            '<span id="diseaseTitle" data-disease="' + diseaseId + '">' + diseaseName + '</span><img src="../../themes/m5/images/gray.png">' +
+            '<span id="diseaseTitle" data-disease="' + diseaseId + '">' + diseaseName + '</span><img src="../../themes/m5/images/lowerTriangleGray.png">' +
             '</div>' +
             '<div id="citySelect" data-target="closePopup" class="col-1 w33 bb-gray grid middle grayImg">' +
-            '<span id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="../../themes/m5/images/gray.png">' +
+            '<span id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="../../themes/m5/images/lowerTriangleGray.png">' +
             '<div style="position: fixed;top: 74px; left:81.6%;"><img class="w14p" src="../../themes/m5/images/upperTriangleWhite.png"></div>' +
             '</div>' +
             '</div>' +
@@ -321,6 +321,7 @@ $('#citySelect').tap(function () {
 //医生页面
 function readyDoc(data) {
     var results = data.results;
+    //console.log(results);
     var innerHtml = '<div class="pt20"></div>';
     if (results) {
         if (results.length > 0) {
@@ -330,11 +331,11 @@ function readyDoc(data) {
                 hp_dept_desc = hp_dept_desc.length > 40 ? hp_dept_desc.substr(0, 40) + '...' : hp_dept_desc;
                 innerHtml += '<div>' +
                         '<a href="' + $requestDoctorView + '/' + results[i].id + '" data-target="link">' +
-                        '<div class="grid pl15 pr15 pt10 pb10 bb-gray3 ' + btGray + '">' +
-                        '<div class="col-1 w25">' +
-                        '<div class="w60p h60p" style="overflow:hidden;border-radius:5px;"><img class="imgDoc" src="' + results[i].imageUrl + '"></div>';
+                        '<div class="grid pl15 pr15 pb10 bb-gray3 ' + btGray + '">' +
+                        '<div class="col-1 w25 pt10">' +
+                        '<div class="w60p h60p br50" style="overflow:hidden;"><img class="imgDoc" src="' + results[i].imageUrl + '"></div>';
                 if (results[i].isContracted == 1) {
-                    innerHtml += '<div class="sign w60p">签约专家</div>'
+                    innerHtml += '<div class="sign w60p">签约专家</div>';
                 }
                 var doctorAtitle = '';
                 if (results[i].aTitle != '无') {
@@ -342,7 +343,13 @@ function readyDoc(data) {
                 }
                 innerHtml += '</div>' +
                         '<div class="ml10 col-1 w75">' +
-                        '<div class="mt10 color-black2 font-s16">' + results[i].name + '<span class="ml5">' + doctorAtitle + '</span></div>';
+                        '<div class="grid">' +
+                        '<div class="col-0 pt10 color-black2 font-s16">' + results[i].name + '<span class="ml5">' + doctorAtitle + '</span></div>' +
+                        '<div class="col-1 grid">';
+                if (results[i].isServiceId == 2) {
+                    innerHtml += '<div class="col-1"></div><div class="col-0 yzIcon">义诊</div>';
+                }
+                innerHtml += '</div></div>';
                 //科室为空，则不显示
                 if (results[i].hpDeptName == "" || results[i].hpDeptName == null) {
                     if (results[i].mTitle == "" || results[i].mTitle == null) {
@@ -375,8 +382,8 @@ function readyDoc(data) {
                             '擅长:' + hp_dept_desc +
                             '</div>' +
                             '<div class="pt10 pb10 pr15 font-s12 color-black">' +
-                            '推荐理由:' + results[i].reasons[0] +
-                            '</div>' +
+                            '推荐理由：<span class="color-orange">' + results[i].reasons[0] +
+                            '</span></div>' +
                             '</div>' +
                             '<div class="bb10-gray "></div>' +
                             '</div>';

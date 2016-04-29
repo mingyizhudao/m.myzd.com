@@ -42,13 +42,13 @@ $this->show_footer = false;
 <nav id="findDoc_nav" class="header-secondary bg-white">
     <div class="grid w100 color-black font-s16 color-black6">
         <div id="deptSelect" class="col-1 w33 br-gray bb-gray grid middle grayImg">
-            <span id="deptTitle" data-dept="">科室</span><img src="<?php echo $urlResImage; ?>gray.png">
+            <span id="deptTitle" data-dept="">科室</span><img src="<?php echo $urlResImage; ?>lowerTriangleGray.png">
         </div>
         <div id="diseaseSelect" class="col-1 w33 br-gray bb-gray grid middle grayImg">
-            <span id="diseaseTitle" data-disease="">疾病</span><img src="<?php echo $urlResImage; ?>gray.png">
+            <span id="diseaseTitle" data-disease="">疾病</span><img src="<?php echo $urlResImage; ?>lowerTriangleGray.png">
         </div>
         <div id="citySelect" class="col-1 w33 bb-gray grid middle grayImg">
-            <span id="cityTitle" data-city="">地区</span><img src="<?php echo $urlResImage; ?>gray.png">
+            <span id="cityTitle" data-city="">地区</span><img src="<?php echo $urlResImage; ?>lowerTriangleGray.png">
         </div>
     </div>
 </nav>

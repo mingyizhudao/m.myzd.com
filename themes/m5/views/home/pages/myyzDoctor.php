@@ -40,75 +40,36 @@ $this->show_footer = false;
     </nav>
     <h1 class="title">
         <span id="selectDept">
-            <span id="deptTitle" class="" data-dept="">选择科室</span>
+            <span id="deptTitle" class="" data-dept="1">外科</span>
             <span class=""><img class="w10p" src="<?php echo $urlResImage; ?>triangleWhite.png"></span>
         </span>
     </h1>
     <nav id="selectCity" class="right">
         <div class="grid mt17">
-            <div class="font-s16 col-0" id="cityTitle" data-city="">
+            <div class="font-s16 col-0" id="cityTitle" data-city="73">
                 上海
             </div>
             <div class="col-0 cityImg"></div>
         </div>
     </nav>
 </header>
-<article id="myyzDoctor_article" class="active" data-scroll="true" data-api="<?php echo $urlApiDiagnosisdoctors; ?>">
+<article id="myyzDoctor_article" class="active" data-scroll="true" data-api="<?php echo $urlApiDiagnosisdoctors; ?>" data-doctorView="<?php echo $urlDoctorView; ?>">
     <div>
     </div>
 </article>
 <script>
     $(document).ready(function () {
-        console.log('<?php echo $urlRootPath; ?>');
+        J.showMask();
         $.ajax({
-            url: '<?php echo $urlApiDiagnosisdoctors; ?>' + '&city=1&disease_category=1',
+            url: '<?php echo $urlApiDiagnosisdoctors; ?>' + '&citys=73&disease_category=1',
             success: function (data) {
                 //console.log(data);
                 readyPage(data);
+            },
+            error: function (data) {
+                J.hideMask();
+                console.log(data);
             }
         });
-
-        function readyPage(data) {
-            var doctors = data.results.page[0];
-            var pageSize = Math.ceil(doctors.length / 3);
-            var innerHtml = '<div class="pad10">';
-            for (var i = 0; i < pageSize; i++) {
-                innerHtml += '<div class="grid text-center pb10">';
-                for (var j = 0; j < 3; j++) {
-                    var num = i * 3 + j;
-                    if (num < doctors.length) {
-                        var hpDeptName = doctors[num].hpDeptName;
-                        var hpName = doctors[num].hpName;
-                        if (hpDeptName == null || hpDeptName == '') {
-                            hpDeptName = '';
-                        }
-                        if (hpName == null || hpName == '') {
-                            hpName = '';
-                        }
-                        innerHtml += '<div class="col-1 w33 border-gray br5 ml3 mr3">' +
-                                '<a href="<?php echo $urlDoctorView; ?>/' + doctors[num].id + '/is_commonweal/1">' +
-                                '<div class="pb10 color-black">' +
-                                '<div class="grid pt10">' +
-                                '<div class="col-1"></div>' +
-                                '<div class="col-0 imgDiv">' +
-                                '<img src="' + doctors[num].imageUrl + '">' +
-                                '</div>' +
-                                '<div class="col-1"></div>' +
-                                '</div>' +
-                                '<div>' + doctors[num].name + '</div>' +
-                                '<div class="font-s12">' + hpDeptName + '</div>' +
-                                '<div class="font-s12">' + hpName + '</div>' +
-                                '</div>' +
-                                '</a>' +
-                                '</div>';
-                    } else {
-                        innerHtml += '<div class="col-1 w33 ml3 mr3"></div>';
-                    }
-                }
-                innerHtml += '</div>';
-            }
-            innerHtml += '</div>';
-            $('#myyzDoctor_article').html(innerHtml);
-        }
     });
 </script>

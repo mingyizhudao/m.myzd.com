@@ -1,4 +1,4 @@
-$('#deptTitle').tap(function () {
+$('#deptSelect').tap(function () {
     //滚动距离
     $scrollLength = '';
     var deptName = $('#deptTitle').html();
@@ -14,24 +14,26 @@ $('#deptTitle').tap(function () {
             '<img src="../../themes/m5/images/back.png" class="w11p">' +
             '</div>' +
             '</a>' +
-            '<a>' +
-            '<span class="ml20 pb2 br-white"></span>' +
-            '</a>' +
-            '<a onclick="javascript:history.go(0)">' +
-            '<img src="../../themes/m5/images/refresh.png" class="w24p ml20">' +
-            '</a>' +
             '</nav>' +
-            '<h1 class="title"><span id="deptTitle" data-target="closePopup" data-dept="' + deptId + '">' + deptName + '</span>' +
-            '<span class="pl6"><img class="w10p" src="../../themes/m5/images/triangleWhite.png"></span>' +
+            '<h1 class="title">' +
+            '科室' +
             '</h1>' +
-            '<nav id="selectCity" class="right">' +
-            '<div class="grid mt17" data-target="closePopup">' +
-            '<div class="font-s16 col-0" id="cityTitle" data-city="' + cityId + '">' + cityName +
-            '</div>' +
-            '<div class="col-0 cityImg"></div>' +
-            '</div>' +
+            '<nav class="right">' +
+            '<a onclick="javascript:history.go(0)">' +
+            '<img src="../../themes/m5/images/refresh.png"  class="w24p">' +
+            '</a>' +
             '</nav>' +
             '</header>' +
+            '<nav id="findDept_nav" class="header-secondary bg-white">' +
+            '<div class="grid w100 color-black font-s16 color-black6">' +
+            '<div id="deptSelect" data-target="closePopup" class="col-1 w50 br-gray bb-gray grid middle grayImg">' +
+            '<span id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="../../themes/m5/images/gray.png">' +
+            '</div>' +
+            '<div id="citySelect" data-target="closePopup" class="col-1 w50 bb-gray grid middle grayImg">' +
+            '<span id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="../../themes/m5/images/gray.png">' +
+            '</div>' +
+            '</div>' +
+            '</nav>' +
             '<article id="findDept_article" class="active" style="position:static;">' + readyDept($diseaseData) +
             '</article>' +
             '</div>';
@@ -96,7 +98,7 @@ $('#deptTitle').tap(function () {
 function readyDept(data) {
     //console.log(data);
     var results = data.results;
-    var innerHtml = '<div class="grid color-black" style="margin-top:43px;">';
+    var innerHtml = '<div class="grid color-black" style="margin-top:83px;">';
     if (results.length > 0) {
         innerHtml += '<div id="rightDept" class="col-1 w50" data-scroll="true" style="max-height:315px;">'
         for (var i = 0; i < results.length; i++) {
@@ -122,7 +124,7 @@ function readyDept(data) {
     innerHtml += '</div></div>';
     return innerHtml;
 }
-$('#selectCity').tap(function () {
+$('#citySelect').tap(function () {
     var deptName = $('#deptTitle').html();
     var deptId = $('#deptTitle').attr('data-dept');
     var cityName = $('#cityTitle').html();
@@ -135,24 +137,26 @@ $('#selectCity').tap(function () {
             '<img src="../../themes/m5/images/back.png" class="w11p">' +
             '</div>' +
             '</a>' +
-            '<a>' +
-            '<span class="ml20 pb2 br-white"></span>' +
-            '</a>' +
-            '<a onclick="javascript:history.go(0)">' +
-            '<img src="../../themes/m5/images/refresh.png" class="w24p ml20">' +
-            '</a>' +
             '</nav>' +
-            '<h1 class="title"><span id="deptTitle" data-target="closePopup" data-dept="' + deptId + '">' + deptName + '</span>' +
-            '<span class="pl6"><img class="w10p" src="../../themes/m5/images/triangleWhite.png"></span>' +
+            '<h1 class="title">' +
+            '科室' +
             '</h1>' +
-            '<nav id="selectCity" class="right" data-target="closePopup">' +
-            '<div class="grid mt17">' +
-            '<div class="font-s16 col-0" id="cityTitle" data-city="' + cityId + '">' + cityName +
-            '</div>' +
-            '<div class="col-0 cityImg"></div>' +
-            '</div>' +
+            '<nav class="right">' +
+            '<a onclick="javascript:history.go(0)">' +
+            '<img src="../../themes/m5/images/refresh.png"  class="w24p">' +
+            '</a>' +
             '</nav>' +
             '</header>' +
+            '<nav id="findDept_nav" class="header-secondary bg-white">' +
+            '<div class="grid w100 color-black font-s16 color-black6">' +
+            '<div id="deptSelect" data-target="closePopup" class="col-1 w50 br-gray bb-gray grid middle grayImg">' +
+            '<span id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="../../themes/m5/images/gray.png">' +
+            '</div>' +
+            '<div id="citySelect" data-target="closePopup" class="col-1 w50 bb-gray grid middle grayImg">' +
+            '<span id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="../../themes/m5/images/gray.png">' +
+            '</div>' +
+            '</div>' +
+            '</nav>' +
             '<article id="findDept_article" class="active" style="position:static;">' + $cityHtml +
             '</article>' +
             '</div>';
@@ -232,7 +236,7 @@ function readyHospital(data) {
     if (results) {
         if (results.length > 0) {
             for (var i = 0; i < results.length; i++) {
-                innerHtml += '<li class="nextImg">' +
+                innerHtml += '<li class="">' +
                         '<a href="' + $requestDepartment + '/' + results[i].hp_dept_id + '">' +
                         '<div class="font-s16 color-black">' + results[i].name + '</div>' +
                         '<div class="color-black6">医院实际科室名称:' + results[i].hp_dept_name + '</div>' +
