@@ -12,8 +12,8 @@ class OrderController extends MobileController {
 
     public function actionPayDeposit(){
         $output = array('status' => 'no','errorCode' => 0,'errorMsg' =>'' ,'results' => array()); // default status is false.
-        if($_POST['order']['ref_no']){
-            $refno = $_POST['order']['ref_no'];
+        if($_POST['order']['bk_ref_no']){
+            $refno = $_POST['order']['bk_ref_no'];
             $model = SalesOrder::model()->getByAttributes(array('bk_ref_no' => $refno ,'order_type' => 'deposit'));
             if($model){
                 $booking = Booking::model()->getByRefNo($model->bk_ref_no);

@@ -51,6 +51,11 @@ class ApiViewDoctorSearchV7 extends EApiViewService {
         foreach ($models as $model) {
             $data = new stdClass();
             $data->id = $model->getId();
+            $data->isServiceId = null;
+            $bookingServiceJoin = BookingServiceDoctorJoin::model()->getByDoctorIdAndBookingServiceId($model->getId(), BookingServiceConfig::BOOKING_SERVICE_FREE_LIINIC);
+            if (isset($bookingServiceJoin)) {
+                $data->isServiceId = BookingServiceConfig::BOOKING_SERVICE_FREE_LIINIC;
+            }
             $data->name = $model->getName();
             $data->mTitle = $model->getMedicalTitle();
             $data->aTitle = $model->getAcademicTitle();
