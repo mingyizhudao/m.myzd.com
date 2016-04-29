@@ -12,6 +12,7 @@ $urlLogout = $this->createUrl('user/logout');
 $urlUserView = $this->createUrl('user/view');
 $urlPatientBookingList = $this->createUrl('booking/patientBookingList');
 $urlUserCommonProblem = $this->createUrl('user/commonProblem');
+$urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
 ?>
 <header id="user_header" class="bg-green">
     <h1 class="title color-white">个人中心</h1>
@@ -48,9 +49,9 @@ $urlUserCommonProblem = $this->createUrl('user/commonProblem');
                     $waitPayNum = $data[$i]->num;
                 } else if ($data[$i]->bkStatus == 2) {
                     $arrangementInNum = $data[$i]->num;
-                } else if ($data[$i]->bkStatus == 3) {
+                } else if ($data[$i]->bkStatus == 5) {
                     $waitConfirmNum = $data[$i]->num;
-                } else if ($data[$i]->bkStatus == 4) {
+                } else if ($data[$i]->bkStatus == 6) {
                     $waitEvaluateNum = $data[$i]->num;
                 }
             }
@@ -101,7 +102,7 @@ $urlUserCommonProblem = $this->createUrl('user/commonProblem');
                     </a>
                 </div>
                 <div class="col-1 w25">
-                    <a href="<?php echo $urlPatientBookingList; ?>?status=3">
+                    <a href="<?php echo $urlPatientBookingList; ?>?status=5">
                         <div class="waitConfirm">
                             <?php
                             if ($waitConfirmNum != 0) {
@@ -123,7 +124,7 @@ $urlUserCommonProblem = $this->createUrl('user/commonProblem');
                     </a>
                 </div>
                 <div class="col-1 w25">
-                    <a href="<?php echo $urlPatientBookingList; ?>?status=4">
+                    <a href="<?php echo $urlPatientBookingList; ?>?status=6">
                         <div class="waitEvaluate">
                             <?php
                             if ($waitEvaluateNum != 0) {
@@ -146,7 +147,19 @@ $urlUserCommonProblem = $this->createUrl('user/commonProblem');
                 </div>
             </div>
         </div>
-        <div class="mt10 bg-white">
+        <div class="mt5 bg-white">
+            <a href='<?php echo $urlMygy; ?>'>
+                <div class="pad10 color-black grid">
+                    <div class="col-0">
+                        <img src="<?php echo $urlResImage; ?>mygy.png" class="w26p">
+                    </div>
+                    <div class="col-1 pl10 pt2 font-s16">
+                        名医公益
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="mt5 bg-white">
             <a href='<?php echo $urlUserCommonProblem; ?>'>
                 <div class="pad10 color-black grid">
                     <div class="col-0">
@@ -206,12 +219,14 @@ $urlUserCommonProblem = $this->createUrl('user/commonProblem');
         J.customConfirm('退出',
                 '<div class="mb10">您确定要退出该账号？</div>',
                 '<a id="closeLogout" class="w50">取消</a>',
-                '<a data="ok" class="color-green w50">退出</a>',
+                '<a id="logout" class="color-green w50">退出</a>',
                 function () {
-                    location.href = '<?php echo $urlLogout; ?>';
                 });
         $('#closeLogout').click(function () {
             J.closePopup();
+        });
+        $('#logout').click(function () {
+            location.href = '<?php echo $urlLogout; ?>';
         });
     });
     $('#aboutus').tap(function () {
@@ -219,9 +234,12 @@ $urlUserCommonProblem = $this->createUrl('user/commonProblem');
     });
     $('#contactUs').tap(function () {
         J.popup({
-            html: '<ul class="list text-center"><li>拨打名医主刀热线</li><li><a href="tel://4001197900">400-119-7900</a></li><li><a id="close">取消</a></li></ul>',
+            html: '<ul class="list text-center"><li>拨打名医主刀热线</li><li><a id="call">400-6277-120</a></li><li><a id="close">取消</a></li></ul>',
             pos: 'bottom',
             showCloseBtn: false
+        });
+        $('#call').tap(function () {
+            location.href = 'tel://4006277120';
         });
         $('#close').click(function () {
             J.closePopup();

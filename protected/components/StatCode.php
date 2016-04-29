@@ -47,6 +47,8 @@ class StatCode {
     const USER_AGENT_APP_IOS = 'ios';
     const APP_NAME_MYZD='myzd'; // 患者版
     const APP_NAME_MOBILEDOCTOR='md';   // 医生版
+    const HAS_REMOTE = 1;
+    const HASNOT_REMOTE = 0;
 
     // gender.
 
