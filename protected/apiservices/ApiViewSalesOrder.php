@@ -7,6 +7,7 @@ class ApiViewSalesOrder extends EApiViewService {
     private $bkId;
     private $bkType;
     private $booking;
+    private $booking_service_id = null;
 
     //private $results;
     //初始化类的时候将参数注入
@@ -37,6 +38,12 @@ class ApiViewSalesOrder extends EApiViewService {
     private function loadSalesOrder() {
         $model = SalesOrder::model()->getByRefNo($this->refNo);
         if (isset($model)) {
+            $bookingModel = Booking::model()->getByRefNo($model->bk_ref_no);
+            if(isset($bookingModel)){
+                if($bookingModel->booking_service_id){
+                    $this->booking_service_id = $bookingModel->booking_service_id;
+                }
+            }
             $this->setSalesOrder($model);
         }
     }
@@ -51,6 +58,7 @@ class ApiViewSalesOrder extends EApiViewService {
         $data->finalAmount = $model->getFinalAmount();
         $data->isPaid = $model->getIsPaid(false);
         $data->orderType = $model->getOrderType();
+        $data->booking_service_id = $this->booking_service_id;
         //判断值
         $this->bkId = $model->getBkId();
         $this->bkType = $model->getBkType();
