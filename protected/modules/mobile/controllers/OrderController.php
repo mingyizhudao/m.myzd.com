@@ -11,10 +11,9 @@ class OrderController extends MobileController {
     }
 
     public function actionPayDeposit(){
-        
+        $output = array('status' => 'no','errorCode' => 0,'errorMsg' =>'' ,'results' => array()); // default status is false.
         if($_POST['refNo']){
             $refno = $_POST['refNo'];
-            
             $model = SalesOrder::model()->getByAttributes(array('bk_ref_no' => $refno ,'order_type' => 'deposit'));
             if($model){
                 $booking = Booking::model()->getByRefNo($model->bk_ref_no);
@@ -27,19 +26,26 @@ class OrderController extends MobileController {
                      $adminBooking->booking_status = StatCode::BK_STATUS_PROCESSING;
                      $adminBooking->work_schedule = StatCode::BK_STATUS_PROCESSING;
                     if ($booking->save() && $model->save() && $adminBooking->save()) {
-                        echo '成功';
-                       // $this->redirect(array('booking/userBooking', 'id' => $booking->getId()));
+                         $output['status'] = ok;
+                         $output['error_code'] = 200;
+                         $output['errorMsg'] = 'no';
+                         return $output;
                     }
                 } else {
-                    echo '原页面';
-//                     $this->redirect(array('booking/userBooking', 'id' => $booking->getId()));
+                     $output['error_code'] = 200;
+                     $output['errorMsg'] = 'SaleOrder is not free.';
+                     return $output;
                 }
             }else{
-                echo'未取到订单支付信息';
+                 $output['error_code'] = 200;
+                 $output['errorMsg'] = 'SaleOrder not found.';
+                 return $output;
             }
             
         }else{
-           echo '参数错误';
+            $output['error_code'] = 200;
+            $output['errorMsg'] = 'Wrong parameters.';
+            return $output;
         }
     }
     
