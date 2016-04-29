@@ -17,7 +17,6 @@ class OrderController extends MobileController {
             
             $model = SalesOrder::model()->getByAttributes(array('bk_ref_no' => $refno ,'order_type' => 'deposit'));
             if($model){
-                
                 $booking = Booking::model()->getByRefNo($model->bk_ref_no);
                 if ($booking->booking_service_id == BookingServiceConfig::BOOKING_SERVICE_FREE_LIINIC) {
                     $adminBooking=new AdminBooking();

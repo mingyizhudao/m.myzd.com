@@ -65,7 +65,6 @@ class ApiViewDoctorSearchV7 extends EApiViewService {
             $data->isContracted = $model->getIsContracted();
             $data->reasons = $model->getReasons();
             $data->isExpteam = $model->getIsExpteam();
-            $data->isFreeClinic = $model->getIsFreeClinic();
             $this->doctors[] = $data;
         }
     }
