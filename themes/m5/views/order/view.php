@@ -8,6 +8,7 @@ $order = $data->results->salesOrder;
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $payUrl = $this->createUrl('/payment/doPingxxPay');
 $refUrl = $this->createAbsoluteUrl('order/view');
+$orderPayDeposit = $this->createAbsoluteUrl('order/payDeposit');
 $isApp = Yii::app()->request->getQuery('app', 1);
 $urlPatientBookingList = $this->createUrl('booking/patientBookingList');
 $urlSuccess = $this->createUrl('user/view');
@@ -44,6 +45,7 @@ $this->show_footer = false;
                     </div>
                     -->
                     <input id="ref_no" type="hidden" name="order[ref_no]" value="<?php echo $order->refNo; ?>" />
+                    <input type="hidden" name="order[bk_ref_no]" value="<?php echo $order->bkRefNo; ?>" />
                 </form>
             </div>
             <div class="divider"></div>
@@ -56,35 +58,42 @@ $this->show_footer = false;
                     if ($this->isUserAgentApp()) {
                         echo '<a id="pay" href="javascript:;" class="btn btn-yes btn-block">立即支付</a>';
                     } else {
-                        ?>
-                        <div class="col-1">
-                            <a href="<?php echo $urlSuccess; ?>" class="btn btn-default btn-block" data-target="link">暂不支付</a>
-                        </div>
-                        <div class="col-1">
-                            <a id="pay" href="javascript:;" class="btn btn-yes btn-block">立即支付</a>
-                        </div>
-                    <?php } ?>
+                        if (($order->orderTypeCode == 'deposit') && ($order->booking_service_id == 2)) {
+                            ?>
+                            <a id="completePay" href="javascript:;" class="btn btn-yes btn-block">完成</a>
+                            <a id="pay" href="javascript:;"></a>
+                            <?php
+                        } else {
+                            ?>
+                            <div class="col-1">
+                                <a href="<?php echo $urlSuccess; ?>" class="btn btn-default btn-block" data-target="link">暂不支付</a>
+                            </div>
+                            <div class="col-1">
+                                <a id="pay" href="javascript:;" class="btn btn-yes btn-block">立即支付</a>
+                            </div>
+                            <?php
+                        }
+                    }
+                    ?>
                     <div class="clearfix"></div>
                 </div>
-
-
-                                    <!--            <section class="block">
-                                        <div class="content2">
-                                            <div class="app">
-                                                <div class="ch">
-                                                    <span class="up" onclick="wap_pay('upacp_wap')">银联 WAP</span>
-                                                    <span class="up" onclick="wap_pay('alipay_pc_direct')">支付宝 即时到账</span>
-                                                    <span class="up alipay" onclick="wap_pay('alipay_wap')">&nbsp;</span>
-                                                    <span class="up weixin" onclick="wap_pay('wx_pub')">&nbsp;</span>
-                                                    <span class="up" onclick="wap_pay('bfb_wap')">百度钱包 WAP</span>
-                                                    <span class="up" onclick="wap_pay('jdpay_wap')">京东支付 WAP</span>
-                                                    <span class="up" onclick="wap_pay('yeepay_wap')">易宝支付 WAP</span>
-                                                        <span class="up" onclick="wap_pay('yeepay_wap')">易宝支付 WAP</span>
-                                                    <span class="up yeepay" onclick="wap_pay('yeepay_wap')">&nbsp;</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </section>-->
+<!--            <section class="block">
+                    <div class="content2">
+                        <div class="app">
+                            <div class="ch">
+                                <span class="up" onclick="wap_pay('upacp_wap')">银联 WAP</span>
+                                <span class="up" onclick="wap_pay('alipay_pc_direct')">支付宝 即时到账</span>
+                                <span class="up alipay" onclick="wap_pay('alipay_wap')">&nbsp;</span>
+                                <span class="up weixin" onclick="wap_pay('wx_pub')">&nbsp;</span>
+                                <span class="up" onclick="wap_pay('bfb_wap')">百度钱包 WAP</span>
+                                <span class="up" onclick="wap_pay('jdpay_wap')">京东支付 WAP</span>
+                                <span class="up" onclick="wap_pay('yeepay_wap')">易宝支付 WAP</span>
+                                <span class="up" onclick="wap_pay('yeepay_wap')">易宝支付 WAP</span>
+                                <span class="up yeepay" onclick="wap_pay('yeepay_wap')">&nbsp;</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>-->
                 <?php
             }
             ?>
@@ -94,6 +103,17 @@ $this->show_footer = false;
 <!--<script type="text/javascript" src="https://one.pingxx.com/lib/pingpp_one.js"></script>-->
 <script type="text/javascript" src="http://myzd.oss-cn-hangzhou.aliyuncs.com/static/mobile/js/pingpp-one/pingpp-one.js"></script>
 <script type="text/javascript">
+    $('#completePay').click(function () {
+        var formdata = $('.form-horizontal').serializeArray();
+        $.ajax({
+            type: 'post',
+            url: '<?php echo $orderPayDeposit; ?>',
+            data: formdata,
+            success: function (data) {
+                console.log(data);
+            }
+        });
+    });
     var orderno = document.getElementById('ref_no').value;
     var amount = 0.01;
     document.getElementById('pay').addEventListener('click', function (e) {
