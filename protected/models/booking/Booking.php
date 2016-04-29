@@ -71,10 +71,10 @@ class Booking extends EActiveRecord {
             array('disease_detail', 'length', 'max' => 1000),
             array('remark', 'length', 'max' => 500),
             array('submit_via', 'length', 'max' => 10),
-            array('date_start, date_end, appt_date, date_created, date_updated, date_deleted, user_agent, is_commonweal,is_free_clinic  ', 'safe'),
+            array('date_start, date_end, appt_date, date_created, date_updated, date_deleted, user_agent, is_commonweal,booking_service_id', 'safe'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
-            array('id, ref_no, user_id, mobile, contact_name, contact_email, bk_status, bk_type, doctor_id, doctor_name, expteam_id, expteam_name, city_id, hospital_id, hospital_name, hp_dept_id, hp_dept_name, disease_name, disease_detail, date_start, date_end, appt_date, remark, submit_via, date_created, date_updated, date_deleted', 'safe', 'on' => 'search'),
+            array('id, ref_no, user_id, mobile, contact_name, contact_email, bk_status, bk_type, doctor_id, doctor_name, expteam_id, expteam_name, city_id, hospital_id, hospital_name, hp_dept_id, hp_dept_name, disease_name, disease_detail, date_start, date_end, appt_date, remark, submit_via, date_created, date_updated, date_deleted ,booking_service_id', 'safe', 'on' => 'search'),
         );
     }
 

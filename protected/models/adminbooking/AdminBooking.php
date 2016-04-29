@@ -468,5 +468,24 @@ class AdminBooking extends EActiveRecord {
     public function setFinalDoctorName($id) {
         $this->final_doctor_name = $id;
     }
+    
+    public static function getOptionsBookingStatus() {
+        return array(
+            StatCode::BK_STATUS_NEW => '待处理',
+            StatCode::BK_STATUS_PROCESSING => '安排中',
+            //            StatCode::BK_STATUS_CONFIRMED_DOCTOR => '专家已确认',
+        //            StatCode::BK_STATUS_PATIENT_ACCEPTED => '患者已接受',
+            StatCode::BK_STATUS_SERVICE_UNPAID => '待支付服务费',
+            StatCode::BK_STATUS_SERVICE_PAIDED => '已完成（支付完服务费）',
+            StatCode::BK_STATUS_PROCESS_DONE => '跟进结束',
+            //StatCode::BK_STATUS_DONE => '已完成',
+            StatCode::BK_STATUS_CHECKOUT => '已结账',
+            StatCode::BK_STATUS_INVALID => '跟进无效',
+            StatCode::BK_STATUS_NULLIFY => '作废',
+            //StatCode::BK_STATUS_CANCELLED => '已取消'
+            StatCode::BK_STATUS_REFUNDING => '申请退款',
+            StatCode::BK_STATUS_REFUNDED => '已退款',
+        );
+    }
 
 }

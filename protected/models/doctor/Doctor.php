@@ -79,7 +79,7 @@ class Doctor extends EActiveRecord {
             array('date_activated, date_verified, last_login_time, date_created, date_updated, date_deleted', 'safe'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
-            array('id, name, fullname, mobile, hospital_id, faculty, medical_title, academic_title, gender, state_id, city_id, disease_specialty, surgery_specialty, description, email,wechat, tel, display_order, date_activated, date_verified, last_login_time ,is_free_clinic', 'safe', 'on' => 'search'),
+            array('id, name, fullname, mobile, hospital_id, faculty, medical_title, academic_title, gender, state_id, city_id, disease_specialty, surgery_specialty, description, email,wechat, tel, display_order, date_activated, date_verified, last_login_time', 'safe', 'on' => 'search'),
         );
     }
 
@@ -595,10 +595,6 @@ class Doctor extends EActiveRecord {
         return $this->expteam_id;
     }
 
-    public function getIsFreeClinic() {
-        return $this->is_free_clinic;
-    }
-    
     public function getCareerExp() {
         return $this->career_exp;
     }

@@ -19,8 +19,8 @@ class StatCode {
     const BK_TRAVELTYPE_DOCTOR_COME = 2;   // 医生过来
     const BK_STATUS_NEW = 1;         // 待支付 旧版待处理
     const BK_STATUS_PROCESSING = 2;   //安排中 旧版处理中
-    const BK_STATUS_CONFIRMED_DOCTOR = 3;   //待确认 旧版已确认专家
-    const BK_STATUS_PATIENT_ACCEPTED = 4;   //待点评 旧版患者已接受
+    const BK_STATUS_CONFIRMED_DOCTOR = 5;   //待确认 旧版已确认专家
+    const BK_STATUS_PATIENT_ACCEPTED = 6;   //待点评 旧版患者已接受
     const BK_STATUS_DONE = 8;        // 已完成
     const BK_STATUS_CANCELLED = 9;   // 已取消
     const DR_C_TITLE_ZHUREN = 1;        // 主任
@@ -32,6 +32,7 @@ class StatCode {
     const DR_A_TITLE_NONE = 9;          // 无    
     const TRAN_STATUS_UNPAID = 0;
     const TRAN_STATUS_PAID = 1;
+    const TRANS_TYPE_AB = 0;          // booking.
     const TRANS_TYPE_BK = 1;          // booking.
     const TRANS_TYPE_PB = 2;          // patient_booking.
     const PAY_UNPAID = 0;           //未支付

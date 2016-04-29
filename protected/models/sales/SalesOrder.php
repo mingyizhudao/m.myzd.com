@@ -65,7 +65,7 @@ class SalesOrder extends EActiveRecord {
             array('date_closed, date_created, date_updated, date_deleted', 'safe'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
-            array('id, ref_no, user_id, bk_id, bk_type, subject, description, is_paid, date_open, date_closed, created_by, total_amount, discount_percent, discount_amount, final_amount, currency, date_created, date_updated, date_deleted', 'safe', 'on' => 'search'),
+            array('id, ref_no, bk_ref_no,user_id, bk_id, bk_type, subject, description, is_paid, date_open, date_closed, created_by, total_amount, discount_percent, discount_amount, final_amount, currency, date_created, date_updated, date_deleted', 'safe', 'on' => 'search'),
             array('bk_ref_no', 'checkBookingExists'),
         );
     }
