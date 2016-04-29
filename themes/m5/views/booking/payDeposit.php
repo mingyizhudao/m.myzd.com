@@ -81,8 +81,6 @@ if (($results->bkStatusCode == $BK_STATUS_NEW) && ($results->depositAmount != $r
         <div id="payService" data-bookingId="<?php echo $results->id; ?>" class="col-1 w40 bg-yellow5 color-white middle grid">继续支付</div>
     </footer>
     <?php
-} else {
-    echo '<footer class="bg-white grid"><div class="col-1 w40 bg-gray4 color-white middle grid">已支付</div></footer>';
 }
 ?>
 <article id='payOrder_article' class="active" data-scroll="true">
