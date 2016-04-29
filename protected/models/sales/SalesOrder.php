@@ -366,7 +366,7 @@ class SalesOrder extends EActiveRecord {
             return 0;
         }
     }
-
+    
     public function getBkId() {
         return $this->bk_id;
     }
@@ -398,6 +398,11 @@ class SalesOrder extends EActiveRecord {
     public function setPingId($v) {
         $this->ping_id = $v;
     }
+    
+    public function getOrderTypeCode() {
+        return $this->order_type;
+    }
+    
 
     public function getDateClose($format = self::DB_FORMAT_DATETIME) {
         $date = new DateTime($this->date_closed);

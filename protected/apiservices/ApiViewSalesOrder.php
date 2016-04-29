@@ -58,6 +58,7 @@ class ApiViewSalesOrder extends EApiViewService {
         $data->finalAmount = $model->getFinalAmount();
         $data->isPaid = $model->getIsPaid(false);
         $data->orderType = $model->getOrderType();
+        $data->orderTypeCode = $model->getOrderTypeCode();
         $data->booking_service_id = $this->booking_service_id;
         //判断值
         $this->bkId = $model->getBkId();
