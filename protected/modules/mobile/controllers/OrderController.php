@@ -18,34 +18,30 @@ class OrderController extends MobileController {
             if($model){
                 $booking = Booking::model()->getByRefNo($model->bk_ref_no);
                 if ($booking->booking_service_id == BookingServiceConfig::BOOKING_SERVICE_FREE_LIINIC) {
-                    $adminBooking=new AdminBooking();
-                    $adminBooking = $adminBooking->getByAttributes(array('ref_no' => $model->bk_ref_no));
-                    $model->is_paid = SalesOrder::ORDER_PAIDED;
-                    $model->date_closed = new CDbExpression('NOW()');
-                    $booking->bk_status = StatCode::BK_STATUS_PROCESSING;
-                     $adminBooking->booking_status = StatCode::BK_STATUS_PROCESSING;
-                     $adminBooking->work_schedule = StatCode::BK_STATUS_PROCESSING;
-                    if ($booking->save() && $model->save() && $adminBooking->save()) {
-                         $output['status'] = ok;
+                    $adminDate = AdminBooking::model()->updateAllByAttributes(array('booking_status'=> StatCode::BK_STATUS_PROCESSING,'work_schedule'=> StatCode::BK_STATUS_PROCESSING ,'date_updated'=>new CDbExpression("NOW()")), array('ref_no' =>$refno));
+                    $orderDate = SalesOrder::model()->updateAllByAttributes(array('is_paid'=> SalesOrder::ORDER_PAIDED,'date_closed'=> new CDbExpression("NOW()")), array('bk_ref_no' => $refno ,'order_type' => 'deposit'));
+                    $bookingDate = Booking::model()->updateAllByAttributes(array('bk_status'=>  StatCode::BK_STATUS_PROCESSING), array('ref_no' => $refno));
+                    if ($bookingDate && $orderDate && $adminDate) {
+                         $output['status'] = 'ok';
                          $output['error_code'] = 200;
                          $output['errorMsg'] = 'no';
-                         return $output;
+                         $this->renderJsonOutput($output);
                     }
                 } else {
                      $output['error_code'] = 200;
                      $output['errorMsg'] = 'SaleOrder is not free.';
-                     return $output;
+                     $this->renderJsonOutput($output);
                 }
             }else{
                  $output['error_code'] = 200;
                  $output['errorMsg'] = 'SaleOrder not found.';
-                 return $output;
+                 $this->renderJsonOutput($output);
             }
             
         }else{
             $output['error_code'] = 200;
             $output['errorMsg'] = 'Wrong parameters.';
-            return $output;
+            $this->renderJsonOutput($output);
         }
     }
     
