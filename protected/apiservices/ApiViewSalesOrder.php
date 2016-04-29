@@ -52,6 +52,7 @@ class ApiViewSalesOrder extends EApiViewService {
         $data = new stdClass();
         $data->id = $model->getId();
         $data->refNo = $model->ref_no;
+        $data->bkRefNo = $model->bk_ref_no;
         $data->userId = $model->user_id;
         $data->subject = $model->getSubject();
         $data->description = $model->getDescription();

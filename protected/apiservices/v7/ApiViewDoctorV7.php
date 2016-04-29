@@ -6,6 +6,9 @@ class ApiViewDoctorV7 extends EApiViewService {
     private $members;
     private $subCatId;
     private $comment;
+    private $isServiceId = null;
+    
+    
     public function __construct($id) {
         parent::__construct();
         $this->doctor_id = $id;
@@ -29,6 +32,11 @@ class ApiViewDoctorV7 extends EApiViewService {
     }
     private function loadDoctor(){
         $doctor = Doctor::model()->getById($this->doctor_id);
+        //义诊医生判断：1常规2义诊  默认值null
+        $bookingServiceJoin = BookingServiceDoctorJoin::model()->getByDoctorIdAndBookingServiceId($this->doctor_id, BookingServiceConfig::BOOKING_SERVICE_FREE_LIINIC);
+        if (isset($bookingServiceJoin)) {
+            $this->isServiceId = BookingServiceConfig::BOOKING_SERVICE_FREE_LIINIC;
+        }
         $this->setDoctor($doctor);
         if(isset($this->members)){
             $this->setMembers();
@@ -70,7 +78,7 @@ class ApiViewDoctorV7 extends EApiViewService {
         $data->isExpteam = $model->getIsExpteam();
         $data->description = $model->getDescription();
         $data->careerExp = $model->getCareerExp();
-        $data->isFreeClinic = $model->getIsFreeClinic();
+        $data->isServiceId = $this->isServiceId;
         $data->honour = $model->getHonourList();
         $data->reasons = $model->getReasons();
         if($data->isExpteam){
