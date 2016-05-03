@@ -202,6 +202,22 @@ footer .control-group li .imgCenter{
     border-radius: 50%;
     overflow: hidden;
 }
+#bookingDoc_article .signIcon{
+    width: 80px;
+    height: 28px;
+    padding-left: 15px;
+    padding-top: 3px;
+    background: url('../images/signIcon.png') no-repeat;
+    background-size: 100% 100%;
+}
+#bookingDoc_article .yzIcon{
+    width: 80px;
+    height: 28px;
+    padding-left: 15px;
+    padding-top: 3px;
+    background: url('../images/yzIcon.png') no-repeat;
+    background-size: 100% 100%;
+}
 #bookingDoc_article .imgDoc{
     display: block;
     width: 100%;
@@ -247,6 +263,11 @@ footer .control-group li .imgCenter{
     color:#F59446;
     border-radius:10px;
 }
+#findDoc_article .yzIcon{
+    padding: 2px 1px 1px 1px;
+    background: url('../images/yzListIcon.png') no-repeat;
+    background-size: 100% 100%;
+}
 #findDoc_article #highDept ul.list{
     background-color: #efefef;
 }
@@ -279,8 +300,8 @@ footer .control-group li .imgCenter{
 }
 #findDoc_nav .grayImg>img{
     margin-left:10px;
-    width:10px;
-    height:10px;
+    width:12px;
+    height:7px;
 }
 
 /*找科室*/
@@ -435,7 +456,11 @@ footer .control-group li .imgCenter{
     z-index: 99;
 }
 #home_article .bx-wrapper{
-    margin: 0 auto 20px;
+    margin: 0 auto 0px;
+}
+#home_article .bx-wrapper .bx-pager.bx-default-pager a{
+    width: 8px;
+    height: 8px;
 }
 #home_article .sliderImg img{
     width:100%;
@@ -847,6 +872,21 @@ img {
     color: #000;
 }
 
+/*快速预约过度页*/
+#operationTrain_article .stepBg{
+    background: url('../images/operationTrain/stepBg.png') no-repeat;
+    background-size: 100%;
+}
+#operationTrain_footer{
+    background: url('../images/operationTrain/btnBg.png') no-repeat;
+    background-size: 100% 100%;
+    border-top: inherit;
+    background-color: #9FD84B;
+}
+#operationTrain_article{
+    background-color: #9FD84B;
+}
+
 /*快速预约*/
 #quickBookIos_article .ui-field-contain div.error {
     color: #f00;
@@ -1003,6 +1043,17 @@ img {
     background-size: 100% 100%;
     height: 7px;
 }
+#shapingHealth_article .titleBg {
+    background: url('../images/zhuanti/Xinxg/xinxgTitle.png') no-repeat;
+    background-size: 100% 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#shapingHealth_article .lineBg {
+    background: url('../images/zhuanti/Xinxg/lineBg.png') no-repeat;
+    background-size: 100% 100%;
+    height: 7px;
+}
 
 /*待支付、安排中、待确认*/
 #payOrder_article .list>li{
@@ -1088,6 +1139,28 @@ article#payOrder_article{
     height:40px;
     padding-top: 5px;
     color: #d93a32;
+}
+
+/*义诊列表*/
+#myyzDoctor_header #cityTitle{
+    line-height: 1em;
+}
+#myyzDoctor_header .cityImg{
+    background: url('<?php echo $urlResImage; ?>/cityLogo.png') no-repeat;
+    background-size: 15px 8px;
+    width:15px;
+    background-position-y: 5px;
+}
+
+#myyzDoctor_article .imgDiv {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1px solid #cccccc;
+    overflow: hidden;
+}
+#myyzDoctor_article ul.list>li {
+    border-bottom: 1px solid #efefef;
 }
 
 /*企业预约*/
