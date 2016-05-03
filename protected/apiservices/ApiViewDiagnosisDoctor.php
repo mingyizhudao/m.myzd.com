@@ -3,6 +3,7 @@
 class ApiViewDiagnosisDoctor extends EApiViewService {
     public $searchInputs;
     public $doctorSearch;
+    public $doctorIds;
     
     public function __construct($value) {
         $this->searchInputs = $value;
@@ -27,7 +28,8 @@ class ApiViewDiagnosisDoctor extends EApiViewService {
     }
 
     public function loadDoctors() {
-        $doctorList = $this->getDiagnosisDoctors();
+        $this->loadDoctorIds();
+        $doctorList = $this->doctorIds;
         $tt= $this->searchInputs;
         $tt['id'] = $doctorList;
         $this->doctorSearch = new DoctorSearchV7($tt);
@@ -256,4 +258,10 @@ class ApiViewDiagnosisDoctor extends EApiViewService {
             );
     }
 
+    private function loadDoctorIds() {
+        $bookingServiceDoctorJoins = BookingServiceDoctorJoin::model()->getAllByAttributes(array('booking_service_id' => BookingServiceConfig::BOOKING_SERVICE_FREE_LIINIC));
+        foreach ($bookingServiceDoctorJoins as $value) {
+            $this->doctorIds[] = $value->doctor_id;
+        }
+    }
 }
