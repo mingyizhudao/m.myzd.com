@@ -9,6 +9,7 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $payUrl = $this->createUrl('/payment/doPingxxPay');
 $refUrl = $this->createAbsoluteUrl('order/view');
 $orderPayDeposit = $this->createAbsoluteUrl('order/payDeposit');
+$patientBookingList = $this->createAbsoluteUrl('booking/patientBookingList');
 $isApp = Yii::app()->request->getQuery('app', 1);
 $urlPatientBookingList = $this->createUrl('booking/patientBookingList');
 $urlSuccess = $this->createUrl('user/view');
@@ -77,7 +78,7 @@ $this->show_footer = false;
                     ?>
                     <div class="clearfix"></div>
                 </div>
-<!--            <section class="block">
+    <!--            <section class="block">
                     <div class="content2">
                         <div class="app">
                             <div class="ch">
@@ -110,6 +111,14 @@ $this->show_footer = false;
             url: '<?php echo $orderPayDeposit; ?>',
             data: formdata,
             success: function (data) {
+                //console.log(data);
+                if (data.status == 'ok') {
+                    location.href = '<?php echo $patientBookingList; ?>';
+                } else {
+                    console.log(data);
+                }
+            },
+            error: function (data) {
                 console.log(data);
             }
         });

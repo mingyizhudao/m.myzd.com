@@ -24,14 +24,30 @@ $orderInfo = $results->orderInfo;
 <header class="bg-green">
     <nav class="left">
         <?php
-        if (($results->bkStatusCode == $BK_STATUS_NEW) && ($results->depositAmount != $results->depositTotalAmount)) {
-            ?>
-            <a id="noPayDeposit">
-                <div class="pl5">
-                    <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
-                </div>
-            </a>
-            <?php
+        if ($results->bkStatusCode == $BK_STATUS_NEW) {
+            $deposit = '';
+            for ($i = 0; $i < count($orderInfo); $i++) {
+                if ($orderInfo[$i]->order_type == 'deposit') {
+                    $deposit = $orderInfo[$i];
+                }
+            }
+            if (($deposit != '') && ($deposit->is_paid == 0)) {
+                ?>
+                <a id="noPayDeposit">
+                    <div class="pl5">
+                        <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                    </div>
+                </a>
+                <?php
+            } else {
+                ?>
+                <a href="" data-target="back">
+                    <div class="pl5">
+                        <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                    </div>
+                </a>
+                <?php
+            }
         } else if (($results->bkStatusCode == $BK_STATUS_CONFIRMED_DOCTOR) && ($results->serviceAmount != $results->serviceTotalAmount)) {
             ?>
             <a id="noPayService">
@@ -59,18 +75,22 @@ $orderInfo = $results->orderInfo;
     </nav>
 </header>
 <?php
-if (($results->bkStatusCode == $BK_STATUS_NEW) && ($results->depositAmount != $results->depositTotalAmount)) {
+if ($results->bkStatusCode == $BK_STATUS_NEW) {
+    $deposit = '';
     for ($i = 0; $i < count($orderInfo); $i++) {
         if ($orderInfo[$i]->order_type == 'deposit') {
-            $deposit = $orderInfo[$i]->final_amount;
-            $refNo = $orderInfo[$i]->ref_no;
+            $deposit = $orderInfo[$i];
         }
     }
+    if (($deposit != '') && ($deposit->is_paid == 0)) {
+        ?>
+        <footer class="bg-white grid">
+            <div class="col-1 w60 middle grid"><?php echo $deposit->final_amount; ?>元</div>
+            <div id="payDeposit" data-refNo="<?php echo $deposit->ref_no; ?>" class="col-1 w40 bg-yellow5 color-white middle grid">支付订单</div>
+        </footer>
+        <?php
+    }
     ?>
-    <footer class="bg-white grid">
-        <div class="col-1 w60 middle grid"><?php echo $deposit; ?>元</div>
-        <div id="payDeposit" data-refNo="<?php echo $refNo; ?>" class="col-1 w40 bg-yellow5 color-white middle grid">支付订单</div>
-    </footer>
     <?php
 } else if (($results->bkStatusCode == $BK_STATUS_PROCESSING) || ($results->bkStatusCode == $BK_STATUS_CANCELLED)) {
     echo '';
@@ -85,8 +105,8 @@ if (($results->bkStatusCode == $BK_STATUS_NEW) && ($results->depositAmount != $r
 ?>
 <article id='payOrder_article' class="active" data-scroll="true">
     <div>
-        <?php //var_dump($results); ?>
-        <?php //var_dump($orderInfo);  ?>
+        <?php //var_dump($results);   ?>
+        <?php //var_dump($orderInfo); ?>
         <ul class="list">
             <li class="font-s16">
                 当前状态：<span class="color-yellow5"><?php echo $results->bkStatus; ?></span>

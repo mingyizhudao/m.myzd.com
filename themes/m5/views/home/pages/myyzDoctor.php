@@ -8,28 +8,6 @@ $urlRootPath = $this->createAbsoluteUrl('/themes/');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
-<style>
-    #myyzDoctor_header #cityTitle{
-        line-height: 1em;
-    }
-    #myyzDoctor_header .cityImg{
-        background: url('<?php echo $urlResImage; ?>/cityLogo.png') no-repeat;
-        background-size: 15px 8px;
-        width:15px;
-        background-position-y: 5px;
-    }
-
-    #myyzDoctor_article .imgDiv {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        border: 1px solid #cccccc;
-        overflow: hidden;
-    }
-    #myyzDoctor_article ul.list>li {
-        border-bottom: 1px solid #efefef;
-    }
-</style>
 <header id="myyzDoctor_header" class="bg-green" data-path="<?php echo $urlRootPath; ?>">
     <nav class="left">
         <a href="" data-target="back">
