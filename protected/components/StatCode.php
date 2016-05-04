@@ -49,6 +49,8 @@ class StatCode {
     const APP_NAME_MOBILEDOCTOR='md';   // 医生版
     const HAS_REMOTE = 1;
     const HASNOT_REMOTE = 0;
+    const USER_MOBILE_LOGIN = 1;        //移动端手机验证码登录
+    const USER_PASSWORD_LOGIN = 2;      //移动端手机密码登录
 
     // gender.
 

@@ -126,9 +126,24 @@ class UserController extends MobileController {
         if (isset($_POST['UserDoctorMobileLoginForm'])) {
             $values = $_POST['UserDoctorMobileLoginForm'];
             $form->setAttributes($values, true);
-            $form->autoRegister = true;
+            $form->autoRegister = false;
             $userMgr = new UserManager();
-            $isSuccess = $userMgr->mobileLogin($form);
+            $values = array('login_type' => 2, 'username' => '13611988792' ,'captcha_code' =>1 ,'password' =>'123456');
+            if($values['login_type'] == StatCode::USER_MOBILE_LOGIN){
+                $isSuccess = $userMgr->mobileLogin($form);
+            }else if($values['login_type'] == StatCode::USER_PASSWORD_LOGIN){
+                if(isset($values['username']) && isset($values['password'])){
+                    $isSuccess = $userMgr->autoLoginUser($values['username'],$values['password'],StatCode::USER_ROLE_PATIENT);
+                }
+            }else{
+                //失败 则返回登录页面
+                $captcha_code = isset($values['captcha_code'])? $values['captcha_code']:'';
+                $this->render("login", array(
+                    'model' => $form,
+                    'captcha_code' => $captcha_code,
+                    'returnUrl' => $returnUrl
+                ));
+            }
             //var_dump($returnUrl);exit;
             if ($isSuccess) {
                 $url = $_POST['returnUrl'];
