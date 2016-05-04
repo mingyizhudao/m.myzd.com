@@ -128,22 +128,7 @@ class UserController extends MobileController {
             $form->setAttributes($values, true);
             $form->autoRegister = false;
             $userMgr = new UserManager();
-            $values = array('login_type' => 2, 'username' => '13611988792' ,'captcha_code' =>1 ,'password' =>'123456');
-            if($values['login_type'] == StatCode::USER_MOBILE_LOGIN){
-                $isSuccess = $userMgr->mobileLogin($form);
-            }else if($values['login_type'] == StatCode::USER_PASSWORD_LOGIN){
-                if(isset($values['username']) && isset($values['password'])){
-                    $isSuccess = $userMgr->autoLoginUser($values['username'],$values['password'],StatCode::USER_ROLE_PATIENT);
-                }
-            }else{
-                //失败 则返回登录页面
-                $captcha_code = isset($values['captcha_code'])? $values['captcha_code']:'';
-                $this->render("login", array(
-                    'model' => $form,
-                    'captcha_code' => $captcha_code,
-                    'returnUrl' => $returnUrl
-                ));
-            }
+            $isSuccess = $userMgr->mobileLogin($form);
             //var_dump($returnUrl);exit;
             if ($isSuccess) {
                 $url = $_POST['returnUrl'];
@@ -235,6 +220,42 @@ class UserController extends MobileController {
     public function actionLogout() {
         Yii::app()->user->logout();
         $this->redirect('login');
+    }
+    
+    public function actionAjaxLogin() {
+        $output = array('status' => 'no');
+        if (isset($_POST['UserDoctorMobileLoginForm'])) {
+            $loginType = 'sms';
+            $smsform = new UserDoctorMobileLoginForm();
+            $values = $_POST['UserDoctorMobileLoginForm'];
+            $smsform->setAttributes($values, true);
+            $smsform->role = StatCode::USER_ROLE_PATIENT;
+            $smsform->autoRegister = false;
+            $userMgr = new UserManager();
+            $isSuccess = $userMgr->mobileLogin($smsform);
+        } else if (isset($_POST['UserLoginForm'])) {
+            $loginType = 'paw';
+            $pawform = new UserLoginForm();
+            $values = $_POST['UserLoginForm'];
+            $pawform->setAttributes($values, true);
+            $pawform->role = StatCode::USER_ROLE_PATIENT;
+            $pawform->rememberMe = true;
+            $userMgr = new UserManager();
+            $isSuccess = $userMgr->doLogin($pawform);
+        } else {
+            $output['errors'] = 'no data..';
+        }
+        if ($isSuccess) {
+            $output['status'] = 'ok';
+        } else {
+            if ($loginType == 'sms') {
+                $output['errors'] = $smsform->getErrors();
+            } else {
+                $output['errors'] = $pawform->getErrors();
+            }
+            $output['loginType'] = $loginType;
+        }
+        $this->renderJsonOutput($output);
     }
 
 }
