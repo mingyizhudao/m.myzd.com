@@ -270,11 +270,6 @@ class UserController extends MobileController {
             $formByMobile = new UserDoctorMobileLoginForm();
             $formByPassword->role = StatCode::USER_ROLE_PATIENT;
             $formByMobile->role = StatCode::USER_ROLE_PATIENT;
-            print_r(array(
-                'modelByMobile' => $formByMobile,
-                'modelByPassword' => $formByPassword,
-                'returnUrl' => $returnUrl
-            ));exit;
             $this->render("login", array(
                 'modelByMobile' => $formByMobile,
                 'modelByPassword' => $formByPassword,
