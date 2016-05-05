@@ -27,10 +27,10 @@ $('#deptSelect').tap(function () {
             '<nav id="findDept_nav" class="header-secondary bg-white">' +
             '<div class="grid w100 color-black font-s16 color-black6">' +
             '<div id="deptSelect" data-target="closePopup" class="col-1 w50 br-gray bb-gray grid middle grayImg">' +
-            '<span id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="../../themes/m5/images/gray.png">' +
+            '<span id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="../../themes/m5/images/lowerTriangleGray.png">' +
             '</div>' +
             '<div id="citySelect" data-target="closePopup" class="col-1 w50 bb-gray grid middle grayImg">' +
-            '<span id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="../../themes/m5/images/gray.png">' +
+            '<span id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="../../themes/m5/images/lowerTriangleGray.png">' +
             '</div>' +
             '</div>' +
             '</nav>' +
@@ -98,7 +98,7 @@ $('#deptSelect').tap(function () {
 function readyDept(data) {
     //console.log(data);
     var results = data.results;
-    var innerHtml = '<div class="grid color-black" style="margin-top:83px;">';
+    var innerHtml = '<div class="grid color-black" style="margin-top:93px;">';
     if (results.length > 0) {
         innerHtml += '<div id="rightDept" class="col-1 w50" data-scroll="true" style="max-height:315px;">'
         for (var i = 0; i < results.length; i++) {
@@ -150,10 +150,10 @@ $('#citySelect').tap(function () {
             '<nav id="findDept_nav" class="header-secondary bg-white">' +
             '<div class="grid w100 color-black font-s16 color-black6">' +
             '<div id="deptSelect" data-target="closePopup" class="col-1 w50 br-gray bb-gray grid middle grayImg">' +
-            '<span id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="../../themes/m5/images/gray.png">' +
+            '<span id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="../../themes/m5/images/lowerTriangleGray.png">' +
             '</div>' +
             '<div id="citySelect" data-target="closePopup" class="col-1 w50 bb-gray grid middle grayImg">' +
-            '<span id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="../../themes/m5/images/gray.png">' +
+            '<span id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="../../themes/m5/images/lowerTriangleGray.png">' +
             '</div>' +
             '</div>' +
             '</nav>' +
