@@ -16,7 +16,7 @@ $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
 <article id="home_article" data-active="home_footer" class="active bg-gray5" data-scroll="true">
     <div>
         <div class="titleImg">
-            <img src="<?php echo $urlResImage; ?>homeBg.jpg" class="w100">
+            <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146243634396635" class="w100">
         </div>
         <div class="titlePosition">
             <div class="font-s21 font-w800 text-center color-white">做手术就找名医主刀</div>
@@ -32,7 +32,7 @@ $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
             <div class="pl10 pr10 bg-white mt20 pb10">
                 <div class="grid pt10">
                     <div class="col-1 w33 pr10">
-                        <a href="<?php echo $urlHospitalTop; ?>?innerDeptId=1">
+                        <a href="<?php echo $urlHospitalTop; ?>?innerDeptId=1&disease_sub_category=1">
                             <div class="bg-blue4">
                                 <div class="font-s16 pl5 pt5">
                                     外科
@@ -45,7 +45,7 @@ $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
                         </a>
                     </div>
                     <div class="col-1 w33 pl5 pr5">
-                        <a href="<?php echo $urlHospitalTop; ?>?innerDeptId=2">
+                        <a href="<?php echo $urlHospitalTop; ?>?innerDeptId=2&disease_sub_category=13">
                             <div class="bg-yellow6">
                                 <div class="font-s16 pl5 pt5">
                                     骨科
@@ -58,7 +58,7 @@ $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
                         </a>
                     </div>
                     <div class="col-1 w33 pl10">
-                        <a href="<?php echo $urlHospitalTop; ?>?innerDeptId=3">
+                        <a href="<?php echo $urlHospitalTop; ?>?innerDeptId=3&disease_sub_category=18">
                             <div class="bg-red2">
                                 <div class="font-s16 pl5 pt5">
                                     妇产科
@@ -73,7 +73,7 @@ $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
                 </div>
                 <div class="grid mt15">
                     <div class="col-1 w33 pr10">
-                        <a href="<?php echo $urlHospitalTop; ?>?innerDeptId=4">
+                        <a href="<?php echo $urlHospitalTop; ?>?innerDeptId=4&disease_sub_category=21">
                             <div class="bg-orange">
                                 <div class="font-s16 pl5 pt5">
                                     小儿外科
@@ -86,7 +86,7 @@ $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
                         </a>
                     </div>
                     <div class="col-1 w33 pl5 pr5">
-                        <a href="<?php echo $urlHospitalTop; ?>?innerDeptId=5">
+                        <a href="<?php echo $urlHospitalTop; ?>?innerDeptId=5&disease_sub_category=28">
                             <div class="bg-blue5">
                                 <div class="font-s16 pl5 pt5">
                                     五官科
@@ -99,7 +99,7 @@ $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
                         </a>
                     </div>
                     <div class="col-1 w33 pl10">
-                        <a href="<?php echo $urlHospitalTop; ?>?innerDeptId=6">
+                        <a href="<?php echo $urlHospitalTop; ?>?innerDeptId=6&disease_sub_category=31">
                             <div class="bg-blue6">
                                 <div class="font-s16 pl5 pt5">
                                     内科
@@ -123,7 +123,7 @@ $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
                     <a href="<?php echo $urlDoctorSearch; ?>?disease_sub_category=2">
                         <div class="pad10 text-center">
                             <div class="text-center">
-                                <img class="w55p h55p" src="<?php echo $urlResImage; ?>findDoctor.png">
+                                <img class="w55p h55p" src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146243692944770">
                             </div>
                             <div class="color-black10 pt10 font-s16">找名医</div>
                             <div class="color-gray4 font-s12">各地名医推荐</div>
@@ -134,7 +134,7 @@ $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
                     <a href="<?php echo $urlOperationTrain; ?>">
                         <div class="pad10 text-center">
                             <div class="text-center">
-                                <img class="w55p h55p" src="<?php echo $urlResImage; ?>shoushuzhitongche.png">
+                                <img class="w55p h55p" src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146243695621077">
                             </div>
                             <div class="color-black10 pt10 font-s16">手术直通车</div>
                             <div class="color-gray4 font-s12">直接预约名医</div>
@@ -144,7 +144,7 @@ $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
                 <div class="col-1 w33" onclick="NTKF.im_openInPageChat('kf_9138_1451451713805');">
                     <div class="pad10 text-center">
                         <div class="text-center">
-                            <img class="w55p h55p" src="<?php echo $urlResImage; ?>onlineService.png">
+                            <img class="w55p h55p" src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146243699018730">
                         </div>
                         <div class="color-black10 pt10 font-s16">在线客服</div>
                         <div class="color-gray4 font-s12">咨询了解我们</div>
@@ -159,12 +159,12 @@ $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
         //轮播图
         var html = '<li class="slide">' +
                 '<a href="<?php echo $urlHomeMyyz; ?>">' +
-                '<img class="w100" src="<?php echo $urlResImage; ?>banner/myyz.jpg">' +
+                '<img class="w100" src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146243704275720">' +
                 '</a>' +
                 '</li>' +
                 '<li class="slide">' +
                 '<a href="<?php echo $urlMygy; ?>">' +
-                '<img class="w100" src="<?php echo $urlResImage; ?>banner/mygy.jpg">' +
+                '<img class="w100" src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146243704260418">' +
                 '</a>' +
                 '</li>';
         $('#home_article .bxslider').html(html);

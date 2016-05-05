@@ -18,6 +18,8 @@ $urlCity = $this->createAbsoluteUrl('/api/city');
 $urlHospital = $this->createAbsoluteUrl('/api/hospital', array('api' => 7));
 $urlDiseasecategory = $this->createAbsoluteUrl('/api/diseasecategory', array('api' => 7));
 $urlDisease = $this->createAbsoluteUrl('/api/diseasebycategory');
+$urlDeptName = $this->createAbsoluteUrl('/api/subcategory');
+$urlCityName = $this->createAbsoluteUrl('/api/city');
 $this->show_footer = false;
 ?>
 <header id="findDept_header" class="bg-green">
@@ -27,27 +29,27 @@ $this->show_footer = false;
                 <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
             </div>
         </a>
-        <a>
-            <span class="ml20 pb2 br-white"></span>
-        </a>
-        <a onclick="javascript:history.go(0)">
-            <img src="<?php echo $urlResImage; ?>refresh.png" class="w24p ml20">
-        </a>
     </nav>
     <h1 class="title">
-        <span id="deptTitle" class="" data-dept="">科室</span>
-        <span class=""><img class="w10p" src="<?php echo $urlResImage; ?>triangleWhite.png"></span>
+        科室
     </h1>
-    <nav id="selectCity" class="right">
-        <div class="grid mt17">
-            <div class="font-s16 col-0" id="cityTitle" data-city="">
-                地区
-            </div>
-            <div class="col-0 cityImg"></div>
-        </div>
+    <nav class="right">
+        <a onclick="javascript:history.go(0)">
+            <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
+        </a>
     </nav>
 </header>
-<article id="findDept_article" class="active" data-scroll="true">
+<nav id="findDept_nav" class="header-secondary bg-white">
+    <div class="grid w100 color-black font-s16 color-black6">
+        <div id="deptSelect" class="col-1 w50 br-gray bb-gray grid middle grayImg">
+            <span id="deptTitle" data-dept=""></span><img src="<?php echo $urlResImage; ?>lowerTriangleGray.png">
+        </div>
+        <div id="citySelect" class="col-1 w50 bb-gray grid middle grayImg">
+            <span id="cityTitle" data-city=""></span><img src="<?php echo $urlResImage; ?>lowerTriangleGray.png">
+        </div>
+    </div>
+</nav>
+<article id="findDept_article" class="active pt20" data-scroll="true">
     <div id="hospitalPage">
     </div>
 </article>
@@ -68,43 +70,11 @@ $this->show_footer = false;
                 //console.log(data);
                 $diseaseData = data;
                 var results = data.results;
-                if ($innerDeptId != '') {
-                    if (results.length > 0) {
-                        for (var i = 0; i < results.length; i++) {
-                            if ($innerDeptId == results[i].id) {
-                                var innerDept = '<div class="grid bg-white"><div class="col-0 font-s15 pl10 pt10 pb10 color-green">请您选择' + results[i].name + '的具体科室</div><div class="col-1 text-right"><img id="backHome" class="w11p mr10 mt15" src="<?php echo $urlResImage; ?>closeBlack.png"></div></div><ul class="list" style="max-height:290px;overflow:scroll;" data-scroll="true">';
-                                var subCat = results[i].subCat;
-                                //console.log(subCat);
-                                if (subCat.length > 0) {
-                                    for (var j = 0; j < subCat.length; j++) {
-                                        innerDept += '<li class="selectDept" data-dept="' + subCat[j].id + '">' + subCat[j].name + '</li>';
-                                    }
-                                }
-                                innerDept += '</ul>';
-                                J.customAlert(innerDept);
-                                return;
-                            }
-                        }
-                    }
-                } else {
-                    ready('', '科室');
-                }
             }
         });
-
-        $('#backHome').click(function (e) {
-            e.preventDefault();
-            location.href = '<?php echo $urlHomeView; ?>';
-        });
-
-        //选择二级科室
-        $('.selectDept').click(function (e) {
-            e.preventDefault();
-            ready($(this).attr('data-dept'), $(this).html());
-        });
-
-        //ready();
-        function ready(readyDeptId, readyDeptName) {
+        
+        ready('<?php echo $disease_sub_category; ?>');
+        function ready(readyDeptId) {
             //请求医生
             $requestHospital = '<?php echo $urlHospital; ?>';
             $requestHospitalTop = '<?php echo $urlHospitalTop; ?>';
@@ -121,9 +91,36 @@ $this->show_footer = false;
             $condition["page"] = '<?php echo $page == '' ? 1 : $page; ?>';
 
             //首次进入，更新科室
-            readyDeptName = readyDeptName.length > 5 ? readyDeptName.substr(0, 4) + '...' : readyDeptName;
-            $('#deptTitle').html(readyDeptName);
-            $('#deptTitle').attr('data-dept', readyDeptId);
+            if ('<?php echo $disease_sub_category; ?>' != '') {
+                $.ajax({
+                    url: '<?php echo $urlDeptName; ?>/' + '<?php echo $disease_sub_category; ?>',
+                    success: function (data) {
+                        console.log(data);
+                        var deptName = data.results.name;
+                        //deptName = deptName.length > 4 ? deptName.substr(0, 3) + '...' : deptName;
+                        $('#deptTitle').html(deptName);
+                        $('#deptTitle').attr('data-dept', data.results.id);
+                    }
+                });
+            }
+
+            //首次进入，更新城市
+            if ('<?php echo $city; ?>' != '') {
+                $.ajax({
+                    url: '<?php echo $urlCityName; ?>/' + '<?php echo $city; ?>',
+                    success: function (data) {
+                        //console.log(data);
+                        var cityName = data.results.name;
+                        cityName = cityName.length > 4 ? cityName.substr(0, 3) + '...' : cityName;
+                        $('#cityTitle').html(cityName);
+                        $('#cityTitle').attr('data-city', data.results.id);
+                    }
+                });
+            } else {
+                $('#cityTitle').html('地区');
+                $('#cityTitle').attr('data-city', '');
+            }
+
             //获取医院信息
             J.showMask();
             $.ajax({
@@ -136,10 +133,6 @@ $this->show_footer = false;
             });
 
             $deptId = readyDeptId;
-            $deptName = readyDeptName;
-
-            //ajax异步加载科室
-            //$deptHtml = readyDept(diseaseData);
 
             //ajax异步加载地区
             $cityHtml = ''
@@ -155,7 +148,7 @@ $this->show_footer = false;
 
         function readyCity(data) {
             var results = data.results;
-            var innerHtml = '<div class="grid color-black" style="margin-top:43px;height:315px;">' +
+            var innerHtml = '<div class="grid color-black" style="margin-top:93px;height:315px;">' +
                     '<div id="leftCity" class="col-1 w50" data-scroll="true" style="height:315px;width: 50%;">' +
                     '<ul class="list">';
             if (results.length > 0) {
@@ -187,6 +180,5 @@ $this->show_footer = false;
             innerHtml += '</div></div>';
             return innerHtml;
         }
-
     });
 </script>
