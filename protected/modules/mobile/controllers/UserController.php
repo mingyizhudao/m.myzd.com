@@ -17,7 +17,7 @@ class UserController extends MobileController {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('register', 'ajaxRegister', 'login', 'commonProblem', 'index', 'getCaptcha', 'valiCaptcha', 'captcha', 'ajaxCaptchaCode', 'ajaxForgetPassword','ajaxLogin'),
+                'actions' => array('register', 'ajaxRegister', 'commonProblem', 'index', 'loginView', 'getCaptcha', 'valiCaptcha', 'captcha', 'ajaxCaptchaCode', 'ajaxForgetPassword','ajaxLogin'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -258,4 +258,29 @@ class UserController extends MobileController {
         $this->renderJsonOutput($output);
     }
 
+    
+    public function actionLoginView() {
+        $returnUrl = $this->getReturnUrl($this->createUrl('user/view'));
+        $user = $this->getCurrentUser();
+        //用户已登陆 直接进入个人中心
+        if (isset($user)) {
+            $this->redirect(array('view'));
+        }else{
+            $formByPassword = new UserLoginForm();
+            $formByMobile = new UserDoctorMobileLoginForm();
+            $formByPassword->role = StatCode::USER_ROLE_PATIENT;
+            $formByMobile->role = StatCode::USER_ROLE_PATIENT;
+            print_r(array(
+                'modelByMobile' => $formByMobile,
+                'modelByPassword' => $formByPassword,
+                'returnUrl' => $returnUrl
+            ));exit;
+            $this->render("login", array(
+                'modelByMobile' => $formByMobile,
+                'modelByPassword' => $formByPassword,
+                'returnUrl' => $returnUrl
+            ));
+        }
+       
+    }
 }
