@@ -9,15 +9,15 @@ class UserController extends MobileController {
      */
     public function filters() {
         return array(
-            'accessControl', // perform access control for CRUD operations
-            'postOnly + delete', // we only allow deletion via POST request
+           'accessControl', // perform access control for CRUD operations
+           'postOnly + delete', // we only allow deletion via POST request
         );
     }
 
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('register', 'ajaxRegister', 'commonProblem', 'index', 'loginView', 'getCaptcha', 'valiCaptcha', 'captcha', 'ajaxCaptchaCode', 'ajaxForgetPassword','ajaxLogin'),
+                'actions' => array('register', 'ajaxRegister', 'commonProblem', 'index', 'login','loginView','getCaptcha', 'valiCaptcha', 'captcha', 'ajaxCaptchaCode', 'ajaxForgetPassword', 'ajaxLogin', 'forgetPassword'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -113,37 +113,6 @@ class UserController extends MobileController {
         }
     }
 
-    //登陆
-    public function actionLogin() {
-        $returnUrl = $this->getReturnUrl($this->createUrl('user/view'));
-        $user = $this->getCurrentUser();
-        //用户已登陆 直接进入个人中心
-        if (isset($user)) {
-            $this->redirect(array('view'));
-        }
-        $form = new UserDoctorMobileLoginForm();
-        $form->role = StatCode::USER_ROLE_PATIENT;
-        if (isset($_POST['UserDoctorMobileLoginForm'])) {
-            $values = $_POST['UserDoctorMobileLoginForm'];
-            $form->setAttributes($values, true);
-            $form->autoRegister = false;
-            $userMgr = new UserManager();
-            $isSuccess = $userMgr->mobileLogin($form);
-            //var_dump($returnUrl);exit;
-            if ($isSuccess) {
-                $url = $_POST['returnUrl'];
-                // $user = $this->getCurrentUser();
-                $this->redirect($url);
-            }
-        }
-        //失败 则返回登录页面
-        $captcha_code = isset($values['captcha_code'])? $values['captcha_code']:'';
-        $this->render("login", array(
-            'model' => $form,
-            'captcha_code' => $captcha_code,
-            'returnUrl' => $returnUrl
-        ));
-    }
 
     //修改密码
     public function actionChangePassword() {
@@ -219,7 +188,7 @@ class UserController extends MobileController {
 
     public function actionLogout() {
         Yii::app()->user->logout();
-        $this->redirect('loginView');
+        $this->redirect('login');
     }
     
     public function actionAjaxLogin() {
@@ -259,7 +228,7 @@ class UserController extends MobileController {
     }
 
     
-    public function actionLoginView() {
+    public function actionLogin() {
         $returnUrl = $this->getReturnUrl($this->createUrl('user/view'));
         $user = $this->getCurrentUser();
         //用户已登陆 直接进入个人中心
