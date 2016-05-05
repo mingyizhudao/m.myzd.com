@@ -31,11 +31,11 @@ class HospitalDepartmentSearch extends ESearchModel {
                 $this->criteria->addCondition("c.city_id=:city_id");
                 $this->criteria->params[":city_id"] = $cityId;
             }
-            // Disease.
+             // Disease.
             if (isset($this->queryParams['disease'])) {
                 $diseaseId = $this->queryParams['disease'];
-                $this->criteria->join .= 'left join disease_hospital_join dhj on (t.`id`=dhj.`hospital_id`)';
-                $this->criteria->addCondition("dhj.disease_id=:diseaseId");
+                $this->criteria->join .= 'left join hospital_department b on t.hp_dept_id=b.id left join category_disease_join cdj on (t.`sub_cat_id`=cdj.`sub_cat_id`)';
+                $this->criteria->addCondition("cdj.disease_id=:diseaseId");
                 $this->criteria->params[":diseaseId"] = $diseaseId;
                 $this->criteria->distinct = true;
             }

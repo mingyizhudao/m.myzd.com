@@ -219,7 +219,7 @@ class UserController extends MobileController {
 
     public function actionLogout() {
         Yii::app()->user->logout();
-        $this->redirect('login');
+        $this->redirect('loginView');
     }
     
     public function actionAjaxLogin() {
