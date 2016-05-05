@@ -30,7 +30,7 @@ $urlUserView = $this->createUrl('user/view');
         } else if ($showStatus == 5) {
             echo '待确认';
         } else if ($showStatus == 6) {
-            echo '待点评';
+            echo '待评价';
         } else if ($showStatus == 8) {
             echo '已完成';
         } else {
