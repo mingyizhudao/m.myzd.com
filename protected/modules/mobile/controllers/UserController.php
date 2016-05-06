@@ -9,15 +9,15 @@ class UserController extends MobileController {
      */
     public function filters() {
         return array(
-            'accessControl', // perform access control for CRUD operations
-            'postOnly + delete', // we only allow deletion via POST request
+           'accessControl', // perform access control for CRUD operations
+           'postOnly + delete', // we only allow deletion via POST request
         );
     }
 
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('register', 'ajaxRegister', 'login', 'commonProblem', 'index', 'getCaptcha', 'valiCaptcha', 'captcha', 'ajaxCaptchaCode', 'ajaxForgetPassword'),
+                'actions' => array('register', 'ajaxRegister', 'commonProblem', 'index', 'login','loginView','getCaptcha', 'valiCaptcha', 'captcha', 'ajaxCaptchaCode', 'ajaxForgetPassword', 'ajaxLogin', 'forgetPassword'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -68,9 +68,7 @@ class UserController extends MobileController {
 
     public function actionView() {
         $user = $this->getCurrentUser();
-        //print_r($user);exit;
         $booking = new Booking();
-//         $bookingModels = $booking->getCountBkStatusByUserId($user['id']);
         $bookingModels = $booking->getBookingByMobileORUserId($user['id'], $user['mobile']);
         $output = array();
         foreach ($bookingModels as $model) {
@@ -115,37 +113,6 @@ class UserController extends MobileController {
         }
     }
 
-    //登陆
-    public function actionLogin() {
-        $returnUrl = $this->getReturnUrl($this->createUrl('user/view'));
-        $user = $this->getCurrentUser();
-        //用户已登陆 直接进入个人中心
-        if (isset($user)) {
-            $this->redirect(array('view'));
-        }
-        $form = new UserDoctorMobileLoginForm();
-        $form->role = StatCode::USER_ROLE_PATIENT;
-        if (isset($_POST['UserDoctorMobileLoginForm'])) {
-            $values = $_POST['UserDoctorMobileLoginForm'];
-            $form->setAttributes($values, true);
-            $form->autoRegister = true;
-            $userMgr = new UserManager();
-            $isSuccess = $userMgr->mobileLogin($form);
-            //var_dump($returnUrl);exit;
-            if ($isSuccess) {
-                $url = $_POST['returnUrl'];
-                // $user = $this->getCurrentUser();
-                $this->redirect($url);
-            }
-        }
-        //失败 则返回登录页面
-        $captcha_code = isset($values['captcha_code'])? $values['captcha_code']:'';
-        $this->render("login", array(
-            'model' => $form,
-            'captcha_code' => $captcha_code,
-            'returnUrl' => $returnUrl
-        ));
-    }
 
     //修改密码
     public function actionChangePassword() {
@@ -223,5 +190,61 @@ class UserController extends MobileController {
         Yii::app()->user->logout();
         $this->redirect('login');
     }
+    
+    public function actionAjaxLogin() {
+        $output = array('status' => 'no');
+        if (isset($_POST['UserDoctorMobileLoginForm'])) {
+            $loginType = 'sms';
+            $smsform = new UserDoctorMobileLoginForm();
+            $values = $_POST['UserDoctorMobileLoginForm'];
+            $smsform->setAttributes($values, true);
+            $smsform->role = StatCode::USER_ROLE_PATIENT;
+            $smsform->autoRegister = false;
+            $userMgr = new UserManager();
+            $isSuccess = $userMgr->mobileLogin($smsform);
+        } else if (isset($_POST['UserLoginForm'])) {
+            $loginType = 'paw';
+            $pawform = new UserLoginForm();
+            $values = $_POST['UserLoginForm'];
+            $pawform->setAttributes($values, true);
+            $pawform->role = StatCode::USER_ROLE_PATIENT;
+            $pawform->rememberMe = true;
+            $userMgr = new UserManager();
+            $isSuccess = $userMgr->doLogin($pawform);
+        } else {
+            $output['errors'] = 'no data..';
+        }
+        if ($isSuccess) {
+            $output['status'] = 'ok';
+        } else {
+            if ($loginType == 'sms') {
+                $output['errors'] = $smsform->getErrors();
+            } else {
+                $output['errors'] = $pawform->getErrors();
+            }
+            $output['loginType'] = $loginType;
+        }
+        $this->renderJsonOutput($output);
+    }
 
+    
+    public function actionLogin() {
+        $returnUrl = $this->getReturnUrl($this->createUrl('user/view'));
+        $user = $this->getCurrentUser();
+        //用户已登陆 直接进入个人中心
+        if (isset($user)) {
+            $this->redirect(array('view'));
+        }else{
+            $formByPassword = new UserLoginForm();
+            $formByMobile = new UserDoctorMobileLoginForm();
+            $formByPassword->role = StatCode::USER_ROLE_PATIENT;
+            $formByMobile->role = StatCode::USER_ROLE_PATIENT;
+            $this->render("login", array(
+                'modelByMobile' => $formByMobile,
+                'modelByPassword' => $formByPassword,
+                'returnUrl' => $returnUrl
+            ));
+        }
+       
+    }
 }
