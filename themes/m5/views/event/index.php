@@ -8,6 +8,7 @@ if ($showApp == 1) {
     $urlEventStoryTwo = $this->createUrl('event/view', array('page' => 'storyTwo'));
     $urlEventStoryThree = $this->createUrl('event/view', array('page' => 'storyThree'));
     $urlEventEightHour = $this->createUrl('event/view', array('page' => 'storyEightHour'));
+    $urlEventThyroid = $this->createUrl('event/view', array('page' => 'thyroid'));
     $urlEventZhuantiOne = $this->createUrl('event/view', array('page' => 'zhuantiOne'));
     $urlEventZhuantiTwo = $this->createUrl('event/view', array('page' => 'zhuantiTwo'));
     $urlEventZhuantiThree = $this->createUrl('event/view', array('page' => 'zhuantiThree'));
@@ -23,6 +24,7 @@ if ($showApp == 1) {
     $urlEventStoryTwo = $this->createUrl('event/view', array('page' => 'storyTwo', 'header' => '0'));
     $urlEventStoryThree = $this->createUrl('event/view', array('page' => 'storyThree', 'header' => '0'));
     $urlEventEightHour = $this->createUrl('event/view', array('page' => 'storyEightHour', 'header' => '0'));
+    $urlEventThyroid = $this->createUrl('event/view', array('page' => 'thyroid', 'header' => '0'));
     $urlEventZhuantiOne = $this->createUrl('event/view', array('page' => 'zhuantiOne', 'header' => '0'));
     $urlEventZhuantiTwo = $this->createUrl('event/view', array('page' => 'zhuantiTwo', 'header' => '0'));
     $urlEventZhuantiThree = $this->createUrl('event/view', array('page' => 'zhuantiThree', 'header' => '0'));
@@ -120,6 +122,18 @@ if ($showPage == 0) {
 </article>
 <article id="story_article" class="<?php echo $showStory; ?>" data-scroll="true" data-active="find_footer">
     <div class="text-justify">
+        <div class="mt10 bg-white">
+            <a href="<?php echo $urlEventThyroid; ?>">
+                <div class="grid color-black10">
+                    <div class="col-1 w40">
+                        <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146252591010862">
+                    </div>
+                    <div class="col-1 w60 font-s17 vertical-center pl20 pr20">
+                        当甲状腺结节遇上达芬奇手术机器人
+                    </div>
+                </div>
+            </a>
+        </div>
         <div class="mt10 bg-white">
             <a href="<?php echo $urlEventEightHour; ?>">
                 <div class="grid color-black10">
