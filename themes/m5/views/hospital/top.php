@@ -31,7 +31,6 @@ $this->show_footer = false;
         </a>
     </nav>
     <h1 class="title">
-        科室
     </h1>
     <nav class="right">
         <a onclick="javascript:history.go(0)">
@@ -70,9 +69,16 @@ $this->show_footer = false;
                 //console.log(data);
                 $diseaseData = data;
                 var results = data.results;
+                if (results.length > 0) {
+                    for (var i = 0; i < results.length; i++) {
+                        if ($innerDeptId == results[i].id) {
+                            $('#findDept_header .title').html(results[i].name);
+                        }
+                    }
+                }
             }
         });
-        
+
         ready('<?php echo $disease_sub_category; ?>');
         function ready(readyDeptId) {
             //请求医生
