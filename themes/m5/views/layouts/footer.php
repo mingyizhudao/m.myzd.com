@@ -13,28 +13,40 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
     <ul class="control-group w100">
         <li class="w25" data-active="home_footer">
             <a href="<?php echo $urlHomeView; ?>">
-                <div class="imgHome">
+                <div class="grid">
+                    <div class="col-1"></div>
+                    <div class="col-0 imgHome"></div>
+                    <div class="col-1"></div>
                 </div>
                 首页
             </a>
         </li>
         <li class="w25" data-active="hospital_footer">
             <a href="<?php echo $urlHospitalIndex; ?>?city=1">
-                <div class="imgHospital">
+                <div class="grid">
+                    <div class="col-1"></div>
+                    <div class="col-0 imgHospital"></div>
+                    <div class="col-1"></div>
                 </div>
                 推荐
             </a>
         </li>
         <li class="w25" data-active="find_footer">
             <a href="<?php echo $urlEventIndex; ?>">
-                <div class="imgFind">
+                <div class="grid">
+                    <div class="col-1"></div>
+                    <div class="col-0 imgFind"></div>
+                    <div class="col-1"></div>
                 </div>
                 发现
             </a>
         </li>
         <li class="w25" data-active="user_footer">
             <a href="<?php echo $urlUserView; ?>">
-                <div class="imgCenter">
+                <div class="grid">
+                    <div class="col-1"></div>
+                    <div class="col-0 imgCenter"></div>
+                    <div class="col-1"></div>
                 </div>
                 个人
             </a>

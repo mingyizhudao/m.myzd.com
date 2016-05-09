@@ -33,60 +33,60 @@ footer .control-group li>a {
     color: #868686;
 }
 footer .control-group li.active .imgHome{
-    width:100%;
-    height:23px;
-    background:url('../images/home2.png') no-repeat;
-    background-size:23px 23px;
-    background-position:center; 
+    width: 24px;
+    height: 24px;
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146278206712060') no-repeat;
+    background-size: 101px 51px;
+    background-position: -2px 0px;
 }
 footer .control-group li .imgHome{
-    width:100%;
-    height:23px;
-    background:url('../images/home1.png') no-repeat;
-    background-size:23px 23px;
-    background-position:center; 
+    width: 24px;
+    height: 24px;
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146278206712060') no-repeat;
+    background-size: 101px 51px;
+    background-position: -2px -25px;
 }
 footer .control-group li.active .imgHospital{
-    width:100%;
-    height:23px;
-    background:url('../images/hospital2.png') no-repeat;
-    background-size:23px 23px;
-    background-position:center; 
+    width: 24px;
+    height: 24px;
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146278206712060') no-repeat;
+    background-size: 101px 51px;
+    background-position: -26px 0px;
 }
 footer .control-group li .imgHospital{
-    width:100%;
-    height:23px;
-    background:url('../images/hospital1.png') no-repeat;
-    background-size:23px 23px;
-    background-position:center; 
+    width: 24px;
+    height: 24px;
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146278206712060') no-repeat;
+    background-size: 101px 51px;
+    background-position: -26px -25px;
 }
 footer .control-group li.active .imgFind{
-    width:100%;
-    height:23px;
-    background:url('../images/find2.png') no-repeat;
-    background-size:23px 23px;
-    background-position:center; 
+    width: 24px;
+    height: 24px;
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146278206712060') no-repeat;
+    background-size: 101px 51px;
+    background-position: -50px -2px;
 }
 footer .control-group li .imgFind{
-    width:100%;
-    height:23px;
-    background:url('../images/find1.png') no-repeat;
-    background-size:23px 23px;
-    background-position:center; 
+    width: 24px;
+    height: 24px;
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146278206712060') no-repeat;
+    background-size: 101px 51px;
+    background-position: -50px -27px;
 }
 footer .control-group li.active .imgCenter{
-    width:100%;
-    height:23px;
-    background:url('../images/center2.png') no-repeat;
-    background-size:23px 23px;
-    background-position:center; 
+    width: 24px;
+    height: 24px;
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146278206712060') no-repeat;
+    background-size: 101px 51px;
+    background-position: -75px 0px;
 }
 footer .control-group li .imgCenter{
-    width:100%;
-    height:23px;
-    background:url('../images/center1.png') no-repeat;
-    background-size:23px 23px;
-    background-position:center; 
+    width: 24px;
+    height: 24px;
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146278206712060') no-repeat;
+    background-size: 101px 51px;
+    background-position: -75px -25px;
 }
 
 /*医院科室*/
@@ -1045,6 +1045,12 @@ article#payOrder_article{
 }
 
 /*名医公益联盟*/
+#mygy_article .stepBg{
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146277779171363') no-repeat;
+    background-size: 100% 100%;
+    padding: 5px 6px;
+    height: 46px;
+}
 #mygy_article .imgDiv {
     width: 60px;
     height: 60px;
