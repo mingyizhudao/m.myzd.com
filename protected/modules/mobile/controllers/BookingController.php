@@ -627,15 +627,15 @@ class BookingController extends MobileController {
                 foreach ($modelo as $k => $v) {
                     if ($v['order_type'] == SalesOrder::ORDER_TYPE_DEPOSIT) {} else {
                         if($v['is_paid'] == 1){
-                            $output->results->serviceAmount = intval($v['final_amount'] + $output->results->serviceAmount) ;
+                            $output->results->serviceAmount = $v['final_amount'] + $output->results->serviceAmount ;
                         }
-                            $output->results->serviceTotalAmount = intval( $v['final_amount']+$output->results->serviceTotalAmount);
+                            $output->results->serviceTotalAmount = $v['final_amount']+$output->results->serviceTotalAmount;
                     }
                     if ($v['order_type'] == SalesOrder::ORDER_TYPE_SERVICE) {} else {
                         if($v['is_paid'] == 1){
-                         $output->results->depositAmount = intval($v['final_amount']);
+                         $output->results->depositAmount = $v['final_amount'];
                         }
-                         $output->results->depositTotalAmount= intval($v['final_amount']);
+                         $output->results->depositTotalAmount= $v['final_amount'];
                     }
         
                 }
