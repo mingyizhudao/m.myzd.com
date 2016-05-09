@@ -16,7 +16,7 @@ $this->show_footer = false;
 <article id="myyz_article" class="active" data-scroll="true">
     <div>
         <div>
-            <img src="<?php echo $urlResImage; ?>myyz/title.jpg" class="w100">
+            <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/14627627707821" class="w100">
         </div>
         <div class="">
             <div class="color-white text-center pt10">
@@ -36,7 +36,35 @@ $this->show_footer = false;
             <div class="font-s21 text-center color-yellow6">
                 服务流程
             </div>
-            <img src="<?php echo $urlResImage; ?>myyz/step.png" class="w100">
+            <div class="grid pt10">
+                <div class="col-1 w50 grid">
+                    <div class="col-1"></div>
+                    <div class="stepone"></div>
+                    <div class="col-1"></div>
+                </div>
+                <div class="col-1 w50 grid">
+                    <div class="col-1"></div>
+                    <div class="steptwo"></div>
+                    <div class="col-1"></div>
+                </div>
+            </div>
+            <div class="grid pt20">
+                <div class="col-1 w50 grid">
+                    <div class="col-1"></div>
+                    <div class="stepthree"></div>
+                    <div class="col-1"></div>
+                </div>
+                <div class="col-1 w50 grid">
+                    <div class="col-1"></div>
+                    <div class="stepfour"></div>
+                    <div class="col-1"></div>
+                </div>
+            </div>
+            <div class="grid pt20">
+                <div class="col-1"></div>
+                <div class="stepfive"></div>
+                <div class="col-1"></div>
+            </div>
         </div>
     </div>
 </article>

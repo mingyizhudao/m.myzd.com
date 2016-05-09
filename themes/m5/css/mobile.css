@@ -354,10 +354,13 @@ footer .control-group li .imgCenter{
 #findDept_article #rightCity ul.list>li{
     border-bottom: 1px solid #efefef;
 }
+#findDept_nav.header-secondary {
+    height: 50px;
+}
 #findDept_nav .grayImg>img{
     margin-left:10px;
-    width:10px;
-    height:10px;
+    width:12px;
+    height:7px;
 }
 #findDept_article .button, button{
     padding: 10px 10px;
@@ -424,28 +427,13 @@ footer .control-group li .imgCenter{
 }
 
 /*首页*/
-#home_header{
-    line-height: normal;
-    display: inline;
-}
-#home_header .searchDiv{
-    background: url('../images/searchBlack.png') no-repeat;
-    background-position: 17px 5px;
-    background-size: 14px;
-    margin: 8px auto 0px;
-    border-radius:5px;
-    color:#333;
-    padding:5px 5px 5px 42px!important;
-    background-color: #fff;
-    text-align: left;
-}
 #home_article .titlePosition{
     position: absolute;
     top: 0px;
     width: 100%;
 }
 #home_article .searchIcon{
-    background: url('../images/searchGray.png') no-repeat;
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146243645256928') no-repeat;
     background-size: 18px 18px;
     padding-left: 40px;
     background-position-x: 10px;
@@ -476,32 +464,32 @@ footer .control-group li .imgCenter{
     }
 }
 #home_article .waike{
-    background: url('../images/deptAll.png') no-repeat;
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146243656601643') no-repeat;
     background-position: 1px 0px;
     background-size: 90px;
 }
 #home_article .guke{
-    background: url('../images/deptAll.png') no-repeat;
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146243656601643') no-repeat;
     background-position: -32px 0px;
     background-size: 90px;
 }
 #home_article .fuke{
-    background: url('../images/deptAll.png') no-repeat;
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146243656601643') no-repeat;
     background-position: -61px 0px;
     background-size: 90px;
 }
 #home_article .erke{
-    background: url('../images/deptAll.png') no-repeat;
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146243656601643') no-repeat;
     background-position: 2px -39px;
     background-size: 90px;
 }
 #home_article .wuguanke{
-    background: url('../images/deptAll.png') no-repeat;
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146243656601643') no-repeat;
     background-position: -29px -39px;
     background-size: 90px;
 }
 #home_article .neike{
-    background: url('../images/deptAll.png') no-repeat;
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146243656601643') no-repeat;
     background-position: -59px -38px;
     background-size: 90px;
 }
@@ -874,11 +862,11 @@ img {
 
 /*快速预约过度页*/
 #operationTrain_article .stepBg{
-    background: url('../images/operationTrain/stepBg.png') no-repeat;
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146243598978929') no-repeat;
     background-size: 100%;
 }
 #operationTrain_footer{
-    background: url('../images/operationTrain/btnBg.png') no-repeat;
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146243616165849') no-repeat;
     background-size: 100% 100%;
     border-top: inherit;
     background-color: #9FD84B;
@@ -1054,6 +1042,20 @@ img {
     background-size: 100% 100%;
     height: 7px;
 }
+#thyroid_article .titleBg{
+    margin: 10px 0px;
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146252442340679') no-repeat;
+    background-size: 100% 100%;
+    padding: 10px 0px 10px 20px;
+    font-size: 18px;
+    font-weight: 800;
+}
+#thyroid_article .grayBg{
+    background-color: #f2f2f2;
+    padding: 10px;
+    border-radius: 5px;
+    color: #4d4d4d;
+}
 
 /*待支付、安排中、待确认*/
 #payOrder_article .list>li{
@@ -1132,7 +1134,7 @@ article#payOrder_article{
     background-color: #d93a32;
 }
 #myyz_article #bookingBtn{
-    background: url('../images/myyz/btn.png') no-repeat;
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/14627628196872') no-repeat;
     background-size: 100% 100%;
     font-size: 18px;
     text-align: center;
@@ -1140,13 +1142,48 @@ article#payOrder_article{
     padding-top: 5px;
     color: #d93a32;
 }
+#myyz_article .stepone{
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146276456506366') no-repeat;
+    background-size: 275px 334px;
+    background-position-x: -3px;
+    width: 134px;
+    height: 108px;
+}
+#myyz_article .steptwo{
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146276456506366') no-repeat;
+    background-size: 275px 334px;
+    background-position: -141px 0px;
+    width: 134px;
+    height: 108px;
+}
+#myyz_article .stepthree{
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146276456506366') no-repeat;
+    background-size: 275px 334px;
+    background-position: -3px -109px;
+    width: 134px;
+    height: 108px;
+}
+#myyz_article .stepfour{
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146276456506366') no-repeat;
+    background-size: 275px 334px;
+    background-position: -141px -109px;
+    width: 134px;
+    height: 108px;
+}
+#myyz_article .stepfive{
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146276456506366') no-repeat;
+    background-size: 275px 334px;
+    background-position: -66px -222px;
+    width: 134px;
+    height: 108px;
+}
 
 /*义诊列表*/
 #myyzDoctor_header #cityTitle{
     line-height: 1em;
 }
 #myyzDoctor_header .cityImg{
-    background: url('<?php echo $urlResImage; ?>/cityLogo.png') no-repeat;
+    background: url('../images/cityLogo.png') no-repeat;
     background-size: 15px 8px;
     width:15px;
     background-position-y: 5px;
