@@ -19,7 +19,7 @@ $this->show_footer = false;
 <article id="operationTrain_article" class="active" data-scroll="true">
     <div>
         <div>
-            <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146243594570536" class="w100">
+            <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/14627798771477" class="w100">
         </div>
         <div class="stepBg pt20 pb30 pl10 pr10 text-justify">
             <div class="grid">
@@ -30,7 +30,7 @@ $this->show_footer = false;
                     您只需要将病情告诉我们，并上传影像资料（无需想好医院和医生）
                 </div>
             </div>
-            <div class="grid pt20">
+            <div class="grid pt10">
                 <div class="col-0">
                     <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146243610856165" class="w26p">
                 </div>
@@ -38,7 +38,7 @@ $this->show_footer = false;
                     名医助手会向您推荐最适合您病情的主刀专家（均为三甲医院的副主任医师级别以上），免去您找医院、找医生的烦恼，也减少奔波和花费。
                 </div>
             </div>
-            <div class="grid pt20">
+            <div class="grid pt10">
                 <div class="col-0">
                     <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146243612717819" class="w26p">
                 </div>

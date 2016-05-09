@@ -46,7 +46,7 @@ $this->show_footer = false;
                     <div class="col-0 pl5 pr5 bg-white font-w800">公益联盟</div>
                     <div class="col-1"></div>
                 </div>
-                <div class="pad10 text-justify">
+                <div class="pt10 pl10 pr10 text-justify">
                     名医公益联盟是由名医主动倡导发起，并联合公益组织、医生共建的一种可持续公益模式，希望能够汇聚社会的爱心力量，让更多贫困的患者也能找到名医进行手术。
                 </div>
                 <div class="pad10">
