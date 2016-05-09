@@ -201,6 +201,7 @@ body {-webkit-overflow-scrolling: touch;overflow-scrolling: touch;}
 .color-gray5{color:#7E7E7E!important;}
 .color-gray6{color:#9A9B9B!important;}
 .color-gray7{color:#777777!important;}
+.color-gray8{color:#5f5f5f!important;}
 .color-orange{color:#f39700!important;}
 .color-orange2{color:#F7802B!important;}
 .color-orange3{color:#ec6f25!important;}
@@ -334,6 +335,7 @@ body {-webkit-overflow-scrolling: touch;overflow-scrolling: touch;}
 .w100p{width:100px;}
 .w110p{width:110px;}
 .w112p{width:112px;}
+.w130p{width:130px;}
 .w165p{width:165px;}
 .w170p{width:170px;}
 .w5p{width:5px;}
@@ -412,7 +414,7 @@ body {-webkit-overflow-scrolling: touch;overflow-scrolling: touch;}
 
 /*按钮*/
 .btn-yellow{background-color:#fe8c08;width:80%;display:block;margin:5px auto;}
-.btn-green{background-color:#19aea5;color:#fff;border-radius:3px;}
+.btn-green{background-color:#19aea5;width:100%;padding:15px!important;display:block;color:#fff;border-radius:3px;}
 /**** btn ****/
 .btn{border-radius: 5px;border:none;text-align: center;padding: 3px 5px;}
 .btn-block{display: block!important;width: 95%;margin: 5px 2.5%!important;padding: 10px!important;}
