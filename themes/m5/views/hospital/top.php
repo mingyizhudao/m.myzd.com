@@ -1,5 +1,6 @@
 <?php
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/findHospital.js?ts=' . time(), CClientScript::POS_END);
+//Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/findHospital.js?ts=' . time(), CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/findHospital.min.js?ts=' . time(), CClientScript::POS_END);
 ?>
 <?php
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
@@ -101,7 +102,7 @@ $this->show_footer = false;
                 $.ajax({
                     url: '<?php echo $urlDeptName; ?>/' + '<?php echo $disease_sub_category; ?>',
                     success: function (data) {
-                        console.log(data);
+                        //console.log(data);
                         var deptName = data.results.name;
                         //deptName = deptName.length > 4 ? deptName.substr(0, 3) + '...' : deptName;
                         $('#deptTitle').html(deptName);
