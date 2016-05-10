@@ -82,31 +82,8 @@ $this->show_footer = false;
                     </div>
                 </div>
             </div>
-            <div class="mt10 bg-white">
-                <div class="grid pt20">
-                    <div class="col-1 w15"></div>
-                    <div class="col-1 w70 bt-black"></div>
-                    <div class="col-1 w15"></div>
-                </div>
-                <div class="grid mt-12">
-                    <div class="col-1"></div>
-                    <div class="col-0 pl5 pr5 bg-white font-w800">名医君</div>
-                    <div class="col-1"></div>
-                </div>
-                <div id="doctorList" class="mt10">
+            <div id="doctorList" class="mt10">
 
-                </div>
-                <div class="pb10 grid">
-                    <div class="col-1"></div>
-                    <div class="col-0">
-                        <a href="<?php echo $commonwealDoctors; ?>">
-                            <div class=" pl20 pr20 pt2 br10 bg-yellow color-white">
-                                更多名医
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-1"></div>
-                </div>
             </div>
             <div class="mt10 bg-white">
                 <div class="grid pt20">
@@ -182,30 +159,51 @@ $this->show_footer = false;
         function readyPage(data) {
             var innerHtml = '';
             var doctors = data.results.page[0];
-            //console.log(doctors);
+            console.log(doctors);
             var number = 0;
             for (var i = 0; i < 3; i++) {
-                innerHtml += '<div class="grid text-center pl10 pr10 pb10">';
                 for (var j = 0; j < 3; j++) {
-                    innerHtml += '<div class="col-1 w33 border-gray br5 ml3 mr3">' +
-                            '<a href="<?php echo $urlDoctorView; ?>/' + doctors[number].id + '/is_commonweal/1">' +
-                            '<div class="pb10 color-black">' +
-                            '<div class="grid pt10">' +
-                            '<div class="col-1"></div>' +
-                            '<div class="col-0 imgDiv">' +
-                            '<img src="' + doctors[number].imageUrl + '">' +
+                    innerHtml += '<div class="bg-white mt10 br5 pb10">';
+                    if (number == 0) {
+                        innerHtml += '<div class="grid pt20">' +
+                                '<div class="col-1 w15"></div>' +
+                                '<div class="col-1 w70 bt-black"></div>' +
+                                '<div class="col-1 w15"></div>' +
+                                '</div>' +
+                                '<div class="grid mt-12">' +
+                                '<div class="col-1"></div>' +
+                                '<div class="col-0 pl5 pr5 bg-white font-w800">名医君</div>' +
+                                '<div class="col-1"></div>' +
+                                '</div>';
+                    }
+                    innerHtml += '<div class="grid pl15 pr15 pb10 pt10">' +
+                            '<div class="col-1 w25">' +
+                            '<div class="w60p h60p br50" style="overflow:hidden;">' +
+                            '<img class="imgDoc" src="' + doctors[number].imageUrl + '">' +
                             '</div>' +
-                            '<div class="col-1"></div>' +
                             '</div>' +
-                            '<div>' + doctors[number].name + '</div>' +
-                            '<div class="font-s12">' + doctors[number].hpDeptName + '</div>' +
-                            '<div class="font-s12">' + doctors[number].hpName + '</div>' +
+                            '<div class="ml10 col-1 w75">' +
+                            '<div class="grid">' +
+                            '<div class="col-0 font-s16">' + doctors[number].name +
                             '</div>' +
-                            '</a>' +
                             '</div>';
+                    if (doctors[number].hpDeptName == null) {
+                        innerHtml += '<div class="color-black6">' + doctors[number].mTitle + '</div>';
+                    } else {
+                        innerHtml += '<div class="color-black6">' + doctors[number].hpDeptName + '<span class="ml5">' + doctors[number].mTitle + '</span></div>';
+                    }
+                    innerHtml += '<div class="color-black6">' + doctors[number].hpName + '</div>' +
+                            '</div>' +
+                            '</div>' +
+                            '<div class="ml5 mr5 pad10 bg-gray2 text-justify">' +
+                            '擅长：' + doctors[number].desc +
+                            '</div>';
+                    if (number == 8) {
+                        innerHtml += '<div class="pt5"><a href="<?php echo $commonwealDoctors; ?>" class="button btn-yellow font-s16">查看更多专家</a></div>';
+                    }
+                    innerHtml += '</div>';
                     number += 1;
                 }
-                innerHtml += '</div>';
             }
             $('#doctorList').html(innerHtml);
         }
