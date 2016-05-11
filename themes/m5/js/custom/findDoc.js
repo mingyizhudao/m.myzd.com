@@ -85,12 +85,10 @@ function deptSelect() {
             J.closePopup();
         }, 100);
         var requestUrl = $requestDoc + setUrlCondition() + '&getcount=1';
-        //alert(requestUrl);
         J.showMask();
         $.ajax({
             url: requestUrl,
             success: function (data) {
-                //console.log(data);
                 readyDoc(data);
                 $deptName = $deptName.length > 4 ? $deptName.substr(0, 3) + '...' : $deptName;
                 $('#deptTitle').html($deptName);
@@ -114,17 +112,16 @@ $('#diseaseSelect').tap(function () {
     var cityId = $('#cityTitle').attr('data-city');
     var diseaseHtml = '';
 
-    //是否选择科室
+    /*是否选择科室*/
     if (deptId == '') {
         deptSelect();
         return;
     }
 
-    //ajax异步请求疾病
+    /*ajax异步请求疾病*/
     $.ajax({
         url: $requestDisease + '/' + deptId,
         success: function (data) {
-            //console.log(data);
             diseaseHtml = readyDisease(data);
             ajaxPage(diseaseHtml);
         }
@@ -192,7 +189,6 @@ $('#diseaseSelect').tap(function () {
             $diseaseIdB = $(this).attr('data-disease');
             $deptId = $('#deptTitle').attr('data-dept');
             $deptName = $('#deptTitle').html();
-            //$condition["disease_sub_category"] = '';
             $condition["disease_name"] = '';
             $condition["city"] = '';
             $condition["disease"] = $diseaseIdB;
@@ -201,12 +197,10 @@ $('#diseaseSelect').tap(function () {
                 J.closePopup();
             }, 100);
             var requestUrl = $requestDoc + setUrlCondition() + '&getcount=1';
-            //alert(requestUrl);
             J.showMask();
             $.ajax({
                 url: requestUrl,
                 success: function (data) {
-                    //console.log(data);
                     readyDoc(data);
                     $diseaseNameB = $diseaseNameB.length > 4 ? $diseaseNameB.substr(0, 3) + '...' : $diseaseNameB;
                     $('#deptTitle').html($deptName);
@@ -293,7 +287,6 @@ $('#citySelect').tap(function () {
         $diseaseId = $('#diseaseTitle').attr('data-disease');
         $cityId = $(this).attr('data-city');
         $cityName = $(this).html();
-        //$condition["disease_sub_category"] = '';
         $condition["disease"] = $diseaseId;
         $condition["disease_name"] = '';
         $condition["city"] = $cityId;
@@ -302,12 +295,10 @@ $('#citySelect').tap(function () {
             J.closePopup();
         }, 100);
         var requestUrl = $requestDoc + setUrlCondition() + '&getcount=1';
-        //alert(requestUrl);
         J.showMask();
         $.ajax({
             url: requestUrl,
             success: function (data) {
-                //console.log(data);
                 readyDoc(data);
                 $('#cityTitle').html($cityName);
                 $('#cityTitle').attr('data-city', $cityId);
@@ -318,10 +309,9 @@ $('#citySelect').tap(function () {
     });
 });
 
-//医生页面
+/*医生页面*/
 function readyDoc(data) {
     var results = data.results;
-    //console.log(results);
     var innerHtml = '<div class="pt20"></div>';
     if (results) {
         if (results.length > 0) {
@@ -350,7 +340,7 @@ function readyDoc(data) {
                     innerHtml += '<div class="col-1"></div><div class="col-0 yzIcon">义诊</div>';
                 }
                 innerHtml += '</div></div>';
-                //科室为空，则不显示
+                /*科室为空，则不显示*/
                 if (results[i].hpDeptName == "" || results[i].hpDeptName == null) {
                     if (results[i].mTitle == "" || results[i].mTitle == null) {
                         innerHtml += '';
@@ -423,7 +413,7 @@ function readyDoc(data) {
     J.hideMask();
 }
 
-//分页
+/*分页*/
 function initPage(dataPage) {
     $('#previousPage').tap(function () {
         if ($condition["page"] > 1) {
@@ -432,7 +422,6 @@ function initPage(dataPage) {
             $.ajax({
                 url: $requestDoc + setUrlCondition() + '&getcount=1',
                 success: function (data) {
-                    //console.log(data);
                     readyDoc(data);
                     setLocationUrl();
                     $('#findDoc_article').scrollTop(0);
@@ -449,7 +438,6 @@ function initPage(dataPage) {
             $.ajax({
                 url: $requestDoc + setUrlCondition() + '&getcount=1',
                 success: function (data) {
-                    //console.log(data);
                     readyDoc(data);
                     setLocationUrl();
                     $('#findDoc_article').scrollTop(0);
@@ -461,13 +449,12 @@ function initPage(dataPage) {
     });
 }
 
-//跳页
+/*跳页*/
 function changePage() {
     $condition["page"] = $('#selectPage').val();
     $.ajax({
         url: $requestDoc + setUrlCondition() + '&getcount=1',
         success: function (data) {
-            //console.log(data);
             readyDoc(data);
             setLocationUrl();
             $('#findDoc_article').scrollTop(0);
@@ -485,7 +472,7 @@ function setUrlCondition() {
     return urlCondition;
 }
 
-//更新url
+/*更新url*/
 function setLocationUrl() {
     var stateObject = {};
     var title = "";

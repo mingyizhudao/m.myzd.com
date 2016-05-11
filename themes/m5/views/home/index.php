@@ -132,12 +132,12 @@ $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
                 </div>
                 <div class="col-1 w33 br-gray2">
                     <a href="<?php echo $urlOperationTrain; ?>">
-                        <div class="pad10 text-center">
+                        <div class="pt10 pb10 text-center">
                             <div class="text-center">
-                                <img class="w55p h55p" src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146243695621077">
+                                <img class="w55p h55p" src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146295571287578">
                             </div>
-                            <div class="color-black10 pt10 font-s16">手术直通车</div>
-                            <div class="color-gray4 font-s12">直接预约名医</div>
+                            <div class="color-black10 pt10 font-s16">快速预约</div>
+                            <div class="color-gray4 font-s12">省心放心找名医</div>
                         </div>
                     </a>
                 </div>
