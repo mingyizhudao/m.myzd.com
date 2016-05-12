@@ -229,7 +229,7 @@ function setLocationUrl() {
 //医院页面
 function readyHospital(data) {
     var results = data.results;
-    var innerHtml = '<div id="hospitalPage"><div><img class="w100" src="../../themes/m5/images/hospitalDept.png"><ul class="list">';
+    var innerHtml = '<div id="hospitalPage"><div><img class="w100" src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146303147510311"><ul class="list">';
     if (results) {
         if (results.length > 0) {
             for (var i = 0; i < results.length; i++) {

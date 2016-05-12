@@ -66,7 +66,7 @@ $('#selectCity').tap(function (e) {
 //医院页面
 function readyHospital(data) {
     var hospitals = data.hospitals;
-    var innerHtml = '<div><div><img src="../../themes/m5/images/hospital.png" class="w100"></div><ul class="list">';
+    var innerHtml = '<div><div><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146303131616918" class="w100"></div><ul class="list">';
     if (hospitals.length > 0) {
         for (var i = 0; i < hospitals.length; i++) {
             innerHtml += '<li>' +

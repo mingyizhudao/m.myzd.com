@@ -28,7 +28,7 @@ $this->show_footer = false;
                 预约流程
             </div>
             <div class="pt15 pb10">
-                <img class="w100" src="<?php echo $urlResImage; ?>dept/deptStep.png">
+                <img class="w100" src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146302502647494">
             </div>
         </div>
         <div class="mt15 text-justify bg-white">

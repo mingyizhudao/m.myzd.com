@@ -21,7 +21,7 @@ $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
     <div>
         <div class="bg-green">
             <div class="w100 pt20 pb10 text-center">
-                <img src="<?php echo $urlResImage ?>headImg.png" class="w80p">
+                <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146303241586665" class="w80p">
             </div>
             <div class="font-s16 text-center color-white pb10">
                 您好,<?php echo $user->username; ?>
@@ -151,7 +151,7 @@ $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
             <a href='<?php echo $urlMygy; ?>'>
                 <div class="pad10 color-black grid">
                     <div class="col-0">
-                        <img src="<?php echo $urlResImage; ?>mygy.png" class="w26p">
+                        <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146303224249490" class="w26p">
                     </div>
                     <div class="col-1 pl10 pt2 font-s16">
                         名医公益
@@ -163,7 +163,7 @@ $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
             <a href='<?php echo $urlUserCommonProblem; ?>'>
                 <div class="pad10 color-black grid">
                     <div class="col-0">
-                        <img src="<?php echo $urlResImage; ?>commonProblem.png" class="w26p">
+                        <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146303228315924" class="w26p">
                     </div>
                     <div class="col-1 pl10 pt2 font-s16">
                         常见问题
@@ -175,20 +175,10 @@ $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
             <a id="aboutus">
                 <div class="pad10 color-black grid">
                     <div class="col-0">
-                        <img src="<?php echo $urlResImage; ?>aboutUs.png" class="w26p">
+                        <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146303231180874" class="w26p">
                     </div>
                     <div class="col-1 pl10 pt2 font-s16">
                         关于我们
-                    </div>
-                </div>
-            </a>
-            <a href=''>
-                <div class="pad10 color-black grid hide">
-                    <div class="col-0">
-                        <img src="<?php echo $urlResImage; ?>service.png" class="w26p">
-                    </div>
-                    <div class="col-1 pl10 pt2 font-s16">
-                        服务介绍
                     </div>
                 </div>
             </a>
@@ -197,7 +187,7 @@ $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
             <a id="contactUs">
                 <div class="pad10 color-black grid">
                     <div class="col-0">
-                        <img src="<?php echo $urlResImage; ?>contactService.png" class="w26p">
+                        <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146303235982476" class="w26p">
                     </div>
                     <div class="col-1 pl10 pt2 font-s16">
                         联系客服
