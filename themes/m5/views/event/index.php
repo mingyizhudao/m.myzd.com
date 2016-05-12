@@ -70,52 +70,52 @@ if ($showPage == 0) {
     <div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiShapingHealth; ?>">
-                <img src="<?php echo $urlResImage; ?>zhuanti/shapingHealth/banner.jpg" class="w100">
+                <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/14630233122529" class="w100">
             </a>
         </div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiMygy; ?>">
-                <img src="<?php echo $urlResImage; ?>zhuanti/mygy/mygy.jpg" class="w100">
+                <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146302377992350" class="w100">
             </a>
         </div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiRobot; ?>">
-                <img src="<?php echo $urlResImage; ?>zhuanti/banner/robot.jpg" class="w100">
+                <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146302381725650" class="w100">
             </a>
         </div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiFive; ?>">
-                <img src="<?php echo $urlResImage; ?>zhuanti/banner/Qatar.jpg" class="w100">
+                <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146302384917628" class="w100">
             </a>
         </div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiSix; ?>">
-                <img src="<?php echo $urlResImage; ?>zhuanti/banner/tumor.jpg" class="w100">
+                <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/14630238789848" class="w100">
             </a>
         </div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiFour; ?>">
-                <img src="<?php echo $urlResImage; ?>zhuanti/banner/winterSon.jpg" class="w100">
+                <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146302390598546" class="w100">
             </a>
         </div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiOne; ?>">
-                <img src="<?php echo $urlResImage; ?>zhuanti/banner/lujinsong.jpg" class="w100">
+                <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146302393608770" class="w100">
             </a>
         </div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiTwo; ?>">
-                <img src="<?php echo $urlResImage; ?>zhuanti/banner/coronaryHeartDisease.jpg" class="w100">
+                <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146302397500068" class="w100">
             </a>
         </div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiThree; ?>">
-                <img src="<?php echo $urlResImage; ?>zhuanti/banner/DaVinciRobot.jpg" class="w100">
+                <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146302402203799" class="w100">
             </a>
         </div>
         <div class="mt10 mb10">
             <a href="<?php echo $urlEventZhuantiXinxg; ?>">
-                <img src="<?php echo $urlResImage; ?>zhuanti/banner/cardiovascular.jpg" class="w100">
+                <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146302405313136" class="w100">
             </a>
         </div>
     </div>
@@ -138,7 +138,7 @@ if ($showPage == 0) {
             <a href="<?php echo $urlEventEightHour; ?>">
                 <div class="grid color-black10">
                     <div class="col-1 w40">
-                        <img src="<?php echo $urlResImage; ?>gushi/eightHour/eightHour.png">
+                        <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146302411767530">
                     </div>
                     <div class="col-1 w60 font-s17 vertical-center pl20 pr20">
                         8小时冒雪夜行驰援，医者仁心只为救死扶伤
@@ -150,7 +150,7 @@ if ($showPage == 0) {
             <a href="<?php echo $urlEventStoryOne; ?>">
                 <div class="grid color-black10">
                     <div class="col-1 w40">
-                        <img src="<?php echo $urlResImage; ?>gushi/storyOne-1.png">
+                        <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146302415509477">
                     </div>
                     <div class="col-1 w60 font-s17 vertical-center pl20 pr20">
                         韩阿姨的一封感谢信照亮千万患者就医路
@@ -162,7 +162,7 @@ if ($showPage == 0) {
             <a href="<?php echo $urlEventStoryTwo; ?>">
                 <div class="grid color-black10">
                     <div class="col-1 w40">
-                        <img src="<?php echo $urlResImage; ?>gushi/storyTwo-1.png">
+                        <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146302418555693">
                     </div>
                     <div class="col-1 w60 font-s17 vertical-center pl20 pr20">
                         父亲两次抗癌,只为给女儿更久的爱
@@ -174,7 +174,7 @@ if ($showPage == 0) {
             <a href="<?php echo $urlEventStoryThree; ?>">
                 <div class="grid color-black10">
                     <div class="col-1 w40">
-                        <img src="<?php echo $urlResImage; ?>gushi/storyThree-1.png">
+                        <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/14630242227414">
                     </div>
                     <div class="col-1 w60 font-s17 vertical-center pl20 pr20">
                         年轻妈妈的生命倒计时，急需寻找“续命”肺源

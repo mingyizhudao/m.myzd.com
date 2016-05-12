@@ -1,5 +1,6 @@
 <?php
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/myyzDoctor.js?ts=' . time(), CClientScript::POS_END);
+//Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/myyzDoctor.js?ts=' . time(), CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/myyzDoctor.min.js?ts=' . time(), CClientScript::POS_END);
 ?>
 <?php
 $urlApiDiagnosisdoctors = $this->createAbsoluteUrl('/api/diagnosisdoctors', array('api' => 9));
@@ -41,7 +42,7 @@ $this->show_footer = false;
         $.ajax({
             url: '<?php echo $urlApiDiagnosisdoctors; ?>' + '&citys=73&disease_category=1',
             success: function (data) {
-                //console.log(data);
+                console.log(data);
                 readyPage(data);
             },
             error: function (data) {

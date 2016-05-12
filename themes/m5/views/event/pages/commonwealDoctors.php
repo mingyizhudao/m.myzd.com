@@ -45,39 +45,41 @@ $this->show_footer = false;
             var number = 0;
             var rowNum = Math.ceil(doctors.length / 3);
             for (var i = 0; i < rowNum; i++) {
-                innerHtml += '<div class="grid text-center pb10">';
                 for (var j = 0; j < 3; j++) {
                     if (number < doctors.length) {
-                        var hpDeptName = doctors[number].hpDeptName;
-                        var hpName = doctors[number].hpName;
-                        if (hpDeptName == null || hpDeptName == '') {
-                            hpDeptName = '';
-                        }
-                        if (hpName == null || hpName == '') {
-                            hpName = '';
-                        }
-                        innerHtml += '<div class="col-1 w33 border-gray br5 ml3 mr3">' +
-                                '<a href="<?php echo $urlDoctorView; ?>/' + doctors[number].id + '/is_commonweal/1">' +
-                                '<div class="pb10 color-black">' +
-                                '<div class="grid pt10">' +
-                                '<div class="col-1"></div>' +
-                                '<div class="col-0 imgDiv">' +
-                                '<img src="' + doctors[number].imageUrl + '">' +
+                        var hp_dept_desc = (doctors[number] == '' || doctors[number].desc == null) ? '暂无信息' : doctors[number].desc;
+                        hp_dept_desc = hp_dept_desc.length > 45 ? hp_dept_desc.substr(0, 45) + '...' : hp_dept_desc;
+                        innerHtml += '<div class="bg-white mt10 br5">' +
+                                '<a href="<?php echo $urlDoctorView; ?>/' + doctors[number].id + '" class="color-black10">' +
+                                '<div class="pb10">' +
+                                '<div class="grid pl15 pr15 pb10 pt10">' +
+                                '<div class="col-1 w25">' +
+                                '<div class="w60p h60p br50" style="overflow:hidden;">' +
+                                '<img class="imgDoc" src="' + doctors[number].imageUrl + '">' +
                                 '</div>' +
-                                '<div class="col-1"></div>' +
                                 '</div>' +
-                                '<div>' + doctors[number].name + '</div>' +
-                                '<div class="font-s12">' + hpDeptName + '</div>' +
-                                '<div class="font-s12">' + hpName + '</div>' +
+                                '<div class="ml10 col-1 w75">' +
+                                '<div class="grid">' +
+                                '<div class="col-0 font-s16">' + doctors[number].name +
                                 '</div>' +
-                                '</a>' +
                                 '</div>';
+                        if (doctors[number].hpDeptName == null) {
+                            innerHtml += '<div class="color-black6">' + doctors[number].mTitle + '</div>';
+                        } else {
+                            innerHtml += '<div class="color-black6">' + doctors[number].hpDeptName + '<span class="ml5">' + doctors[number].mTitle + '</span></div>';
+                        }
+                        innerHtml += '<div class="color-black6">' + doctors[number].hpName + '</div>' +
+                                '</div>' +
+                                '</div>' +
+                                '<div class="ml5 mr5 pad10 bg-gray2 text-justify">' +
+                                '擅长：' + hp_dept_desc +
+                                '</div>';
+                        innerHtml += '</div></a></div>';
                         number += 1;
                     } else {
                         innerHtml += '<div class="col-1 w33 ml3 mr3"></div>';
                     }
                 }
-                innerHtml += '</div>';
             }
             $('#doctorList').html(innerHtml);
         }

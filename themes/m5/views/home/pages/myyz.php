@@ -13,27 +13,18 @@ $this->show_footer = false;
     </nav>
     <h1 class="title">名医义诊</h1>
 </header>
+<footer>
+    <button id="booking" class="btn btn-block2 font-s16 bg-red3">
+        预约医生
+    </button>
+</footer>
 <article id="myyz_article" class="active" data-scroll="true">
     <div>
         <div>
             <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/14627627707821" class="w100">
         </div>
-        <div class="">
-            <div class="color-white text-center pt10">
-                免费术前方案评估，现约现看
-            </div>
-            <div class="grid pt10 pb20">
-                <div class="col-1 w20"></div>
-                <div class="col-1 w60">
-                    <a href="<?php echo $urlHomeMyyzDoctor; ?>">
-                        <div id="bookingBtn">预约医生</div>
-                    </a>
-                </div>
-                <div class="col-1 w20"></div>
-            </div>
-        </div>
-        <div class="pb20 pt10 bt-red2">
-            <div class="font-s21 text-center color-yellow6">
+        <div class="pb20 pt10">
+            <div class="font-s21 text-center color-brown font-w800">
                 服务流程
             </div>
             <div class="grid pt10">
@@ -68,3 +59,10 @@ $this->show_footer = false;
         </div>
     </div>
 </article>
+<script>
+    $(document).ready(function () {
+        $('#booking').click(function () {
+            location.href = "<?php echo $urlHomeMyyzDoctor; ?>";
+        });
+    });
+</script>

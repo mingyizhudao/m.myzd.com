@@ -163,7 +163,9 @@ $this->show_footer = false;
             var number = 0;
             for (var i = 0; i < 3; i++) {
                 for (var j = 0; j < 3; j++) {
-                    innerHtml += '<div class="bg-white mt10 br5 pb10">';
+                    var hp_dept_desc = (doctors[number] == '' || doctors[number].desc == null) ? '暂无信息' : doctors[number].desc;
+                    hp_dept_desc = hp_dept_desc.length > 45 ? hp_dept_desc.substr(0, 45) + '...' : hp_dept_desc;
+                    innerHtml += '<div class="bg-white mt10 br5">';
                     if (number == 0) {
                         innerHtml += '<div class="grid pt20">' +
                                 '<div class="col-1 w15"></div>' +
@@ -176,7 +178,9 @@ $this->show_footer = false;
                                 '<div class="col-1"></div>' +
                                 '</div>';
                     }
-                    innerHtml += '<div class="grid pl15 pr15 pb10 pt10">' +
+                    innerHtml += '<a href="<?php echo $urlDoctorView; ?>/' + doctors[number].id + '" class="color-black10">' +
+                            '<div class="pb10">' +
+                            '<div class="grid pl15 pr15 pb10 pt10">' +
                             '<div class="col-1 w25">' +
                             '<div class="w60p h60p br50" style="overflow:hidden;">' +
                             '<img class="imgDoc" src="' + doctors[number].imageUrl + '">' +
@@ -196,12 +200,12 @@ $this->show_footer = false;
                             '</div>' +
                             '</div>' +
                             '<div class="ml5 mr5 pad10 bg-gray2 text-justify">' +
-                            '擅长：' + doctors[number].desc +
+                            '擅长：' + hp_dept_desc +
                             '</div>';
                     if (number == 8) {
                         innerHtml += '<div class="pt5"><a href="<?php echo $commonwealDoctors; ?>" class="button btn-yellow font-s16">查看更多专家</a></div>';
                     }
-                    innerHtml += '</div>';
+                    innerHtml += '</div></a></div>';
                     number += 1;
                 }
             }

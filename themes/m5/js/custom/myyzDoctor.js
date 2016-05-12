@@ -51,7 +51,6 @@ $('#selectDept').tap(function () {
             type: 'get',
             url: urlApi + '&citys=' + cityId + '&disease_category=' + dataDeptId,
             success: function (data) {
-                //console.log(data);
                 readyPage(data);
                 $('#deptTitle').html(dataDeptName);
                 $('#deptTitle').attr('data-dept', dataDeptId);
@@ -117,7 +116,6 @@ $('#selectCity').tap(function () {
             type: 'get',
             url: urlApi + '&citys=' + dataCityId + '&disease_category=' + deptId,
             success: function (data) {
-                //console.log(data);
                 readyPage(data);
                 $('#deptTitle').html(deptName);
                 $('#deptTitle').attr('data-dept', deptId);
@@ -133,47 +131,49 @@ $('#selectCity').tap(function () {
 
 function readyPage(data) {
     var doctorView = $('#myyzDoctor_article').attr('data-doctorView');
-    var innerHtml = '<div class="pad10">';
+    var innerHtml = '<div>';
     if (data.results.page) {
         var doctors = data.results.page[0];
         var pageSize = Math.ceil(doctors.length / 3);
         for (var i = 0; i < pageSize; i++) {
-            innerHtml += '<div class="grid text-center pb10">';
             for (var j = 0; j < 3; j++) {
                 var num = i * 3 + j;
                 if (num < doctors.length) {
-                    var hpDeptName = doctors[num].hpDeptName;
-                    var hpName = doctors[num].hpName;
-                    if (hpDeptName == null || hpDeptName == '') {
-                        hpDeptName = '';
-                    }
-                    if (hpName == null || hpName == '') {
-                        hpName = '';
-                    }
-                    innerHtml += '<div class="col-1 w33 border-gray br5 ml3 mr3">' +
-                            '<a href="' + doctorView + '/' + doctors[num].id + '">' +
-                            '<div class="pb10 color-black">' +
-                            '<div class="grid pt10">' +
-                            '<div class="col-1"></div>' +
-                            '<div class="col-0 imgDiv">' +
-                            '<img src="' + doctors[num].imageUrl + '">' +
+                    var hp_dept_desc = (doctors[num].desc == '' || doctors[num].desc == null) ? '暂无信息' : doctors[num].desc;
+                    hp_dept_desc = hp_dept_desc.length > 40 ? hp_dept_desc.substr(0, 40) + '...' : hp_dept_desc;
+                    innerHtml += '<div class="mb10 bg-white">' +
+                            '<a href="' + doctorView + '/' + doctors[num].id + '" data-target="link">' +
+                            '<div class="grid pl15 pr15 pb10 bb-gray3 bt-gray2">' +
+                            '<div class="col-1 w25 pt10">' + '<div class="w60p h60p br50" style="overflow:hidden;">' +
+                            '<img class="imgDoc" src="' + doctors[num].imageUrl + '">' +
                             '</div>' +
-                            '<div class="col-1"></div>' +
                             '</div>' +
-                            '<div>' + doctors[num].name + '</div>' +
-                            '<div class="font-s12">' + hpDeptName + '</div>' +
-                            '<div class="font-s12">' + hpName + '</div>' +
+                            '<div class="ml10 col-1 w75">' +
+                            '<div>' +
+                            '<div class="color-black2 pt10 font-s16">' + doctors[num].name +
+                            '</div>' +
+                            '</div>';
+                    if (doctors[num].hpDeptName == null) {
+                        innerHtml += '<div class="color-black6">' + doctors[num].mTitle + '</div>';
+                    } else {
+                        innerHtml += '<div class="color-black6">' + doctors[num].hpDeptName + '<span class="ml5">' + doctors[num].mTitle + '</span></div>';
+                    }
+                    innerHtml += '<div class="color-black6">' + doctors[num].hpName + '</div>' +
+                            '</div>' +
                             '</div>' +
                             '</a>' +
+                            '<div class="pl15 pr15 pt5 pb10 font-s12 color-black bb-gray2">擅长:' + hp_dept_desc + '</div>' +
                             '</div>';
-                } else {
-                    innerHtml += '<div class="col-1 w33 ml3 mr3"></div>';
                 }
             }
-            innerHtml += '</div>';
         }
     } else {
-        innerHtml += '暂无';
+        innerHtml += '<div class="color-white text-center">' +
+                '<div class="pt50">' +
+                '<img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/14630214183611" class="w170p">' +
+                '</div>' +
+                '<div class="pt10 font-s30 color-gray10">暂无医生</div>' +
+                '</div>';
     }
     innerHtml += '</div>';
     J.hideMask();
