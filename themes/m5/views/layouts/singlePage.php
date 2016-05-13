@@ -11,16 +11,21 @@
         <?php
 //        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/Jingle.min.css?ts=' . time());
 //        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/app.css');
-//        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/mobile.css?ts=' . time());
 //        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/mymain.css?ts=' . time());
-        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/common.min.css?ts=' . time());
+//        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/mobile.css?ts=' . time());
+        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/base.min.css?ts=' . time());
+        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/custom.min.css?ts=' . time());
+
         //Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/lib/Jingle.custom.js?ts=' . time(), CClientScript::POS_END);
+
         Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/lib/zepto.min.js', CClientScript::POS_HEAD);
-        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/common.min.js?ts=' . time(), CClientScript::POS_END);
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/base.min.js?ts=' . time(), CClientScript::POS_END);
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/main.min.js?ts=' . time(), CClientScript::POS_END);
         ?>
-<!--        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/js/lib/zepto.min.js"></script>
-        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/js/main.js"></script>-->
-<!--        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/js/statistics.js"></script>-->
+        <!--        <script type="text/javascript" src="<?php //echo Yii::app()->theme->baseUrl    ?>/js/lib/zepto.min.js"></script>
+        <script type="text/javascript" src="<?php //echo Yii::app()->theme->baseUrl    ?>/js/main.js"></script>-->
+<!--        <script type="text/javascript" src="<?php //echo Yii::app()->theme->baseUrl    ?>/js/statistics.js"></script>-->
+
     </head>
     <body>
         <div id="section_container">
@@ -46,10 +51,10 @@
             </section>
         </div>
         <!-- /footer -->
-<!--        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/js/lib/iscroll.js"></script>
-        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/js/lib/template.min.js"></script>
-        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/js/lib/zepto.touch2mouse.js"></script>
-        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/js/lib/app.js"></script>-->
+<!--        <script type="text/javascript" src="<?php //echo Yii::app()->theme->baseUrl    ?>/js/lib/iscroll.js"></script>
+        <script type="text/javascript" src="<?php //echo Yii::app()->theme->baseUrl    ?>/js/lib/template.min.js"></script>
+        <script type="text/javascript" src="<?php //echo Yii::app()->theme->baseUrl    ?>/js/lib/zepto.touch2mouse.js"></script>
+        <script type="text/javascript" src="<?php //echo Yii::app()->theme->baseUrl    ?>/js/lib/app.js"></script>-->
         <script type="text/javascript" src="http://dl.ntalker.com/js/xn6/ntkfstat.js?siteid=kf_9138"></script>
     </body>
 </html>
