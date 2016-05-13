@@ -25,8 +25,9 @@ class ApiViewSearch extends EApiViewService {
         $this->diseaseSearch = new DiseaseSearch($this->searchInputs);
         $this->diseaseSearch->addSearchCondition("t.date_deleted is NULL");
         $this->hospitalSearch = new HospitalSearch($this->searchInputs);
+        $this->hospitalSearch->addSearchCondition("t.is_show = 1");
         $this->hospitalSearch->addSearchCondition("t.date_deleted is NULL");
-
+        
     }
 
     protected function loadData() {
