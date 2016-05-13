@@ -232,7 +232,7 @@ class ApiController extends Controller {
             case 'search':
                 $values = $_GET;
                 $apiService = new ApiViewSearch($values);
-                $output = $apiService->loadApiViewData();
+                $output = $apiService->loadApiViewData(true);
                 break;
             default:
                 // Model not implemented error
