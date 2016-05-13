@@ -43,6 +43,7 @@ abstract class EApiViewService {
             $sign = $encrypet->sign($stroutput); //base64 字符串加密
             $encrypet->verify($stroutput, $sign);
             $this->output = $encrypet->encrypt($stroutput);
+            
         }
 
         return $this->output;

@@ -149,16 +149,16 @@ class ApiController extends Controller {
                 $values = $_GET;
                 if ($api >= 7) {
                     $apiService = new ApiViewDoctorSearchV7($values);
-                    $output = $apiService->loadApiViewData();
+                    $output = $apiService->loadApiViewData(true);
                 } elseif ($api == 5 || $api == 6) {
                     $apiService = new ApiViewDoctorSearchV5($values);
-                    $output = $apiService->loadApiViewData();
+                    $output = $apiService->loadApiViewData(true);
                 } elseif ($api == 4) {
                     $apiService = new ApiViewDoctorSearchV4($values);
-                    $output = $apiService->loadApiViewData();
+                    $output = $apiService->loadApiViewData(true);
                 } else {
                     $apiService = new ApiViewDoctorSearch($values);
-                    $output = $apiService->loadApiViewData();
+                    $output = $apiService->loadApiViewData(true);
                 }
 
                 //$query['hpdept'] = Yii::app()->request->getQuery('hpdept', null);                
@@ -232,7 +232,7 @@ class ApiController extends Controller {
             case 'search':
                 $values = $_GET;
                 $apiService = new ApiViewSearch($values);
-                $output = $apiService->loadApiViewData(true);
+                $output = $apiService->loadApiViewData();
                 break;
             default:
                 // Model not implemented error

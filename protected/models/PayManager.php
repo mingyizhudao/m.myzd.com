@@ -71,13 +71,13 @@ class PayManager {
             case 'alipay_pc_direct':
                 $extra = array(
 //                    'success_url' => 'http://test.mingyizd.com/payment/alipayReturn'  //test
-                    'success_url' => 'http://www.mingyizhudao.com/payment/alipayReturn' //prod
+                    'success_url' => 'http://www.mingyizhudao.com/mobile/payment/alipayReturn' //prod
                 );
                 break;
             case 'alipay_wap':
                 $extra = array(
 //                    'success_url' => 'http://test.mingyizd.com/payment/alipayReturn', //test
-                    'success_url' => 'http://www.mingyizhudao.com/payment/alipayReturn', //prod
+                    'success_url' => 'http://wap.mingyizhudao.com/mobile/payment/alipayReturn', //prod
                     'cancel_url' => $refurl
                 );
                 break;
