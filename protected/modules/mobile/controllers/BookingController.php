@@ -130,8 +130,8 @@ class BookingController extends MobileController {
     public function actionAjaxCreate() {
         $output = array('status' => 'no');
         $post = $this->decryptInput();
-        if (isset($post)) {
-            $values = $post;
+        if (isset($post['booking'])) {
+            $values = $post['booking'];
             if (isset($values['expteam_id'])) {
                 // 预约专家团队
                 $form = new BookExpertTeamForm();
