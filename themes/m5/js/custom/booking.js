@@ -566,14 +566,14 @@ $(function () {
             disabledBtn(btnSubmit);
             //form插件的异步无刷新提交
             actionUrl = domForm.attr('data-actionurl');
-            //returnUrl = domForm.attr("data-url-return");
-            //alert("asdf");
-            //btnSubmit.button("disable");
             var formdata = domForm.serializeArray();
+            var dataArray = structure_formdata('booking', formdata);
+            var encryptContext = do_encrypt(dataArray);
+            var param = {param: encryptContext};
             domForm.ajaxSubmit({
                 type: 'post',
                 url: actionUrl,
-                data: formdata,
+                data: param,
                 success: function (data) {
                     console.log(data);
                     //图片上传
