@@ -6,7 +6,7 @@
 $this->setPageTitle('订单');
 $order = $data->results->salesOrder;
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
-$payUrl = $this->createUrl('/payment/doPingxxPay');
+$payUrl = $this->createUrl('payment/doPingxxPay');
 $refUrl = $this->createAbsoluteUrl('order/view');
 $orderPayDeposit = $this->createAbsoluteUrl('order/payDeposit');
 $patientBookingList = $this->createAbsoluteUrl('booking/patientBookingList');

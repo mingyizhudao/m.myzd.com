@@ -42,7 +42,6 @@ $this->show_footer = false;
         $.ajax({
             url: '<?php echo $urlApiDiagnosisdoctors; ?>' + '&citys=73&disease_category=1',
             success: function (data) {
-                console.log(data);
                 readyPage(data);
             },
             error: function (data) {

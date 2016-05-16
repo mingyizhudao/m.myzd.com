@@ -202,6 +202,8 @@ body {-webkit-overflow-scrolling: touch;overflow-scrolling: touch;}
 .color-gray6{color:#9A9B9B!important;}
 .color-gray7{color:#777777!important;}
 .color-gray8{color:#5f5f5f!important;}
+.color-gray9{color:#9DA3A9!important;}
+.color-gray10{color:#B9B9B9!important;}
 .color-orange{color:#f39700!important;}
 .color-orange2{color:#F7802B!important;}
 .color-orange3{color:#ec6f25!important;}
@@ -218,6 +220,7 @@ body {-webkit-overflow-scrolling: touch;overflow-scrolling: touch;}
 .color-yellow4{color:#f38124!important;}
 .color-yellow5{color:#F3842D!important;}
 .color-yellow6{color:#eee904!important;}
+.color-brown{color:#5a2b23!important;}
 
 .bg-none{background-color: transparent!important;}
 .bg-green{background-color: #06c1ae!important;}
@@ -244,6 +247,7 @@ body {-webkit-overflow-scrolling: touch;overflow-scrolling: touch;}
 .bg-orange2{background-color:#FFA356!important;}
 .bg-red{background-color:#BD1641;}
 .bg-red2{background-color:#F5856F;}
+.bg-red3{background-color:#FD1A1A!important;}
 .bg-black{background-color:#807E7E!important;}
 
 
@@ -259,6 +263,7 @@ body {-webkit-overflow-scrolling: touch;overflow-scrolling: touch;}
 .font-s17{font-size:17px;}
 .font-s18{font-size:18px!important;}
 .font-s21{font-size:21px!important;}
+.font-s30{font-size:30px!important;}
 .text1-6e{font-size:1.6em;}
 .text12{font-size:12px;letter-spacing:1px;}
 .text14{font-size:14px;}
@@ -329,6 +334,7 @@ body {-webkit-overflow-scrolling: touch;overflow-scrolling: touch;}
 .w63p{width:63px;}
 .w68p{width:68px;}
 .w75p{width:75px;}
+.w79p{width:79px;}
 .w80p{width:80px;}
 .w81p{width:81px;}
 .w90p{width:90px;}
@@ -419,6 +425,7 @@ body {-webkit-overflow-scrolling: touch;overflow-scrolling: touch;}
 /**** btn ****/
 .btn{border-radius: 5px;border:none;text-align: center;padding: 3px 5px;}
 .btn-block{display: block!important;width: 95%;margin: 5px 2.5%!important;padding: 10px!important;}
+.btn-block2{width:80%;display:block;margin:5px auto;}
 .btn-yes{background-color:#19aea5!important;color: #fff!important;}
 .btn-default{border: 1px solid #ddd;background-color: #e4e4e4!important;}
 .btn-abs{width: 100%;padding: 10px;}

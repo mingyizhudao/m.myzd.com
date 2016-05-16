@@ -242,7 +242,6 @@ footer .control-group li .imgCenter{
 #findDoc_article .imgDoc{
     display: block;
     width: 100px;
-    //border-radius: 50%;
     z-index: 0;
     overflow: hidden;
 }
@@ -316,7 +315,6 @@ footer .control-group li .imgCenter{
     line-height: 1em;
 }
 #findDept_header .cityImg{
-    //margin-top: 17px;
     background: url('../images/cityLogo.png') no-repeat;
     background-size: 15px 8px;
     width:15px;
@@ -387,7 +385,6 @@ footer .control-group li .imgCenter{
     line-height: 1em;
 }
 #searchDept_header .cityImg{
-    //margin-top: 17px;
     background: url('../images/cityLogo.png') no-repeat;
     background-size: 15px 8px;
     width:15px;
@@ -578,25 +575,25 @@ header#user_header{
 }
 #user_article .waitPay{
     height: 40px;
-    background: url('../images/waitPay.png') no-repeat;
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146303202632891') no-repeat;
     background-size: 40px 40px;
     background-position-x: 50%;
 }
 #user_article .arrangementIn{
     height: 40px;
-    background: url('../images/arrangementIn.png') no-repeat;
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146303208772491') no-repeat;
     background-size: 40px 40px;
     background-position-x: 50%;
 }
 #user_article .waitConfirm{
     height: 40px;
-    background: url('../images/waitConfirm.png') no-repeat;
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146303214011857') no-repeat;
     background-size: 40px 40px;
     background-position-x: 50%;
 }
 #user_article .waitEvaluate{
     height: 40px;
-    background: url('../images/waitEvaluate.png') no-repeat;
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/14630321814010') no-repeat;
     background-size: 40px 40px;
     background-position-x: 50%;
 }
@@ -637,27 +634,27 @@ header#user_header{
 
 /*预约单列表*/
 #orderList_article .waitPay{
-    background: url('../images/waitPayIcon.png') no-repeat;
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146303259154273') no-repeat;
     background-size: 52px 55px;
 }
 #orderList_article .arrangementIn{
-    background: url('../images/arrangementInIcon.png') no-repeat;
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146303256202644') no-repeat;
     background-size: 52px 55px;
 }
 #orderList_article .waitEvaluate{
-    background: url('../images/waitEvaluateIcon.png') no-repeat;
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146303274001154') no-repeat;
     background-size: 52px 55px;
 }
 #orderList_article .waitConfirm{
-    background: url('../images/waitConfirmIcon.png') no-repeat;
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146303262597340') no-repeat;
     background-size: 52px 55px;
 }
 #orderList_article .alreadyEvaluate{
-    background: url('../images/alreadyEvaluateIcon.png') no-repeat;
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146303267458280') no-repeat;
     background-size: 52px 55px;
 }
 #orderList_article .alreadyCancel{
-    background: url('../images/alreadyCancelIcon.png') no-repeat;
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146303251188052') no-repeat;
     background-size: 52px 55px;
 }
 #orderList_article .cancelOrder{
@@ -1040,9 +1037,6 @@ article#payOrder_article{
     background-position: 95% 50%;
     background-size: 8px 15px;
 }
-#commonProblem_article .list>li{
-    //padding:15px 10px;
-}
 
 /*名医公益联盟*/
 #mygy_article .stepBg{
@@ -1060,26 +1054,13 @@ article#payOrder_article{
 }
 
 /*公益医生列表*/
-#commonwealDoctors_article .imgDiv {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    border: 1px solid #cccccc;
-    overflow: hidden;
+#commonwealDoctors_article{
+    background-color: #ffa356;
 }
 
 /*名义义诊*/
 #myyz_article{
-    background-color: #d93a32;
-}
-#myyz_article #bookingBtn{
-    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/14627628196872') no-repeat;
-    background-size: 100% 100%;
-    font-size: 18px;
-    text-align: center;
-    height:40px;
-    padding-top: 5px;
-    color: #d93a32;
+    background-color: #FFA556;
 }
 #myyz_article .stepone{
     background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146276456506366') no-repeat;
@@ -1127,7 +1108,9 @@ article#payOrder_article{
     width:15px;
     background-position-y: 5px;
 }
-
+#myyzDoctor_article{
+    background-color: #F0F0F0;
+}
 #myyzDoctor_article .imgDiv {
     width: 60px;
     height: 60px;

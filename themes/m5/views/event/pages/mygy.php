@@ -151,7 +151,6 @@ $this->show_footer = false;
         $.ajax({
             url: '<?php echo $urlCommonwealDoctors; ?>',
             success: function (data) {
-                console.log(data);
                 readyPage(data);
             }
         });
@@ -159,7 +158,6 @@ $this->show_footer = false;
         function readyPage(data) {
             var innerHtml = '';
             var doctors = data.results.page[0];
-            console.log(doctors);
             var number = 0;
             for (var i = 0; i < 3; i++) {
                 for (var j = 0; j < 3; j++) {

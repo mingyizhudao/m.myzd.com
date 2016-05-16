@@ -41,7 +41,7 @@ $orderInfo = $results->orderInfo;
                 <?php
             } else {
                 ?>
-                <a href="" data-target="back">
+                <a class="backBtn">
                     <div class="pl5">
                         <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
                     </div>
@@ -58,7 +58,7 @@ $orderInfo = $results->orderInfo;
             <?php
         } else {
             ?>
-            <a href="" data-target="back">
+            <a class="backBtn">
                 <div class="pl5">
                     <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
                 </div>
@@ -183,6 +183,9 @@ if ($results->bkStatusCode == $BK_STATUS_NEW) {
             $('#returnPatientBookingList').click(function () {
                 location.href = '<?php echo $urlPatientBookingList; ?>' + '?status=0';
             });
+        });
+        $('.backBtn').click(function () {
+            location.href = '<?php echo $urlPatientBookingList; ?>' + '?status=0';
         });
         $('#payDeposit').click(function () {
             var refNo = $(this).attr('data-refNo');
