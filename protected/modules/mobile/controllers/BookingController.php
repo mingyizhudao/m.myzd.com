@@ -129,7 +129,7 @@ class BookingController extends MobileController {
      */
     public function actionAjaxCreate() {
         $output = array('status' => 'no');
-        $post = $this->decryptInput($_POST['booking']);
+        $post = $this->decryptInput();
         if (isset($post)) {
             $values = $post;
             if (isset($values['expteam_id'])) {

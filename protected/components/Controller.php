@@ -202,16 +202,26 @@ abstract class Controller extends CController {
         return $i;
     }
     
-    /**
+  /**
      * 请求参数解密
      */
-    public function decryptInput() {
+    public function decryptInput($disfor = true) {
         $param = $_POST['param'];
         $inputs = CJSON::decode($param, true);
         $rasConfig = CoreRasConfig::model()->getByClient('app');
         $encrypter = new RsaEncrypter($rasConfig->public_key, $rasConfig->private_key);
         $str = $encrypter->newDecrypt($inputs);
-        return CJSON::decode($str, true);
+        $str = base64_decode($str);
+        $str = CJSON::decode($str, true);
+        if ($disfor) {
+            foreach ($str as $k => $values) {
+                foreach ($values as $key => $value) {
+                    $values[$key] = urldecode($value);
+                }
+                $str[$k] = $values;
+            }
+        }
+        return $str;
     }
 
 }
