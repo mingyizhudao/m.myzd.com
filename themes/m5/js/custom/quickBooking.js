@@ -552,10 +552,13 @@ $(function () {
         //alert("asdf");
         //btnSubmit.button("disable");
         var formdata = domForm.serializeArray();
+        var dataArray = structure_formdata('booking', formdata);
+        var encryptContext = do_encrypt(dataArray, pubkey);
+        var param = {param: encryptContext};
         $.ajax({
             type: 'post',
             url: actionUrl,
-            data: formdata,
+            data: param,
             success: function (data) {
                 console.log(data);
                 //图片上传

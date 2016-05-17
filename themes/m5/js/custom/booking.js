@@ -568,7 +568,7 @@ $(function () {
             actionUrl = domForm.attr('data-actionurl');
             var formdata = domForm.serializeArray();
             var dataArray = structure_formdata('booking', formdata);
-            var encryptContext = do_encrypt(dataArray);
+            var encryptContext = do_encrypt(dataArray, pubkey);
             var param = {param: encryptContext};
             domForm.ajaxSubmit({
                 type: 'post',

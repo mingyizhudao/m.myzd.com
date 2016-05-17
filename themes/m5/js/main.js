@@ -1,3 +1,25 @@
+var privkey = '-----BEGIN PRIVATE KEY-----' +
+        'MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAJ9FN1w8gfXSBP1/' +
+        'fWtC4gicvB7t+XZ20Qn3eBOaMT1zYf6QtUQ1aAQKIlVDmyidA1/BOgwp07Rvc6V/' +
+        'imAEp4tOGtrP8vedgliVuqMcLeNONSdlzSW66alcayjHrb4+5IYGV9vzMk7qGLHg' +
+        'ZX++HJBUKkb1piqATvPJNFlhf1vJAgMBAAECgYA736xhG0oL3EkN9yhx8zG/5RP/' +
+        'WJzoQOByq7pTPCr4m/Ch30qVerJAmoKvpPumN+h1zdEBk5PHiAJkm96sG/PTndEf' +
+        'kZrAJ2hwSBqptcABYk6ED70gRTQ1S53tyQXIOSjRBcugY/21qeswS3nMyq3xDEPK' +
+        'XpdyKPeaTyuK86AEkQJBAM1M7p1lfzEKjNw17SDMLnca/8pBcA0EEcyvtaQpRvaL' +
+        'n61eQQnnPdpvHamkRBcOvgCAkfwa1uboru0QdXii/gUCQQDGmkP+KJPX9JVCrbRt' +
+        '7wKyIemyNM+J6y1ZBZ2bVCf9jacCQaSkIWnIR1S9UM+1CFE30So2CA0CfCDmQy+y' +
+        '7A31AkB8cGFB7j+GTkrLP7SX6KtRboAU7E0q1oijdO24r3xf/Imw4Cy0AAIx4KAu' +
+        'L29GOp1YWJYkJXCVTfyZnRxXHxSxAkEAvO0zkSv4uI8rDmtAIPQllF8+eRBT/deD' +
+        'JBR7ga/k+wctwK/Bd4Fxp9xzeETP0l8/I+IOTagK+Dos8d8oGQUFoQJBAI4Nwpfo' +
+        'MFaLJXGY9ok45wXrcqkJgM+SN6i8hQeujXESVHYatAIL/1DgLi+u46EFD69fw0w+' +
+        'c7o0HLlMsYPAzJw=' +
+        '-----END PRIVATE KEY-----';
+var pubkey = '-----BEGIN PUBLIC KEY-----' +
+        'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCfRTdcPIH10gT9f31rQuIInLwe' +
+        '7fl2dtEJ93gTmjE9c2H+kLVENWgECiJVQ5sonQNfwToMKdO0b3Olf4pgBKeLThra' +
+        'z/L3nYJYlbqjHC3jTjUnZc0luumpXGsox62+PuSGBlfb8zJO6hix4GV/vhyQVCpG' +
+        '9aYqgE7zyTRZYX9byQIDAQABdfad' +
+        '-----END PUBLIC KEY-----';
 function buttonTimerStart(domBtn, timer) {
     timer = timer / 1000 //convert to second.
     var interval = 1000;
@@ -71,16 +93,11 @@ function analysis_data(data) {
 }
 
 //加密
-function do_encrypt(context) {
-    var pubkey = '-----BEGIN PUBLIC KEY-----' +
-            'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCfRTdcPIH10gT9f31rQuIInLwe' +
-            '7fl2dtEJ93gTmjE9c2H+kLVENWgECiJVQ5sonQNfwToMKdO0b3Olf4pgBKeLThra' +
-            'z/L3nYJYlbqjHC3jTjUnZc0luumpXGsox62+PuSGBlfb8zJO6hix4GV/vhyQVCpG' +
-            '9aYqgE7zyTRZYX9byQIDAQABdfad' +
-            '-----END PUBLIC KEY-----';
+function do_encrypt(context, pubkey) {
     var encrypt = new JSEncrypt();
     encrypt.setPublicKey(pubkey);//获得公钥
     if (JSON.parse(context)) {
+        context = base64_encode(context);
         var num = parseInt(parseInt(context.length) / 117);
         var array = new Array();
         if (num > 0) {
@@ -104,23 +121,7 @@ function do_encrypt(context) {
 }
 
 //解密
-function do_decrypt(context) {
-    var privkey = '-----BEGIN PRIVATE KEY-----' +
-            'MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAJ9FN1w8gfXSBP1/' +
-            'fWtC4gicvB7t+XZ20Qn3eBOaMT1zYf6QtUQ1aAQKIlVDmyidA1/BOgwp07Rvc6V/' +
-            'imAEp4tOGtrP8vedgliVuqMcLeNONSdlzSW66alcayjHrb4+5IYGV9vzMk7qGLHg' +
-            'ZX++HJBUKkb1piqATvPJNFlhf1vJAgMBAAECgYA736xhG0oL3EkN9yhx8zG/5RP/' +
-            'WJzoQOByq7pTPCr4m/Ch30qVerJAmoKvpPumN+h1zdEBk5PHiAJkm96sG/PTndEf' +
-            'kZrAJ2hwSBqptcABYk6ED70gRTQ1S53tyQXIOSjRBcugY/21qeswS3nMyq3xDEPK' +
-            'XpdyKPeaTyuK86AEkQJBAM1M7p1lfzEKjNw17SDMLnca/8pBcA0EEcyvtaQpRvaL' +
-            'n61eQQnnPdpvHamkRBcOvgCAkfwa1uboru0QdXii/gUCQQDGmkP+KJPX9JVCrbRt' +
-            '7wKyIemyNM+J6y1ZBZ2bVCf9jacCQaSkIWnIR1S9UM+1CFE30So2CA0CfCDmQy+y' +
-            '7A31AkB8cGFB7j+GTkrLP7SX6KtRboAU7E0q1oijdO24r3xf/Imw4Cy0AAIx4KAu' +
-            'L29GOp1YWJYkJXCVTfyZnRxXHxSxAkEAvO0zkSv4uI8rDmtAIPQllF8+eRBT/deD' +
-            'JBR7ga/k+wctwK/Bd4Fxp9xzeETP0l8/I+IOTagK+Dos8d8oGQUFoQJBAI4Nwpfo' +
-            'MFaLJXGY9ok45wXrcqkJgM+SN6i8hQeujXESVHYatAIL/1DgLi+u46EFD69fw0w+' +
-            'c7o0HLlMsYPAzJw=' +
-            '-----END PRIVATE KEY-----';
+function do_decrypt(context, privkey) {
     var obj = JSON.parse(context);
     var decrypt = new JSEncrypt();
     decrypt.setPrivateKey(privkey);//获取私钥
@@ -130,4 +131,34 @@ function do_decrypt(context) {
     }
     uncrypted = uncrypted.replace("undefined", "");
     return uncrypted;
+}
+
+function base64_encode(str) {
+    var c1, c2, c3;
+    var base64EncodeChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+    var i = 0, len = str.length, string = '';
+
+    while (i < len) {
+        c1 = str.charCodeAt(i++) & 0xff;
+        if (i == len) {
+            string += base64EncodeChars.charAt(c1 >> 2);
+            string += base64EncodeChars.charAt((c1 & 0x3) << 4);
+            string += "==";
+            break;
+        }
+        c2 = str.charCodeAt(i++);
+        if (i == len) {
+            string += base64EncodeChars.charAt(c1 >> 2);
+            string += base64EncodeChars.charAt(((c1 & 0x3) << 4) | ((c2 & 0xF0) >> 4));
+            string += base64EncodeChars.charAt((c2 & 0xF) << 2);
+            string += "=";
+            break;
+        }
+        c3 = str.charCodeAt(i++);
+        string += base64EncodeChars.charAt(c1 >> 2);
+        string += base64EncodeChars.charAt(((c1 & 0x3) << 4) | ((c2 & 0xF0) >> 4));
+        string += base64EncodeChars.charAt(((c2 & 0xF) << 2) | ((c3 & 0xC0) >> 6));
+        string += base64EncodeChars.charAt(c3 & 0x3F);
+    }
+    return string;
 }

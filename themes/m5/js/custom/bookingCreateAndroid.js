@@ -69,10 +69,13 @@ $(function () {
         actionUrl = domForm.attr('data-actionUrl');
         //returnUrl = domForm.attr("data-url-return");
         var formdata = domForm.serializeArray();
+        var dataArray = structure_formdata('booking', formdata);
+        var encryptContext = do_encrypt(dataArray, pubkey);
+        var param = {param: encryptContext};
         $.ajax({
             type: 'post',
             url: actionUrl,
-            data: formdata,
+            data: param,
             success: function (data) {
                 //图片上传
                 if (data.status == 'ok') {
