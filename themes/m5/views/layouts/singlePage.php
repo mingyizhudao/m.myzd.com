@@ -20,7 +20,8 @@
 
         Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/lib/zepto.min.js', CClientScript::POS_HEAD);
         Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/base.min.js?ts=' . time(), CClientScript::POS_END);
-        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/main.min.js?ts=' . time(), CClientScript::POS_END);
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/lib/jsencrypt.js?ts=' . time(), CClientScript::POS_END);
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/main.js?ts=' . time(), CClientScript::POS_END);
         ?>
         <!--        <script type="text/javascript" src="<?php //echo Yii::app()->theme->baseUrl    ?>/js/lib/zepto.min.js"></script>
         <script type="text/javascript" src="<?php //echo Yii::app()->theme->baseUrl    ?>/js/main.js"></script>-->

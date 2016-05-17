@@ -126,8 +126,13 @@ $this->show_footer = false;
         $.ajax({
             url: urlAjaxLoadDoctor,
             success: function (data) {
-                //console.log(data);
-                readyDoc(data);
+                //构造json
+                var structureData = structure_data(data);
+                //解密
+                var returnData = do_decrypt(structureData);
+                //解析数据
+                returnData = analysis_data(returnData);
+                readyDoc(returnData);
                 setLocationUrl();
             }
         });
