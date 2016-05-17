@@ -22,8 +22,9 @@ class PayManager {
         $payment->initPaymentByOrder($order, $channel);
         $amount = intval($payment->getBillAmount() * 100);
         $orderNo = $payment->getUid();
-        $subject = $order->subject;
-        $body = $order->description;
+        $subject = empty($order->subject)?'1':$order->subject;
+        $body = empty($order->description)?'1':$order->description;
+        
         //获取手机号
         $yeepayIndentity = NULL;
         if ($channel == 'yeepay_wap') {

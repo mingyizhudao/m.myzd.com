@@ -274,8 +274,9 @@ class BookingController extends MobileController {
 
     public function actionAjaxQuickbook() {
         $output = array('status' => 'no');
-        if (isset($_POST['booking'])) {
-            $values = $_POST['booking'];
+        $post = $this->decryptInput();
+        if (isset($post['booking'])) {
+            $values = $post['booking'];
             // 处理booking.user_id
             $user = $this->getCurrentUser();
             $form = new BookQuickForm();
