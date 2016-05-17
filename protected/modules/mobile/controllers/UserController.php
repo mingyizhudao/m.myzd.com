@@ -51,8 +51,9 @@ class UserController extends MobileController {
         $form->role = $userRole;
         $form->terms = 1;
         $this->performAjaxValidation($form);
-        if (isset($_POST['UserRegisterForm'])) {
-            $values = $_POST['UserRegisterForm'];
+        $post = $this->decryptInput();
+        if (isset($post['UserRegisterForm'])) {
+            $values = $post['UserRegisterForm'];
             $form->setAttributes($values, true);
             $userMgr = new UserManager();
             $userMgr->registerNewUser($form);
@@ -120,8 +121,9 @@ class UserController extends MobileController {
         $form = new UserPasswordForm('new');
         $form->initModel($user);
         $this->performAjaxValidation($form);
-        if (isset($_POST['UserPasswordForm'])) {
-            $form->attributes = $_POST['UserPasswordForm'];
+        $post = $this->decryptInput();
+        if (isset($post['UserPasswordForm'])) {
+            $form->attributes = $post['UserPasswordForm'];
             $userMgr = new UserManager();
             $success = $userMgr->doChangePassword($form);
             if ($this->isAjaxRequest()) {
@@ -163,8 +165,9 @@ class UserController extends MobileController {
     public function actionAjaxForgetPassword() {
         $output = array('status' => 'no');
         $form = new ForgetPasswordForm();
-        if (isset($_POST['ForgetPasswordForm'])) {
-            $form->attributes = $_POST['ForgetPasswordForm'];
+        $post = $this->decryptInput();
+        if (isset($post['ForgetPasswordForm'])) {
+            $form->attributes = $post['ForgetPasswordForm'];
             if ($form->validate()) {
                 $userMgr = new UserManager();
                 $user = $userMgr->loadUserByUsername($form->username);
@@ -193,19 +196,20 @@ class UserController extends MobileController {
     
     public function actionAjaxLogin() {
         $output = array('status' => 'no');
-        if (isset($_POST['UserDoctorMobileLoginForm'])) {
+        $post = $this->decryptInput();
+        if (isset($post['UserDoctorMobileLoginForm'])) {
             $loginType = 'sms';
             $smsform = new UserDoctorMobileLoginForm();
-            $values = $_POST['UserDoctorMobileLoginForm'];
+            $values = $post['UserDoctorMobileLoginForm'];
             $smsform->setAttributes($values, true);
             $smsform->role = StatCode::USER_ROLE_PATIENT;
             $smsform->autoRegister = false;
             $userMgr = new UserManager();
             $isSuccess = $userMgr->mobileLogin($smsform);
-        } else if (isset($_POST['UserLoginForm'])) {
+        } else if (isset($post['UserLoginForm'])) {
             $loginType = 'paw';
             $pawform = new UserLoginForm();
-            $values = $_POST['UserLoginForm'];
+            $values = $post['UserLoginForm'];
             $pawform->setAttributes($values, true);
             $pawform->role = StatCode::USER_ROLE_PATIENT;
             $pawform->rememberMe = true;

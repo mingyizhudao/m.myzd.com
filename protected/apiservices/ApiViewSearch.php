@@ -50,8 +50,17 @@ class ApiViewSearch extends EApiViewService {
 
     private function loadDoctors() {
         if (is_null($this->doctors)) {
-            $models = $this->doctorSearch->search();
-            if (arrayNotEmpty($models)) {
+            $key = md5($this->searchInputs['name']."doctors31");
+            $models=Yii::app()->cache->get($key);
+            if(!$models){
+                $models = $this->doctorSearch->search();
+                if (arrayNotEmpty($models)) {
+                    $this->setDoctors($models);
+                }
+                $value = $models;
+                $expire = 86400;
+                yii::app()->cache->set($key, $value, $expire);
+            }else{
                 $this->setDoctors($models);
             }
         }
@@ -59,7 +68,14 @@ class ApiViewSearch extends EApiViewService {
 
     private function loadDiseases() {
         if (is_null($this->diseases)) {
-            $models = $this->diseaseSearch->search();
+            $key = md5($this->searchInputs['name']."diseases31");
+            $models=Yii::app()->cache->get($key);
+            if(!$models){
+                $models = $this->diseaseSearch->search();
+                $value = $models;
+                $expire = 86400;
+                yii::app()->cache->set($key, $value, $expire);
+            }
             if (arrayNotEmpty($models)) {
                 $this->setDiseases($models);
             }
@@ -68,7 +84,14 @@ class ApiViewSearch extends EApiViewService {
 
     private function loadHospitals() {
         if (is_null($this->doctors)) {
-            $models = $this->hospitalSearch->search();
+            $key = md5($this->searchInputs['name']."hospitals31");
+            $models=Yii::app()->cache->get($key);
+            if(!$models){
+                $models = $this->hospitalSearch->search();
+                $value = $models;
+                $expire = 86400;
+                yii::app()->cache->set($key, $value, $expire);
+            }
             if (arrayNotEmpty($models)) {
                 $this->setHospitals($models);
             }
