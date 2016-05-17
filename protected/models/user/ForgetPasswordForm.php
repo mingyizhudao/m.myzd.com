@@ -14,7 +14,7 @@ class ForgetPasswordForm extends EFormModel {
         return array(
             array('username, verify_code, password_new', 'required', 'message' => '请输入{attribute}'),
             array('password_new', 'length', 'min' => 4, 'max' => 40, 'tooShort' => '密码不可少于4个字母或数字', 'tooLong' => '密码不可多于40个字母或数字'),
-            array('password_repeat', 'compare', 'compareAttribute' => 'password_new', 'message' => '新密码不匹配'),
+            //array('password_repeat', 'compare', 'compareAttribute' => 'password_new', 'message' => '新密码不匹配'),
             array('verify_code', 'checkVerifyCode'),
         );
     }
@@ -39,7 +39,7 @@ class ForgetPasswordForm extends EFormModel {
             'username' => Yii::t('user', '用户名'),
             'verify_code' => Yii::t('user', '短信验证码'),
             'password_new' => Yii::t('user', '新密码'),
-            'password_repeat' => Yii::t('user', '确认新密码')
+//             'password_repeat' => Yii::t('user', '确认新密码')
         );
     }
 
