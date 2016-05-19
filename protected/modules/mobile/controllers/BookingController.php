@@ -441,9 +441,10 @@ class BookingController extends MobileController {
     //ajax 公司快速预约数据保存
     public function actionAjaxCreateCorp() {
         $output = array('status' => 'no');
-        if (isset($_POST['booking'])) {
+        $post = $this->decryptInput();
+        if (isset($post['booking'])) {
             //给form赋值
-            $values = $_POST['booking'];
+            $values = $post['booking'];
             $form = new BookCorpForm();
             $form->setAttributes($values, true);
             $form->initModel();
