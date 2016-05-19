@@ -2,7 +2,7 @@
 //Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/jquery.form.js', CClientScript::POS_END);
 //Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/jquery.validate.js', CClientScript::POS_END);
 Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/jquery.formvalidate.min.js', CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/loginValidator.js?ts=' . time(), CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/loginValidator.min.js?ts=' . time(), CClientScript::POS_END);
 ?>
 <?php
 /**
@@ -16,6 +16,7 @@ $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/auth/sendSmsVerifyCode');
 $urlUserAjaxLogin = $this->createUrl('user/ajaxLogin');
 $urlUserForgetPassword = $this->createUrl('user/forgetPassword');
 $urlUserRegister = $this->createUrl('user/register');
+$urlHomeView = $this->createUrl('home/view');
 $authActionType = AuthSmsVerify::ACTION_USER_LOGIN;
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $returnUrl = $returnUrl;
@@ -23,7 +24,7 @@ $this->show_footer = false;
 ?>
 <header class="bg-green">
     <nav class="left">
-        <a href="" data-target="back">
+        <a href="<?php echo $urlHomeView; ?>">
             <div class="pl5">
                 <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
             </div>
@@ -36,7 +37,7 @@ $this->show_footer = false;
 </header>
 <nav class="header-secondary bg-white">
     <div class="grid">
-        <div id="pawLoginPage" class="col-1 w50 grid middle bb-green color-gray">
+        <div id="pawLoginPage" class="col-1 w50 grid middle bb-green color-black">
             密码登录
         </div>
         <div id="smsLoginPage" class="col-1 w50 grid middle bb-gray color-black">
