@@ -65,6 +65,10 @@ class ApiViewDiagnosisDoctor extends EApiViewService {
             $data->hpDeptId = $model->getHpDeptId();
             $data->hpDeptName = $model->getHpDeptName();
             $data->isContracted = $model->getIsContracted();
+            $bookingServiceJoin = BookingServiceDoctorJoin::model()->getByDoctorIdAndBookingServiceId($model->getId(), BookingServiceConfig::BOOKING_SERVICE_FREE_LIINIC);
+            if (isset($bookingServiceJoin)) {
+                $data->isServiceId = BookingServiceConfig::BOOKING_SERVICE_FREE_LIINIC;
+            }
             $temp[] = $data;
         }  
         $this->results->page[] = $temp;
