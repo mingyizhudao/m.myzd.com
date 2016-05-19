@@ -1184,12 +1184,6 @@ article#payOrder_article{
     background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146356500101290') no-repeat;
     background-size: 100% 100%;
 }
-#mygy_article .stepBg{
-    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146277779171363') no-repeat;
-    background-size: 100% 100%;
-    padding: 5px 6px;
-    height: 46px;
-}
 #mygy_article .imgDiv {
     width: 60px;
     height: 60px;
@@ -1263,6 +1257,14 @@ article#payOrder_article{
     width:15px;
     background-position-y: 5px;
 }
+#myyzDoctor_nav.header-secondary{
+    height: 50px;
+}
+#myyzDoctor_nav .grayImg>img {
+    margin-left: 10px;
+    width: 12px;
+    height: 7px;
+}
 #myyzDoctor_article{
     background-color: #F0F0F0;
 }
@@ -1272,6 +1274,16 @@ article#payOrder_article{
     border-radius: 50%;
     border: 1px solid #cccccc;
     overflow: hidden;
+}
+#myyzDoctor_article .yzIcon {
+    padding: 5px 1px 1px 1px;
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146364500313741') no-repeat;
+    background-size: 100% 100%;
+}
+#myyzDoctor_article .signIcon  {
+    padding: 5px 1px 1px 1px;
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146364522977843') no-repeat;
+    background-size: 100% 100%;
 }
 #myyzDoctor_article ul.list>li {
     border-bottom: 1px solid #efefef;

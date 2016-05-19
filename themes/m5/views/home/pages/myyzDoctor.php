@@ -17,23 +17,20 @@ $this->show_footer = false;
             </div>
         </a>
     </nav>
-    <h1 class="title">
-        <span id="selectDept">
-            <span id="deptTitle" class="" data-dept="1">外科</span>
-            <span class=""><img class="w10p" src="<?php echo $urlResImage; ?>triangleWhite.png"></span>
-        </span>
-    </h1>
-    <nav id="selectCity" class="right">
-        <div class="grid mt17">
-            <div class="font-s16 col-0" id="cityTitle" data-city="73">
-                上海
-            </div>
-            <div class="col-0 cityImg"></div>
-        </div>
-    </nav>
+    <h1 class="title">名医义诊</h1>
 </header>
+<nav id="myyzDoctor_nav" class="header-secondary bg-white">
+    <div class="grid w100 color-black font-s16 color-black6">
+        <div id="deptSelect" class="col-1 w50 br-gray bb-gray grid middle grayImg">
+            <span id="deptTitle" data-dept="1">外科</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146364721030297">
+        </div>
+        <div id="citySelect" class="col-1 w50 bb-gray grid middle grayImg">
+            <span id="cityTitle" data-city="73">上海</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146364721030297">
+        </div>
+    </div>
+</nav>
 <article id="myyzDoctor_article" class="active" data-scroll="true" data-api="<?php echo $urlApiDiagnosisdoctors; ?>" data-doctorView="<?php echo $urlDoctorView; ?>">
-    <div>
+    <div class="pt20">
     </div>
 </article>
 <script>
@@ -42,6 +39,7 @@ $this->show_footer = false;
         $.ajax({
             url: '<?php echo $urlApiDiagnosisdoctors; ?>' + '&citys=73&disease_category=1',
             success: function (data) {
+                //console.log(data);
                 readyPage(data);
             },
             error: function (data) {
