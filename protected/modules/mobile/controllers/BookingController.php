@@ -205,7 +205,10 @@ class BookingController extends MobileController {
                         throw new CException('error saving data.');
                     }
                     $apiRequest = new ApiRequestUrl();
-                    $remote_url = $apiRequest->getUrlAdminSalesBookingCreate() . '?type=' . StatCode::TRANS_TYPE_BK . '&id=' . $booking->id;
+                    //线上配置
+                   $remote_url = $apiRequest->getUrlAdminSalesBookingCreate() . '?type=' . StatCode::TRANS_TYPE_BK . '&id=' . $booking->id;
+                    //本地配置
+//                     $remote_url = 'http://192.168.1.216/admin/api/adminbooking'. '?type=' . StatCode::TRANS_TYPE_BK . '&id='.$booking->id;
                     $data = $this->send_get($remote_url);
                     if ($data['status'] == "ok") {
                         $output['status'] = 'ok';
@@ -319,7 +322,10 @@ class BookingController extends MobileController {
                     }
 
                     $apiRequest = new ApiRequestUrl();
-                    $remote_url = $apiRequest->getUrlAdminSalesBookingCreate() . '?type=' . StatCode::TRANS_TYPE_BK . '&id=' . $booking->id;
+                    //线上配置
+                   $remote_url = $apiRequest->getUrlAdminSalesBookingCreate() . '?type=' . StatCode::TRANS_TYPE_BK . '&id=' . $booking->id;
+                    //本地配置
+//                     $remote_url = 'http://192.168.1.216/admin/api/adminbooking'. '?type=' . StatCode::TRANS_TYPE_BK . '&id='.$booking->id;
                     $data = $this->send_get($remote_url);
                     if ($data['status'] == "ok") {
                         $output['status'] = 'ok';
