@@ -94,7 +94,7 @@ class AuthManager {
                 return $output;
             }
         }
-        $is_new_user=1;
+        $is_new_user = 1;
         if (!User::model()->exists('username=:username AND role=:role', array(':username' => $mobile, ':role' => StatCode::USER_ROLE_PATIENT))) {
             $userMR = new UserManager();
             $password = md5(time());
@@ -106,13 +106,13 @@ class AuthManager {
                 $output['errorMsg'] = $user->getFirstErrors();
                 return $output;
             }
-            $is_new_user=2;
+            $is_new_user = 2;
         }
         // auto login user and return token.
-        return $this->apiTokenUserAutoLoginByMobile($mobile,$is_new_user);
+        return $this->apiTokenUserAutoLoginByMobile($mobile, $is_new_user);
     }
 
-    public function apiTokenUserAutoLoginByMobile($mobile,$is_new_user=1) {
+    public function apiTokenUserAutoLoginByMobile($mobile, $is_new_user = 1) {
         // get user by $mobile from db.
         $user = User::model()->getByUsernameAndRole($mobile, User::ROLE_PATIENT);
         if (is_null($user)) {
@@ -133,7 +133,7 @@ class AuthManager {
             $output['status'] = EApiViewService::RESPONSE_OK;
             $output['errorCode'] = ErrorList::ERROR_NONE;
             $output['errorMsg'] = 'success';
-            $output['results'] = array('token' => $authTokenUser->getToken(),'is_new_user'=> $is_new_user);
+            $output['results'] = array('token' => $authTokenUser->getToken(), 'is_new_user' => $is_new_user);
         }
         return $output;
     }
@@ -244,7 +244,7 @@ class AuthManager {
             $smsVerify = new AuthSmsVerify();
             $smsVerify->addError('code', AuthSmsVerify::getErrorMessage(AuthSmsVerify::ERROR_NOT_FOUND));
         } else {
-            $smsVerify->checkValidity();
+            $smsVerify->checkValidity(true, true);
         }
 
         return $smsVerify;

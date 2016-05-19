@@ -19,6 +19,8 @@ if ($showApp == 1) {
     $urlEventZhuantiXinxg = $this->createUrl('event/view', array('page' => 'zhuantiXinxg'));
     $urlEventZhuantiMygy = $this->createUrl('event/view', array('page' => 'mygy'));
     $urlEventZhuantiShapingHealth = $this->createUrl('event/view', array('page' => 'shapingHealth'));
+    $urlEventZhuantiLungCancer = $this->createUrl('event/view', array('page' => 'lungCancer'));
+    $urlEventZhuantiCancer = $this->createUrl('event/view', array('page' => 'cancer'));
 } else {
     $urlEventStoryOne = $this->createUrl('event/view', array('page' => 'storyOne', 'header' => '0'));
     $urlEventStoryTwo = $this->createUrl('event/view', array('page' => 'storyTwo', 'header' => '0'));
@@ -35,6 +37,8 @@ if ($showApp == 1) {
     $urlEventZhuantiXinxg = $this->createUrl('event/view', array('page' => 'zhuantiXinxg', 'header' => '0'));
     $urlEventZhuantiMygy = $this->createUrl('event/view', array('page' => 'mygy', 'header' => '0'));
     $urlEventZhuantiShapingHealth = $this->createUrl('event/view', array('page' => 'shapingHealth', 'header' => '0'));
+    $urlEventZhuantiLungCancer = $this->createUrl('event/view', array('page' => 'lungCancer', 'header' => '0'));
+    $urlEventZhuantiCancer = $this->createUrl('event/view', array('page' => 'cancer', 'header' => '0'));
 }
 if ($showHeader == 0) {
     $this->show_footer = false;
@@ -68,6 +72,16 @@ if ($showPage == 0) {
 <?php } ?>
 <article id="zhuanti_article" class="<?php echo $showZt; ?>" data-scroll="true" data-active="find_footer">
     <div>
+        <div class="mt10">
+            <a href="<?php echo $urlEventZhuantiCancer; ?>">
+                <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146353686584387" class="w100">
+            </a>
+        </div>
+        <div class="mt10">
+            <a href="<?php echo $urlEventZhuantiLungCancer; ?>">
+                <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146348338505141" class="w100">
+            </a>
+        </div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiShapingHealth; ?>">
                 <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/14630233122529" class="w100">

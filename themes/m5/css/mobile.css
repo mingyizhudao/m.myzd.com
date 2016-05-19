@@ -691,42 +691,45 @@ img {
 }
 
 /*登录*/
-#login_article {
-    background: url(../images/image/loginb.jpg) no-repeat fixed top;
+#login_article .inputBorder {
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 5px;
 }
-#login_article .login-back {
-    font-size: 23px;
-    padding-left: 6px;
-    padding-top: 10px;
+#login_article .iphoneIcon{
+    background: url('../images/login/iphoneIcon.png') no-repeat;
+    background-size: 25px 25px;
+    background-position-y: 6px;
+    margin-left: 5px;
+    width: 25px;
 }
-#login_article .logo {
-    margin: 30px auto 50px;
-    display: block;
-    position: absolute;
-    text-align: center;
+#login_article .smsCodeIcon{
+    background: url('../images/login/smsCodeIcon.png') no-repeat;
+    background-size: 25px 25px;
+    background-position-y: 6px;
+    margin-left: 5px;
+    width: 25px;
 }
-#login_article .logo>img {
-    width: 15%;
-    height: 10%;
+#login_article .captchaCodeIcon{
+    background: url('../images/login/captchaCodeIcon.png') no-repeat;
+    background-size: 25px 25px;
+    background-position-y: 6px;
+    margin-left: 5px;
+    width: 25px;
 }
-#login_article .list>li:first-child {
-    border-top: none;
+#login_article .passwordIcon{
+    background: url('../images/login/passwordIcon.png') no-repeat;
+    background-size: 25px 25px;
+    background-position-y: 6px;
+    margin-left: 5px;
+    width: 25px;
 }
-#login_article .loginform input {
-    background-color: rgba(204, 197, 196, 0.15);
-    color: #fff!important;
-}
-#login_article ::-webkit-input-placeholder { /* WebKit browsers */
-    color: #fff;
-}
-#login_article :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color: #fff;
-}
-#login_article ::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color: #fff;
-}
-#login_article :-ms-input-placeholder { /* Internet Explorer 10+ */
-    color: #fff;
+#login_article .noPaddingInput {
+    padding: 10px 0px 10px 10px;
+    margin-bottom: 0px;
+    border: none!important;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+    height: 40px;
 }
 #login_article #btn-sendSmsCode {
     padding-left: 10px;
@@ -735,20 +738,158 @@ img {
     display: block;
     padding-bottom: 9px;
     border-radius: 3px;
+    background-color: #fff!important;
+    color: #868686!important;
+    height: 40px;
+    min-width: 8em;
+    width: 100%;
+    margin: 0px 0!important;
 }
-#login_article .btn-login {
+#login_article div.error {
+    color: #f00;
+    text-align: left;
+}
+
+/*忘记密码*/
+#forgetPassword_article .inputBorder {
+    border: 1px solid rgba(0,0,0,.2);
     border-radius: 5px;
-    margin-top: 10px!important;
 }
-#login_article #UserDoctorMobileLoginForm_username-error {
+#forgetPassword_article .iphoneIcon{
+    background: url('../images/login/iphoneIcon.png') no-repeat;
+    background-size: 25px 25px;
+    background-position-y: 6px;
+    margin-left: 5px;
+    width: 25px;
+}
+#forgetPassword_article .smsCodeIcon{
+    background: url('../images/login/smsCodeIcon.png') no-repeat;
+    background-size: 25px 25px;
+    background-position-y: 6px;
+    margin-left: 5px;
+    width: 25px;
+}
+#forgetPassword_article .captchaCodeIcon{
+    background: url('../images/login/captchaCodeIcon.png') no-repeat;
+    background-size: 25px 25px;
+    background-position-y: 6px;
+    margin-left: 5px;
+    width: 25px;
+}
+#forgetPassword_article .passwordIcon{
+    background: url('../images/login/passwordIcon.png') no-repeat;
+    background-size: 25px 25px;
+    background-position-y: 6px;
+    margin-left: 5px;
+    width: 25px;
+}
+#forgetPassword_article .smsHideIcon{
+    background: url('../images/login/smsHideIcon.png') no-repeat;
+    background-size: 25px 14px;
+    background-position: 7px 16px;
+    width: 40px;
+}
+#forgetPassword_article .smsDisplayIcon{
+    background: url('../images/login/smsDisplayIcon.png') no-repeat;
+    background-size: 25px 14px;
+    background-position: 7px 14px;
+    width: 40px;
+}
+#forgetPassword_article .noPaddingInput {
+    padding: 10px 0px 10px 10px;
+    margin-bottom: 0px;
+    border: none!important;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+    height: 40px;
+}
+#forgetPassword_article #btn-sendSmsCode {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    display: block;
+    padding-bottom: 9px;
+    border-radius: 3px;
+    background-color: #fff!important;
+    color: #868686!important;
+    height: 40px;
+    min-width: 8em;
+    width: 100%;
+    margin: 0px 0!important;
+}
+#forgetPassword_article div.error {
     color: #f00;
     text-align: left;
 }
-#login_article #UserDoctorMobileLoginForm_captcha_code-error {
-    color: #f00;
-    text-align: left;
+
+/*注册*/
+#register_article .inputBorder {
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 5px;
 }
-#login_article #UserDoctorMobileLoginForm_verify_code-error {
+#register_article .iphoneIcon{
+    background: url('../images/login/iphoneIcon.png') no-repeat;
+    background-size: 25px 25px;
+    background-position-y: 6px;
+    margin-left: 5px;
+    width: 25px;
+}
+#register_article .smsCodeIcon{
+    background: url('../images/login/smsCodeIcon.png') no-repeat;
+    background-size: 25px 25px;
+    background-position-y: 6px;
+    margin-left: 5px;
+    width: 25px;
+}
+#register_article .captchaCodeIcon{
+    background: url('../images/login/captchaCodeIcon.png') no-repeat;
+    background-size: 25px 25px;
+    background-position-y: 6px;
+    margin-left: 5px;
+    width: 25px;
+}
+#register_article .passwordIcon{
+    background: url('../images/login/passwordIcon.png') no-repeat;
+    background-size: 25px 25px;
+    background-position-y: 6px;
+    margin-left: 5px;
+    width: 25px;
+}
+#register_article .smsHideIcon{
+    background: url('../images/login/smsHideIcon.png') no-repeat;
+    background-size: 25px 14px;
+    background-position: 7px 16px;
+    width: 40px;
+}
+#register_article .smsDisplayIcon{
+    background: url('../images/login/smsDisplayIcon.png') no-repeat;
+    background-size: 25px 14px;
+    background-position: 7px 14px;
+    width: 40px;
+}
+#register_article .noPaddingInput {
+    padding: 10px 0px 10px 10px;
+    margin-bottom: 0px;
+    border: none!important;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+    height: 40px;
+}
+#register_article #btn-sendSmsCode {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    display: block;
+    padding-bottom: 9px;
+    border-radius: 3px;
+    background-color: #fff!important;
+    color: #868686!important;
+    height: 40px;
+    min-width: 8em;
+    width: 100%;
+    margin: 0px 0!important;
+}
+#register_article div.error {
     color: #f00;
     text-align: left;
 }
@@ -1039,6 +1180,10 @@ article#payOrder_article{
 }
 
 /*名医公益联盟*/
+#mygy_article .pageBg{
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146356500101290') no-repeat;
+    background-size: 100% 100%;
+}
 #mygy_article .stepBg{
     background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146277779171363') no-repeat;
     background-size: 100% 100%;
@@ -1051,6 +1196,16 @@ article#payOrder_article{
     border-radius: 50%;
     border: 1px solid #cccccc;
     overflow: hidden;
+}
+#mygy_article .moreDoctor{
+    background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146356505247898') no-repeat;
+    background-size: 100% 100%;
+    text-align: center;
+    display: block!important;
+    width: 80%;
+    margin: 5px 10%!important;
+    padding: 10px!important;
+    font-size: 16px;
 }
 
 /*公益医生列表*/
