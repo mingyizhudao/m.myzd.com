@@ -206,7 +206,7 @@ class BookingController extends MobileController {
                     $apiRequest = new ApiRequestUrl();
                    //  $apiRequest = new ApiRequestUrl(Yii::app()->params['hostInfoProd'],Yii::app()->params['admin_salesbooking_create']);
                     //线上配置
-                   $remote_url = $apiRequest->getUrlAdminSalesBookingCreate() . '?type=' . StatCode::TRANS_TYPE_BK . '&id=' . $booking->id;
+                    $remote_url = $apiRequest->getUrlAdminSalesBookingCreate() . '?type=' . StatCode::TRANS_TYPE_BK . '&id=' . $booking->id;
                     //本地配置
                     
 //                     $remote_url = 'http://192.168.1.216/admin/api/adminbooking'. '?type=' . StatCode::TRANS_TYPE_BK . '&id='.$booking->id;
@@ -324,7 +324,7 @@ class BookingController extends MobileController {
 
                     $apiRequest = new ApiRequestUrl();
                     //线上配置
-                   $remote_url = $apiRequest->getUrlAdminSalesBookingCreate() . '?type=' . StatCode::TRANS_TYPE_BK . '&id=' . $booking->id;
+                    $remote_url = $apiRequest->getUrlAdminSalesBookingCreate() . '?type=' . StatCode::TRANS_TYPE_BK . '&id=' . $booking->id;
                     //本地配置
 //                     $remote_url = 'http://192.168.1.216/admin/api/adminbooking'. '?type=' . StatCode::TRANS_TYPE_BK . '&id='.$booking->id;
                     $data = $this->send_get($remote_url);
@@ -671,7 +671,6 @@ class BookingController extends MobileController {
                         }
                         $output->results->depositTotalAmount = $v['final_amount'];
                     }
-        
                 }
             }
         }
@@ -706,17 +705,16 @@ class BookingController extends MobileController {
         $user = $this->getCurrentUser();
         $booking = new ApiViewBookingV4($user, $value['id']);
         $bookingInfo = $booking->loadApiViewData();
-        if($booking){
-           $payList = SalesOrder::model()->getOrderByBkIdAndrefNo($value['id'],$bookingInfo->results->refNo);
+        if ($booking) {
+            $payList = SalesOrder::model()->getOrderByBkIdAndrefNo($value['id'], $bookingInfo->results->refNo);
         }
-          $this->render('payView', array(
+        $this->render('payView', array(
             'data' => $payList
         ));
     }
-    
-    public function actionDoctorJoinActive($doctor_id,$booking_service_id){
-        $doctorInfo = Doctor::model()->getActiveDoctor($doctor_id,$booking_service_id);
-        
+
+    public function actionDoctorJoinActive($doctor_id, $booking_service_id) {
+        $doctorInfo = Doctor::model()->getActiveDoctor($doctor_id, $booking_service_id);
     }
 
 }
