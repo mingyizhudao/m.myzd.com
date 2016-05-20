@@ -18,6 +18,9 @@ class ApiViewHospitalSearch extends EApiViewService {
         $this->searchInputs['is_show'] = 1;
         $this->getCount = isset($searchInputs['getcount']) && $searchInputs['getcount'] == 1 ? true : false;
         $this->searchInputs['pagesize'] = isset($searchInputs['pagesize']) && $searchInputs['pagesize'] > 0 ? $searchInputs['pagesize'] : $this->pageSize;
+        if($searchInputs['isNotPaging']){
+            $this->searchInputs['pagesize'] = 1000;
+        }
         $this->hospitalSearch = new HospitalSearch($this->searchInputs);
     }
 

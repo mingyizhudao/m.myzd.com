@@ -5,6 +5,13 @@ class ApiRequestUrl {
     public $hostInfoProd = 'http://admin.mingyizd.com';
     private $admin_salesbooking_create = 'api/adminbooking';
 
+//     public $hostInfoProd ;
+//     private $admin_salesbooking_create ;
+//     function __construct($hostInfoProd,$admin_salesbooking_create){
+//         $this->hostInfoProd=$hostInfoProd;
+//         $this->admin_salesbooking_create=$admin_salesbooking_create;
+//     }
+
     public function getHostInfo() {
         $hostInfo = strtolower(Yii::app()->request->hostInfo);
         if (strStartsWith($hostInfo, $this->hostInfoProd)) {
