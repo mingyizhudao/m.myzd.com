@@ -42,12 +42,12 @@ function buttonTimerStart(domBtn, timer) {
 
 //disabledBtn
 function disabledBtn(btnSubmit) {
-    //J.showMask();
+    J.showMask();
     btnSubmit.attr("disabled", true);
 }
 //enableBtn
 function enableBtn(btnSubmit) {
-    //J.hideMask();
+    J.hideMask();
     btnSubmit.removeAttr("disabled");
 }
 //disabledBtn

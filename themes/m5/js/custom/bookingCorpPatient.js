@@ -650,6 +650,7 @@ $(function () {
         }
     });
     function formAjaxSubmit() {
+        disabledBtn(btnSubmit);
         //form插件的异步无刷新提交
         actionUrl = domForm.attr('data-actionUrl');
         returnUrl = domForm.attr("data-url-return");
@@ -679,7 +680,6 @@ $(function () {
                             pos: 'center'
                         });
                     }
-
                 } else {
                     domForm.find("div.error").remove();
                     //append errorMsg
@@ -690,9 +690,11 @@ $(function () {
                         $(inputKey).focus();
                         $(inputKey).after("<div class='error'>" + errerMsg + "</div> ");
                     }
+                    enableBtn(btnSubmit);
                 }
             },
             error: function (XmlHttpRequest, textStatus, errorThrown) {
+                enableBtn(btnSubmit);
                 console.log(XmlHttpRequest);
                 console.log(textStatus);
                 console.log(errorThrown);
