@@ -5,7 +5,7 @@ class BookingController extends MobileController {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('createCorp', 'ajaxCreateCorp', 'ajaxUploadCorp', 'ajaxUploadFile', 'captcha', 'ajaxCaptchaCode', 'ajaxCorpCaptchaCode', 'quickbook', 'ajaxQuickbook', 'create','PayView'),
+                'actions' => array('createCorp', 'ajaxCreateCorp', 'ajaxUploadCorp', 'ajaxUploadFile', 'captcha', 'ajaxCaptchaCode', 'ajaxCorpCaptchaCode', 'quickbook', 'ajaxQuickbook', 'create', 'PayView'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -17,7 +17,6 @@ class BookingController extends MobileController {
             ),
         );
     }
-
 
     public function filterUserContext($filterChain) {
         $user = $this->loadUser();
@@ -206,7 +205,7 @@ class BookingController extends MobileController {
                     }
                     $apiRequest = new ApiRequestUrl();
                     //线上配置
-                   $remote_url = $apiRequest->getUrlAdminSalesBookingCreate() . '?type=' . StatCode::TRANS_TYPE_BK . '&id=' . $booking->id;
+                    $remote_url = $apiRequest->getUrlAdminSalesBookingCreate() . '?type=' . StatCode::TRANS_TYPE_BK . '&id=' . $booking->id;
                     //本地配置
 //                     $remote_url = 'http://192.168.1.216/admin/api/adminbooking'. '?type=' . StatCode::TRANS_TYPE_BK . '&id='.$booking->id;
                     $data = $this->send_get($remote_url);
@@ -323,7 +322,7 @@ class BookingController extends MobileController {
 
                     $apiRequest = new ApiRequestUrl();
                     //线上配置
-                   $remote_url = $apiRequest->getUrlAdminSalesBookingCreate() . '?type=' . StatCode::TRANS_TYPE_BK . '&id=' . $booking->id;
+                    $remote_url = $apiRequest->getUrlAdminSalesBookingCreate() . '?type=' . StatCode::TRANS_TYPE_BK . '&id=' . $booking->id;
                     //本地配置
 //                     $remote_url = 'http://192.168.1.216/admin/api/adminbooking'. '?type=' . StatCode::TRANS_TYPE_BK . '&id='.$booking->id;
                     $data = $this->send_get($remote_url);
@@ -441,9 +440,10 @@ class BookingController extends MobileController {
     //ajax 公司快速预约数据保存
     public function actionAjaxCreateCorp() {
         $output = array('status' => 'no');
-        if (isset($_POST['booking'])) {
+        $post = $this->decryptInput();
+        if (isset($post['booking'])) {
             //给form赋值
-            $values = $_POST['booking'];
+            $values = $post['booking'];
             $form = new BookCorpForm();
             $form->setAttributes($values, true);
             $form->initModel();
@@ -455,19 +455,39 @@ class BookingController extends MobileController {
             if ($authSmsVerify->isValid() === false) {
                 $form->addError('verify_code', $authSmsVerify->getError('code'));
             }
-            //form数据校验
-            if ($form->hasErrors() === false) {
-                $booking = new Booking();
-                $booking->setAttributes($form->attributes, true);
-                $booking->setIsCorporate();
-                if ($booking->save()) {
-                    $output['status'] = 'ok';
-                    $output['booking']['id'] = $booking->getId();
+            try {
+                //form数据校验
+                if ($form->hasErrors() === false) {
+                    $booking = new Booking();
+                    $booking->setAttributes($form->attributes, true);
+                    $booking->setIsCorporate();
+                    if ($booking->save()) {
+                        $output['status'] = 'ok';
+                        $output['booking']['id'] = $booking->getId();
+                    } else {
+                        $output['errors'] = $booking->getErrors();
+                        throw new CException('error saving data.');
+                    }
+                    $apiRequest = new ApiRequestUrl();
+                    //线上配置
+                    $remote_url = $apiRequest->getUrlAdminSalesBookingCreate() . '?type=' . StatCode::TRANS_TYPE_BK . '&id=' . $booking->id;
+                    //本地配置
+//                     $remote_url = 'http://192.168.1.216/admin/api/adminbooking'. '?type=' . StatCode::TRANS_TYPE_BK . '&id='.$booking->id;
+                    $data = $this->send_get($remote_url);
+                    if ($data['status'] == "ok") {
+                        $output['status'] = 'ok';
+                        $output['salesOrderRefNo'] = $data['salesOrderRefNo'];
+                        $output['booking']['id'] = $booking->getId();
+                    } else {
+                        //$output['errors'] = $salesOrder->getErrors();
+                        throw new CException('error saving data.');
+                    }
                 } else {
-                    $output['errors'] = $booking->getErrors();
+                    $output['errors'] = $form->getErrors();
+                    throw new CException('error saving data.');
                 }
-            } else {
-                $output['errors'] = $form->getErrors();
+            } catch (CException $cex) {
+                $output['status'] = 'no';
             }
         }
         $this->renderJsonOutput($output);
@@ -625,7 +645,7 @@ class BookingController extends MobileController {
         $output = $booking->loadApiViewData();
         $salesOrder = new SalesOrder();
         $orderInfo = $salesOrder->getByBkRefNo($output->results->refNo);
-        $modelo = CJSON::decode(CJSON::encode($orderInfo)) ;
+        $modelo = CJSON::decode(CJSON::encode($orderInfo));
         if (isset($modelo)) {
             if (is_array($modelo)) {
                 $output->results->serviceAmount = 0;
@@ -633,28 +653,31 @@ class BookingController extends MobileController {
                 $output->results->depositAmount = 0;
                 $output->results->depositTotalAmount = 0;
                 foreach ($modelo as $k => $v) {
-                    if ($v['order_type'] == SalesOrder::ORDER_TYPE_DEPOSIT) {} else {
-                        if($v['is_paid'] == 1){
-                            $output->results->serviceAmount = $v['final_amount'] + $output->results->serviceAmount ;
+                    if ($v['order_type'] == SalesOrder::ORDER_TYPE_DEPOSIT) {
+                        
+                    } else {
+                        if ($v['is_paid'] == 1) {
+                            $output->results->serviceAmount = $v['final_amount'] + $output->results->serviceAmount;
                         }
-                            $output->results->serviceTotalAmount = $v['final_amount']+$output->results->serviceTotalAmount;
+                        $output->results->serviceTotalAmount = $v['final_amount'] + $output->results->serviceTotalAmount;
                     }
-                    if ($v['order_type'] == SalesOrder::ORDER_TYPE_SERVICE) {} else {
-                        if($v['is_paid'] == 1){
-                         $output->results->depositAmount = $v['final_amount'];
+                    if ($v['order_type'] == SalesOrder::ORDER_TYPE_SERVICE) {
+                        
+                    } else {
+                        if ($v['is_paid'] == 1) {
+                            $output->results->depositAmount = $v['final_amount'];
                         }
-                         $output->results->depositTotalAmount= $v['final_amount'];
+                        $output->results->depositTotalAmount = $v['final_amount'];
                     }
-        
                 }
             }
         }
         $output->results->orderInfo = $orderInfo;
         $model = '';
-        if ($value['status'] == 1 || $value['status'] == 2 || $value['status'] == 5 ||  $value['status'] == 9 ){
+        if ($value['status'] == 1 || $value['status'] == 2 || $value['status'] == 5 || $value['status'] == 9) {
             //订单待支付/安排中/待确认/已取消
             $view = 'payDeposit';
-        }else if($value['status'] == 6){
+        } else if ($value['status'] == 6) {
             $view = 'review';
             $model = new CommentForm();
         } elseif ($value['status'] == 8) {//已完成
@@ -674,23 +697,22 @@ class BookingController extends MobileController {
     public function actionTestView() {
         $this->render("review");
     }
-    
-    public function actionPayView(){
+
+    public function actionPayView() {
         $value = $_GET;
         $user = $this->getCurrentUser();
         $booking = new ApiViewBookingV4($user, $value['id']);
         $bookingInfo = $booking->loadApiViewData();
-        if($booking){
-           $payList = SalesOrder::model()->getOrderByBkIdAndrefNo($value['id'],$bookingInfo->results->refNo);
+        if ($booking) {
+            $payList = SalesOrder::model()->getOrderByBkIdAndrefNo($value['id'], $bookingInfo->results->refNo);
         }
-          $this->render('payView', array(
+        $this->render('payView', array(
             'data' => $payList
         ));
     }
-    
-    public function actionDoctorJoinActive($doctor_id,$booking_service_id){
-        $doctorInfo = Doctor::model()->getActiveDoctor($doctor_id,$booking_service_id);
-        
+
+    public function actionDoctorJoinActive($doctor_id, $booking_service_id) {
+        $doctorInfo = Doctor::model()->getActiveDoctor($doctor_id, $booking_service_id);
     }
 
 }
