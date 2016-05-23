@@ -81,85 +81,9 @@ function readyHospital(data) {
     } else {
         innerHtml += '<li>暂无信息</li>';
     }
-    if (data.count != null) {
-        var count = Math.ceil(data.count / 10);
-        if (count > 1) {
-            innerHtml += '<li><div class="grid">' +
-                    '<div class="col-1 w40">' +
-                    '<button id="previousPage" type="button" class="button btn-yellow">上一页</button>' +
-                    '</div><div class="col-1 w20">' +
-                    '<select id="selectPage" onchange="changePage()">';
-            var nowPage = $condition["page"];
-            for (var i = 1; i <= count; i++) {
-                if (nowPage == i) {
-                    innerHtml += '<option id="quickPage" value="' + i + '" selected = "selected">' + i + '</option>';
-                } else {
-                    innerHtml += '<option id="quickPage" value="' + i + '">' + i + '</option>';
-                }
-            }
-            innerHtml += '</select>' +
-                    '</div>' +
-                    '<div class="col-1 w40">' +
-                    '<button id="nextPage" type="button" class="button btn-yellow">下一页</button>' +
-                    '</div>' +
-                    '</div></li>';
-        }
-    }
     innerHtml += '</ul></div>';
     $('#hospital_article').html(innerHtml);
-    initPage(count);
     J.hideMask();
-}
-
-//分页
-function initPage(count) {
-    $('#previousPage').tap(function () {
-        if ($condition["page"] > 1) {
-            $condition["page"] = parseInt($condition["page"]) - 1;
-            J.showMask();
-            $.ajax({
-                url: $requestHospital + setUrlCondition() + '&getcount=1',
-                success: function (data) {
-                    readyHospital(data);
-                    setLocationUrl();
-                    $('#hospital_article').scrollTop(0);
-                }
-            });
-        } else {
-            J.showToast('已是第一页', '', '1000');
-        }
-    });
-    $('#nextPage').tap(function () {
-        if ($condition["page"] < count) {
-            $condition["page"] = parseInt($condition["page"]) + 1;
-            J.showMask();
-            $.ajax({
-                url: $requestHospital + setUrlCondition() + '&getcount=1',
-                success: function (data) {
-                    readyHospital(data);
-                    setLocationUrl();
-                    $('#hospital_article').scrollTop(0);
-                }
-            });
-        } else {
-            J.showToast('已是最后一页', '', '1000');
-        }
-    });
-}
-
-//跳页
-function changePage() {
-    $condition["page"] = $('#selectPage').val();
-    J.showMask();
-    $.ajax({
-        url: $requestHospital + setUrlCondition() + '&getcount=1',
-        success: function (data) {
-            //console.log(data);
-            readyHospital(data);
-            setLocationUrl();
-            $('#hospital_article').scrollTop(0);
-        }
-    });
 }
 
 //组合url参数

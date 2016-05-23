@@ -35,7 +35,6 @@ $page = Yii::app()->request->getQuery('page', '');
 
         $condition = new Array();
         $condition["city"] = '<?php echo $city ?>';
-        $condition["page"] = '<?php echo $page == '' ? 1 : $page; ?>';
         J.showMask();
 
         //返回时，更新城市
