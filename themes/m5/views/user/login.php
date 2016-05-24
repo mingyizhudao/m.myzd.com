@@ -88,7 +88,7 @@ $this->show_footer = false;
             </div>
             <div class="pt30">
     <!--                            <input id="btnSubmit" class="btn btn-yes btn-block" type="button" data-ajax="false"  name="yt0" value="登录/注册"> -->
-                <a id="btnPawSubmit" class="btn btn-green">立即登录</a>
+                <a id="btnPawSubmit" class="btn btn-green">登录</a>
             </div>
             <div class="pt15 text-right">
                 <a href="<?php echo $urlUserForgetPassword; ?>" class="color-gray">忘记密码</a>
@@ -156,7 +156,7 @@ $this->show_footer = false;
             </div>
             <div class="pt30">
     <!--                            <input id="btnSubmit" class="btn btn-yes btn-block" type="button" data-ajax="false"  name="yt0" value="登录/注册"> -->
-                <a id="btnSmsSubmit" class="btn btn-green">登录/注册</a>
+                <a id="btnSmsSubmit" class="btn btn-green">登录</a>
             </div>
             <?php $this->endWidget(); ?>
         </div>

@@ -99,7 +99,7 @@ $this->show_footer = false;
         </div>
         <div class="pt30">
 <!--                            <input id="btnSubmit" class="btn btn-yes btn-block" type="button" data-ajax="false"  name="yt0" value="登录/注册"> -->
-            <a id="btnSubmit" class="btn btn-green">立即注册</a>
+            <a id="btnSubmit" class="btn btn-green">注册</a>
         </div>
         <?php $this->endWidget(); ?>
     </div>
