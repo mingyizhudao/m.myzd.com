@@ -25,4 +25,5 @@ $v = Yii::app()->session["testKey1"];
 var_dump($v);
 }
 
+
 }
