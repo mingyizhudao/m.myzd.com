@@ -321,12 +321,9 @@ function readyDoc(data) {
                 hp_dept_desc = hp_dept_desc.length > 40 ? hp_dept_desc.substr(0, 40) + '...' : hp_dept_desc;
                 innerHtml += '<div>' +
                         '<a href="' + $requestDoctorView + '/' + results[i].id + '" data-target="link">' +
-                        '<div class="grid pl15 pr15 pb10 bb-gray3 ' + btGray + '">' +
+                        '<div class="grid pl15 pr15 ' + btGray + '">' +
                         '<div class="col-1 w25 pt10">' +
                         '<div class="w60p h60p br50" style="overflow:hidden;"><img class="imgDoc" src="' + results[i].imageUrl + '"></div>';
-                if (results[i].isContracted == 1) {
-                    innerHtml += '<div class="sign w60p">签约专家</div>';
-                }
                 var doctorAtitle = '';
                 if (results[i].aTitle != '无') {
                     doctorAtitle = results[i].aTitle;
@@ -335,9 +332,12 @@ function readyDoc(data) {
                         '<div class="ml10 col-1 w75">' +
                         '<div class="grid">' +
                         '<div class="col-0 pt10 color-black2 font-s16">' + results[i].name + '<span class="ml5">' + doctorAtitle + '</span></div>' +
-                        '<div class="col-1 grid">';
+                        '<div class="col-1 grid"><div class="col-1"></div>';
                 if (results[i].isServiceId == 2) {
-                    innerHtml += '<div class="col-1"></div><div class="col-0 yzIcon">义诊</div>';
+                    innerHtml += '<div class="col-0 yzIcon font-s12">义诊</div>';
+                }
+                if (results[i].isContracted == 1) {
+                    innerHtml += '<div class="col-0 signIcon ml10 font-s12">签约</div>';
                 }
                 innerHtml += '</div></div>';
                 /*科室为空，则不显示*/
@@ -349,35 +349,22 @@ function readyDoc(data) {
                     }
                 } else {
                     if (results[i].mTitle == "" || results[i].mTitle == null) {
-                        innerHtml += '<div class="mt5 color-black6">' + results[i].hpDeptName + '</div>';
+                        innerHtml += '<div class="color-black6">' + results[i].hpDeptName + '</div>';
                     } else {
-                        innerHtml += '<div class="mt5 color-black6">' + results[i].hpDeptName + '<span class="ml5">' + results[i].mTitle + '</span></div>';
+                        innerHtml += '<div class="color-black6">' + results[i].hpDeptName + '<span class="ml5">' + results[i].mTitle + '</span></div>';
                     }
                 }
                 if (results[i].hpName != "" && results[i].hpName != null) {
-                    innerHtml += '<div class="mt5 color-black6">' + results[i].hpName + '</div>';
+                    innerHtml += '<div class="color-black6">' + results[i].hpName + '</div>';
                 }
                 innerHtml += '</div>' +
                         '</div>' +
                         '</a>';
-                if (results[i].reasons.length == 0) {
-                    innerHtml += '<div class="pl15 pr15 pt5 pb10 font-s12 color-black bb-gray2">' +
-                            '擅长:' + hp_dept_desc +
-                            '</div>' +
-                            '<div class="bb10-gray "></div>' +
-                            '</div>';
-                } else {
-                    innerHtml += '<div class="pl15 bb-gray2">' +
-                            '<div class="pt10 pb10 pr15 font-s12 color-black bb-gray3">' +
-                            '擅长:' + hp_dept_desc +
-                            '</div>' +
-                            '<div class="pt10 pb10 pr15 font-s12 color-black">' +
-                            '推荐理由：<span class="color-orange">' + results[i].reasons[0] +
-                            '</span></div>' +
-                            '</div>' +
-                            '<div class="bb10-gray "></div>' +
-                            '</div>';
-                }
+                innerHtml += '<div class="pl15 pr15 pt5 pb10 color-black bb-gray2">' +
+                        '<span class="color-orange font-w800">擅长:</span>' + hp_dept_desc +
+                        '</div>' +
+                        '<div class="bb10-gray "></div>' +
+                        '</div>';
 
             }
         }
