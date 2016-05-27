@@ -32,7 +32,7 @@ $urlUploadFile = $this->createUrl("qiniu/ajaxBookingFile");
 $urlReturn = $this->createUrl('booking/patientBookingList');
 $urlQiniuAjaxToken = $this->createUrl('qiniu/AjaxBookingToken');
 $user = $this->loadUser();
-$urlBookingFiles = 'http://192.168.1.216/file.myzd.com/api/loadbookingmr?userId=' . $user->id . '&bookingId=' . $results->id;
+$urlBookingFiles = 'http://file.mingyizhudao.com/api/loadbookingmr?userId=' . $user->id . '&bookingId=' . $results->id;
 $this->show_footer = false;
 ?>
 <style>
