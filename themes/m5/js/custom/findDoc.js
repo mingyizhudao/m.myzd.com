@@ -333,11 +333,11 @@ function readyDoc(data) {
                         '<div class="grid">' +
                         '<div class="col-0 pt10 color-black2 font-s16">' + results[i].name + '<span class="ml5">' + doctorAtitle + '</span></div>' +
                         '<div class="col-1 grid"><div class="col-1"></div>';
-                if (results[i].isContracted == 1) {
-                    innerHtml += '<div class="col-0 signIcon font-s12">签约</div>';
-                }
                 if (results[i].isServiceId == 2) {
-                    innerHtml += '<div class="col-0 yzIcon ml10 font-s12">义诊</div>';
+                    innerHtml += '<div class="col-0 yzIcon font-s12">义诊</div>';
+                }
+                if (results[i].isContracted == 1) {
+                    innerHtml += '<div class="col-0 signIcon ml10 font-s12">签约</div>';
                 }
                 innerHtml += '</div></div>';
                 /*科室为空，则不显示*/
