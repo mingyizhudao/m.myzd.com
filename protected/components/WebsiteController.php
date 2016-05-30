@@ -204,6 +204,55 @@ abstract class WebsiteController extends Controller {
         $coreAccess->save();
     }
 
+    /**
+     * Stores user's access info for every request.
+     */
+    public function  storeAppAccessInfo($vendorId=0, $site=0) {
+        $coreAccess = new AppLog();
+        if($vendorId > 0){
+            $coreAccess->vendor_id = $vendorId;
+        }
+        if($site > 0){
+            $coreAccess->site = $site;
+        }
+        $coreAccess->user_host_ip = Yii::app()->request->getUserHostAddress();
+        $coreAccess->url = Yii::app()->request->getUrl();
+        $coreAccess->url_referrer = Yii::app()->request->getUrlReferrer();
+        $coreAccess->user_agent = Yii::app()->request->getUserAgent();
+        $coreAccess->user_host = Yii::app()->request->getUserHost();
+        $coreAccess->save();
+    }
+
+    //验证第三方
+    public function checkVendor($site=0){
+        if (isset($_GET['appId']) && isset($_GET['timestamp']) && isset($_GET['sign'])) {
+            $now = time();
+            $oneDay = 3600 * 24;
+            $timestamp = $_GET['timestamp'];
+            if ($timestamp <= ($now + $oneDay) && $timestamp >= ($now - $oneDay)) {
+                $appVendor = new AppVendor();
+                $appKey = $appVendor->getByAppId($_GET['appId']);
+
+                if (isset($appKey)) {
+                    if (checkSignature(array('appId' => $_GET['appId'], 'timestamp' => $_GET['timestamp']), $appKey->app_secret, $_GET['sign'])) {
+
+                        Yii::app()->session['vendorId'] = $appKey->id;
+                        $this->storeAppAccessInfo($appKey->id, $site);
+                    } else {
+                        unset(Yii::app()->session['vendorId']);
+                        $this->renderJsonOutput(array('status' => EApiViewService::RESPONSE_NO, 'errorCode' => 3, 'errorMsg' => 'sign error'));
+                    }
+                } else {
+                    unset(Yii::app()->session['vendorId']);
+                    $this->renderJsonOutput(array('status' => EApiViewService::RESPONSE_NO, 'errorCode' => 2, 'errorMsg' => 'vendor error'));
+                }
+            } else {
+                unset(Yii::app()->session['vendorId']);
+                $this->renderJsonOutput(array('status' => EApiViewService::RESPONSE_NO, 'errorCode' => 1, 'errorMsg' => 'the request has expired'));
+            }
+        }
+    }
+
     /*
       public function isUserAgentWeixin() {
       $userAgent = Yii::app()->request->getUserAgent();
