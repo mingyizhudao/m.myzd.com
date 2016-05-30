@@ -19,5 +19,11 @@ class TestController extends WebsiteController {
        // var_dump($ret->attributes);
        var_dump($ret);
     }
+   public function actionTest2(){
+	Yii::app()->session["testKey1"]= "testValue1";
+$v = Yii::app()->session["testKey1"];
+var_dump($v);
+}
+
 
 }
