@@ -10,7 +10,6 @@ class DepartmentController extends MobileController {
         if($data->honor){
            $data->honor = explode("#", $data->honor);
         }
-        print_r($data);exit;
         $this->render('view', array(
             'data' => $data
         ));
