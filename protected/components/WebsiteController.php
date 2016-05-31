@@ -253,6 +253,20 @@ abstract class WebsiteController extends Controller {
         }
     }
 
+    //记录第三方（非加密方式）
+    public function recordVendor($site = 0)
+    {
+        if (isset($_GET['appId'])) {
+            $appVendor = new AppVendor();
+            $appKey = $appVendor->getByAppId($_GET['appId']);
+            if (isset($appKey)) {
+                Yii::app()->session['vendorId'] = $appKey->id;
+                $this->storeAppAccessInfo($appKey->id, $site);
+
+            }
+        }
+    }
+
     /*
       public function isUserAgentWeixin() {
       $userAgent = Yii::app()->request->getUserAgent();

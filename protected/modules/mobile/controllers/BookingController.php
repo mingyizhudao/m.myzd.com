@@ -250,6 +250,8 @@ class BookingController extends MobileController {
      * 快速预约
      */
     public function actionQuickbook() {
+        $site = isset($_GET['site']) ? (int) $_GET['site'] : 0;
+        $this->recordVendor($site);
         //$values = $_GET;
         //$request = Yii::app()->request;
         // 快速预约
