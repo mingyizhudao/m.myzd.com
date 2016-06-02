@@ -28,7 +28,7 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
                     <div class="col-0 imgHospital"></div>
                     <div class="col-1"></div>
                 </div>
-                推荐
+                医院
             </a>
         </li>
         <li class="w25" data-active="find_footer">
