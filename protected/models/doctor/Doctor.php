@@ -364,6 +364,9 @@ class Doctor extends EActiveRecord {
     /*     * ****** Display Methods ******* */
 
     public function getAbsUrlAvatar($thumbnail = false) {
+		if ($this->has_remote == 1) {
+           return $this->remote_domain . $this->remote_file_key;
+        }
         if (isset($this->avatar_url) && $this->avatar_url != '') {
             $url = $this->avatar_url;
             if (strStartsWith($url, 'http')) {
@@ -635,7 +638,7 @@ class Doctor extends EActiveRecord {
         isset($this->reason_one) && $data[] = $this->reason_one;
         isset($this->reason_two) && $data[] = $this->reason_two;
         isset($this->reason_three) && $data[] = $this->reason_three;
-        isset($this->reason_four) && $data[] = $this->reason_four;
+		isset($this->reason_four) && $data[] = $this->reason_four;
         return $data;
     }
 

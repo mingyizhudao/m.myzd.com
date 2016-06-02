@@ -241,7 +241,7 @@ $this->show_footer = false;
                             <div class="grid pt10">
                                 <div class="col-1"></div>
                                 <div class="col-0 br50 w60p h60p overflow-hidden">
-                                    <img class="" src="http://7xtetc.com1.z0.glb.clouddn.com/E7D0DEFA9BE34C1A13CCD948E70BBC80">
+                                    <img class="" src="http://mingyizhudao.com/resource/doctor/avatar/xujianping.jpg">
                                 </div>
                                 <div class="col-1"></div>
                             </div>
@@ -277,7 +277,7 @@ $this->show_footer = false;
                             <div class="grid pt10">
                                 <div class="col-1"></div>
                                 <div class="col-0 br50 w60p h60p overflow-hidden">
-                                    <img class="" src="http://7xtetc.com1.z0.glb.clouddn.com/39187900A035CACF9CFE846FEBF55C83">
+                                    <img class="" src="http://mingyizhudao.com/resource/doctor/avatar/02906.jpg">
                                 </div>
                                 <div class="col-1"></div>
                             </div>

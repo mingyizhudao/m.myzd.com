@@ -256,7 +256,7 @@ abstract class EActiveRecord extends CActiveRecord {
      * @param array $attrs
      * @param type $with array of model's relations.
      * @return type 
-     */    
+     */
     public function getByAttributes(array $attrs, $with = null) {
         if (isset($attrs['date_deleted']) === false)
             $attrs['date_deleted'] = null;

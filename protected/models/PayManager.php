@@ -24,7 +24,6 @@ class PayManager {
         $orderNo = $payment->getUid();
         $subject = empty($order->subject)?'1':$order->subject;
         $body = empty($order->description)?'1':$order->description;
-        
         //获取手机号
         $yeepayIndentity = NULL;
         if ($channel == 'yeepay_wap') {
@@ -72,13 +71,13 @@ class PayManager {
             case 'alipay_pc_direct':
                 $extra = array(
 //                    'success_url' => 'http://test.mingyizd.com/payment/alipayReturn'  //test
-                    'success_url' => 'http://www.mingyizhudao.com/mobile/payment/alipayReturn' //prod
+                    'success_url' => 'http://m.mingyizhudao.com/mobile/payment/alipayReturn' //prod
                 );
                 break;
             case 'alipay_wap':
                 $extra = array(
 //                    'success_url' => 'http://test.mingyizd.com/payment/alipayReturn', //test
-                    'success_url' => 'http://wap.mingyizhudao.com/mobile/payment/alipayReturn', //prod
+                    'success_url' => 'http://m.mingyizhudao.com/mobile/payment/alipayReturn', //prod
                     'cancel_url' => $refurl
                 );
                 break;
@@ -116,7 +115,7 @@ class PayManager {
                     'terminal_type' => 3,
                     'terminal_id' => 'chuangxian10012471338',
                     'user_ua' => Yii::app()->request->getUserAgent(),
-                    'result_url' => 'http://mingyizhudao.com/payment/yeepayReturn?outno=' . $payment->getUid()
+                    'result_url' => 'http://m.mingyizhudao.com/mobile/payment/yeepayReturn?outno=' . $payment->getUid()
                 );
                 break;
             case 'jdpay_wap':

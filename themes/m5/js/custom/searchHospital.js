@@ -72,6 +72,7 @@ $('#selectCity').tap(function () {
         $.ajax({
             url: requestUrl,
             success: function (data) {
+                //console.log(data);
                 readyHospital(data);
                 $('#cityTitle').html($cityName);
                 $('#cityTitle').attr('data-city', $cityId);
@@ -155,40 +156,34 @@ function readyHospital(data) {
 function initPage(dataPage) {
     $('#previousPage').tap(function () {
         if ($condition["page"] > 1) {
-            var diseaseName = $condition["disease_name"];
-            $condition["disease_name"] = '';
             $condition["page"] = parseInt($condition["page"]) - 1;
             J.showMask();
             $.ajax({
                 url: $requestHospital + setUrlCondition() + '&getcount=1',
                 success: function (data) {
+                    //console.log(data);
                     readyHospital(data);
-                    $condition["disease_name"] = diseaseName;
                     setLocationUrl();
                     $('#searchDept_article').scrollTop(0);
                 }
             });
-            $condition["disease_name"] = diseaseName;
         } else {
             J.showToast('已是第一页', '', '1000');
         }
     });
     $('#nextPage').tap(function () {
         if ($condition["page"] < dataPage) {
-            var diseaseName = $condition["disease_name"];
-            $condition["disease_name"] = '';
             $condition["page"] = parseInt($condition["page"]) + 1;
             J.showMask();
             $.ajax({
                 url: $requestHospital + setUrlCondition() + '&getcount=1',
                 success: function (data) {
+                    //console.log(data);
                     readyHospital(data);
-                    $condition["disease_name"] = diseaseName;
                     setLocationUrl();
                     $('#searchDept_article').scrollTop(0);
                 }
             });
-            $condition["disease_name"] = diseaseName;
         } else {
             J.showToast('已是最后一页', '', '1000');
         }
@@ -197,8 +192,6 @@ function initPage(dataPage) {
 
 //跳页
 function changePage() {
-    var diseaseName = $condition["disease_name"];
-    $condition["disease_name"] = '';
     $condition["page"] = $('#selectPage').val();
     J.showMask();
     $.ajax({
@@ -206,12 +199,10 @@ function changePage() {
         success: function (data) {
             //console.log(data);
             readyHospital(data);
-            $condition["disease_name"] = diseaseName;
             setLocationUrl();
             $('#searchDept_article').scrollTop(0);
         }
     });
-    $condition["disease_name"] = diseaseName;
 }
 
 //组合url参数

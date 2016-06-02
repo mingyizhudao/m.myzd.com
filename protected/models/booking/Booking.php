@@ -247,14 +247,14 @@ class Booking extends EActiveRecord {
         return $this->find($criteria);
     }
 
-    public function getAllByUserIdOrMobile($userId, $mobile, $with = null, $options = null, $bk_status = 0, $vendorId = 0) {
+    public function getAllByUserIdOrMobile($userId, $mobile, $with = null, $options = null, $bk_status = 0, $vendorId=0) {
         $criteria = new CDbCriteria();
         $criteria->compare("t.user_id", $userId, false, 'AND');
         $criteria->compare("t.mobile", $mobile, false, 'OR');
-        if ($bk_status) {
-            $criteria->compare("t.bk_status", $bk_status, false, 'AND');
+        if($bk_status){
+           $criteria->compare("t.bk_status", $bk_status, false, 'AND');
         }
-        if ($vendorId > 0) {
+		if($vendorId>0){
             $criteria->compare("t.vendor_id", $vendorId, false, 'AND');
         }
         $criteria->addCondition("t.date_deleted is NULL");
@@ -292,27 +292,27 @@ class Booking extends EActiveRecord {
     }
 
     public function getOptionsStatus() {
-        return StatCode::getOptionsBookingStatus();
-        /*
+        //return StatCode::getOptionsBookingStatus();
+        
           return array(
           self::STATUS_NEW => Yii::t('booking', '新'),
           self::STATUS_CONFIRMED => Yii::t('booking', '已确认'),
           self::STATUS_PAID => Yii::t('booking', '已付款'),
           self::STATUS_CANCELLED => Yii::t('booking', '已取消'),
           );
-         */
+         
     }
 
     public function getStatusText() {
-        return StatCode::getBookingStatus($this->bk_status);
-        /*
+        //return StatCode::getBookingStatus($this->bk_status);
+        
           $options = $this->getOptionsStatus();
           if (isset($options[$this->status])) {
           return $options[$this->status];
           } else {
           return '未知';
           }
-         */
+         
     }
 
     public function getOptionsBookingType() {
@@ -443,12 +443,13 @@ class Booking extends EActiveRecord {
         return $this->contact_name;
     }
 
-    public function getBkStatus($v = true) {
-        if ($v) {
+    public function getBkStatus($v=true) {
+        if($v){
             return StatCode::getBookingStatus($this->bk_status);
-        } else {
+        }else{
             return $this->bk_status;
         }
+
     }
 
     public function getBkStatusNum() {
@@ -554,7 +555,6 @@ class Booking extends EActiveRecord {
     public function getBkStatusCode() {
         return $this->bk_status;
     }
-
     /**
      * 获得用户手术单个状态数量
      * @param unknown $userId
@@ -581,23 +581,23 @@ class Booking extends EActiveRecord {
         $criteria->addCondition("t.date_deleted is NULL");
         return $this->findAll($criteria);
     }
-
-    public function getBookingByMobileORUserId($userId, $mobile) {
+    
+    public function getBookingByMobileORUserId($userId , $mobile){
         $criteria = new CDbCriteria();
         $criteria->select = 't.bk_status,count(t.bk_status) num'; //默认*
-        $criteria->addCondition('t.user_id=' . $userId . ' OR t.mobile=' . $mobile);
+        $criteria->addCondition('t.user_id='.$userId.' OR t.mobile='.$mobile);
         $criteria->addCondition("t.date_deleted is NULL");
         $criteria->group = 't.bk_status';
         $this->num = null;
         return $this->findAll($criteria);
     }
-
-    public function getBookingByMobileORUserIdANDBkId($userId, $mobile, $id) {
+    
+    public function getBookingByMobileORUserIdANDBkId($userId , $mobile ,$id){
         $criteria = new CDbCriteria();
-        $criteria->addCondition("t.user_id=" . $userId . " OR t.mobile=" . $mobile, "AND");
-        $criteria->addCondition("t.id=" . $id, "AND");
+        $criteria->addCondition("t.user_id=".$userId." OR t.mobile=".$mobile,"AND");
+        $criteria->addCondition("t.id=" . $id,"AND");
         $criteria->addCondition("t.date_deleted is NULL");
         return $this->find($criteria);
     }
-
+        
 }

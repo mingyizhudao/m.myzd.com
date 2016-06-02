@@ -201,6 +201,9 @@ class Hospital extends EActiveRecord {
     /*     * ******* Display Methods ******* */
 
     public function getAbsUrlAvatar($thumbnail = false) {
+		if ($this->has_remote == 1) {
+            return $this->remote_domain . $this->remote_file_key;
+        }
         if (isset($this->image_url) && $this->image_url != '') {
             $url = $this->image_url;
             if (strStartsWith($url, 'http')) {

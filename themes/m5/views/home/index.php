@@ -10,7 +10,7 @@ $urlHospitalTop = $this->createAbsoluteUrl('hospital/top');
 $urlDoctorSearch = $this->createAbsoluteUrl('doctor/search');
 $urlOperationTrain = $this->createUrl('home/page', array('view' => 'operationTrain'));
 $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
-$urlHomeMyyzDoctor = $this->createUrl('home/page', array('view' => 'myyzDoctor'));
+$urlHomeMyyz = $this->createUrl('home/page', array('view' => 'myyz'));
 $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
 ?>
 <article id="home_article" data-active="home_footer" class="active bg-gray5" data-scroll="true">
@@ -158,7 +158,7 @@ $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
     $(document).ready(function () {
         //轮播图
         var html = '<li class="slide">' +
-                '<a href="<?php echo $urlHomeMyyzDoctor; ?>">' +
+                '<a href="<?php echo $urlHomeMyyz; ?>">' +
                 '<img class="w100" src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146243704275720">' +
                 '</a>' +
                 '</li>' +

@@ -9,13 +9,6 @@ $this->show_footer = false;
     }
 </style>
 <header class="bg-green">
-    <nav class="left">
-        <a href="" data-target="back">
-            <div class="pl5">
-                <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
-            </div>
-        </a>
-    </nav>
     <h1 class="title">支付成功</h1>
     <nav class="right">
         <?php

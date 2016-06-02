@@ -145,9 +145,9 @@ class EmailManager {
      * @param Booking $model
      * @return int
      */
-    public function sendEmailAppBooking(Booking $model) {
+    public function sendEmailAppBooking(Booking $model, $vender = NULL) {
         $view = 'appBookingNew';
-        $subject = "【重要】 新的预约！ [" . $model->getMobile() . "] ";
+        $subject = "【重要】{$vender}新的预约！ [" . $model->getMobile() . "] ";
         $contactName = $model->getContactName();
         if (!empty($contactName)) {
             $subject.= "[" . $contactName . "]";

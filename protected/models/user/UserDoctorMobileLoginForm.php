@@ -33,8 +33,7 @@ class UserDoctorMobileLoginForm extends EFormModel {
     public function attributeLabels() {
         return array(
             'username' => Yii::t('user', '用户名'),
-            'verify_code' => Yii::t('user', '验证码'),
-            'captcha_code' => Yii::t('user', '验证码'),
+            'verify_code' => Yii::t('user', '验证码')
         );
     }
 

@@ -126,6 +126,7 @@ $this->show_footer = false;
         $.ajax({
             url: urlAjaxLoadDoctor,
             success: function (data) {
+                //console.log(data);
                 readyDoc(data);
                 setLocationUrl();
             }

@@ -57,7 +57,7 @@ class BookCorpForm extends EFormModel {
             array('doctor_name, hospital_name, hp_dept_name', 'required', 'on' => 'quickbook'), // 快速预约
             array('remark', 'length', 'max' => 500),
             array('id, ref_no, user_id, mobile, verify_code,contact_name, contact_email, bk_status, bk_type, doctor_id, doctor_name, expteam_id, city_id, hospital_id, hospital_name, hp_dept_id, hp_dept_name, disease_name, disease_detail, date_start, date_end, appt_date, remark, date_created', 'safe'),
-            //     array('verify_code', checkVerifryCode)
+                //     array('verify_code', checkVerifryCode)
         );
     }
 
@@ -105,8 +105,7 @@ class BookCorpForm extends EFormModel {
             'date_created' => '创建日期',
             'date_updated' => 'Date Updated',
             'date_deleted' => 'Date Deleted',
-            'expertBooked' => '所约专家',
-            'captcha_code' => '图形验证码',
+            'expertBooked' => '所约专家'
         );
     }
 

@@ -1,4 +1,4 @@
-$('#deptSelect').tap(function () {
+$('#selectDept').tap(function () {
     var urlRootPath = $('#myyzDoctor_header').attr('data-path');
     var urlApi = $('#myyzDoctor_article').attr('data-api');
     var deptId = $('#deptTitle').attr('data-dept');
@@ -14,20 +14,19 @@ $('#deptSelect').tap(function () {
             '</div>' +
             '</a>' +
             '</nav>' +
-            '<h1 class="title">名医义诊</h1>' +
-            '</header>' +
-            '<nav id="myyzDoctor_nav" class="header-secondary bg-white">' +
-            '<div class="grid w100 color-black font-s16 color-black6">' +
-            '<div id="deptSelect" data-target="closePopup" class="col-1 w50 br-gray bb-gray grid middle grayImg">' +
-            '<span id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146364725769364">' +
+            '<h1 class="title"><span id="deptTitle" data-target="closePopup" data-dept="' + deptId + '">' + deptName + '</span>' +
+            '<span class="pl6"><img class="w10p" src="' + urlRootPath + '/m5/images/triangleWhite.png"></span>' +
+            '</h1>' +
+            '<nav id="selectCity" class="right">' +
+            '<div class="grid mt17" data-target="closePopup">' +
+            '<div class="font-s16 col-0" id="cityTitle" data-city="' + cityId + '">' + cityName +
             '</div>' +
-            '<div id="citySelect" data-target="closePopup" class="col-1 w50 bb-gray grid middle grayImg">' +
-            '<span id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146364721030297">' +
-            '</div>' +
+            '<div class="col-0 cityImg"></div>' +
             '</div>' +
             '</nav>' +
+            '</header>' +
             '<article id="myyzDoctor_article" class="active" style="position:static;">' +
-            '<div class="mt93">' +
+            '<div class="mt43">' +
             '<ul class="list">' +
             '<li class="dept" data-dept="1">外科</li>' +
             '<li class="dept" data-dept="2">骨科</li>' +
@@ -52,6 +51,7 @@ $('#deptSelect').tap(function () {
             type: 'get',
             url: urlApi + '&citys=' + cityId + '&disease_category=' + dataDeptId,
             success: function (data) {
+                //console.log(data);
                 readyPage(data);
                 $('#deptTitle').html(dataDeptName);
                 $('#deptTitle').attr('data-dept', dataDeptId);
@@ -64,7 +64,7 @@ $('#deptSelect').tap(function () {
         });
     });
 });
-$('#citySelect').tap(function () {
+$('#selectCity').tap(function () {
     var urlRootPath = $('#myyzDoctor_header').attr('data-path');
     var urlApi = $('#myyzDoctor_article').attr('data-api');
     var deptId = $('#deptTitle').attr('data-dept');
@@ -80,20 +80,19 @@ $('#citySelect').tap(function () {
             '</div>' +
             '</a>' +
             '</nav>' +
-            '<h1 class="title">名医义诊</h1>' +
-            '</header>' +
-            '<nav id="myyzDoctor_nav" class="header-secondary bg-white">' +
-            '<div class="grid w100 color-black font-s16 color-black6">' +
-            '<div id="deptSelect" data-target="closePopup" class="col-1 w50 br-gray bb-gray grid middle grayImg">' +
-            '<span id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146364721030297">' +
+            '<h1 class="title"><span id="deptTitle" data-target="closePopup" data-dept="' + deptId + '">' + deptName + '</span>' +
+            '<span class="pl6"><img class="w10p" src="' + urlRootPath + '/m5/images/triangleWhite.png"></span>' +
+            '</h1>' +
+            '<nav id="selectCity" class="right">' +
+            '<div class="grid mt17" data-target="closePopup">' +
+            '<div class="font-s16 col-0" id="cityTitle" data-city="' + cityId + '">' + cityName +
             '</div>' +
-            '<div id="citySelect" data-target="closePopup" class="col-1 w50 bb-gray grid middle grayImg">' +
-            '<span id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146364725769364">' +
-            '</div>' +
+            '<div class="col-0 cityImg"></div>' +
             '</div>' +
             '</nav>' +
+            '</header>' +
             '<article id="myyzDoctor_article" class="active" style="position:static;">' +
-            '<div class="mt93">' +
+            '<div class="mt43">' +
             '<ul class="list">' +
             '<li class="city" data-city="1">北京</li>' +
             '<li class="city" data-city="73">上海</li>' +
@@ -118,6 +117,7 @@ $('#citySelect').tap(function () {
             type: 'get',
             url: urlApi + '&citys=' + dataCityId + '&disease_category=' + deptId,
             success: function (data) {
+                //console.log(data);
                 readyPage(data);
                 $('#deptTitle').html(deptName);
                 $('#deptTitle').attr('data-dept', deptId);
@@ -133,60 +133,47 @@ $('#citySelect').tap(function () {
 
 function readyPage(data) {
     var doctorView = $('#myyzDoctor_article').attr('data-doctorView');
-    var innerHtml = '<div class="pt20"><div><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146364477387598" class="w100"></div>';
+    var innerHtml = '<div class="pad10">';
     if (data.results.page) {
         var doctors = data.results.page[0];
         var pageSize = Math.ceil(doctors.length / 3);
         for (var i = 0; i < pageSize; i++) {
+            innerHtml += '<div class="grid text-center pb10">';
             for (var j = 0; j < 3; j++) {
                 var num = i * 3 + j;
                 if (num < doctors.length) {
-                    var hp_dept_desc = (doctors[num].desc == '' || doctors[num].desc == null) ? '暂无信息' : doctors[num].desc;
-                    hp_dept_desc = hp_dept_desc.length > 40 ? hp_dept_desc.substr(0, 40) + '...' : hp_dept_desc;
-                    var doctorAtitle = '';
-                    if (doctors[num].aTitle != '无') {
-                        doctorAtitle = doctors[num].aTitle;
+                    var hpDeptName = doctors[num].hpDeptName;
+                    var hpName = doctors[num].hpName;
+                    if (hpDeptName == null || hpDeptName == '') {
+                        hpDeptName = '';
                     }
-                    innerHtml += '<div class="mb10 bg-white">' +
-                            '<a href="' + doctorView + '/' + doctors[num].id + '" data-target="link">' +
-                            '<div class="grid pl15 pr15 pb5 bt-gray2">' +
-                            '<div class="col-1 w25 pt10">' + '<div class="w60p h60p br50" style="overflow:hidden;">' +
-                            '<img class="imgDoc" src="' + doctors[num].imageUrl + '">' +
+                    if (hpName == null || hpName == '') {
+                        hpName = '';
+                    }
+                    innerHtml += '<div class="col-1 w33 border-gray br5 ml3 mr3">' +
+                            '<a href="' + doctorView + '/' + doctors[num].id + '">' +
+                            '<div class="pb10 color-black">' +
+                            '<div class="grid pt10">' +
+                            '<div class="col-1"></div>' +
+                            '<div class="col-0 imgDiv">' +
+                            '<img src="' + doctors[num].imageUrl + '">' +
                             '</div>' +
+                            '<div class="col-1"></div>' +
                             '</div>' +
-                            '<div class="ml10 col-1 w75">' +
-                            '<div class="grid">' +
-                            '<div class="col-1 color-black2 pt10 font-s16">' + doctors[num].name +
-                            '<span class="ml5">' + doctorAtitle + '</span>' +
-                            '</div>';
-                    if (doctors[num].isContracted == 1) {
-                        innerHtml += '<div class="col-0 signIcon mr10 font-s12">签约</div>';
-                    }
-                    if (doctors[num].isServiceId == 2) {
-                        innerHtml += '<div class="col-0 yzIcon font-s12">义诊</div>';
-                    }
-                    innerHtml += '</div>';
-                    if (doctors[num].hpDeptName == null) {
-                        innerHtml += '<div class="color-black6">' + doctors[num].mTitle + '</div>';
-                    } else {
-                        innerHtml += '<div class="color-black6">' + doctors[num].hpDeptName + '<span class="ml5">' + doctors[num].mTitle + '</span></div>';
-                    }
-                    innerHtml += '<div class="color-black6">' + doctors[num].hpName + '</div>' +
-                            '</div>' +
+                            '<div>' + doctors[num].name + '</div>' +
+                            '<div class="font-s12">' + hpDeptName + '</div>' +
+                            '<div class="font-s12">' + hpName + '</div>' +
                             '</div>' +
                             '</a>' +
-                            '<div class="pl15 pr15 pb10 color-black bb-gray2"><span class="font-w800 color-orange">擅长:</span>' + hp_dept_desc + '</div>' +
                             '</div>';
+                } else {
+                    innerHtml += '<div class="col-1 w33 ml3 mr3"></div>';
                 }
             }
+            innerHtml += '</div>';
         }
     } else {
-        innerHtml += '<div class="color-white text-center">' +
-                '<div class="pt50">' +
-                '<img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/14630214183611" class="w170p">' +
-                '</div>' +
-                '<div class="pt10 font-s30 color-gray10">暂无医生</div>' +
-                '</div>';
+        innerHtml += '暂无';
     }
     innerHtml += '</div>';
     J.hideMask();

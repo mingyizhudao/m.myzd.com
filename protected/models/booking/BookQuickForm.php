@@ -77,8 +77,7 @@ class BookQuickForm extends EFormModel {
             'appt_date' => '预约日期',
             'remark' => '备注',
             'submit_via' => '提交来源',
-            'verify_code' => '短信验证码',
-            'captcha_code' => '图形验证码'
+            'verify_code' => '短信验证码'
         );
     }
 

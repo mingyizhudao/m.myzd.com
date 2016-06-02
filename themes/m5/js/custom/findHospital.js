@@ -82,6 +82,7 @@ $('#deptSelect').tap(function () {
         $.ajax({
             url: requestUrl,
             success: function (data) {
+                //console.log(data);
                 readyHospital(data);
                 $deptName = $deptName.length > 5 ? $deptName.substr(0, 4) + '...' : $deptName;
                 $('#deptTitle').html($deptName);
@@ -95,6 +96,7 @@ $('#deptSelect').tap(function () {
     });
 });
 function readyDept(data) {
+    //console.log(data);
     var results = data.results;
     var innerHtml = '<div class="grid color-black" style="margin-top:93px;">';
     if (results.length > 0) {
@@ -200,6 +202,7 @@ $('#citySelect').tap(function () {
         $.ajax({
             url: requestUrl,
             success: function (data) {
+                //console.log(data);
                 readyHospital(data);
                 $('#cityTitle').html($cityName);
                 $('#cityTitle').attr('data-city', $cityId);
@@ -229,7 +232,7 @@ function setLocationUrl() {
 //医院页面
 function readyHospital(data) {
     var results = data.results;
-    var innerHtml = '<div id="hospitalPage"><div><img class="w100" src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146303147510311"><ul class="list">';
+    var innerHtml = '<div id="hospitalPage"><div><img class="w100" src="../../themes/m5/images/hospitalDept.png"><ul class="list">';
     if (results) {
         if (results.length > 0) {
             for (var i = 0; i < results.length; i++) {
@@ -285,6 +288,7 @@ function initPage(dataPage) {
             $.ajax({
                 url: $requestHospital + setUrlCondition() + '&getcount=1',
                 success: function (data) {
+                    //console.log(data);
                     readyHospital(data);
                     setLocationUrl();
                     $('#findDept_article').scrollTop(0);
@@ -301,6 +305,7 @@ function initPage(dataPage) {
             $.ajax({
                 url: $requestHospital + setUrlCondition() + '&getcount=1',
                 success: function (data) {
+                    //console.log(data);
                     readyHospital(data);
                     setLocationUrl();
                     $('#findDept_article').scrollTop(0);

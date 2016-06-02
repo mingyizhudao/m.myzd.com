@@ -277,7 +277,7 @@ $this->show_footer = false;
                             <div class="grid pt10">
                                 <div class="col-1"></div>
                                 <div class="col-0 br50 w60p h60p overflow-hidden">
-                                    <img class="" src="http://7xtetc.com1.z0.glb.clouddn.com/4B2E10B6A8B6B408EF2814019DF4F7B7">
+                                    <img class="" src="http://mingyizhudao.com/resource/doctor/avatar/liuyuewu.jpg">
                                 </div>
                                 <div class="col-1"></div>
                             </div>
@@ -323,7 +323,7 @@ $this->show_footer = false;
                             <div class="grid pt10">
                                 <div class="col-1"></div>
                                 <div class="col-0 br50 w60p h60p overflow-hidden">
-                                    <img class="" src="http://7xtetc.com1.z0.glb.clouddn.com/4089200A585E7232A77D28A2F5329610">
+                                    <img class="" src="http://mingyizhudao.com/resource/doctor/avatar/03054.jpg">
                                 </div>
                                 <div class="col-1"></div>
                             </div>
@@ -369,7 +369,7 @@ $this->show_footer = false;
                             <div class="grid pt10">
                                 <div class="col-1"></div>
                                 <div class="col-0 br50 w60p h60p overflow-hidden">
-                                    <img class="" src="http://7xtetc.com1.z0.glb.clouddn.com/C175A656BA51004689948F994954EF49">
+                                    <img class="" src="http://mingyizhudao.com/resource/doctor/avatar/0367.jpg">
                                 </div>
                                 <div class="col-1"></div>
                             </div>
@@ -415,7 +415,7 @@ $this->show_footer = false;
                             <div class="grid pt10">
                                 <div class="col-1"></div>
                                 <div class="col-0 br50 w60p h60p overflow-hidden">
-                                    <img class="" src="http://7xtetc.com1.z0.glb.clouddn.com/90CBC342F688341BADD18BA6209B8362">
+                                    <img class="" src="http://mingyizhudao.com/resource/doctor/avatar/0219.jpg">
                                 </div>
                                 <div class="col-1"></div>
                             </div>

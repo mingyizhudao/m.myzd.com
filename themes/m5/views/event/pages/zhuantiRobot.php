@@ -212,7 +212,7 @@ $this->show_footer = false;
                             <div class="grid pt10">
                                 <div class="col-1"></div>
                                 <div class="col-0 br50 w60p h60p overflow-hidden">
-                                    <img class="" src="http://dr.static.mingyizhudao.com/1708545F08B27EAE7A1B6E40FE6AB599">
+                                    <img class="" src="http://admin.mingyizd.com/resource/doctor/avatar/03208.jpg">
                                 </div>
                                 <div class="col-1"></div>
                             </div>
@@ -247,7 +247,7 @@ $this->show_footer = false;
                             <div class="grid pt10">
                                 <div class="col-1"></div>
                                 <div class="col-0 br50 w60p h60p overflow-hidden">
-                                    <img class="" src="http://dr.static.mingyizhudao.com/9788AF9D2CA5A3117E37C6E9BE5276F3">
+                                    <img class="" src="http://admin.mingyizd.com/resource/doctor/avatar/03209.jpg">
                                 </div>
                                 <div class="col-1"></div>
                             </div>
@@ -282,7 +282,7 @@ $this->show_footer = false;
                             <div class="grid pt10">
                                 <div class="col-1"></div>
                                 <div class="col-0 br50 w60p h60p overflow-hidden">
-                                    <img class="" src="http://dr.static.mingyizhudao.com/6E10EAAA5E9F9AC82B84C55A68D659CA">
+                                    <img class="" src="http://admin.mingyizd.com/resource/doctor/avatar/03207.jpg">
                                 </div>
                                 <div class="col-1"></div>
                             </div>

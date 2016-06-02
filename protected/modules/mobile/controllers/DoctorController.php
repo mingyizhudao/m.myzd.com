@@ -44,7 +44,7 @@ class DoctorController extends MobileController {
     public function actionViewSearch() {
         $this->render('viewSearch');
     }
-
+	
     //进入搜索更多页面
     public function actionViewSearchMore() {
         $this->render('viewSearchMore');
