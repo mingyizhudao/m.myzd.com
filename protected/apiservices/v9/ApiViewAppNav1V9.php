@@ -69,6 +69,11 @@ class ApiViewAppNav1V9 extends EApiViewService {
                 'actionUrl' => 'http://m.mingyizhudao.com/mobile/home/page/view/myyzDoctor/header/0',
                 'imageUrl' => 'http://7xsq2z.com2.z0.glb.qiniucdn.com/146243704275720',
             ),
+            array(
+                'pageTitle' => '凯瑟琳',
+                'actionUrl' => 'http://m.mingyizhudao.com/mobile/event/view/page/catherine/header/0',
+                'imageUrl' => 'http://7xsq2z.com2.z0.glb.qiniucdn.com/14652900984794',
+            ),
         );
 
         $this->results->banners = $data;

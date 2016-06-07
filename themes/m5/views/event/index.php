@@ -21,6 +21,8 @@ if ($showApp == 1) {
     $urlEventZhuantiShapingHealth = $this->createUrl('event/view', array('page' => 'shapingHealth'));
     $urlEventZhuantiLungCancer = $this->createUrl('event/view', array('page' => 'lungCancer'));
     $urlEventZhuantiCancer = $this->createUrl('event/view', array('page' => 'cancer'));
+    $urlEventZhuantiCatherine = $this->createUrl('event/view', array('page' => 'catherine'));
+    $urlEventZhuantiInternetOperation = $this->createUrl('event/view', array('page' => 'internetOperation'));
 } else {
     $urlEventStoryOne = $this->createUrl('event/view', array('page' => 'storyOne', 'header' => '0'));
     $urlEventStoryTwo = $this->createUrl('event/view', array('page' => 'storyTwo', 'header' => '0'));
@@ -39,6 +41,8 @@ if ($showApp == 1) {
     $urlEventZhuantiShapingHealth = $this->createUrl('event/view', array('page' => 'shapingHealth', 'header' => '0'));
     $urlEventZhuantiLungCancer = $this->createUrl('event/view', array('page' => 'lungCancer', 'header' => '0'));
     $urlEventZhuantiCancer = $this->createUrl('event/view', array('page' => 'cancer', 'header' => '0'));
+    $urlEventZhuantiCatherine = $this->createUrl('event/view', array('page' => 'catherine', 'header' => '0'));
+    $urlEventZhuantiInternetOperation = $this->createUrl('event/view', array('page' => 'internetOperation', 'header' => '0'));
 }
 if ($showHeader == 0) {
     $this->show_footer = false;
@@ -72,6 +76,16 @@ if ($showPage == 0) {
 <?php } ?>
 <article id="zhuanti_article" class="<?php echo $showZt; ?>" data-scroll="true" data-active="find_footer">
     <div>
+        <div class="mt10">
+            <a href="<?php echo $urlEventZhuantiCatherine; ?>">
+                <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146529036735212" class="w100">
+            </a>
+        </div>
+        <div class="mt10">
+            <a href="<?php echo $urlEventZhuantiInternetOperation; ?>">
+                <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146529829828030" class="w100">
+            </a>
+        </div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiCancer; ?>">
                 <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146353686584387" class="w100">
