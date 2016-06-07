@@ -507,10 +507,10 @@ class Api2Controller extends Controller {
             if (empty($_POST)) {
                 // application/json
                 $postData=urldecode($this->getPostData());
-                $post=$this->decryptInput($postData);
+                $post=$this->decryptAppInput($postData);
             } else {
                 // application/x-www-form-urlencoded
-                $post = $this->decryptInput($_POST["name"]);
+                $post = $this->decryptAppInput($_POST["name"]);
             }
         }else{
             if(empty($_POST)){
@@ -726,10 +726,10 @@ class Api2Controller extends Controller {
             if (empty($_POST)) {
                 // application/json
                 $postData=urldecode($this->getPostData());
-                $post=$this->decryptInput($postData);
+                $post=$this->decryptAppInput($postData);
             } else {
                 // application/x-www-form-urlencoded
-                $post = $this->decryptInput($_POST["name"]);
+                $post = $this->decryptAppInput($_POST["name"]);
             }
         }else{
             if(empty($_POST)){
