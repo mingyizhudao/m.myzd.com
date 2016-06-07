@@ -15,7 +15,7 @@
  * The followings are the available model relations:
  * @property Doctor $doctor
  */
-class CategoryDoctorJoin extends CActiveRecord
+class CategoryDoctorJoin extends EActiveRecord
 {
 	/**
 	 * @return string the associated database table name

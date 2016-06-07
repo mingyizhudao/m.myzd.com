@@ -594,12 +594,12 @@ class Doctor extends EActiveRecord {
         return isset($this->expteam_id) ? 1 : 0;
     }
 
-    public function getExpteamId() {
-        return $this->expteam_id;
-    }
-
     public function getCareerExp() {
         return $this->career_exp;
+    }
+
+    public function getExpteamId() {
+        return $this->expteam_id;
     }
 
     public function getFileUploadRootPath() {

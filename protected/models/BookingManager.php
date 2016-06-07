@@ -10,9 +10,193 @@ class BookingManager {
         return Booking::model()->getById($id, $with);
     }
 
-    /*     * ****** Api 5.0 ******* */
+    /*     * ****** Api open ******* */
 
-    public function apiCreateBookingV4(User $user, $values, $checkVerifyCode = true, $sendEmail = true) {
+    public function apiCreateBookingOpen($values, $sendEmail = true) {
+        $output['status'] = 'ok';
+        $output['errorCode'] = 0;
+        $output['errorMsg'] = 'success';
+        $output['results'] = array();
+        // create a new Booking and save into db.
+        $model = new Booking();
+
+        $model->bk_status = StatCode::BK_STATUS_NEW;
+
+        if (isset($values['expteam_id'])) {
+            // 预约专家团队
+            $model = $this->setExpertTeamData($model, $values['expteam_id']);
+            $model->bk_type = StatCode::BK_TYPE_EXPERTTEAM;
+        } elseif (isset($values['doctor_id'])) {
+            // 预约医生
+            $model = $this->setDoctorData($model, $values['doctor_id']);
+            $model->bk_type = StatCode::BK_TYPE_DOCTOR;
+        } else {
+            // 快速预约
+            $model->bk_type = StatCode::BK_TYPE_QUICKBOOK;
+        }
+        $model->is_vendor = 1;
+        $model->vendor_id = $values['vendor_id'];
+        $model->vendor_trade_no = $values['tradeNo'];
+        $model->setAttributes($values);
+
+        $this->createAppBookingV4($model);
+        if ($model->hasErrors()) {
+            $output['status'] = 'no';
+            $output['errorCode'] = 400;
+            $output['errorMsg'] = $model->getFirstErrors();
+            return $output;
+        }
+
+        //预约单保存成功  生成一张支付单
+        $orderMgr = new OrderManager();
+        $salesOrder = $orderMgr->createSalesOrder($model);
+        if ($salesOrder->hasErrors()) {
+            $output['status'] = 'no';
+            $output['errorCode'] = 400;
+            $output['errorMsg'] = $salesOrder->getFirstErrors();
+        }
+
+        try {
+            if ($sendEmail && isset($model)) {
+                // Send email to inform admin.
+                $emailMgr = new EmailManager();
+                $emailMgr->sendEmailAppBooking($model);
+            }
+        } catch (CException $ex) {
+            Yii::log($ex->getMessage(), CLogger::LEVEL_ERROR, 'BookingManager.apiCreateBooking');
+//            $output['error_msg'] = "发送电邮出错";
+        }
+        $output['results'] = array(
+            'tradeNo' => $model->vendor_trade_no,
+            'bookingNo' => $model->getRefNo(),
+        );
+        return $output;
+    }
+
+    public function apiCreateQuickBooking($values, $checkVerifyCode = true, $sendEmail = true) {
+        $results = array();
+        if($checkVerifyCode){
+            $authMgr = new AuthManager();
+            $authSmsVerify = $authMgr->verifyCodeForBooking($values['mobile'], $values['verify_code'], null);
+            if ($authSmsVerify->isValid() === false) {
+                $output['status'] = 'no';
+                $output['errorCode'] = 400;
+                $output['errorMsg'] = $authSmsVerify->getError('code');
+                return $output;
+            }else{
+                $authMgr = new AuthManager();
+                $values['username'] = $values['mobile'];
+                $values['verify_code'] = null;
+                $res = $authMgr->apiTokenUserLoginByMobile($values);
+                if($res){
+                    $results['token'] = $res['results']['token'];
+                }
+                $user = User::model()->getByUsernameAndRole($values['mobile'], User::ROLE_PATIENT);
+                if($user){
+                    $values['user_id'] = $user->getId();
+                }
+            }
+        }
+
+        $model = new Booking();
+        $model->bk_type = StatCode::BK_TYPE_QUICKBOOK;;
+        $model->setAttributes($values, true);
+//        $adminBooking = $this->createAppBookingV4($booking);
+        $ret = $this->createAppBookingV4($model);
+        if ($ret['status'] == 'no') {
+            $output['status'] = 'no';
+            $output['errorCode'] = 400;
+            $output['errorMsg'] = $model->getFirstErrors();
+            return $output;
+        }else{
+            $output['status'] = 'ok';
+            $results['booking_id'] = $model->getId();
+            $results['refNo'] = $ret['salesOrderRefNo'];
+            $results['actionUrl'] = Yii::app()->createAbsoluteUrl('/api2/bookingfile');
+            $output['results'] = $results;
+//            $output['results'] = array(
+//                'booking_id' => $model->getId(),
+//                'refNo'=>$ret['salesOrderRefNo'],
+//                'actionUrl' => Yii::app()->createAbsoluteUrl('/api2/bookingfile'),
+//            );
+
+        }
+//         load this booking from db and convert it to IBooking model for viewing.
+        try {
+            if ($sendEmail && isset($model)) {
+                // Send email to inform admin.
+                $emailMgr = new EmailManager();
+                $emailMgr->sendEmailAppBooking($model);
+            }
+        } catch (CException $ex) {
+            Yii::log($ex->getMessage(), CLogger::LEVEL_ERROR, 'BookingManager.apiCreateBooking');
+//            $output['error_msg'] = "发送电邮出错";
+        }
+        return $output;
+
+    }
+
+    public function apiCreateBookingV9(User $user, $values, $checkVerifyCode = true, $sendEmail = true) {
+        $output['status'] = 'ok';
+        $output['errorCode'] = 0;
+        $output['errorMsg'] = 'success';
+        $output['results'] = array();
+        // create a new Booking and save into db.
+        $model = new Booking();
+        $model->user_id = $user->getId();
+        $model->bk_status = StatCode::BK_STATUS_NEW;
+        if (!empty($values['expteam_id'])) {
+            // 预约专家团队
+            $model = $this->setExpertTeamData($model, $values['expteam_id']);
+            $model->bk_type = StatCode::BK_TYPE_EXPERTTEAM;
+        } elseif (!empty($values['doctor_id'])) {
+            // 预约医生
+            $model = $this->setDoctorData($model, $values['doctor_id']);
+            if(isset($values['is_commonweal'])){
+                $model->is_commonweal = $values['is_commonweal'];
+            }
+            $model->bk_type = StatCode::BK_TYPE_DOCTOR;
+        } elseif (!empty($values['hp_dept_id'])) {
+            // 预约科室
+            $model = $this->setHpDeptData($model, $values['hp_dept_id']);
+            $model->bk_type = StatCode::BK_TYPE_DEPT;
+        } else {
+            // 快速预约
+            $model->bk_type = StatCode::BK_TYPE_QUICKBOOK;
+        }
+        $model->setAttributes($values);
+
+        $ret = $this->createAppBookingV4($model);
+        if ($ret['status'] == 'no') {
+            $output['status'] = 'no';
+            $output['errorCode'] = 400;
+            $output['errorMsg'] = $model->getFirstErrors();
+            return $output;
+        }else{
+
+            $output['status'] = 'ok';
+            $output['results'] = array(
+                'booking_id' => $model->getId(),
+                'refNo'=>$ret['salesOrderRefNo'],
+                'actionUrl' => Yii::app()->createAbsoluteUrl('/api2/bookingfile'),
+            );
+
+        }
+        // load this booking from db and convert it to IBooking model for viewing.
+        try {
+            if ($sendEmail && isset($model)) {
+                // Send email to inform admin.
+                $emailMgr = new EmailManager();
+                $emailMgr->sendEmailAppBooking($model);
+            }
+        } catch (CException $ex) {
+            Yii::log($ex->getMessage(), CLogger::LEVEL_ERROR, 'BookingManager.apiCreateBooking');
+//            $output['error_msg'] = "发送电邮出错";
+        }
+        return $output;
+    }
+
+    public function apiCreateBookingV7(User $user, $values, $checkVerifyCode = true, $sendEmail = true) {
         $output['status'] = 'ok';
         $output['errorCode'] = 0;
         $output['errorMsg'] = 'success';
@@ -57,6 +241,58 @@ class BookingManager {
         }
         $output['results'] = array(
             'booking_id' => $model->getId(),
+            'actionUrl' => Yii::app()->createAbsoluteUrl('/api2/bookingfile'),
+        );
+        return $output;
+    }
+
+    /*     * ****** Api 5.0 ******* */
+
+    public function apiCreateBookingV4(User $user, $values, $checkVerifyCode = true, $sendEmail = true) {
+        $output['status'] = 'ok';
+        $output['errorCode'] = 0;
+        $output['errorMsg'] = 'success';
+        $output['results'] = array();
+        // create a new Booking and save into db.
+        $model = new Booking();
+        $model->user_id = $user->getId();
+        $model->bk_status = StatCode::BK_STATUS_NEW;
+        if (isset($values['expteam_id'])) {
+            // 预约专家团队
+            $model = $this->setExpertTeamData($model, $values['expteam_id']);
+            $model->bk_type = StatCode::BK_TYPE_EXPERTTEAM;
+        } elseif (isset($values['doctor_id'])) {
+            // 预约医生
+            $model = $this->setDoctorData($model, $values['doctor_id']);
+            $model->bk_type = StatCode::BK_TYPE_DOCTOR;
+        } else {
+            // 快速预约
+            $model->bk_type = StatCode::BK_TYPE_QUICKBOOK;
+        }
+
+        $model->setAttributes($values);
+
+        $this->createAppBookingV4($model);
+
+        if ($model->hasErrors()) {
+            $output['status'] = 'no';
+            $output['errorCode'] = 400;
+            $output['errorMsg'] = $model->getFirstErrors();
+            return $output;
+        }
+        // load this booking from db and convert it to IBooking model for viewing.
+        try {
+            if ($sendEmail && isset($model)) {
+                // Send email to inform admin.
+                $emailMgr = new EmailManager();
+                $emailMgr->sendEmailAppBooking($model);
+            }
+        } catch (CException $ex) {
+            Yii::log($ex->getMessage(), CLogger::LEVEL_ERROR, 'BookingManager.apiCreateBooking');
+//            $output['error_msg'] = "发送电邮出错";
+        }
+        $output['results'] = array(
+            'booking_id' => $model->getId(),
             'actionUrl' => Yii::app()->createAbsoluteUrl('/api/bookingfile'),
         );
         return $output;
@@ -70,11 +306,83 @@ class BookingManager {
             $model->addErrors($model->getErrors());
             return ($model->hasErrors() === false);
         } else {
+            //自动生成一张adminbooking
+//            $adminBooking = $this->createAdminBooking($model);
+
+
+
+            $apiRequest = new ApiRequestUrl();
+            //API线上配置
+            $remote_url = $apiRequest->getUrlAdminSalesBookingCreate() . '?type=' . StatCode::TRANS_TYPE_BK . '&id=' . $model->id;
+            //API本地配置
+            //$remote_url = 'http://192.168.1.216/admin/api/adminbooking'. '?type=' . StatCode::TRANS_TYPE_BK . '&id='.$model->id;
+
+            $data = $this->send_get($remote_url);
+
+            //           $apiRequest = new ApiRequestUrl();
+            //         $remote_url = $apiRequest->getUrlAdminSalesBookingCreate() . '?type=' . StatCode::TRANS_TYPE_BK . '&id=' . $model->id;
+
+            //            $remote_url = 'http://192.168.31.119/admin/api/adminbooking'. '?type=' . StatCode::TRANS_TYPE_BK . '&id='.$model->id;
+            //       $data = $this->send_get($remote_url);
+
+
+//            if ($adminBooking->hasErrors()) {
+//                $model->addErrors($adminBooking->getErrors());
+//            }
+//
+//            $taskMgr = new TaskManager();
+//            $task = $taskMgr->createTaskBooking($adminBooking);
+//            if ($task == false) {
+//                $model->addErrors('task data error.');
+//            }
             // Create BookingFile from $_FILES.
             // saves uploaded files into filesystem and db.
-            $this->createBookingFiles($model->getId(), $model->getUserId());
+//            $this->createBookingFiles($model->getId(), $model->getUserId());
         }
-        return ($model->hasErrors() === false);
+        return $data;
+    }
+
+    /**
+     * single upload of BookingFile open.
+     * @param array $values
+     * @param type $file
+     * @return string
+     */
+    public function apiCreateBookingFileOpen($values, $file) {
+        if (is_null($file)) {
+            $output['status'] = EApiViewService::RESPONSE_NO;
+            $output['errorCode'] = ErrorList::BAD_REQUEST;
+            $output['errorMsg'] = '请上传图片';
+            return $output;
+        }
+
+        $booking = Booking::model()->getByRefNo($values['bookingNo']);
+        if (is_null($booking)) {
+            $output['status'] = EApiViewService::RESPONSE_NO;
+            $output['errorCode'] = ErrorList::UNAUTHORIZED;
+            $output['errorMsg'] = '您没有权限执行此操作';
+            return $output;
+        }
+        $bookingId = $booking['id'];
+
+        // create BookingFile and save into db.
+
+        $bookingFile = $this->saveBookingFile($file, $bookingId, null);
+        if ($bookingFile->hasErrors()) {
+            $output['status'] = EApiViewService::RESPONSE_NO;
+            $output['errorCode'] = ErrorList::BAD_REQUEST;
+            $output['errorMsg'] = $bookingFile->getFirstErrors();
+            return $output;
+        }
+        return array(
+            'status' => EApiViewService::RESPONSE_OK,
+            'errorCode' => 0,
+            'errorMsg' => 'success',
+            'results' => array(
+                'bookingNo' => $values['bookingNo'],
+                "fileUrl" => $bookingFile->getAbsFileUrl(),
+            ),
+        );
     }
 
     /**
@@ -370,121 +678,6 @@ class BookingManager {
     }
 
     /**
-     * 根据booking或者patientbooking创建adminbooking
-     * @param type $model
-     */
-    public function createAdminBooking($model) {
-        $adminBooking = new AdminBooking();
-        $cityId = null;
-        $stateId = null;
-        if ($model instanceof PatientBooking) {
-            $adminBooking->booking_type = AdminBooking::BK_TYPE_PB;
-            $adminBooking->patient_id = $model->patient_id;
-            $adminBooking->patient_name = $model->patient_name;
-            if (strIsEmpty($model->patient_id) === false) {
-                $patient = PatientInfo::model()->getById($model->patient_id);
-                if (isset($patient)) {
-                    $adminBooking->patient_mobile = $patient->mobile;
-                    $patientAgeStr = strIsEmpty($patient->age_month) ? '0' : $patient->age_month;
-                    $adminBooking->patient_age = $patient->age . '岁' . $patientAgeStr . '月';
-                    $adminBooking->patient_name = $patient->name;
-                    $adminBooking->patient_state = $patient->state_name;
-                    $adminBooking->patient_city = $patient->city_name;
-                    $adminBooking->disease_name = $patient->disease_name;
-                    $adminBooking->disease_detail = $patient->disease_detail;
-                    $adminBooking->booking_detail = $patient->name;
-                }
-            }
-            $adminBooking->travel_type = $model->travel_type;
-            $adminBooking->booking_status = $model->status;
-            //一开始创建时 只能以下级医生作为标准给其默认值
-            if (strIsEmpty($model->creator_id) === false) {
-                $doctor = UserDoctorProfile::model()->getByUserId($model->creator_id);
-                if (is_null($doctor) === false) {
-                    //推送医生信息补全
-                    $adminBooking->creator_doctor_id = $doctor->id;
-                    $adminBooking->creator_doctor_name = $doctor->name;
-                    $adminBooking->creator_hospital_name = $doctor->hospital_name;
-                    $adminBooking->creator_dept_name = $doctor->hp_dept_name;
-                    $cityId = $doctor->city_id;
-                    $stateId = $doctor->state_id;
-                }
-            }
-            $customer = $this->getAdminUser($cityId, $stateId, AdminBooking::BK_TYPE_PB, AdminUser::ROLE_CS);
-            $bd = $this->getAdminUser($cityId, $stateId, AdminBooking::BK_TYPE_PB, AdminUser::ROLE_BD);
-        } elseif ($model instanceof Booking) {
-            $adminBooking->booking_type = AdminBooking::BK_TYPE_BK;
-            $adminBooking->patient_id = $model->user_id;
-            $adminBooking->patient_name = $model->contact_name;
-            $adminBooking->booking_detail = $model->contact_name;
-            $adminBooking->patient_mobile = $model->mobile;
-            $adminBooking->booking_status = $model->bk_status;
-            if (strIsEmpty($model->expteam_id) == false) {
-                //根据团队id查询其leader
-                $team = ExpertTeam::model()->getById($model->expteam_id);
-                $adminBooking->expected_doctor_id = $team->leader_id;
-                $adminBooking->expected_doctor_name = $team->leader_name;
-            } else {
-                $adminBooking->expected_doctor_id = $model->doctor_id;
-                $adminBooking->expected_doctor_name = $model->doctor_name;
-            }
-            $adminBooking->expected_hospital_id = $model->hospital_id;
-            $adminBooking->expected_hospital_name = $model->hospital_name;
-            $adminBooking->expected_hp_dept_name = $model->hp_dept_id;
-            $adminBooking->expected_hp_dept_name = $model->hp_dept_name;
-            $adminBooking->disease_name = $model->disease_name;
-            $adminBooking->disease_detail = $model->disease_detail;
-            //根据提供的医院查询其所在城市再查询其地推人员与客服人员
-            if (strIsEmpty($model->doctor_id) === false) {
-                $doctor = Doctor::model()->getById($model->doctor_id);
-                $cityId = $doctor->city_id;
-                $stateId = $doctor->state_id;
-            } elseif (strIsEmpty($model->hospital_id) === false) {
-                $hostital = Hospital::model()->getById($model->hospital_id);
-                $cityId = $hostital->city_id;
-                $stateId = $hostital->state_id;
-            }
-            $customer = $this->getAdminUser($cityId, $stateId, AdminBooking::BK_TYPE_BK, AdminUser::ROLE_CS);
-            $bd = $this->getAdminUser($cityId, $stateId, AdminBooking::BK_TYPE_BK, AdminUser::ROLE_BD);
-        }
-        if (is_null($customer) == false) {
-            $adminBooking->admin_user_id = $customer->admin_user_id;
-            $adminBooking->admin_user_name = $customer->admin_user_name;
-        }
-        if (is_null($bd) == false) {
-            $adminBooking->bd_user_id = $bd->admin_user_id;
-            $adminBooking->bd_user_name = $bd->admin_user_name;
-        }
-        //共有字段
-        $adminBooking->booking_id = $model->id;
-        $adminBooking->ref_no = $model->ref_no;
-        $adminBooking->expected_time_start = $model->date_start;
-        $adminBooking->expected_time_end = $model->date_end;
-        $adminBooking->customer_agent = $model->user_agent;
-        $adminBooking->save();
-        return $adminBooking;
-    }
-
-    public function getAdminUser($cityId, $stateId, $bkType, $role) {
-        //若城市和省会为空 则找默认人员 因地推无默认 所以无需判断
-        if (strIsEmpty($cityId) && strIsEmpty($stateId)) {
-            return AdminUserRegionJoin::model()->getDefaultUser($bkType, $role);
-        }
-        //若城市和省会不为空的情况  查找顺序依次为城市 省会 默认 
-        $cityUser = AdminUserRegionJoin::model()->getByCityIdAndBookingTypeAndRole($cityId, $bkType, $role);
-        if (isset($cityUser)) {
-            return $cityUser;
-        } else {
-            $stateUser = AdminUserRegionJoin::model()->getByStateIdAndBookingTypeAndRole($stateId, $bkType, $role);
-            if (isset($stateUser)) {
-                return $stateUser;
-            } else {
-                return AdminUserRegionJoin::model()->getDefaultUser($bkType, $role);
-            }
-        }
-    }
-
-    /**
      * Get EUploadedFile from $_FILE. Create BookingFile model. Save file in filesystem. Save model in db.
      * @param EUploadedFile $file EUploadedFile::getInstances()
      * @param integer $bookingId Booking.id     
@@ -637,9 +830,151 @@ class BookingManager {
         }
         return $model;
     }
-    
+
+    /**
+     * 根据科室Id 设置预约的相关信息
+     * @param Booking $model
+     * @param $hp_dept_id
+     * @return Booking
+     */
+    public function setHpDeptData(Booking $model, $hp_dept_id) {
+        $with = array('hpDeptHospital');
+        $hpdept = HospitalDepartment::model()->getById($hp_dept_id, $with);
+        if (isset($hpdept)) {
+            $model->hp_dept_id = $hpdept->getId();
+            $model->hp_dept_name = $hpdept->getName();
+            $hospital = $hpdept->getHospital();
+            if (isset($hospital)) {
+                $model->hospital_id = $hospital->getId();
+                $model->hospital_name = $hospital->getName();
+            }
+        }
+        return $model;
+    }
+
+    /**
+     * 根据booking或者patientbooking创建adminbooking
+     * @param type $model
+     */
+    /**
+     * 根据booking或者patientbooking创建adminbooking
+     * @param type $model
+     */
+    public function createAdminBooking($model) {
+        $adminBooking = new AdminBooking();
+        $cityId = null;
+        $stateId = null;
+        if ($model instanceof PatientBooking) {
+            $adminBooking->booking_type = AdminBooking::BK_TYPE_PB;
+            $adminBooking->patient_id = $model->patient_id;
+            $adminBooking->patient_name = $model->patient_name;
+            if (strIsEmpty($model->patient_id) === false) {
+                $patient = PatientInfo::model()->getById($model->patient_id);
+                if (isset($patient)) {
+                    $adminBooking->patient_mobile = $patient->mobile;
+                    $patientAgeStr = strIsEmpty($patient->age_month) ? '0' : $patient->age_month;
+                    $adminBooking->patient_age = $patient->age . '岁' . $patientAgeStr . '月';
+                    $adminBooking->patient_name = $patient->name;
+                    $adminBooking->patient_state = $patient->state_name;
+                    $adminBooking->patient_city = $patient->city_name;
+                    $adminBooking->disease_name = $patient->disease_name;
+                    $adminBooking->disease_detail = $patient->disease_detail;
+                }
+            }
+            $adminBooking->booking_status = $model->status;
+            //一开始创建时 只能以下级医生作为标准给其默认值
+            if (strIsEmpty($model->creator_id) === false) {
+                $doctor = UserDoctorProfile::model()->getByUserId($model->creator_id);
+                if (is_null($doctor) === false) {
+                    //推送医生信息补全
+                    $adminBooking->creator_doctor_id = $doctor->id;
+                    $adminBooking->creator_doctor_name = $doctor->name;
+                    $adminBooking->creator_hospital_name = $doctor->hospital_name;
+                    $adminBooking->creator_dept_name = $doctor->hp_dept_name;
+                    $cityId = $doctor->city_id;
+                    $stateId = $doctor->state_id;
+                }
+            }
+            $customer = $this->getAdminUser($cityId, $stateId, AdminBooking::BK_TYPE_PB, AdminUser::ROLE_CS);
+            $bd = $this->getAdminUser($cityId, $stateId, AdminBooking::BK_TYPE_PB, AdminUser::ROLE_BD);
+        } elseif ($model instanceof Booking) {
+            $adminBooking->booking_type = AdminBooking::BK_TYPE_BK;
+            $adminBooking->patient_id = $model->user_id;
+            $adminBooking->patient_name = $model->contact_name;
+            $adminBooking->patient_mobile = $model->mobile;
+            $adminBooking->booking_status = $model->bk_status;
+            if (strIsEmpty($model->expteam_id) == false) {
+                //根据团队id查询其leader
+                $team = ExpertTeam::model()->getById($model->expteam_id);
+                $adminBooking->expected_doctor_id = $team->leader_id;
+                $adminBooking->expected_doctor_name = $team->leader_name;
+            } else {
+                $adminBooking->expected_doctor_id = $model->doctor_id;
+                $adminBooking->expected_doctor_name = $model->doctor_name;
+            }
+            $adminBooking->expected_hospital_id = $model->hospital_id;
+            $adminBooking->expected_hospital_name = $model->hospital_name;
+            $adminBooking->expected_hp_dept_name = $model->hp_dept_id;
+            $adminBooking->expected_hp_dept_name = $model->hp_dept_name;
+            $adminBooking->disease_name = $model->disease_name;
+            $adminBooking->disease_detail = $model->disease_detail;
+            //根据提供的医院查询其所在城市再查询其地推人员与客服人员
+            if (strIsEmpty($model->doctor_id) === false) {
+                $doctor = Doctor::model()->getById($model->doctor_id);
+                $cityId = $doctor->city_id;
+                $stateId = $doctor->state_id;
+            } elseif (strIsEmpty($model->hospital_id) === false) {
+                $hostital = Hospital::model()->getById($model->hospital_id);
+                $cityId = $hostital->city_id;
+                $stateId = $hostital->state_id;
+            }
+            $customer = $this->getAdminUser($cityId, $stateId, AdminBooking::BK_TYPE_BK, AdminUser::ROLE_CS);
+            $bd = $this->getAdminUser($cityId, $stateId, AdminBooking::BK_TYPE_BK, AdminUser::ROLE_BD);
+        }
+        if (is_null($customer) == false) {
+            $adminBooking->admin_user_id = $customer->admin_user_id;
+            $adminBooking->admin_user_name = $customer->admin_user_name;
+        }
+        if (is_null($bd) == false) {
+            $adminBooking->bd_user_id = $bd->admin_user_id;
+            $adminBooking->bd_user_name = $bd->admin_user_name;
+        }
+        //共有字段
+        $adminBooking->booking_id = $model->id;
+        $adminBooking->ref_no = $model->ref_no;
+        $adminBooking->expected_time_start = $model->date_start;
+        $adminBooking->expected_time_end = $model->date_end;
+        $adminBooking->customer_agent = $model->user_agent;
+        $adminBooking->save();
+        return $adminBooking;
+    }
+
+    public function getAdminUser($cityId, $stateId, $bkType, $role) {
+        //若城市和省会为空 则找默认人员 因地推无默认 所以无需判断
+        if (strIsEmpty($cityId) && strIsEmpty($stateId)) {
+            return AdminUserRegionJoin::model()->getDefaultUser($bkType, $role);
+        }
+        //若城市和省会不为空的情况  查找顺序依次为城市 省会 默认
+        $cityUser = AdminUserRegionJoin::model()->getByCityIdAndBookingTypeAndRole($cityId, $bkType, $role);
+        if (isset($cityUser)) {
+            return $cityUser;
+        } else {
+            $stateUser = AdminUserRegionJoin::model()->getByStateIdAndBookingTypeAndRole($stateId, $bkType, $role);
+            if (isset($stateUser)) {
+                return $stateUser;
+            } else {
+                return AdminUserRegionJoin::model()->getDefaultUser($bkType, $role);
+            }
+        }
+    }
+
+    function send_get($url) {
+        $result = file_get_contents($url, false);
+        return json_decode($result, true);
+    }
+
     public function actionCancelBooking($id,$userId){
-        $output = array('status' => 'no');
+        $output = array('status' => 'no','errorCode' => 0,'errorMsg' =>'' ,'results' => array());
         $user = new UserManager();
         $userInfo = $user->loadUserById($userId);
         $booking = new Booking();
@@ -649,28 +984,27 @@ class BookingManager {
             if($bookingInfo['bk_status'] == 1){
                 $booking->updateAllByAttributes(array('bk_status'=>'9','date_updated'=>new CDbExpression("NOW()")), array('id'=>$id));
                 $output['status'] = 'ok';
-                $output['error_code'] = EApiViewService::RESPONSE_NO;
-                $output['message'] = 'Unpaid deposit';
+                $output['errorCode'] = EApiViewService::RESPONSE_NO;
+                $output['errorMsg'] = 'Unpaid deposit';
                  
             }else if($bookingInfo['bk_status'] ==2){
                 $booking->updateAllByAttributes(array('bk_status'=>'9','date_updated'=>new CDbExpression("NOW()")), array('id'=>$id));
                 $output['status'] = 'ok';
-                $output['error_code'] = EApiViewService::RESPONSE_NO;
-                $output['message'] = 'pay deposit';
+                $output['errorCode'] = EApiViewService::RESPONSE_NO;
+                $output['errorMsg'] = 'pay deposit';
                  
             }else{
                 $output['status'] = 'no';
-                $output['error_code'] = EApiViewService::RESPONSE_VALIDATION_ERRORS;
-                $output['message'] = 'Order status does not meet';
+                $output['errorCode'] = EApiViewService::RESPONSE_VALIDATION_ERRORS;
+                $output['errorMsg'] = 'booking status does not meet';
             }
     
         }else{
             $output['status'] = 'no';
-            $output['error_code'] = EApiViewService::RESPONSE_VALIDATION_ERRORS;
-            $output['message'] = 'order information is not found';
+            $output['errorCode'] = EApiViewService::RESPONSE_VALIDATION_ERRORS;
+            $output['errorMsg'] = 'booking information is not found';
         }
         return $output;
-    
     }
 
 }

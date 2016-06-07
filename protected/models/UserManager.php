@@ -162,9 +162,8 @@ class UserManager {
             $output['errors'] = $form->getErrors();
             return $output;
         }
-        $userMgr = new UserManager();
         $doctorHz = new UserDoctorHuizhen();
-        $model = $userMgr->loadUserDoctorHuizhenByUserId($userId);
+        $model = $this->loadUserDoctorHuizhenByUserId($userId);
         if (isset($model)) {
             $doctorHz = $model;
         }
@@ -190,9 +189,8 @@ class UserManager {
             $output['errors'] = $form->getErrors();
             return $output;
         }
-        $userMgr = new UserManager();
         $doctorZz = new UserDoctorZhuanzhen();
-        $model = $userMgr->loadUserDoctorZhuanzhenByUserId($userId);
+        $model = $this->loadUserDoctorZhuanzhenByUserId($userId);
         if (isset($model)) {
             $doctorZz = $model;
         }
@@ -216,11 +214,11 @@ class UserManager {
      * @return string
      */
     public function apiTokenUserRegister($values) {
-        $output = array('status' => false); // default status is false.
-        // TODO: wrap the following method. first, validates the parameters in $values.        
+        $output = array('status' => 'no','errorCode' => 0,'errorMsg' =>'' ,'results' => array()); // default status is false.
+        // TODO: wrap the following method. first, validates the parameters in $values.
         if (isset($values['username']) === false || isset($values['password']) === false || isset($values['verify_code']) === false) {
-            $output['errors']['error_code'] = ErrorList::BAND_REQUEST;
-            $output['errors']['error_msg'] = 'Wrong parameters.';
+            $output['errorCode'] = ErrorList::BAND_REQUEST;
+            $output['errorMsg'] = 'Wrong parameters.';
             return $output;
         }
         // assign parameters.
@@ -233,17 +231,17 @@ class UserManager {
             $autoLogin = true;
         }
 
-        // Verifies AuthSmsVerify by using $mobile & $verifyCode.     手机验证码验证    
+        // Verifies AuthSmsVerify by using $mobile & $verifyCode.     手机验证码验证
         $authMgr = new AuthManager();
         $authSmsVerify = $authMgr->verifyCodeForRegister($mobile, $verifyCode, $userHostIp);
         if ($authSmsVerify->isValid() === false) {
-            $output['errors']['verify_code'] = $authSmsVerify->getError('code');
+            $output['errorMsg'] = $authSmsVerify->getError('code');
             return $output;
         }
         // Check if username exists.
         if (User::model()->exists('username=:username AND role=:role', array(':username' => $mobile, ':role' => StatCode::USER_ROLE_PATIENT))) {
-            $output['status'] = false;
-            $output['errors']['username'] = '该手机号已被注册';
+            $output['status'] = 'no';
+            $output['errorMsg'] = '该手机号已被注册';
             return $output;
         }
 
@@ -252,19 +250,77 @@ class UserManager {
         $user = $this->doRegisterUser($mobile, $password);
         if ($user->hasErrors()) {
             // error, so return errors.
-            $output['errors'] = $user->getFirstErrors();
+            $array= $user->getFirstErrors();
+            if(is_array($array)){
+                foreach ($array as $k=>$v){
+                    $output['errorMsg']=$v;
+                }
+            }
             return $output;
         } else if ($autoLogin) {
-            // auto login user and return token.            
+            // auto login user and return token.
             $output = $authMgr->doTokenUserLoginByPassword($mobile, $password, $userHostIp);
         } else {
-            $output['status'] = true;
+            $output['status'] = 'ok';
+            $output['errorCode'] = 0;
+            $output['errorMsg'] = 'success';
         }
-        // deactive current smsverify.                
+        // deactive current smsverify.
         if (isset($authSmsVerify)) {
             $authMgr->deActiveAuthSmsVerify($authSmsVerify);
         }
+        return $output;
+    }
 
+    /**
+     * api验证码重置密码
+     * @param type $values = array('username'=>$username, 'password'=>$password, 'verify_code'=>$verify_code, 'userHostIp'=>$userHostIp);
+     * @return string
+     */
+    public function apiTokenUserReset($values) {
+        $output = array('status' => 'no','errorCode' => 0,'errorMsg' =>'' ,'result' => array()); // default status is false.
+        // TODO: wrap the following method. first, validates the parameters in $values.
+        if (isset($values['username']) === false || isset($values['password']) === false || isset($values['verify_code']) === false) {
+            $output['errorCode'] = ErrorList::BAND_REQUEST;
+            $output['errorMsg'] = 'Wrong parameters.';
+            return $output;
+        }
+        // reset parameters.
+        $mobile = $values['username'];
+        $password = $values['password'];
+        $verifyCode = $values['verify_code'];
+        $userHostIp = isset($values['userHostIp']) ? $values['userHostIp'] : null;
+        $autoLogin = false;
+        if (isset($values['autoLogin']) && $values['autoLogin'] == 1) {
+            $autoLogin = true;
+        }
+
+        // Verifies AuthSmsVerify by using $mobile & $verifyCode.     手机验证码验证
+        $authMgr = new AuthManager();
+        $authSmsVerify = $authMgr->verifyCodeForPasswordReset($mobile, $verifyCode, $userHostIp);
+        if ($authSmsVerify->isValid() === false) {
+            $output['errorMsg'] = $authSmsVerify->getError('code');
+            return $output;
+        }
+        // Check if username exists.
+        if (User::model()->exists('username=:username AND role=:role', array(':username' => $mobile, ':role' => StatCode::USER_ROLE_PATIENT))) {
+            // success.
+            // update User password model.
+            $user = $this->loadUserByUsername($mobile);
+            $user = $this->doResetPassword($user, null, $password);
+            $output['status'] = 'ok';
+            $output['errorCode'] = 0;
+            $output['errorMsg'] = 'success';
+            // deactive current smsverify.
+            if (isset($authSmsVerify)) {
+                $authMgr->deActiveAuthSmsVerify($authSmsVerify);
+            }
+        }else{
+            $output['status'] = 'no';
+            $output['errorMsg'] = '未找到该用户';
+            return $output;
+
+        }
         return $output;
     }
 

@@ -28,16 +28,15 @@ class AdminUser extends EActiveRecord {
 
     public $errorMsg;
 
+    const ROLE_CS = 1;
+    const ROLE_BD = 2;
+    const ROLE_ACCOUNTING = 3;
     /**
      * @return string the associated database table name
      */
     public function tableName() {
         return 'admin_user';
     }
-
-    const ROLE_CS = 1;
-    const ROLE_BD = 2;
-    const ROLE_ACCOUNTING = 3;
 
     /**
      * @return array validation rules for model attributes.

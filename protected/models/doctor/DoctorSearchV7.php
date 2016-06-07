@@ -18,6 +18,7 @@ class DoctorSearchV7 extends ESearchModel {
     public function addQueryConditions() {
         $this->criteria->addCondition('t.date_deleted is NULL');
         if ($this->hasQueryParams()) {
+            // Doctor.Name
 			if (isset($this->queryParams['name'])) {
                 $name = $this->queryParams['name'];
                 $this->criteria->addSearchCondition('name', $name);
@@ -47,7 +48,7 @@ class DoctorSearchV7 extends ESearchModel {
             // DiseaseName.
             if (isset($this->queryParams['disease_name'])) {
                 $disease_name = $this->queryParams['disease_name'];
-                $this->criteria->join = 'left join disease_doctor_join ddj on (t.`id`=ddj.`doctor_id`) left join disease d on d.id=ddj.disease_id';
+                $this->criteria->join .= 'left join disease_doctor_join ddj on (t.`id`=ddj.`doctor_id`) left join disease d on d.id=ddj.disease_id';
                 $this->criteria->compare("d.app_version", 7);
                 $this->criteria->addSearchCondition('d.name', $disease_name);
                 $this->criteria->distinct = true;
@@ -66,7 +67,7 @@ class DoctorSearchV7 extends ESearchModel {
             if (isset($this->queryParams['disease_category'])) {
                 $cateId = $this->queryParams['disease_category'];
 //                $this->criteria->join .= 'left join category_doctor_join b on t.id=b.doctor_id  left join disease_category c on b.sub_cat_id=c.sub_cat_id';
-                $this->criteria->join = 'left join disease_doctor_join b on t.id=b.doctor_id left join category_disease_join c on c.disease_id=b.disease_id left join disease_category d on d.sub_cat_id=c.sub_cat_id';
+                $this->criteria->join .= 'left join disease_doctor_join b on t.id=b.doctor_id left join category_disease_join c on c.disease_id=b.disease_id left join disease_category d on d.sub_cat_id=c.sub_cat_id';
                 $this->criteria->addCondition("d.cat_id=:cateId");
                 $this->criteria->addCondition("d.app_version=:app");
                 $this->criteria->params[":cateId"] = $cateId;

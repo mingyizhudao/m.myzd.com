@@ -144,6 +144,98 @@ class DoctorManager {
         return ($form->hasErrors() === false);
     }
 
+    /**
+     * 添加医生头像
+     * @param type $id
+     * @param type $file
+     */
+    public function saveDoctorAvatar(Doctor $doctor, $file) {
+        if (arrayNotEmpty($file)) {
+            //文件处理
+            $fileName = str_pad($doctor->id, 5, "0", STR_PAD_LEFT) . substr($file['name'], strrpos($file['name'], '.'));
+            $newFile = file_get_contents($file['tmp_name']);
+            $fileUrl = $doctor->getFileUploadPath() . '/' . $fileName;
+            if (file_put_contents($fileUrl, $newFile) !== false) {
+                $doctor->base_url = $doctor->getBaseUrl();
+                $doctor->avatar_url = $fileUrl;
+                if ($doctor->update(array('base_url', 'avatar_url'))) {
+                    return true;
+                };
+            };
+        }
+        return false;
+    }
+
+    /**
+     * 新增医生团队
+     * @param Doctor $doctor
+     * @param type $values
+     */
+    public function saveExpertTeam(Doctor $doctor, $values) {
+        $status = 'update';
+        $doctorId = $doctor->getId();
+        $form = new ExpertTeamForm();
+        //判断是修改还是创建
+        $expertTeam = $doctor->getDoctorExpertTeam();
+        if (is_null($expertTeam)) {
+            $expertTeam = new ExpertTeam();
+            $status = 'save';
+            $form->initModel($doctor);
+        }
+        $form->setAttributes($values, true);
+        $form->validate();
+        if ($status === 'save') {
+            $expertTeam->attributes = $form->getSafeAttributes();
+        } else {
+            $expertTeam->dis_tags = $form->dis_tags;
+            $expertTeam->description = $form->description;
+        }
+        $dbTran = Yii::app()->db->beginTransaction();
+        try {
+            if ($expertTeam->save()) {
+                if ($status === 'save') {
+                    //医生团队关联表存储
+                    $teamId = $expertTeam->getId();
+                    $member = new ExpertTeamMemberJoin();
+                    $member->doctor_id = $doctorId;
+                    $member->team_id = $teamId;
+                    $member->save();
+                    //疾病关联表存储
+                    $diseaseMgr = new DiseaseManager();
+                    $output = $diseaseMgr->loadAllDiseasesByDoctorId($doctorId);
+                    if (isset($output->diseaseIds)) {
+                        $diseaseIds = $output->diseaseIds;
+                        foreach ($diseaseIds as $diseaseId) {
+                            $diseaseExpteamJoin = new DiseaseExpteamJoin();
+                            $diseaseExpteamJoin->disease_id = $diseaseId;
+                            $diseaseExpteamJoin->expteam_id = $teamId;
+                            $diseaseExpteamJoin->save();
+                        }
+                    }
+                }
+            }
+            //操作成功 数据库提交
+            $dbTran->commit();
+        } catch (CDbException $e) {
+            $form->addError('数据库操作失败');
+            $dbTran->rollback();
+            throw new CHttpException($e->getMessage());
+        } catch (CException $e) {
+            $form->addError('操作失败');
+            $dbTran->rollback();
+            Yii::log("database table disease_expteam_join jdbc: " . $e->getMessage(), CLogger::LEVEL_ERROR, __METHOD__);
+            throw new CHttpException($e->getMessage());
+        }
+    }
+
+    /**
+     * 根据医生id查询其团队
+     * @param type $doctorId
+     */
+    public function loadExpertTeamByDoctorId($doctorId, $with = null) {
+        return ExpertTeam::model()->getByAttributes(array('leader_id' => $doctorId), $with);
+    }
+
     /*
       public function createDoctorCert($doctorId) {
       $uploadField = DoctorCert::model()->file_upload_field;
@@ -347,6 +439,7 @@ class DoctorManager {
         $model->setAttributes($values);
         // user_id.
         $model->user_id = $userId;
+        $model->mobile = $user->getUsername();
         //给省会名 城市名赋值
         $regionState = RegionState::model()->getById($model->state_id);
         $model->state_name = $regionState->getName();
@@ -393,6 +486,16 @@ class DoctorManager {
             $output['status'] = EApiViewService::RESPONSE_NO;
             $output['errorCode'] = ErrorList::BAD_REQUEST;
             $output['errorMsg'] = $profileFile->getFirstErrors();
+            return $output;
+        }
+        //自动生成一张Task
+        $taskMgr = new TaskManager();
+        $model = UserDoctorProfile::model()->getByAttributes(array('user_id'=>$user->getId()));
+        $task = $taskMgr->createTaskDoctor($model);
+        if ($task == false) {
+            $output['status'] = EApiViewService::RESPONSE_NO;
+            $output['errorCode'] = ErrorList::BAD_REQUEST;
+            $output['errorMsg'] = 'task data error.';
             return $output;
         }
         return array(

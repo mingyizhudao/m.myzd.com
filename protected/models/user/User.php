@@ -139,7 +139,7 @@ class User extends EActiveRecord {
 
     public function beforeValidate(){
         parent::beforeValidate();
-        if(is_null($this->uid)){
+        if(empty($this->uid)){
             $this->createUID();
         }
         return true;

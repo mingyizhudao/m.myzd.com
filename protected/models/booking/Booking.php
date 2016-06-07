@@ -74,7 +74,7 @@ class Booking extends EActiveRecord {
             array('date_start, date_end, appt_date, date_created, date_updated, date_deleted, user_agent, is_commonweal,booking_service_id', 'safe'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
-            array('id, ref_no, user_id, mobile, contact_name, contact_email, bk_status, bk_type, doctor_id, doctor_name, expteam_id, expteam_name, city_id, hospital_id, hospital_name, hp_dept_id, hp_dept_name, disease_name, disease_detail, date_start, date_end, appt_date, remark, submit_via, date_created, date_updated, date_deleted ,booking_service_id', 'safe', 'on' => 'search'),
+            array('id, ref_no, user_id, mobile, contact_name, contact_email, bk_status, bk_type, doctor_id, doctor_name, expteam_id, expteam_name, city_id, hospital_id, hospital_name, hp_dept_id, hp_dept_name, disease_name, disease_detail, date_start, date_end, appt_date, remark, submit_via, date_created, date_updated, date_deleted ,booking_service_id, is_commonweal', 'safe', 'on' => 'search'),
         );
     }
 
@@ -247,14 +247,19 @@ class Booking extends EActiveRecord {
         return $this->find($criteria);
     }
 
-    public function getAllByUserIdOrMobile($userId, $mobile, $with = null, $options = null, $bk_status = 0, $vendorId=0) {
+    public function getAllByUserIdOrMobile($userId, $mobile, $with = null, $options = null, $bk_status = null, $vendorId = null) {
         $criteria = new CDbCriteria();
         $criteria->compare("t.user_id", $userId, false, 'AND');
         $criteria->compare("t.mobile", $mobile, false, 'OR');
         if($bk_status){
-           $criteria->compare("t.bk_status", $bk_status, false, 'AND');
+            if($bk_status == 6 || $bk_status == 8){
+                $criteria->compare("t.bk_status", 6, false, 'OR');
+                $criteria->compare("t.bk_status", 8, false, 'AND');
+            }else{
+                $criteria->compare("t.bk_status", $bk_status, false, 'AND');
+            }
         }
-		if($vendorId>0){
+		if($vendorId){
             $criteria->compare("t.vendor_id", $vendorId, false, 'AND');
         }
         $criteria->addCondition("t.date_deleted is NULL");
@@ -292,27 +297,27 @@ class Booking extends EActiveRecord {
     }
 
     public function getOptionsStatus() {
-        //return StatCode::getOptionsBookingStatus();
-        
+        return StatCode::getOptionsBookingStatus();
+        /*
           return array(
           self::STATUS_NEW => Yii::t('booking', '新'),
           self::STATUS_CONFIRMED => Yii::t('booking', '已确认'),
           self::STATUS_PAID => Yii::t('booking', '已付款'),
           self::STATUS_CANCELLED => Yii::t('booking', '已取消'),
           );
-         
+         */
     }
 
     public function getStatusText() {
-        //return StatCode::getBookingStatus($this->bk_status);
-        
+        return StatCode::getBookingStatus($this->bk_status);
+        /*
           $options = $this->getOptionsStatus();
           if (isset($options[$this->status])) {
           return $options[$this->status];
           } else {
           return '未知';
           }
-         
+        */
     }
 
     public function getOptionsBookingType() {
@@ -395,7 +400,7 @@ class Booking extends EActiveRecord {
         } elseif ($this->getExpertBooked() !== null) {
             return $this->getExpertBooked()->getName();
         } else {
-            return '';
+            return $this->doctor_name;
         }
     }
 
@@ -452,7 +457,7 @@ class Booking extends EActiveRecord {
 
     }
 
-    public function getBkStatusNum() {
+    public function getBkStatusCode() {
         return $this->bk_status;
     }
 
@@ -552,9 +557,6 @@ class Booking extends EActiveRecord {
         return $this->user_agent;
     }
 
-    public function getBkStatusCode() {
-        return $this->bk_status;
-    }
     /**
      * 获得用户手术单个状态数量
      * @param unknown $userId

@@ -20,6 +20,11 @@ class PatientManager {
         return PatientMR::model()->find($criteria);
     }
 
+    function send_get($url) {
+        $result = file_get_contents($url, false);
+        return json_decode($result, true);
+    }
+
     //查询所有患者信息总数
     public function loadPatientCount($creator_id) {
         $criteria = new CDbCriteria();
@@ -298,22 +303,41 @@ class PatientManager {
         $model->setAttributes($values);
         $model->status = StatCode::BK_STATUS_NEW;
         $model->creator_id = $userId;
+        $model->creator_name = $user->getUsername();
         $model->patient_id = $patientId;
+        $patientMgr = new PatientManager();
+        $patientModel = $patientMgr->loadPatientInfoById($patientId);
+        if (isset($patientModel)) {
+            $patientName = $patientModel->getName();
+        }else{
+            $patientName = null;
+        }
+        $model->patient_name = $patientName;
 
         if ($model->save()) {
 
-            //预约单保存成功  生成一张支付单
-            $orderMgr = new OrderManager();
-            $salesOrder = $orderMgr->createSalesOrder($model);
-            if ($salesOrder->save()) {
+            $apiRequest = new ApiRequestUrl();
+            $remote_url = $apiRequest->getUrlAdminSalesBookingCreate() . '?type=' . StatCode::TRANS_TYPE_PB . '&id=' . $model->id;
+            $ret = $this->send_get($remote_url);
+            if ($ret['status'] == 'no') {
+                $output['status'] = 'no';
+                $output['errorCode'] = 400;
+                $output['errorMsg'] = $model->getFirstErrors();
+                return $output;
+            }else{
                 //发送提示短信
                 $this->sendSmsToCreator($user, $model);
+                $output['status'] = 'ok';
+                $output['errorCode'] = ErrorList::ERROR_NONE;
+                $output['errorMsg'] = 'success';
+                $output['results'] = array(
+                    'bookingId' => $model->getId(),
+                    'refNo'=>$ret['salesOrderRefNo'],
+                );
+
             }
 
-            $output['status'] = EApiViewService::RESPONSE_OK;
-            $output['errorCode'] = ErrorList::ERROR_NONE;
-            $output['errorMsg'] = 'success';
-            $output['results'] = array('bookingId'=>$model->getId(), 'refNo'=>$salesOrder->getRefNo());
+
         } else {
             $output['status'] = EApiViewService::RESPONSE_NO;
             $output['errorCode'] = ErrorList::UNAUTHORIZED;
