@@ -110,7 +110,7 @@ class AuthManager {
             $is_new_user=2;
         }
         // auto login user and return token.
-        return $this->apiTokenUserAutoLoginByMobile($mobilee,$is_new_user);
+        return $this->apiTokenUserAutoLoginByMobile($mobile,$is_new_user);
     }
 
     public function apiTokenUserAutoLoginByMobile($mobile,$is_new_user=1) {
