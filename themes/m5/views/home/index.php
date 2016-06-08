@@ -14,6 +14,7 @@ $urlHomeMyyzDoctor = $this->createUrl('home/page', array('view' => 'myyzDoctor')
 $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
 $urlCatherine = $this->createUrl('event/view', array('page' => 'catherine'));
 ?>
+
 <article id="home_article" data-active="home_footer" class="active bg-gray5" data-scroll="true">
     <div>
         <div class="titleImg">
