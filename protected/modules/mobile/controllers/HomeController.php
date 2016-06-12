@@ -16,6 +16,7 @@ class HomeController extends MobileController {
     }
 
     public function actionIndex() {
+        echo 111;die;
         $site = isset($_GET['site']) ? (int) $_GET['site'] : 0;
         $this->recordVendor($site);
         $apiService = new ApiViewAppNav1V5();
