@@ -11,7 +11,7 @@ class HospitalSearch extends ESearchModel {
     }
 
     public function getQueryFields() {
-        return array('name','disease', 'city', 'cate', 'is_show', 'disease_name', 'disease_sub_category');
+        return array('name','disease', 'city', 'cate', 'is_show', 'disease_name', 'disease_sub_category', 'state');
     }
 
     public function addQueryConditions() {
@@ -32,6 +32,15 @@ class HospitalSearch extends ESearchModel {
             if (isset($this->queryParams['city'])) {
                 $cityId = $this->queryParams['city'];
                 $this->criteria->compare("t.city_id", $cityId);
+            }
+           
+            // state.
+            if (isset($this->queryParams['state'])) {
+                $stateId = $this->queryParams['state'];
+                if(!is_array($stateId)){
+                    $stateId = array_values(explode(',', $stateId));
+                }
+                $this->criteria->addInCondition("t.state_id", $stateId);
             }
             // Disease.
             if (isset($this->queryParams['disease'])) {
