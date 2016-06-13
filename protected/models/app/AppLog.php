@@ -23,6 +23,7 @@ class AppLog extends EActiveRecord
     const SITE_DEPT = 2;
     const SITE_MYGY = 3;
     const SITE_BOOKING = 4;
+    const SITE_COMMON_BOOKING = 5;
 	/**
 	 * @return string the associated database table name
 	 */
