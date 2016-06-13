@@ -121,7 +121,7 @@ class ApiController extends Controller {
                 if ($api >= 7) {
                     $apiService = new ApiViewHospitalSearchV7($values);
                     $output = $apiService->loadApiViewData();
-		}elseif ($api >= 2){
+		        }elseif ($api >= 2){
                     $values['isNotPaging'] = 1;
                     $apiService = new ApiViewHospitalSearchV2($values);
                     $output = $apiService->loadApiViewData();

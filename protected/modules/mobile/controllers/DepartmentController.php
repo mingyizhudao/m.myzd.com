@@ -6,6 +6,9 @@ class DepartmentController extends MobileController {
 
     public function actionView($id) {
         $data = HospitalDepartment::model()->getById($id, array('hpDeptHospital'));
+        if($data->honor){
+            $data->honor = array_values(explode('#', $data->honor));
+        }
         $this->render('view', array(
             'data' => $data
         ));
