@@ -14,9 +14,6 @@ $urlPatientBookingList = $this->createUrl('booking/patientBookingList');
 $urlUserCommonProblem = $this->createUrl('user/commonProblem');
 $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
 ?>
-<header id="user_header" class="bg-green">
-    <h1 class="title color-white">个人中心</h1>
-</header>
 <article id="user_article" data-active="user_footer" class="active"  data-scroll="true">
     <div>
         <div class="bg-green">
@@ -151,9 +148,9 @@ $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
             <a href='<?php echo $urlMygy; ?>'>
                 <div class="pad10 color-black grid">
                     <div class="col-0">
-                        <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146303224249490" class="w26p">
+                        <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146422811006124" class="w26p pl2">
                     </div>
-                    <div class="col-1 pl10 pt2 font-s16">
+                    <div class="col-1 pl10 font-s16">
                         名医公益
                     </div>
                 </div>
