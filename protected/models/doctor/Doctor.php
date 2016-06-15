@@ -364,7 +364,7 @@ class Doctor extends EActiveRecord {
     /*     * ****** Display Methods ******* */
 
     public function getAbsUrlAvatar($thumbnail = false) {
-		if ($this->has_remote == 1) {
+	if ($this->has_remote == 1) {
            return $this->remote_domain . $this->remote_file_key;
         }
         if (isset($this->avatar_url) && $this->avatar_url != '') {
@@ -594,12 +594,12 @@ class Doctor extends EActiveRecord {
         return isset($this->expteam_id) ? 1 : 0;
     }
 
-    public function getExpteamId() {
-        return $this->expteam_id;
-    }
-
     public function getCareerExp() {
         return $this->career_exp;
+    }
+
+    public function getExpteamId() {
+        return $this->expteam_id;
     }
 
     public function getFileUploadRootPath() {
@@ -642,4 +642,11 @@ class Doctor extends EActiveRecord {
         return $data;
     }
 
+    public function getResultByDoctorId($doctor_id) {
+        $criteria = new CDbCriteria;
+        $criteria->addCondition('t.date_deleted is NULL');
+        $criteria->compare('id', $doctor_id);
+        $criteria->limit = 1;
+        return $this->find($criteria);
+    }
 }

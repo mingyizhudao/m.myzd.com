@@ -224,4 +224,38 @@ abstract class Controller extends CController {
         return $str;
     }
 
+    /**
+     * app请求参数解密
+     */
+    public function decryptAppInput($json){
+        $x=CJSON::decode($json,true);
+//         print_r($x);exit;
+        $client='app';
+        $rasConfig = CoreRasConfig::model()->getByClient($client);
+        $publicKey = $rasConfig->public_key;
+        $privateKey=$rasConfig->private_key;
+        $rsa = new RsaEncrypter($publicKey, $privateKey);
+        $decrypt = $rsa->newDecrypt($x);
+
+//         echo base64_decode($decrypt);exit;
+//         print_r(CJSON::decode(base64_decode($decrypt),true));
+        return CJSON::decode(base64_decode($decrypt),true);
+    }
+
+    /**
+     * 加密输出
+     */
+    public function encryptOutput($output){
+        $client='app';
+        $rasConfig = CoreRasConfig::model()->getByClient($client);
+        $outputJson=CJSON::encode($output);
+        $publicKey = $rasConfig->public_key;
+        $privateKey=$rasConfig->private_key;
+        $rsa = new RsaEncrypter($publicKey, $privateKey);
+        $sign = $rsa->sign($outputJson);
+        $verify = $rsa->verify($outputJson, $sign);
+        $encrypt = $rsa->encrypt($outputJson);
+        return $encrypt;
+    }
+
 }

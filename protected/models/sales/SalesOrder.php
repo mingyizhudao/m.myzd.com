@@ -337,6 +337,10 @@ class SalesOrder extends EActiveRecord {
         return $this->final_amount;
     }
 
+    public function getDateClosed() {
+        return $this->date_closed;
+    }
+
     public function getOptionsOrderType() {
         return array(
             self::ORDER_TYPE_DEPOSIT => '预约金',

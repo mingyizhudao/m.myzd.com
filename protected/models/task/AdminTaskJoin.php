@@ -62,6 +62,11 @@ class AdminTaskJoin extends EActiveRecord {
         );
     }
 
+    public function getAdminTask()
+    {
+        return $this->adminTask;
+    }
+
     /**
      * @return array customized attribute labels (name=>label)
      */

@@ -32,6 +32,10 @@ class AdminTaskSearch extends ESearchModel {
                 $userId = $this->queryParams['admin_user_id'];
                 $this->criteria->compare('t.admin_user_id', $userId, false);
             }
+            if (isset($this->queryParams['subject'])) {
+                $userId = $this->queryParams['subject'];
+                $this->criteria->compare('t.subject', $userId, false);
+            }
             if (isset($this->queryParams['status'])) {
                 $status = $this->queryParams['status'];
                 $this->criteria->compare('t.status', $status, false);

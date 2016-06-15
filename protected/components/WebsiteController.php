@@ -55,7 +55,7 @@ abstract class WebsiteController extends Controller {
         if (isset($_GET['footer']) && $_GET['footer'] != 1) {
             $this->show_footer = false;
         }
-
+        $this->storeUserAccessInfo();
         return parent::init();
     }
 
@@ -261,6 +261,9 @@ abstract class WebsiteController extends Controller {
             $appKey = $appVendor->getByAppId($_GET['appId']);
             if (isset($appKey)) {
                 Yii::app()->session['vendorId'] = $appKey->id;
+                if($site > 0){
+                    Yii::app()->session['vendorSite'] = $site;
+                }
                 $this->storeAppAccessInfo($appKey->id, $site);
 
             }

@@ -4,11 +4,24 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/c
 ?>
 <?php
 $urlApiDiagnosisdoctors = $this->createAbsoluteUrl('/api/diagnosisdoctors', array('api' => 9));
+$showHeader = Yii::app()->request->getQuery('header', 1);
 $urlDoctorView = $this->createUrl('doctor/view', array('id' => ''));
 $urlRootPath = $this->createAbsoluteUrl('/themes/');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
+<?php
+$navTop = '';
+$articleTop = '';
+if ($showHeader == 0) {
+    $navTop = 'top0p';
+    $articleTop = 'top30p';
+}
+?>
+<style>
+    .top0p{top: 0px!important;}
+    .top30p{top: 30px!important;}
+</style>
 <header id="myyzDoctor_header" class="bg-green" data-path="<?php echo $urlRootPath; ?>">
     <nav class="left">
         <a href="" data-target="back">
@@ -17,9 +30,9 @@ $this->show_footer = false;
             </div>
         </a>
     </nav>
-    <h1 class="title">名医义诊</h1>
+    <h1 class="title">免费术前方案评估</h1>
 </header>
-<nav id="myyzDoctor_nav" class="header-secondary bg-white">
+<nav id="myyzDoctor_nav" class="header-secondary bg-white <?php echo $navTop; ?>">
     <div class="grid w100 color-black font-s16 color-black6">
         <div id="deptSelect" class="col-1 w50 br-gray bb-gray grid middle grayImg">
             <span id="deptTitle" data-dept="1">外科</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146364721030297">
@@ -29,7 +42,7 @@ $this->show_footer = false;
         </div>
     </div>
 </nav>
-<article id="myyzDoctor_article" class="active" data-scroll="true" data-api="<?php echo $urlApiDiagnosisdoctors; ?>" data-doctorView="<?php echo $urlDoctorView; ?>">
+<article id="myyzDoctor_article" class="active <?php echo $articleTop; ?>" data-scroll="true" data-api="<?php echo $urlApiDiagnosisdoctors; ?>" data-doctorView="<?php echo $urlDoctorView; ?>">
     <div class="pt20">
     </div>
 </article>

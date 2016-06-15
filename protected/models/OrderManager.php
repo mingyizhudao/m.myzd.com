@@ -21,15 +21,17 @@ class OrderManager {
             $order->user_id = $model->creator_id;
             $order->travel_type = $model->travel_type;
             //根据patient_id查询其资料
-            $patient = PatientInfo::model()->getById($model->patient_id);
-            if (isset($patient)) {
-                $order->patient_mobile = $patient->mobile;
-                $order->patient_age = $patient->age . '岁' . strIsEmpty($patient->age_month) ? 0 : $patient->age_month . '月';
-                $order->patient_name = $patient->name;
-                $order->patient_state = $patient->state_name;
-                $order->patient_city = $patient->city_name;
-                $order->disease_name = $patient->disease_name;
-                $order->disease_detail = $patient->disease_detail;
+            if (strIsEmpty($model->patient_id) === false) {
+                $patient = PatientInfo::model()->getById($model->patient_id);
+                if (isset($patient)) {
+                    $order->patient_mobile = $patient->mobile;
+                    $order->patient_age = $patient->age . '岁' . strIsEmpty($patient->age_month) ? 0 : $patient->age_month . '月';
+                    $order->patient_name = $patient->name;
+                    $order->patient_state = $patient->state_name;
+                    $order->patient_city = $patient->city_name;
+                    $order->disease_name = $patient->disease_name;
+                    $order->disease_detail = $patient->disease_detail;
+                }
             }
             //根据creator_id 查询其所在地址
             $userCreator = UserDoctorProfile::model()->getByUserId($model->creator_id);

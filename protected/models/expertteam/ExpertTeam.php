@@ -43,12 +43,12 @@ class ExpertTeam extends EActiveRecord {
         // will receive user inputs.
         return array(
             array('name, leader_id, date_created', 'required'),
-            array('leader_id, hospital_id, hp_dept_id, faculty_id', 'numerical', 'integerOnly' => true),
-            array('code,name, slogan', 'length', 'max' => 50),
+            array('leader_id, hospital_id, hp_dept_id, faculty_id, city_id', 'numerical', 'integerOnly' => true),
+            array('code, name, leader_name, hospital_name, hp_dept_name, slogan', 'length', 'max' => 50),
             array('dis_tags', 'length', 'max' => 1000),
             array('description', 'length', 'max' => 500),
             array('banner_url, detail_url, app_image_url', 'length', 'max' => 200),
-            array('date_updated, date_deleted', 'safe'),
+            array('hospital_name, hp_dept_name,date_updated, date_deleted', 'safe'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
             array('id, code, name, leader_id, hospital_id, hp_dept_id, faculty_id, dis_tags, slogan, description, banner_url, detail_url, date_created, date_updated, date_deleted', 'safe', 'on' => 'search'),
@@ -78,15 +78,18 @@ class ExpertTeam extends EActiveRecord {
         return array(
             'id' => 'ID',
             'code' => 'Code',
-            'name' => 'Name',
+            'name' => '团队名称',
             'city_id' => 'City_id',
             'leader_id' => 'Leader',
             'hospital_id' => 'Hospital',
             'hp_dept_id' => 'Hp Dept',
+            'leader_name' => '队长医生',
+            'hospital_name' => '医院',
+            'hp_dept_name' => '科室',
             'faculty_id' => 'Faculty',
-            'dis_tags' => 'Dis Tags',
-            'slogan' => 'Slogan',
-            'description' => 'Description',
+            'dis_tags' => '擅长手术',
+            'slogan' => '团队标语',
+            'description' => '团队描述',
             'banner_url' => 'Banner Url',
             'detail_url' => 'Detail Url',
             'date_created' => 'Date Created',

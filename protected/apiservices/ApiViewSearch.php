@@ -6,6 +6,7 @@ class ApiViewSearch extends EApiViewService {
     private $getCount = false;  // whether to count no. of Doctors satisfying the search conditions.
     private $pageSize = 100;
     private $doctorSearch;  // DoctorSearch model.
+    private $diseaseSearch;  // DiseaseSearch model.
     private $doctors;
     private $doctorCount;     // count no. of Doctors.
     private $diseases;
@@ -83,7 +84,7 @@ class ApiViewSearch extends EApiViewService {
     }
 
     private function loadHospitals() {
-        if (is_null($this->doctors)) {
+        if (is_null($this->hospitals)) {
             $key = md5($this->searchInputs['name']."hospitals31");
             $models=Yii::app()->cache->get($key);
             if(!$models){
@@ -104,9 +105,10 @@ class ApiViewSearch extends EApiViewService {
             $data->id = $model->getId();
             $data->name = $model->getName();
             $data->hpName = $model->getHospitalName();
+            $data->hpDeptName = $model->getHpDeptName();
+            $data->isContracted = $model->getIsContracted();
             $data->mTitle = $model->getMedicalTitle();
             $data->aTitle = $model->getAcademicTitle();
-            $data->hpDeptName = $model->getHpDeptName();
             $this->results->doctors[] = $data;
         }
     }

@@ -48,6 +48,9 @@ class BookingController extends MobileController {
      */
     public function actionCreate() {
         $values = $_GET;
+        if (Yii::app()->session['vendorId']) {
+            $this->storeAppAccessInfo(Yii::app()->session['vendorId'], AppLog::SITE_COMMON_BOOKING);
+        }
         //$request = Yii::app()->request;
         if (isset($values['tid'])) {
             // 预约专家团队
@@ -199,6 +202,14 @@ class BookingController extends MobileController {
                         $booking->user_agent = StatCode::USER_AGENT_MOBILEWEB;
                     }
                     $booking->user_id = $bookingUser;
+                    //第三方预约
+                    if (Yii::app()->session['vendorId']) {
+                        $booking->is_vendor = 1;
+                        $booking->vendor_id = Yii::app()->session['vendorId'];
+                        if(Yii::app()->session['vendorSite']){
+                            $booking->vendor_site = Yii::app()->session['vendorSite'];
+                        }
+                    }
                     if ($booking->save() === false) {
                         $output['errors'] = $booking->getErrors();
                         throw new CException('error saving data.');
@@ -319,6 +330,14 @@ class BookingController extends MobileController {
                         $booking->user_agent = StatCode::USER_AGENT_MOBILEWEB;
                     }
                     $booking->user_id = $bookingUser;
+                    //第三方预约
+                    if (Yii::app()->session['vendorId']) {
+                        $booking->is_vendor = 1;
+                        $booking->vendor_id = Yii::app()->session['vendorId'];
+                        if(Yii::app()->session['vendorSite']){
+                            $booking->vendor_site = Yii::app()->session['vendorSite'];
+                        }
+                    }
                     if ($booking->save() === false) {
                         $output['errors'] = $booking->getErrors();
                         throw new CException('error saving data.');

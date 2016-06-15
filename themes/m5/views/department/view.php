@@ -19,30 +19,77 @@ $this->show_footer = false;
     </nav>
 </header>
 <footer id="hosDept_footer">
-    <button id="btnSubmit" type="button" class="button btn-yellow font-s16 state-pedding">预约</button>
+    <button id="btnSubmit" type="button" class="button btn-yellow font-s16 state-pedding">预约医院</button>
 </footer>
 <article id="hosDept_article" class="active" data-scroll="true">
     <div class="">
-        <div class="bg-white">
-            <div class="color-yellow4 bb-gray pad10">
-                预约流程
-            </div>
-            <div class="pt15 pb10">
-                <img class="w100" src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146302502647494">
-            </div>
-        </div>
-        <div class="mt15 text-justify bg-white">
+        <div class="text-justify bg-white">
             <div class="color-blue8 bb-gray pad10">
                 科室介绍
             </div>
-            <div class="pl20 pr20 pt5 pb20">
-                <?php
-                if (empty($data->description)) {
-                    echo '暂无';
-                } else {
-                    echo $data->description;
-                }
-                ?>
+            <div class="pad10">
+                <div class="titleBg">
+                    学科地位
+                </div>
+                <div class="pt10 pb10">
+                    <?php
+                    if (isset($data->position)) {
+                        echo $data->position;
+                    } else {
+                        echo '暂无明确信息，正在搜集中。';
+                    }
+                    ?>
+                </div>
+                <div class="titleBg">
+                    学科规模
+                </div>
+                <div class="pt10 pb10">
+                    <?php
+                    if (isset($data->scale)) {
+                        echo $data->scale;
+                    } else {
+                        echo '暂无明确信息，正在搜集中。';
+                    }
+                    ?>
+                </div>
+                <div class="titleBg">
+                    学科专长
+                </div>
+                <div class="pt10 pb10">
+                    <?php
+                    if (isset($data->specialty)) {
+                        echo $data->specialty;
+                    } else {
+                        echo '暂无明确信息，正在搜集中。';
+                    }
+                    ?>
+                </div>
+                <div class="titleBg">
+                    学科力量
+                </div>
+                <div class="pt10 pb10">
+                    <?php
+                    if (isset($data->strength)) {
+                        echo $data->strength;
+                    } else {
+                        echo '暂无明确信息，正在搜集中。';
+                    }
+                    ?>
+                </div>
+                <div class="titleBg">
+                    学科荣誉
+                </div>
+                <div class="pt10 pb10">
+                    <?php
+                    if (isset($data->honor)) {
+                        for ($i = 0; $i < count($data->honor); $i++) {
+                            echo '<div>•' . $data->honor[$i] . '</div>';
+                        }
+                    } else {
+                        echo '暂无明确信息，正在搜集中。';
+                    }
+                    ?>
+                </div>
             </div>
         </div>
     </div>

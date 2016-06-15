@@ -18,7 +18,11 @@ class ExpertTeamManager {
         $criteria->addCondition("t.date_deleted is NULL");
         // building dynamic query string.
         if (isset($query['city']) && strIsEmpty($query['city']) === false) {
-            $criteria->compare("t.city_id", $query['city']);
+            if ($query['city'] == 'others') {
+                $criteria->addNotInCondition("t.city_id", array(1,73,200,74,87));//不包括‘北上广南杭’
+            } else {
+                $criteria->compare("t.city_id", $query['city']);
+            }
         }
         if (isset($with))
             $criteria->with = $with;

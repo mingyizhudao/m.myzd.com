@@ -12,6 +12,9 @@ $this->show_footer = false;
 ?>
 <style>
     #jingle_toast{top:30%;}
+    #search_article{
+        background-color: #F9F9F9;
+    }
 </style>
 <header id="search_header" class="bg-white">
     <div class="grid w100">
@@ -30,7 +33,7 @@ $this->show_footer = false;
         </div>
     </div>
 </header>
-<article id="search_atricle" class="active" data-scroll="true">
+<article id="search_article" class="active" data-scroll="true">
     <div>
 
     </div>
@@ -46,7 +49,9 @@ $this->show_footer = false;
             e.preventDefault();
             disease_name = $("input[name='disease_name']").val();
             if (disease_name == '') {
-                $('#search_atricle').html('');
+                $('#search_article').html('');
+                return;
+            } else if (disease_name.match(/[a-zA-Z]/g) != null) {
                 return;
             }
             ajaxPage();
@@ -75,9 +80,9 @@ $this->show_footer = false;
             var hospitals = results.hospitals;
             //医生
             if (doctors != undefined) {
-                innerHtml += '<div class="">' +
-                        '<div class="mt10 pl10 pb2 orangeLine">搜索医生</div>' +
-                        '<ul id="doctorList" class="list mt5">';
+                innerHtml += '<div class="pt10 bg-white">' +
+                        '<div class="pl10 pb2 orangeLine">搜索医生</div>' +
+                        '<ul id="doctorList" class="list pt5">';
                 var number = doctors.length > 3 ? 3 : doctors.length;
                 innerHtml += readyDoctor(number, doctors, disease_name);
                 if (doctors.length > 3) {
@@ -90,15 +95,15 @@ $this->show_footer = false;
                             '</div>' +
                             '</li>';
                 }
-                innerHtml += '</ul></div><div class="bb10-gray"></div>';
+                innerHtml += '</ul></div><div class="pt10"></div>';
             } else {
 
             }
             //疾病
             if (diseases != undefined) {
-                innerHtml += '<div class="">' +
+                innerHtml += '<div class="pt10 bg-white">' +
                         '<div class="mt10 pl10 pb2 orangeLine">搜索疾病</div>' +
-                        '<ul id="diseaseList" class="list mt5">';
+                        '<ul id="diseaseList" class="list pt5">';
                 var number = diseases.length > 3 ? 3 : diseases.length;
                 innerHtml += readyDisease(number, diseases, disease_name);
                 if (diseases.length > 3) {
@@ -111,15 +116,15 @@ $this->show_footer = false;
                             '</div>' +
                             '</li>';
                 }
-                innerHtml += '</ul></div>';
+                innerHtml += '</ul></div><div class="pt10"></div>';
             } else {
 
             }
             //医院
             if (hospitals != undefined) {
-                innerHtml += '<div class="">' +
+                innerHtml += '<div class="pt10 bg-white">' +
                         '<div class="mt10 pl10 pb2 orangeLine">搜索医院</div>' +
-                        '<ul id="diseaseList" class="list mt5">';
+                        '<ul id="diseaseList" class="list pt5">';
                 var number = hospitals.length > 3 ? 3 : hospitals.length;
                 innerHtml += readyHospital(number, hospitals, disease_name);
                 if (hospitals.length > 3) {
@@ -132,7 +137,7 @@ $this->show_footer = false;
                             '</div>' +
                             '</li>';
                 }
-                innerHtml += '</ul></div>';
+                innerHtml += '</ul></div><div class="pt10"></div>';
             } else {
 
             }
@@ -142,7 +147,7 @@ $this->show_footer = false;
             }
 
             innerHtml += '</div>';
-            $('#search_atricle').html(innerHtml);
+            $('#search_article').html(innerHtml);
 
             $("#moreDoctor").click(function () {
                 //$('#doctorList').html(doctorsData);
@@ -213,13 +218,13 @@ $this->show_footer = false;
                         '<div class="col-1 w50 grid">' +
                         '<div class="col-1"></div>' +
                         '<a href="<?php echo $searchDept; ?>?disease=' + diseases[i].id + '&disease_name=' + diseases[i].name + '&page=1">' +
-                        '<div class="col-0 moreButton">找科室</div>' +
+                        '<div class="col-0 findDept">找医院</div>' +
                         '</a>' +
                         '</div>' +
                         '<div class="col-1 w50 grid">' +
                         '<div class="col-1"></div>' +
                         '<a href="<?php echo $searchDoc; ?>?disease_name=' + diseases[i].name + '&page=1">' +
-                        '<div class="col-0 moreButton">找医生</div>' +
+                        '<div class="col-0 findDoctor">找医生</div>' +
                         '</a>' +
                         '</div>' +
                         '</div>' +

@@ -12,11 +12,12 @@ class SalesOrderSearch extends ESearchModel {
 
 //refNo orderType crmNo bkType finalAmount isPaid
     public function getQueryFields() {
-        return array('refNo', 'bkType', 'orderType', 'pingId', 'finalAmount', 'isPaid', 'dateOpen', 'dateClosed');
+        return array('refNo', 'bkType', 'orderType', 'pingId', 'finalAmount', 'isPaid', 'dateOpen', 'dateClosed', 'bdCode');
     }
 
     public function addQueryConditions() {
-        if ($this->hasQueryParams()) {
+        if ($this->hasQueryParams())
+        {
             //patientBooking的参数
             if (isset($this->queryParams['refNo'])) {
                 $refNo = $this->queryParams['refNo'];
@@ -51,7 +52,13 @@ class SalesOrderSearch extends ESearchModel {
                 $dateClosed = $this->queryParams['dateClosed'];
                 $this->criteria->compare("t.date_closed", $dateClosed, true);
             }
+            if (isset($this->queryParams['bdCode'])) {
+                $bdCode = $this->queryParams['bdCode'];
+                $this->criteria->compare("t.bd_code", $bdCode, true);
+            }
         }
+        //去掉测试的支付
+        $this->criteria->addCondition("t.final_amount > 1");
     }
 
 }

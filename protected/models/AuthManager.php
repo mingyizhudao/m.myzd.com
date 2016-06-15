@@ -24,6 +24,7 @@ class AuthManager {
             $output['errorMsg'] = 'success';
         } else {
             $output['errorMsg'] = '发送失败';
+            $output['results'] = $errors;
         }
         return $output;
     }
@@ -57,11 +58,11 @@ class AuthManager {
      * @return string
      */
     public function apiTokenUserLoginByPassword($values) {
-        $output = array('status' => false);
+        $output = array('status' => 'no','errorCode' => 0,'errorMsg' =>'' ,'results' => array());
         // TODO: wrap the following method. first, validates the parameters in $values.        
         if (isset($values['username']) == false || isset($values['password']) == false) {
-            $output['error_code'] = 400;
-            $output['error_msg'] = 'Wrong parameters.';
+            $output['errorCode'] = 400;
+            $output['errorMsg'] = 'Wrong parameters.';
             return $output;
         }
         $username = $values['username'];
@@ -94,7 +95,7 @@ class AuthManager {
                 return $output;
             }
         }
-
+        $is_new_user=1;
         if (!User::model()->exists('username=:username AND role=:role', array(':username' => $mobile, ':role' => StatCode::USER_ROLE_PATIENT))) {
             $userMR = new UserManager();
             $password = md5(time());
@@ -106,12 +107,13 @@ class AuthManager {
                 $output['errorMsg'] = $user->getFirstErrors();
                 return $output;
             }
+            $is_new_user=2;
         }
         // auto login user and return token.
-        return $this->apiTokenUserAutoLoginByMobile($mobile);
+        return $this->apiTokenUserAutoLoginByMobile($mobile,$is_new_user);
     }
 
-    public function apiTokenUserAutoLoginByMobile($mobile) {
+    public function apiTokenUserAutoLoginByMobile($mobile,$is_new_user=1) {
         // get user by $mobile from db.
         $user = User::model()->getByUsernameAndRole($mobile, User::ROLE_PATIENT);
         if (is_null($user)) {
@@ -132,7 +134,7 @@ class AuthManager {
             $output['status'] = EApiViewService::RESPONSE_OK;
             $output['errorCode'] = ErrorList::ERROR_NONE;
             $output['errorMsg'] = 'success';
-            $output['results'] = array('token' => $authTokenUser->getToken());
+            $output['results'] = array('token' => $authTokenUser->getToken(),'is_new_user'=> $is_new_user);
         }
         return $output;
     }
@@ -195,7 +197,7 @@ class AuthManager {
             $output['status'] = EApiViewService::RESPONSE_OK;
             $output['errorCode'] = ErrorList::ERROR_NONE;
             $output['errorMsg'] = 'success';
-            $output['results'] = array('token' => $authTokenUser->getToken(), 'isProfile' => is_object(UserDoctorProfile::model()->getByUserId($user->getId())) ? 1 : 0);
+            $output['results'] = array('token' => $authTokenUser->getToken(), 'uid' => $user->getUid(), 'isProfile' => is_object(UserDoctorProfile::model()->getByUserId($user->getId())) ? 1 : 0);
         }
         return $output;
     }
@@ -333,7 +335,7 @@ class AuthManager {
      * @return string AuthTokenUser.token.
      */
     public function doTokenUserLoginByPassword($username, $password, $userHostIp = null) {
-        $output = array('status' => false); // default status is false.
+        $output = array('status' => 'no','errorCode' => 0,'errorMsg' =>'' ,'results' => array()); // default status is false.
         $authUserIdentity = $this->authenticateUserByPassword($username, $password);
         if ($authUserIdentity->isAuthenticated) {
             // username and password are correct. continue to create AuthTokenUser.
@@ -343,17 +345,19 @@ class AuthManager {
             //$tokenUser = $this->createTokenUser($user->getId(), $userHostIp, $userMacAddress, $deActivateFlag);
             $tokenUser = $this->createTokenUser($user->getId(), $username, $userHostIp, $userMacAddress, $deActivateFlag);  //@2015-10-28 by Hou Zhen Chuan
             if (isset($tokenUser)) {
-                $output['status'] = true;
-                $output['token'] = $tokenUser->getToken();
+                $output['errorCode'] = 0;
+                $output['errorMsg'] = 'success';
+                $output['status'] = 'ok';
+                $output['results']['token'] = $tokenUser->getToken();
                 // TODO: log.
             } else {
-                $output['errors']['error_code'] = ErrorList::ERROR_TOKEN_CREATE_FAILED;
-                $output['errors']['error_msg'] = '生成token失败!';
+                $output['errorCode'] = ErrorList::ERROR_TOKEN_CREATE_FAILED;
+                $output['errorMsg'] = '生成token失败!';
                 // TODO: log.
             }
         } else {
-            $output['errors']['error_code'] = $authUserIdentity->errorCode;
-            $output['errors']['error_msg'] = '用户名或密码不正确';
+            $output['errorCode'] = $authUserIdentity->errorCode;
+            $output['errorMsg'] = '用户名或密码不正确';
         }
         return $output;
     }
