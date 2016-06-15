@@ -8,7 +8,6 @@ class ApiRequestUrl {
 
     private function getHostInfo() {
         $hostInfo = strtolower(Yii::app()->request->hostInfo);
-        echo $hostInfo;die;
         if (isset($this->hostArray[$hostInfo])) {
             return $this->hostArray[$hostInfo];
         } else {
@@ -21,6 +20,7 @@ class ApiRequestUrl {
     }
 
     public function getUrlAdminSalesBookingCreate() {
+        echo $this->getUrl($this->admin_salesbooking_create);die;
         return $this->getUrl($this->admin_salesbooking_create);
     }
 
