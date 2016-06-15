@@ -2,19 +2,21 @@
 
 class ApiRequestUrl {
 
-    public $hostInfoProd = 'http://crm560.mingyizd.com';
+//    public $hostInfoProd = 'http://crm560.mingyizd.com';
+    private $hostArray = array("http://m.mingyizhudao.com" => "http://crm560.mingyizd.com", "http://wap.dev.mingyizd.com" => "http://crm.dev.mingyizd.com");
     private $admin_salesbooking_create = 'api/adminbooking';
 
-    public function getHostInfo() {
+    private function getHostInfo() {
         $hostInfo = strtolower(Yii::app()->request->hostInfo);
-        if (strStartsWith($hostInfo, $this->hostInfoProd)) {
-            $this->hostInfoProd = $hostInfo . '/admin';
+        if (isset($this->hostArray[$hostInfo])) {
+            return $this->hostArray[$hostInfo];
+        } else {
+            return "http://crm.dev.mingyizd.com";
         }
     }
 
     public function getUrl($url) {
-        $this->getHostInfo();
-        return $this->hostInfoProd . '/' . $url;
+        return $this->getHostInfo() . '/' . $url;
     }
 
     public function getUrlAdminSalesBookingCreate() {
