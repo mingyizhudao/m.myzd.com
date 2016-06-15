@@ -1,9 +1,17 @@
 <?php
 //Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/jquery.validate.js', CClientScript::POS_END);
 //Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/jquery.form.js', CClientScript::POS_END);
+//Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/ajaxfileupload.min.js', CClientScript::POS_END);
+//Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/qiniu/js/plupload.full.min.js?ts=' . time(), CClientScript::POS_END);
+//Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/qiniu/js/zh_CN.js?ts=' . time(), CClientScript::POS_END);
+//Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/qiniu/js/ui.js?ts=' . time(), CClientScript::POS_END);
+//Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/qiniu/js/qiniu.min.js?ts=' . time(), CClientScript::POS_END);
+//Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/qiniu/js/highlight.js?ts=' . time(), CClientScript::POS_END);
+//Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/qiniu/js/jquery-1.9.1.min.js?ts=' . time(), CClientScript::POS_END);
+Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/js/qiniu/css/qiniu.base.min.css');
+Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/qiniu/js/qiniu.base.min.js?ts=' . time(), CClientScript::POS_END);
 Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/jquery.formvalidate.min.js', CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/ajaxfileupload.min.js', CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/bookingCorpAndroid.min.js?ts=' . time(), CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/qiniu/js/addcorpfiles.min.js?ts=' . time(), CClientScript::POS_END);
 /*
  * $model BookQuickForm.
  */
@@ -12,33 +20,23 @@ $this->setPageTitle('企业员工快速预约');
 $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/auth/sendSmsVerifyCode');
 $authActionType = AuthSmsVerify::ACTION_BOOKING;
 $urlSubmitForm = $this->createUrl("booking/ajaxCreateCorp");
-$urlUploadFile = $this->createUrl("booking/ajaxUploadFile");
+$urlUploadFile = $this->createUrl("qiniu/ajaxBookingFile");
 $urlUplaodCorpFile = $this->createUrl('booking/ajaxUploadCorp');
 $urlUserValiCaptcha = $this->createUrl("user/valiCaptcha");
 $urlReturn = $this->createUrl('home/view');
+$urlQiniuAjaxCorpIc = $this->createUrl('qiniu/ajaxCorpIc');
+$urlQiniuAjaxToken = $this->createUrl('qiniu/ajaxBookingToken');
 $this->show_footer = false;
 ?>
 <header class="bg-green">
     <h1 class="title"><?php echo $this->pageTitle; ?></h1>
 </header>
-<article id="createCopAndroid_article" class="active" data-scroll="true">
+<article id="createCopAndroid_article" class="active android_article" data-scroll="true">
     <div class="ml10 mr10">
         <div id="<?php echo $this->getPageID(); ?>" data-role="page" data-title="<?php echo $this->getPageTitle(); ?>">
             <div data-role="content">
                 <style>
                     .btn {display: inline-block;padding: 6px 12px;margin-bottom: 0;font-size: 14px;font-weight: 400;line-height: 1.42857143;text-align: center;white-space: nowrap;vertical-align: middle;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;background-image: none;border: 1px solid transparent;border-radius: 4px;}
-                    .btn-primary {color: #fff!important;background-color: #428bca;border-color: #357ebd;}
-                    .uploadfile .ui-input-text{border: 0;box-shadow: 0 0 0 #fff;}
-                    .uploadfile .ui-body-inherit{border-color: #fff;}
-                    .uploadfile .ui-focus{box-shadow: 0 0 0 #fff;}
-                    .uploadfile{padding-top: 20px;}
-                    .uploadfile:before{content: '选择文件';padding: 10px 15px;font-size: 14px;background-color: #428bca;color: #fff;border-radius: 5px;}
-                    .uploadfile{position:relative;}
-                    .uploadfile input[type="file"]{position:absolute;top:5px;right:35%;width:30%;line-height:36px;opacity:0;}
-                    .uploadfile .btn:hover, #btn-addfiles:hover{cursor:pointer;}
-                    .MultiFile-list{margin: 10px;}
-                    .MultiFile-list .MultiFile-label{margin: 3px 0;}
-                    .MultiFile-list .MultiFile-label .MultiFile-remove{color: #f00;font-size: 16px;padding-right: 10px;text-decoration: initial;}
                     .optional{display:none;padding-bottom: 10px;}
                     .optional input{background-color: #f6e5a0;}
                     .optional-btn{background-color: #48aeab;color: #fff;font-size: 18px;margin-top: 10px;}
@@ -56,24 +54,31 @@ $this->show_footer = false;
                     </div>
                     <div class="mt20 pt5 pb5 bb-gray">
                         <label for="uploaderCorp">请上传一张企业工牌照片</label>
-                        <div class="corp uploadfile mt10 text-center">
-                            <?php
-                            $this->widget('CMultiFileUpload', array(
-                                //'model' => $model,
-                                'attribute' => 'file',
-                                'id' => "btn-addcorpfiles",
-                                'name' => 'file', //$_FILES['BookingFiles'].
-                                'accept' => 'jpeg|jpg|png',
-                                'options' => array(),
-                                'denied' => '请上传jpg、png格式',
-                                'duplicate' => '该文件已被选择',
-                                'max' => 1, // max 1 files
-                                //'htmlOptions' => array(),
-                                'value' => '上传病历',
-                                'selected' => '已选文件',
-                                    //'file'=>'文件'
-                            ));
-                            ?>
+                        <div class="form-wrapper mt20">
+                            <div class="container1">
+                                <div class="text-left wrapper">
+                                    <form id="corpFiles-form" data-url-uploadCorpfile="<?php echo $urlQiniuAjaxCorpIc; ?>">
+                                        <input id="bookingCorp_id" type="hidden" name="booking[bookingCorp_id]" value="" />
+                                        <input type="hidden" id="domainCorp" value="http://mr.file.mingyizhudao.com">
+                                        <input type="hidden" id="uptokenCorp_url" value="<?php echo $urlQiniuAjaxToken; ?>">
+                                    </form>
+                                </div>
+                                <div class="body mt10">
+                                    <div class="text-center">
+                                        <div id="container1">
+                                            <a class="btn btn-default btn-lg " id="pickfiles1" href="#" >
+                                                <span>选择企业工牌</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mt10">
+                                        <table class="table table-striped table-hover text-left" style="display:none">
+                                            <tbody id="fsUploadProgress1">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <?php
@@ -174,24 +179,31 @@ $this->show_footer = false;
                     ?>
                     <div class=" mt20 patient">
                         <label for="uploaderCorp">请选择病历</label>
-                        <div class="uploadfile text-center mt10">
-                            <?php
-                            $this->widget('CMultiFileUpload', array(
-                                //'model' => $model,
-                                'attribute' => 'file',
-                                'id' => "btn-addfiles",
-                                'name' => 'file', //$_FILES['BookingFiles'].
-                                'accept' => 'jpeg|jpg|png',
-                                'options' => array(),
-                                'denied' => '请上传jpg、png格式',
-                                'duplicate' => '该文件已被选择',
-                                'max' => 8, // max 8 files
-                                //'htmlOptions' => array(),
-                                'value' => '上传病历',
-                                'selected' => '已选文件',
-                                    //'file'=>'文件'
-                            ));
-                            ?>
+                        <div class="form-wrapper mt20">
+                            <div class="container2">
+                                <div class="text-left wrapper">
+                                    <form id="uploadFile-form" data-url-uploadfile="<?php echo $urlUploadFile; ?>">
+                                        <input id="booking_id" type="hidden" name="booking[booking_id]" value="" />
+                                        <input type="hidden" id="domain" value="http://mr.file.mingyizhudao.com">
+                                        <input type="hidden" id="uptoken_url" value="<?php echo $urlQiniuAjaxToken; ?>">
+                                    </form>
+                                </div>
+                                <div class="body mt10">
+                                    <div class="text-center">
+                                        <div id="container2">
+                                            <a class="btn btn-default btn-lg " id="pickfiles2" href="#" >
+                                                <span>选择病例</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mt10">
+                                        <table class="table table-striped table-hover text-left" style="display:none">
+                                            <tbody id="fsUploadProgress2">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="ui-field-contain mt20 mb30">                
