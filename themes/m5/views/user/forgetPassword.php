@@ -81,7 +81,7 @@ $this->show_footer = false;
                     </div>
                 </div>
                 <div class="col-0 w112p">
-                    <button id="btn-sendSmsCode" class="btn btn-sendSmsCode ui-corner-all ui-shadow bg-green color-white">获取验证码</button>
+                    <button id="btn-sendSmsCode" class="btn btn-sendSmsCode ui-corner-all ui-shadow bg-green">获取验证码</button>
                 </div>
             </div>
         </div>
@@ -179,13 +179,13 @@ $this->show_footer = false;
             processData: false,
             contentType: false,
             'success': function (data) {
-                console.log(data);
+                //console.log(data);
                 if (data.status === true || data.status === 'ok') {
                     //domForm[0].reset();
                     buttonTimerStart(domBtn, 60000);
                 }
                 else {
-                    console.log(data);
+                    //console.log(data);
                     if (data.errors.captcha_code != undefined) {
                         $('#captchaCode').parents('div.input').append('<div id="ForgetPasswordForm_captcha_code-error" class="error">' + data.errors.captcha_code + '</div>');
                     }

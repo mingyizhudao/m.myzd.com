@@ -3,9 +3,20 @@
 //Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/jquery.form.js', CClientScript::POS_END);
 //Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/ajaxfileupload.js', CClientScript::POS_END);
 //Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/bookingAndroid.js?ts=' . time(), CClientScript::POS_END);
+//Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/bookingAndroid.min.js?ts=' . time(), CClientScript::POS_END);
+//Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/js/qiniu/css/bootstrap.min.css');
+//Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/js/qiniu/css/main.css');
+//Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/js/qiniu/css/highlight.css');
+//Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/qiniu/js/plupload.full.min.js?ts=' . time(), CClientScript::POS_END);
+//Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/qiniu/js/zh_CN.js?ts=' . time(), CClientScript::POS_END);
+//Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/qiniu/js/ui.js?ts=' . time(), CClientScript::POS_END);
+//Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/qiniu/js/qiniu.min.js?ts=' . time(), CClientScript::POS_END);
+//Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/qiniu/js/highlight.js?ts=' . time(), CClientScript::POS_END);
+//Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/qiniu/js/jquery-1.9.1.min.js?ts=' . time(), CClientScript::POS_END);
+Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/js/qiniu/css/qiniu.base.min.css');
+Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/qiniu/js/qiniu.base.min.js?ts=' . time(), CClientScript::POS_END);
 Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/jquery.formvalidate.min.js', CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/ajaxfileupload.min.js', CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/bookingAndroid.min.js?ts=' . time(), CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/qiniu/js/quickBookingUpload.min.js?ts=' . time(), CClientScript::POS_END);
 /*
  * $model BookQuickForm.
  */
@@ -13,10 +24,11 @@ $this->setPageTitle('快速预约');
 $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/auth/sendSmsVerifyCode');
 $authActionType = AuthSmsVerify::ACTION_BOOKING;
 $urlSubmitForm = $this->createUrl("booking/ajaxQuickbook");
-$urlUploadFile = $this->createUrl("booking/ajaxUploadFile");
+$urlUploadFile = $this->createUrl("qiniu/ajaxBookingFile");
 $urlUserValiCaptcha = $this->createUrl("user/valiCaptcha");
 $urlReturn = $this->createUrl('order/view');
 $urlHomeView = $this->createUrl('home/view');
+$urlQiniuAjaxToken = $this->createUrl('qiniu/ajaxBookingToken');
 $urlBackBtn = Yii::app()->request->getQuery('backBtn', '1');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
@@ -41,24 +53,13 @@ $user = $this->getCurrentUser();
         </a>
     </nav>
 </header>
-<article id="quickBookAndroid" class="active" data-scroll="true">
+<article id="quickBookAndroid" class="active android_article" data-scroll="true">
     <div class="ml10 mr10 mt10">
         <div id="<?php echo $this->getPageID(); ?>" data-role="page" data-title="<?php echo $this->getPageTitle(); ?>">
             <div data-role="content">
                 <style>
                     .btn {display: inline-block;padding: 6px 12px;margin-bottom: 0;font-size: 14px;font-weight: 400;line-height: 1.42857143;text-align: center;white-space: nowrap;vertical-align: middle;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;background-image: none;border: 1px solid transparent;border-radius: 4px;}
                     .btn-primary {color: #fff!important;background-color: #428bca;border-color: #357ebd;}
-                    .uploadfile .ui-input-text{border: 0;box-shadow: 0 0 0 #fff;}
-                    .uploadfile .ui-body-inherit{border-color: #fff;}
-                    .uploadfile .ui-focus{box-shadow: 0 0 0 #fff;}
-                    .uploadfile{padding-top: 20px;}
-                    .uploadfile:before{content: '选择文件';padding: 10px 15px;font-size: 14px;background-color: #428bca;color: #fff;border-radius: 5px;}
-                    .uploadfile{position:relative;}
-                    .uploadfile input[type="file"]{position:absolute;top:5px;right:35%;width:30%;line-height:36px;opacity:0;}
-                    .uploadfile .btn:hover, #btn-addfiles:hover{cursor:pointer;}
-                    .MultiFile-list{margin-top: 10px;}
-                    .MultiFile-list .MultiFile-label{margin: 3px 0;}
-                    .MultiFile-list .MultiFile-label .MultiFile-remove{color: #f00;font-size: 16px;padding-right: 10px;text-decoration: initial;}
                 </style>
                 <div class="form-wrapper">
                     <?php
@@ -79,7 +80,11 @@ $user = $this->getCurrentUser();
                     echo CHtml::hiddenField("smsverify[actionType]", $authActionType);
                     echo $form->hiddenField($model, 'bk_type', array('name' => 'booking[bk_type]'));
                     echo $form->hiddenField($model, 'bk_status', array('name' => 'booking[bk_status]'));
-                    ?>            
+                    ?>
+                    <input type="hidden" id="booking_id" value="">
+                    <input type="hidden" id="salesOrderRefNo" value="">
+                    <input type="hidden" id="domain" value="http://mr.file.mingyizhudao.com">
+                    <input type="hidden" id="uptoken_url" value="<?php echo $urlQiniuAjaxToken; ?>">
                     <div class="ui-field-contain">
                         <?php echo CHtml::activeLabel($model, 'hospital_name'); ?>                                           
                         <?php echo $form->textField($model, 'hospital_name', array('name' => 'booking[hospital_name]', 'placeholder' => '请输入医院名称，可不填')); ?>
@@ -151,26 +156,22 @@ $user = $this->getCurrentUser();
                     <div>
                         上传病例或影像资料
                     </div>
-                    <div class="uploadfile text-center mt20">
-                        <?php
-                        $this->widget('CMultiFileUpload', array(
-                            //'model' => $model,
-                            'attribute' => 'file',
-                            'id' => "btn-addfiles",
-                            'name' => 'file', //$_FILES['BookingFiles'].
-                            'accept' => 'jpeg|jpg|png',
-                            'options' => array(),
-                            'denied' => '请上传jpg、png格式',
-                            'duplicate' => '该文件已被选择',
-                            'max' => 8, // max 8 files
-                            //'htmlOptions' => array(),
-                            'value' => '上传病历',
-                            'selected' => '已选文件',
-                                //'file'=>'文件'
-                        ));
-                        ?>
+                    <div class="body mt10">
+                        <div class="text-center">
+                            <div id="container">
+                                <a class="btn btn-default btn-lg " id="pickfiles" href="#" >
+                                    <span>选择影像资料</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mt10">
+                            <table class="table table-striped table-hover text-left" style="display:none">
+                                <tbody id="fsUploadProgress">
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                    <div class="ui-field-contain mt35 mb30">                
+                    <div class="ui-field-contain mt35 mb30">
                         <button id="btnSubmit" type="button" name="yt0" class="w100 bg-green">提交</button>
                     </div>
                 </div>
