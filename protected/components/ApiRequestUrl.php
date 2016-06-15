@@ -20,9 +20,6 @@ class ApiRequestUrl {
     }
 
     public function getUrlAdminSalesBookingCreate() {
-
-        ini_set("display_errors", "On");
-        error_reporting(E_ALL);
         return $this->getUrl($this->admin_salesbooking_create);
     }
 

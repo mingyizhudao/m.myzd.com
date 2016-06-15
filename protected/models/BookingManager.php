@@ -316,7 +316,7 @@ class BookingManager {
             $remote_url = $apiRequest->getUrlAdminSalesBookingCreate() . '?type=' . StatCode::TRANS_TYPE_BK . '&id=' . $model->id;
             //API本地配置
             //$remote_url = 'http://192.168.1.216/admin/api/adminbooking'. '?type=' . StatCode::TRANS_TYPE_BK . '&id='.$model->id;
-            echo $remote_url;die;
+
             $data = $this->send_get($remote_url);
 
             //           $apiRequest = new ApiRequestUrl();
