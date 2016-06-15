@@ -2,7 +2,8 @@
 
 class OrderController extends MobileController {
 
-    public function actionView($refNo) {
+    public function actionView() {
+        $refNo = Yii::app()->request->getParam('refNo');
         if(empty($refNo)){
             $refNo = Yii::app()->request->getParam('refno');
         }
