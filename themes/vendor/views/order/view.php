@@ -8,7 +8,7 @@ $order = $data->results->salesOrder;
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $payUrl = $this->createUrl('/payment/doPingxxPay');
 //$refUrl = $this->createAbsoluteUrl('order/view');
-$refUrl = $this->createAbsoluteUrl('order/view',array('refNo'=>$order->refNo));
+$refUrl = $this->createAbsoluteUrl('order/view',array("refNo"=>$order->refNo));
 $isApp = Yii::app()->request->getQuery('app', 1);
 $urlPatientBookingList = $this->createUrl('booking/patientBookingList');
 $urlSuccess = $this->createUrl('home/view');
