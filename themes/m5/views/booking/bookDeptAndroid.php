@@ -28,7 +28,7 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $urlSubmitForm = $this->createUrl("booking/ajaxCreate");
 $urlUploadFile = $this->createUrl("qiniu/ajaxBookingFile");
 $urlReturn = $this->createUrl('order/view');
-$urlQiniuAjaxToken = $this->createUrl('qiniu/AjaxBookingToken');
+$urlQiniuAjaxToken = $this->createUrl('qiniu/ajaxBookingToken');
 $this->show_footer = false;
 ?>
 <header class="bg-green">
