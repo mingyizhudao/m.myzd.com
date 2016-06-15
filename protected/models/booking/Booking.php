@@ -247,24 +247,23 @@ class Booking extends EActiveRecord {
         return $this->find($criteria);
     }
 
-    public function getAllByUserIdOrMobile($userId, $mobile, $with = null, $options = null, $bk_status = null, $vendorId = null, $isWap=false) {
+    public function getAllByUserIdOrMobile($userId, $mobile, $with = null, $options = null, $bk_status = null, $vendorId = null, $isWap = false) {
         $criteria = new CDbCriteria();
         $criteria->compare("t.user_id", $userId, false, 'AND');
         $criteria->compare("t.mobile", $mobile, false, 'OR');
-        if($bk_status){
-            if($isWap){
-                if($bk_status == 6 || $bk_status == 8){
+        if ($bk_status) {
+            if ($isWap) {
+                $criteria->compare("t.bk_status", $bk_status, false, 'AND');
+            } else {
+                if ($bk_status == 6 || $bk_status == 8) {
                     $criteria->compare("t.bk_status", 6, false, 'OR');
                     $criteria->compare("t.bk_status", 8, false, 'AND');
-                }else{
+                } else {
                     $criteria->compare("t.bk_status", $bk_status, false, 'AND');
                 }
-            }else{
-                $criteria->compare("t.bk_status", $bk_status, false, 'AND');
             }
-
         }
-		if($vendorId){
+        if ($vendorId) {
             $criteria->compare("t.vendor_id", $vendorId, false, 'AND');
         }
         $criteria->addCondition("t.date_deleted is NULL");
@@ -322,7 +321,7 @@ class Booking extends EActiveRecord {
           } else {
           return '未知';
           }
-        */
+         */
     }
 
     public function getOptionsBookingType() {
@@ -453,13 +452,12 @@ class Booking extends EActiveRecord {
         return $this->contact_name;
     }
 
-    public function getBkStatus($v=true) {
-        if($v){
+    public function getBkStatus($v = true) {
+        if ($v) {
             return StatCode::getBookingStatus($this->bk_status);
-        }else{
+        } else {
             return $this->bk_status;
         }
-
     }
 
     public function getBkStatusCode() {
@@ -588,23 +586,23 @@ class Booking extends EActiveRecord {
         $criteria->addCondition("t.date_deleted is NULL");
         return $this->findAll($criteria);
     }
-    
-    public function getBookingByMobileORUserId($userId , $mobile){
+
+    public function getBookingByMobileORUserId($userId, $mobile) {
         $criteria = new CDbCriteria();
         $criteria->select = 't.bk_status,count(t.bk_status) num'; //默认*
-        $criteria->addCondition('t.user_id='.$userId.' OR t.mobile='.$mobile);
+        $criteria->addCondition('t.user_id=' . $userId . ' OR t.mobile=' . $mobile);
         $criteria->addCondition("t.date_deleted is NULL");
         $criteria->group = 't.bk_status';
         $this->num = null;
         return $this->findAll($criteria);
     }
-    
-    public function getBookingByMobileORUserIdANDBkId($userId , $mobile ,$id){
+
+    public function getBookingByMobileORUserIdANDBkId($userId, $mobile, $id) {
         $criteria = new CDbCriteria();
-        $criteria->addCondition("t.user_id=".$userId." OR t.mobile=".$mobile,"AND");
-        $criteria->addCondition("t.id=" . $id,"AND");
+        $criteria->addCondition("t.user_id=" . $userId . " OR t.mobile=" . $mobile, "AND");
+        $criteria->addCondition("t.id=" . $id, "AND");
         $criteria->addCondition("t.date_deleted is NULL");
         return $this->find($criteria);
     }
-        
+
 }
