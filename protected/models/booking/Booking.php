@@ -247,17 +247,22 @@ class Booking extends EActiveRecord {
         return $this->find($criteria);
     }
 
-    public function getAllByUserIdOrMobile($userId, $mobile, $with = null, $options = null, $bk_status = null, $vendorId = null) {
+    public function getAllByUserIdOrMobile($userId, $mobile, $with = null, $options = null, $bk_status = null, $vendorId = null, $isWap=false) {
         $criteria = new CDbCriteria();
         $criteria->compare("t.user_id", $userId, false, 'AND');
         $criteria->compare("t.mobile", $mobile, false, 'OR');
         if($bk_status){
-            if($bk_status == 6 || $bk_status == 8){
-                $criteria->compare("t.bk_status", 6, false, 'OR');
-                $criteria->compare("t.bk_status", 8, false, 'AND');
+            if($isWap){
+                if($bk_status == 6 || $bk_status == 8){
+                    $criteria->compare("t.bk_status", 6, false, 'OR');
+                    $criteria->compare("t.bk_status", 8, false, 'AND');
+                }else{
+                    $criteria->compare("t.bk_status", $bk_status, false, 'AND');
+                }
             }else{
                 $criteria->compare("t.bk_status", $bk_status, false, 'AND');
             }
+
         }
 		if($vendorId){
             $criteria->compare("t.vendor_id", $vendorId, false, 'AND');

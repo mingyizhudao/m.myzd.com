@@ -4,12 +4,14 @@ class ApiViewBookingListV4 extends EApiViewService {
 
     private $user;
     private $bk_status;
+    private $isWap;
     //初始化类的时候将参数注入
-    public function __construct($user,$bk_status) {
+    public function __construct($user,$bk_status, $isWap=false) {
         parent::__construct();
         $this->results = new stdClass();
         $this->user = $user;
         $this->bk_status = $bk_status;
+        $this->isWap = $isWap;
 //        $this->bookingMgr = new BookingManager();
 //        $this->Bookings=array();
     }
@@ -33,7 +35,7 @@ class ApiViewBookingListV4 extends EApiViewService {
 
     //加载booking的数据
     private function loadBookings() {
-        $models = Booking::model()->getAllByUserIdOrMobile($this->user->getId(), $this->user->getMobile(), null, array('order' => 'id DESC'),$this->bk_status);
+        $models = Booking::model()->getAllByUserIdOrMobile($this->user->getId(), $this->user->getMobile(), null, array('order' => 'id DESC'),$this->bk_status, $this->isWap);
         $this->setBookings($models);
     }
 

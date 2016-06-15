@@ -575,7 +575,7 @@ class BookingController extends MobileController {
         else
             $bk_status = 0;
         $user = $this->getCurrentUser();
-        $booking = new ApiViewBookingListV4($user, $bk_status);
+        $booking = new ApiViewBookingListV4($user, $bk_status, true);
         $output = $booking->loadApiViewData();
         //print_r($output);exit;
         $this->render('patientBookingList', array(
