@@ -30,18 +30,7 @@ $this->show_footer = false;
                 $placeholderText = '请输入医院名称';
             }
             ?>
-            <div class="grid">
-                <div class="col-1">
-                    <input id="inputSearch" type="text" name="search_name" placeholder="<?php echo $placeholderText; ?>" class="w100 noPaddingInput" value="<?php echo $searchName; ?>">
-                </div>
-                <div class="col-0 emptyInput">
-                </div>
-            </div>
-            <span class="pr5 emptyImg hide">
-                <a id="emptyInput">
-                    <img src="<?php echo $urlResImage; ?>close.png" class="w15p">
-                </a>
-            </span>
+            <input id="inputSearch" type="text" name="search_name" placeholder="<?php echo $placeholderText; ?>" class="w100 noPaddingInput" value="<?php echo $searchName; ?>">
         </div>
         <div class="col-1 w20">
             <a href="<?php echo $urlHomeView; ?>">
@@ -74,11 +63,6 @@ $this->show_footer = false;
                 return;
             }
             ajaxPage(search_name, type);
-        });
-        //清空输入内容
-        $('.emptyInput').click(function () {
-            $('#inputSearch').val('');
-            $('#searchMore_article').html('');
         });
     });
 
@@ -193,7 +177,7 @@ $this->show_footer = false;
                     '<div class="col-1 w50 grid">' +
                     '<div class="col-1"></div>' +
                     '<a href="<?php echo $searchDept; ?>?disease=' + diseases[i].id + '&searchName=' + diseases[i].name + '&page=1">' +
-                    '<div class="col-0 findDept">找科室</div>' +
+                    '<div class="col-0 findDept">找医院</div>' +
                     '</a>' +
                     '</div>' +
                     '<div class="col-1 w50 grid">' +

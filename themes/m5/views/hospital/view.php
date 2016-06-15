@@ -8,7 +8,7 @@ $urlDepartmentView = $this->createUrl('department/view', array('id' => ''));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
-<header class="bg-green">
+<header id="hospitalView_header" class="bg-green">
     <nav class="left">
         <a href="" data-target="back">
             <div class="pl5">
@@ -18,14 +18,31 @@ $this->show_footer = false;
     </nav>
     <h1 class="title"></h1>
     <nav class="right">
-        <a onclick="javascript:history.go(0)">
+        <a onclick="javascript:location.reload()">
             <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
         </a>
     </nav>
 </header>
-<article id="hospitalView_article" class="active articleHtml articleBg" data-scroll="true">
+<article id="hospitalView_article" class="active articleHtml bg-gray" data-scroll="true">
     <div>
-
+        <div class="bg-green color-white text-center">
+            <div id="hosName" class="font-s18">
+            </div>
+            <div id="hosGrade" class="pt5 pb10 grid">
+            </div>
+        </div>
+        <div class="grid pageIcon bg-white">
+            <div class="col-1 w50 cardSelect active" data-card="dpet">
+                科室选择
+            </div>
+            <div class="col-1 w50 cardSelect" data-card="hospital">
+                医院介绍
+            </div>
+        </div>
+        <div id="hosDept" class="pageCard" data-card="dpet">
+        </div>
+        <div id="hosDescription" class="pt20 pb20 pr10 pl10 text-justify bg-white hide pageCard" data-card="hospital">
+        </div>
     </div>
 </article>
 <script>
@@ -40,7 +57,29 @@ $this->show_footer = false;
                 readyPage(data);
             }
         });
-        J.hideMask();
+        $('.cardSelect').click(function () {
+            var dataCard = $(this).attr('data-card');
+            $('.cardSelect').each(function () {
+                if (dataCard == $(this).attr('data-card')) {
+                    $(this).addClass('active');
+                } else {
+                    $(this).removeClass('active');
+                }
+            });
+            $('.pageCard').each(function () {
+                if (dataCard == 'hospital') {
+                    $('#hospitalView_article').removeClass('bg-gray');
+                } else {
+                    $('#hospitalView_article').addClass('bg-gray');
+                }
+                if (dataCard == $(this).attr('data-card')) {
+                    $(this).removeClass('hide');
+                } else {
+                    $(this).addClass('hide');
+                }
+            });
+            $('#hospitalView_article').scrollTop(0);
+        });
     });
     function readyPage(data) {
         var hospital = data.results.hospital;
@@ -93,15 +132,32 @@ $this->show_footer = false;
                             '</a>';
                 }
                 innerHtml += '</div></div>';
-
             }
         }
         innerHtml += '</div>';
         if (hospital.name.length > 13) {
             $('.title').addClass('font-s16');
         }
-        $('.title').html(hospital.name);
-        $('.articleHtml').html(innerHtml);
+        $('#hosName').html(hospital.name);
+        var hosGrade = '<div class="col-1"></div>' +
+                '<div id="hosClass" class="col-0 pr5">' + hospital.class.substr(0, 2) + '</div>';
+        if (hospital.type != '') {
+            hosGrade += '<div class="col-0 br-white mt5 mb5"></div>' +
+                    '<div id="hosType" class="col-0 pl5">' + hospital.type.substr(0, 2) + '</div>';
+        }
+        hosGrade += '<div class="col-1"></div>';
+        $('#hosGrade').html(hosGrade);
+        if (hospital.description != '') {
+            $('#hosDescription').html(hospital.description);
+        } else {
+            var noInformation = '<div class="text-center">' +
+                    '<img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146295490734874" class="w170p pt30">' +
+                    '<div class="font-s30 color-gray9 pt10">暂无信息</div>' +
+                    '</div>';
+            $('#hosDescription').html(noInformation);
+        }
+        $('#hosDept').html(innerHtml);
+        J.hideMask();
     }
     function getHospitalId() {
         var url = window.location.href;

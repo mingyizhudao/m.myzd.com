@@ -21,10 +21,9 @@ $page = Yii::app()->request->getQuery('page', '');
 $urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('id' => ''));
 $urlHomeView = $this->createUrl('home/view');
 $urlDoctorSearch = $this->createUrl('doctor/search');
+$urlSearchDeptName = $this->createAbsoluteUrl('/api/diseasename', array('api' => 7, 'disease_name' => ''));
 $this->show_footer = false;
 ?>
-<style>
-</style>
 <header class="bg-green">
     <nav class="left">
         <a href="<?php echo $urlHomeView; ?>">
@@ -43,13 +42,13 @@ $this->show_footer = false;
 <nav id="findDoc_nav" class="header-secondary bg-white">
     <div class="grid w100 color-black font-s16 color-black6">
         <div id="deptSelect" class="col-1 w33 br-gray bb-gray grid middle grayImg">
-            <span id="deptTitle" data-dept="">科室</span><img src="<?php echo $urlResImage; ?>lowerTriangleGray.png">
+            <span id="deptTitle" data-dept=""></span><img src="<?php echo $urlResImage; ?>lowerTriangleGray.png">
         </div>
         <div id="diseaseSelect" class="col-1 w33 br-gray bb-gray grid middle grayImg">
-            <span id="diseaseTitle" data-disease="">疾病</span><img src="<?php echo $urlResImage; ?>lowerTriangleGray.png">
+            <span id="diseaseTitle" data-disease=""></span><img src="<?php echo $urlResImage; ?>lowerTriangleGray.png">
         </div>
         <div id="citySelect" class="col-1 w33 bb-gray grid middle grayImg">
-            <span id="cityTitle" data-city="">地区</span><img src="<?php echo $urlResImage; ?>lowerTriangleGray.png">
+            <span id="cityTitle" data-city=""></span><img src="<?php echo $urlResImage; ?>lowerTriangleGray.png">
         </div>
     </div>
 </nav>
@@ -90,6 +89,23 @@ $this->show_footer = false;
                     $('#deptTitle').attr('data-dept', data.results.id);
                 }
             });
+        } else if ('<?php echo $disease_name; ?>' != '') {
+            $.ajax({
+                url: '<?php echo $urlSearchDeptName; ?>' + '<?php echo $disease_name; ?>',
+                success: function (data) {
+                    //console.log(data);
+                    var subCatName = data.results.subCatName;
+                    subCatName = subCatName.length > 4 ? subCatName.substr(0, 3) + '...' : subCatName;
+                    $('#deptTitle').html(subCatName);
+                    $('#deptTitle').attr('data-dept', data.results.subCatId);
+                    var name = data.results.name;
+                    name = name.length > 4 ? name.substr(0, 3) + '...' : name;
+                    $('#diseaseTitle').html(name);
+                    $('#diseaseTitle').attr('data-disease', data.results.id);
+                }
+            });
+        } else {
+            $('#deptTitle').html('科室');
         }
 
 
@@ -105,6 +121,8 @@ $this->show_footer = false;
                     $('#diseaseTitle').attr('data-disease', data.disease.id);
                 }
             });
+        } else {
+            $('#diseaseTitle').html('疾病');
         }
 
         //首次进入，更新城市
@@ -119,6 +137,8 @@ $this->show_footer = false;
                     $('#cityTitle').attr('data-city', data.results.id);
                 }
             });
+        } else {
+            $('#cityTitle').html('地区');
         }
 
         var urlAjaxLoadDoctor = '<?php echo $urlDoctor; ?>' + setUrlCondition() + '&getcount=1';
