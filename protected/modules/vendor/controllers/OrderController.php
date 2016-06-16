@@ -2,8 +2,9 @@
 
 class OrderController extends MobileController {
 
-    public function actionView($refNo) {
-        if(empty($refNo)){
+    public function actionView() {
+        $refNo = Yii::app()->request->getParam('refNo');
+        if (empty($refNo)) {
             $refNo = Yii::app()->request->getParam('refno');
         }
         $apiSvc = new ApiViewSalesOrder($refNo);
