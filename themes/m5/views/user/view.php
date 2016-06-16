@@ -151,7 +151,7 @@ $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
                         <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146422811006124" class="w26p pl2">
                     </div>
                     <div class="col-1 pl10 font-s16">
-                        名医公益
+                        公益手术
                     </div>
                 </div>
             </a>
