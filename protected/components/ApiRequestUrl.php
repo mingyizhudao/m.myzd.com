@@ -3,7 +3,7 @@
 class ApiRequestUrl {
 
 //    public $hostInfoProd = 'http://crm560.mingyizd.com';
-    private $hostArray = array("http://m.mingyizhudao.com" => "http://crm560.mingyizd.com", "http://wap.dev.mingyizd.com" => "http://crm.dev.mingyizd.com");
+    private $hostArray = array("http://m.mingyizhudao.com" => "http://crm560.mingyizd.com", "http://api.mingyizhudao.com" => "http://crm560.mingyizd.com", "http://wap.dev.mingyizd.com" => "http://crm.dev.mingyizd.com");
     private $admin_salesbooking_create = 'api/adminbooking';
 
     private function getHostInfo() {
