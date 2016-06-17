@@ -207,13 +207,16 @@ abstract class WebsiteController extends Controller {
     /**
      * Stores user's access info for every request.
      */
-    public function  storeAppAccessInfo($vendorId=0, $site=0) {
+    public function  storeAppAccessInfo($vendorId=0, $site=0, $open_booking=0) {
         $coreAccess = new AppLog();
         if($vendorId > 0){
             $coreAccess->vendor_id = $vendorId;
         }
         if($site > 0){
             $coreAccess->site = $site;
+        }
+        if($open_booking > 0){
+            $coreAccess->open_booking = $open_booking;
         }
         $coreAccess->user_host_ip = Yii::app()->request->getUserHostAddress();
         $coreAccess->url = Yii::app()->request->getUrl();
@@ -254,7 +257,7 @@ abstract class WebsiteController extends Controller {
     }
 
     //记录第三方（非加密方式）
-    public function recordVendor($site = 0)
+    public function recordVendor($site=0)
     {
         if (isset($_GET['appId'])) {
             $appVendor = new AppVendor();
@@ -267,6 +270,16 @@ abstract class WebsiteController extends Controller {
                 $this->storeAppAccessInfo($appKey->id, $site);
 
             }
+        }
+    }
+    //记录打开预约页面
+    public function recordOpenBooking(){
+        if (Yii::app()->session['vendorId']) {
+            $site = null;
+            if(Yii::app()->session['vendorSite']){
+                $site = Yii::app()->session['vendorSite'];
+            }
+            $this->storeAppAccessInfo(Yii::app()->session['vendorId'], $site, 1);
         }
     }
 
