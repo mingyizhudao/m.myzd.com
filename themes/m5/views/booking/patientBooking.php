@@ -18,7 +18,8 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $results = $data->results;
 $urlSubmitForm = $this->createUrl("booking/ajaxCreate");
 $urlUploadFile = $this->createUrl("booking/ajaxUploadFile");
-$urlReturn = $this->createUrl('booking/patientBookingList');
+$showStatus = Yii::app()->request->getQuery('showStatus', 0);
+$urlReturn = $this->createUrl('booking/patientBookingList', array('status' => $showStatus));
 $this->show_footer = false;
 ?>
 <header class="bg-green" >
@@ -31,7 +32,7 @@ $this->show_footer = false;
     </nav>
     <h1 class="title"><?php echo $this->pageTitle; ?></h1>
     <nav class="right">
-        <a onclick="javascript:history.go(0)">
+        <a onclick="javascript:location.reload()">
             <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
         </a>
     </nav>

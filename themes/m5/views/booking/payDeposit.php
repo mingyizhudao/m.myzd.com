@@ -5,7 +5,7 @@
 $this->setPageTitle('支付订单');
 $urlPatientBooking = $this->createUrl('booking/patientBooking', array('id' => ''));
 $urlPatientBookingList = $this->createUrl('booking/patientBookingList');
-$status = Yii::app()->request->getQuery('status', 0);
+$showStatus = Yii::app()->request->getQuery('showStatus', 0);
 $payUrl = $this->createUrl('/payment/doPingxxPay');
 $refUrl = $this->createAbsoluteUrl('order/view');
 $urlBookingPayView = $this->createAbsoluteUrl('booking/payView');
@@ -69,7 +69,7 @@ $orderInfo = $results->orderInfo;
     </nav>
     <h1 class="title">支付订单</h1>
     <nav class="right">
-        <a onclick="javascript:history.go(0)">
+        <a onclick="javascript:location.reload()">
             <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
         </a>
     </nav>
@@ -132,7 +132,7 @@ if ($results->bkStatusCode == $BK_STATUS_NEW) {
                 <div class="w100"><?php echo $results->diseaseDetail; ?></div>
             </li>
             <li>
-                <a href="<?php echo $urlPatientBooking; ?>/<?php echo $results->id; ?>" class="color-black6">
+                <a href="<?php echo $urlPatientBooking; ?>/<?php echo $results->id; ?>/showStatus/<?php echo $showStatus; ?>" class="color-black6">
                     <div class="text-center">查看订单详情</div>
                 </a>
             </li>
@@ -166,7 +166,7 @@ if ($results->bkStatusCode == $BK_STATUS_NEW) {
                 J.closePopup();
             });
             $('#returnPatientBookingList').click(function () {
-                location.href = '<?php echo $urlPatientBookingList; ?>' + '?status=0';
+                location.href = '<?php echo $urlPatientBookingList; ?>' + '?status=<?php echo $showStatus; ?>';
             });
         });
         $('#noPayService').click(function () {
@@ -174,18 +174,18 @@ if ($results->bkStatusCode == $BK_STATUS_NEW) {
                     '<div class="mb10">您确定暂不支付手术咨询费?</div><div>（稍后可在"订单-待确认"里完成）</div>',
                     '<a id="colosePopup" class="w50">取消</a>',
                     '<a id="returnPatientBookingList" class="w50">确定</a>', function () {
-                        location.href = '<?php echo $urlPatientBookingList; ?>' + '?status=0';
+                        location.href = '<?php echo $urlPatientBookingList; ?>' + '?status=<?php echo $showStatus; ?>';
                     }, function () {
             });
             $('#colosePopup').click(function () {
                 J.closePopup();
             });
             $('#returnPatientBookingList').click(function () {
-                location.href = '<?php echo $urlPatientBookingList; ?>' + '?status=0';
+                location.href = '<?php echo $urlPatientBookingList; ?>' + '?status=<?php echo $showStatus; ?>';
             });
         });
         $('.backBtn').click(function () {
-            location.href = '<?php echo $urlPatientBookingList; ?>' + '?status=0';
+            location.href = '<?php echo $urlPatientBookingList; ?>' + '?status=<?php echo $showStatus; ?>';
         });
         $('#payDeposit').click(function () {
             var refNo = $(this).attr('data-refNo');

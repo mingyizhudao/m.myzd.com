@@ -29,7 +29,8 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $results = $data->results;
 $urlSubmitForm = $this->createUrl("booking/ajaxCreate");
 $urlUploadFile = $this->createUrl("qiniu/ajaxBookingFile");
-$urlReturn = $this->createUrl('booking/patientBookingList');
+$showStatus = Yii::app()->request->getQuery('showStatus', 0);
+$urlReturn = $this->createUrl('booking/patientBookingList', array('status' => $showStatus));
 $urlQiniuAjaxToken = $this->createUrl('qiniu/ajaxBookingToken');
 $user = $this->loadUser();
 //$urlBookingFiles = 'http://192.168.31.118/file.myzd.com/api/loadbookingmr?userId=' . $user->id . '&bookingId=' . $results->id;
@@ -46,7 +47,7 @@ $this->show_footer = false;
     </nav>
     <h1 class="title"><?php echo $this->pageTitle; ?></h1>
     <nav class="right">
-        <a onclick="javascript:history.go(0)">
+        <a onclick="javascript:location.reload()">
             <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
         </a>
     </nav>

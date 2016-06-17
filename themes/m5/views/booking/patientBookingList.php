@@ -40,56 +40,36 @@ $urlUserView = $this->createUrl('user/view');
         <img src="<?php echo $urlResImage; ?>triangleWhite.png" class="w10p">
     </h1>
     <nav class="right">
-        <a onclick="javascript:history.go(0)">
+        <a onclick="javascript:location.reload()">
             <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
         </a>
     </nav>
 </header>
-
 <article id="orderList_article" class="active bg-gray3"  data-scroll="true">
     <div class="">
         <?php
         $results = $data->results;
         if (count($results) > 0) {
             for ($i = 0; $i < count($results); $i++) {
-                $icon = '';
-                $padding = '';
-                if ($results[$i]->bkStatus == 1) {
-                    $icon = 'waitPay';
-                    $padding = 'pt5';
-                } else if ($results[$i]->bkStatus == 2) {
-                    $icon = 'arrangementIn';
-                    $padding = 'pt5';
-                } else if ($results[$i]->bkStatus == 5) {
-                    $icon = 'waitConfirm';
-                } else if ($results[$i]->bkStatus == 6) {
-                    $icon = 'waitEvaluate';
-                } else if ($results[$i]->bkStatus == 8) {
-                    $icon = 'alreadyEvaluate';
-                } else if ($results[$i]->bkStatus == 9) {
-                    $icon = 'alreadyCancel';
-                }
                 ?>
-                <div class="orderDiv <?php echo $icon; ?>">
-                    <div class="pl40">
-                        <div class="grid bb-gray pt10 pb10">
-                            <div class="col-1 color-black6 <?php echo $padding; ?>">
-                                订单号：<?php echo $results[$i]->refNo; ?>
+                <div class="orderDiv">
+                    <a href="<?php echo $urlBookingDetails; ?>?id=<?php echo $results[$i]->id; ?>&status=<?php echo $results[$i]->bkStatus; ?>&showStatus=<?php echo $showStatus; ?>" data-target="link">
+                        <div class="grid bb-gray pad10">
+                            <div class="col-1 color-black6 pt2">
+                                预约单号：<?php echo $results[$i]->refNo; ?>
                             </div >
-                            <div class="col-0 pr10">
+                            <div class="col-0">
                                 <?php
-                                if (($results[$i]->bkStatus == 1) || ($results[$i]->bkStatus == 2)) {
-                                    ?>
-                                    <div class="cancelOrder" data-id="<?php echo $results[$i]->id; ?>">
-                                        取消订单
-                                    </div>
-                                    <?php
+                                if (($results[$i]->bkStatus == 8) || ($results[$i]->bkStatus == 9)) {
+                                    echo '<div class="greenIcon">' . $results[$i]->bkStatusText . '</div>';
+                                } else {
+                                    echo '<div class="yellowIcon">' . $results[$i]->bkStatusText . '</div>';
                                 }
                                 ?>
                             </div>
                         </div>
-                        <a href="<?php echo $urlBookingDetails; ?>?id=<?php echo $results[$i]->id; ?>&status=<?php echo $results[$i]->bkStatus; ?>" data-target="link">
-                            <div class="order_list grid pt10">
+                        <div class="pad10">
+                            <div class="order_list grid">
                                 <div class="col-0 color-black6">
                                     就诊医生：
                                 </div>
@@ -105,16 +85,16 @@ $urlUserView = $this->createUrl('user/view');
                                     <?php echo $results[$i]->hpName == '' ? '未填写' : $results[$i]->hpName; ?>
                                 </div>
                             </div>
-                            <div class="order_list grid pb20 pt10">
+                            <div class="order_list grid pt10">
                                 <div class="col-0 color-black6">
-                                    就诊人：
+                                    患者姓名：
                                 </div>
                                 <div class="col-1 color-black10">
                                     <?php echo $results[$i]->contact_name; ?>
                                 </div>
                             </div>
-                        </a>
-                    </div>
+                        </div>
+                    </a>
                 </div>
                 <?php
             }
