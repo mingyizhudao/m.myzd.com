@@ -12,9 +12,9 @@ $this->show_footer = false;
                 </div>
             </a>
         </nav>
-        <div class="title"></div>
+        <div class="title">故事</div>
         <nav class="right">
-            <a onclick="javascript:history.go(0)">
+            <a onclick="javascript:location.reload()">
                 <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
             </a>
         </nav>

@@ -3,6 +3,7 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $showHeader = Yii::app()->request->getQuery('header', 1);
 $showPage = Yii::app()->request->getQuery('page', 0);
 $showApp = Yii::app()->request->getQuery('app', 1);
+$urlEventIndex = $this->createUrl('event/index');
 if ($showApp == 1) {
     $urlEventStoryOne = $this->createUrl('event/view', array('page' => 'storyOne'));
     $urlEventStoryTwo = $this->createUrl('event/view', array('page' => 'storyTwo'));
@@ -61,17 +62,12 @@ if ($showPage == 0) {
     <header class="bg-green text-center">
         <ul class="control-group">
             <li class="<?php echo $showZt; ?>">
-                <a id="zhuanti">手术专题</a>
+                <a href="<?php echo $urlEventIndex; ?>/page/0">手术专题</a>
             </li>
             <li class="<?php echo $showStory; ?>">
-                <a id="story">就医故事</a>
+                <a href="<?php echo $urlEventIndex; ?>/page/1">就医故事</a>
             </li>
         </ul>
-        <nav class="right">
-            <a onclick="javascript:history.go(0)">
-                <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
-            </a>
-        </nav>
     </header>
 <?php } ?>
 <article id="zhuanti_article" class="<?php echo $showZt; ?>" data-scroll="true" data-active="find_footer">
@@ -212,13 +208,3 @@ if ($showPage == 0) {
         </div>
     </div>
 </article>
-<script>
-    $('#zhuanti').tap(function () {
-        $('#zhuanti_article').addClass('active');
-        $('#story_article').removeClass('active');
-    });
-    $('#story').tap(function () {
-        $('#zhuanti_article').removeClass('active');
-        $('#story_article').addClass('active');
-    });
-</script>

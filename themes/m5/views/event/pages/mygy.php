@@ -22,7 +22,7 @@ $this->show_footer = false;
         </nav>
         <h1 class="title">名医公益联盟</h1>
         <nav class="right">
-            <a onclick="javascript:history.go(0)">
+            <a onclick="javascript:location.reload()">
                 <img src="<?php echo $urlResImage; ?>refresh.png" class="w24p">
             </a>
         </nav>
