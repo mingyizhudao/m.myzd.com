@@ -55,13 +55,11 @@ class ApiViewSearch extends EApiViewService {
             $models=Yii::app()->cache->get($key);
             if(!$models){
                 $models = $this->doctorSearch->search();
-                if (arrayNotEmpty($models)) {
-                    $this->setDoctors($models);
-                }
                 $value = $models;
                 $expire = 86400;
                 yii::app()->cache->set($key, $value, $expire);
-            }else{
+            }
+            if (arrayNotEmpty($models)) {
                 $this->setDoctors($models);
             }
         }

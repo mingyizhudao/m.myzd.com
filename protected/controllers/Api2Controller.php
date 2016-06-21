@@ -363,7 +363,10 @@ class Api2Controller extends Controller {
                 //  $with = array('hospitalCity', 'hospitalDepartments' => array('on' => 'hospitalDepartments.is_show=1'));
                 //  $output['hospital'] = $hospitalMgr->loadIHospitalById($id, $with);
                 // $id Hospital.id
-                if ($api >= 7) {
+                if ($api >= 11) {
+                    $apiService = new ApiViewHospitalV11($id);
+                    $output = $apiService->loadApiViewData();
+                }elseif ($api >= 7) {
                     $apiService = new ApiViewHospitalV7($id);
                     $output = $apiService->loadApiViewData();
                 }elseif ($api >= 4) {
@@ -446,7 +449,10 @@ class Api2Controller extends Controller {
                 // $id HospitalDepartment.id                
                 //$queryOptions = $this->parseQueryOptions($_GET);
                 $searchInputs = $_GET;
-                if($api >= 9){
+                if($api >= 11){
+                    $apiService = new ApiViewHospitalDeptV11($id, $searchInputs);
+                    $output = $apiService->loadApiViewData();
+                }elseif($api >= 9){
                     $apiService = new ApiViewHospitalDeptV9($id, $searchInputs);
                     $output = $apiService->loadApiViewData();
                 }elseif($api >= 8){
