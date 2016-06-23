@@ -1,4 +1,5 @@
 <?php
+$this->setPageTitle('公益名医');
 $showHeader = Yii::app()->request->getQuery('header', 1);
 $urlCommonwealDoctors = $this->createAbsoluteUrl('/api/commonwealdoctors');
 $urlDoctorView = $this->createUrl('doctor/view', array('id' => ''));
@@ -31,11 +32,15 @@ $this->show_footer = false;
 </article>
 <script>
     $(document).ready(function () {
+        J.showMask();
         $.ajax({
             url: '<?php echo $urlCommonwealDoctors; ?>',
             success: function (data) {
                 //console.log(data);
                 readyPage(data);
+            },
+            error: function () {
+                J.hideMask();
             }
         });
 
@@ -82,6 +87,7 @@ $this->show_footer = false;
                 }
             }
             $('#doctorList').html(innerHtml);
+            J.hideMask();
         }
     });
 </script>
