@@ -1,4 +1,5 @@
 <?php
+$this->setPageTitle('搜索');
 $searchDoc = $this->createUrl("doctor/search");
 $searchDept = $this->createUrl("hospital/search");
 $urlHomeView = $this->createUrl("home/view");

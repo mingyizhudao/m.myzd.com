@@ -6,7 +6,7 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/c
 /**
  * $data.
  */
-$this->setPageTitle('名医主刀');
+$this->setPageTitle('找回密码');
 $urlRegister = $this->createUrl("user/register");
 $urlUserValiCaptcha = $this->createUrl("user/valiCaptcha");
 $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/auth/sendSmsVerifyCode');

@@ -3,6 +3,7 @@
 Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/myyzDoctor.min.js?ts=' . time(), CClientScript::POS_END);
 ?>
 <?php
+$this->setPageTitle('免费术前方案评估');
 $urlApiDiagnosisdoctors = $this->createAbsoluteUrl('/api/diagnosisdoctors', array('api' => 9));
 $showHeader = Yii::app()->request->getQuery('header', 1);
 $urlDoctorView = $this->createUrl('doctor/view', array('id' => ''));

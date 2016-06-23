@@ -1,4 +1,5 @@
 <?php
+$this->setPageTitle('发现');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $showHeader = Yii::app()->request->getQuery('header', 1);
 $showPage = Yii::app()->request->getQuery('page', 0);
@@ -10,6 +11,9 @@ if ($showApp == 1) {
     $urlEventStoryThree = $this->createUrl('event/view', array('page' => 'storyThree'));
     $urlEventEightHour = $this->createUrl('event/view', array('page' => 'storyEightHour'));
     $urlEventThyroid = $this->createUrl('event/view', array('page' => 'thyroid'));
+    $urlEventCoats = $this->createUrl('event/view', array('page' => 'coats'));
+    $urlEventLumbar = $this->createUrl('event/view', array('page' => 'lumbar'));
+    $urlEventBasketballDream = $this->createUrl('event/view', array('page' => 'basketballDream'));
     $urlEventZhuantiOne = $this->createUrl('event/view', array('page' => 'zhuantiOne'));
     $urlEventZhuantiTwo = $this->createUrl('event/view', array('page' => 'zhuantiTwo'));
     $urlEventZhuantiThree = $this->createUrl('event/view', array('page' => 'zhuantiThree'));
@@ -30,6 +34,9 @@ if ($showApp == 1) {
     $urlEventStoryThree = $this->createUrl('event/view', array('page' => 'storyThree', 'header' => '0'));
     $urlEventEightHour = $this->createUrl('event/view', array('page' => 'storyEightHour', 'header' => '0'));
     $urlEventThyroid = $this->createUrl('event/view', array('page' => 'thyroid', 'header' => '0'));
+    $urlEventCoats = $this->createUrl('event/view', array('page' => 'coats', 'header' => '0'));
+    $urlEventLumbar = $this->createUrl('event/view', array('page' => 'lumbar', 'header' => '0'));
+    $urlEventBasketballDream = $this->createUrl('event/view', array('page' => 'basketballDream', 'header' => '0'));
     $urlEventZhuantiOne = $this->createUrl('event/view', array('page' => 'zhuantiOne', 'header' => '0'));
     $urlEventZhuantiTwo = $this->createUrl('event/view', array('page' => 'zhuantiTwo', 'header' => '0'));
     $urlEventZhuantiThree = $this->createUrl('event/view', array('page' => 'zhuantiThree', 'header' => '0'));
@@ -146,6 +153,42 @@ if ($showPage == 0) {
 </article>
 <article id="story_article" class="<?php echo $showStory; ?>" data-scroll="true" data-active="find_footer">
     <div class="text-justify">
+        <div class="mt10 bg-white">
+            <a href="<?php echo $urlEventBasketballDream; ?>">
+                <div class="grid color-black10">
+                    <div class="col-1 w40">
+                        <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146656047376611">
+                    </div>
+                    <div class="col-1 w60 font-s17 vertical-center pl20 pr20">
+                        刘翔主治医生助青年小伙重返球场
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="mt10 bg-white">
+            <a href="<?php echo $urlEventLumbar; ?>">
+                <div class="grid color-black10">
+                    <div class="col-1 w40">
+                        <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146656037825323">
+                    </div>
+                    <div class="col-1 w60 font-s17 vertical-center pl20 pr20">
+                        看看别的腰椎间盘突出患者怎么治的？
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="mt10 bg-white">
+            <a href="<?php echo $urlEventCoats; ?>">
+                <div class="grid color-black10">
+                    <div class="col-1 w40">
+                        <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146649181675956">
+                    </div>
+                    <div class="col-1 w60 font-s17 vertical-center pl20 pr20">
+                        柳叶刀下的外层渗出性视网膜病变（Coats病）
+                    </div>
+                </div>
+            </a>
+        </div>
         <div class="mt10 bg-white">
             <a href="<?php echo $urlEventThyroid; ?>">
                 <div class="grid color-black10">

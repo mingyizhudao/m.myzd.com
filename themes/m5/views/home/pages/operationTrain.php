@@ -1,4 +1,5 @@
 <?php
+$this->setPageTitle('手术直通车');
 $urlBookingQuickbook = $this->createAbsoluteUrl('booking/quickbook');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;

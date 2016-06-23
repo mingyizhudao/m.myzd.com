@@ -3,6 +3,7 @@
 Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/findHospital.min.js?ts=' . time(), CClientScript::POS_END);
 ?>
 <?php
+$this->setPageTitle('医院科室');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $city = Yii::app()->request->getQuery('city', '');
 $innerDeptId = Yii::app()->request->getQuery('innerDeptId', '');
@@ -34,7 +35,7 @@ $this->show_footer = false;
     <h1 class="title">
     </h1>
     <nav class="right">
-        <a onclick="javascript:history.go(0)">
+        <a onclick="javascript:location.reload()">
             <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
         </a>
     </nav>

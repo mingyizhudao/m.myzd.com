@@ -3,7 +3,7 @@
  * $data.
  */
 $this->setPageID('pMobile');
-$this->setPageTitle('名医主刀');
+$this->setPageTitle('个人中心');
 
 $urlApiAppNav1 = $this->createAbsoluteUrl('/api/list', array('model' => 'appnav1'));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";

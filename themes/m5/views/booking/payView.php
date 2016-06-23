@@ -1,4 +1,5 @@
 <?php
+$this->setPageTitle('订单详情');
 $refUrl = $this->createAbsoluteUrl('order/view');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
@@ -13,7 +14,7 @@ $this->show_footer = false;
     </nav>
     <h1 class="title">支付</h1>
     <nav class="right">
-        <a onclick="javascript:history.go(0)">
+        <a onclick="javascript:location.reload()">
             <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
         </a>
     </nav>

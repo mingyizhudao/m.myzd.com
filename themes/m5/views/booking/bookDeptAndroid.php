@@ -21,7 +21,7 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/q
 /**
  * $data.
  */
-$this->setPageTitle('预约单');
+$this->setPageTitle('预约科室');
 
 $urlApiAppNav1 = $this->createAbsoluteUrl('/api/list', array('model' => 'appnav1'));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
@@ -41,7 +41,7 @@ $this->show_footer = false;
     </nav>
     <h1 class="title"><?php echo $this->pageTitle; ?></h1>
     <nav class="right">
-        <a onclick="javascript:history.go(0)">
+        <a onclick="javascript:location.reload()">
             <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
         </a>
     </nav>

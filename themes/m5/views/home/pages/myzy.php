@@ -1,4 +1,5 @@
 <?php
+$this->setPageTitle('名医主义');
 $showApp = Yii::app()->request->getQuery('app', 1);
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
@@ -15,7 +16,7 @@ $this->show_footer = false;
         </nav>
         <h1 class="title">名医主义</h1>
         <nav class="right">
-            <a onclick="javascript:history.go(0)">
+            <a onclick="javascript:location.reload()">
                 <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
             </a>
         </nav>

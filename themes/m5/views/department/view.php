@@ -1,4 +1,5 @@
 <?php
+$this->setPageTitle('科室详情');
 $urlBookCreate = $this->createUrl("booking/create", array('hp_dept_id' => ''));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
@@ -13,7 +14,7 @@ $this->show_footer = false;
     </nav>
     <h1 id="deptInf" class="title" data-dept="<?php echo $data->id; ?>"><?php echo $data->name; ?></h1>
     <nav class="right">
-        <a onclick="javascript:history.go(0)">
+        <a onclick="javascript:location.reload()">
             <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
         </a>
     </nav>

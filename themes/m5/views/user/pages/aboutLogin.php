@@ -1,6 +1,6 @@
 <?php
 $this->setPageID('pMobile');
-$this->setPageTitle('名医主刀');
+$this->setPageTitle('关于注册/登录');
 $showHeader = Yii::app()->request->getQuery('header', 1);
 $urlUserIndex = $this->createUrl('user/index', array('pages' => ''));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
@@ -18,7 +18,7 @@ $this->show_footer = false;
         </nav>
         <h1 class="title">关于注册/登录</h1>
         <nav class="right">
-            <a onclick="javascript:history.go(0)">
+            <a onclick="javascript:location.reload()">
                 <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
             </a>
         </nav>

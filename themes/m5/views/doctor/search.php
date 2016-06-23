@@ -3,6 +3,7 @@
 Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/findDoc.min.js?ts=' . time(), CClientScript::POS_END);
 ?>
 <?php
+$this->setPageTitle('找名医');
 $urlApiAppNav1 = $this->createAbsoluteUrl('/api/list');
 $urlCity = $this->createAbsoluteUrl('/api/city');
 $urlDisease = $this->createAbsoluteUrl('/api/diseasebycategory');
@@ -34,7 +35,7 @@ $this->show_footer = false;
     </nav>
     <h1 class="title">找名医</h1>
     <nav class="right">
-        <a onclick="javascript:history.go(0)">
+        <a onclick="javascript:location.reload()">
             <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
         </a>
     </nav>

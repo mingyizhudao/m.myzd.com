@@ -8,7 +8,7 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/c
 /**
  * $data.
  */
-$this->setPageTitle('名医主刀');
+$this->setPageTitle('登录');
 
 $urlRegister = $this->createUrl("user/register");
 $urlUserValiCaptcha = $this->createUrl("user/valiCaptcha");

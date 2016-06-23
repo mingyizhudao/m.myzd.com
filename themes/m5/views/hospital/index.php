@@ -3,6 +3,7 @@
 Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/hospitalIndex.min.js?ts=' . time(), CClientScript::POS_END);
 ?>
 <?php
+$this->setPageTitle('推荐');
 $urlHospital = $this->createAbsoluteUrl('/api/hospital', array('api' => 6));
 $urlHospitalView = $this->createUrl('hospital/view', array('id' => ''));
 $urlCity = $this->createAbsoluteUrl('/api/city');

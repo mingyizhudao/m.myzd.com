@@ -14,7 +14,7 @@ $this->show_footer = false;
     </nav>
     <h1 class="title"><?php echo $this->pageTitle; ?></h1>
     <nav class="right">
-        <a onclick="javascript:history.go(0)">
+        <a onclick="javascript:location.reload()">
             <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
         </a>
     </nav>

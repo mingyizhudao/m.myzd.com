@@ -7,7 +7,7 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/c
 /*
  * $model DoctorForm.
  */
-$this->setPageTitle('订单详情');
+$this->setPageTitle('评价');
 $urlSubmitForm = $this->createUrl("comment/ajaxAddComment");
 $urlReturn = $this->createAbsoluteUrl('booking/patientBookingList');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
@@ -24,7 +24,7 @@ $orderInfo = $data->results->orderInfo;
     </nav>
     <h1 class="title">评价</h1>
     <nav class="right">
-        <a onclick="javascript:history.go(0)">
+        <a onclick="javascript:location.reload()">
             <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
         </a>
     </nav>

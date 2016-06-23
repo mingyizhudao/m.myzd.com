@@ -1,4 +1,5 @@
 <?php
+$this->setPageTitle('支付成功');
 $bookingDetails = $this->createUrl('booking/bookingDetails');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;

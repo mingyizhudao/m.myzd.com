@@ -1,4 +1,5 @@
 <?php
+$this->setPageTitle('搜索');
 $searchName = Yii::app()->request->getQuery('name', '');
 $type = Yii::app()->request->getQuery('type', '');
 $searchDoc = $this->createUrl("doctor/search");

@@ -1,4 +1,5 @@
 <?php
+$this->setPageTitle('医生详情');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $urlBookingDoctor = $this->createAbsoluteUrl('booking/create', array('did' => ''));
 $isCommonweal = Yii::app()->request->getQuery('is_commonweal', '0');
@@ -29,7 +30,7 @@ $this->show_footer = false;
     ?>
     <h1 class="title"><?php echo $doctor->name . $doctorAtitle; ?></h1>
     <nav class="right">
-        <a onclick="javascript:history.go(0)">
+        <a onclick="javascript:location.reload()">
             <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
         </a>
     </nav>

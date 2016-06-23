@@ -36,7 +36,7 @@ $user = $this->getCurrentUser();
     ?>
     <h1 class="title">快速预约</h1>
     <nav class="right">
-        <a onclick="javascript:history.go(0)">
+        <a onclick="javascript:location.reload()">
             <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
         </a>
     </nav>

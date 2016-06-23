@@ -1,6 +1,6 @@
 <?php
 $this->setPageID('pMobile');
-$this->setPageTitle('名医主刀');
+$this->setPageTitle('常见问题');
 $showHeader = Yii::app()->request->getQuery('header', 1);
 $showApp = Yii::app()->request->getQuery('app', 1);
 if ($showApp == 0) {
@@ -31,7 +31,7 @@ $this->show_footer = false;
         </nav>
         <h1 class="title">常见问题</h1>
         <nav class="right">
-            <a onclick="javascript:history.go(0)">
+            <a onclick="javascript:location.reload()">
                 <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
             </a>
         </nav>

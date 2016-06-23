@@ -1,4 +1,5 @@
 <?php
+$this->setPageTitle('癌症认知的十大误区');
 $showHeader = Yii::app()->request->getQuery('header', 1);
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
@@ -12,7 +13,7 @@ $this->show_footer = false;
                 </div>
             </a>
         </nav>
-        <div class="title">专题</div>
+        <div class="title">癌症认知的十大误区</div>
         <nav class="right">
             <a onclick="javascript:location.reload()">
                 <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">

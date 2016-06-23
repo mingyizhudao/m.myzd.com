@@ -1,4 +1,5 @@
 <?php
+$this->setPageTitle('身体肿块别小瞧');
 $showHeader = Yii::app()->request->getQuery('header', 1);
 $urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('id' => ''));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
@@ -13,7 +14,7 @@ $this->show_footer = false;
                 </div>
             </a>
         </nav>
-        <div class="title">专题</div>
+        <div class="title">身体肿块别小瞧</div>
         <nav class="right">
             <a onclick="javascript:location.reload()">
                 <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">

@@ -1,4 +1,5 @@
 <?php
+$this->setPageTitle('名医主刀牵手凯瑟琳癌症中心');
 $showHeader = Yii::app()->request->getQuery('header', 1);
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
@@ -12,7 +13,7 @@ $this->show_footer = false;
                 </div>
             </a>
         </nav>
-        <div class="title">专题</div>
+        <div class="title">名医主刀牵手凯瑟琳癌症中心</div>
         <nav class="right">
             <a onclick="javascript:location.reload()">
                 <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">

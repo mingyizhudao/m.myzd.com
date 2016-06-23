@@ -32,7 +32,7 @@ $orderInfo = $results->orderInfo;
     <div class=''>
         <div>
             <div class='mt20 mb20 text-center font-s16'>
-                主刀医生:刘跃武
+                主刀医生
             </div>
             <div class="pt10 bg-white">
                 <div class='grid pl20 pr20'>
