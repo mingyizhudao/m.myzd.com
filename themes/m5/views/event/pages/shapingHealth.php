@@ -1,4 +1,5 @@
 <?php
+$this->setPageTitle('名医公益宣言发布会');
 $showHeader = Yii::app()->request->getQuery('header', 1);
 if ($showHeader == 0) {
     $urlMygy = $this->createUrl('event/view', array('page' => 'mygy', 'header' => 0));
@@ -17,7 +18,7 @@ $this->show_footer = false;
                 </div>
             </a>
         </nav>
-        <div class="title">专题</div>
+        <div class="title">名医公益宣言发布会</div>
         <nav class="right">
             <a onclick="javascript:location.reload()">
                 <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
