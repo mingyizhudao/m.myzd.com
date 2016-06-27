@@ -47,5 +47,4 @@ class SpreadController extends WebsiteController {
         );
         $this->renderJsonOutput($output);
     }
-
 }
