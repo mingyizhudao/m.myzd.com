@@ -2,9 +2,12 @@
 
 class ApiViewOpenCity extends EApiViewService {
     private $has_team;
+    public $type;
+    
     public function __construct($values) {
         parent::__construct();
         $this->has_team = isset($values['has_team']) ? $values['has_team'] : null;
+        $this->type = $values['type'];
         $this->results = new stdClass();
     }
 
@@ -24,14 +27,23 @@ class ApiViewOpenCity extends EApiViewService {
     }
     public function loadCity(){
         $data = array();
-        $cities = (isset($this->has_team) && $this->has_team == 1) ? CityListDoctor::model()->getCityHasTeam() : CityListDoctor::model()->getAllCity();
-
+        if(isset($this->has_team) && $this->has_team == 1){
+            $cities = CityListDoctor::model()->getCityHasTeam();
+        }else{
+            if($this->type == 'hospital'){
+                $cities = CityListHpDept::model()->getAllCityByHospital();
+            }else{
+                $cities = CityListDoctor::model()->getAllCityByDoctor();
+            }
+            
+        }
+//         $cities = (isset($this->has_team) && $this->has_team == 1) ? CityListDoctor::model()->getCityHasTeam() : CityListDoctor::model()->getAllCity();
         foreach($cities as $city)
         {
-            if($city->is_hot){
-                $city->state_id = 1;
-                $city->state_name = '热门城市';
-            }
+//             if($city->is_hot){
+//                 $city->state_id = 1;
+//                 $city->state_name = '热门城市';
+//             }
             $isExist = 0;
             foreach($data as $k=>$v){
                 if(isset($v['id']) && $v['id'] == $city->state_id){
@@ -41,7 +53,8 @@ class ApiViewOpenCity extends EApiViewService {
                 }
             }
             if($isExist == 0){
-                $data[] = array('id'=>$city->state_id, 'state'=>$city->state_name, 'subCity'=>array(array('id'=>$city->city_id, 'city'=>$city->city_name)));
+//                 $data[] = array('id'=>$city->state_id, 'state'=>$city->state_name, 'subCity'=>array(array('id'=>$city->city_id, 'city'=>$city->city_name)));
+                $data[] = array('id'=>$city->city_id, 'city'=>$city->city_name,'is_hot'=>$city->is_hot);
             }
         }
         $this->setCity($data);
