@@ -1,5 +1,5 @@
 <?php
-$this->setPageTitle('名医公益');
+$this->setPageTitle('名医公益行');
 $showHeader = Yii::app()->request->getQuery('header', 1);
 $urlCommonwealDoctors = $this->createAbsoluteUrl('/api/commonwealdoctors');
 $urlDoctorView = $this->createUrl('doctor/view', array('id' => ''));
@@ -21,7 +21,7 @@ $this->show_footer = false;
                 </div>
             </a>
         </nav>
-        <h1 class="title">名医公益</h1>
+        <h1 class="title">名医公益行</h1>
         <nav class="right">
             <a onclick="javascript:location.reload()">
                 <img src="<?php echo $urlResImage; ?>refresh.png" class="w24p">
