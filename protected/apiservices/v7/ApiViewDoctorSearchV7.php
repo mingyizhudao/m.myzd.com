@@ -14,6 +14,11 @@ class ApiViewDoctorSearchV7 extends EApiViewService {
         $this->searchInputs = $searchInputs;
         $this->getCount = isset($searchInputs['getcount']) && $searchInputs['getcount'] == 1 ? true : false;
         $this->searchInputs['pagesize'] = isset($searchInputs['pagesize']) && $searchInputs['pagesize'] > 0 ? $searchInputs['pagesize'] : $this->pageSize;
+        if(isset($this->searchInputs['city'])){
+            if($this->searchInputs['city'] == 0){
+                unset($this->searchInputs['city']);
+            }
+        }
         $this->doctorSearch = new DoctorSearchV7($this->searchInputs);
         $this->doctorSearch->addSearchCondition("t.date_deleted is NULL");
     }

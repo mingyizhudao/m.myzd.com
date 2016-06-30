@@ -117,11 +117,14 @@ class ApiController extends Controller {
 
             case"hospital":
                 $values = $_GET;
-
-                if ($api >= 7) {
+                if ($api >= 10){
+                    $values['isNotPaging'] = 1;
+                    $apiService = new ApiViewHospitalSearchV10($values);
+                    $output = $apiService->loadApiViewData();
+                }else if ($api >= 7) {
                     $apiService = new ApiViewHospitalSearchV7($values);
                     $output = $apiService->loadApiViewData();
-		        }elseif ($api >= 2){
+		        }else if ($api >= 2){
                     $values['isNotPaging'] = 1;
                     $apiService = new ApiViewHospitalSearchV2($values);
                     $output = $apiService->loadApiViewData();
@@ -152,13 +155,16 @@ class ApiController extends Controller {
 
             case 'doctor':
                 $values = $_GET;
-                if ($api >= 7) {
+                if ($api >= 10){
+                    $apiService = new ApiViewDoctorSearchV10($values);
+                    $output = $apiService->loadApiViewData();
+                } else if ($api >= 7) {
                     $apiService = new ApiViewDoctorSearchV7($values);
                     $output = $apiService->loadApiViewData();
-                } elseif ($api == 5 || $api == 6) {
+                } else if ($api == 5 || $api == 6) {
                     $apiService = new ApiViewDoctorSearchV5($values);
                     $output = $apiService->loadApiViewData();
-                } elseif ($api == 4) {
+                } else if ($api == 4) {
                     $apiService = new ApiViewDoctorSearchV4($values);
                     $output = $apiService->loadApiViewData();
                 } else {
@@ -529,7 +535,7 @@ class ApiController extends Controller {
                 $output['message'] = 'Wrong parameters';
                 $this->renderJsonOutput($output);
             }
-            $output = $bookingMgr->actionCancelBooking($id, $userId);
+            $output = $bookingMgr->actionCancelBooking($id, $userId);   
             $this->renderJsonOutput($output);
         }
     }
