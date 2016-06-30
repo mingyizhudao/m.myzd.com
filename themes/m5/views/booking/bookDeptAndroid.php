@@ -70,42 +70,39 @@ $this->show_footer = false;
         <input type="hidden" id="salesOrderRefNo" value="">
         <input type="hidden" id="domain" value="http://mr.file.mingyizhudao.com">
         <input type="hidden" id="uptoken_url" value="<?php echo $urlQiniuAjaxToken; ?>">
-        <div class="grid pt20 pb20 bb-gray">
-            <div class="col-0 w100p pl15 color-black4">就诊医院:</div>
-            <div class="col-1"><?php echo $model->hospital_name; ?></div>
+        <div class="grid pt20 pb20 pl15 pr15 bb-gray">
+            <div class="col-0 w100p color-black4">就诊医院:</div>
+            <div class="col-1 text-right"><?php echo $model->hospital_name; ?></div>
         </div>
-        <div class="grid pt20 pb20 bb-gray">
-            <div class="col-0 w100p pl15 color-black4">就诊科室:</div>
-            <div class="col-1"><?php echo $model->hp_dept_name; ?></div>
+        <div class="grid pt20 pb20 pl15 pr15 bb-gray">
+            <div class="col-0 w100p color-black4">就诊科室:</div>
+            <div class="col-1 text-right"><?php echo $model->hp_dept_name; ?></div>
         </div>
         <div class="bb10-gray"></div>
-
-        <div class="pl15">
-            <div class="ui-field-contain bb-gray">
-                <div class="grid pt20 pb20">
-                    <div class="col-0 w90p color-black4">患者姓名:</div>
-                    <div class="col-1 mr15">
-                        <?php echo $form->textField($model, 'contact_name', array('name' => 'booking[contact_name]', 'maxlength' => 50)); ?>
-                    </div>
+        <div class="ui-field-contain pl15 pr15 bb-gray">
+            <div class="grid pt20 pb20">
+                <div class="col-0 w90p color-black4">患者姓名:</div>
+                <div class="col-1">
+                    <?php echo $form->textField($model, 'contact_name', array('name' => 'booking[contact_name]', 'maxlength' => 50, 'class' => 'text-right', 'placeholder' => '请输入患者姓名')); ?>
                 </div>
             </div>
-            <div class="ui-field-contain bb-gray">
-                <div class="grid pt20 pb20">
-                    <div class="col-0 w90p color-black4">病例名称:</div>
-                    <div class="col-1 mr15">
-                        <?php echo $form->textField($model, 'disease_name', array('name' => 'booking[disease_name]', 'maxlength' => 50)); ?>
-                    </div>
+        </div>
+        <div class="ui-field-contain pl15 pr15 bb-gray">
+            <div class="grid pt20 pb20">
+                <div class="col-0 w90p color-black4">病例名称:</div>
+                <div class="col-1">
+                    <?php echo $form->textField($model, 'disease_name', array('name' => 'booking[disease_name]', 'maxlength' => 50, 'class' => 'text-right', 'placeholder' => '请输入疾病名称')); ?>
                 </div>
             </div>
-            <div class="ui-field-contain">
-                <div class="grid pt20">
-                    <div class="col-0 w90p color-black4">疾病描述:</div>
-                </div>
+        </div>
+        <div class="ui-field-contain pl15 pr15">
+            <div class="grid pt20">
+                <div class="col-0 w90p color-black4">疾病描述:</div>
             </div>
-            <div class="ui-field-contain bb-gray">
-                <div class="col-1 mr15 pb20">
-                    <?php echo $form->textArea($model, 'disease_detail', array('name' => 'booking[disease_detail]', 'minlength' => 10, 'maxlength' => 1000, 'rows' => '6')); ?>
-                </div>
+        </div>
+        <div class="ui-field-contain pl15 pr15 bb-gray">
+            <div class="col-1 pb20">
+                <?php echo $form->textArea($model, 'disease_detail', array('name' => 'booking[disease_detail]', 'minlength' => 10, 'maxlength' => 1000, 'rows' => '6', 'placeholder' => '请你简要描述下您的病情')); ?>
             </div>
         </div>
         <?php
@@ -189,5 +186,4 @@ $this->show_footer = false;
         m = (m < 10) ? ('0' + m) : m;
         d = (d < 10) ? ('0' + d) : d;
         return y + '-' + m + '-' + d;
-    }
-</script>
+    }</script>

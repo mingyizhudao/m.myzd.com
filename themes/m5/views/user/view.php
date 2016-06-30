@@ -145,18 +145,6 @@ $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
             </div>
         </div>
         <div class="mt5 bg-white">
-            <a href='<?php echo $urlMygy; ?>'>
-                <div class="pad10 color-black grid">
-                    <div class="col-0">
-                        <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146422811006124" class="w26p pl2">
-                    </div>
-                    <div class="col-1 pl10 font-s16">
-                        公益手术
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="mt5 bg-white">
             <a href='<?php echo $urlUserCommonProblem; ?>'>
                 <div class="pad10 color-black grid">
                     <div class="col-0">
@@ -176,6 +164,18 @@ $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
                     </div>
                     <div class="col-1 pl10 pt2 font-s16">
                         关于我们
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="bt-gray5 bg-white">
+            <a href='<?php echo $urlMygy; ?>'>
+                <div class="pad10 color-black grid">
+                    <div class="col-0">
+                        <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146422811006124" class="w26p pl2">
+                    </div>
+                    <div class="col-1 pl10 font-s16">
+                        公益手术
                     </div>
                 </div>
             </a>
