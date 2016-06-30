@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 /**
  * This is the model class for table "city_list_doctor".
@@ -136,7 +136,18 @@ class CityListDoctor extends EActiveRecord {
         $criteria->order = 't.display_order ASC';
         return $this->findAll($criteria);
     }
-
+    
+    /**
+     * 根据医生取出所有的城市
+     * @return Ambigous <mixed, NULL, unknown, multitype:unknown Ambigous <unknown, NULL> >
+     */
+    public function getAllCityByDoctor(){
+        $criteria = new CDbCriteria();
+        $criteria->addCondition("t.date_deleted is NULL");
+        $criteria->select ='t.id, t.state_id, t.state_name, t.city_id, t.city_name, t.is_hot';
+        $criteria->order = 't.display_order ASC';
+        return $this->findAll($criteria);
+    }
 
     /*     * ****** Accessors ******* */
     public function getIsHot(){
