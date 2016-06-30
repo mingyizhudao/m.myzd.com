@@ -14,9 +14,11 @@ $urlHomeMyyzDoctor = $this->createUrl('home/page', array('view' => 'myyzDoctor')
 $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
 $urlCatherine = $this->createUrl('event/view', array('page' => 'catherine'));
 ?>
-
 <article id="home_article" data-active="home_footer" class="active bg-gray5" data-scroll="true">
     <div>
+        <div id="freePhone" href="javascript:;">
+            免费
+        </div>
         <div class="titleImg">
             <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146243634396635" class="w100">
         </div>
@@ -158,6 +160,21 @@ $urlCatherine = $this->createUrl('event/view', array('page' => 'catherine'));
 </article>
 <script>
     $(document).ready(function () {
+        $('#freePhone').click(function () {
+            J.customConfirm('友情提示',
+                    '<div class="mb10">立即拨打免费客服热线400-6277-120</div>',
+                    '<a id="closeLogout" class="w50">取消</a>',
+                    '<a id="dial" class="color-green w50">拨打</a>',
+                    function () {
+                    });
+            $('#closeLogout').click(function () {
+                J.closePopup();
+            });
+            $('#dial').click(function () {
+                J.closePopup();
+                location.href = 'tel://4006277120';
+            });
+        });
         //轮播图
         var html = '<li class="slide">' +
                 '<a href="<?php echo $urlHomeMyyzDoctor; ?>">' +
@@ -182,7 +199,7 @@ $urlCatherine = $this->createUrl('event/view', array('page' => 'catherine'));
             controls: false,
             auto: true
         });
-        
+
         var height = $('.titleImg').height() - 110;
         $('.titlePosition').css({"margin-top": height + "px"});
     });

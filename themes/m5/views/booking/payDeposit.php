@@ -9,6 +9,7 @@ $showStatus = Yii::app()->request->getQuery('showStatus', 0);
 $payUrl = $this->createUrl('/payment/doPingxxPay');
 $refUrl = $this->createAbsoluteUrl('order/view');
 $urlBookingPayView = $this->createAbsoluteUrl('booking/payView');
+$urlApiUpdate = $this->createAbsoluteUrl('/api');
 $BK_STATUS_NEW = StatCode::BK_STATUS_NEW;
 $BK_STATUS_PROCESSING = StatCode::BK_STATUS_PROCESSING;
 $BK_STATUS_CONFIRMED_DOCTOR = StatCode::BK_STATUS_CONFIRMED_DOCTOR;
@@ -68,11 +69,25 @@ $orderInfo = $results->orderInfo;
         ?>
     </nav>
     <h1 class="title">支付订单</h1>
-    <nav class="right">
-        <a onclick="javascript:location.reload()">
-            <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
-        </a>
-    </nav>
+    <?php
+    if (($results->bkStatusCode == 1) || ($results->bkStatusCode == 2)) {
+        ?>
+        <nav class="right">
+            <a id="cancelOrder">
+                取消订单
+            </a>
+        </nav>
+        <?php
+    } else {
+        ?>
+        <nav class="right">
+            <a onclick="javascript:location.reload()">
+                <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
+            </a>
+        </nav>
+        <?php
+    }
+    ?>
 </header>
 <?php
 if ($results->bkStatusCode == $BK_STATUS_NEW) {
@@ -105,27 +120,25 @@ if ($results->bkStatusCode == $BK_STATUS_NEW) {
 ?>
 <article id='payOrder_article' class="active" data-scroll="true">
     <div>
-        <?php //var_dump($results);   ?>
-        <?php //var_dump($orderInfo); ?>
         <ul class="list">
             <li class="font-s16">
                 当前状态：<span class="color-yellow5"><?php echo $results->bkStatus; ?></span>
             </li>
             <li class="grid">
                 <div class="col-0 color-black6">就诊专家</div>
-                <div class="col-1 text-right"><?php echo $results->expertName; ?></div>
+                <div class="col-1 pl10 text-right"><?php echo $results->expertName; ?></div>
             </li>
             <li class="grid">
                 <div class="col-0 color-black6">就诊医院</div>
-                <div class="col-1 text-right"><?php echo $results->hospitalName; ?></div>
+                <div class="col-1 pl10 text-right"><?php echo $results->hospitalName; ?></div>
             </li>
             <li class="grid">
                 <div class="col-0 color-black6">就诊科室</div>
-                <div class="col-1 text-right"><?php echo $results->hpDeptName; ?></div>
+                <div class="col-1 pl10 text-right"><?php echo $results->hpDeptName; ?></div>
             </li>
             <li class="grid">
                 <div class="col-0 color-black6">疾病名称</div>
-                <div class="col-1 text-right"><?php echo $results->diseaseName; ?></div>
+                <div class="col-1 pl10 text-right"><?php echo $results->diseaseName; ?></div>
             </li>
             <li>
                 <div class="color-black6">疾病描述</div>
@@ -133,7 +146,9 @@ if ($results->bkStatusCode == $BK_STATUS_NEW) {
             </li>
             <li>
                 <a href="<?php echo $urlPatientBooking; ?>/<?php echo $results->id; ?>/showStatus/<?php echo $showStatus; ?>" class="color-black6">
-                    <div class="text-center">查看订单详情</div>
+                    <div class="text-center">
+                        <span class="viewOrders">查看订单详情</span>
+                    </div>
                 </a>
             </li>
         </ul>
@@ -155,6 +170,41 @@ if ($results->bkStatusCode == $BK_STATUS_NEW) {
 </article>
 <script>
     $(document).ready(function () {
+        $('#cancelOrder').click(function () {
+            J.customConfirm('',
+                    '<div class="mb10">确定取消改订单?</div>',
+                    '<a id="colosePopup" class="w50">取消</a>',
+                    '<a id="cancel" class="w50">确定</a>', function () {
+                    }, function () {
+            });
+            $('#colosePopup').click(function () {
+                J.closePopup();
+            });
+            $('#cancel').click(function () {
+                J.closePopup();
+                J.showMask();
+                $.ajax({
+                    type: 'put',
+                    url: '<?php echo $urlApiUpdate; ?>/booking/' + '<?php echo $results->id; ?>',
+                    success: function (data) {
+                        J.hideMask();
+                        if (data.status == 'ok') {
+                            J.showToast('取消成功', '', '');
+                            setTimeout(function () {
+                                location.href = '<?php echo $urlPatientBookingList; ?>' + '?status=<?php echo $showStatus; ?>';
+                            }, 1500);
+                        } else {
+                            J.showToast(data.errors, '', '1500');
+                        }
+                    },
+                    error: function (XmlHttpRequest, textStatus, errorThrown) {
+                        console.log(XmlHttpRequest);
+                        console.log(textStatus);
+                        console.log(errorThrown);
+                    },
+                });
+            });
+        });
         $('#noPayDeposit').tap(function () {
             J.customConfirm('',
                     '<div class="mb10">您确定暂不支付手术预约金?</div><div>（稍后可在"订单-待支付"里完成）</div>',
