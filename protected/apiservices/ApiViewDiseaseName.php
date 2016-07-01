@@ -32,6 +32,9 @@ class ApiViewDiseaseName extends EApiViewService {
                 $data->subCatId = $categoryDiseaseJoin->getSubCatId();
                 $diseaseCategory = DiseaseCategory::model()->getByAttributes(array('sub_cat_id'=>$data->subCatId, 'app_version'=>7));
                 $data->subCatName = $diseaseCategory->getSubCategoryName();
+                $data->catId = $diseaseCategory->getCategoryId();
+                $data->catName = $diseaseCategory->getCategoryName();
+             
             }
         }
         $this->setDisease($data);

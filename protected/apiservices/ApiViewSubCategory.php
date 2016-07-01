@@ -45,7 +45,8 @@ class ApiViewSubCategory extends EApiViewService {
         $data = new stdClass();
         $data->id = $model->getSubCategoryId();
         $data->name = $model->getSubCategoryName();
-
+        $data->catId = $model->getCategoryId();
+        $data->catName = $model->getCategoryName();
         $this->results = $data;
     }
 }

@@ -220,6 +220,7 @@ class ApiController extends Controller {
                 break;
             case 'city':
                 $values = $_GET;
+                $values['type']='doctor';
                 $city = new ApiViewOpenCity($values);
                 $output = $city->loadApiViewData();
                 break;
