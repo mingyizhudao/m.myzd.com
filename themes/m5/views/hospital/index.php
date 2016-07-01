@@ -17,7 +17,7 @@ $page = Yii::app()->request->getQuery('page', '');
 <header id="hospital_header" class="bg-green">
     <nav id="selectCity" class="left">
         <div class="grid mt17">
-            <div id="cityTitle" class="font-s16 col-0" data-city="1"></div>
+            <div id="cityTitle" class="font-s16 col-0" data-city=""></div>
             <div class="col-0 cityImg"></div>
         </div>
     </nav>
@@ -41,6 +41,7 @@ $page = Yii::app()->request->getQuery('page', '');
         //返回时，更新城市
         if ('<?php echo $city ?>' == 0) {
             $('#cityTitle').html('全部');
+            $('#cityTitle').attr('data-city', 0);
         } else if ('<?php echo $city ?>' != 1) {
             $.ajax({
                 url: '<?php echo $urlCityName; ?>/' + '<?php echo $city; ?>',
@@ -54,6 +55,7 @@ $page = Yii::app()->request->getQuery('page', '');
             });
         } else {
             $('#cityTitle').html('北京');
+            $('#cityTitle').attr('data-city', 1);
         }
 
         $.ajax({
