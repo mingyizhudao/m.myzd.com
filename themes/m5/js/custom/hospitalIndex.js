@@ -11,43 +11,22 @@ $('#selectCity').tap(function (e) {
             '</nav>' +
             '<h1 class="title">推荐</h1>' +
             '</header>' +
-            '<article id="hospital_article" class="active" style="position:static;">' + $cityHtml + '</article>';
-
+            '<article id="hospital_article" class="active" data-scroll="true" style="position:static;">' + readyCity($cityData, cityId) + '</article>';
     J.popup({
         html: innerPage,
         pos: 'top',
         showCloseBtn: false
     });
 
-    $('.aCity').click(function (e) {
-        e.preventDefault();
-        var dataCity = $(this).attr('data-city');
-        $('.aCity').each(function () {
-            if (dataCity == $(this).attr('data-city')) {
-                $(this).addClass('bg-white');
-            } else {
-                $(this).removeClass('bg-white');
-            }
-        });
-        $('.bCity').each(function () {
-            if (dataCity == $(this).attr('data-city')) {
-                $(this).removeClass('hide');
-            } else {
-                $(this).addClass('hide');
-            }
-        });
-    });
 
-    $('.cCity').click(function (e) {
+
+    $('.switchCity').click(function (e) {
         e.preventDefault();
         $cityId = $(this).attr('data-city');
         $cityName = $(this).html();
         $condition["city"] = $cityId;
-        $condition["page"] = 1;
-        setTimeout(function () {
-            J.closePopup();
-        }, 100);
         var requestUrl = $requestHospital + setUrlCondition() + '&getcount=1';
+        J.closePopup();
         J.showMask();
         $.ajax({
             url: requestUrl,
@@ -84,6 +63,29 @@ function readyHospital(data) {
     innerHtml += '</ul></div>';
     $('#hospital_article').html(innerHtml);
     J.hideMask();
+}
+
+function readyCity(data, cityId) {
+    var innerHtml = '';
+    if (data != '') {
+        var results = data.results;
+        innerHtml += '<div id="cityList" class="grid color-black" style="margin-top:43px;height:315px;">' +
+                '<ul class="list w100">';
+        if (cityId == 0) {
+            innerHtml += '<li class="switchCity activeIcon" data-city="0">全部</li>';
+        } else {
+            innerHtml += '<li class="switchCity" data-city="0">全部</li>';
+        }
+        for (var i = 0; i < results.length; i++) {
+            if (cityId == results[i].id) {
+                innerHtml += '<li class="switchCity activeIcon" data-city="' + results[i].id + '">' + results[i].city + '</li>';
+            } else {
+                innerHtml += '<li class="switchCity" data-city="' + results[i].id + '">' + results[i].city + '</li>';
+            }
+        }
+        innerHtml += '</ul></div>';
+    }
+    return innerHtml;
 }
 
 //组合url参数

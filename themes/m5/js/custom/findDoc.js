@@ -4,6 +4,7 @@ $('#deptSelect').tap(function () {
 function deptSelect() {
     var deptName = $('#deptTitle').html();
     var deptId = $('#deptTitle').attr('data-dept');
+    var catId = $('#deptTitle').attr('data-cat');
     var diseaseName = $('#diseaseTitle').html();
     var diseaseId = $('#diseaseTitle').attr('data-disease');
     var cityName = $('#cityTitle').html();
@@ -28,7 +29,6 @@ function deptSelect() {
             '<div class="grid w100 color-black font-s16 color-black6">' +
             '<div id="deptSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
             '<span id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="../../themes/m5/images/lowerTriangleGray.png">' +
-            '<div style="position: fixed;top: 74px; left:14.54%;"><img id="remindImg" class="w14p" src="../../themes/m5/images/upperTriangleWhite.png"></div>' +
             '</div>' +
             '<div id="diseaseSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
             '<span id="diseaseTitle" data-disease="' + diseaseId + '">' + diseaseName + '</span><img src="../../themes/m5/images/lowerTriangleGray.png">' +
@@ -38,7 +38,7 @@ function deptSelect() {
             '</div>' +
             '</div>' +
             '</nav>' +
-            '<article id="findDoc_article" class="active" style="position:static;">' + $deptHtml +
+            '<article id="findDoc_article" class="active" style="position:static;">' + readyDept($deptData, deptId, catId) +
             '</article>' +
             '</div>';
 
@@ -51,16 +51,11 @@ function deptSelect() {
     $('.aDept').click(function (e) {
         e.preventDefault();
         var dataDept = $(this).attr('data-dept');
-        if (dataDept != 1) {
-            $('#remindImg').attr('src', '../../themes/m5/images/upperTriangleGray.png');
-        } else {
-            $('#remindImg').attr('src', '../../themes/m5/images/upperTriangleWhite.png');
-        }
         $('.aDept').each(function () {
             if (dataDept == $(this).attr('data-dept')) {
-                $(this).addClass('bg-white');
+                $(this).addClass('activeIcon');
             } else {
-                $(this).removeClass('bg-white');
+                $(this).removeClass('activeIcon');
             }
         });
         $('.bDept').each(function () {
@@ -75,16 +70,15 @@ function deptSelect() {
     $('.cDept').click(function (e) {
         e.preventDefault();
         $deptId = $(this).attr('data-dept');
+        $catId = $(this).attr('data-cat');
         $deptName = $(this).html();
         $condition["disease_sub_category"] = $deptId;
         $condition["disease"] = '';
         $condition["disease_name"] = '';
         $condition["city"] = '';
         $condition["page"] = 1;
-        setTimeout(function () {
-            J.closePopup();
-        }, 100);
         var requestUrl = $requestDoc + setUrlCondition() + '&getcount=1';
+        J.closePopup();
         J.showMask();
         $.ajax({
             url: requestUrl,
@@ -93,10 +87,11 @@ function deptSelect() {
                 $deptName = $deptName.length > 4 ? $deptName.substr(0, 3) + '...' : $deptName;
                 $('#deptTitle').html($deptName);
                 $('#deptTitle').attr('data-dept', $deptId);
+                $('#deptTitle').attr('data-cat', $catId);
                 $('#diseaseTitle').html('疾病');
                 $('#diseaseTitle').attr('data-disease', '');
-                $('#cityTitle').html('地区');
-                $('#cityTitle').attr('data-disease', '');
+                $('#cityTitle').html('全部');
+                $('#cityTitle').attr('data-city', '0');
                 setLocationUrl();
                 $('#findDoc_article').scrollTop(0);
             }
@@ -135,7 +130,11 @@ $('#diseaseSelect').tap(function () {
             var disease = results.disease;
             if (disease.length > 0) {
                 for (var i = 0; i < disease.length; i++) {
-                    innerHtml += '<li class="aDisease" data-disease="' + disease[i].id + '">' + disease[i].name + '</li>';
+                    if (diseaseId == disease[i].id) {
+                        innerHtml += '<li class="aDisease activeIcon" data-disease="' + disease[i].id + '">' + disease[i].name + '</li>';
+                    } else {
+                        innerHtml += '<li class="aDisease" data-disease="' + disease[i].id + '">' + disease[i].name + '</li>';
+                    }
                 }
             }
         }
@@ -167,7 +166,6 @@ $('#diseaseSelect').tap(function () {
                 '</div>' +
                 '<div id="diseaseSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
                 '<span id="diseaseTitle" data-disease="' + diseaseId + '">' + diseaseName + '</span><img src="../../themes/m5/images/lowerTriangleGray.png">' +
-                '<div style="position: fixed;top: 74px; left:47.75%;"><img class="w14p" src="../../themes/m5/images/upperTriangleWhite.png"></div>' +
                 '</div>' +
                 '<div id="citySelect" data-target="closePopup" class="col-1 w33 bb-gray grid middle grayImg">' +
                 '<span id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="../../themes/m5/images/lowerTriangleGray.png">' +
@@ -193,10 +191,8 @@ $('#diseaseSelect').tap(function () {
             $condition["city"] = '';
             $condition["disease"] = $diseaseIdB;
             $condition["page"] = 1;
-            setTimeout(function () {
-                J.closePopup();
-            }, 100);
             var requestUrl = $requestDoc + setUrlCondition() + '&getcount=1';
+            J.closePopup();
             J.showMask();
             $.ajax({
                 url: requestUrl,
@@ -206,8 +202,8 @@ $('#diseaseSelect').tap(function () {
                     $('#deptTitle').html($deptName);
                     $('#diseaseTitle').html($diseaseNameB);
                     $('#diseaseTitle').attr('data-disease', $diseaseIdB);
-                    $('#cityTitle').html('地区');
-                    $('#cityTitle').attr('data-city', '');
+                    $('#cityTitle').html('全部');
+                    $('#cityTitle').attr('data-city', '0');
                     setLocationUrl();
                     $('#findDoc_article').scrollTop(0);
                 }
@@ -248,40 +244,19 @@ $('#citySelect').tap(function () {
             '</div>' +
             '<div id="citySelect" data-target="closePopup" class="col-1 w33 bb-gray grid middle grayImg">' +
             '<span id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="../../themes/m5/images/lowerTriangleGray.png">' +
-            '<div style="position: fixed;top: 74px; left:81.6%;"><img class="w14p" src="../../themes/m5/images/upperTriangleWhite.png"></div>' +
             '</div>' +
             '</div>' +
             '</nav>' +
-            '<article id="findDoc_article" class="active" style="position:static;">' + $cityHtml +
+            '<article id="findDoc_article" class="active" data-scroll="true" style="position:static;">' + readyCity($cityData, cityId) +
             '</article>' +
             '</div>';
-
     J.popup({
         html: innerPage,
         pos: 'top',
         showCloseBtn: false
     });
 
-    $('.aCity').click(function (e) {
-        e.preventDefault();
-        var dataCity = $(this).attr('data-city');
-        $('.aCity').each(function () {
-            if (dataCity == $(this).attr('data-city')) {
-                $(this).addClass('bg-white');
-            } else {
-                $(this).removeClass('bg-white');
-            }
-        });
-        $('.bCity').each(function () {
-            if (dataCity == $(this).attr('data-city')) {
-                $(this).removeClass('hide');
-            } else {
-                $(this).addClass('hide');
-            }
-        });
-    });
-
-    $('.cCity').click(function (e) {
+    $('.switchCity').click(function (e) {
         e.preventDefault();
         $deptId = $('#deptTitle').attr('data-dept');
         $diseaseId = $('#diseaseTitle').attr('data-disease');
@@ -291,10 +266,8 @@ $('#citySelect').tap(function () {
         $condition["disease_name"] = '';
         $condition["city"] = $cityId;
         $condition["page"] = 1;
-        setTimeout(function () {
-            J.closePopup();
-        }, 100);
         var requestUrl = $requestDoc + setUrlCondition() + '&getcount=1';
+        J.closePopup();
         J.showMask();
         $.ajax({
             url: requestUrl,
@@ -398,6 +371,66 @@ function readyDoc(data) {
     $('#docPage').html(innerHtml);
     initPage(dataPage);
     J.hideMask();
+}
+
+function readyDept(data, deptId, catId) {
+    var results = data.results;
+    var innerHtml = '<div class="grid color-black" style="margin-top:93px;height:315px;">' +
+            '<div id="highDept" class="col-1 w50" data-scroll="true" style="height:315px;width: 50%;">' +
+            '<ul class="list">';
+    if (results.length > 0) {
+        for (var i = 0; i < results.length; i++) {
+            if (results[i].id == catId) {
+                innerHtml += '<li class="aDept activeIcon" data-dept="' + results[i].id + '">' + results[i].name + '</li>';
+            } else {
+                innerHtml += '<li class="aDept" data-dept="' + results[i].id + '">' + results[i].name + '</li>';
+            }
+        }
+        innerHtml += '</ul></div><div id="secondDept" class="col-1 w50" data-scroll="true" data- style="height:315px;">'
+        for (var i = 0; i < results.length; i++) {
+            var subCat = results[i].subCat;
+            if (results[i].id == catId) {
+                innerHtml += '<ul class="bDept list" data-dept="' + results[i].id + '">';
+            } else {
+                innerHtml += '<ul class="bDept list hide" data-dept="' + results[i].id + '">';
+            }
+            if (subCat.length > 0) {
+                for (var j = 0; j < subCat.length; j++) {
+                    if (deptId == subCat[j].id) {
+                        innerHtml += '<li class="cDept activeIcon" data-cat="' + results[i].id + '" data-dept="' + subCat[j].id + '">' + subCat[j].name + '</li>';
+                    } else {
+                        innerHtml += '<li class="cDept" data-cat="' + results[i].id + '" data-dept="' + subCat[j].id + '">' + subCat[j].name + '</li>';
+                    }
+                }
+            }
+            innerHtml += '</ul>';
+        }
+    }
+    innerHtml += '</div></div>';
+    return innerHtml;
+}
+
+function readyCity(data, cityId) {
+    var innerHtml = '';
+    if (data != '') {
+        var results = data.results;
+        innerHtml += '<div class="grid color-black" style="margin-top:93px;height:315px;">' +
+                '<ul class="list w100">';
+        if (cityId == 0) {
+            innerHtml += '<li class="switchCity activeIcon" data-city="0">全部</li>';
+        } else {
+            innerHtml += '<li class="switchCity" data-city="0">全部</li>';
+        }
+        for (var i = 0; i < results.length; i++) {
+            if (cityId == results[i].id) {
+                innerHtml += '<li class="switchCity activeIcon" data-city="' + results[i].id + '">' + results[i].city + '</li>';
+            } else {
+                innerHtml += '<li class="switchCity" data-city="' + results[i].id + '">' + results[i].city + '</li>';
+            }
+        }
+        innerHtml += '</ul></div>';
+    }
+    return innerHtml;
 }
 
 /*分页*/

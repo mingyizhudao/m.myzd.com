@@ -1,4 +1,5 @@
 $('#deptSelect').tap(function () {
+    var dept = $('.title').html();
     //滚动距离
     $scrollLength = '';
     var deptName = $('#deptTitle').html();
@@ -15,8 +16,7 @@ $('#deptSelect').tap(function () {
             '</div>' +
             '</a>' +
             '</nav>' +
-            '<h1 class="title">' +
-            '科室' +
+            '<h1 class="title">' + dept +
             '</h1>' +
             '<nav class="right">' +
             '<a onclick="javascript:history.go(0)">' +
@@ -34,7 +34,7 @@ $('#deptSelect').tap(function () {
             '</div>' +
             '</div>' +
             '</nav>' +
-            '<article id="findDept_article" class="active" style="position:static;">' + readyDept($diseaseData) +
+            '<article id="findDept_article" class="active" data-scroll="true" style="position:static;">' + readyDept($diseaseData) +
             '</article>' +
             '</div>';
     J.popup({
@@ -74,10 +74,8 @@ $('#deptSelect').tap(function () {
         $condition["disease_name"] = '';
         $condition["city"] = '';
         $condition["page"] = 1;
-        setTimeout(function () {
-            J.closePopup();
-        }, 100);
         var requestUrl = $requestHospital + setUrlCondition() + '&getcount=1';
+        J.closePopup();
         J.showMask();
         $.ajax({
             url: requestUrl,
@@ -87,8 +85,8 @@ $('#deptSelect').tap(function () {
                 $deptName = $deptName.length > 5 ? $deptName.substr(0, 4) + '...' : $deptName;
                 $('#deptTitle').html($deptName);
                 $('#deptTitle').attr('data-dept', $deptId);
-                $('#cityTitle').html('地区');
-                $('#cityTitle').attr('data-disease', '');
+                $('#cityTitle').html('全部');
+                $('#cityTitle').attr('data-city', '0');
                 setLocationUrl();
                 $('#findDept_article').scrollTop(0);
             }
@@ -96,7 +94,6 @@ $('#deptSelect').tap(function () {
     });
 });
 function readyDept(data) {
-    //console.log(data);
     var results = data.results;
     var innerHtml = '<div class="grid color-black" style="margin-top:93px;">';
     if (results.length > 0) {
@@ -111,7 +108,7 @@ function readyDept(data) {
                         number++;
                         if ($deptId == subCat[j].id) {
                             $scrollLength = number;
-                            innerHtml += '<li class="cDept color-green bg-gray3" data-dept="' + subCat[j].id + '">' + subCat[j].name + '</li>';
+                            innerHtml += '<li class="cDept activeIcon" data-dept="' + subCat[j].id + '">' + subCat[j].name + '</li>';
                         } else {
                             innerHtml += '<li class="cDept" data-dept="' + subCat[j].id + '">' + subCat[j].name + '</li>';
                         }
@@ -125,6 +122,7 @@ function readyDept(data) {
     return innerHtml;
 }
 $('#citySelect').tap(function () {
+    var dept = $('.title').html();
     var deptName = $('#deptTitle').html();
     var deptId = $('#deptTitle').attr('data-dept');
     var cityName = $('#cityTitle').html();
@@ -138,8 +136,7 @@ $('#citySelect').tap(function () {
             '</div>' +
             '</a>' +
             '</nav>' +
-            '<h1 class="title">' +
-            '科室' +
+            '<h1 class="title">' + dept +
             '</h1>' +
             '<nav class="right">' +
             '<a onclick="javascript:history.go(0)">' +
@@ -157,7 +154,7 @@ $('#citySelect').tap(function () {
             '</div>' +
             '</div>' +
             '</nav>' +
-            '<article id="findDept_article" class="active" style="position:static;">' + $cityHtml +
+            '<article id="findDept_article" class="active" data-scroll="true" style="position:static;">' + readyCity($cityData, cityId) +
             '</article>' +
             '</div>';
 
@@ -167,25 +164,7 @@ $('#citySelect').tap(function () {
         showCloseBtn: false
     });
 
-    $('.aCity').click(function () {
-        var dataCity = $(this).attr('data-city');
-        $('.aCity').each(function () {
-            if (dataCity == $(this).attr('data-city')) {
-                $(this).addClass('bg-white');
-            } else {
-                $(this).removeClass('bg-white');
-            }
-        });
-        $('.bCity').each(function () {
-            if (dataCity == $(this).attr('data-city')) {
-                $(this).removeClass('hide');
-            } else {
-                $(this).addClass('hide');
-            }
-        });
-    });
-
-    $('.cCity').click(function (e) {
+    $('.switchCity').click(function (e) {
         e.preventDefault();
         $deptId = $('#deptTitle').attr('data-dept');
         $cityId = $(this).attr('data-city');
@@ -194,10 +173,8 @@ $('#citySelect').tap(function () {
         $condition["disease_name"] = '';
         $condition["city"] = $cityId;
         $condition["page"] = 1;
-        setTimeout(function () {
-            J.closePopup();
-        }, 100);
         var requestUrl = $requestHospital + setUrlCondition() + '&getcount=1';
+        J.closePopup();
         J.showMask();
         $.ajax({
             url: requestUrl,
@@ -277,6 +254,29 @@ function readyHospital(data) {
     $('#findDept_article').html(innerHtml);
     initPage(dataPage);
     J.hideMask();
+}
+
+function readyCity(data, cityId) {
+    var innerHtml = '';
+    if (data != '') {
+        var results = data.results;
+        innerHtml += '<div id="cityList" class="grid color-black" style="margin-top:93px;height:315px;">' +
+                '<ul class="list w100">';
+        if (cityId == 0) {
+            innerHtml += '<li class="switchCity activeIcon" data-city="0">全部</li>';
+        } else {
+            innerHtml += '<li class="switchCity" data-city="0">全部</li>';
+        }
+        for (var i = 0; i < results.length; i++) {
+            if (cityId == results[i].id) {
+                innerHtml += '<li class="switchCity activeIcon" data-city="' + results[i].id + '">' + results[i].city + '</li>';
+            } else {
+                innerHtml += '<li class="switchCity" data-city="' + results[i].id + '">' + results[i].city + '</li>';
+            }
+        }
+        innerHtml += '</ul></div>';
+    }
+    return innerHtml;
 }
 
 //分页

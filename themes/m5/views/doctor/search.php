@@ -43,7 +43,7 @@ $this->show_footer = false;
 <nav id="findDoc_nav" class="header-secondary bg-white">
     <div class="grid w100 color-black font-s16 color-black6">
         <div id="deptSelect" class="col-1 w33 br-gray bb-gray grid middle grayImg">
-            <span id="deptTitle" data-dept=""></span><img src="<?php echo $urlResImage; ?>lowerTriangleGray.png">
+            <span id="deptTitle" data-dept="" data-cat=""></span><img src="<?php echo $urlResImage; ?>lowerTriangleGray.png">
         </div>
         <div id="diseaseSelect" class="col-1 w33 br-gray bb-gray grid middle grayImg">
             <span id="diseaseTitle" data-disease=""></span><img src="<?php echo $urlResImage; ?>lowerTriangleGray.png">
@@ -61,7 +61,7 @@ $this->show_footer = false;
 <script>
     $(document).ready(function () {
         //返回首页
-        $homeView = '<?php echo $urlHomeView; ?>'
+        $homeView = '<?php echo $urlHomeView; ?>';
 
         //请求医生
         $requestDoc = '<?php echo $urlDoctor; ?>';
@@ -88,6 +88,7 @@ $this->show_footer = false;
                     deptName = deptName.length > 4 ? deptName.substr(0, 3) + '...' : deptName;
                     $('#deptTitle').html(deptName);
                     $('#deptTitle').attr('data-dept', data.results.id);
+                    $('#deptTitle').attr('data-cat', data.results.catId);
                 }
             });
         } else if ('<?php echo $disease_name; ?>' != '') {
@@ -99,6 +100,7 @@ $this->show_footer = false;
                     subCatName = subCatName.length > 4 ? subCatName.substr(0, 3) + '...' : subCatName;
                     $('#deptTitle').html(subCatName);
                     $('#deptTitle').attr('data-dept', data.results.subCatId);
+                    $('#deptTitle').attr('data-cat', data.results.catId);
                     var name = data.results.name;
                     name = name.length > 4 ? name.substr(0, 3) + '...' : name;
                     $('#diseaseTitle').html(name);
@@ -127,7 +129,10 @@ $this->show_footer = false;
         }
 
         //首次进入，更新城市
-        if ('<?php echo $city; ?>' != '') {
+        if ('<?php echo $city; ?>' == 0) {
+            $('#cityTitle').html('全部');
+            $('#cityTitle').attr('data-city', 0);
+        } else if ('<?php echo $city; ?>' != '') {
             $.ajax({
                 url: '<?php echo $urlCityName; ?>/' + '<?php echo $city; ?>',
                 success: function (data) {
@@ -156,98 +161,23 @@ $this->show_footer = false;
         $deptId = '';
         $deptName = '科室';
 
-
         //ajax异步加载科室
-        $deptHtml = '';
+        $deptData = '';
         var urlloadDiseaseCategory = '<?php echo $urlDiseasecategory; ?>';
         $.ajax({
             url: urlloadDiseaseCategory,
             success: function (data) {
-                //console.log(data);
-                $deptHtml = readyDept(data);
+                $deptData = data;
             }
         });
 
         //ajax异步加载地区
-        $cityHtml = ''
-        var requestCity = '<?php echo $urlCity; ?>?has_team=0';
+        var requestCity = '<?php echo $urlCity; ?>?has_team=0&&type=doctor';
         $.ajax({
             url: requestCity,
             success: function (data) {
-                //console.log(data);
-                $cityHtml = readyCity(data);
+                $cityData = data;
             }
         });
-
-        function readyDept(data) {
-            var results = data.results;
-            var innerHtml = '<div class="grid color-black" style="margin-top:93px;height:315px;">' +
-                    '<div id="highDept" class="col-1 w50" data-scroll="true" style="height:315px;width: 50%;">' +
-                    '<ul class="list">';
-            if (results.length > 0) {
-                for (var i = 0; i < results.length; i++) {
-                    //第一个为白色
-                    if (i == 0) {
-                        innerHtml += '<li class="aDept bg-white" data-dept="' + results[i].id + '">' + results[i].name + '</li>';
-                    } else {
-                        innerHtml += '<li class="aDept" data-dept="' + results[i].id + '">' + results[i].name + '</li>';
-                    }
-                }
-                innerHtml += '</ul></div><div id="secondDept" class="col-1 w50" data-scroll="true" data- style="height:315px;">'
-                for (var i = 0; i < results.length; i++) {
-                    var subCat = results[i].subCat;
-                    //第一个不隐藏
-                    if (i == 0) {
-                        innerHtml += '<ul class="bDept list" data-dept="' + results[i].id + '">';
-                    } else {
-                        innerHtml += '<ul class="bDept list hide" data-dept="' + results[i].id + '">';
-                    }
-                    if (subCat.length > 0) {
-                        for (var j = 0; j < subCat.length; j++) {
-                            innerHtml += '<li class="cDept" data-dept="' + subCat[j].id + '">' + subCat[j].name + '</li>';
-                        }
-                    }
-                    innerHtml += '</ul>';
-                }
-            }
-            innerHtml += '</div></div>';
-            return innerHtml;
-        }
-
-        function readyCity(data) {
-            var results = data.results;
-            var innerHtml = '<div class="grid color-black" style="margin-top:93px;height:315px;">' +
-                    '<div id="leftCity" class="col-1 w50" data-scroll="true" style="height:315px;width: 50%;">' +
-                    '<ul class="list">';
-            if (results.length > 0) {
-                for (var i = 0; i < results.length; i++) {
-                    //第一个为白色
-                    if (i == 0) {
-                        innerHtml += '<li class="aCity bg-white" data-city="' + results[i].id + '">' + results[i].state + '</li>';
-                    } else {
-                        innerHtml += '<li class="aCity" data-city="' + results[i].id + '">' + results[i].state + '</li>';
-                    }
-                }
-                innerHtml += '</ul></div><div id="rightCity" class="col-1 w50" data-scroll="true" data- style="height:315px;">'
-                for (var i = 0; i < results.length; i++) {
-                    var subCat = results[i].subCity;
-                    //第一个不隐藏
-                    if (i == 0) {
-                        innerHtml += '<ul class="bCity list" data-city="' + results[i].id + '">';
-                    } else {
-                        innerHtml += '<ul class="bCity list hide" data-city="' + results[i].id + '">';
-                    }
-                    if (subCat.length > 0) {
-                        for (var j = 0; j < subCat.length; j++) {
-                            innerHtml += '<li class="cCity" data-city="' + subCat[j].id + '">' + subCat[j].city + '</li>';
-                        }
-                    }
-                    innerHtml += '</ul>';
-                }
-            }
-            innerHtml += '</div></div>';
-            return innerHtml;
-        }
-
     });
 </script>

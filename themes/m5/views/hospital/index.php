@@ -39,7 +39,9 @@ $page = Yii::app()->request->getQuery('page', '');
         J.showMask();
 
         //返回时，更新城市
-        if ('<?php echo $city ?>' != 1) {
+        if ('<?php echo $city ?>' == 0) {
+            $('#cityTitle').html('全部');
+        } else if ('<?php echo $city ?>' != 1) {
             $.ajax({
                 url: '<?php echo $urlCityName; ?>/' + '<?php echo $city; ?>',
                 success: function (data) {
@@ -64,47 +66,12 @@ $page = Yii::app()->request->getQuery('page', '');
         });
 
         //ajax异步加载城市
+        $cityData = '';
         $.ajax({
-            url: '<?php echo $urlCity; ?>?has_team=0',
+            url: '<?php echo $urlCity; ?>?has_team=0&type=hospital',
             success: function (data) {
-                //console.log(data);
-                $cityHtml = readyCity(data);
+                $cityData = data;
             }
         });
-
-        function readyCity(data) {
-            var results = data.results;
-            var innerHtml = '<div class="grid color-black" style="margin-top:43px;height:315px;">' +
-                    '<div id="leftCity" class="col-1 w50" data-scroll="true" style="height:315px;width: 50%;">' +
-                    '<ul class="list">';
-            if (results.length > 0) {
-                for (var i = 0; i < results.length; i++) {
-                    //第一个为白色
-                    if (i == 0) {
-                        innerHtml += '<li class="aCity bg-white" data-city="' + results[i].id + '">' + results[i].state + '</li>';
-                    } else {
-                        innerHtml += '<li class="aCity" data-city="' + results[i].id + '">' + results[i].state + '</li>';
-                    }
-                }
-                innerHtml += '</ul></div><div id="rightCity" class="col-1 w50" data-scroll="true" data- style="height:315px;">'
-                for (var i = 0; i < results.length; i++) {
-                    var subCat = results[i].subCity;
-                    //第一个不隐藏
-                    if (i == 0) {
-                        innerHtml += '<ul class="bCity list" data-city="' + results[i].id + '">';
-                    } else {
-                        innerHtml += '<ul class="bCity list hide" data-city="' + results[i].id + '">';
-                    }
-                    if (subCat.length > 0) {
-                        for (var j = 0; j < subCat.length; j++) {
-                            innerHtml += '<li class="cCity" data-city="' + subCat[j].id + '">' + subCat[j].city + '</li>';
-                        }
-                    }
-                    innerHtml += '</ul>';
-                }
-            }
-            innerHtml += '</div></div>';
-            return innerHtml;
-        }
     });
 </script>
