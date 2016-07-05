@@ -27,10 +27,10 @@ $('#deptSelect').tap(function () {
             '<nav id="findDept_nav" class="header-secondary bg-white">' +
             '<div class="grid w100 color-black font-s16 color-black6">' +
             '<div id="deptSelect" data-target="closePopup" class="col-1 w50 br-gray bb-gray grid middle grayImg">' +
-            '<span id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="../../themes/m5/images/lowerTriangleGray.png">' +
+            '<span class="color-orange6" id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735831347598">' +
             '</div>' +
             '<div id="citySelect" data-target="closePopup" class="col-1 w50 bb-gray grid middle grayImg">' +
-            '<span id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="../../themes/m5/images/lowerTriangleGray.png">' +
+            '<span id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">' +
             '</div>' +
             '</div>' +
             '</nav>' +
@@ -147,10 +147,10 @@ $('#citySelect').tap(function () {
             '<nav id="findDept_nav" class="header-secondary bg-white">' +
             '<div class="grid w100 color-black font-s16 color-black6">' +
             '<div id="deptSelect" data-target="closePopup" class="col-1 w50 br-gray bb-gray grid middle grayImg">' +
-            '<span id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="../../themes/m5/images/lowerTriangleGray.png">' +
+            '<span id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">' +
             '</div>' +
             '<div id="citySelect" data-target="closePopup" class="col-1 w50 bb-gray grid middle grayImg">' +
-            '<span id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="../../themes/m5/images/lowerTriangleGray.png">' +
+            '<span class="color-orange6" id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735831347598">' +
             '</div>' +
             '</div>' +
             '</nav>' +
