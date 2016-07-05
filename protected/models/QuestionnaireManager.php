@@ -11,9 +11,7 @@ class QuestionnaireManager {
         $key = md5($values['userHostIp']);
         $alive = '3600';
         $anwerList=Yii::app()->cache->get($key);
-        if(isset($anwerList)){
-            $value = $anwerList;
-        }
+        $value = isset($anwerList) ? $anwerList : '';
         $value['answer_'.$values['questionnaireNumber']] = $values['answer'];
         yii::app()->cache->set($key, $value ,$alive);
         return $output = array('status' => 'ok', 'errorCode' => '200','errorMsg' =>'200','results'=> array('view'=>$values['questionnaireNumber']+1));
