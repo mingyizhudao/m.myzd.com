@@ -1,5 +1,5 @@
 <?php
-$this->setPageTitle('名医义诊');
+$this->setPageTitle('疾病信息');
 $urlHomeMyyzDoctor = $this->createUrl('home/page', array('view' => 'myyzDoctor'));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
