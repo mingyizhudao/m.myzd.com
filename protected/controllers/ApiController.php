@@ -388,6 +388,7 @@ class ApiController extends Controller {
     public function actionCreate($model) {
         $get = $_GET;
 //        $post = $_POST;
+
         if (empty($_POST)) {
             // application/json
             $post = CJSON::decode($this->getPostData());
@@ -517,6 +518,14 @@ class ApiController extends Controller {
                     } else {
                         $output['error'] = 'Wrong parameters';
                     }
+                }
+                break;
+            case 'questionnaire':
+                if(isset($post['questionnaire'])){
+                    $values = $post['questionnaire'];
+                    $values['userHostIp'] = Yii::app()->request->userHostAddress;
+                    $questionnaireMgr = new QuestionnaireManager();
+                    $output = $questionnaireMgr->apiCreateQuestionnaire($values);
                 }
                 break;
             default:
