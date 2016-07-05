@@ -523,7 +523,6 @@ class ApiController extends Controller {
             case 'questionnaire':
                 if(isset($post['questionnaire'])){
                     $values = $post['questionnaire'];
-                    $values['userHostIp'] = Yii::app()->request->userHostAddress;
                     $questionnaireMgr = new QuestionnaireManager();
                     $output = $questionnaireMgr->apiCreateQuestionnaire($values);
                 }
