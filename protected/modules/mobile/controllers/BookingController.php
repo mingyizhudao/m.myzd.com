@@ -5,7 +5,7 @@ class BookingController extends MobileController {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('createCorp', 'ajaxCreateCorp', 'ajaxUploadCorp', 'ajaxUploadFile', 'captcha', 'ajaxCaptchaCode', 'ajaxCorpCaptchaCode', 'ajaxQuestionnaireCreate', 'quickbook', 'ajaxQuickbook', 'create', 'PayView'),
+                'actions' => array('createCorp', 'ajaxCreateCorp', 'ajaxUploadCorp', 'ajaxUploadFile', 'captcha', 'ajaxCaptchaCode', 'ajaxCorpCaptchaCode', 'ajaxQuestionnaireCreate', 'quickbook', 'ajaxQuickbook','questionnaireBookingView', 'create', 'PayView'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -859,6 +859,10 @@ class BookingController extends MobileController {
 
     public function actionTestView() {
         $this->render("review");
+    }
+    
+    public function actionQuestionnaireBookingView() {
+        $this->render("questionnaireBooking");
     }
 
     public function actionPayView() {
