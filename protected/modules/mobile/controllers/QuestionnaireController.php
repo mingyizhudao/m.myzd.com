@@ -66,8 +66,12 @@ class QuestionnaireController extends MobileController {
 
    public function actionQuestionnaireBookingView($id = null) {
        $form = new BookDoctorForm();
-       $apiService = new ApiViewDoctorV7($id);
-       $output = $apiService->loadApiViewData();
+       if(empty($id)){
+           $apiService = new ApiViewDoctorV7($id);
+           $output = $apiService->loadApiViewData();
+       }else{
+           $output = array();
+       }
        $this->render('questionnaireBooking',array(
            'data' => $output,
            'model' => $form
