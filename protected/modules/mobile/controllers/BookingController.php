@@ -261,21 +261,15 @@ class BookingController extends MobileController {
                 $values = $post['booking'];
                 if (isset($values['doctor_id'])) {
                     // 预约医生
-                    $form = new BookDoctorForm();
+                    $form = new BookQuestionnaireForm();
                     $doctor = Doctor::model()->getById($values['doctor_id']);
                     $doctorId = $values['doctor_id'];
-                    //是否义诊
-                    $bookingServiceJoin = BookingServiceDoctorJoin::model()->getByDoctorIdAndBookingServiceId($doctorId, BookingServiceConfig::BOOKING_SERVICE_FREE_LIINIC);
-                    if (isset($bookingServiceJoin)) {
-                        $form->booking_service_id = BookingServiceConfig::BOOKING_SERVICE_FREE_LIINIC;
-                        //$form->bk_status = StatCode::BK_STATUS_PROCESSING;
-                    }
                     $form->setAttributes($values, true);
                     $form->setDoctorData();
                     $form->initModel();
                     $form->validate();
                 }else{
-                    $form = new BookDoctorForm();
+                    $form = new BookQuestionnaireForm();
                     $form->setAttributes($values, true);
                     $form->setDoctorData();
                     $form->initModel();
@@ -287,22 +281,17 @@ class BookingController extends MobileController {
                         // 处理booking.user_id
                         $userId = $this->getCurrentUserId();
                         $bookingUser = null;
-                        if (isset($userId)) {
-                            $bookingUser = $userId;
-                            $user = $this->getCurrentUser();
-                            $form->mobile = $user->mobile;
+                        if (isset($user)) {
+                            // 快速预约
+                            $form->mobile = $user->username;
+                            $form->validate();
                         } else {
-                            $mobile = $form->mobile;
-                            $user = User::model()->getByUsernameAndRole($mobile, StatCode::USER_ROLE_PATIENT);
-                            if (isset($user)) {
-                                $bookingUser = $user->getId();
-                            } else {
-                                // create new user.
-                                $userMgr = new UserManager();
-                                $user = $userMgr->createUserPatient($mobile);
-                                if (isset($user)) {
-                                    $bookingUser = $user->getId();
-                                }
+                            $form->validate();
+                            //验证码校验
+                            $authMgr = new AuthManager();
+                            $authSmsVerify = $authMgr->verifyCodeForBooking($form->mobile, $form->verify_code, null);
+                            if ($authSmsVerify->isValid() === false) {
+                                $form->addError('verify_code', $authSmsVerify->getError('code'));
                             }
                         }
                         $booking->setAttributes($form->attributes, true);
@@ -325,12 +314,7 @@ class BookingController extends MobileController {
                             throw new CException('error saving data.');
                         }
                         $apiRequest = new ApiRequestUrl();
-                        //  $apiRequest = new ApiRequestUrl(Yii::app()->params['hostInfoProd'],Yii::app()->params['admin_salesbooking_create']);
-                        //线上配置
                         $remote_url = $apiRequest->getUrlAdminSalesBookingCreate() . '?type=' . StatCode::TRANS_TYPE_BK . '&id=' . $booking->id;
-                        //本地配置
-                
-                        //                     $remote_url = 'http://192.168.1.216/admin/api/adminbooking'. '?type=' . StatCode::TRANS_TYPE_BK . '&id='.$booking->id;
                         $data = $this->send_get($remote_url);
                         if ($data['status'] == "ok") {
                             foreach ($questionnaireList as $k=>$v){

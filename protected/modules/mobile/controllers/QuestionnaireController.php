@@ -60,12 +60,14 @@ class QuestionnaireController extends MobileController {
     }
     
    public function actionView($id = 1){
+       $key = session_id();
+       $unfinished = Yii::app()->cache->get($key);
        $this->render('question_'.$id);
    }
    
 
    public function actionQuestionnaireBookingView($id = null) {
-       $form = new BookDoctorForm();
+       $form = new BookQuestionnaireForm();
        if(isset($id)){
            $apiService = new ApiViewDoctorV7($id);
            $output = $apiService->loadApiViewData();
