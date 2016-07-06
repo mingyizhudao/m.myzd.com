@@ -35,12 +35,12 @@ class QuestionnaireManager {
                      return $output = array('status' => 'ok');
                 }   
             }else{
-                Yii::app()->cache->delete(md5(Yii::app()->request->userHostAddress));
                 $value[$values['questionnaireNumber']] = $values['answer'];
                 yii::app()->cache->set($key, $value ,$alive);
                 return $output = array('status' => 'ok');
             }
         }else{
+            Yii::app()->cache->delete(Yii::app()->request->userHostAddress);
             return $output = array('status' => 'no','errorMsg' =>'error');
         }
     }
