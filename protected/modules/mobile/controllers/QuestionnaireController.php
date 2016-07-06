@@ -64,11 +64,13 @@ class QuestionnaireController extends MobileController {
    }
    
 
-   public function actionQuestionnaireBookingView($id) {
+   public function actionQuestionnaireBookingView($id = null) {
+       $form = new BookDoctorForm();
        $apiService = new ApiViewDoctorV7($id);
        $output = $apiService->loadApiViewData();
        $this->render('questionnaireBooking',array(
-           'data' => $output
+           'data' => $output,
+           'model' => $form
        ));
    }
    
