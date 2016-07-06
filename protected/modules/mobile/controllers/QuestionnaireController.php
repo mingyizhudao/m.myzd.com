@@ -70,7 +70,7 @@ class QuestionnaireController extends MobileController {
            $apiService = new ApiViewDoctorV7($id);
            $output = $apiService->loadApiViewData();
        }else{
-           $output = array();
+           $output = null;
        }
        $this->render('questionnaireBooking',array(
            'data' => $output,
