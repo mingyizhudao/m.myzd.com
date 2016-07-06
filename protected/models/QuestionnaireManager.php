@@ -15,9 +15,10 @@ class QuestionnaireManager {
         $key = session_id();
         $alive = '3600';
         $anwerList=Yii::app()->cache->get($key);
+//         print_r($anwerList);exit;
         $value = isset($anwerList) ? $anwerList : '';
         if(isset($values['is_picture'])){
-            $values['answer']=array('1'=>array('file_name'=>'aaaaa','file_url'=>'bbbbbbb','file_size' =>'111','mime_type' => '1','file_ext'=>'jia','remote_domain'=>'2334565','remote_file_key'=>null),'2'=>array('file_name'=>'cccc','file_url'=>'ddd','file_size' =>'111','mime_type' => '1','file_ext'=>'jia','remote_domain'=>'2334565','remote_file_key'=>null));
+//             $values['answer']=array('1'=>array('file_name'=>'aaaaa','file_url'=>'bbbbbbb','file_size' =>'111','mime_type' => '1','file_ext'=>'jia','remote_domain'=>'2334565','remote_file_key'=>null),'2'=>array('file_name'=>'cccc','file_url'=>'ddd','file_size' =>'111','mime_type' => '1','file_ext'=>'jia','remote_domain'=>'2334565','remote_file_key'=>null));
             if(is_array($values['answer'])){
                 unset($value[$values['questionnaireNumber']]);
                 foreach ($values['answer'] as $k=>$v){

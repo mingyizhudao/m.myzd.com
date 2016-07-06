@@ -5,7 +5,7 @@ class BookingController extends MobileController {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('createCorp', 'ajaxCreateCorp', 'ajaxUploadCorp', 'ajaxUploadFile', 'captcha', 'ajaxCaptchaCode', 'ajaxCorpCaptchaCode', 'quickbook', 'ajaxQuickbook', 'create', 'PayView'),
+                'actions' => array('createCorp', 'ajaxCreateCorp', 'ajaxUploadCorp', 'ajaxUploadFile', 'captcha', 'ajaxCaptchaCode', 'ajaxCorpCaptchaCode', 'ajaxQuestionnaireCreate', 'quickbook', 'ajaxQuickbook', 'create', 'PayView'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -246,7 +246,148 @@ class BookingController extends MobileController {
             $this->renderJsonOutput($output);
         }
     }
-
+    
+    /**
+     * 问卷预约专家和科室预约
+     * @throws CException
+     */
+    public function actionAjaxQuestionnaireCreate() {
+        $output = array('status' => 'no');
+        $post = $this->decryptInput();
+        if (isset($post['booking'])) {
+            $key = session_id();
+            $questionnaireList = Yii::app()->cache->get(md5($key));
+            if(isset($questionnaireList)){
+                $values = $post['booking'];
+                if (isset($values['doctor_id'])) {
+                    // 预约医生
+                    $form = new BookDoctorForm();
+                    $doctor = Doctor::model()->getById($values['doctor_id']);
+                    $doctorId = $values['doctor_id'];
+                    //是否义诊
+                    $bookingServiceJoin = BookingServiceDoctorJoin::model()->getByDoctorIdAndBookingServiceId($doctorId, BookingServiceConfig::BOOKING_SERVICE_FREE_LIINIC);
+                    if (isset($bookingServiceJoin)) {
+                        $form->booking_service_id = BookingServiceConfig::BOOKING_SERVICE_FREE_LIINIC;
+                        //$form->bk_status = StatCode::BK_STATUS_PROCESSING;
+                    }
+                    $form->setAttributes($values, true);
+                    $form->setDoctorData();
+                    $form->initModel();
+                    $form->validate();
+                }else{
+                    $form = new BookDoctorForm();
+                    $form->setAttributes($values, true);
+                    $form->setDoctorData();
+                    $form->initModel();
+                    $form->validate();
+                }
+                try {
+                    if ($form->hasErrors() === false) {
+                        $booking = new Booking();
+                        // 处理booking.user_id
+                        $userId = $this->getCurrentUserId();
+                        $bookingUser = null;
+                        if (isset($userId)) {
+                            $bookingUser = $userId;
+                            $user = $this->getCurrentUser();
+                            $form->mobile = $user->mobile;
+                        } else {
+                            $mobile = $form->mobile;
+                            $user = User::model()->getByUsernameAndRole($mobile, StatCode::USER_ROLE_PATIENT);
+                            if (isset($user)) {
+                                $bookingUser = $user->getId();
+                            } else {
+                                // create new user.
+                                $userMgr = new UserManager();
+                                $user = $userMgr->createUserPatient($mobile);
+                                if (isset($user)) {
+                                    $bookingUser = $user->getId();
+                                }
+                            }
+                        }
+                        $booking->setAttributes($form->attributes, true);
+                        if ($this->isUserAgentWeixin()) {
+                            $booking->user_agent = StatCode::USER_AGENT_WEIXIN;
+                        } else {
+                            $booking->user_agent = StatCode::USER_AGENT_MOBILEWEB;
+                        }
+                        $booking->user_id = $bookingUser;
+                        //第三方预约
+                        if (Yii::app()->session['vendorId']) {
+                            $booking->is_vendor = 1;
+                            $booking->vendor_id = Yii::app()->session['vendorId'];
+                            if(Yii::app()->session['vendorSite']){
+                                $booking->vendor_site = Yii::app()->session['vendorSite'];
+                            }
+                        }
+                        if ($booking->save() === false) {
+                            $output['errors'] = $booking->getErrors();
+                            throw new CException('error saving data.');
+                        }
+                        $apiRequest = new ApiRequestUrl();
+                        //  $apiRequest = new ApiRequestUrl(Yii::app()->params['hostInfoProd'],Yii::app()->params['admin_salesbooking_create']);
+                        //线上配置
+                        $remote_url = $apiRequest->getUrlAdminSalesBookingCreate() . '?type=' . StatCode::TRANS_TYPE_BK . '&id=' . $booking->id;
+                        //本地配置
+                
+                        //                     $remote_url = 'http://192.168.1.216/admin/api/adminbooking'. '?type=' . StatCode::TRANS_TYPE_BK . '&id='.$booking->id;
+                        $data = $this->send_get($remote_url);
+                        if ($data['status'] == "ok") {
+                            foreach ($questionnaireList as $k=>$v){
+                                if($v == 'picture'){
+                                    foreach ($v as $k1=>$v1){
+                                        $bookingFile = new BookingFile();
+                                        $questionnaireFile=QuestionnaireFile::model()->getById($v1);
+                                        $bookingFile->setAttributes(array(            
+                                           'file_name'=>$questionnaireFile['file_name'],
+                                           'file_url'=>$questionnaireFile['file_url'],
+                                           'file_size' => $questionnaireFile['file_size'],
+                                           'mime_type' => $questionnaireFile['mime_type'],
+                                           'file_ext'=> $questionnaireFile['file_ext'],
+                                           'remote_domain'=>$questionnaireFile['remote_domain'],
+                                           'remote_file_key'=>$questionnaireFile['remote_file_key']), true);
+                                        
+                                        $bookingFile->save();
+                                    }
+                                }else{
+                                    $questionnaire = Questionnaire::model()->getById($v);
+                                    $questionnaire->user_id = $booking->user_id;
+                                    $questionnaire->save();
+                                }
+                            }
+                            Yii::app()->cache->delete(md5($key));
+                            $output['status'] = 'ok';
+                            $output['salesOrderRefNo'] = $data['salesOrderRefNo'];
+                            $output['booking']['id'] = $booking->getId();
+                           
+                        } else {
+                            //$output['errors'] = $salesOrder->getErrors();
+                            throw new CException('error saving data.');
+                        }
+                    } else {
+                        $output['errors'] = $form->getErrors();
+                        throw new CException('error saving data.');
+                    }
+                } catch (CException $cex) {
+                    $output['status'] = 'no';
+                }
+            }else{
+                $output['error'] = 'missing session';
+            }
+           
+        } else {
+            $output['error'] = 'missing parameters';
+        }
+        //$this->renderJsonOutput($output);
+        if (isset($_POST['plugin'])) {
+            echo CJSON::encode($output);
+            Yii::app()->end(200, true); //结束 返回200
+        } else {
+            $this->renderJsonOutput($output);
+        }
+    }
+    
+    
     public function actionAjaxCaptchaCode() {
         $model = new BookQuickForm;
         $values = $_POST['booking'];

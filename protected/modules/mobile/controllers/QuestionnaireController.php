@@ -23,7 +23,7 @@ class QuestionnaireController extends MobileController {
             $key = session_id();
             $alive = 86400;
             $questionnaireList = Yii::app()->cache->get($key);
-//             print_r($questionnaireList);exit;
+//             print_r(Yii::app()->cache->get(md5($key)));exit;
             if(is_array($questionnaireList)){
                 foreach ($questionnaireList as $k=>$v){
                     if(is_array($v)){
