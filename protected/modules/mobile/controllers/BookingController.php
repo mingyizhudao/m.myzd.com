@@ -860,10 +860,6 @@ class BookingController extends MobileController {
     public function actionTestView() {
         $this->render("review");
     }
-    
-    public function actionQuestionnaireBookingView() {
-        $this->render("questionnaireBooking");
-    }
 
     public function actionPayView() {
         $value = $_GET;

@@ -5,7 +5,7 @@ class QuestionnaireController extends MobileController {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('ajaxFinishQuestionnaire','test'),
+                'actions' => array('ajaxFinishQuestionnaire', 'questionnaireBookingView','view'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -63,7 +63,18 @@ class QuestionnaireController extends MobileController {
        $this->render('question_'.$id);
    }
    
+
+   public function actionQuestionnaireBookingView($id) {
+       $apiService = new ApiViewDoctorV7($id);
+       $output = $apiService->loadApiViewData();
+       $this->render('questionnaireBooking',array(
+           'data' => $output
+       ));
+   }
    
+   public function actionQuestionnaireSearch(){
+       $this->render("questionnaireSearch");
+   }
    
 }
 ?>
