@@ -8,6 +8,7 @@ $this->setPageTitle('疾病信息');
 $urlHomeMyyzDoctor = $this->createUrl('home/page', array('view' => 'myyzDoctor'));
 $urlQiniuAjaxToken = $this->createUrl('qiniu/ajaxBookingToken');
 $urlUploadFile = $this->createUrl("/api/questionnaire");
+$urlQuestion = $this->createUrl('questionnaire/view', array('id' => '5'));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
@@ -29,7 +30,7 @@ $this->show_footer = false;
         margin: 5px auto;
     }
 
-#questionnairefour_article .footer-logo{position:absolute;bottom:0;width:100%;left:0;}
+    #questionnairefour_article .footer-logo{position:absolute;bottom:0;width:100%;left:0;}
 </style>
 <header class="bg-green">
     <nav class="left">
@@ -42,11 +43,11 @@ $this->show_footer = false;
     <h1 class="title">疾病信息</h1>
     <nav class="right" style="top:2px!important;">
         <div class="font-s16">
-            <a href="<?php echo $this->createUrl('questionnaire/view',array('id'=>'5'));?>">跳过</a>
+            <a href="<?php echo $this->createUrl('questionnaire/view', array('id' => '5')); ?>">跳过</a>
         </div>
     </nav>
 </header>
-<article id="questionnairefour_article" class="active android_article" data-scroll="true">
+<article id="questionnairefour_article" class="active android_article" data-scroll="true" data-action-url="<?php echo $urlQuestion; ?>">
     <div class="pad20">
         <div class="w100 color-green text18">
             为了更好地给您提供诊疗意见，我们需要了解一下信息：

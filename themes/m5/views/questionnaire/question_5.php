@@ -1,11 +1,12 @@
 <?php
 $this->setPageTitle('疾病信息');
 $urlQuestionnaire = $this->createUrl('/api/questionnaire');
+$urlDoctorSearch = $this->createUrl('doctor/search');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
 <style>
-#questionnairefive_article .footer-logo{position:absolute;bottom:0;width:100%;left:0;}
+    #questionnairefive_article .footer-logo{position:absolute;bottom:0;width:100%;left:0;}
 </style>
 <header class="bg-green">
     <nav class="left">
@@ -81,9 +82,10 @@ $this->show_footer = false;
     function actionAjaxFinishQuestionnaire() {
         $.ajax({
             type: 'post',
-            url: '<?php echo $this->createUrl('questionnaire/ajaxFinishQuestionnaire');?>',
+            url: '<?php echo $this->createUrl('questionnaire/ajaxFinishQuestionnaire'); ?>',
             success: function (data) {
                 if (data.status == 'ok') {
+                    location.href = '<?php echo $urlDoctorSearch; ?>?disease_sub_category=2';
                 }
             },
             error: function (XmlHttpRequest, textStatus, errorThrown) {
