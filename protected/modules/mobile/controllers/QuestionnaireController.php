@@ -66,7 +66,7 @@ class QuestionnaireController extends MobileController {
 
    public function actionQuestionnaireBookingView($id = null) {
        $form = new BookDoctorForm();
-       if(empty($id)){
+       if(isset($id)){
            $apiService = new ApiViewDoctorV7($id);
            $output = $apiService->loadApiViewData();
        }else{
