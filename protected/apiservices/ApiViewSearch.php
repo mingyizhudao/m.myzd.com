@@ -104,6 +104,9 @@ class ApiViewSearch extends EApiViewService {
             $data->name = $model->getName();
             $data->hpName = $model->getHospitalName();
             $data->hpDeptName = $model->getHpDeptName();
+            $data->desc = $model->getDescription();
+            $data->imageUrl = $model->getAbsUrlAvatar();
+            $data->actionUrl = $data->actionUrl = Yii::app()->createAbsoluteUrl('/api/booking');    // @user by app.
             $data->isContracted = $model->getIsContracted();
             $data->mTitle = $model->getMedicalTitle();
             $data->aTitle = $model->getAcademicTitle();
