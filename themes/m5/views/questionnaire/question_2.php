@@ -25,8 +25,8 @@ $this->show_footer = false;
         <div class="w100 mt30 font-s16">
             <div>2/5：有找医生看过吗？</div>
             <div class="border-gray border-r3 mt20">
-                <div class="pad10 border-bottom"><input type="radio" name="questionnaire[answer]" value="去过"/> 看过</div>
-                <div class="pad10 border-bottom"><input type="radio" name="questionnaire[answer]" value="没去过" /> 没看过</div>
+                <div class="pad10 border-bottom"><input type="radio" name="questionnaire[answer]" value="1"/> 看过</div>
+                <div class="pad10 border-bottom"><input type="radio" name="questionnaire[answer]" value="2" /> 没看过</div>
             </div>
             <div class="questionnaire-error"></div>
         </div>
