@@ -15,6 +15,7 @@ class QuestionnaireManager {
         $key = session_id();
         $alive = '3600';
         $anwerList=Yii::app()->cache->get($key);
+        print_r($anwerList);exit;
         $num= count($anwerList);
         if($values['questionnaireNumber'] == 1 ){
            $num = 1;
@@ -34,7 +35,6 @@ class QuestionnaireManager {
                     $value[$values['questionnaireNumber']][$k]['remote_domain'] =$v['remote_domain'];
                     $value[$values['questionnaireNumber']][$k]['remote_file_key'] =$v['remote_file_key'];
                 }
-                 $value[$values['questionnaireNumber']] =  $value[$values['questionnaireNumber']];
                  yii::app()->cache->set($key, $value ,$alive);
             }else{
                 $value[$values['questionnaireNumber']] = $values['answer'];
@@ -49,7 +49,6 @@ class QuestionnaireManager {
     }
     
     public function apiUploadQuestionnaireFile($values){
-        print_r($values);exit;
          $output = array('status' => 'no', 'errorCode' => '0','errorMsg' =>'0');
          $values['userHostIp'] = Yii::app()->request->userHostAddress;
 //          $values = array('file_name'=>'aaaaa','file_url'=>'bbbbbbb','file_size' =>'111','mime_type' => '1','file_ext'=>'jia','remote_domain'=>'2334565','remote_file_key'=>'1245555','questionnaireNumber'=>'4','file_num'=>'1','userHostIp'=>'127.0.0.1');
@@ -58,19 +57,31 @@ class QuestionnaireManager {
              return $output;
          }
          $key = session_id();
-         $anwerList=Yii::app()->cache->get($key);
          $alive = '3600';
-//          $values['questionnaireNumber']
-//          $values['file_num'] = 
-//          $values['file_name'] = 
-//          $values['file_url'] = 
-//          $values['file_size'] = 
-//          $values['mime_type'] = 
-//          $values['file_ext'] =
-//          $values['remote_domain'] =
-//          $values['remote_file_key'] =
+         $anwerList=Yii::app()->cache->get($key);
+//          print_r($anwerList);exit;
+         $num= count($anwerList);
+         if($values['questionnaireNumber'] == 1 ){
+            $num = 1;
+         }
+         $qustNum = $values['questionnaireNumber'] -1;
+         $value = isset($anwerList) ? $anwerList : '';
+         if($num >= $qustNum){
+             $value[$values['questionnaireNumber']][$values['file_num']]['file_name'] = $values['file_name'];
+             $value[$values['questionnaireNumber']][$values['file_num']]['file_url'] = $values['file_url'];
+             $value[$values['questionnaireNumber']][$values['file_num']]['file_size'] = $values['file_size'];
+             $value[$values['questionnaireNumber']][$values['file_num']]['mime_type'] = $values['mime_type'];
+             $value[$values['questionnaireNumber']][$values['file_num']]['file_ext'] = $values['file_ext'];
+             $value[$values['questionnaireNumber']][$values['file_num']]['remote_domain'] = $values['remote_domain'];
+             $value[$values['questionnaireNumber']][$values['file_num']]['remote_file_key'] = $values['remote_file_key'];
+             yii::app()->cache->set($key, $value ,$alive);
+                 
+         }else{
+//              Yii::app()->cache->delete($key);
+             return $output = array('status' => 'no','errorMsg' =>'faile answer');
+         }
          
-         
+         return $output = array('status' => 'ok');
     }
 
 }
