@@ -1,14 +1,6 @@
 <?php
 $this->show_footer = false;
 ?>
-<style>
-    .w140p{
-        width: 140px;
-    }
-    .c-black2{
-        color: #777;
-    }
-</style>
 <header class="bg-green">
     <h1 class="title">提交成功</h1>
 </header>

@@ -5,21 +5,6 @@ $urlQuestion = $this->createUrl('questionnaire/view', array('id' => ''));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
-<style>
-    article{
-        background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146761944631242') no-repeat;
-        background-size: 125px 37px;
-        background-position-x: 50%;
-        background-position-y: 97%;
-    }
-    .error{
-        color: #f00;
-    }
-    .button:disabled, button:disabled, .button.disabled, button.disabled {
-        background: #c6c6c6!important;
-        color: #fff!important;
-    }
-</style>
 <header class="bg-green">
     <nav class="left">
         <a href="" data-target="back">
@@ -30,7 +15,7 @@ $this->show_footer = false;
     </nav>
     <h1 class="title">疾病信息</h1>
 </header>
-<article id="questionnairetwo_article" class="active" data-scroll="true">
+<article id="questionnairetwo_article" class="active logo_article" data-scroll="true">
     <div class="pad20">
         <div class="w100 color-green text18">
             为了更好地给您提供诊疗意见，我们需要了解一下信息：

@@ -6,52 +6,6 @@ $urlQuestionnaireBookingView = $this->createUrl('questionnaire/questionnaireBook
 $urlSearch = $this->createAbsoluteUrl('/api/search', array('name' => ''));
 $this->show_footer = false;
 ?>
-<style>
-    .search .icon_search {
-        position: absolute;
-        left: 15px;
-        top: 9px;
-        width: 15px;
-        height: 25px;
-        background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146243645256928') no-repeat;
-        background-size: 15px 15px;
-        background-position: 0 5px;
-    }
-    .search .icon_input {
-        color: #000;
-        margin-bottom: 0;
-        border-radius: 5px!important;
-        -webkit-box-shadow: none!important;
-        box-shadow: none!important;
-        padding: 0 10px 0 30px!important;
-        height: 30px!important;
-        border: none!important;
-        margin-top: 7px;
-    }
-    .search .icon_clear {
-        position: absolute;
-        top: 9px;
-        right: 40px;
-        padding: 0 10px;
-        width: 35px;
-        height: 25px;
-        background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146717942005220') no-repeat;
-        background-size: 15px 15px;
-        background-position: 10px 5px;
-    }
-    article{
-        background-color: #f1f1f1;
-    }
-    .noDoctor{
-        border: 1px solid #A0A0A0;
-        border-radius: 5px;
-        font-size: 16px;
-        color: #7C7C7C;
-        text-align: center;
-        padding: 10px 0px;
-        display: block;
-    }
-</style>
 <header class="bg-green search">
     <div class="grid w100">
         <div class="col-1 pl10">
@@ -64,7 +18,7 @@ $this->show_footer = false;
         </div>
     </div>
 </header>
-<article class="active" data-scroll="true">
+<article id="questionnaireSearch_article" class="active" data-scroll="true">
     <div>
 
     </div>

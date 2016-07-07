@@ -32,31 +32,6 @@ $urlSearchDeptName = $this->createAbsoluteUrl('/api/diseasename', array('api' =>
 $urlQuestionnaireSearch = $this->createAbsoluteUrl('questionnaire/questionnaireSearchView');
 $this->show_footer = false;
 ?>
-<style>
-    .h94p{
-        height: 94px!important;
-    }
-    .h50p{
-        height: 50px!important;
-    }
-    #findDoc_nav #searchBar{
-        width: 100%;
-        height: 44px;
-        background-color: #F1F1F1;
-        padding: 7px 10px;
-    }
-    #findDoc_nav .searchBtn{
-        height: 30px;
-        background: #fff url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146243645256928') no-repeat;
-        background-size: 15px 15px;
-        background-position: 5px 6px;
-        color: #9E9E9E;
-        padding-left: 30px;
-        border: 1px solid #B5B5B5;
-        border-radius: 5px;
-        text-align: left;
-    }
-</style>
 <header class="bg-green">
     <nav class="left">
         <a href="<?php echo $urlHomeView; ?>">

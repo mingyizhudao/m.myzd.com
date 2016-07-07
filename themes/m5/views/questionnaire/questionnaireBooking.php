@@ -1,6 +1,6 @@
 <?php
 Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/jquery.formvalidate.min.js', CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/questionnaireBooking.js', CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/questionnaireBooking.min.js', CClientScript::POS_END);
 ?>
 <?php
 $this->setPageTitle('填写专家信息');
@@ -14,44 +14,6 @@ $urlCompleteQuestionnaireView = $this->createUrl('questionnaire/completeQuestion
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
-<style>
-    article{
-        background-color: #f1f1f1;
-    }
-    .w18p{
-        width: 18px;
-    }
-    .inputBar{
-        background-color: #fff;
-        border-radius: 5px;
-        font-size: 15px;
-    }
-    .noPaddingInput{
-        padding: 0px 10px!important;
-        margin-bottom: 0px!important;
-        border: none!important;
-        -webkit-box-shadow: none!important;
-        box-shadow: none!important;
-        height: 30px!important;
-        font-size: 15px;
-    }
-    .btn-sendSmsCode{
-        padding-left: 10px;
-        padding-right: 10px;
-        padding-top: 3px;
-        display: block;
-        padding-bottom: 2px;
-        border-radius: 3px;
-        background-color: #F48124!important;
-        height: 50px;
-        min-width: 8em;
-        width: 100%;
-        margin: 0 0!important;
-    }
-    .error{
-        color: #f00;
-    }
-</style>
 <header class="bg-green">
     <nav class="left">
         <a href="" data-target="back">
@@ -62,7 +24,7 @@ $this->show_footer = false;
     </nav>
     <h1 class="title">填写专家信息</h1>
 </header>
-<article class="active" data-scroll="true">
+<article id="questionnaireBooking_article" class="active" data-scroll="true">
     <div id="doctorInf" class="pl10 pr10 pb20 pt20 font-s15 <?php echo $source == 1 ? '' : 'hide'; ?>">
         <div class="color-gray">
             请告诉我们您想预约的专家信息

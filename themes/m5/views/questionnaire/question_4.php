@@ -1,7 +1,7 @@
 <?php
 Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/js/qiniu/css/qiniu.base.min.css');
 Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/qiniu/js/qiniu.base.min.js?ts=' . time(), CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/qiniu/js/zeroBooking.js?ts=' . time(), CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/qiniu/js/zeroBooking.min.js?ts=' . time(), CClientScript::POS_END);
 ?>
 <?php
 $this->setPageTitle('疾病信息');
@@ -14,39 +14,10 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
 <style>
-    .android_article .btn-default{
-        background-color: #fff!important;
-    }
-    .android_article .btn{
-        padding: 0px;
-    }
-    #container a{
-        width: inherit;
-        min-width: inherit;
-    }
-    .btn-file{
-        background-color: #06C1AE;
-        width: 100%;
-        display: block;
-        margin: 5px auto;
-    }
-
-
-    .w123p{width: 123px;}
     #jingle_popup {
         background-color: #ffffff;
-        top: 40%!important;
-    }
-    article{
-        background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146761944631242') no-repeat;
-        background-size: 125px 37px;
-        background-position-x: 50%;
-        background-position-y: 97%;
-    }
-
-    .button:disabled, button:disabled, .button.disabled, button.disabled {
-        background: #c6c6c6!important;
-        color: #fff!important;
+        top: 30%!important;
+        margin-top: 0px!important;
     }
 </style>
 <header class="bg-green">
@@ -64,7 +35,7 @@ $this->show_footer = false;
         </div>
     </nav>
 </header>
-<article id="questionnairefour_article" class="active android_article" data-scroll="true" data-action-url="<?php echo $urlQuestionnaire; ?>" data-return-url="<?php echo $urlQuestion; ?>">
+<article id="questionnairefour_article" class="active android_article logo_article" data-scroll="true" data-action-url="<?php echo $urlQuestionnaire; ?>" data-return-url="<?php echo $urlQuestion; ?>">
     <div class="pad20">
         <div class="w100 color-green text18">
             为了更好地给您提供诊疗意见，我们需要了解一下信息：
