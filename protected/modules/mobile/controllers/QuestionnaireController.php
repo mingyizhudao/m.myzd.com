@@ -5,7 +5,7 @@ class QuestionnaireController extends MobileController {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('ajaxFinishQuestionnaire', 'questionnaireBookingView', 'questionnaireSearchView', 'questionnaireBookingFinishView', 'beginQuestionnaireView','view'),
+                'actions' => array('ajaxFinishQuestionnaire', 'questionnaireBookingView', 'questionnaireSearchView', 'questionnaireBookingFinishView', 'beginQuestionnaireView' , 'completeQuestionnaireView','view'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -91,5 +91,10 @@ class QuestionnaireController extends MobileController {
    public function actionBeginQuestionnaireView(){
        $this->render("beginQuestionnaire");
    }
+   
+   public function actionCompleteQuestionnaireView(){
+       $this->render("completeQuestionnaire");
+   }
+   
 }
 ?>
