@@ -5,8 +5,13 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
 <style>
-    #questionnairethree_article .footer-logo{position:absolute;bottom:0;width:100%;left:0;}
     textarea.questionnairethreetextarea{margin-bottom:0px;border-radius:0px;border:none;border-bottom:1px solid #e4e4e4;}
+    article{
+        background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146761944631242') no-repeat;
+        background-size: 125px 37px;
+        background-position-x: 50%;
+        background-position-y: 97%;
+    }
 </style>
 <header class="bg-green">
     <nav class="left">
@@ -38,7 +43,7 @@ $this->show_footer = false;
             </button>
         </div>
         <div class="footer-logo">
-            <div class="text-center pb20"><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146761944631242" class="w50"/></div>
+            <div class="text-center pb20"><img src="" class="w50"/></div>
         </div>
     </div>
 </article>

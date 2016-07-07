@@ -31,6 +31,8 @@ $this->show_footer = false;
     }
 
     #questionnairefour_article .footer-logo{position:absolute;bottom:0;width:100%;left:0;}
+
+    .w123p{width: 123px;}
 </style>
 <header class="bg-green">
     <nav class="left">
@@ -87,3 +89,26 @@ $this->show_footer = false;
         </div>
     </div>
 </article>
+<script>
+    $(document).ready(function () {
+        $('.learn-example').click(function () {
+            var innerHtml = '<div style="text-align: center;font-size: 20px;font-weight: 600;margin-top: 10px;color:#E74C3C ">' +
+                    '<div>示例：</div>' +
+                    '<div>B超、X光片、CT片、MRL、检验报告、病理报告等。</div>' +
+                    '<div class="grid">' +
+                    '<div class="col-1 w50">' +
+                    '<img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146786157891659" class="w123p">' +
+                    '</div>' +
+                    '<div class="col-1 w50">' +
+                    '<img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146786157926638" class="w123p">' +
+                    '</div>' +
+                    '</div>' +
+                    '<img src="">' +
+                    '</div>';
+            J.popup({
+                html: innerHtml,
+                pos: 'center'
+            })
+        });
+    });
+</script>

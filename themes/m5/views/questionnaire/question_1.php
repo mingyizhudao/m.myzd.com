@@ -5,7 +5,12 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
 <style>
-#questionnaireone_article .footer-logo{position:absolute;bottom:0;width:100%;left:0;}
+    article{
+        background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146761944631242') no-repeat;
+        background-size: 125px 37px;
+        background-position-x: 50%;
+        background-position-y: 97%;
+    }
 </style>
 <header class="bg-green">
     <nav class="left">
@@ -41,9 +46,6 @@ $this->show_footer = false;
                     下一步
                 </button>
             </div>
-        </div>
-        <div class="footer-logo">
-            <div class="text-center pb20"><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146761944631242" class="w50"/></div>
         </div>
     </div>
 </article>

@@ -2,6 +2,8 @@ $('#deptSelect').tap(function () {
     deptSelect();
 });
 function deptSelect() {
+    var source = $('#findDoc_nav').attr('data-source');
+    var title = $('.title').html();
     var deptName = $('#deptTitle').html();
     var deptId = $('#deptTitle').attr('data-dept');
     var catId = $('#deptTitle').attr('data-cat');
@@ -18,27 +20,48 @@ function deptSelect() {
             '</div>' +
             '</a>' +
             '</nav>' +
-            '<h1 class="title">找名医</h1>' +
+            '<h1 class="title">' + title + '</h1>' +
             '<nav class="right">' +
             '<a onclick="javascript:history.go(0)">' +
             '<img src="../../themes/m5/images/refresh.png" class="w24p">' +
             '</a>' +
             '</nav>' +
-            '</header>' +
-            '<nav id="findDoc_nav" class="header-secondary bg-white">' +
-            '<div class="grid w100 color-black font-s16 color-black6">' +
-            '<div id="deptSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
-            '<span class="color-orange6" id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735831347598">' +
-            '</div>' +
-            '<div id="diseaseSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
-            '<span id="diseaseTitle" data-disease="' + diseaseId + '">' + diseaseName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">' +
-            '</div>' +
-            '<div id="citySelect" data-target="closePopup" class="col-1 w33 bb-gray grid middle grayImg">' +
-            '<span id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">' +
-            '</div>' +
-            '</div>' +
-            '</nav>' +
-            '<article id="findDoc_article" class="active" style="position:static;">' + readyDept($deptData, deptId, catId) +
+            '</header>';
+    if (source == 0) {
+        innerPage += '<nav id="findDoc_nav" class="header-secondary bg-white">' +
+                '<div class="grid w100 color-black font-s16 color-black6">' +
+                '<div id="deptSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
+                '<span class="color-orange6" id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735831347598">' +
+                '</div>' +
+                '<div id="diseaseSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
+                '<span id="diseaseTitle" data-disease="' + diseaseId + '">' + diseaseName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">' +
+                '</div>' +
+                '<div id="citySelect" data-target="closePopup" class="col-1 w33 bb-gray grid middle grayImg">' +
+                '<span id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">' +
+                '</div>' +
+                '</div>' +
+                '</nav>';
+    } else {
+        innerPage += '<nav id="findDoc_nav" class="header-secondary bg-white h94p">' +
+                '<div class="w100">' +
+                '<div id="searchBar">' +
+                '<div class="searchBtn">请输入你意向的专家</div>' +
+                '</div>' +
+                '<div class="grid w100 color-black font-s16 color-black6 h50p">' +
+                '<div id="deptSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
+                '<span class="color-orange6" id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735831347598">' +
+                '</div>' +
+                '<div id="diseaseSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
+                '<span id="diseaseTitle" data-disease="' + diseaseId + '">' + diseaseName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">' +
+                '</div>' +
+                '<div id="citySelect" data-target="closePopup" class="col-1 w33 bb-gray grid middle grayImg">' +
+                '<span id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '</nav>';
+    }
+    innerPage += '<article id="findDoc_article" class="active" style="position:static;">' + readyDept($deptData, deptId, catId) +
             '</article>' +
             '</div>';
 
@@ -99,6 +122,8 @@ function deptSelect() {
     });
 }
 $('#diseaseSelect').tap(function () {
+    var source = $('#findDoc_nav').attr('data-source');
+    var title = $('.title').html();
     var deptName = $('#deptTitle').html();
     var deptId = $('#deptTitle').attr('data-dept');
     var diseaseName = $('#diseaseTitle').html();
@@ -123,9 +148,15 @@ $('#diseaseSelect').tap(function () {
     });
 
     function readyDisease(data) {
+        var source = $('#findDoc_nav').attr('data-source');
         var results = data.results;
-        var innerHtml = '<div id="diseaseList" class="grid color-black" data-scroll="true" style="margin-top:93px;height:315px;">' +
-                '<ul class="list w100">';
+        if (source == 0) {
+            var innerHtml = '<div id="diseaseList" class="grid color-black" data-scroll="true" style="margin-top:93px;height:315px;">' +
+                    '<ul class="list w100">';
+        } else {
+            var innerHtml = '<div id="diseaseList" class="grid color-black" data-scroll="true" style="margin-top:137px;height:315px;">' +
+                    '<ul class="list w100">';
+        }
         if (results) {
             var disease = results.disease;
             if (disease.length > 0) {
@@ -143,6 +174,7 @@ $('#diseaseSelect').tap(function () {
     }
 
     function ajaxPage(diseaseHtml) {
+        var source = $('#findDoc_nav').attr('data-source');
         var innerPage = '<div id="findDoc_section">' +
                 '<header class="bg-green">' +
                 '<nav class="left">' +
@@ -152,27 +184,48 @@ $('#diseaseSelect').tap(function () {
                 '</div>' +
                 '</a>' +
                 '</nav>' +
-                '<h1 class="title">找名医</h1>' +
+                '<h1 class="title">' + title + '</h1>' +
                 '<nav class="right">' +
                 '<a onclick="javascript:history.go(0)">' +
                 '<img src="../../themes/m5/images/refresh.png" class="w24p">' +
                 '</a>' +
                 '</nav>' +
-                '</header>' +
-                '<nav id="findDoc_nav" class="header-secondary bg-white">' +
-                '<div class="grid w100 color-black font-s16 color-black6">' +
-                '<div id="deptSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
-                '<span id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">' +
-                '</div>' +
-                '<div id="diseaseSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
-                '<span class="color-orange6" id="diseaseTitle" data-disease="' + diseaseId + '">' + diseaseName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735831347598">' +
-                '</div>' +
-                '<div id="citySelect" data-target="closePopup" class="col-1 w33 bb-gray grid middle grayImg">' +
-                '<span id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">' +
-                '</div>' +
-                '</div>' +
-                '</nav>' +
-                '<article id="findDoc_article" class="active" style="position:static;">' + diseaseHtml +
+                '</header>';
+        if (source == 0) {
+            innerPage += '<nav id="findDoc_nav" class="header-secondary bg-white">' +
+                    '<div class="grid w100 color-black font-s16 color-black6">' +
+                    '<div id="deptSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
+                    '<span id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">' +
+                    '</div>' +
+                    '<div id="diseaseSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
+                    '<span class="color-orange6" id="diseaseTitle" data-disease="' + diseaseId + '">' + diseaseName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735831347598">' +
+                    '</div>' +
+                    '<div id="citySelect" data-target="closePopup" class="col-1 w33 bb-gray grid middle grayImg">' +
+                    '<span id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">' +
+                    '</div>' +
+                    '</div>' +
+                    '</nav>';
+        } else {
+            innerPage += '<nav id="findDoc_nav" class="header-secondary bg-white h94p">' +
+                    '<div class="w100">' +
+                    '<div id="searchBar">' +
+                    '<div class="searchBtn">请输入你意向的专家</div>' +
+                    '</div>' +
+                    '<div class="grid w100 color-black font-s16 color-black6 h50p">' +
+                    '<div id="deptSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
+                    '<span id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">' +
+                    '</div>' +
+                    '<div id="diseaseSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
+                    '<span class="color-orange6" id="diseaseTitle" data-disease="' + diseaseId + '">' + diseaseName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735831347598">' +
+                    '</div>' +
+                    '<div id="citySelect" data-target="closePopup" class="col-1 w33 bb-gray grid middle grayImg">' +
+                    '<span id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</nav>';
+        }
+        innerPage += '<article id="findDoc_article" class="active" style="position:static;">' + diseaseHtml +
                 '</article>' +
                 '</div>';
         J.popup({
@@ -212,6 +265,8 @@ $('#diseaseSelect').tap(function () {
     }
 });
 $('#citySelect').tap(function () {
+    var source = $('#findDoc_nav').attr('data-source');
+    var title = $('.title').html();
     var deptName = $('#deptTitle').html();
     var deptId = $('#deptTitle').attr('data-dept');
     var diseaseName = $('#diseaseTitle').html();
@@ -227,27 +282,49 @@ $('#citySelect').tap(function () {
             '</div>' +
             '</a>' +
             '</nav>' +
-            '<h1 class="title">找名医</h1>' +
+            '<h1 class="title">' + title + '</h1>' +
             '<nav class="right">' +
             '<a onclick="javascript:history.go(0)">' +
             '<img src="../../themes/m5/images/refresh.png" class="w24p">' +
             '</a>' +
             '</nav>' +
-            '</header>' +
-            '<nav id="findDoc_nav" class="header-secondary bg-white">' +
-            '<div class="grid w100 color-black font-s16 color-black6">' +
-            '<div id="deptSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
-            '<span id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">' +
-            '</div>' +
-            '<div id="diseaseSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
-            '<span id="diseaseTitle" data-disease="' + diseaseId + '">' + diseaseName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">' +
-            '</div>' +
-            '<div id="citySelect" data-target="closePopup" class="col-1 w33 bb-gray grid middle grayImg">' +
-            '<span class="color-orange6" id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735831347598">' +
-            '</div>' +
-            '</div>' +
-            '</nav>' +
-            '<article id="findDoc_article" class="active" data-scroll="true" style="position:static;">' + readyCity($cityData, cityId) +
+            '</header>';
+    if (source == 0) {
+        innerPage += '<nav id="findDoc_nav" class="header-secondary bg-white">' +
+                '<div class="grid w100 color-black font-s16 color-black6">' +
+                '<div id="deptSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
+                '<span id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">' +
+                '</div>' +
+                '<div id="diseaseSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
+                '<span id="diseaseTitle" data-disease="' + diseaseId + '">' + diseaseName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">' +
+                '</div>' +
+                '<div id="citySelect" data-target="closePopup" class="col-1 w33 bb-gray grid middle grayImg">' +
+                '<span class="color-orange6" id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735831347598">' +
+                '</div>' +
+                '</div>' +
+                '</nav>';
+    } else {
+        innerPage += '<nav id="findDoc_nav" class="header-secondary bg-white h94p">' +
+                '<div class="w100">' +
+                '<div id="searchBar">' +
+                '<div class="searchBtn">请输入你意向的专家</div>' +
+                '</div>' +
+                '<div class="grid w100 color-black font-s16 color-black6 h50p">' +
+                '<div id="deptSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
+                '<span id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">' +
+                '</div>' +
+                '<div id="diseaseSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
+                '<span id="diseaseTitle" data-disease="' + diseaseId + '">' + diseaseName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">' +
+                '</div>' +
+                '<div id="citySelect" data-target="closePopup" class="col-1 w33 bb-gray grid middle grayImg">' +
+                '<span class="color-orange6" id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735831347598">' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '</nav>';
+    }
+
+    innerPage += '<article id="findDoc_article" class="active" data-scroll="true" style="position:static;">' + readyCity($cityData, cityId) +
             '</article>' +
             '</div>';
     J.popup({
@@ -284,8 +361,13 @@ $('#citySelect').tap(function () {
 
 /*医生页面*/
 function readyDoc(data) {
+    var source = $('#findDoc_nav').attr('data-source');
     var results = data.results;
-    var innerHtml = '<div class="pt20"></div>';
+    if (source == 0) {
+        var innerHtml = '<div class="pt20"></div>';
+    } else {
+        var innerHtml = '<div class="pt64"></div>';
+    }
     if (results) {
         if (results.length > 0) {
             for (var i = 0; i < results.length; i++) {
@@ -374,10 +456,17 @@ function readyDoc(data) {
 }
 
 function readyDept(data, deptId, catId) {
+    var source = $('#findDoc_nav').attr('data-source');
     var results = data.results;
-    var innerHtml = '<div class="grid color-black" style="margin-top:93px;height:315px;">' +
-            '<div id="highDept" class="col-1 w50" data-scroll="true" style="height:315px;width: 50%;">' +
-            '<ul class="list">';
+    if (source == 0) {
+        var innerHtml = '<div class="grid color-black" style="margin-top:93px;height:315px;">' +
+                '<div id="highDept" class="col-1 w50" data-scroll="true" style="height:315px;width: 50%;">' +
+                '<ul class="list">';
+    } else {
+        var innerHtml = '<div class="grid color-black" style="margin-top:137px;height:315px;">' +
+                '<div id="highDept" class="col-1 w50" data-scroll="true" style="height:315px;width: 50%;">' +
+                '<ul class="list">';
+    }
     if (results.length > 0) {
         for (var i = 0; i < results.length; i++) {
             if (results[i].id == catId) {
@@ -411,11 +500,18 @@ function readyDept(data, deptId, catId) {
 }
 
 function readyCity(data, cityId) {
+    var source = $('#findDoc_nav').attr('data-source');
     var innerHtml = '';
     if (data != '') {
         var results = data.results;
-        innerHtml += '<div class="grid color-black" style="margin-top:93px;height:315px;">' +
-                '<ul class="list w100">';
+        console.log(source);
+        if (source == 0) {
+            innerHtml += '<div class="grid color-black" style="margin-top:93px;height:315px;">' +
+                    '<ul class="list w100">';
+        } else {
+            innerHtml += '<div class="grid color-black" style="margin-top:137px;height:315px;">' +
+                    '<ul class="list w100">';
+        }
         if (cityId == 0) {
             innerHtml += '<li class="switchCity activeIcon" data-city="0">全部</li>';
         } else {

@@ -1,9 +1,14 @@
 <?php
-//Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/findDoc.js?ts=' . time(), CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/findDoc.min.js?ts=' . time(), CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/findDoc.js?ts=' . time(), CClientScript::POS_END);
+//Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/findDoc.min.js?ts=' . time(), CClientScript::POS_END);
 ?>
 <?php
-$this->setPageTitle('找名医');
+$source = Yii::app()->request->getQuery('source', '0');
+if ($source == 0) {
+    $this->setPageTitle('找名医');
+} else {
+    $this->setPageTitle('选择意向专家');
+}
 $urlApiAppNav1 = $this->createAbsoluteUrl('/api/list');
 $urlCity = $this->createAbsoluteUrl('/api/city');
 $urlDisease = $this->createAbsoluteUrl('/api/diseasebycategory');
@@ -23,8 +28,34 @@ $urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('id' => ''));
 $urlHomeView = $this->createUrl('home/view');
 $urlDoctorSearch = $this->createUrl('doctor/search');
 $urlSearchDeptName = $this->createAbsoluteUrl('/api/diseasename', array('api' => 7, 'disease_name' => ''));
+$urlQuestionnaireSearch = $this->createAbsoluteUrl('questionnaire/questionnaireSearchView');
 $this->show_footer = false;
 ?>
+<style>
+    .h94p{
+        height: 94px!important;
+    }
+    .h50p{
+        height: 50px!important;
+    }
+    #findDoc_nav #searchBar{
+        width: 100%;
+        height: 44px;
+        background-color: #F1F1F1;
+        padding: 7px 10px;
+    }
+    #findDoc_nav .searchBtn{
+        height: 30px;
+        background: #fff url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146243645256928') no-repeat;
+        background-size: 15px 15px;
+        background-position: 5px 6px;
+        color: #9E9E9E;
+        padding-left: 30px;
+        border: 1px solid #B5B5B5;
+        border-radius: 5px;
+        text-align: left;
+    }
+</style>
 <header class="bg-green">
     <nav class="left">
         <a href="<?php echo $urlHomeView; ?>">
@@ -33,23 +64,36 @@ $this->show_footer = false;
             </div>
         </a>
     </nav>
-    <h1 class="title">找名医</h1>
+    <h1 class="title">
+        <?php echo $source == 0 ? '找名医' : '选择意向专家'; ?>
+    </h1>
     <nav class="right">
         <a onclick="javascript:location.reload()">
             <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
         </a>
     </nav>
 </header>
-<nav id="findDoc_nav" class="header-secondary bg-white">
-    <div class="grid w100 color-black font-s16 color-black6">
-        <div id="deptSelect" class="col-1 w33 br-gray bb-gray grid middle grayImg">
-            <span id="deptTitle" data-dept="" data-cat=""></span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">
-        </div>
-        <div id="diseaseSelect" class="col-1 w33 br-gray bb-gray grid middle grayImg">
-            <span id="diseaseTitle" data-disease=""></span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">
-        </div>
-        <div id="citySelect" class="col-1 w33 bb-gray grid middle grayImg">
-            <span id="cityTitle" data-city=""></span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">
+<nav id="findDoc_nav" class="header-secondary bg-white <?php echo $source == 0 ? '' : 'h94p'; ?>" data-source="<?php echo $source; ?>">
+    <div class="w100">
+        <?php
+        if ($source == 1) {
+            ?>
+            <div id="searchBar">
+                <div class="searchBtn">请输入你意向的专家</div>
+            </div>
+            <?php
+        }
+        ?>
+        <div class="grid color-black font-s16 color-black6 h50p">
+            <div id="deptSelect" class="col-1 w33 br-gray bb-gray grid middle grayImg">
+                <span id="deptTitle" data-dept="" data-cat=""></span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">
+            </div>
+            <div id="diseaseSelect" class="col-1 w33 br-gray bb-gray grid middle grayImg">
+                <span id="diseaseTitle" data-disease=""></span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">
+            </div>
+            <div id="citySelect" class="col-1 w33 bb-gray grid middle grayImg">
+                <span id="cityTitle" data-city=""></span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">
+            </div>
         </div>
     </div>
 </nav>
@@ -71,12 +115,18 @@ $this->show_footer = false;
         $requestDoctorView = '<?php echo $urlDoctorView; ?>';
 
         $condition = new Array();
+        $condition["source"] = '<?php echo $source ?>';
         $condition["city"] = '<?php echo $city ?>';
         $condition["disease"] = '<?php echo $disease; ?>';
         $condition["disease_name"] = '<?php echo $disease_name; ?>';
         $condition["disease_category"] = '<?php echo $disease_category; ?>';
         $condition["disease_sub_category"] = '<?php echo $disease_sub_category; ?>';
         $condition["page"] = '<?php echo $page == '' ? 1 : $page; ?>';
+
+        //进入搜索页面
+        $('#searchBar').click(function () {
+            location.href = '<?php echo $urlQuestionnaireSearch; ?>';
+        });
 
         //首次进入，更新科室
         if ('<?php echo $disease_sub_category; ?>' != '') {

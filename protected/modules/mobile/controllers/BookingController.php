@@ -275,25 +275,25 @@ class BookingController extends MobileController {
                     $form->initModel();
                     $form->validate();
                 }
+                if (isset($user)) {
+                           // 快速预约
+                           $form->mobile = $user->username;
+                           $form->validate();
+                       } else {
+                           $form->validate();
+                           //验证码校验
+                           $authMgr = new AuthManager();
+                           $authSmsVerify = $authMgr->verifyCodeForBooking($form->mobile, $form->verify_code, null);
+                           if ($authSmsVerify->isValid() === false) {
+                               $form->addError('verify_code', $authSmsVerify->getError('code'));
+                           }
+                       }
                 try {
                     if ($form->hasErrors() === false) {
                         $booking = new Booking();
                         // 处理booking.user_id
                         $userId = $this->getCurrentUserId();
                         $bookingUser = null;
-                        if (isset($user)) {
-                            // 快速预约
-                            $form->mobile = $user->username;
-                            $form->validate();
-                        } else {
-                            $form->validate();
-                            //验证码校验
-                            $authMgr = new AuthManager();
-                            $authSmsVerify = $authMgr->verifyCodeForBooking($form->mobile, $form->verify_code, null);
-                            if ($authSmsVerify->isValid() === false) {
-                                $form->addError('verify_code', $authSmsVerify->getError('code'));
-                            }
-                        }
                         $booking->setAttributes($form->attributes, true);
                         if ($this->isUserAgentWeixin()) {
                             $booking->user_agent = StatCode::USER_AGENT_WEIXIN;

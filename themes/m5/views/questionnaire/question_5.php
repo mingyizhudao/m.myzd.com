@@ -2,11 +2,17 @@
 $this->setPageTitle('疾病信息');
 $urlQuestionnaire = $this->createUrl('/api/questionnaire');
 $urlDoctorSearch = $this->createUrl('doctor/search');
+$urlQuestionnaireView = $this->createUrl('questionnaire/view', array('id' => 1));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
 <style>
-    #questionnairefive_article .footer-logo{position:absolute;bottom:0;width:100%;left:0;}
+    article{
+        background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146761944631242') no-repeat;
+        background-size: 125px 37px;
+        background-position-x: 50%;
+        background-position-y: 97%;
+    }
 </style>
 <header class="bg-green">
     <nav class="left">
@@ -37,9 +43,6 @@ $this->show_footer = false;
                 去选择专家
             </button>
         </div>
-        <div class="footer-logo">
-            <div class="text-center pb20"><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146761944631242" class="w50"/></div>
-        </div>
     </div>
 </article>
 <script>
@@ -68,6 +71,10 @@ $this->show_footer = false;
                     success: function (data) {
                         if (data.status == 'ok') {
                             actionAjaxFinishQuestionnaire();
+                        } else {
+                            if (data.errorMsg == 'faile answer') {
+                                location.href = '<?php echo $urlQuestionnaireView; ?>';
+                            }
                         }
                     },
                     error: function (XmlHttpRequest, textStatus, errorThrown) {
@@ -85,7 +92,7 @@ $this->show_footer = false;
             url: '<?php echo $this->createUrl('questionnaire/ajaxFinishQuestionnaire'); ?>',
             success: function (data) {
                 if (data.status == 'ok') {
-                    location.href = '<?php echo $urlDoctorSearch; ?>?disease_sub_category=2';
+                    location.href = '<?php echo $urlDoctorSearch; ?>?source=1&disease_sub_category=2';
                 }
             },
             error: function (XmlHttpRequest, textStatus, errorThrown) {

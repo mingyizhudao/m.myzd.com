@@ -3,6 +3,8 @@ $this->setPageTitle('医生详情');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $urlBookingDoctor = $this->createAbsoluteUrl('booking/create', array('did' => ''));
 $isCommonweal = Yii::app()->request->getQuery('is_commonweal', '0');
+$source = Yii::app()->request->getQuery('source', '0');
+$urlQuestionnaireBookingView = $this->createAbsoluteUrl('questionnaire/questionnaireBookingView', array('id' => ''));
 $doctor = $data->results->doctor;
 $honour = $doctor->honour;
 $this->show_footer = false;
@@ -48,24 +50,33 @@ $this->show_footer = false;
                 </div>
                 <div class="col-1 w50">
                     <?php
-                    if ($doctor->isExpteam == 1) {
+                    if ($source == 0) {
+                        if ($doctor->isExpteam == 1) {
+                            ?>
+                            <div class="grid pb10">
+                                <div class="col-1"></div>
+                                <div class="col-0 signIcon">
+                                    签约专家
+                                </div>
+                            </div>
+                            <?php
+                        }
+                        if ($doctor->isServiceId == 2) {
+                            ?>
+                            <div class="grid">
+                                <div class="col-1"></div>
+                                <div class="col-0 yzIcon">
+                                    义诊专家
+                                </div>
+                            </div>
+                            <?php
+                        }
+                    } else {
                         ?>
                         <div class="grid pb10">
                             <div class="col-1"></div>
                             <div class="col-0 signIcon">
-                                签约专家
-                            </div>
-                        </div>
-                        <?php
-                    }
-                    ?>
-                    <?php
-                    if ($doctor->isServiceId == 2) {
-                        ?>
-                        <div class="grid">
-                            <div class="col-1"></div>
-                            <div class="col-0 yzIcon">
-                                义诊专家
+                                0元面诊
                             </div>
                         </div>
                         <?php
@@ -240,10 +251,14 @@ $this->show_footer = false;
             $(this).prev('.cutComment').removeClass('hide');
         });
         $('#btnSubmit').click(function () {
-            if ('<?php echo $isCommonweal; ?>' == 0) {
-                location.href = '<?php echo $urlBookingDoctor; ?>' + '/<?php echo $doctor->id; ?>';
+            if ('<?php echo $source == 0; ?>') {
+                if ('<?php echo $isCommonweal; ?>' == 0) {
+                    location.href = '<?php echo $urlBookingDoctor; ?>' + '/<?php echo $doctor->id; ?>';
+                } else {
+                    location.href = '<?php echo $urlBookingDoctor; ?>' + '/<?php echo $doctor->id; ?>/is_commonweal/1';
+                }
             } else {
-                location.href = '<?php echo $urlBookingDoctor; ?>' + '/<?php echo $doctor->id; ?>/is_commonweal/1';
+                location.href = '<?php echo $urlQuestionnaireBookingView; ?>' + '/<?php echo $doctor->id; ?>';
             }
         });
     });

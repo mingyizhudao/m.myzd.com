@@ -125,6 +125,7 @@ $(function () {
                 //fileData += {"file_num": num, "file_name": file.name, "file_url": file.name, "file_size": file.size, "mime_type": file.type, "file_ext": fileExtension, "remote_domain": $('#domain').val(), "remote_file_key": infoJson.key};
                 //var formData = {"questionnaire[questionnaireNumber]": 4, "questionnaire[answer]": "123"};
                 var formdata = new FormData();
+                formdata.append('questionnaireFile[questionnaireNumber]', 4);
                 formdata.append('questionnaireFile[file_num]', num);
                 formdata.append('questionnaireFile[file_name]', file.name);
                 formdata.append('questionnaireFile[file_url]', file.name);
