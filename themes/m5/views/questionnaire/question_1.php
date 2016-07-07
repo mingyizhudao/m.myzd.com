@@ -16,7 +16,7 @@ $this->show_footer = false;
     <h1 class="title">疾病信息</h1>
 </header>
 <article id="questionnaireone_article" class="active logo_article" data-scroll="true">
-    <div class="pad20">
+    <div class="pad20 bg-white">
         <div class="w100 color-green text18">
             为了更好地给您提供诊疗意见，我们需要了解一下信息：
         </div>
@@ -65,9 +65,11 @@ $this->show_footer = false;
                     data: {"questionnaire[questionnaireNumber]": 1, "questionnaire[answer]": answer},
                     success: function (data) {
                         if (data.status == 'ok') {
+                            J.hideMask();
                             location.href = '<?php echo $urlQuestion; ?>/2';
                         } else {
                             if (data.errorMsg == 'faile answer') {
+                                J.hideMask();
                                 location.href = '<?php echo $urlQuestion; ?>/1';
                             }
                         }

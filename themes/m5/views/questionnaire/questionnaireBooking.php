@@ -11,6 +11,7 @@ $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/auth/sendSmsVerifyCode');
 $authActionType = AuthSmsVerify::ACTION_BOOKING;
 $urlAction = $this->createUrl('booking/ajaxQuestionnaireCreate');
 $urlCompleteQuestionnaireView = $this->createUrl('questionnaire/completeQuestionnaireView');
+$urlAgain = $this->createUrl('questionnaire/view');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
@@ -65,7 +66,7 @@ $this->show_footer = false;
         }
         $form = $this->beginWidget('CActiveForm', array(
             'id' => 'booking-form',
-            'htmlOptions' => array("enctype" => "multipart/form-data", "data-action-url" => $urlAction, 'data-return-url' => $urlCompleteQuestionnaireView),
+            'htmlOptions' => array("enctype" => "multipart/form-data", "data-action-url" => $urlAction, 'data-return-url' => $urlCompleteQuestionnaireView, 'data-again-url' => $urlAgain),
             'enableClientValidation' => false,
             'clientOptions' => array(
                 'validateOnSubmit' => true,

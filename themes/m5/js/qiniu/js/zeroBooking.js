@@ -82,6 +82,7 @@ $(function () {
                 if (num == 0) {
                     skip();
                 } else {
+                    J.hideMask();
                     location.href = $('article').attr('data-return-url') + '/5';
                 }
             },
@@ -120,6 +121,7 @@ $(function () {
                     processData: false,
                     success: function (data) {
                         if (data.status == 'no' && data.errorMsg == 'faile answer') {
+                            J.hideMask();
                             location.href = $('article').attr('data-return-url') + '/1';
                         }
                     },
@@ -157,9 +159,11 @@ $(function () {
             data: {"questionnaire[questionnaireNumber]": 4, "questionnaire[answer]": ""},
             success: function (data) {
                 if (data.status == 'ok') {
+                    J.hideMask();
                     location.href = $('article').attr('data-return-url') + '/5';
                 } else {
                     if (data.errorMsg == 'faile answer') {
+                        J.hideMask();
                         location.href = $('article').attr('data-return-url') + '/1';
                     }
                 }
