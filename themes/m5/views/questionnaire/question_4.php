@@ -7,7 +7,7 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/q
 $this->setPageTitle('疾病信息');
 $urlHomeMyyzDoctor = $this->createUrl('home/page', array('view' => 'myyzDoctor'));
 $urlQiniuAjaxToken = $this->createUrl('qiniu/ajaxBookingToken');
-$urlUploadFile = $this->createUrl("/api/questionnaire");
+$urlUploadFile = $this->createUrl("/api/questionnairefile");
 $urlQuestion = $this->createUrl('questionnaire/view', array('id' => '5'));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;

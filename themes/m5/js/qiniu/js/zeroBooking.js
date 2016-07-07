@@ -82,23 +82,27 @@ $(function () {
 //                fileData = 'array(' + fileData.substring(0, fileData.length - 1) + ')';
 //                var formData = '{"questionnaire[questionnaireNumber]": 4,"questionnaire[answer]": "' + fileData + '"}';
 //                console.log(formData);
-                fileData = fileData.substring(0, fileData.length - 1);
-                var formData = '{"questionnaire[questionnaireNumber]": 4,"questionnaire[answer]": "' + fileData + '"}';
-                $.ajax({
-                    url: $('#fileAction').attr('data-action'),
-                    data: formData,
-                    type: 'POST',
-                    contentType: false,
-                    processData: false,
-                    success: function (data) {
-                        if (data.status == 'ok') {
-                            location.href = $('article').attr('data-action-url');
-                        }
-                    },
-                    error: function (data) {
-                    }
-                });
-                enableBtnAndriod(btnSubmit);
+//                fileData = fileData.substring(0, fileData.length - 1);
+//                fileData += {'file': fileData};
+//                console.log(fileData);
+//                fileData = eval("(" + fileData + ")");
+//                console.log(fileData);
+//                return false;
+//                var formData = '{"questionnaire[questionnaireNumber]": 4,"questionnaire[answer]": "' + fileData + '"}';
+//                $.ajax({
+//                    type: 'post',
+//                    url: $('#fileAction').attr('data-action'),
+//                    //data: {"questionnaire[questionnaireNumber]": 2, "questionnaire[answer]": { "people": [{ "firstName": "Brett", "lastName":"McLaughlin", "email": "aaaa" },{ "firstName": "Jason", "lastName":"Hunter", "email": "bbbb"},{ "firstName": "Elliotte", "lastName":"Harold", "email": "cccc" }]}},
+//                    data: {"questionnaire[questionnaireNumber]": 2, "questionnaire[answer]": []},
+//                    success: function (data) {
+//                        if (data.status == 'ok') {
+//                            location.href = $('article').attr('data-action-url');
+//                        }
+//                    },
+//                    error: function (data) {
+//                    }
+//                });
+//                enableBtnAndriod(btnSubmit);
             },
             'FileUploaded': function (up, file, info) {
                 //单个文件上传成功所做的事情 
@@ -116,16 +120,36 @@ $(function () {
                 var infoJson = eval('(' + info + ')');
                 progress.setComplete(up, info);
                 var fileExtension = file.name.substring(file.name.lastIndexOf('.') + 1);
-                fileData += file + '/';
+//                fileData += file + '/';
+                num++;
+                //fileData += {"file_num": num, "file_name": file.name, "file_url": file.name, "file_size": file.size, "mime_type": file.type, "file_ext": fileExtension, "remote_domain": $('#domain').val(), "remote_file_key": infoJson.key};
+                //var formData = {"questionnaire[questionnaireNumber]": 4, "questionnaire[answer]": "123"};
+                var formdata = new FormData();
+                formdata.append('questionnaireFile[file_num]', num);
+                formdata.append('questionnaireFile[file_name]', file.name);
+                formdata.append('questionnaireFile[file_url]', file.name);
+                formdata.append('questionnaireFile[file_size]', file.size);
+                formdata.append('questionnaireFile[mime_type]', file.type);
+                formdata.append('questionnaireFile[file_ext]', fileExtension);
+                formdata.append('questionnaireFile[remote_domain]', $('#domain').val());
+                formdata.append('questionnaireFile[remote_file_key]', infoJson.key);
+                console.log(fileData);
+                $.ajax({
+                    type: 'post',
+                    url: $('#fileAction').attr('data-action'),
+                    data: formdata,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        console.log('123');
+                        if (data.status == 'ok') {
+                            location.href = $('article').attr('data-action-url');
+                        }
+                    },
+                    error: function (data) {
+                    }
+                });
                 //fileData += num + "=>array('file_name'=>'" + file.name + "','file_url'=>'" + file.name + "','file_size'=>'" + file.size + "','mime_type'=>'" + file.type + "','file_ext'=>'" + fileExtension + "','remote_domain'=>'" + $('#domain').val() + "','remote_file_key'=>'" + infoJson.key + "),";
-//                var data = new Array();
-//                data['file_name'] = file.name;
-//                data['file_url'] = file.name;
-//                data['file_size'] = file.size;
-//                data['mime_type'] = file.type;
-//                data['file_ext'] = fileExtension;
-//                data['remote_domain'] = $('#domain').val();
-//                data['remote_file_key'] = infoJson.key;
             },
             'Error': function (up, err, errTip) {
                 returnResult = false;
