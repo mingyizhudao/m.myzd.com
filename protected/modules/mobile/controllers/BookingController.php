@@ -325,7 +325,6 @@ class BookingController extends MobileController {
                         $apiRequest = new ApiRequestUrl();
                         $remote_url = $apiRequest->getUrlAdminSalesBookingCreate() . '?type=' . StatCode::TRANS_TYPE_BK . '&id=' . $booking->id;
                         $data = $this->send_get($remote_url);
-//                          print_r(strRandomLong(32));exit;
                         if ($data['status'] == "ok") {       
                                 foreach ($questionnaireList as $k => $v) {
                                     if ($k == 'picture') {
@@ -344,11 +343,9 @@ class BookingController extends MobileController {
                                                     'booking_id'=> $booking ->id,
                                                     'uid'=> $bookingFile->createUID()
                                                 ), true);
-echo 1;
-                                                $bookingFile->save();exit;
+                                                $bookingFile->save();
                                             } 
                                     } else {
-                                        echo 2;exit;
                                         $questionnaire = Questionnaire::model()->getById($v);
                                         $questionnaire->user_id = $booking->user_id;
                                         $questionnaire->save();
