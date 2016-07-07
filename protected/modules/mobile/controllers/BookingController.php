@@ -5,7 +5,7 @@ class BookingController extends MobileController {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('createCorp', 'ajaxCreateCorp', 'ajaxUploadCorp', 'ajaxUploadFile', 'captcha', 'ajaxCaptchaCode', 'ajaxCorpCaptchaCode', 'ajaxQuestionnaireCreate', 'quickbook', 'ajaxQuickbook','questionnaireBookingView', 'create', 'PayView'),
+                'actions' => array('createCorp', 'ajaxCreateCorp', 'ajaxUploadCorp', 'ajaxUploadFile', 'captcha', 'ajaxCaptchaCode', 'ajaxCorpCaptchaCode', 'ajaxQuestionnaireCreate', 'quickbook', 'ajaxQuickbook', 'questionnaireBookingView', 'create', 'PayView'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -204,7 +204,7 @@ class BookingController extends MobileController {
                     if (Yii::app()->session['vendorId']) {
                         $booking->is_vendor = 1;
                         $booking->vendor_id = Yii::app()->session['vendorId'];
-                        if(Yii::app()->session['vendorSite']){
+                        if (Yii::app()->session['vendorSite']) {
                             $booking->vendor_site = Yii::app()->session['vendorSite'];
                         }
                     }
@@ -213,11 +213,10 @@ class BookingController extends MobileController {
                         throw new CException('error saving data.');
                     }
                     $apiRequest = new ApiRequestUrl();
-                   //  $apiRequest = new ApiRequestUrl(Yii::app()->params['hostInfoProd'],Yii::app()->params['admin_salesbooking_create']);
+                    //  $apiRequest = new ApiRequestUrl(Yii::app()->params['hostInfoProd'],Yii::app()->params['admin_salesbooking_create']);
                     //线上配置
                     $remote_url = $apiRequest->getUrlAdminSalesBookingCreate() . '?type=' . StatCode::TRANS_TYPE_BK . '&id=' . $booking->id;
                     //本地配置
-                    
 //                     $remote_url = 'http://192.168.1.216/admin/api/adminbooking'. '?type=' . StatCode::TRANS_TYPE_BK . '&id='.$booking->id;
                     $data = $this->send_get($remote_url);
                     if ($data['status'] == "ok") {
@@ -246,7 +245,7 @@ class BookingController extends MobileController {
             $this->renderJsonOutput($output);
         }
     }
-    
+
     /**
      * 问卷预约专家和科室预约
      * @throws CException
@@ -256,8 +255,8 @@ class BookingController extends MobileController {
         $post = $this->decryptInput();
         if (isset($post['booking'])) {
             $key = session_id();
-            $questionnaireList = Yii::app()->cache->get(md5($key));
-            if(isset($questionnaireList)){
+            $questionnaireList = Yii::app()->cache->get('res'.$key);    
+            if (isset($questionnaireList)) {
                 $values = $post['booking'];
                 if (isset($values['doctor_id'])) {
                     // 预约医生
@@ -268,7 +267,7 @@ class BookingController extends MobileController {
                     $form->setDoctorData();
                     $form->initModel();
                     $form->validate();
-                }else{
+                } else {
                     $form = new BookQuestionnaireForm();
                     $form->setAttributes($values, true);
                     $form->setDoctorData();
@@ -276,24 +275,32 @@ class BookingController extends MobileController {
                     $form->validate();
                 }
                 if (isset($user)) {
-                           // 快速预约
-                           $form->mobile = $user->username;
-                           $form->validate();
-                       } else {
-                           $form->validate();
-                           //验证码校验
-                           $authMgr = new AuthManager();
-                           $authSmsVerify = $authMgr->verifyCodeForBooking($form->mobile, $form->verify_code, null);
-                           if ($authSmsVerify->isValid() === false) {
-                               $form->addError('verify_code', $authSmsVerify->getError('code'));
-                           }
-                       }
+                    // 快速预约
+                    $form->mobile = $user->username;
+                    $form->validate();
+                } else {
+                    $form->validate();
+                    //验证码校验
+                    $authMgr = new AuthManager();
+                    $authSmsVerify = $authMgr->verifyCodeForBooking($form->mobile, $form->verify_code, null);
+                    if ($authSmsVerify->isValid() === false) {
+                        $form->addError('verify_code', $authSmsVerify->getError('code'));
+                    }
+                }
                 try {
                     if ($form->hasErrors() === false) {
+
                         $booking = new Booking();
-                        // 处理booking.user_id
-                        $userId = $this->getCurrentUserId();
                         $bookingUser = null;
+                        $user = $this->getCurrentUser();
+                        if (isset($user)) {
+                            $bookingUser = $user->getId();
+                        } else {
+                            //数据验证成功 自动注册账号并登陆
+                            $this->RegisterUser($form);
+                            $bookingUser = $this->getCurrentUserId();
+                        }
+                        
                         $booking->setAttributes($form->attributes, true);
                         if ($this->isUserAgentWeixin()) {
                             $booking->user_agent = StatCode::USER_AGENT_WEIXIN;
@@ -301,11 +308,12 @@ class BookingController extends MobileController {
                             $booking->user_agent = StatCode::USER_AGENT_MOBILEWEB;
                         }
                         $booking->user_id = $bookingUser;
+                  
                         //第三方预约
                         if (Yii::app()->session['vendorId']) {
                             $booking->is_vendor = 1;
                             $booking->vendor_id = Yii::app()->session['vendorId'];
-                            if(Yii::app()->session['vendorSite']){
+                            if (Yii::app()->session['vendorSite']) {
                                 $booking->vendor_site = Yii::app()->session['vendorSite'];
                             }
                         }
@@ -316,34 +324,35 @@ class BookingController extends MobileController {
                         $apiRequest = new ApiRequestUrl();
                         $remote_url = $apiRequest->getUrlAdminSalesBookingCreate() . '?type=' . StatCode::TRANS_TYPE_BK . '&id=' . $booking->id;
                         $data = $this->send_get($remote_url);
-                        if ($data['status'] == "ok") {
-                            foreach ($questionnaireList as $k=>$v){
-                                if($v == 'picture'){
-                                    foreach ($v as $k1=>$v1){
-                                        $bookingFile = new BookingFile();
-                                        $questionnaireFile=QuestionnaireFile::model()->getById($v1);
-                                        $bookingFile->setAttributes(array(            
-                                           'file_name'=>$questionnaireFile['file_name'],
-                                           'file_url'=>$questionnaireFile['file_url'],
-                                           'file_size' => $questionnaireFile['file_size'],
-                                           'mime_type' => $questionnaireFile['mime_type'],
-                                           'file_ext'=> $questionnaireFile['file_ext'],
-                                           'remote_domain'=>$questionnaireFile['remote_domain'],
-                                           'remote_file_key'=>$questionnaireFile['remote_file_key']), true);
-                                        
-                                        $bookingFile->save();
+                              
+                        if ($data['status'] == "ok") {       
+                            
+                                foreach ($questionnaireList as $k => $v) {
+                                    if ($k == 'picture') {
+                                            foreach ($v as $k1 => $v1) {
+                                                $bookingFile = new BookingFile();
+                                                $questionnaireFile = QuestionnaireFile::model()->getById($v1);
+                                                $bookingFile->setAttributes(array(
+                                                    'file_name' => $questionnaireFile['file_name'],
+                                                    'file_url' => $questionnaireFile['file_url'],
+                                                    'file_size' => $questionnaireFile['file_size'],
+                                                    'mime_type' => $questionnaireFile['mime_type'],
+                                                    'file_ext' => $questionnaireFile['file_ext'],
+                                                    'remote_domain' => $questionnaireFile['remote_domain'],
+                                                    'remote_file_key' => $questionnaireFile['remote_file_key']), true);
+
+                                                $bookingFile->save();
+                                            } 
+                                    } else {
+                                        $questionnaire = Questionnaire::model()->getById($v);
+                                        $questionnaire->user_id = $booking->user_id;
+                                        $questionnaire->save();
                                     }
-                                }else{
-                                    $questionnaire = Questionnaire::model()->getById($v);
-                                    $questionnaire->user_id = $booking->user_id;
-                                    $questionnaire->save();
                                 }
-                            }
                             Yii::app()->cache->delete(md5($key));
                             $output['status'] = 'ok';
                             $output['salesOrderRefNo'] = $data['salesOrderRefNo'];
                             $output['booking']['id'] = $booking->getId();
-                           
                         } else {
                             //$output['errors'] = $salesOrder->getErrors();
                             throw new CException('error saving data.');
@@ -355,10 +364,9 @@ class BookingController extends MobileController {
                 } catch (CException $cex) {
                     $output['status'] = 'no';
                 }
-            }else{
+            } else {
                 $output['error'] = 'missing session';
             }
-           
         } else {
             $output['error'] = 'missing parameters';
         }
@@ -370,8 +378,7 @@ class BookingController extends MobileController {
             $this->renderJsonOutput($output);
         }
     }
-    
-    
+
     public function actionAjaxCaptchaCode() {
         $model = new BookQuickForm;
         $values = $_POST['booking'];
@@ -458,7 +465,7 @@ class BookingController extends MobileController {
                     if (Yii::app()->session['vendorId']) {
                         $booking->is_vendor = 1;
                         $booking->vendor_id = Yii::app()->session['vendorId'];
-                        if(Yii::app()->session['vendorSite']){
+                        if (Yii::app()->session['vendorSite']) {
                             $booking->vendor_site = Yii::app()->session['vendorSite'];
                         }
                     }
@@ -500,7 +507,7 @@ class BookingController extends MobileController {
         }
     }
 
-    private function RegisterUser(BookQuickForm $form) {
+    private function RegisterUser($form) {
         $userForm = new UserDoctorMobileLoginForm();
         $userForm->is_verify = false;
         $userForm->username = $form->mobile;

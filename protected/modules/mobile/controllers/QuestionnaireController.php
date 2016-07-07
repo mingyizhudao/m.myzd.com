@@ -53,7 +53,8 @@ class QuestionnaireController extends MobileController {
                     }
                 }
                 Yii::app()->cache->delete($key);
-                yii::app()->cache->set(md5($key), $questionnaireId ,$alive);
+                yii::app()->cache->set('res'.$key, $questionnaireId ,$alive);
+               // print_r(yii::app()->cache->get('res'.$key));
                 $output = array('status' => 'ok','errorCode' => '200','errorMsg' =>'');
             }
         $this->renderJsonOutput($output);
