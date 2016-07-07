@@ -47,5 +47,30 @@ class QuestionnaireManager {
         }
         return $output = array('status' => 'ok', 'errorCode' => '200','errorMsg' =>'200');
     }
+    
+    public function apiUploadQuestionnaireFile($values){
+        print_r($values);exit;
+         $output = array('status' => 'no', 'errorCode' => '0','errorMsg' =>'0');
+         $values['userHostIp'] = Yii::app()->request->userHostAddress;
+//          $values = array('file_name'=>'aaaaa','file_url'=>'bbbbbbb','file_size' =>'111','mime_type' => '1','file_ext'=>'jia','remote_domain'=>'2334565','remote_file_key'=>'1245555','questionnaireNumber'=>'4','file_num'=>'1','userHostIp'=>'127.0.0.1');
+         if(isset($values['questionnaireNumber']) == false || isset($values['file_num']) == false || isset($values['userHostIp']) == false){
+             $output = array('status' => 'no', 'errorCode' => '400','errorMsg' =>'Wrong parameters');
+             return $output;
+         }
+         $key = session_id();
+         $anwerList=Yii::app()->cache->get($key);
+         $alive = '3600';
+//          $values['questionnaireNumber']
+//          $values['file_num'] = 
+//          $values['file_name'] = 
+//          $values['file_url'] = 
+//          $values['file_size'] = 
+//          $values['mime_type'] = 
+//          $values['file_ext'] =
+//          $values['remote_domain'] =
+//          $values['remote_file_key'] =
+         
+         
+    }
 
 }

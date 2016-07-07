@@ -527,6 +527,13 @@ class ApiController extends Controller {
                     $output = $questionnaireMgr->apiCreateQuestionnaire($values);
                 }
                 break;
+            case 'questionnairefile':
+                if(isset($post['questionnaireFile'])){
+                    $values = $post['questionnaireFile'];
+                    $questionnaireMgr = new QuestionnaireManager();
+                    $output = $questionnaireMgr->apiUploadQuestionnaireFile($values);
+                }
+                break;
             default:
                 $this->_sendResponse(501, sprintf('Error: Invalid request', $model));
                 Yii::app()->end();
