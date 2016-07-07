@@ -87,13 +87,12 @@ $(function () {
                 console.log(data);
                 if (data.status == 'ok') {
                     location.href = returnUrl;
-                    enableBtn(btnSubmit);
                 } else {
                     domForm.find('div.error').remove();
                     for (error in data.errors) {
                         var errorMsg = data.errors[error];
                         var inputKey = '#booking_' + error;
-                        $(inputKey).parents('div.ui-field-contain').after("<div class='error'>" + errorMsg + "</div>");
+                        $(inputKey).parents('.ui-field-contain').append("<div class='error'>" + errorMsg + "</div>");
                         enableBtn(btnSubmit);
                     }
                 }

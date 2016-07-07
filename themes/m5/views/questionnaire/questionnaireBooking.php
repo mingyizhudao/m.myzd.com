@@ -116,6 +116,7 @@ $this->show_footer = false;
         echo CHtml::hiddenField("smsverify[actionUrl]", $urlGetSmsVerifyCode);
         echo CHtml::hiddenField("smsverify[actionType]", $authActionType);
         echo $form->hiddenField($model, 'doctor_id', array('name' => 'booking[id]', 'value' => $doctor == '' ? '' : $doctor->id));
+        echo $form->hiddenField($model, 'disease_detail', array('name' => 'booking[disease_detail]', 'value' => '无'));
         ?>
         <div class="br5 bg-white font-s16">
             <div class="grid bb-gray pad10">

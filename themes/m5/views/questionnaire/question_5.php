@@ -83,7 +83,6 @@ $this->show_footer = false;
                         } else {
                             if (data.errorMsg == 'faile answer') {
                                 location.href = '<?php echo $urlQuestionnaireView; ?>';
-                                enableBtn(btnSubmit);
                             }
                         }
                     },
@@ -103,7 +102,6 @@ $this->show_footer = false;
                 success: function (data) {
                     if (data.status == 'ok') {
                         location.href = '<?php echo $urlDoctorSearch; ?>?source=1&disease_sub_category=2';
-                        enableBtn(btnSubmit);
                     }
                 },
                 error: function (XmlHttpRequest, textStatus, errorThrown) {

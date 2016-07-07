@@ -81,11 +81,9 @@ $this->show_footer = false;
                     success: function (data) {
                         if (data.status == 'ok') {
                             location.href = '<?php echo $urlQuestion; ?>/2';
-                            enableBtn(btnSubmit);
                         } else {
                             if (data.errorMsg == 'faile answer') {
                                 location.href = '<?php echo $urlQuestion; ?>/1';
-                                enableBtn(btnSubmit);
                             }
                         }
                     },

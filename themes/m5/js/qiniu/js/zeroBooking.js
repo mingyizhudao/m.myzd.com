@@ -83,7 +83,6 @@ $(function () {
                     skip();
                 } else {
                     location.href = $('article').attr('data-return-url') + '/5';
-                    enableBtn(btnSubmit);
                 }
             },
             'FileUploaded': function (up, file, info) {
@@ -159,11 +158,9 @@ $(function () {
             success: function (data) {
                 if (data.status == 'ok') {
                     location.href = $('article').attr('data-return-url') + '/5';
-                    J.hideMask();
                 } else {
                     if (data.errorMsg == 'faile answer') {
                         location.href = $('article').attr('data-return-url') + '/1';
-                        J.hideMask();
                     }
                 }
             },
