@@ -255,7 +255,7 @@ class BookingController extends MobileController {
         $post = $this->decryptInput();
         if (isset($post['booking'])) {
             $key = session_id();
-            $questionnaireList = Yii::app()->cache->get('res'.$key);    
+            $questionnaireList = Yii::app()->cache->get('res'.$key);  
             if (isset($questionnaireList)) {
                 $values = $post['booking'];
                 if (isset($values['doctor_id'])) {
@@ -324,9 +324,7 @@ class BookingController extends MobileController {
                         $apiRequest = new ApiRequestUrl();
                         $remote_url = $apiRequest->getUrlAdminSalesBookingCreate() . '?type=' . StatCode::TRANS_TYPE_BK . '&id=' . $booking->id;
                         $data = $this->send_get($remote_url);
-                              
                         if ($data['status'] == "ok") {       
-                            
                                 foreach ($questionnaireList as $k => $v) {
                                     if ($k == 'picture') {
                                             foreach ($v as $k1 => $v1) {
@@ -339,7 +337,10 @@ class BookingController extends MobileController {
                                                     'mime_type' => $questionnaireFile['mime_type'],
                                                     'file_ext' => $questionnaireFile['file_ext'],
                                                     'remote_domain' => $questionnaireFile['remote_domain'],
-                                                    'remote_file_key' => $questionnaireFile['remote_file_key']), true);
+                                                    'remote_file_key' => $questionnaireFile['remote_file_key'],
+                                                    'user_id'=>  $booking->user_id,
+                                                    'booking_id'=> $booking ->id
+                                                ), true);
 
                                                 $bookingFile->save();
                                             } 
@@ -349,25 +350,30 @@ class BookingController extends MobileController {
                                         $questionnaire->save();
                                     }
                                 }
-                            Yii::app()->cache->delete(md5($key));
+                            Yii::app()->cache->delete('res'.$key);
                             $output['status'] = 'ok';
                             $output['salesOrderRefNo'] = $data['salesOrderRefNo'];
                             $output['booking']['id'] = $booking->getId();
                         } else {
+                            $output['status'] = 'error';
                             //$output['errors'] = $salesOrder->getErrors();
                             throw new CException('error saving data.');
                         }
                     } else {
+                        $output['status'] = 'error';
                         $output['errors'] = $form->getErrors();
                         throw new CException('error saving data.');
                     }
                 } catch (CException $cex) {
                     $output['status'] = 'no';
+                    $output['error'] = 'wrong net';
                 }
             } else {
+                $output['status'] = 'error';
                 $output['error'] = 'missing session';
             }
         } else {
+            $output['status'] = 'no';
             $output['error'] = 'missing parameters';
         }
         //$this->renderJsonOutput($output);

@@ -42,7 +42,7 @@ class BookQuestionnaireForm extends EFormModel {
             array('mobile', 'length', 'is' => 11),
             array('contact_name, doctor_name, hospital_name, hp_dept_name, disease_name', 'length', 'max' => 50),
             array('contact_email', 'length', 'max' => 100),
-            array('disease_detail', 'length', 'max' => 1000, 'min' => 10),
+            array('disease_detail', 'length', 'max' => 1000, 'min' => 1),
             array('user_agent', 'length', 'max' => 20),
             array('remark', 'length', 'max' => 500),
             array('submit_via', 'length', 'max' => 10, 'message' => '请至少填写10个字'),
