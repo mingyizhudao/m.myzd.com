@@ -8,7 +8,8 @@ $this->setPageTitle('疾病信息');
 $urlHomeMyyzDoctor = $this->createUrl('home/page', array('view' => 'myyzDoctor'));
 $urlQiniuAjaxToken = $this->createUrl('qiniu/ajaxBookingToken');
 $urlUploadFile = $this->createUrl("/api/questionnairefile");
-$urlQuestion = $this->createUrl('questionnaire/view', array('id' => '5'));
+$urlQuestionnaire = $this->createUrl('/api/questionnaire');
+$urlQuestion = $this->createUrl('questionnaire/view', array('id' => ''));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
@@ -30,9 +31,23 @@ $this->show_footer = false;
         margin: 5px auto;
     }
 
-    #questionnairefour_article .footer-logo{position:absolute;bottom:0;width:100%;left:0;}
 
     .w123p{width: 123px;}
+    #jingle_popup {
+        background-color: #ffffff;
+        top: 40%!important;
+    }
+    article{
+        background: url('http://7xsq2z.com2.z0.glb.qiniucdn.com/146761944631242') no-repeat;
+        background-size: 125px 37px;
+        background-position-x: 50%;
+        background-position-y: 97%;
+    }
+
+    .button:disabled, button:disabled, .button.disabled, button.disabled {
+        background: #c6c6c6!important;
+        color: #fff!important;
+    }
 </style>
 <header class="bg-green">
     <nav class="left">
@@ -45,11 +60,11 @@ $this->show_footer = false;
     <h1 class="title">疾病信息</h1>
     <nav class="right" style="top:2px!important;">
         <div class="font-s16">
-            <a href="<?php echo $this->createUrl('questionnaire/view', array('id' => '5')); ?>">跳过</a>
+            <a id="skip" href="javascript:;">跳过</a>
         </div>
     </nav>
 </header>
-<article id="questionnairefour_article" class="active android_article" data-scroll="true" data-action-url="<?php echo $urlQuestion; ?>">
+<article id="questionnairefour_article" class="active android_article" data-scroll="true" data-action-url="<?php echo $urlQuestionnaire; ?>" data-return-url="<?php echo $urlQuestion; ?>">
     <div class="pad20">
         <div class="w100 color-green text18">
             为了更好地给您提供诊疗意见，我们需要了解一下信息：
@@ -84,18 +99,16 @@ $this->show_footer = false;
                 下一步
             </button>
         </div>
-        <div class="footer-logo">
-            <div class="text-center pb20"><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146761944631242" class="w50"/></div>
-        </div>
     </div>
 </article>
+<div id="jingle_toast" class="toast"><a href="#"></a></div>
 <script>
     $(document).ready(function () {
         $('.learn-example').click(function () {
-            var innerHtml = '<div style="text-align: center;font-size: 20px;font-weight: 600;margin-top: 10px;color:#E74C3C ">' +
-                    '<div>示例：</div>' +
+            var innerHtml = '<div class="pad10" data-target="closePopup">' +
+                    '<div class="font-s16">示例：</div>' +
                     '<div>B超、X光片、CT片、MRL、检验报告、病理报告等。</div>' +
-                    '<div class="grid">' +
+                    '<div class="grid pt10 text-center">' +
                     '<div class="col-1 w50">' +
                     '<img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146786157891659" class="w123p">' +
                     '</div>' +
@@ -108,7 +121,7 @@ $this->show_footer = false;
             J.popup({
                 html: innerHtml,
                 pos: 'center'
-            })
+            });
         });
     });
 </script>

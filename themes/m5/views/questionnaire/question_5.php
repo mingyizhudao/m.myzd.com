@@ -13,6 +13,13 @@ $this->show_footer = false;
         background-position-x: 50%;
         background-position-y: 97%;
     }
+    .error{
+        color: #f00;
+    }
+    .button:disabled, button:disabled, .button.disabled, button.disabled {
+        background: #c6c6c6!important;
+        color: #fff!important;
+    }
 </style>
 <header class="bg-green">
     <nav class="left">
@@ -51,6 +58,7 @@ $this->show_footer = false;
         var requestUrl = '<?php echo $urlQuestionnaire; ?>';
         var answer = '';
         $("input[name='questionnaire[answer]']").click(function () {
+            $('.questionnaire-error').html('');
             $("input[name='questionnaire[answer]']").removeClass('active');
             $(this).addClass('active');
             $("input[name='questionnaire[answer]']").each(function () {
@@ -61,9 +69,10 @@ $this->show_footer = false;
         });
         btnSubmit.click(function () {
             if (answer == '') {
-                $('.questionnaire-error').html('<div>请您先选择</div>');
+                $('.questionnaire-error').html('<div class="error">请您先选择</div>');
             } else {
                 $('.questionnaire-error').hide();
+                disabledBtn(btnSubmit);
                 $.ajax({
                     type: 'post',
                     url: requestUrl,
@@ -74,10 +83,12 @@ $this->show_footer = false;
                         } else {
                             if (data.errorMsg == 'faile answer') {
                                 location.href = '<?php echo $urlQuestionnaireView; ?>';
+                                enableBtn(btnSubmit);
                             }
                         }
                     },
                     error: function (XmlHttpRequest, textStatus, errorThrown) {
+                        enableBtn(btnSubmit);
                         console.log(XmlHttpRequest);
                         console.log(textStatus);
                         console.log(errorThrown);
@@ -85,21 +96,23 @@ $this->show_footer = false;
                 });
             }
         });
-    });
-    function actionAjaxFinishQuestionnaire() {
-        $.ajax({
-            type: 'post',
-            url: '<?php echo $this->createUrl('questionnaire/ajaxFinishQuestionnaire'); ?>',
-            success: function (data) {
-                if (data.status == 'ok') {
-                    location.href = '<?php echo $urlDoctorSearch; ?>?source=1&disease_sub_category=2';
+        function actionAjaxFinishQuestionnaire() {
+            $.ajax({
+                type: 'post',
+                url: '<?php echo $this->createUrl('questionnaire/ajaxFinishQuestionnaire'); ?>',
+                success: function (data) {
+                    if (data.status == 'ok') {
+                        location.href = '<?php echo $urlDoctorSearch; ?>?source=1&disease_sub_category=2';
+                        enableBtn(btnSubmit);
+                    }
+                },
+                error: function (XmlHttpRequest, textStatus, errorThrown) {
+                    enableBtn(btnSubmit);
+                    console.log(XmlHttpRequest);
+                    console.log(textStatus);
+                    console.log(errorThrown);
                 }
-            },
-            error: function (XmlHttpRequest, textStatus, errorThrown) {
-                console.log(XmlHttpRequest);
-                console.log(textStatus);
-                console.log(errorThrown);
-            }
-        });
-    }
+            });
+        }
+    });
 </script>

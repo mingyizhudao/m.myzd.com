@@ -1,7 +1,8 @@
 <?php
+$this->setPageTitle('意向专家');
 $source = Yii::app()->request->getQuery('source', 0);
 $doctorView = $this->createUrl('doctor/view', array('source' => '1', 'id' => ''));
-$doctor = $this->createUrl('home/page', array('view' => 'doctor'));
+$urlQuestionnaireBookingView = $this->createUrl('questionnaire/questionnaireBookingView', array('source' => 1));
 $urlSearch = $this->createAbsoluteUrl('/api/search', array('name' => ''));
 $this->show_footer = false;
 ?>
@@ -123,15 +124,15 @@ $this->show_footer = false;
                             '<div class="color-black6">' + doctor.hpName + '</div>' +
                             '</div>' +
                             '</div>' +
-                            '</a>' +
                             '<div class="pl15 pr15 pt5 pb10 color-black">' +
                             '<span class="font-w800">擅长:</span>' + doctor.desc +
                             '</div>' +
-                            '</div>'
+                            '</a>' +
+                            '</div>';
                 }
             }
             innerHtml += '<div class="pad10">' +
-                    '<a href="<?php echo $doctor; ?>" class="noDoctor">' +
+                    '<a href="<?php echo $urlQuestionnaireBookingView; ?>" class="noDoctor">' +
                     '还没您想要的专家？直接填写>' +
                     '</a>' +
                     '</div>' +

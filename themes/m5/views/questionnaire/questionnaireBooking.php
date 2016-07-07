@@ -10,6 +10,7 @@ $source = Yii::app()->request->getQuery('source', 0);
 $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/auth/sendSmsVerifyCode');
 $authActionType = AuthSmsVerify::ACTION_BOOKING;
 $urlAction = $this->createUrl('booking/ajaxQuestionnaireCreate');
+$urlCompleteQuestionnaireView = $this->createUrl('questionnaire/completeQuestionnaireView');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
@@ -102,7 +103,7 @@ $this->show_footer = false;
         }
         $form = $this->beginWidget('CActiveForm', array(
             'id' => 'booking-form',
-            'htmlOptions' => array("enctype" => "multipart/form-data", "data-action-url" => $urlAction),
+            'htmlOptions' => array("enctype" => "multipart/form-data", "data-action-url" => $urlAction, 'data-return-url' => $urlCompleteQuestionnaireView),
             'enableClientValidation' => false,
             'clientOptions' => array(
                 'validateOnSubmit' => true,
@@ -122,7 +123,13 @@ $this->show_footer = false;
                     已选专家
                 </div>
                 <div class="col-0">
-                    <a id="modifyDoctor" href="javascript:;"><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146762518459118" class="w18p"></a>
+                    <?php
+                    if ($source == 1) {
+                        ?>
+                        <a id="modifyDoctor" href="javascript:;"><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146762518459118" class="w18p"></a>
+                        <?php
+                    }
+                    ?>
                 </div>
             </div>
             <div class="pad10">
@@ -181,12 +188,12 @@ $this->show_footer = false;
                 </div>
             </div>
         </div>
-        <div class="pt20">
-            <a id="submitBtn" href="javascript:;" class="btn btn-green">提交预约</a>
-        </div>
         <?php
         $this->endWidget();
         ?>
+        <div class="pt20">
+            <button id="btnSubmit" class="btn btn-green">提交预约</button>
+        </div>
     </div>
 </article>
 <script>

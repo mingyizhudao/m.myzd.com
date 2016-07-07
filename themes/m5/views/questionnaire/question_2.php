@@ -1,6 +1,7 @@
 <?php
 $this->setPageTitle('疾病信息');
 $urlQuestionnaire = $this->createUrl('/api/questionnaire');
+$urlQuestion = $this->createUrl('questionnaire/view', array('id' => ''));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
@@ -10,6 +11,13 @@ $this->show_footer = false;
         background-size: 125px 37px;
         background-position-x: 50%;
         background-position-y: 97%;
+    }
+    .error{
+        color: #f00;
+    }
+    .button:disabled, button:disabled, .button.disabled, button.disabled {
+        background: #c6c6c6!important;
+        color: #fff!important;
     }
 </style>
 <header class="bg-green">
@@ -48,6 +56,7 @@ $this->show_footer = false;
         var requestUrl = '<?php echo $urlQuestionnaire; ?>';
         var answer = '';
         $("input[name='questionnaire[answer]']").click(function () {
+            $('.questionnaire-error').html('');
             $("input[name='questionnaire[answer]']").removeClass('active');
             $(this).addClass('active');
             $("input[name='questionnaire[answer]']").each(function () {
@@ -58,19 +67,27 @@ $this->show_footer = false;
         });
         btnSubmit.click(function () {
             if (answer == '') {
-                $('.questionnaire-error').html('<div>请您先选择</div>');
+                $('.questionnaire-error').html('<div class="error">请您先选择</div>');
             } else {
                 $('.questionnaire-error').hide();
+                disabledBtn(btnSubmit);
                 $.ajax({
                     type: 'post',
                     url: requestUrl,
                     data: {"questionnaire[questionnaireNumber]": 2, "questionnaire[answer]": answer},
                     success: function (data) {
                         if (data.status == 'ok') {
-                            window.location.href='<?php echo $this->createUrl('questionnaire/view',array('id'=>'3'));?>';
+                            location.href = '<?php echo $urlQuestion; ?>/3';
+                            enableBtn(btnSubmit);
+                        } else {
+                            if (data.errorMsg == 'faile answer') {
+                                location.href = '<?php echo $urlQuestion; ?>/1';
+                                enableBtn(btnSubmit);
+                            }
                         }
                     },
                     error: function (XmlHttpRequest, textStatus, errorThrown) {
+                        enableBtn(btnSubmit);
                         console.log(XmlHttpRequest);
                         console.log(textStatus);
                         console.log(errorThrown);

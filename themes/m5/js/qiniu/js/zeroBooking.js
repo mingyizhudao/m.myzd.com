@@ -79,30 +79,12 @@ $(function () {
                 progress.setProgress(file.percent + "%", file.speed, chunk_size);
             },
             'UploadComplete': function () {
-//                fileData = 'array(' + fileData.substring(0, fileData.length - 1) + ')';
-//                var formData = '{"questionnaire[questionnaireNumber]": 4,"questionnaire[answer]": "' + fileData + '"}';
-//                console.log(formData);
-//                fileData = fileData.substring(0, fileData.length - 1);
-//                fileData += {'file': fileData};
-//                console.log(fileData);
-//                fileData = eval("(" + fileData + ")");
-//                console.log(fileData);
-//                return false;
-//                var formData = '{"questionnaire[questionnaireNumber]": 4,"questionnaire[answer]": "' + fileData + '"}';
-//                $.ajax({
-//                    type: 'post',
-//                    url: $('#fileAction').attr('data-action'),
-//                    //data: {"questionnaire[questionnaireNumber]": 2, "questionnaire[answer]": { "people": [{ "firstName": "Brett", "lastName":"McLaughlin", "email": "aaaa" },{ "firstName": "Jason", "lastName":"Hunter", "email": "bbbb"},{ "firstName": "Elliotte", "lastName":"Harold", "email": "cccc" }]}},
-//                    data: {"questionnaire[questionnaireNumber]": 2, "questionnaire[answer]": []},
-//                    success: function (data) {
-//                        if (data.status == 'ok') {
-//                            location.href = $('article').attr('data-action-url');
-//                        }
-//                    },
-//                    error: function (data) {
-//                    }
-//                });
-//                enableBtnAndriod(btnSubmit);
+                if (num == 0) {
+                    skip();
+                } else {
+                    location.href = $('article').attr('data-return-url') + '/5';
+                    enableBtn(btnSubmit);
+                }
             },
             'FileUploaded': function (up, file, info) {
                 //单个文件上传成功所做的事情 
@@ -120,10 +102,7 @@ $(function () {
                 var infoJson = eval('(' + info + ')');
                 progress.setComplete(up, info);
                 var fileExtension = file.name.substring(file.name.lastIndexOf('.') + 1);
-//                fileData += file + '/';
                 num++;
-                //fileData += {"file_num": num, "file_name": file.name, "file_url": file.name, "file_size": file.size, "mime_type": file.type, "file_ext": fileExtension, "remote_domain": $('#domain').val(), "remote_file_key": infoJson.key};
-                //var formData = {"questionnaire[questionnaireNumber]": 4, "questionnaire[answer]": "123"};
                 var formdata = new FormData();
                 formdata.append('questionnaireFile[questionnaireNumber]', 4);
                 formdata.append('questionnaireFile[file_num]', num);
@@ -134,7 +113,6 @@ $(function () {
                 formdata.append('questionnaireFile[file_ext]', fileExtension);
                 formdata.append('questionnaireFile[remote_domain]', $('#domain').val());
                 formdata.append('questionnaireFile[remote_file_key]', infoJson.key);
-                console.log(fileData);
                 $.ajax({
                     type: 'post',
                     url: $('#fileAction').attr('data-action'),
@@ -142,15 +120,13 @@ $(function () {
                     contentType: false,
                     processData: false,
                     success: function (data) {
-                        console.log('123');
-                        if (data.status == 'ok') {
-                            location.href = $('article').attr('data-action-url');
+                        if (data.status == 'no' && data.errorMsg == 'faile answer') {
+                            location.href = $('article').attr('data-return-url') + '/1';
                         }
                     },
                     error: function (data) {
                     }
                 });
-                //fileData += num + "=>array('file_name'=>'" + file.name + "','file_url'=>'" + file.name + "','file_size'=>'" + file.size + "','mime_type'=>'" + file.type + "','file_ext'=>'" + fileExtension + "','remote_domain'=>'" + $('#domain').val() + "','remote_file_key'=>'" + infoJson.key + "),";
             },
             'Error': function (up, err, errTip) {
                 returnResult = false;
@@ -170,11 +146,42 @@ $(function () {
         }
     });
 
+    $('#skip').click(function () {
+        J.showMask();
+        skip();
+    });
+
+    function skip() {
+        $.ajax({
+            type: 'post',
+            url: $('article').attr('data-action-url'),
+            data: {"questionnaire[questionnaireNumber]": 4, "questionnaire[answer]": ""},
+            success: function (data) {
+                if (data.status == 'ok') {
+                    location.href = $('article').attr('data-return-url') + '/5';
+                    J.hideMask();
+                } else {
+                    if (data.errorMsg == 'faile answer') {
+                        location.href = $('article').attr('data-return-url') + '/1';
+                        J.hideMask();
+                    }
+                }
+            },
+            error: function (XmlHttpRequest, textStatus, errorThrown) {
+                J.hideMask();
+                console.log(XmlHttpRequest);
+                console.log(textStatus);
+                console.log(errorThrown);
+            }
+        });
+    }
+
     uploader.bind('FileUploaded', function () {
         //console.log('hello man,a file is uploaded');
     });
 
     btnSubmit.click(function () {
+        disabledBtn(btnSubmit);
         uploader.start();
     });
 

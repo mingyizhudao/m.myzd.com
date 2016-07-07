@@ -9,7 +9,7 @@ $(function () {
     var domForm = $('#booking-form'),
             btnSubmit = $("#btnSubmit");
 
-    $('#submitBtn').click(function () {
+    btnSubmit.click(function () {
         var bool = validator.form();
         if (bool) {
             formAjaxSubmit();
@@ -85,9 +85,17 @@ $(function () {
             data: param,
             success: function (data) {
                 console.log(data);
-                //图片上传
                 if (data.status == 'ok') {
-
+                    location.href = returnUrl;
+                    enableBtn(btnSubmit);
+                } else {
+                    domForm.find('div.error').remove();
+                    for (error in data.errors) {
+                        var errorMsg = data.errors[error];
+                        var inputKey = '#booking_' + error;
+                        $(inputKey).parents('div.ui-field-contain').after("<div class='error'>" + errorMsg + "</div>");
+                        enableBtn(btnSubmit);
+                    }
                 }
             },
             error: function (XmlHttpRequest, textStatus, errorThrown) {

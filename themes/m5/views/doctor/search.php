@@ -6,8 +6,10 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/c
 $source = Yii::app()->request->getQuery('source', '0');
 if ($source == 0) {
     $this->setPageTitle('找名医');
+    $urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('id' => ''));
 } else {
     $this->setPageTitle('选择意向专家');
+    $urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('source' => 1, 'id' => ''));
 }
 $urlApiAppNav1 = $this->createAbsoluteUrl('/api/list');
 $urlCity = $this->createAbsoluteUrl('/api/city');
@@ -24,7 +26,6 @@ $disease_name = Yii::app()->request->getQuery('disease_name', '');
 $disease_category = Yii::app()->request->getQuery('disease_category', '');
 $disease_sub_category = Yii::app()->request->getQuery('disease_sub_category', '');
 $page = Yii::app()->request->getQuery('page', '');
-$urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('id' => ''));
 $urlHomeView = $this->createUrl('home/view');
 $urlDoctorSearch = $this->createUrl('doctor/search');
 $urlSearchDeptName = $this->createAbsoluteUrl('/api/diseasename', array('api' => 7, 'disease_name' => ''));
