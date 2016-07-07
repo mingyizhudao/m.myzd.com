@@ -72,7 +72,7 @@ $(function () {
     });
 
     function formAjaxSubmit() {
-        //disabledBtn(btnSubmit);
+        disabledBtn(btnSubmit);
         var actionUrl = domForm.attr('data-action-url');
         var returnUrl = domForm.attr('data-return-url');
         var formdata = domForm.serializeArray();
