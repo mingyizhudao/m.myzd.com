@@ -36,7 +36,7 @@ $this->show_footer = false;
     </nav>
 </header>
 <article id="questionnairefour_article" class="active android_article logo_article" data-scroll="true" data-action-url="<?php echo $urlQuestionnaire; ?>" data-return-url="<?php echo $urlQuestion; ?>">
-    <div class="pad20 bg-white">
+    <div id="outline" class="pad20 bg-white">
         <div class="w100 color-green text18">
             为了更好地给您提供诊疗意见，我们需要了解一下信息：
         </div>
@@ -71,10 +71,21 @@ $this->show_footer = false;
             </button>
         </div>
     </div>
+    <div id="logoImg" class="text-center hide pb20">
+        <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146761944631242" class="w125p">
+    </div>
 </article>
 <div id="jingle_toast" class="toast"><a href="#"></a></div>
 <script>
     $(document).ready(function () {
+        var screenHeight = window.screen.height;
+        var height = $('#outline').height();
+        if (screenHeight - height - 44 - 58 > 0) {
+            $('article').addClass('logoBackground');
+        } else {
+            $('#logoImg').removeClass('hide');
+        }
+
         $('.learn-example').click(function () {
             var innerHtml = '<div class="pad10" data-target="closePopup">' +
                     '<div class="font-s16">示例：</div>' +

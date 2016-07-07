@@ -16,7 +16,7 @@ $this->show_footer = false;
     <h1 class="title">疾病信息</h1>
 </header>
 <article id="questionnaireone_article" class="active logo_article" data-scroll="true">
-    <div class="pad20 bg-white">
+    <div id="outline" class="pad20 bg-white">
         <div class="w100 color-green text18">
             为了更好地给您提供诊疗意见，我们需要了解一下信息：
         </div>
@@ -37,9 +37,20 @@ $this->show_footer = false;
             </div>
         </div>
     </div>
+    <div id="logoImg" class="text-center hide pb20">
+        <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146761944631242" class="w125p">
+    </div>
 </article>
 <script>
     $(document).ready(function () {
+        var screenHeight = window.screen.height;
+        var height = $('#outline').height();
+        if (screenHeight - height - 44 - 58 > 0) {
+            $('article').addClass('logoBackground');
+        } else {
+            $('#logoImg').removeClass('hide');
+        }
+
         var btnSubmit = $("#QuestionnaireoneSubmit");
         var requestUrl = '<?php echo $urlQuestionnaire; ?>';
         var answer = '';
