@@ -78,9 +78,9 @@ $this->show_footer = false;
 <div id="jingle_toast" class="toast"><a href="#"></a></div>
 <script>
     $(document).ready(function () {
-        var screenHeight = window.screen.height;
+        var articleHeight = $('article').height();
         var height = $('#outline').height();
-        if (screenHeight - height - 44 - 58 > 0) {
+        if (articleHeight - height - 98 > 0) {
             $('article').addClass('logoBackground');
         } else {
             $('#logoImg').removeClass('hide');
