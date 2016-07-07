@@ -275,19 +275,19 @@ class BookingController extends MobileController {
                     $form->initModel();
                     $form->validate();
                 }
-//                 if (isset($user)) {
-//                     // 快速预约
-//                     $form->mobile = $user->username;
-//                     $form->validate();
-//                 } else {
-//                     $form->validate();
-//                     //验证码校验
-//                     $authMgr = new AuthManager();
-//                     $authSmsVerify = $authMgr->verifyCodeForBooking($form->mobile, $form->verify_code, null);
-//                     if ($authSmsVerify->isValid() === false) {
-//                         $form->addError('verify_code', $authSmsVerify->getError('code'));
-//                     }
-//                 }
+                if (isset($user)) {
+                    // 快速预约
+                    $form->mobile = $user->username;
+                    $form->validate();
+                } else {
+                    $form->validate();
+                    //验证码校验
+                    $authMgr = new AuthManager();
+                    $authSmsVerify = $authMgr->verifyCodeForBooking($form->mobile, $form->verify_code, null);
+                    if ($authSmsVerify->isValid() === false) {
+                        $form->addError('verify_code', $authSmsVerify->getError('code'));
+                    }
+                }
                 try {
                     if ($form->hasErrors() === false) {
 
@@ -344,10 +344,11 @@ class BookingController extends MobileController {
                                                     'booking_id'=> $booking ->id,
                                                     'uid'=> $bookingFile->createUID()
                                                 ), true);
-
-                                                $bookingFile->save();
+echo 1;
+                                                $bookingFile->save();exit;
                                             } 
                                     } else {
+                                        echo 2;exit;
                                         $questionnaire = Questionnaire::model()->getById($v);
                                         $questionnaire->user_id = $booking->user_id;
                                         $questionnaire->save();
@@ -878,36 +879,5 @@ class BookingController extends MobileController {
         $doctorInfo = Doctor::model()->getActiveDoctor($doctor_id, $booking_service_id);
     }
     
-    public function actionTestArray(){
-        $ran=array(1=>183,2=>184,3=>185,4=>186,'picture'=>array(1=>447,2=>448),5=>187);
-        foreach ($ran as $k => $v) {
-            if ($k == 'picture') {
-                foreach ($v as $k1 => $v1) {
-                    $bookingFile = new BookingFile();
-                    $questionnaireFile = QuestionnaireFile::model()->getById($v1);
-                    $bookingFile->setAttributes(array(
-                        'file_name' => $questionnaireFile['file_name'],
-                        'file_url' => $questionnaireFile['file_url'],
-                        'file_size' => $questionnaireFile['file_size'],
-                        'mime_type' => $questionnaireFile['mime_type'],
-                        'file_ext' => $questionnaireFile['file_ext'],
-                        'remote_domain' => $questionnaireFile['remote_domain'],
-                        'remote_file_key' => $questionnaireFile['remote_file_key'],
-                        'user_id'=>  100413,
-                        'booking_id'=> 1115
-                    ), true);
-                    print_r($bookingFile);exit;
-                    $bookingFile->save();
-                }
-            } else {
-                $questionnaire = Questionnaire::model()->getById($v);
-                if(isset($questionnaire)){
-                    $questionnaire->user_id = 100413;
-                    $questionnaire->save();
-                }
-                
-            }
-        }
-    }
 
 }
