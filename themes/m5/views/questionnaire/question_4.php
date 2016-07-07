@@ -36,7 +36,7 @@ $this->show_footer = false;
     </nav>
 </header>
 <article id="questionnairefour_article" class="active android_article logo_article" data-scroll="true" data-action-url="<?php echo $urlQuestionnaire; ?>" data-return-url="<?php echo $urlQuestion; ?>">
-    <div class="pad20">
+    <div class="pad20 bg-white">
         <div class="w100 color-green text18">
             为了更好地给您提供诊疗意见，我们需要了解一下信息：
         </div>

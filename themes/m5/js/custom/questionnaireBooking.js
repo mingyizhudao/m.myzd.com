@@ -75,6 +75,7 @@ $(function () {
         disabledBtn(btnSubmit);
         var actionUrl = domForm.attr('data-action-url');
         var returnUrl = domForm.attr('data-return-url');
+        var againUrl = domForm.attr('data-again-url');
         var formdata = domForm.serializeArray();
         var dataArray = structure_formdata('booking', formdata);
         var encryptContext = do_encrypt(dataArray, pubkey);
@@ -86,8 +87,9 @@ $(function () {
             success: function (data) {
                 console.log(data);
                 if (data.status == 'ok') {
+                    J.hideMask();
                     location.href = returnUrl;
-                } else {
+                } else if (data.status == 'no') {
                     domForm.find('div.error').remove();
                     for (error in data.errors) {
                         var errorMsg = data.errors[error];
@@ -95,6 +97,9 @@ $(function () {
                         $(inputKey).parents('.ui-field-contain').append("<div class='error'>" + errorMsg + "</div>");
                         enableBtn(btnSubmit);
                     }
+                } else if (data.status == 'error') {
+                    J.hideMask();
+                    location.href = againUrl;
                 }
             },
             error: function (XmlHttpRequest, textStatus, errorThrown) {

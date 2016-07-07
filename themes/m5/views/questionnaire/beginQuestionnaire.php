@@ -44,8 +44,8 @@ $this->show_footer = false;
             <div class="pt40">
                 <a href="<?php echo $urlQuestionnaire; ?>" class="btn btn-full bg-orange">马上申请</a>
             </div>
-            <div class="text-center pt20 hide">
-                <a class="color-blue a-underline">服务条款</a>
+            <div class="text-center pt20">
+                <a href="<?php echo $this->createUrl('home/page', array('view' => 'about')); ?>" class="color-blue a-underline">服务条款</a>
             </div>
         </div>
     </div>
