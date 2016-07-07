@@ -5,7 +5,7 @@ class BookingController extends MobileController {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('createCorp', 'ajaxCreateCorp', 'ajaxUploadCorp', 'ajaxUploadFile', 'captcha', 'ajaxCaptchaCode', 'ajaxCorpCaptchaCode', 'ajaxQuestionnaireCreate', 'quickbook', 'ajaxQuickbook', 'questionnaireBookingView', 'create', 'PayView'),
+                'actions' => array('createCorp', 'ajaxCreateCorp', 'ajaxUploadCorp', 'ajaxUploadFile', 'captcha', 'ajaxCaptchaCode', 'ajaxCorpCaptchaCode', 'ajaxQuestionnaireCreate', 'quickbook', 'ajaxQuickbook', 'questionnaireBookingView', 'create', 'testArray','PayView'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -256,6 +256,7 @@ class BookingController extends MobileController {
         if (isset($post['booking'])) {
             $key = session_id();
             $questionnaireList = Yii::app()->cache->get('res'.$key);  
+//             print_r($questionnaireList);exit;
             if (isset($questionnaireList)) {
                 $values = $post['booking'];
                 if (isset($values['doctor_id'])) {
@@ -274,19 +275,19 @@ class BookingController extends MobileController {
                     $form->initModel();
                     $form->validate();
                 }
-                if (isset($user)) {
-                    // 快速预约
-                    $form->mobile = $user->username;
-                    $form->validate();
-                } else {
-                    $form->validate();
-                    //验证码校验
-                    $authMgr = new AuthManager();
-                    $authSmsVerify = $authMgr->verifyCodeForBooking($form->mobile, $form->verify_code, null);
-                    if ($authSmsVerify->isValid() === false) {
-                        $form->addError('verify_code', $authSmsVerify->getError('code'));
-                    }
-                }
+//                 if (isset($user)) {
+//                     // 快速预约
+//                     $form->mobile = $user->username;
+//                     $form->validate();
+//                 } else {
+//                     $form->validate();
+//                     //验证码校验
+//                     $authMgr = new AuthManager();
+//                     $authSmsVerify = $authMgr->verifyCodeForBooking($form->mobile, $form->verify_code, null);
+//                     if ($authSmsVerify->isValid() === false) {
+//                         $form->addError('verify_code', $authSmsVerify->getError('code'));
+//                     }
+//                 }
                 try {
                     if ($form->hasErrors() === false) {
 
@@ -324,6 +325,7 @@ class BookingController extends MobileController {
                         $apiRequest = new ApiRequestUrl();
                         $remote_url = $apiRequest->getUrlAdminSalesBookingCreate() . '?type=' . StatCode::TRANS_TYPE_BK . '&id=' . $booking->id;
                         $data = $this->send_get($remote_url);
+//                          print_r(strRandomLong(32));exit;
                         if ($data['status'] == "ok") {       
                                 foreach ($questionnaireList as $k => $v) {
                                     if ($k == 'picture') {
@@ -339,7 +341,8 @@ class BookingController extends MobileController {
                                                     'remote_domain' => $questionnaireFile['remote_domain'],
                                                     'remote_file_key' => $questionnaireFile['remote_file_key'],
                                                     'user_id'=>  $booking->user_id,
-                                                    'booking_id'=> $booking ->id
+                                                    'booking_id'=> $booking ->id,
+                                                    'uid'=> $bookingFile->createUID()
                                                 ), true);
 
                                                 $bookingFile->save();
@@ -873,6 +876,38 @@ class BookingController extends MobileController {
 
     public function actionDoctorJoinActive($doctor_id, $booking_service_id) {
         $doctorInfo = Doctor::model()->getActiveDoctor($doctor_id, $booking_service_id);
+    }
+    
+    public function actionTestArray(){
+        $ran=array(1=>183,2=>184,3=>185,4=>186,'picture'=>array(1=>447,2=>448),5=>187);
+        foreach ($ran as $k => $v) {
+            if ($k == 'picture') {
+                foreach ($v as $k1 => $v1) {
+                    $bookingFile = new BookingFile();
+                    $questionnaireFile = QuestionnaireFile::model()->getById($v1);
+                    $bookingFile->setAttributes(array(
+                        'file_name' => $questionnaireFile['file_name'],
+                        'file_url' => $questionnaireFile['file_url'],
+                        'file_size' => $questionnaireFile['file_size'],
+                        'mime_type' => $questionnaireFile['mime_type'],
+                        'file_ext' => $questionnaireFile['file_ext'],
+                        'remote_domain' => $questionnaireFile['remote_domain'],
+                        'remote_file_key' => $questionnaireFile['remote_file_key'],
+                        'user_id'=>  100413,
+                        'booking_id'=> 1115
+                    ), true);
+                    print_r($bookingFile);exit;
+                    $bookingFile->save();
+                }
+            } else {
+                $questionnaire = Questionnaire::model()->getById($v);
+                if(isset($questionnaire)){
+                    $questionnaire->user_id = 100413;
+                    $questionnaire->save();
+                }
+                
+            }
+        }
     }
 
 }
