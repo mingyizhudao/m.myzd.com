@@ -265,20 +265,23 @@ class Api2Controller extends Controller {
 
             case"userbooking":
                 $values = $_GET;
-				if ( $api >= 10){
+                if ($api >= 12){
+                    $user = $this->userLoginRequired($values,true);
+                    $bk_status = isset($_GET['bk_status'])?$_GET['bk_status']:'';
+                    $apiService = new ApiViewBookingListV12($user,$bk_status);
+                    $output = $apiService->loadApiViewData();
+                }elseif ($api >= 10){
 					$user = $this->userLoginRequired($values,true);
                     $bk_status = isset($_GET['bk_status'])?$_GET['bk_status']:'';
                     $apiService = new ApiViewBookingListV9($user,$bk_status);
                     $output = $apiService->loadApiViewData(true);
-				}
-                elseif ( $api >= 9){
+				}elseif ($api >= 9){
                     $user = $this->userLoginRequired($values);
                     
                     $bk_status = isset($_GET['bk_status'])?$_GET['bk_status']:'';
                     $apiService = new ApiViewBookingListV9($user,$bk_status);
                     $output = $apiService->loadApiViewData();
-                }
-                elseif ($api >= 7) {
+                }elseif ($api >= 7) {
                     $user = $this->userLoginRequired($values);
                     $apiService = new ApiViewBookingListV7($user);
                     $output = $apiService->loadApiViewData();
@@ -313,7 +316,7 @@ class Api2Controller extends Controller {
                 break;
             case 'city':
                 $values = $_GET;
-                $city = new ApiViewOpenCity($values);
+                $city = new ApiViewAppCity($values);
                 $output = $city->loadApiViewData();
                 break;
             case 'diseasename'://根据疾病名称获取疾病信息
@@ -325,6 +328,10 @@ class Api2Controller extends Controller {
                 $values = $_GET;
                 $values['name'] = urldecode($values['name']);
                 $apiService = new ApiViewSearch($values);
+                $output = $apiService->loadApiViewData();
+                break;
+            case 'bookingstatus':
+                $apiService = new ApiViewBookingStatus();
                 $output = $apiService->loadApiViewData();
                 break;
             default:
@@ -379,7 +386,10 @@ class Api2Controller extends Controller {
 
                 break;
             case 'doctor':
-                if ($api >= 8) {
+                if ($api >= 12) {
+                    $apiService = new ApiViewDoctorV12($id);
+                    $output = $apiService->loadApiViewData();
+                }elseif ($api >= 8) {
                     $apiService = new ApiViewDoctorV8($id);
                     $output = $apiService->loadApiViewData();
                 }else{
@@ -420,17 +430,19 @@ class Api2Controller extends Controller {
                 break;
             case 'userbooking':
                 $values = $_GET;
-				if($api >= 10 ){
+                if($api >= 12 ){
+                    $user = $this->userLoginRequired($values,true);
+                    $apiService = new ApiViewBookingV12($user, $id);
+                    $output = $apiService->loadApiViewData();
+                }elseif($api >= 10 ){
 					$user = $this->userLoginRequired($values,true);
                     $apiService = new ApiViewBookingV9($user, $id);
                     $output = $apiService->loadApiViewData(true);
-				}
-                elseif($api >= 9){
+				}elseif($api >= 9){
                     $user = $this->userLoginRequired($values);
                     $apiService = new ApiViewBookingV9($user, $id);
                     $output = $apiService->loadApiViewData();
-                }
-                elseif($api >= 7){
+                }elseif($api >= 7){
                     $user = $this->userLoginRequired($values);
                     $apiService = new ApiViewBookingV7($user, $id);
                     $output = $apiService->loadApiViewData();
@@ -484,6 +496,12 @@ class Api2Controller extends Controller {
                     $apiSvc = new ApiViewDisease($id);
                     $output = $apiSvc->loadApiViewData();
                 }
+                break;
+            case'orderlist':
+                $values = $_GET;
+                $user = $this->userLoginRequired($values);
+                $apiSvc = new ApiViewOrderList($user, $id);
+                $output = $apiSvc->loadApiViewData();
                 break;
             /*
               case 'diseaseinfo':
@@ -710,6 +728,17 @@ class Api2Controller extends Controller {
                     } else {
                         $output['error'] = 'Wrong parameters';
                     }
+                }
+                break;
+            case 'comment':
+                if (isset($post['comment'])) {
+                    $values = $post['comment'];
+
+                    $user = $this->userLoginRequired($values);  // check if user has login.
+                    $commentMgr = new CommentManager();
+                    $output = $commentMgr->apiCreateComment($user, $values);
+                } else {
+                    $output['errorMsg'] = 'Wrong parameters';
                 }
                 break;
             default:
