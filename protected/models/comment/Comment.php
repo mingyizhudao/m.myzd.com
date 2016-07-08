@@ -15,7 +15,7 @@ class Comment extends EActiveRecord {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('effect, doctor_attitude,disease_detail, user_id, user_name, bk_type, bk_id', 'required'),
+            array('effect, doctor_attitude, user_id, user_name, bk_type, bk_id', 'required'),
             array('effect, doctor_attitude, user_id, bk_type, bk_id', 'numerical', 'integerOnly' => true),
             array('user_id, bk_id', 'length', 'max' => 11),
             array('user_name', 'length', 'max' => 30),
