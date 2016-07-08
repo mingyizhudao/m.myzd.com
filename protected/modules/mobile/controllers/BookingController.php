@@ -256,7 +256,6 @@ class BookingController extends MobileController {
         if (isset($post['booking'])) {
             $key = session_id();
             $questionnaireList = Yii::app()->cache->get('res' . $key);
-//             print_r($questionnaireList);exit;
             if (isset($questionnaireList)) {
                 $values = $post['booking'];
                 if (isset($values['doctor_id'])) {
@@ -275,19 +274,19 @@ class BookingController extends MobileController {
                     $form->initModel();
                     $form->validate();
                 }
-//                if (isset($user)) {
-//                    // 快速预约
-//                    $form->mobile = $user->username;
-//                    $form->validate();
-//                } else {
-//                    $form->validate();
-//                    //验证码校验
-//                    $authMgr = new AuthManager();
-//                    $authSmsVerify = $authMgr->verifyCodeForBooking($form->mobile, $form->verify_code, null);
-//                    if ($authSmsVerify->isValid() === false) {
-//                        $form->addError('verify_code', $authSmsVerify->getError('code'));
-//                    }
-//                }
+               if (isset($user)) {
+                   // 快速预约
+                   $form->mobile = $user->username;
+                   $form->validate();
+               } else {
+                   $form->validate();
+                   //验证码校验
+                   $authMgr = new AuthManager();
+                   $authSmsVerify = $authMgr->verifyCodeForBooking($form->mobile, $form->verify_code, null);
+                   if ($authSmsVerify->isValid() === false) {
+                       $form->addError('verify_code', $authSmsVerify->getError('code'));
+                   }
+               }
                 try {
                     if ($form->hasErrors() === false) {
 
@@ -330,9 +329,8 @@ class BookingController extends MobileController {
                                 if ($k == 'picture') {
                                     foreach ($v as $k1 => $v1) {
                                         $bookingFile = new BookingFile();
-                                        $bookingFile->createUID();
                                         $questionnaireFile = QuestionnaireFile::model()->getById($v1);
-                                        $bookingFile->createUID();
+//                                         $bookingFile->createUID();
                                         $bookingFile->setAttributes(array(
                                             'file_name' => $questionnaireFile['file_name'],
                                             'file_url' => $questionnaireFile['file_url'],
@@ -342,6 +340,7 @@ class BookingController extends MobileController {
                                             'remote_domain' => $questionnaireFile['remote_domain'],
                                             'remote_file_key' => $questionnaireFile['remote_file_key'],
                                             'user_id' => $booking->user_id,
+                                            'uid' => $this->createUID(),
                                             'booking_id' => $booking->id,
                                                 ), true);
                                         $bookingFile->save();
@@ -361,7 +360,6 @@ class BookingController extends MobileController {
                             $output['booking']['id'] = $booking->getId();
                         } else {
                             $output['status'] = 'error';
-                            //$output['errors'] = $salesOrder->getErrors();
                             throw new CException('error saving data.');
                         }
                     } else {
@@ -381,7 +379,6 @@ class BookingController extends MobileController {
             $output['status'] = 'no';
             $output['error'] = 'missing parameters';
         }
-        //$this->renderJsonOutput($output);
         if (isset($_POST['plugin'])) {
             echo CJSON::encode($output);
             Yii::app()->end(200, true); //结束 返回200
@@ -878,6 +875,10 @@ class BookingController extends MobileController {
 
     public function actionDoctorJoinActive($doctor_id, $booking_service_id) {
         $doctorInfo = Doctor::model()->getActiveDoctor($doctor_id, $booking_service_id);
+    }
+    
+    private function createUID() {
+        return $uid = strRandomLong(32);
     }
 
 }
