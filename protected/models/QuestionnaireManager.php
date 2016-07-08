@@ -41,7 +41,7 @@ class QuestionnaireManager {
             }   
       
         }else{
-            Yii::app()->cache->delete($key);
+//             Yii::app()->cache->delete($key);
             return $output = array('status' => 'no','errorMsg' =>'faile answer');
         }
         return $output = array('status' => 'ok', 'errorCode' => '200','errorMsg' =>'200');
@@ -75,7 +75,7 @@ class QuestionnaireManager {
              yii::app()->cache->set($key, $value ,$alive);
                  
          }else{
-             Yii::app()->cache->delete($key);
+//              Yii::app()->cache->delete($key);
              return $output = array('status' => 'no','errorMsg' =>'faile answer');
          }
          
