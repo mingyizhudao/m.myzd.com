@@ -15,6 +15,7 @@ class BookingServiceConfig extends EActiveRecord {
 
     const BOOKING_SERVICE_REGULAR = 1;//普通预约
     const BOOKING_SERVICE_FREE_LIINIC = 2;//义诊
+    const BOOKING_SERVICE_ZERO_LIINIC = 3;//0元面诊
 
     /**
      * @return string the associated database table name

@@ -264,14 +264,14 @@ class BookingController extends MobileController {
                     $doctor = Doctor::model()->getById($values['doctor_id']);
                     $doctorId = $values['doctor_id'];
                     //设为义诊订单
-                    $form->booking_service_id = BookingServiceConfig::BOOKING_SERVICE_FREE_LIINIC;
+                    $form->booking_service_id = BookingServiceConfig::BOOKING_SERVICE_ZERO_LIINIC;
                     $form->setAttributes($values, true);
                     $form->setDoctorData();
                     $form->initModel();
                     $form->validate();
                 } else {
                     $form = new BookQuestionnaireForm();
-                    $form->booking_service_id = BookingServiceConfig::BOOKING_SERVICE_FREE_LIINIC;
+                    $form->booking_service_id = BookingServiceConfig::BOOKING_SERVICE_ZERO_LIINIC;
                     $form->setAttributes($values, true);
                     $form->setDoctorData();
                     $form->initModel();
