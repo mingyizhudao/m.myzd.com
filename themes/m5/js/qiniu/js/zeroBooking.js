@@ -31,7 +31,7 @@ $(function () {
         //         return time;
         //     },
         // },
-        auto_start: false,
+        auto_start: true,
         log_level: 5,
         init: {
             'FilesAdded': function (up, files) {
@@ -89,12 +89,6 @@ $(function () {
                 progress.setProgress(file.percent + "%", file.speed, chunk_size);
             },
             'UploadComplete': function () {
-                if (num == 0) {
-                    skip();
-                } else {
-                    $('#jingle_popup').hide();
-                    location.href = $('article').attr('data-return-url') + '/5';
-                }
             },
             'FileUploaded': function (up, file, info) {
                 //单个文件上传成功所做的事情 
@@ -133,6 +127,8 @@ $(function () {
                         if (data.status == 'no' && data.errorMsg == 'faile answer') {
                             $('#jingle_popup').hide();
                             location.href = $('article').attr('data-return-url') + '/1';
+                        } else if (data.status == 'ok') {
+                            returnResult = false;
                         }
                     },
                     error: function (data) {
@@ -193,7 +189,7 @@ $(function () {
 
     btnSubmit.click(function () {
         disabledBtn(btnSubmit);
-        uploader.start();
+        skip();
     });
 
     $('#container').on(
