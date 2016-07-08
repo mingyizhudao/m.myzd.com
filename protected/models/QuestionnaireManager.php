@@ -22,7 +22,7 @@ class QuestionnaireManager {
         $qustNum = $values['questionnaireNumber'] -1;
         $value = isset($anwerList) ? $anwerList : '';
         if($num >= $qustNum){
-//             $values['answer']=array('1'=>array('file_name'=>'aaaaa','file_url'=>'bbbbbbb','file_size' =>'111','mime_type' => '1','file_ext'=>'jia','remote_domain'=>'2334565','remote_file_key'=>null),'2'=>array('file_name'=>'cccc','file_url'=>'ddd','file_size' =>'111','mime_type' => '1','file_ext'=>'jia','remote_domain'=>'2334565','remote_file_key'=>null));
+// array例：    $values['answer']=array('1'=>array('file_name'=>'aaaaa','file_url'=>'bbbbbbb','file_size' =>'111','mime_type' => '1','file_ext'=>'jia','remote_domain'=>'2334565','remote_file_key'=>null),'2'=>array('file_name'=>'cccc','file_url'=>'ddd','file_size' =>'111','mime_type' => '1','file_ext'=>'jia','remote_domain'=>'2334565','remote_file_key'=>null));
             if(is_array($values['answer'])){
                 unset($value[$values['questionnaireNumber']]);
                 foreach ($values['answer'] as $k=>$v){
@@ -50,7 +50,7 @@ class QuestionnaireManager {
     public function apiUploadQuestionnaireFile($values){
          $output = array('status' => 'no', 'errorCode' => '0','errorMsg' =>'0');
          $values['userHostIp'] = Yii::app()->request->userHostAddress;
-//          $values = array('file_name'=>'aaaaa','file_url'=>'bbbbbbb','file_size' =>'111','mime_type' => '1','file_ext'=>'jia','remote_domain'=>'2334565','remote_file_key'=>'1245555','questionnaireNumber'=>'4','file_num'=>'1','userHostIp'=>'127.0.0.1');
+//   array例：       $values = array('file_name'=>'aaaaa','file_url'=>'bbbbbbb','file_size' =>'111','mime_type' => '1','file_ext'=>'jia','remote_domain'=>'2334565','remote_file_key'=>'1245555','questionnaireNumber'=>'4','file_num'=>'1','userHostIp'=>'127.0.0.1');
          if(isset($values['questionnaireNumber']) == false || isset($values['file_num']) == false || isset($values['userHostIp']) == false){
              $output = array('status' => 'no', 'errorCode' => '400','errorMsg' =>'Wrong parameters');
              return $output;
@@ -58,7 +58,6 @@ class QuestionnaireManager {
          $key = session_id();
          $alive = '3600';
          $anwerList=Yii::app()->cache->get($key);
-//          print_r($anwerList);exit;
          $num= count($anwerList);
          if($values['questionnaireNumber'] == 1 ){
             $num = 1;

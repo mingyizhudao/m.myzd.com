@@ -247,7 +247,7 @@ class BookingController extends MobileController {
     }
 
     /**
-     * 问卷预约专家和科室预约
+     * 问卷预约专家-0元面诊
      * @throws CException
      */
     public function actionAjaxQuestionnaireCreate() {
@@ -263,12 +263,15 @@ class BookingController extends MobileController {
                     $form = new BookQuestionnaireForm();
                     $doctor = Doctor::model()->getById($values['doctor_id']);
                     $doctorId = $values['doctor_id'];
+                    //设为义诊订单
+                    $form->booking_service_id = BookingServiceConfig::BOOKING_SERVICE_FREE_LIINIC;
                     $form->setAttributes($values, true);
                     $form->setDoctorData();
                     $form->initModel();
                     $form->validate();
                 } else {
                     $form = new BookQuestionnaireForm();
+                    $form->booking_service_id = BookingServiceConfig::BOOKING_SERVICE_FREE_LIINIC;
                     $form->setAttributes($values, true);
                     $form->setDoctorData();
                     $form->initModel();
@@ -325,12 +328,12 @@ class BookingController extends MobileController {
                         $remote_url = $apiRequest->getUrlAdminSalesBookingCreate() . '?type=' . StatCode::TRANS_TYPE_BK . '&id=' . $booking->id;
                         $data = $this->send_get($remote_url);
                         if ($data['status'] == "ok") {
+                            //循环取memcache键(res.sessionId)值(问卷ID )插入订单图片表
                             foreach ($questionnaireList as $k => $v) {
                                 if ($k == 'picture') {
                                     foreach ($v as $k1 => $v1) {
                                         $bookingFile = new BookingFile();
                                         $questionnaireFile = QuestionnaireFile::model()->getById($v1);
-//                                         $bookingFile->createUID();
                                         $bookingFile->setAttributes(array(
                                             'file_name' => $questionnaireFile['file_name'],
                                             'file_url' => $questionnaireFile['file_url'],
@@ -340,13 +343,14 @@ class BookingController extends MobileController {
                                             'remote_domain' => $questionnaireFile['remote_domain'],
                                             'remote_file_key' => $questionnaireFile['remote_file_key'],
                                             'user_id' => $booking->user_id,
+                                            'has_remote' => StatCode::HAS_REMOTE,
                                             'uid' => $this->createUID(),
                                             'booking_id' => $booking->id,
                                                 ), true);
                                         $bookingFile->save();
                                     }
                                 } else {
-
+                                    //问卷填入user_id
                                     $questionnaire = Questionnaire::model()->getById($v);
                                     if (isset($questionnaire)) {
                                         $questionnaire->user_id = $booking->user_id;
@@ -354,6 +358,7 @@ class BookingController extends MobileController {
                                     }
                                 }
                             }
+                            //释放问卷id以及问卷图片id
                             Yii::app()->cache->delete('res' . $key);
                             $output['status'] = 'ok';
                             $output['salesOrderRefNo'] = $data['salesOrderRefNo'];
