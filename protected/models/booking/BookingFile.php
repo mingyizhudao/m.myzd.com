@@ -181,5 +181,10 @@ class BookingFile extends EFileModel {
     public function setUserId($v) {
         $this->user_id = $v;
     }
+    
+    public function createUID() {
+        $this->uid = strRandomLong(32);
+    }
+    
 
 }
