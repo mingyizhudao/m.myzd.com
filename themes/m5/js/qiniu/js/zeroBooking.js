@@ -65,6 +65,16 @@ $(function () {
                         });
                     }
                 }
+                if ($('article').hasClass('logoBackground')) {
+                    $('article').removeClass('logoBackground');
+                    var articleHeight = $('article').height();
+                    var height = $('#outline').height();
+                    if (articleHeight - height - 98 > 0) {
+                        $('article').addClass('logoBackground');
+                    } else {
+                        $('#logoImg').removeClass('hide');
+                    }
+                }
             },
             'BeforeUpload': function (up, file) {
                 var progress = new FileProgress(file, 'fsUploadProgress');
