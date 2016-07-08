@@ -1,4 +1,5 @@
 <?php
+$this->setPageTitle('提交成功');
 $this->show_footer = false;
 ?>
 <header class="bg-green">

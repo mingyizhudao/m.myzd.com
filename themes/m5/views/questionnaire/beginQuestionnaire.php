@@ -1,9 +1,10 @@
 <?php
+$this->setPageTitle('0元见名医');
 $urlQuestionnaire = $this->createUrl('questionnaire/view', array('id' => 1));
 $this->show_footer = false;
 ?>
 <header class="bg-green">
-    <h1 class="title">名医主刀0元面诊</h1>
+    <h1 class="title">0元见名医</h1>
 </header>
 <article id="beginQuestionnaire_article" class="active" data-scroll="true">
     <div class="font-s15 c-black">
