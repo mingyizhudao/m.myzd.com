@@ -24,7 +24,7 @@ $this->show_footer = false;
             <div>3/5：医生诊断您是什么病？</div>
             <div class="border-gray border-r3 mt20">
                 <div class="pad10 border-bottom"><input type="radio" name="questionnaire[answer]" value="1"/> 已确诊</div>
-                <div><textarea class="questionnairethreetextarea form-control" name='questionnaire[answer]' type='text' placeholder="请输入疾病诊断信息"></textarea></div>
+                <div><textarea readonly="readonly" class="questionnairethreetextarea form-control" name='questionnaire[answer]' type='text' placeholder="请输入疾病诊断信息"></textarea></div>
                 <div class="pad10"><input type="radio" name="questionnaire[answer]" value="2" /> 尚未确诊</div>
             </div>
             <div class="questionnaire-error"></div>
@@ -61,18 +61,18 @@ $this->show_footer = false;
                     answer = $(this).val();
                 }
             });
-            if ($(this).val() != 1) {
+            if ($(this).val() == 1) {
+                $('.questionnairethreetextarea').removeAttr('readonly');
+            } else {
+                $('.questionnairethreetextarea').attr('readonly', 'readonly');
                 $('.questionnairethreetextarea').val('');
             }
         });
 
         $('.questionnairethreetextarea').click(function () {
-            $("input[name='questionnaire[answer]']").each(function () {
-                if ($(this).val() == 1) {
-                    $(this).attr('checked', 'checked');
-                    answer = $(this).val();
-                }
-            });
+            if ($(this).attr('readonly') == 'readonly') {
+                J.showToast('请先选择', '', '1500');
+            }
         });
 
         btnSubmit.click(function () {
