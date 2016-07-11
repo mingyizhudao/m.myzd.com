@@ -13,7 +13,7 @@ $this->show_footer = false;
             <input class="icon_input" type="text" placeholder="请输入你意向的专家">
             <a class="icon_clear hide"></a>
         </div>
-        <a id="searchBtn" class="col-0 pl5 pr5" data-target="back">
+        <a id="searchBtn" href="" class="col-0 pl5 pr5" data-target="back">
             取消
         </a>
     </div>

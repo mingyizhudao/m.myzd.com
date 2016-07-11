@@ -126,7 +126,7 @@ if ($results->bkStatusCode == $BK_STATUS_NEW) {
             </li>
             <li class="grid">
                 <div class="col-0 color-black6">就诊专家</div>
-                <div class="col-1 pl10 text-right"><?php echo $results->expertName; ?></div>
+                <div class="col-1 pl10 text-right"><?php echo $results->expertName == '' ? $results->doctorName : $results->expertName; ?></div>
             </li>
             <li class="grid">
                 <div class="col-0 color-black6">就诊医院</div>

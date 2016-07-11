@@ -74,7 +74,7 @@ $urlUserView = $this->createUrl('user/view');
                                     就诊医生：
                                 </div>
                                 <div class="col-1 color-black10">
-                                    <?php echo $results[$i]->expertName == '' ? '未填写' : $results[$i]->expertName; ?>
+                                    <?php echo $results[$i]->expertName == '' ? $results[$i]->doctorName : $results[$i]->expertName; ?> 
                                 </div>
                             </div>
                             <div class="order_list grid pt10">

@@ -57,7 +57,7 @@ $this->show_footer = false;
         <li>
             <div class="grid">
                 <div class="col-0 w100p color-gray">就诊专家:</div>
-                <div class="col-1 text-right"><?php echo $results->expertName == '' ? '未填写' : $results->expertName; ?></div>
+                <div class="col-1 text-right"><?php echo $results->expertName == '' ? $results->doctorName : $results->expertName; ?></div>
             </div>
         </li>
         <li>
@@ -85,28 +85,6 @@ $this->show_footer = false;
                 <div class="col-0 w100p color-gray">影像资料:</div>
                 <div class="col-1">
                 </div>
-            </div>
-            <div id="imgList" class="mt10">
-                <?php
-                $files = $results->files;
-                if (count($files) > 0) {
-                    $n = floor(count($files) / 3);
-                    for ($i = 0; $i < $n + 1; $i++) {
-                        echo '<div class="grid">';
-                        for ($j = 0; $j < 3; $j++) {
-                            $num = $i * 3 + $j;
-                            if (($num < count($files)) && ($files[$num]->hasRemote == '0')) {
-                                ?>
-                                <div class="col-0 w33 text-center mt5">
-                                    <img class="btn-img" src="<?php echo $files[$num]->absThumbnailUrl; ?>" data-img="<?php echo $files[$num]->absFileUrl; ?>">
-                                </div>
-                                <?php
-                            }
-                        }
-                        echo '</div>';
-                    }
-                }
-                ?>
             </div>
             <div id="qiniuList"></div>
             <?php

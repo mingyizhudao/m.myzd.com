@@ -48,6 +48,7 @@ class ApiViewBookingListV4 extends EApiViewService {
                 $data->bkStatus = $model->getBkStatusCode();
                 $data->bkStatusText = $model->getBkStatus();
                 $data->contact_name = $model->getContactName();
+                $data->doctorName = $model->getDoctorName();
                 $data->expertName = $model->getExpertNameBooked();
                 $data->hpName = $model->gethospitalName();
                 $data->hpDeptName = $model->gethpDeptName();

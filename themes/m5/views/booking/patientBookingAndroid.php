@@ -69,7 +69,7 @@ $this->show_footer = false;
         <li>
             <div class="grid">
                 <div class="col-0 w100p color-gray">就诊专家:</div>
-                <div class="col-1 text-right"><?php echo $results->expertName == '' ? '未填写' : $results->expertName; ?></div>
+                <div class="col-1 text-right"><?php echo $results->expertName == '' ? $results->doctorName : $results->expertName; ?></div>
             </div>
         </li>
         <li>
