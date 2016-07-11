@@ -20,6 +20,9 @@ $urlSubmitForm = $this->createUrl("booking/ajaxCreate");
 $urlUploadFile = $this->createUrl("booking/ajaxUploadFile");
 $showStatus = Yii::app()->request->getQuery('showStatus', 0);
 $urlReturn = $this->createUrl('booking/patientBookingList', array('status' => $showStatus));
+$user = $this->loadUser();
+//$urlBookingFiles = 'http://192.168.31.118/file.myzd.com/api/loadbookingmr?userId=' . $user->id . '&bookingId=' . $results->id;
+$urlBookingFiles = 'http://file.mingyizhudao.com/api/loadbookingmr?userId=' . $user->id . '&bookingId=' . $results->id;
 $this->show_footer = false;
 ?>
 <header class="bg-green" >
@@ -92,7 +95,7 @@ $this->show_footer = false;
                         echo '<div class="grid">';
                         for ($j = 0; $j < 3; $j++) {
                             $num = $i * 3 + $j;
-                            if ($num < count($files)) {
+                            if (($num < count($files)) && ($files[$num]->hasRemote == '0')) {
                                 ?>
                                 <div class="col-0 w33 text-center mt5">
                                     <img class="btn-img" src="<?php echo $files[$num]->absThumbnailUrl; ?>" data-img="<?php echo $files[$num]->absFileUrl; ?>">
@@ -105,6 +108,7 @@ $this->show_footer = false;
                 }
                 ?>
             </div>
+            <div id="qiniuList"></div>
             <?php
             $form = $this->beginWidget('CActiveForm', array(
                 'id' => 'booking-form',
@@ -157,12 +161,54 @@ $this->show_footer = false;
     </ul>
 </article>
 <script>
-    $('.btn-img').tap(function () {
-        var imgUrl = $(this).attr("data-img");
-        J.popup({
-            html: '<div class="imgpopup"><img src="' + imgUrl + '"></div>',
-            pos: 'top-second',
-            showCloseBtn: true
+    $(document).ready(function () {
+        //加载病人病历图片
+        var urlBookingFiles = "<?php echo $urlBookingFiles; ?>";
+        $.ajax({
+            url: urlBookingFiles,
+            success: function (data) {
+                setImgHtml(data.results.files);
+            }
         });
-    });
+
+        function setImgHtml(imgfiles) {
+            var innerHtml = '';
+            if (imgfiles && imgfiles.length > 0) {
+                var n = Math.ceil((imgfiles.length) / 3);
+                for (var i = 0; i < n; i++) {
+                    innerHtml += '<div class="grid">';
+                    for (var j = 0; j < 3; j++) {
+                        var num = i * 3 + j;
+                        if (num < (imgfiles.length)) {
+                            innerHtml += '<div class="col-0 w33 text-center mt5">' +
+                                    '<img class="btn-img" src="' + imgfiles[num].absFileUrl + '" data-img="' + imgfiles[num].thumbnailUrl + '">' +
+                                    '</div>';
+                        }
+                    }
+                    innerHtml += '</div>';
+                }
+            } else {
+                innerHtml += '';
+            }
+            $("#qiniuList").html(innerHtml);
+            $('.btn-img').click(function () {
+                var imgUrl = $(this).attr("data-img");
+                J.popup({
+                    html: '<div class="imgpopup"><img src="' + imgUrl + '"></div>',
+                    pos: 'top-second',
+                    showCloseBtn: true
+                });
+            });
+        }
+
+        $('.btn-img').tap(function () {
+            var imgUrl = $(this).attr("data-img");
+            J.popup({
+                html: '<div class="imgpopup"><img src="' + imgUrl + '"></div>',
+                pos: 'top-second',
+                showCloseBtn: true
+            });
+        });
+    }
+    );
 </script>

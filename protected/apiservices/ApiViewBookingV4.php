@@ -1,6 +1,7 @@
 <?php
 
 class ApiViewBookingV4 extends EApiViewService {
+
     private $user;
     private $bookingId;
 
@@ -34,8 +35,8 @@ class ApiViewBookingV4 extends EApiViewService {
         //$model = Booking::model()->getByIdAndUserId($this->bookingId, $this->user->getId());
         // 旧的booking.user_id 为NULL， 所以在查找时，需要比较 (user_id=$userId OR mobile=$mobile);
         $model = Booking::model()->getByIdAndUser($this->bookingId, $this->user->getId(), $this->user->getMobile());
-        
-        if (isset($model)){
+
+        if (isset($model)) {
             $this->setBooking($model);
         }
     }
@@ -60,16 +61,17 @@ class ApiViewBookingV4 extends EApiViewService {
         $data->dateEnd = $model->getDateEnd();
         $data->actionUrl = Yii::app()->createAbsoluteUrl('/api/bookingfile');
         $bookingFiles = $model->getBkFiles();
-        if(arrayNotEmpty($bookingFiles)){
-            foreach ($bookingFiles as $bookingFile){
+        if (arrayNotEmpty($bookingFiles)) {
+            foreach ($bookingFiles as $bookingFile) {
                 $files = new stdClass();
                 $files->id = $bookingFile->getId();
+                $files->hasRemote = $bookingFile->getHasRemote();
                 $files->absFileUrl = $bookingFile->getAbsFileUrl();
                 $files->absThumbnailUrl = $bookingFile->getAbsThumbnailUrl();
                 $data->files[] = $files;
             }
-        }else{
-             $data->files = array();
+        } else {
+            $data->files = array();
         }
         $this->results = $data;
     }
@@ -98,5 +100,4 @@ class ApiViewBookingV4 extends EApiViewService {
 //            return array();
 //        }
 //    }
-
 }

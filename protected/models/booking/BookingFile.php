@@ -182,4 +182,7 @@ class BookingFile extends EFileModel {
         $this->user_id = $v;
     }
     
+    public function getHasRemote() {
+        return $this->has_remote;
+    }
 }
