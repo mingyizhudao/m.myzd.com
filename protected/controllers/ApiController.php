@@ -534,6 +534,18 @@ class ApiController extends Controller {
                     $output = $questionnaireMgr->apiUploadQuestionnaireFile($values);
                 }
                 break;
+            case 'stat':
+                if(isset($post['stat'])){
+                    $values = $post['stat'];
+                    $values['user_host_ip'] = Yii::app()->request->getUserHostAddress();
+                    $values['url'] = Yii::app()->request->getUrl();
+                    $values['url_referrer'] = Yii::app()->request->getUrlReferrer();
+                    $values['user_agent'] = Yii::app()->request->getUserAgent();
+
+                    $model = new StatManager();
+                    $output = $model->createStat($values);
+                }
+                break;
             default:
                 $this->_sendResponse(501, sprintf('Error: Invalid request', $model));
                 Yii::app()->end();
