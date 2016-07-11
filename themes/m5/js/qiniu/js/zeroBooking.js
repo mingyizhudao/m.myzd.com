@@ -35,6 +35,8 @@ $(function () {
         log_level: 5,
         init: {
             'FilesAdded': function (up, files) {
+                btnSubmit.attr("disabled", true);
+                $('#jingle_popup').show();
                 for (var i = 0; i < files.length; i++) {
                     var uploadFile = true;
                     if (($('.progressContainer').length) >= 9) {
@@ -89,6 +91,8 @@ $(function () {
                 progress.setProgress(file.percent + "%", file.speed, chunk_size);
             },
             'UploadComplete': function () {
+                btnSubmit.removeAttr("disabled");
+                $('#jingle_popup').hide();
             },
             'FileUploaded': function (up, file, info) {
                 //单个文件上传成功所做的事情 
@@ -128,10 +132,16 @@ $(function () {
                             $('#jingle_popup').hide();
                             location.href = $('article').attr('data-return-url') + '/1';
                         } else if (data.status == 'ok') {
-                            returnResult = false;
+                            btnSubmit.removeAttr("disabled");
+                            $('#jingle_popup').hide();
                         }
                     },
-                    error: function (data) {
+                    error: function (XmlHttpRequest, textStatus, errorThrown) {
+                        btnSubmit.removeAttr("disabled");
+                        $('#jingle_popup').hide();
+                        console.log(XmlHttpRequest);
+                        console.log(textStatus);
+                        console.log(errorThrown);
                     }
                 });
             },

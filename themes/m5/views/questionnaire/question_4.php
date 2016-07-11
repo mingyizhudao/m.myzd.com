@@ -76,6 +76,11 @@ $this->show_footer = false;
     </div>
 </article>
 <div id="jingle_toast" class="toast"><a href="#"></a></div>
+<div id="jingle_popup" class="loading">
+    <i class="icon spinner"></i>
+    <p>图片上传中...</p>
+    <div id="tag_close_popup" data-target="closePopup" class="icon cancel-circle"></div>
+</div>
 <script>
     $(document).ready(function () {
         var articleHeight = $('article').height();

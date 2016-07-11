@@ -145,7 +145,7 @@ $urlCatherine = $this->createUrl('event/view', array('page' => 'catherine'));
                         </div>
                     </a>
                 </div>
-                <div class="col-1 w33" onclick="NTKF.im_openInPageChat('kf_9138_1451451713805');">
+                <div id="consultation" class="col-1 w33">
                     <div class="pad10 text-center">
                         <div class="text-center">
                             <img class="w55p h55p" src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146243699018730">
@@ -175,6 +175,11 @@ $urlCatherine = $this->createUrl('event/view', array('page' => 'catherine'));
                 location.href = 'tel://4006277120';
             });
         });
+
+        $('#consultation').click(function () {
+            location.href = 'http://p.qiao.baidu.com/im/index?siteid=8620294&ucid=10135139&cp=&cr=&cw=';
+        });
+
         //轮播图
         var html = '<li class="slide">' +
                 '<a href="<?php echo $urlHomeMyyzDoctor; ?>">' +

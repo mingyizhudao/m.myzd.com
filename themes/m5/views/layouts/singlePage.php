@@ -56,6 +56,5 @@
         <script type="text/javascript" src="<?php //echo Yii::app()->theme->baseUrl    ?>/js/lib/template.min.js"></script>
         <script type="text/javascript" src="<?php //echo Yii::app()->theme->baseUrl    ?>/js/lib/zepto.touch2mouse.js"></script>
         <script type="text/javascript" src="<?php //echo Yii::app()->theme->baseUrl    ?>/js/lib/app.js"></script>-->
-        <script type="text/javascript" src="http://dl.ntalker.com/js/xn6/ntkfstat.js?siteid=kf_9138"></script>
     </body>
 </html>
