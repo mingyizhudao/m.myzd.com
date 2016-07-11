@@ -24,9 +24,18 @@ $this->show_footer = false;
         <div class="w100 mt30 font-s16">
             <div>5/5：医生建议怎么治疗？</div>
             <div class="border-gray border-r3 mt20">
-                <div class="pad10 border-bottom"><input type="radio" name="questionnaire[answer]" value="1"/> 建议手术</div>
-                <div class="pad10 border-bottom"><input type="radio" name="questionnaire[answer]" value="2" /> 建议观察</div>
-                <div class="pad10 border-bottom"><input type="radio" name="questionnaire[answer]" value="3" /> 还需检查，必要时手术</div>
+                <div class="pad10 border-bottom">
+                    <input id="answer1" type="radio" name="questionnaire[answer]" value="1"/>
+                    <label for="answer1">建议手术</label>
+                </div>
+                <div class="pad10 border-bottom">
+                    <input id="answer2" type="radio" name="questionnaire[answer]" value="2" />
+                    <label for="answer2">建议观察</label>
+                </div>
+                <div class="pad10 border-bottom">
+                    <input id="answer3" type="radio" name="questionnaire[answer]" value="3" />
+                    <label for="answer3">还需检查，必要时手术</label>
+                </div>
             </div>
             <div class="questionnaire-error"></div>
         </div>

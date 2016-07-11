@@ -36,6 +36,7 @@ $(function () {
         init: {
             'FilesAdded': function (up, files) {
                 btnSubmit.attr("disabled", true);
+                $('#jingle_popup_mask').show();
                 $('#jingle_popup').show();
                 for (var i = 0; i < files.length; i++) {
                     var uploadFile = true;
@@ -92,6 +93,7 @@ $(function () {
             },
             'UploadComplete': function () {
                 btnSubmit.removeAttr("disabled");
+                $('#jingle_popup_mask').hide();
                 $('#jingle_popup').hide();
             },
             'FileUploaded': function (up, file, info) {
@@ -129,15 +131,18 @@ $(function () {
                     processData: false,
                     success: function (data) {
                         if (data.status == 'no' && data.errorMsg == 'faile answer') {
+                            $('#jingle_popup_mask').hide();
                             $('#jingle_popup').hide();
                             location.href = $('article').attr('data-return-url') + '/1';
                         } else if (data.status == 'ok') {
                             btnSubmit.removeAttr("disabled");
+                            $('#jingle_popup_mask').hide();
                             $('#jingle_popup').hide();
                         }
                     },
                     error: function (XmlHttpRequest, textStatus, errorThrown) {
                         btnSubmit.removeAttr("disabled");
+                        $('#jingle_popup_mask').hide();
                         $('#jingle_popup').hide();
                         console.log(XmlHttpRequest);
                         console.log(textStatus);
@@ -175,16 +180,19 @@ $(function () {
             data: {"questionnaire[questionnaireNumber]": 4, "questionnaire[answer]": ""},
             success: function (data) {
                 if (data.status == 'ok') {
+                    $('#jingle_popup_mask').hide();
                     $('#jingle_popup').hide();
                     location.href = $('article').attr('data-return-url') + '/5';
                 } else {
                     if (data.errorMsg == 'faile answer') {
+                        $('#jingle_popup_mask').hide();
                         $('#jingle_popup').hide();
                         location.href = $('article').attr('data-return-url') + '/1';
                     }
                 }
             },
             error: function (XmlHttpRequest, textStatus, errorThrown) {
+                $('#jingle_popup_mask').hide();
                 $('#jingle_popup').hide();
                 console.log(XmlHttpRequest);
                 console.log(textStatus);

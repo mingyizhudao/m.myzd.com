@@ -25,6 +25,11 @@ $this->show_footer = false;
 </article>
 <script>
     $(document).ready(function () {
+        var searchValue = $("input").val();
+        if (searchValue != '') {
+            ajaxPage(searchValue);
+        }
+
         $('.icon_clear').click(function () {
             $('input').val('');
             $(this).addClass('hide');
@@ -58,7 +63,7 @@ $this->show_footer = false;
                 for (var i = 0; i < doctors.length; i++) {
                     var doctor = doctors[i];
                     innerHtml += '<div class="bg-white mb10">' +
-                            '<a href="<?php echo $doctorView; ?>/3097" data-target="link">' +
+                            '<a href="<?php echo $doctorView; ?>/' + doctor.id + '" data-target="link">' +
                             '<div class="grid pl15 pr15">' +
                             '<div class="col-1 w25 pt10">' +
                             '<div class="w60p h60p br50" style="overflow:hidden;">' +

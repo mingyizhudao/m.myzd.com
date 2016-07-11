@@ -76,6 +76,7 @@ $this->show_footer = false;
     </div>
 </article>
 <div id="jingle_toast" class="toast"><a href="#"></a></div>
+<div id="jingle_popup_mask" style="opacity: 0.1;"></div>
 <div id="jingle_popup" class="loading">
     <i class="icon spinner"></i>
     <p>图片上传中...</p>
