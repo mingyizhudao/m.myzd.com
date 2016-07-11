@@ -302,6 +302,7 @@ class BookingController extends MobileController {
                             //数据验证成功 自动注册账号并登陆
                             $this->RegisterUser($form);
                             $bookingUser = $this->getCurrentUserId();
+                            $this->recordNewUser($values['mobile']);
                         }
 
                         $booking->setAttributes($form->attributes, true);

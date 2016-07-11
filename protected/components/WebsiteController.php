@@ -207,7 +207,7 @@ abstract class WebsiteController extends Controller {
     /**
      * Stores user's access info for every request.
      */
-    public function  storeAppAccessInfo($vendorId=0, $site=0, $open_booking=0) {
+    public function  storeAppAccessInfo($vendorId=0, $site=0, $open_booking=0, $username='') {
         $coreAccess = new AppLog();
         if($vendorId > 0){
             $coreAccess->vendor_id = $vendorId;
@@ -217,6 +217,9 @@ abstract class WebsiteController extends Controller {
         }
         if($open_booking > 0){
             $coreAccess->open_booking = $open_booking;
+        }
+        if(!empty($username)){
+            $coreAccess->username = $username;
         }
         $coreAccess->user_host_ip = Yii::app()->request->getUserHostAddress();
         $coreAccess->url = Yii::app()->request->getUrl();
@@ -280,6 +283,17 @@ abstract class WebsiteController extends Controller {
                 $site = Yii::app()->session['vendorSite'];
             }
             $this->storeAppAccessInfo(Yii::app()->session['vendorId'], $site, 1);
+        }
+    }
+
+    //记录新用户
+    public function recordNewUser($mobile){
+        if (Yii::app()->session['vendorId']) {
+            $site = null;
+            if(Yii::app()->session['vendorSite']){
+                $site = Yii::app()->session['vendorSite'];
+            }
+            $this->storeAppAccessInfo(Yii::app()->session['vendorId'], $site, 0, $mobile);
         }
     }
 

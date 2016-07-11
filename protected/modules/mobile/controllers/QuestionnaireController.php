@@ -90,6 +90,8 @@ class QuestionnaireController extends MobileController {
    }
    
    public function actionBeginQuestionnaireView(){
+       $site = isset($_GET['site']) ? (int) $_GET['site'] : 0;
+       $this->recordVendor($site);
        $this->render("beginQuestionnaire");
    }
    
