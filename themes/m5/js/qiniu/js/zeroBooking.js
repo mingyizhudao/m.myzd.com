@@ -170,14 +170,18 @@ $(function () {
 
     $('#skip').click(function () {
         J.showMask();
-        skip();
+        skip('');
     });
 
-    function skip() {
+    function skip(type) {
+        var answer = '';
+        if (type == 'picture' && num > 0) {
+            answer = 'picture';
+        }
         $.ajax({
             type: 'post',
             url: $('article').attr('data-action-url'),
-            data: {"questionnaire[questionnaireNumber]": 4, "questionnaire[answer]": ""},
+            data: {"questionnaire[questionnaireNumber]": 4, "questionnaire[answer]": answer},
             success: function (data) {
                 if (data.status == 'ok') {
                     $('#jingle_popup_mask').hide();
@@ -207,7 +211,7 @@ $(function () {
 
     btnSubmit.click(function () {
         disabledBtn(btnSubmit);
-        skip();
+        skip('picture');
     });
 
     $('#container').on(
