@@ -41,6 +41,7 @@ $(function () {
                 for (var i = 0; i < files.length; i++) {
                     var uploadFile = true;
                     if (($('.progressContainer').length) >= 9) {
+                        up.removeFile(files[i]);
                         $('#jingle_toast').find('a').text('影像资料不能超过9张');
                         $('#jingle_toast').show();
                         setTimeout(function () {
@@ -50,6 +51,7 @@ $(function () {
                     }
                     $('.progressName').each(function () {
                         if (($(this).html() == files[i].name) && ($(this).next('.progressFileSize').html() == plupload.formatSize(files[i].size).toUpperCase())) {
+                            up.removeFile(files[i]);
                             $('#jingle_toast').find('a').text('该文件已被选择');
                             $('#jingle_toast').show();
                             setTimeout(function () {
