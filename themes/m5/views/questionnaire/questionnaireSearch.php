@@ -13,7 +13,7 @@ $this->show_footer = false;
             <input class="icon_input" type="text" placeholder="请输入你意向的专家">
             <a class="icon_clear hide"></a>
         </div>
-        <a id="searchBtn" href="" class="col-0 pl5 pr5" data-target="back">
+        <a href="" class="col-0 pl5 pr5" data-target="back">
             取消
         </a>
     </div>
@@ -62,6 +62,7 @@ $this->show_footer = false;
             if (doctors != undefined) {
                 for (var i = 0; i < doctors.length; i++) {
                     var doctor = doctors[i];
+                    var desc = (doctor.desc == '' || doctor.desc == null) ? '暂无信息' : doctor.desc;
                     innerHtml += '<div class="bg-white mb10">' +
                             '<a href="<?php echo $doctorView; ?>/' + doctor.id + '" data-target="link">' +
                             '<div class="grid pl15 pr15">' +
@@ -76,15 +77,26 @@ $this->show_footer = false;
                             '<span class="font-s16">' + doctor.name + '</span>' +
                             '<span class="ml5">' + doctor.aTitle + '</span>' +
                             '</div>' +
-                            '</div>' +
-                            '<div class="color-black6">' + doctor.hpDeptName +
-                            '<span class="ml5">' + doctor.mTitle + '</span>' +
-                            '</div>' +
-                            '<div class="color-black6">' + doctor.hpName + '</div>' +
+                            '</div>';
+                    /*科室为空，则不显示*/
+                    if (doctor.hpDeptName == "" || doctor.hpDeptName == null) {
+                        if (doctor.mTitle == "" || doctor.mTitle == null) {
+                            innerHtml += '';
+                        } else {
+                            innerHtml += '<div class="color-black6">' + doctor.mTitle + '</div>';
+                        }
+                    } else {
+                        if (doctor.mTitle == "" || doctor.mTitle == null) {
+                            innerHtml += '<div class="color-black6">' + doctor.hpDeptName + '</div>';
+                        } else {
+                            innerHtml += '<div class="color-black6">' + doctor.hpDeptName + '<span class="ml5">' + doctor.mTitle + '</span></div>';
+                        }
+                    }
+                    innerHtml += '<div class="color-black6">' + doctor.hpName + '</div>' +
                             '</div>' +
                             '</div>' +
                             '<div class="pl15 pr15 pt5 pb10 color-black">' +
-                            '<span class="font-w800">擅长:</span>' + doctor.desc +
+                            '<span class="font-w800">擅长:</span>' + desc +
                             '</div>' +
                             '</a>' +
                             '</div>';
