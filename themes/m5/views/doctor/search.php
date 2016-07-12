@@ -33,13 +33,19 @@ $urlQuestionnaireSearch = $this->createAbsoluteUrl('questionnaire/questionnaireS
 $this->show_footer = false;
 ?>
 <header class="bg-green">
-    <nav class="left">
-        <a href="<?php echo $urlHomeView; ?>">
-            <div class="pl5">
-                <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
-            </div>
-        </a>
-    </nav>
+    <?php
+    if ($source == 0) {
+        ?>
+        <nav class="left">
+            <a href="<?php echo $urlHomeView; ?>">
+                <div class="pl5">
+                    <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                </div>
+            </a>
+        </nav>
+        <?php
+    }
+    ?>
     <h1 class="title">
         <?php echo $source == 0 ? '找名医' : '选择意向专家'; ?>
     </h1>
