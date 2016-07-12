@@ -199,7 +199,7 @@ $this->show_footer = false;
             });
             $('#up').click(function () {
                 J.closePopup();
-                location.href = window.history.go(-1);
+                window.history.go(-1);
             });
         });
 
