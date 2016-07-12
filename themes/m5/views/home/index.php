@@ -177,7 +177,7 @@ $urlCatherine = $this->createUrl('event/view', array('page' => 'catherine'));
         });
 
         $('#consultation').click(function () {
-            location.href = 'http://p.qiao.baidu.com/im/index?siteid=8620294&ucid=10135139&cp=&cr=&cw=';
+            location.href = 'http://p.qiao.baidu.com/im/index?siteid=9290674&ucid=10135139';
         });
 
         //轮播图
