@@ -22,7 +22,7 @@ $this->show_footer = false;
         </div>
         <div id="questionnaireone-form">
             <div class="w100 mt30 font-s16">
-                <div>1/5：患者患病多久了？</div>
+                <div>1/5：请问有什么可以帮您？</div>
                 <div class="border-gray border-r3 mt20">
                     <div class="pad10 border-bottom">
                         <input id="answer1" type="radio" name="questionnaire[answer]" value="1"/>

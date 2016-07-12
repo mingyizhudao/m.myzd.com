@@ -41,8 +41,8 @@ $this->show_footer = false;
             为了更好地给您提供诊疗意见，我们需要了解以下信息：
         </div>
         <div class="w100 mt30 font-s16">
-            <div>4/5：请您上传患者的相关病例资料</div>
-            <div class="mt5"><span class="color-red">图片清晰可见</span><span>（最多9张）</span><span class="border-grayD learn-example">查看示例</span></div>
+            <div>4/5：请将您近期检查报告拍照上传</div>
+            <div class="mt5"><span class="color-red">图片需清晰可见</span><span>（最多9张）</span><span class="border-grayD learn-example">查看示例</span></div>
             <input type="hidden" id="domain" value="http://mr.file.mingyizhudao.com">
             <input type="hidden" id="uptoken_url" value="<?php echo $urlQiniuAjaxToken; ?>">
             <div id="fileAction" class="mt20" data-action="<?php echo $urlUploadFile; ?>">

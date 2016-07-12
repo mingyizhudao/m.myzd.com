@@ -30,7 +30,7 @@ $this->show_footer = false;
                 <div><textarea readonly="readonly" class="questionnairethreetextarea form-control" name='questionnaire[answer]' type='text' placeholder="请输入疾病诊断信息"></textarea></div>
                 <div class="pad10">
                     <input id="answer2" type="radio" name="questionnaire[answer]" value="2" />
-                    <label for="answer2">尚未确诊</label>
+                    <label for="answer2">未确诊</label>
                 </div>
             </div>
             <div class="questionnaire-error"></div>
