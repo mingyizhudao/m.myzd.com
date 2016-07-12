@@ -31,7 +31,7 @@ $this->show_footer = false;
             </div>
             <div class="nextIcon"></div>
             <div class="stepFour">
-                等待名医助手回访确认(2个小时内)
+                名医助手将在工作时间2小时内回访确认
             </div>
             <div class="nextIcon2 c-black2">
                 *工作时间每天9点~18点
