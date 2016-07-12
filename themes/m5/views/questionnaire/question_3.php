@@ -23,15 +23,19 @@ $this->show_footer = false;
         <div class="w100 mt30 font-s16">
             <div>3/5：医生诊断您是什么病？</div>
             <div class="border-gray border-r3 mt20">
-                <div class="pad10 border-bottom">
-                    <input id="answer1" type="radio" name="questionnaire[answer]" value="1"/>
-                    <label for="answer1">已确诊</label>
-                </div>
+                <label for="answer1">
+                    <div class="pad10 border-bottom">
+                        <input id="answer1" type="radio" name="questionnaire[answer]" value="1"/>
+                        已确诊
+                    </div>
+                </label>
                 <div><textarea readonly="readonly" class="questionnairethreetextarea form-control" name='questionnaire[answer]' type='text' placeholder="请输入疾病诊断信息"></textarea></div>
-                <div class="pad10">
-                    <input id="answer2" type="radio" name="questionnaire[answer]" value="2" />
-                    <label for="answer2">未确诊</label>
-                </div>
+                <label for="answer2">
+                    <div class="pad10">
+                        <input id="answer2" type="radio" name="questionnaire[answer]" value="2" />
+                        未确诊
+                    </div>
+                </label>
             </div>
             <div class="questionnaire-error"></div>
         </div>

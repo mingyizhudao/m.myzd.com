@@ -24,18 +24,24 @@ $this->show_footer = false;
             <div class="w100 mt30 font-s16">
                 <div>1/5：请问有什么可以帮您？</div>
                 <div class="border-gray border-r3 mt20">
-                    <div class="pad10 border-bottom">
-                        <input id="answer1" type="radio" name="questionnaire[answer]" value="1"/>
-                        <label for="answer1">想找个能帮我做手术的专家</label>
-                    </div>
-                    <div class="pad10 border-bottom">
-                        <input id="answer2" type="radio" name="questionnaire[answer]" value="2"/>
-                        <label for="answer2">不知是否要手术，想找专家咨询</label>
-                    </div>
-                    <div class="pad10 border-bottom">
-                        <input id="answer3" type="radio" name="questionnaire[answer]" value="3"/>
-                        <label for="answer3">不需要手术，只想咨询一下</label>
-                    </div>
+                    <label for="answer1">
+                        <div class="pad10 border-bottom">
+                            <input id="answer1" type="radio" name="questionnaire[answer]" value="1"/>
+                            想找个能帮我做手术的专家
+                        </div>
+                    </label>
+                    <label for="answer2">
+                        <div class="pad10 border-bottom">
+                            <input id="answer2" type="radio" name="questionnaire[answer]" value="2"/>
+                            不知是否要手术，想找专家咨询
+                        </div>
+                    </label>
+                    <label for="answer3">
+                        <div class="pad10 border-bottom">
+                            <input id="answer3" type="radio" name="questionnaire[answer]" value="3"/>
+                            不需要手术，只想咨询一下
+                        </div>
+                    </label>
                 </div>
                 <div class="questionnaire-error"></div>
             </div>
