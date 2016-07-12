@@ -16,9 +16,6 @@ $urlCatherine = $this->createUrl('event/view', array('page' => 'catherine'));
 ?>
 <article id="home_article" data-active="home_footer" class="active bg-gray5" data-scroll="true">
     <div>
-        <div id="freePhone" href="javascript:;">
-            免费
-        </div>
         <div class="titleImg">
             <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146243634396635" class="w100">
         </div>
@@ -117,7 +114,12 @@ $urlCatherine = $this->createUrl('event/view', array('page' => 'catherine'));
                     </div>
                 </div>
             </div>
-            <div id="team-bxslider" class="">
+            <div class="text-right">
+                <div id="freePhone" href="javascript:;">
+                    免费
+                </div>
+            </div>
+            <div id="team-bxslider" class="mt-57">
                 <ul class="bxslider">
 
                 </ul>
