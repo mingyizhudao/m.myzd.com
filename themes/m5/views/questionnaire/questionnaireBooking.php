@@ -3,10 +3,14 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/j
 Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/questionnaireBooking.min.js', CClientScript::POS_END);
 ?>
 <?php
-$this->setPageTitle('填写专家信息');
+$source = Yii::app()->request->getQuery('source', 0);
+if ($source == 0) {
+    $this->setPageTitle('预约单信息');
+} else {
+    $this->setPageTitle('填写专家信息');
+}
 $booking = $this->createUrl('home/page', array('view' => 'booking'));
 $urlBooking = $this->createUrl('booking/ajaxQuestionnaireCreate');
-$source = Yii::app()->request->getQuery('source', 0);
 $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/auth/sendSmsVerifyCode');
 $authActionType = AuthSmsVerify::ACTION_BOOKING;
 $urlAction = $this->createUrl('booking/ajaxQuestionnaireCreate');
@@ -17,13 +21,32 @@ $this->show_footer = false;
 ?>
 <header class="bg-green">
     <nav class="left">
-        <a href="" data-target="back">
-            <div class="pl5">
-                <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
-            </div>
-        </a>
+        <?php
+        if ($source == 0) {
+            ?>
+            <a id="giveUp" href="">
+                <div class="pl5">
+                    <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                </div>
+            </a>
+            <?php
+        } else {
+            ?>
+            <a id="normalBack" href="" data-target="back">
+                <div class="pl5">
+                    <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                </div>
+            </a>
+            <a id="reFill" href="" class="hide">
+                <div class="pl5">
+                    <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                </div>
+            </a>
+            <?php
+        }
+        ?>
     </nav>
-    <h1 class="title">填写专家信息</h1>
+    <h1 class="title"><?php echo $source == 0 ? '预约单信息' : '填写专家信息'; ?></h1>
 </header>
 <article id="questionnaireBooking_article" class="active" data-scroll="true">
     <div id="doctorInf" class="pl10 pr10 pb20 pt20 font-s15 <?php echo $source == 1 ? '' : 'hide'; ?>">
@@ -162,6 +185,42 @@ $this->show_footer = false;
 </article>
 <script>
     $(document).ready(function () {
+        //返回
+        $('#giveUp').click(function (e) {
+            e.preventDefault();
+            J.customConfirm('',
+                    '<div class="mb10">是否放弃当前填写的预约信息？</div>',
+                    '<a id="closeLogout" class="w50">取消</a>',
+                    '<a id="up" class="w50">放弃</a>',
+                    function () {
+                    });
+            $('#closeLogout').click(function () {
+                J.closePopup();
+            });
+            $('#up').click(function () {
+                J.closePopup();
+                location.href = history.back(-1);
+            });
+        });
+
+        //重新填写医生信息
+        $('#reFill').click(function (e) {
+            e.preventDefault();
+            J.customConfirm('',
+                    '<div class="mb10">是否放弃当前填写的预约信息？</div>',
+                    '<a id="closeLogout" class="w50">取消</a>',
+                    '<a id="reFillDoctor" class="w50">放弃</a>',
+                    function () {
+                    });
+            $('#closeLogout').click(function () {
+                J.closePopup();
+            });
+            $('#reFillDoctor').click(function () {
+                J.closePopup();
+                reFill();
+            });
+        });
+
         $('#nextBooking').click(function () {
             var pageChange = true;
             $('#doctorInf').find('input').each(function () {
@@ -171,6 +230,8 @@ $this->show_footer = false;
                     return false;
                 }
             });
+            $('#normalBack').addClass('hide');
+            $('#reFill').removeClass('hide');
             if (pageChange) {
                 $('#booking_doctor_name').val($('input[name="expect_name"]').val());
                 $('#booking_hp_dept_name').val($('input[name="expect_dept"]').val());
@@ -182,6 +243,12 @@ $this->show_footer = false;
             }
         });
         $('#modifyDoctor').click(function () {
+            reFill();
+        });
+
+        function reFill() {
+            $('#reFill').addClass('hide');
+            $('#normalBack').removeClass('hide');
             $('#doctorInf').find('input').each(function () {
                 $(this).val('');
             });
@@ -189,7 +256,7 @@ $this->show_footer = false;
             $('title').html('填写专家信息');
             $('.title').html('填写专家信息');
             $('#doctorInf').removeClass('hide');
-        });
+        }
 
         $("#btn-sendSmsCode").click(function (e) {
             e.preventDefault();
