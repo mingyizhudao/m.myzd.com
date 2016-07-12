@@ -38,7 +38,7 @@ $this->show_footer = false;
 <article id="questionnairefour_article" class="active android_article logo_article" data-scroll="true" data-action-url="<?php echo $urlQuestionnaire; ?>" data-return-url="<?php echo $urlQuestion; ?>">
     <div id="outline" class="pad20 bg-white">
         <div class="w100 color-green text18">
-            为了更好地给您提供诊疗意见，我们需要了解一下信息：
+            为了更好地给您提供诊疗意见，我们需要了解以下信息：
         </div>
         <div class="w100 mt30 font-s16">
             <div>4/5：请您上传患者的相关病例资料</div>

@@ -18,7 +18,7 @@ $this->show_footer = false;
 <article id="questionnairethree_article" class="active logo_article" data-scroll="true">
     <div id="outline" class="pad20 bg-white">
         <div class="w100 color-green text18">
-            为了更好地给您提供诊疗意见，我们需要了解一下信息：
+            为了更好地给您提供诊疗意见，我们需要了解以下信息：
         </div>
         <div class="w100 mt30 font-s16">
             <div>3/5：医生诊断您是什么病？</div>
