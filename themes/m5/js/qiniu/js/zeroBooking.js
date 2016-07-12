@@ -210,6 +210,14 @@ $(function () {
     });
 
     btnSubmit.click(function () {
+        if (num == 0) {
+            $('#jingle_toast').find('a').text('请先上传病历资料');
+            $('#jingle_toast').show();
+            setTimeout(function () {
+                $('#jingle_toast').hide();
+            }, 1000);
+            return;
+        }
         disabledBtn(btnSubmit);
         skip('picture');
     });
