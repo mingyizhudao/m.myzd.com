@@ -23,7 +23,6 @@ class QuestionnaireController extends MobileController {
             $key = session_id();
             $alive = 86400;
             $questionnaireList = Yii::app()->cache->get($key);
-//             print_r(Yii::app()->cache->get(md5($key)));exit;
             if(is_array($questionnaireList)){
                 foreach ($questionnaireList as $k=>$v){
                     if(is_array($v)){
@@ -54,7 +53,6 @@ class QuestionnaireController extends MobileController {
                 }
                 Yii::app()->cache->delete($key);
                 yii::app()->cache->set('res'.$key, $questionnaireId ,$alive);
-               // print_r(yii::app()->cache->get('res'.$key));
                 $output = array('status' => 'ok','errorCode' => '200','errorMsg' =>'');
             }
         $this->renderJsonOutput($output);
