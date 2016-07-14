@@ -30,6 +30,7 @@ $urlReturn = $this->createUrl('order/view');
 $urlHomeView = $this->createUrl('home/view');
 $urlQiniuAjaxToken = $this->createUrl('qiniu/ajaxBookingToken');
 $urlBackBtn = Yii::app()->request->getQuery('backBtn', '1');
+$urlAgreement = $this->createUrl('user/index', array('page' => 'aboutAgreement'));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 $user = $this->getCurrentUser();
@@ -53,6 +54,18 @@ $user = $this->getCurrentUser();
         </a>
     </nav>
 </header>
+<footer class="agreement_footer">
+    <div class="w100">
+        <div class="text-center pt5">
+            <label for="agreement">
+                <input id="agreement" type="checkbox" class="h14p">
+                <span class="pl5">我已同意</span>
+            </label>
+            <a href="<?php echo $urlAgreement; ?>" class="color-green">名医主刀服务协议</a>
+        </div>
+        <button id="btnSubmit" type="button" class="button buttonSubmit font-s16" disabled="true">预约</button>
+    </div>
+</footer>
 <article id="quickBookAndroid" class="active android_article" data-scroll="true">
     <div class="ml10 mr10 mt10">
         <div id="<?php echo $this->getPageID(); ?>" data-role="page" data-title="<?php echo $this->getPageTitle(); ?>">
@@ -156,7 +169,7 @@ $user = $this->getCurrentUser();
                     <div>
                         上传病例或影像资料
                     </div>
-                    <div class="body mt10">
+                    <div class="body mt10 pb30">
                         <div class="text-center">
                             <div id="container">
                                 <a class="btn btn-default btn-lg " id="pickfiles" href="#" >
@@ -170,9 +183,6 @@ $user = $this->getCurrentUser();
                                 </tbody>
                             </table>
                         </div>
-                    </div>
-                    <div class="ui-field-contain mt35 mb30">
-                        <button id="btnSubmit" type="button" name="yt0" class="w100 bg-green">提交</button>
                     </div>
                 </div>
             </div>  
@@ -197,6 +207,16 @@ $user = $this->getCurrentUser();
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
+        $('input[type="checkbox"]').click(function () {
+            if ($(this).hasClass('active')) {
+                $(this).removeClass('active');
+                $('#btnSubmit').attr('disabled', 'true');
+            } else {
+                $(this).addClass('active');
+                $('#btnSubmit').removeAttr('disabled');
+            }
+        });
+
         vailcode();
         $("#btn-sendSmsCode").click(function (e) {
             e.preventDefault();

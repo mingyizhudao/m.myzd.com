@@ -19,6 +19,7 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $urlSubmitForm = $this->createUrl("booking/ajaxCreate");
 $urlUploadFile = $this->createUrl("booking/ajaxUploadFile");
 $urlReturn = $this->createUrl('order/view');
+$urlAgreement = $this->createUrl('user/index', array('page' => 'aboutAgreement'));
 $this->show_footer = false;
 ?>
 <header class="bg-green">
@@ -36,8 +37,17 @@ $this->show_footer = false;
         </a>
     </nav>
 </header>
-<footer>
-    <button id="btnSubmit" type="button" class="button btn-yellow font-s16">预约</button>
+<footer class="agreement_footer">
+    <div class="w100">
+        <div class="text-center pt5">
+            <label for="agreement">
+                <input id="agreement" type="checkbox" class="h14p">
+                <span class="pl5">我已同意</span>
+            </label>
+            <a href="<?php echo $urlAgreement; ?>" class="color-green">名医主刀服务协议</a>
+        </div>
+        <button id="btnSubmit" type="button" class="button buttonSubmit font-s16" disabled="true">预约</button>
+    </div>
 </footer>
 <article id="bookingIos_article" class="active"  data-scroll="true">
     <div class="form-wrapper">
@@ -135,52 +145,15 @@ $this->show_footer = false;
     </div>
 </article>
 <script>
-    Zepto(function ($) {
-        $('#booking-form #booking_date_start').tap(function () {
-            J.popup({
-                html: '<div id="popup_calendar"></div>',
-                pos: 'center',
-                backgroundOpacity: 0.4,
-                showCloseBtn: false,
-                onShow: function () {
-                    new J.Calendar('#popup_calendar', {
-                        date: new Date(),
-                        onSelect: function (date) {
-                            $("#booking_date_start").val(date);
-                            J.closePopup();
-                        }
-                    });
-                }
-            });
-        });
-        $('#booking-form #booking_date_end').tap(function () {
-            var dataStart = $("#booking_date_start").val();
-            var nowDate = new Date();
-            dataStart = dataStart ? getStartTiem(dataStart, 6) : nowDate;
-            J.popup({
-                html: '<div id="popup_calendar"></div>',
-                pos: 'center',
-                backgroundOpacity: 0.4,
-                showCloseBtn: false,
-                onShow: function () {
-                    new J.Calendar('#popup_calendar', {
-                        date: new Date(dataStart),
-                        onSelect: function (date) {
-                            $("#booking_date_end").val(date);
-                            J.closePopup();
-                        }
-                    });
-                }
-            });
+    $(document).ready(function () {
+        $('input[type="checkbox"]').click(function () {
+            if ($(this).hasClass('active')) {
+                $(this).removeClass('active');
+                $('#btnSubmit').attr('disabled', 'true');
+            } else {
+                $(this).addClass('active');
+                $('#btnSubmit').removeAttr('disabled');
+            }
         });
     });
-    //根据开始时间返回结束时间， +days天
-    function getStartTiem(date, days) {
-        var timestamp = new Date(date).getTime();
-        var newDate = new Date(timestamp + days * 24 * 3600 * 1000);
-        var y = newDate.getFullYear(), m = newDate.getMonth() + 1, d = newDate.getDate();
-        m = (m < 10) ? ('0' + m) : m;
-        d = (d < 10) ? ('0' + d) : d;
-        return y + '-' + m + '-' + d;
-    }
 </script>

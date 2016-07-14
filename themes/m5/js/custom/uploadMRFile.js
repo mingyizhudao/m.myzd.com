@@ -317,6 +317,7 @@ $(function () {
 
         switch (state) {
             case 'pedding':
+                $('#btnSubmit').addClass('hide');
                 $placeHolder.removeClass('element-invisible');
                 $queue.parent().removeClass('filled');
                 $queue.hide();
@@ -325,6 +326,7 @@ $(function () {
                 break;
 
             case 'ready':
+                $('#btnSubmit').removeClass('hide');
                 $placeHolder.addClass('element-invisible');
                 $('#filePicker2').removeClass('element-invisible');
                 $queue.parent().addClass('filled');
@@ -365,6 +367,7 @@ $(function () {
                     // 没有成功的图片，重设
                     //state = 'done';
                     location.reload();
+                    J.hideMask();
                 }
                 break;
         }
@@ -476,6 +479,7 @@ $(function () {
             return false;
         }
         if (state === 'ready') {
+            J.showMask();
             uploader.upload();
         }
     });

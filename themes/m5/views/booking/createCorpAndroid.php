@@ -26,11 +26,24 @@ $urlUserValiCaptcha = $this->createUrl("user/valiCaptcha");
 $urlReturn = $this->createUrl('home/view');
 $urlQiniuAjaxCorpIc = $this->createUrl('qiniu/ajaxCorpIc');
 $urlQiniuAjaxToken = $this->createUrl('qiniu/ajaxBookingToken');
+$urlAgreement = $this->createUrl('user/index', array('page' => 'aboutAgreement'));
 $this->show_footer = false;
 ?>
 <header class="bg-green">
     <h1 class="title"><?php echo $this->pageTitle; ?></h1>
 </header>
+<footer class="agreement_footer">
+    <div class="w100">
+        <div class="text-center pt5">
+            <label for="agreement">
+                <input id="agreement" type="checkbox" class="h14p">
+                <span class="pl5">我已同意</span>
+            </label>
+            <a href="<?php echo $urlAgreement; ?>" class="color-green">名医主刀服务协议</a>
+        </div>
+        <button id="btnSubmit" type="button" class="button buttonSubmit font-s16" disabled="true">预约</button>
+    </div>
+</footer>
 <article id="createCopAndroid_article" class="active android_article" data-scroll="true">
     <div class="ml10 mr10">
         <div id="<?php echo $this->getPageID(); ?>" data-role="page" data-title="<?php echo $this->getPageTitle(); ?>">
@@ -177,7 +190,7 @@ $this->show_footer = false;
                     <?php
                     $this->endWidget();
                     ?>
-                    <div class=" mt20 patient">
+                    <div class=" mt20 patient pb30">
                         <label for="uploaderCorp">请选择病历</label>
                         <div class="form-wrapper mt20">
                             <div class="container2">
@@ -206,9 +219,6 @@ $this->show_footer = false;
                             </div>
                         </div>
                     </div>
-                    <div class="ui-field-contain mt20 mb30">                
-                        <button id="btnSubmit" class="btn btn-yes block" type="button" name="yt0" class="w100">提交</button>
-                    </div>
                 </div>
             </div>  
         </div>
@@ -235,6 +245,16 @@ $this->show_footer = false;
 <div id="jingle_popup_mask" style="opacity: 0.3;"></div>
 <script type="text/javascript">
     $(document).ready(function () {
+        $('input[type="checkbox"]').click(function () {
+            if ($(this).hasClass('active')) {
+                $(this).removeClass('active');
+                $('#btnSubmit').attr('disabled', 'true');
+            } else {
+                $(this).addClass('active');
+                $('#btnSubmit').removeAttr('disabled');
+            }
+        });
+        
         vailcode();
         $("#btn-sendSmsCode").click(function (e) {
             e.preventDefault();

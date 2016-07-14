@@ -21,11 +21,24 @@ $urlUploadFile = $this->createUrl("booking/ajaxUploadFile");
 $urlUplaodCorpFile = $this->createUrl('booking/ajaxUploadCorp');
 $urlUserValiCaptcha = $this->createUrl("user/valiCaptcha");
 $urlReturn = $this->createUrl('home/view');
+$urlAgreement = $this->createUrl('user/index', array('page' => 'aboutAgreement'));
 $this->show_footer = false;
 ?>
 <header class="bg-green">
     <h1 class="title"><?php echo $this->pageTitle; ?></h1>
 </header>
+<footer class="agreement_footer">
+    <div class="w100">
+        <div class="text-center pt5">
+            <label for="agreement">
+                <input id="agreement" type="checkbox" class="h14p">
+                <span class="pl5">我已同意</span>
+            </label>
+            <a href="<?php echo $urlAgreement; ?>" class="color-green">名医主刀服务协议</a>
+        </div>
+        <button id="btnSubmit" type="button" class="button buttonSubmit font-s16" disabled="true">预约</button>
+    </div>
+</footer>
 <article id="createCop_article" class="active"  data-scroll="true">
     <style>
         .optional{display:none;padding-bottom: 10px;}
@@ -53,7 +66,7 @@ $this->show_footer = false;
         echo $form->hiddenField($model, 'bk_type', array('name' => 'booking[bk_type]'));
         echo $form->hiddenField($model, 'bk_status', array('name' => 'booking[bk_status]'));
         ?> 
-        <ul class="list">
+        <ul class="list pb30">
             <li>
                 <?php echo CHtml::activeLabel($model, 'corporate_name'); ?>                                           
                 <select name="booking[corporate_name]" id="booking_corporate_name">
@@ -167,9 +180,6 @@ $this->show_footer = false;
                 <label for="uploaderCorp">请选择病历</label>
                 <?php echo $this->renderPartial('_uploadFile'); ?>
             </li>
-            <li>                
-                <a id="btnSubmit" class="button yy-btn block mt10 bg-blue mb10" type="button" name="yt0">提交</a>
-            </li>
         </ul>
         <?php
         $this->endWidget();
@@ -180,6 +190,16 @@ $this->show_footer = false;
 <div id="jingle_toast" class="mobileTip toast"><a href="#">请填写手机号</a></div>
 <script type="text/javascript">
     $(document).ready(function () {
+        $('input[type="checkbox"]').click(function () {
+            if ($(this).hasClass('active')) {
+                $(this).removeClass('active');
+                $('#btnSubmit').attr('disabled', 'true');
+            } else {
+                $(this).addClass('active');
+                $('#btnSubmit').removeAttr('disabled');
+            }
+        });
+        
         vailcode();
         $("#btn-sendSmsCode").click(function (e) {
             e.preventDefault();

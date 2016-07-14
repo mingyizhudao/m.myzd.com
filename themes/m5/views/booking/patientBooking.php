@@ -10,7 +10,7 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/c
 /**
  * $data.
  */
-$this->setPageTitle('预约详情');
+$this->setPageTitle('查看详情');
 
 $urlApiAppNav1 = $this->createAbsoluteUrl('/api/list', array('model' => 'appnav1'));
 
@@ -25,7 +25,7 @@ $user = $this->loadUser();
 $urlBookingFiles = 'http://file.mingyizhudao.com/api/loadbookingmr?userId=' . $user->id . '&bookingId=' . $results->id;
 $this->show_footer = false;
 ?>
-<header class="bg-green" >
+<header id="patientBooking_header" class="bg-green" >
     <nav class="left">
         <a href="" data-target="back">
             <div class="pl5">
@@ -33,55 +33,59 @@ $this->show_footer = false;
             </div>
         </a>
     </nav>
-    <h1 class="title"><?php echo $this->pageTitle; ?></h1>
+    <h1 class="title">查看详情</h1>
     <nav class="right">
-        <a onclick="javascript:location.reload()">
-            <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
+        <a id="btnSubmit" href="javascript:;" class="uploadBtn hide">
+            保存
         </a>
     </nav>
 </header>
-<article id="expert_list_article" class="active"  data-scroll="true">
-    <ul class="list">
-        <li>
+<article id="patientBooking_article" class="active"  data-scroll="true">
+    <div>
+        <ul class="list">
+            <li>
+                <div class="grid">
+                    <div class="col-0 w100p color-gray">患者姓名:</div>
+                    <div class="col-1 text-right"><?php echo $results->patientName; ?></div>
+                </div>
+            </li>
+            <li>
+                <div class="grid">
+                    <div class="col-0 w100p color-gray">联系方式:</div>
+                    <div class="col-1 text-right"><?php echo $results->mobile; ?></div>
+                </div>
+            </li>
+            <li>
+                <div class="grid">
+                    <div class="col-0 w100p color-gray">就诊专家:</div>
+                    <div class="col-1 text-right"><?php echo $results->expertName == '' ? $results->doctorName : $results->expertName; ?></div>
+                </div>
+            </li>
+            <li>
+                <div class="grid">
+                    <div class="col-0 w100p color-gray">就诊医院:</div>
+                    <div class="col-1 text-right"><?php echo $results->hospitalName == '' ? '未填写' : $results->hospitalName; ?></div>
+                </div>
+            </li>
+            <li>
+                <div class="grid">
+                    <div class="col-0 w100p color-gray">就诊科室:</div>
+                    <div class="col-1 text-right"><?php echo $results->hpDeptName == '' ? '未填写' : $results->hpDeptName; ?></div>
+                </div>
+            </li>
+            <li>
+                <div class="grid">
+                    <div class="col-0 w100p color-gray">疾病名称:</div>
+                    <div class="col-1 text-right"><?php echo $results->diseaseName; ?></div>
+                </div>
+            </li>
+            <li>
+                <div class="color-gray">疾病描述:</div>
+                <div><?php echo $results->diseaseDetail; ?></div>
+            </li>
+        </ul>
+        <div class="pt10 pl10 pr10 pb50">
             <div class="grid">
-                <div class="col-0 w100p color-gray">患者姓名:</div>
-                <div class="col-1 text-right"><?php echo $results->patientName; ?></div>
-            </div>
-        </li>
-        <li>
-            <div class="grid">
-                <div class="col-0 w100p color-gray">联系方式:</div>
-                <div class="col-1 text-right"><?php echo $results->mobile; ?></div>
-            </div>
-        </li>
-        <li>
-            <div class="grid">
-                <div class="col-0 w100p color-gray">就诊专家:</div>
-                <div class="col-1 text-right"><?php echo $results->expertName == '' ? $results->doctorName : $results->expertName; ?></div>
-            </div>
-        </li>
-        <li>
-            <div class="grid">
-                <div class="col-0 w100p color-gray">就诊医院:</div>
-                <div class="col-1 text-right"><?php echo $results->hospitalName == '' ? '未填写' : $results->hospitalName; ?></div>
-            </div>
-        </li>
-        <li>
-            <div class="grid">
-                <div class="col-0 w100p color-gray">就诊科室:</div>
-                <div class="col-1 text-right"><?php echo $results->hpDeptName == '' ? '未填写' : $results->hpDeptName; ?></div>
-            </div>
-        </li>
-        <li>
-            <div class="grid">
-                <div class="col-0 w100p color-gray">疾病名称:</div>
-                <div class="col-1 text-right"><?php echo $results->diseaseName; ?></div>
-            </div>
-        </li>
-        <li class="bb-none mb10">
-            <div class="color-gray">疾病描述:</div>
-            <div><?php echo $results->diseaseDetail; ?></div>
-            <div class="grid mt15">
                 <div class="col-0 w100p color-gray">影像资料:</div>
                 <div class="col-1">
                 </div>
@@ -114,29 +118,26 @@ $this->show_footer = false;
                             <!-- <p>或将照片拖到这里，单次最多可选10张</p>-->
                         </div>
                     </div>
+                    <!--一开始就显示提交按钮就注释上面的提交 取消下面的注释 -->
+                    <!--<div class="statusBar uploadBtn">提交</div>-->
                     <div class="statusBar" style="display:none; padding-bottom: 40px;">
                         <div class="progress">
                             <span class="text">0%</span>
                             <span class="percentage"></span>
                         </div>
-                        <div class="info display-block"></div>
-                        <div class="display-block pull-right">
+                        <div class="info hide"></div>
+                        <div class="display-block pull-right w100">
                             <!-- btn 继续添加 -->
-                            <div id="filePicker2" class=""></div>
-                        </div>
-                        <div class="ui-field-contain display-block mt50 clearfix">
-                            <button id="btnSubmit" type="button" name="yt0" class="button yy-btn block mt10 btn-yes uploadBtn state-pedding font-s16">提交</button>
+                            <div id="filePicker2" class="w100"></div>
                         </div>
                     </div>
-                    <!--一开始就显示提交按钮就注释上面的提交 取消下面的注释 -->
-                    <!--                         <div class="statusBar uploadBtn">提交</div>-->
                 </div>
             </div>
             <?php
             $this->endWidget();
             ?>
-        </li>
-    </ul>
+        </div>
+    </div>
 </article>
 <script>
     $(document).ready(function () {
@@ -187,6 +188,5 @@ $this->show_footer = false;
                 showCloseBtn: true
             });
         });
-    }
-    );
+    });
 </script>
