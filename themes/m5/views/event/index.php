@@ -14,6 +14,8 @@ if ($showApp == 1) {
     $urlEventCoats = $this->createUrl('event/view', array('page' => 'coats'));
     $urlEventLumbar = $this->createUrl('event/view', array('page' => 'lumbar'));
     $urlEventBasketballDream = $this->createUrl('event/view', array('page' => 'basketballDream'));
+    $urlEventHujinshui = $this->createUrl('event/view', array('page' => 'hujinshui'));
+    $urlEventTumour = $this->createUrl('event/view', array('page' => 'tumour'));
     $urlEventZhuantiOne = $this->createUrl('event/view', array('page' => 'zhuantiOne'));
     $urlEventZhuantiTwo = $this->createUrl('event/view', array('page' => 'zhuantiTwo'));
     $urlEventZhuantiThree = $this->createUrl('event/view', array('page' => 'zhuantiThree'));
@@ -37,6 +39,8 @@ if ($showApp == 1) {
     $urlEventCoats = $this->createUrl('event/view', array('page' => 'coats', 'header' => '0'));
     $urlEventLumbar = $this->createUrl('event/view', array('page' => 'lumbar', 'header' => '0'));
     $urlEventBasketballDream = $this->createUrl('event/view', array('page' => 'basketballDream', 'header' => '0'));
+    $urlEventHujinshui = $this->createUrl('event/view', array('page' => 'hujinshui', 'header' => '0'));
+    $urlEventTumour = $this->createUrl('event/view', array('page' => 'tumour', 'header' => '0'));
     $urlEventZhuantiOne = $this->createUrl('event/view', array('page' => 'zhuantiOne', 'header' => '0'));
     $urlEventZhuantiTwo = $this->createUrl('event/view', array('page' => 'zhuantiTwo', 'header' => '0'));
     $urlEventZhuantiThree = $this->createUrl('event/view', array('page' => 'zhuantiThree', 'header' => '0'));
@@ -153,6 +157,30 @@ if ($showPage == 0) {
 </article>
 <article id="story_article" class="<?php echo $showStory; ?>" data-scroll="true" data-active="find_footer">
     <div class="text-justify">
+        <div class="mt10 bg-white">
+            <a href="<?php echo $urlEventTumour; ?>">
+                <div class="grid color-black10">
+                    <div class="col-1 w40">
+                        <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146838197736239">
+                    </div>
+                    <div class="col-1 w60 font-s17 vertical-center pl20 pr20">
+                        半岁宝宝如何摆脱10厘米肿瘤
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="mt10 bg-white">
+            <a href="<?php echo $urlEventHujinshui; ?>">
+                <div class="grid color-black10">
+                    <div class="col-1 w40">
+                        <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146838200295912">
+                    </div>
+                    <div class="col-1 w60 font-s17 vertical-center pl20 pr20">
+                        一个家的支柱倒了，该怎么办
+                    </div>
+                </div>
+            </a>
+        </div>
         <div class="mt10 bg-white">
             <a href="<?php echo $urlEventBasketballDream; ?>">
                 <div class="grid color-black10">

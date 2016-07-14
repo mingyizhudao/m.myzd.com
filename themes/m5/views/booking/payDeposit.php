@@ -2,7 +2,7 @@
 /*
  * $model DoctorForm.
  */
-$this->setPageTitle('支付订单');
+$this->setPageTitle('预约单详情');
 $urlPatientBooking = $this->createUrl('booking/patientBooking', array('id' => ''));
 $urlPatientBookingList = $this->createUrl('booking/patientBookingList');
 $showStatus = Yii::app()->request->getQuery('showStatus', 0);
@@ -22,7 +22,7 @@ $orderInfo = $results->orderInfo;
 <style>
     .popup-title{color: #333333;}
 </style>
-<header class="bg-green">
+<header id="payOrder_header" class="bg-green">
     <nav class="left">
         <?php
         if ($results->bkStatusCode == $BK_STATUS_NEW) {
@@ -68,7 +68,7 @@ $orderInfo = $results->orderInfo;
         }
         ?>
     </nav>
-    <h1 class="title">支付订单</h1>
+    <h1 class="title">预约单详情</h1>
     <?php
     if (($results->bkStatusCode == 1) || ($results->bkStatusCode == 2)) {
         ?>

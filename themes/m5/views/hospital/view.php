@@ -33,7 +33,7 @@ $this->show_footer = false;
         </div>
         <div class="grid pageIcon bg-white">
             <div class="col-1 w50 cardSelect active" data-card="dpet">
-                科室选择
+                最强科室
             </div>
             <div class="col-1 w50 cardSelect" data-card="hospital">
                 医院介绍
