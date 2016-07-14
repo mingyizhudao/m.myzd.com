@@ -1,6 +1,8 @@
 <?php
 $this->setPageTitle('0元见名医');
 $urlQuestionnaire = $this->createUrl('questionnaire/view', array('id' => 1));
+$appId = Yii::app()->request->getQuery('appId', '');
+$site = Yii::app()->request->getQuery('site', '');
 $this->show_footer = false;
 ?>
 <header class="bg-green">
@@ -51,3 +53,32 @@ $this->show_footer = false;
         </div>
     </div>
 </article>
+<script>
+    $(document).ready(function () {
+        var appId = '<?php echo $appId; ?>';
+        var site = '<?php echo $site; ?>';
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            if (appId == '6fbe6269c56d4ffa' && site == '3') {
+                hm.src = "//hm.baidu.com/hm.js?fa45c0f84056aafc76956e8b702dcf5c";
+            } else if (appId == '6fbe6269c56d4ffa' && site == '2') {
+                hm.src = "//hm.baidu.com/hm.js?999c4b1af67fd0e7b68024742073f6ab";
+            } else if (appId == '6fbe6269c56d4ffa' && site == '1') {
+                hm.src = "//hm.baidu.com/hm.js?db96270bc30491fe14303d7547f2b88d";
+            } else if (appId == '97da0244566d0654' && site == '6') {
+                hm.src = "//hm.baidu.com/hm.js?8e4fa547a79794b4b50110c4369fd4d3";
+            } else if (appId == '97da0244566d0654' && site == '5') {
+                hm.src = "//hm.baidu.com/hm.js?b9d3666ccdfb2051b3e63b9a8e1b5761";
+            } else if (appId == 'd94efdde66a0410f' && site == '1') {
+                hm.src = "//hm.baidu.com/hm.js?5b7d44b841a8dda3a75e8703dba2873b";
+            } else if (appId == 'c2a04fd2da83f23a' && site == '1') {
+                hm.src = "//hm.baidu.com/hm.js?8b3d9d5fdae40f8f4378821397cf4b3e";
+            } else if (appId == '6512babcd858d0d2' && site == '1') {
+                hm.src = "//hm.baidu.com/hm.js?8261448864992f585487d9653f864466";
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    });
+</script>
