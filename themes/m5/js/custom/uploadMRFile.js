@@ -60,7 +60,7 @@ $(function () {
     uploader = WebUploader.create({
         pick: {
             id: '#filePicker',
-            innerHTML: '&nbsp;补充影像'
+            innerHTML: '&nbsp;添加资料'
         },
         dnd: '#uploader .queueList',
         paste: document.body,
@@ -127,7 +127,7 @@ $(function () {
     // 添加“添加文件”的按钮，
     uploader.addButton({
         id: '#filePicker2',
-        label: '&nbsp;继续添加'
+        label: '&nbsp;添加资料'
     });
 
     // 当有文件添加进来时执行，负责view的创建
