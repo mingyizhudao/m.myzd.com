@@ -334,6 +334,12 @@ class Api2Controller extends Controller {
                 $apiService = new ApiViewBookingStatus();
                 $output = $apiService->loadApiViewData();
                 break;
+            case 'unreadcount':
+                $values = $_GET;
+                $user = $this->userLoginRequired($values,true);
+                $apiService = new ApiViewUnreadCount($user);
+                $output = $apiService->loadApiViewData();
+                break;
             default:
                 // Model not implemented error
                 //$this->_sendResponse(501, sprintf('Error: Mode <b>list</b> is not implemented for model <b>%s</b>', $model));

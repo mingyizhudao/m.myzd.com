@@ -28,7 +28,7 @@ class ApiViewOrderList extends EApiViewService {
     }
 
     private function loadOrderList() {
-        $booking = Booking::model()->getByAttributes(array('user_id'=>$this->user->getId(), 'id'=>$this->bookingId));
+        $booking = Booking::model()->getById($this->bookingId);
         if ($booking) {
             $payList = SalesOrder::model()->getOrderByBkIdAndrefNo($this->bookingId, $booking->ref_no);
             if($payList){

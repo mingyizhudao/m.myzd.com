@@ -81,6 +81,7 @@ class ApiViewDoctorV12 extends EApiViewService {
         $data->isServiceId = $this->isServiceId;
         $data->honour = $model->getHonourList();
         $data->reasons = $model->getReasons();
+        $data->isContracted = $model->getIsContracted();
         if($data->isExpteam){
             $this->members = ExpertTeam::model()->getById($model->getExpteamId())->getMembers();
         }

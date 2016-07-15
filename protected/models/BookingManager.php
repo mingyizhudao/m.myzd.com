@@ -297,7 +297,7 @@ class BookingManager {
             //API本地配置
             //$remote_url = 'http://192.168.1.216/admin/api/adminbooking'. '?type=' . StatCode::TRANS_TYPE_BK . '&id='.$model->id;
 
-            $data = $this->send_get($remote_url);
+            $data = $apiRequest->send_get($remote_url);
         }
         return $data;
     }
@@ -810,11 +810,6 @@ class BookingManager {
             }
         }
         return $model;
-    }
-
-    function send_get($url) {
-        $result = file_get_contents($url, false);
-        return json_decode($result, true);
     }
 
     public function actionCancelBooking($id,$userId){
