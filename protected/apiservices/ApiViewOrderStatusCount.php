@@ -1,6 +1,6 @@
 <?php
 
-class ApiViewUnreadCount extends EApiViewService {
+class ApiViewOrderStatusCount extends EApiViewService {
     private $user;
 
     // 初始化类的时候将参数注入

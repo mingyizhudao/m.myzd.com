@@ -334,10 +334,10 @@ class Api2Controller extends Controller {
                 $apiService = new ApiViewBookingStatus();
                 $output = $apiService->loadApiViewData();
                 break;
-            case 'unreadcount':
+            case 'orderstatuscount':
                 $values = $_GET;
                 $user = $this->userLoginRequired($values,true);
-                $apiService = new ApiViewUnreadCount($user);
+                $apiService = new ApiViewOrderStatusCount($user);
                 $output = $apiService->loadApiViewData();
                 break;
             default:
