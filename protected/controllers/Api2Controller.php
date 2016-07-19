@@ -316,7 +316,11 @@ class Api2Controller extends Controller {
                 break;
             case 'city':
                 $values = $_GET;
-                $city = new ApiViewAppCity($values);
+                if($api>=13){
+                    $city = new ApiViewOpenCity($values);
+                }else{
+                    $city = new ApiViewAppCity($values);
+                }
                 $output = $city->loadApiViewData();
                 break;
             case 'diseasename'://根据疾病名称获取疾病信息

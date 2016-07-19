@@ -7,7 +7,7 @@ class ApiViewOpenCity extends EApiViewService {
     public function __construct($values) {
         parent::__construct();
         $this->has_team = isset($values['has_team']) ? $values['has_team'] : null;
-        $this->type = $values['type'];
+        $this->type = isset($values['type']) ? $values['type'] : null;
         $this->results = new stdClass();
     }
 
