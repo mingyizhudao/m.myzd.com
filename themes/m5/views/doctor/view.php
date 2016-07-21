@@ -4,6 +4,7 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $urlBookingDoctor = $this->createAbsoluteUrl('booking/create', array('did' => ''));
 $isCommonweal = Yii::app()->request->getQuery('is_commonweal', '0');
 $source = Yii::app()->request->getQuery('source', '0');
+$sourceApp = Yii::app()->request->getQuery('app', '0');
 $urlQuestionnaireBookingView = $this->createAbsoluteUrl('questionnaire/questionnaireBookingView', array('id' => ''));
 $doctor = $data->results->doctor;
 $honour = $doctor->honour;
@@ -15,28 +16,34 @@ $this->show_footer = false;
         line-height: 1.5;
     }
 </style>
-<header id="bookingDoc_header" class="headerBg">
-    <nav class="left">
-        <a href="" data-target="back">
-            <div class="pl5">
-                <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
-            </div>
-        </a>
-    </nav>
-    <?php
-    if ($doctor->aTitle == '无') {
-        $doctorAtitle = '';
-    } else {
-        $doctorAtitle = $doctor->aTitle;
-    }
+<?php
+if ($sourceApp == 0) {
     ?>
-    <h1 class="title"><?php echo $doctor->name . $doctorAtitle; ?></h1>
-    <nav class="right">
-        <a onclick="javascript:location.reload()">
-            <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
-        </a>
-    </nav>
-</header>
+    <header id="bookingDoc_header" class="headerBg">
+        <nav class="left">
+            <a href="" data-target="back">
+                <div class="pl5">
+                    <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                </div>
+            </a>
+        </nav>
+        <?php
+        if ($doctor->aTitle == '无') {
+            $doctorAtitle = '';
+        } else {
+            $doctorAtitle = $doctor->aTitle;
+        }
+        ?>
+        <h1 class="title"><?php echo $doctor->name . $doctorAtitle; ?></h1>
+        <nav class="right">
+            <a onclick="javascript:location.reload()">
+                <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
+            </a>
+        </nav>
+    </header>
+    <?php
+}
+?>
 <footer>
     <button id="btnSubmit" type="button" class="button btn-yellow font-s16 state-pedding">预约</button>
 </footer>
@@ -258,7 +265,11 @@ $this->show_footer = false;
                     location.href = '<?php echo $urlBookingDoctor; ?>' + '/<?php echo $doctor->id; ?>/is_commonweal/1';
                 }
             } else {
-                location.href = '<?php echo $urlQuestionnaireBookingView; ?>' + '/<?php echo $doctor->id; ?>';
+                if ('<?php echo $sourceApp == 0; ?>') {
+                    location.href = '<?php echo $urlQuestionnaireBookingView; ?>' + '/<?php echo $doctor->id; ?>';
+                } else {
+                    location.href = '<?php echo $urlQuestionnaireBookingView; ?>' + '/<?php echo $doctor->id; ?>/app/1';
+                }
             }
         });
     });

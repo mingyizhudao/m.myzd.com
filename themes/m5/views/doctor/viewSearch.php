@@ -6,6 +6,11 @@ $urlHomeView = $this->createUrl("home/view");
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $urlDiseaseName = $this->createAbsoluteUrl('/api/diseasename', array('api' => 7, 'disease_name' => ''));
 $urlSearch = $this->createAbsoluteUrl('/api/search', array('name' => ''));
+$urlStat = $this->createAbsoluteUrl('/api/stat');
+$SITE_20 = PatientStatLog::SITE_20;
+$SITE_21 = PatientStatLog::SITE_21;
+$SITE_22 = PatientStatLog::SITE_22;
+$SITE_23 = PatientStatLog::SITE_23;
 $urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('id' => ''));
 $urlHospitalView = $this->createAbsoluteUrl('hospital/view', array('id' => ''));
 $urlSearchMore = $this->createUrl('doctor/viewSearchMore');
@@ -28,7 +33,7 @@ $this->show_footer = false;
             </span>
         </div>
         <div class="col-1 w20">
-            <a href="<?php echo $urlHomeView; ?>" data-target="link">
+            <a id='homeView' href="javascript:;" data-target="link">
                 <div class="color-green text-center font-s15">取消</div>
             </a>
         </div>
@@ -57,6 +62,22 @@ $this->show_footer = false;
             }
             ajaxPage();
         });
+
+        //点击取消时，记录搜索框中的词
+        $('#homeView').click(function () {
+            inputStat();
+            window.history.go(-1);
+        });
+        function inputStat() {
+            $.ajax({
+                type: 'post',
+                url: '<?php echo $urlStat; ?>',
+                data: {'stat[site]': '<?php echo $SITE_20; ?>', 'stat[key_word]': $("input[name='disease_name']").val()},
+                success: function (data) {
+
+                }
+            });
+        }
 
         function ajaxPage() {
             $.ajax({
@@ -151,18 +172,75 @@ $this->show_footer = false;
             $('#search_article').html(innerHtml);
 
             $("#moreDoctor").click(function () {
-                //$('#doctorList').html(doctorsData);
+                inputStat();
                 location.href = '<?php echo $urlSearchMore; ?>?name=' + disease_name + '&type=1';
             });
 
             $("#moreDisease").click(function () {
-                //$('#diseaseList').html(diseasesData);
+                inputStat();
                 location.href = '<?php echo $urlSearchMore; ?>?name=' + disease_name + '&type=2';
             });
 
 
             $("#moreHospital").click(function () {
+                inputStat();
                 location.href = '<?php echo $urlSearchMore; ?>?name=' + disease_name + '&type=3';
+            });
+
+            //点击医生，记录该医生信息
+            $('.doctorStat').click(function () {
+                var id = $(this).attr('data-id');
+                var name = $(this).attr('data-name');
+                $.ajax({
+                    type: 'post',
+                    url: '<?php echo $urlStat; ?>',
+                    data: {'stat[site]': '<?php echo $SITE_23; ?>', 'stat[key_word]': name},
+                    success: function (data) {
+
+                    }
+                });
+                location.href = '<?php echo $urlDoctorView; ?>/' + id;
+            });
+
+            //疾病点击找医院，记录疾病信息
+            $('.hospitalDiseaseStat').click(function () {
+                var id = $(this).attr('data-id');
+                var name = $(this).attr('data-name');
+                diseaseStat(name);
+                location.href = '<?php echo $searchDept; ?>?disease=' + id + '&disease_name=' + name + '&page=1';
+            });
+
+            //疾病点击找医生，记录疾病信息
+            $('.doctorDiseaseStat').click(function () {
+                var id = $(this).attr('data-id');
+                var name = $(this).attr('data-name');
+                diseaseStat(name);
+                location.href = '<?php echo $searchDoc; ?>?disease_name=' + name + '&page=1';
+            });
+            function diseaseStat(name) {
+                $.ajax({
+                    type: 'post',
+                    url: '<?php echo $urlStat; ?>',
+                    data: {'stat[site]': '<?php echo $SITE_21; ?>', 'stat[key_word]': name},
+                    success: function (data) {
+
+                    }
+                });
+            }
+
+            //点击医院，记录该医院信息
+            $('.hospitalStat').click(function () {
+                var id = $(this).attr('data-id');
+                var name = $(this).attr('data-name');
+                $.ajax({
+                    type: 'post',
+                    url: '<?php echo $urlStat; ?>',
+                    data: {'stat[site]': '<?php echo $SITE_22; ?>', 'stat[key_word]': name},
+                    success: function (data) {
+
+                    }
+                });
+                location.href = '<?php echo $urlHospitalView; ?>/' + id;
             });
         }
 
@@ -187,7 +265,7 @@ $this->show_footer = false;
                     connect = ',';
                 }
                 innerHtml += '<li>' +
-                        '<a href="<?php echo $urlDoctorView; ?>/' + doctors[i].id + '">' +
+                        '<a class="doctorStat" href="javascript:;" data-id="' + doctors[i].id + '" data-name="' + doctors[i].name + '">' +
                         '<div class="grid">' +
                         '<div class="col-1 w20 vertical-center font-s16">' + colorName + '</div>' +
                         '<div class="col-1 w80">' +
@@ -218,13 +296,13 @@ $this->show_footer = false;
                         '<div class="col-1 w50 grid">' +
                         '<div class="col-1 w50 grid">' +
                         '<div class="col-1"></div>' +
-                        '<a href="<?php echo $searchDept; ?>?disease=' + diseases[i].id + '&disease_name=' + diseases[i].name + '&page=1">' +
+                        '<a class="hospitalDiseaseStat" href="javascript:;" data-id="' + diseases[i].id + '" data-name="' + diseases[i].name + '">' +
                         '<div class="col-0 findDept">找医院</div>' +
                         '</a>' +
                         '</div>' +
                         '<div class="col-1 w50 grid">' +
                         '<div class="col-1"></div>' +
-                        '<a href="<?php echo $searchDoc; ?>?disease_name=' + diseases[i].name + '&page=1">' +
+                        '<a class="doctorDiseaseStat" href="javascript:;" data-id="' + diseases[i].id + '" data-name="' + diseases[i].name + '">' +
                         '<div class="col-0 findDoctor">找医生</div>' +
                         '</a>' +
                         '</div>' +
@@ -247,7 +325,7 @@ $this->show_footer = false;
                     }
                 }
                 innerHtml += '<li class="font-s16">' +
-                        '<a href="<?php echo $urlHospitalView; ?>/' + hospitals[i].id + '">' +
+                        '<a class="hospitalStat" href="javascript:;" data-id="' + hospitals[i].id + '" data-name="' + hospitals[i].name + '">' +
                         '<div>' + colorName + '</div>' +
                         '</a>' +
                         '</li>';

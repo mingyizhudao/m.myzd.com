@@ -4,6 +4,7 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/c
 ?>
 <?php
 $source = Yii::app()->request->getQuery('source', 0);
+$sourceApp = Yii::app()->request->getQuery('app', 0);
 if ($source == 0) {
     $this->setPageTitle('预约单信息');
 } else {
@@ -14,40 +15,50 @@ $urlBooking = $this->createUrl('booking/ajaxQuestionnaireCreate');
 $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/auth/sendSmsVerifyCode');
 $authActionType = AuthSmsVerify::ACTION_BOOKING;
 $urlAction = $this->createUrl('booking/ajaxQuestionnaireCreate');
-$urlCompleteQuestionnaireView = $this->createUrl('questionnaire/completeQuestionnaireView');
+if ($sourceApp == 0) {
+    $urlCompleteQuestionnaireView = $this->createUrl('questionnaire/completeQuestionnaireView');
+} else {
+    $urlCompleteQuestionnaireView = $this->createUrl('questionnaire/completeQuestionnaireView', array('app' => 1));
+}
 $urlAgain = $this->createUrl('questionnaire/view');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
-<header class="bg-green">
-    <nav class="left">
-        <?php
-        if ($source == 0) {
-            ?>
-            <a id="giveUp" href="">
-                <div class="pl5">
-                    <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
-                </div>
-            </a>
+<?php
+if ($sourceApp == 0) {
+    ?>
+    <header class="bg-green">
+        <nav class="left">
             <?php
-        } else {
+            if ($source == 0) {
+                ?>
+                <a id="giveUp" href="">
+                    <div class="pl5">
+                        <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                    </div>
+                </a>
+                <?php
+            } else {
+                ?>
+                <a id="normalBack" href="" data-target="back">
+                    <div class="pl5">
+                        <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                    </div>
+                </a>
+                <a id="reFill" href="" class="hide">
+                    <div class="pl5">
+                        <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                    </div>
+                </a>
+                <?php
+            }
             ?>
-            <a id="normalBack" href="" data-target="back">
-                <div class="pl5">
-                    <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
-                </div>
-            </a>
-            <a id="reFill" href="" class="hide">
-                <div class="pl5">
-                    <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
-                </div>
-            </a>
-            <?php
-        }
-        ?>
-    </nav>
-    <h1 class="title"><?php echo $source == 0 ? '预约单信息' : '填写专家信息'; ?></h1>
-</header>
+        </nav>
+        <h1 class="title"><?php echo $source == 0 ? '预约单信息' : '填写专家信息'; ?></h1>
+    </header>
+    <?php
+}
+?>
 <article id="questionnaireBooking_article" class="active" data-scroll="true">
     <div id="doctorInf" class="pl10 pr10 pb20 pt20 font-s15 <?php echo $source == 1 ? '' : 'hide'; ?>">
         <div class="color-gray">

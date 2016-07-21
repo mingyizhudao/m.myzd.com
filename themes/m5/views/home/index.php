@@ -12,6 +12,7 @@ $urlOperationTrain = $this->createUrl('home/page', array('view' => 'operationTra
 $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
 $urlHomeMyyzDoctor = $this->createUrl('home/page', array('view' => 'myyzDoctor'));
 $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
+$urlZeroBooking = $this->createUrl('questionnaire/beginQuestionnaireView');
 $urlCatherine = $this->createUrl('event/view', array('page' => 'catherine'));
 ?>
 <article id="home_article" data-active="home_footer" class="active bg-gray5" data-scroll="true">
@@ -184,6 +185,11 @@ $urlCatherine = $this->createUrl('event/view', array('page' => 'catherine'));
 
         //轮播图
         var html = '<li class="slide">' +
+                '<a href="<?php echo $urlZeroBooking; ?>?appId=ddaa785817d165e8&site=1">' +
+                '<img class="w100" src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146906610294170">' +
+                '</a>' +
+                '</li>' +
+                '<li class="slide">' +
                 '<a href="<?php echo $urlHomeMyyzDoctor; ?>">' +
                 '<img class="w100" src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146606890329840">' +
                 '</a>' +

@@ -35,8 +35,7 @@ class PatientStatLog extends EActiveRecord
     const SITE_20 = 20; //用户搜索的关键词列表
     const SITE_21 = 21; //用户选择的疾病关键词和对应选择次数
     const SITE_22 = 22; //用户搜索的医院列表和对应选择次数
-    const SITE_23 = 23; //用户搜索的科室列表和对应选择次数
-    const SITE_24 = 24; //用户搜索的医生列表和对应选择次数
+    const SITE_23 = 23; //用户搜索的医生列表和对应选择次数
 
 
     /**

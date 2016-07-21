@@ -9,7 +9,12 @@ $urlHomeMyyzDoctor = $this->createUrl('home/page', array('view' => 'myyzDoctor')
 $urlQiniuAjaxToken = $this->createUrl('qiniu/ajaxBookingToken');
 $urlUploadFile = $this->createUrl("/api/questionnairefile");
 $urlQuestionnaire = $this->createUrl('/api/questionnaire');
-$urlQuestion = $this->createUrl('questionnaire/view', array('id' => ''));
+$source = Yii::app()->request->getQuery('app', 0);
+if ($source == 0) {
+    $urlQuestion = $this->createUrl('questionnaire/view', array('id' => ''));
+} else {
+    $urlQuestion = $this->createUrl('questionnaire/view', array('app' => 1, 'id' => ''));
+}
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
@@ -20,21 +25,22 @@ $this->show_footer = false;
         margin-top: 0px!important;
     }
 </style>
-<header class="bg-green">
-    <nav class="left">
-        <a href="" data-target="back">
-            <div class="pl5">
-                <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
-            </div>
-        </a>
-    </nav>
-    <h1 class="title">疾病信息</h1>
-    <nav class="right" style="top:2px!important;">
-        <div class="font-s16">
-            <a id="skip" href="javascript:;">跳过</a>
-        </div>
-    </nav>
-</header>
+<?php
+if ($source == 0) {
+    ?>
+    <header class="bg-green">
+        <nav class="left">
+            <a href="" data-target="back">
+                <div class="pl5">
+                    <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                </div>
+            </a>
+        </nav>
+        <h1 class="title">疾病信息</h1>
+    </header>
+    <?php
+}
+?>
 <article id="questionnairefour_article" class="active android_article logo_article" data-scroll="true" data-action-url="<?php echo $urlQuestionnaire; ?>" data-return-url="<?php echo $urlQuestion; ?>">
     <div id="outline" class="pad20 bg-white">
         <div class="w100 color-green text18">
@@ -69,6 +75,9 @@ $this->show_footer = false;
             <button id="btnSubmit" class="btn-file">
                 下一步
             </button>
+        </div>
+        <div class="pt20">
+            <a id="skip" href="javascript:;" class="skipBtn">跳过</a>
         </div>
     </div>
     <div id="logoImg" class="text-center hide pb20">

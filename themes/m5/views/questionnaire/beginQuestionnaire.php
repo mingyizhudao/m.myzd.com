@@ -1,20 +1,33 @@
 <?php
 $this->setPageTitle('0元见名医');
-$urlQuestionnaire = $this->createUrl('questionnaire/view', array('id' => 1));
 $appId = Yii::app()->request->getQuery('appId', '');
 $site = Yii::app()->request->getQuery('site', '');
+$source = Yii::app()->request->getQuery('app', 0);
+if ($source == 0) {
+    $urlQuestionnaire = $this->createUrl('questionnaire/view', array('id' => 1));
+    $urlQestionnaireService = $this->createUrl('questionnaire/qestionnaireServiceView');
+} else {
+    $urlQuestionnaire = $this->createUrl('questionnaire/view', array('id' => 1, 'app' => 1));
+    $urlQestionnaireService = $this->createUrl('questionnaire/qestionnaireServiceView', array('app' => 1));
+}
 $this->show_footer = false;
 ?>
-<header class="bg-green">
-    <h1 class="title">0元见名医</h1>
-</header>
+<?php
+if ($source == 0) {
+    ?>
+    <header class="bg-green">
+        <h1 class="title">0元见名医</h1>
+    </header>
+    <?php
+}
+?>
 <article id="beginQuestionnaire_article" class="active" data-scroll="true">
     <div class="font-s15 c-black">
         <div class="pad10 bb-gray">
             <div class="greenIcon">服务介绍</div>
         </div>
         <div class="pt10 pb10 pl20 pr20 text-justify">
-            针对非首诊手术患者，名医主刀提供全国知名三甲医院专家的面对面术前咨询服务，让患者获得更全面更权威的诊疗建议。
+            针对有手术需求的患者，名医主刀提供全国知名三甲医院专家的面对面术前咨询服务，让患者获得更全面、更权威的诊疗建议。
         </div>
         <div class="pad10 bb-gray">
             <div class="greenIcon">服务流程</div>
@@ -48,7 +61,7 @@ $this->show_footer = false;
                 <a href="<?php echo $urlQuestionnaire; ?>" class="btn btn-full bg-orange">马上申请</a>
             </div>
             <div class="text-center pt20">
-                <a href="<?php echo $this->createUrl('questionnaire/qestionnaireServiceView'); ?>" class="color-blue a-underline">服务条款</a>
+                <a href="<?php echo $urlQestionnaireService; ?>" class="color-blue a-underline">服务条款</a>
             </div>
         </div>
     </div>

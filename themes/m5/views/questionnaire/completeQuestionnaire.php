@@ -1,10 +1,17 @@
 <?php
 $this->setPageTitle('提交成功');
+$source = Yii::app()->request->getQuery('app', 0);
 $this->show_footer = false;
 ?>
-<header class="bg-green">
-    <h1 class="title">提交成功</h1>
-</header>
+<?php
+if ($source == 0) {
+    ?>
+    <header class="bg-green">
+        <h1 class="title">提交成功</h1>
+    </header>
+    <?php
+}
+?>
 <article class="active" data-scroll="true">
     <div class="font-s15">
         <div class="text-center pt40">

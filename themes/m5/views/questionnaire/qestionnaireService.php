@@ -1,23 +1,30 @@
 <?php
 $this->setPageTitle('服务条款');
+$source = Yii::app()->request->getQuery('app', 0);
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
-<header class="bg-green">
-    <nav class="left">
-        <a href="" data-target="back">
-            <div class="pl5">
-                <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
-            </div>
-        </a>
-    </nav>
-    <h1 class="title">服务条款</h1>
-    <nav class="right">
-        <a onclick="javascript:location.reload()">
-            <img src="<?php echo $urlResImage; ?>refresh.png" class="w24p">
-        </a>
-    </nav>
-</header>
+<?php
+if ($source == 0) {
+    ?>
+    <header class="bg-green">
+        <nav class="left">
+            <a href="" data-target="back">
+                <div class="pl5">
+                    <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                </div>
+            </a>
+        </nav>
+        <h1 class="title">服务条款</h1>
+        <nav class="right">
+            <a onclick="javascript:location.reload()">
+                <img src="<?php echo $urlResImage; ?>refresh.png" class="w24p">
+            </a>
+        </nav>
+    </header>
+    <?php
+}
+?>
 <article class="active" data-scroll="true">
     <div class="pl15 pr15 text-justify">
         <div class="pt10 color-black6">

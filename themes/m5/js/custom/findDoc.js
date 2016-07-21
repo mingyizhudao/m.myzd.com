@@ -362,11 +362,17 @@ $('#citySelect').tap(function () {
 /*医生页面*/
 function readyDoc(data) {
     var source = $('#findDoc_nav').attr('data-source');
+    var sourceApp = $('#findDoc_nav').attr('data-sourceApp');
     var results = data.results;
+    var innerHtml = '';
     if (source == 0) {
-        var innerHtml = '<div class="pt20"></div>';
+        innerHtml = '<div class="pt20"></div>';
     } else {
-        var innerHtml = '<div class="pt64"></div>';
+        if (sourceApp == 0) {
+            innerHtml = '<div class="pt64"></div>';
+        } else {
+            innerHtml = '<div class="pt20"></div>';
+        }
     }
     if (results) {
         if (results.length > 0) {

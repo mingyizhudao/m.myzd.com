@@ -2,20 +2,31 @@
 $this->setPageTitle('疾病信息');
 $urlQuestionnaire = $this->createUrl('/api/questionnaire');
 $urlDoctorSearch = $this->createUrl('doctor/search');
-$urlQuestionnaireView = $this->createUrl('questionnaire/view', array('id' => 1));
+$source = Yii::app()->request->getQuery('app', 0);
+if ($source == 0) {
+    $urlQuestionnaireView = $this->createUrl('questionnaire/view', array('id' => 1));
+} else {
+    $urlQuestionnaireView = $this->createUrl('questionnaire/view', array('app' => 1, 'id' => 1));
+}
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
-<header class="bg-green">
-    <nav class="left">
-        <a href="" data-target="back">
-            <div class="pl5">
-                <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
-            </div>
-        </a>
-    </nav>
-    <h1 class="title">疾病信息</h1>
-</header>
+<?php
+if ($source == 0) {
+    ?>
+    <header class="bg-green">
+        <nav class="left">
+            <a href="" data-target="back">
+                <div class="pl5">
+                    <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                </div>
+            </a>
+        </nav>
+        <h1 class="title">疾病信息</h1>
+    </header>
+    <?php
+}
+?>
 <article id="questionnairefive_article" class="active logo_article" data-scroll="true">
     <div id="outline" class="pad20 bg-white">
         <div class="w100 color-green text18">
@@ -114,7 +125,11 @@ $this->show_footer = false;
                 success: function (data) {
                     if (data.status == 'ok') {
                         J.hideMask();
-                        location.href = '<?php echo $urlDoctorSearch; ?>?source=1&disease_sub_category=2';
+                        if ('<?php echo $source; ?>' == 0) {
+                            location.href = '<?php echo $urlDoctorSearch; ?>?source=1&disease_sub_category=2';
+                        } else {
+                            location.href = '<?php echo $urlDoctorSearch; ?>?app=1&source=1&disease_sub_category=2';
+                        }
                     }
                 },
                 error: function (XmlHttpRequest, textStatus, errorThrown) {

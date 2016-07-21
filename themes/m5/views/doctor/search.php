@@ -1,15 +1,20 @@
 <?php
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/findDoc.js?ts=' . time(), CClientScript::POS_END);
-//Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/findDoc.min.js?ts=' . time(), CClientScript::POS_END);
+//Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/findDoc.js?ts=' . time(), CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/findDoc.min.js?ts=' . time(), CClientScript::POS_END);
 ?>
 <?php
 $source = Yii::app()->request->getQuery('source', '0');
+$sourceApp = Yii::app()->request->getQuery('app', 0);
 if ($source == 0) {
     $this->setPageTitle('找名医');
     $urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('id' => ''));
 } else {
     $this->setPageTitle('选择意向专家');
-    $urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('source' => 1, 'id' => ''));
+    if ($sourceApp == 0) {
+        $urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('source' => 1, 'id' => ''));
+    } else {
+        $urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('app' => 1, 'source' => 1, 'id' => ''));
+    }
 }
 $urlApiAppNav1 = $this->createAbsoluteUrl('/api/list');
 $urlCity = $this->createAbsoluteUrl('/api/city');
@@ -29,33 +34,46 @@ $page = Yii::app()->request->getQuery('page', '');
 $urlHomeView = $this->createUrl('home/view');
 $urlDoctorSearch = $this->createUrl('doctor/search');
 $urlSearchDeptName = $this->createAbsoluteUrl('/api/diseasename', array('api' => 7, 'disease_name' => ''));
-$urlQuestionnaireSearch = $this->createAbsoluteUrl('questionnaire/questionnaireSearchView');
+if ($sourceApp == 0) {
+    $urlQuestionnaireSearch = $this->createAbsoluteUrl('questionnaire/questionnaireSearchView');
+} else {
+    $urlQuestionnaireSearch = $this->createAbsoluteUrl('questionnaire/questionnaireSearchView', array('app' => 1));
+}
 $this->show_footer = false;
 ?>
-<header class="bg-green">
-    <?php
-    if ($source == 0) {
+<style>
+    .top0p{top:0px;}
+</style>
+<?php
+if ($sourceApp == 0) {
+    ?>
+    <header class="bg-green">
+        <?php
+        if ($source == 0) {
+            ?>
+            <nav class="left">
+                <a href="<?php echo $urlHomeView; ?>">
+                    <div class="pl5">
+                        <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                    </div>
+                </a>
+            </nav>
+            <?php
+        }
         ?>
-        <nav class="left">
-            <a href="<?php echo $urlHomeView; ?>">
-                <div class="pl5">
-                    <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
-                </div>
+        <h1 class="title">
+            <?php echo $source == 0 ? '找名医' : '选择意向专家'; ?>
+        </h1>
+        <nav class="right">
+            <a onclick="javascript:location.reload()">
+                <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
             </a>
         </nav>
-        <?php
-    }
-    ?>
-    <h1 class="title">
-        <?php echo $source == 0 ? '找名医' : '选择意向专家'; ?>
-    </h1>
-    <nav class="right">
-        <a onclick="javascript:location.reload()">
-            <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
-        </a>
-    </nav>
-</header>
-<nav id="findDoc_nav" class="header-secondary bg-white <?php echo $source == 0 ? '' : 'h94p'; ?>" data-source="<?php echo $source; ?>">
+    </header>
+    <?php
+}
+?>
+<nav id="findDoc_nav" data-sourceApp="<?php echo $sourceApp; ?>" class="header-secondary bg-white <?php echo $source == 0 ? '' : 'h94p'; ?> <?php echo $sourceApp == 0 ? '' : 'top0p' ?>" data-source="<?php echo $source; ?>">
     <div class="w100">
         <?php
         if ($source == 1) {
@@ -98,6 +116,7 @@ $this->show_footer = false;
 
         $condition = new Array();
         $condition["source"] = '<?php echo $source ?>';
+        $condition["app"] = '<?php echo $sourceApp ?>';
         $condition["city"] = '<?php echo $city ?>';
         $condition["disease"] = '<?php echo $disease; ?>';
         $condition["disease_name"] = '<?php echo $disease_name; ?>';

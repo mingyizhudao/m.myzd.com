@@ -89,7 +89,7 @@ $this->show_footer = false;
                         <div class="col-1"></div>
                         <div class="col-0">
                             <div class="col-0 br50 w60p h60p overflow-hidden">
-                                <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146303241586665">
+                                <img src="http://dr.static.mingyizhudao.com/146707664896454.jpg">
                             </div>
                         </div>
                         <div class="col-0 pl10">

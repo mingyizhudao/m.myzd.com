@@ -1,21 +1,41 @@
 <?php
 $this->setPageTitle('意向专家');
 $source = Yii::app()->request->getQuery('source', 0);
-$doctorView = $this->createUrl('doctor/view', array('source' => '1', 'id' => ''));
-$urlQuestionnaireBookingView = $this->createUrl('questionnaire/questionnaireBookingView', array('source' => 1));
+$sourceApp = Yii::app()->request->getQuery('app', 0);
+if ($sourceApp == 0) {
+    $doctorView = $this->createUrl('doctor/view', array('source' => '1', 'id' => ''));
+    $urlQuestionnaireBookingView = $this->createUrl('questionnaire/questionnaireBookingView', array('source' => 1));
+} else {
+    $doctorView = $this->createUrl('doctor/view', array('app' => 1, 'source' => '1', 'id' => ''));
+    $urlQuestionnaireBookingView = $this->createUrl('questionnaire/questionnaireBookingView', array('app' => 1, 'source' => 1));
+}
 $urlSearch = $this->createAbsoluteUrl('/api/search', array('name' => ''));
 $this->show_footer = false;
 ?>
-<header class="bg-green search">
+<style>
+    .right10p{right:10px!important;}
+</style>
+<header class="<?php echo $sourceApp == 0 ? 'bg-green' : 'bg-gray4 bb-none'; ?> search">
     <div class="grid w100">
         <div class="col-1 pl10">
             <i class="icon_search"></i>
             <input class="icon_input" type="text" placeholder="请输入你意向的专家">
-            <a class="icon_clear hide"></a>
+            <a class="icon_clear hide <?php echo $sourceApp == 0 ? '' : 'right10p'; ?>"></a>
         </div>
-        <a href="" class="col-0 pl5 pr5" data-target="back">
-            取消
-        </a>
+        <?php
+        if ($sourceApp == 0) {
+            ?>
+            <a href="" class="col-0 pl5 pr5" data-target="back">
+                取消
+            </a>
+            <?php
+        } else {
+            ?>
+            <div class="col-0 pl10">
+            </div>
+            <?php
+        }
+        ?>
     </div>
 </header>
 <article id="questionnaireSearch_article" class="active" data-scroll="true">
