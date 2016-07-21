@@ -267,6 +267,9 @@ abstract class WebsiteController extends Controller {
             $appKey = $appVendor->getByAppId($_GET['appId']);
             if (isset($appKey)) {
                 Yii::app()->session['vendorId'] = $appKey->id;
+                if(isset($_GET['os'])){
+                    Yii::app()->session['vendorOs'] = $_GET['os'];
+                }
                 if($site > 0){
                     Yii::app()->session['vendorSite'] = $site;
                 }

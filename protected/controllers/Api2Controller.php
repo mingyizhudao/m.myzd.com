@@ -132,7 +132,10 @@ class Api2Controller extends Controller {
                 break;
             // app v2.0 api
             case "appnav1"://首屏接口
-                if ($api >= 9) {
+                if ($api >= 13) {
+                    $apiService = new ApiViewAppNav1V13();
+                    $output = $apiService->loadApiViewData();
+                }elseif ($api >= 9) {
                     $apiService = new ApiViewAppNav1V9();
                     $output = $apiService->loadApiViewData();
                 }elseif ($api >= 8) {

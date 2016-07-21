@@ -306,7 +306,9 @@ class BookingController extends MobileController {
                         }
 
                         $booking->setAttributes($form->attributes, true);
-                        if ($this->isUserAgentWeixin()) {
+                        if(Yii::app()->session['vendorOs']){
+                            $booking->user_agent = Yii::app()->session['vendorOs'];
+                        }elseif ($this->isUserAgentWeixin()) {
                             $booking->user_agent = StatCode::USER_AGENT_WEIXIN;
                         } else {
                             $booking->user_agent = StatCode::USER_AGENT_MOBILEWEB;
