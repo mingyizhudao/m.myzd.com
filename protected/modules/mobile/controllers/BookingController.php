@@ -277,6 +277,7 @@ class BookingController extends MobileController {
                     $form->initModel();
                     $form->validate();
                 }
+               $user = $this->getCurrentUser();
                if (isset($user)) {
                    // 快速预约
                    $form->mobile = $user->username;
@@ -295,7 +296,8 @@ class BookingController extends MobileController {
 
                         $booking = new Booking();
                         $bookingUser = null;
-                        $user = $this->getCurrentUser();
+
+                        $user = User::model()->getByUsername($form->mobile);
                         if (isset($user)) {
                             $bookingUser = $user->getId();
                         } else {
