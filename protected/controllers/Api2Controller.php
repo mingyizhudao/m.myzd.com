@@ -90,7 +90,7 @@ class Api2Controller extends Controller {
                         'errorCode' => ErrorList::ERROR_NONE,
                         'errorMsg' => 'success',
                         'results'=>array(
-                            'version' => '20160519',
+                            'version' => '20160721',
                             'localdataUrl' => Yii::app()->createAbsoluteUrl('/api2/localdata'),
                         )
                     );
