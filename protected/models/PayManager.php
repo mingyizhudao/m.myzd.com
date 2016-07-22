@@ -11,7 +11,7 @@ class PayManager {
         $pingCharge = null;
         $apisvs = new ApiViewSalesOrder($refNo);
         $output = $apisvs->loadApiViewData();
-        
+
         $order = $output->results->salesOrder;
         $booking = $output->results->booking;
         if ($order === NULL) {
@@ -22,8 +22,8 @@ class PayManager {
         $payment->initPaymentByOrder($order, $channel);
         $amount = intval($payment->getBillAmount() * 100);
         $orderNo = $payment->getUid();
-        $subject = empty($order->subject)?'1':$order->subject;
-        $body = empty($order->description)?'1':$order->description;
+        $subject = empty($order->subject) ? '1' : $order->subject;
+        $body = empty($order->description) ? '1' : $order->description;
         //获取手机号
         $yeepayIndentity = NULL;
         if ($channel == 'yeepay_wap') {
@@ -46,7 +46,12 @@ class PayManager {
             'extra' => $extra,
             'channel' => $channel,
             'client_ip' => $_SERVER['REMOTE_ADDR'],
-            'app' => array('id' => 'app_SWv9qLSGWj1GKqbn')      // Ping++ app id.
+            'app' => array('id' => 'app_SWv9qLSGWj1GKqbn'), // Ping++ app id.
+            "refunds" => array(
+                "object" => "list",
+                "url" => "os=android&header=0&footer=0&addBackBtn=0&app=0",
+                "has_more" => false,
+            ),
         );
         if ($payment->save() === false) {
             //exception
