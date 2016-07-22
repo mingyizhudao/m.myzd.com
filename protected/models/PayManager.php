@@ -47,11 +47,11 @@ class PayManager {
             'channel' => $channel,
             'client_ip' => $_SERVER['REMOTE_ADDR'],
             'app' => array('id' => 'app_SWv9qLSGWj1GKqbn'), // Ping++ app id.
-            "refunds" => array(
-                "object" => "list",
-                "url" => "os=android&header=0&footer=0&addBackBtn=0&app=0",
-                "has_more" => false,
-            ),
+//            "refunds" => array(
+//                "object" => "list",
+//                "url" => "os=android&header=0&footer=0&addBackBtn=0&app=0",
+//                "has_more" => false,
+//            ),
         );
         if ($payment->save() === false) {
             //exception
