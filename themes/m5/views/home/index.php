@@ -198,11 +198,6 @@ $urlCatherine = $this->createUrl('event/view', array('page' => 'catherine'));
                 '<a href="<?php echo $urlMygy; ?>">' +
                 '<img class="w100" src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146606890358056">' +
                 '</a>' +
-                '</li>' +
-                '<li class="slide">' +
-                '<a href="<?php echo $urlCatherine; ?>">' +
-                '<img class="w100" src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146606890232455">' +
-                '</a>' +
                 '</li>';
         $('#home_article .bxslider').html(html);
 
