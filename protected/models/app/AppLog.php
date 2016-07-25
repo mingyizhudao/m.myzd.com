@@ -40,7 +40,7 @@ class AppLog extends EActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('vendor_id, site', 'numerical', 'integerOnly'=>true),
+			array('vendor_id, site, question, answer, source', 'numerical', 'integerOnly'=>true),
 			array('user_host_ip, username', 'length', 'max'=>20),
 			array('url, url_referrer, user_agent', 'length', 'max'=>255),
 			array('user_host', 'length', 'max'=>45),

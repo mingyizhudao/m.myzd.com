@@ -48,7 +48,7 @@ class BookingController extends MobileController {
      */
     public function actionCreate() {
         $values = $_GET;
-        $this->recordOpenBooking();
+        $this->recordVendorDetails(array('open_booking'=>1));
         //$request = Yii::app()->request;
         if (isset($values['tid'])) {
             // 预约专家团队
@@ -304,7 +304,7 @@ class BookingController extends MobileController {
                             //数据验证成功 自动注册账号并登陆
                             $this->RegisterUser($form);
                             $bookingUser = $this->getCurrentUserId();
-                            $this->recordNewUser($values['mobile']);
+                            $this->recordVendorDetails(array('username'=>$values['mobile']));
                         }
 
                         $booking->setAttributes($form->attributes, true);
@@ -411,7 +411,7 @@ class BookingController extends MobileController {
     public function actionQuickbook() {
         $site = isset($_GET['site']) ? (int) $_GET['site'] : 0;
         $this->recordVendor($site);
-        $this->recordOpenBooking();
+        $this->recordVendorDetails(array('open_booking'=>1));
         //$values = $_GET;
         //$request = Yii::app()->request;
         // 快速预约

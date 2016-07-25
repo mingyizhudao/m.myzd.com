@@ -207,19 +207,28 @@ abstract class WebsiteController extends Controller {
     /**
      * Stores user's access info for every request.
      */
-    public function  storeAppAccessInfo($vendorId=0, $site=0, $open_booking=0, $username='') {
+    public function  storeAppAccessInfo($arr) {
         $coreAccess = new AppLog();
-        if($vendorId > 0){
-            $coreAccess->vendor_id = $vendorId;
+        if(isset($arr['vendorId']) && $arr['vendorId'] > 0){
+            $coreAccess->vendor_id = $arr['vendorId'];
         }
-        if($site > 0){
-            $coreAccess->site = $site;
+        if(isset($arr['site']) && $arr['site'] > 0){
+            $coreAccess->site = $arr['site'];
         }
-        if($open_booking > 0){
-            $coreAccess->open_booking = $open_booking;
+        if(isset($arr['open_booking']) && $arr['open_booking'] > 0){
+            $coreAccess->open_booking = $arr['open_booking'];
         }
-        if(!empty($username)){
-            $coreAccess->username = $username;
+        if(isset($arr['username']) && !empty($arr['username'])){
+            $coreAccess->username = $arr['username'];
+        }
+        if(isset($arr['question']) && $arr['question'] > 0){
+            $coreAccess->question = $arr['question'];
+        }
+        if(isset($arr['answer']) && $arr['answer'] > 0){
+            $coreAccess->answer = $arr['answer'];
+        }
+        if(isset($arr['source']) && $arr['source'] > 0){
+            $coreAccess->source = $arr['source'];
         }
         $coreAccess->user_host_ip = Yii::app()->request->getUserHostAddress();
         $coreAccess->url = Yii::app()->request->getUrl();
@@ -243,7 +252,7 @@ abstract class WebsiteController extends Controller {
                     if (checkSignature(array('appId' => $_GET['appId'], 'timestamp' => $_GET['timestamp']), $appKey->app_secret, $_GET['sign'])) {
 
                         Yii::app()->session['vendorId'] = $appKey->id;
-                        $this->storeAppAccessInfo($appKey->id, $site);
+                        $this->storeAppAccessInfo(array('vendorId'=>$appKey->id, 'site'=>$site));
                     } else {
                         unset(Yii::app()->session['vendorId']);
                         $this->renderJsonOutput(array('status' => EApiViewService::RESPONSE_NO, 'errorCode' => 3, 'errorMsg' => 'sign error'));
@@ -273,30 +282,22 @@ abstract class WebsiteController extends Controller {
                 if($site > 0){
                     Yii::app()->session['vendorSite'] = $site;
                 }
-                $this->storeAppAccessInfo($appKey->id, $site);
+                $this->storeAppAccessInfo(array('vendorId'=>$appKey->id, 'site'=>$site));
 
             }
         }
     }
-    //记录打开预约页面
-    public function recordOpenBooking(){
-        if (Yii::app()->session['vendorId']) {
-            $site = null;
-            if(Yii::app()->session['vendorSite']){
-                $site = Yii::app()->session['vendorSite'];
-            }
-            $this->storeAppAccessInfo(Yii::app()->session['vendorId'], $site, 1);
-        }
-    }
 
-    //记录新用户
-    public function recordNewUser($mobile){
+    //记录第三方细节
+    public function recordVendorDetails($arr){
         if (Yii::app()->session['vendorId']) {
-            $site = null;
+            $site = 0;
             if(Yii::app()->session['vendorSite']){
                 $site = Yii::app()->session['vendorSite'];
             }
-            $this->storeAppAccessInfo(Yii::app()->session['vendorId'], $site, 0, $mobile);
+            $arr['vendorId'] = Yii::app()->session['vendorId'];
+            $arr['site'] = $site;
+            $this->storeAppAccessInfo($arr);
         }
     }
 
