@@ -665,6 +665,7 @@ $(function () {
                     fileParam.id = data.booking.id;
                     //基本数据插入成功  判断是否有图片
                     if (uploaderCorp.state == 'ready') {
+                        booking_id.id = data.booking.id;
                         uploaderCorp.upload();
                     }
                     if (state == 'ready') {

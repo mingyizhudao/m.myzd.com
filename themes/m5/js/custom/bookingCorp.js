@@ -1,4 +1,4 @@
-var fileCountCorp = 0,uploaderCorp;
+var fileCountCorp = 0, uploaderCorp, booking_id = {"id": "1", "name": "1"};
 $(function () {
     var btnUploadSelector = "#btnSubmit",
             domForm = $("#booking-form"),
@@ -18,7 +18,7 @@ $(function () {
             // 总体进度条
             $progress = $statusBar.find('.progress').hide(),
             // 添加的文件数量
-            
+
             // 添加的文件总大小
             fileSize = 0,
             //图片上传时所需要的参数
@@ -397,7 +397,7 @@ $(function () {
     uploaderCorp.on("startUpload", function () {
         //文件上传之前加上表单成功返回的参数
         uploaderCorp.option("formData", {
-            'booking[id]': fileParam.id,
+            'booking[id]': booking_id.id,
         });
 
     });
@@ -421,7 +421,7 @@ $(function () {
             return false;
         }
     });
-    
+
 
     $info.on('click', '.retry', function () {
         uploaderCorp.retry();
