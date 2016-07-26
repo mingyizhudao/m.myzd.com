@@ -68,6 +68,26 @@ class WechatapiController extends WeixinpubController {
         }
         Yii::app()->end();
     }
+    
+    
+    public function responseMsg1() {
+        $postStr = isset($GLOBALS['HTTP_RAW_POST_DATA']) ? $GLOBALS['HTTP_RAW_POST_DATA'] : file_get_contents("php://input");
+        $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
+        $RX_TYPE = trim($postObj->MsgType);
+        switch ($RX_TYPE) {//消息类型分离
+            case "event":
+                $result = $this->wechatMessage->receiveEvent($postObj);
+                break;
+            case "text":
+                $result = $this->wechatMessage->receiveText($postObj);
+                break;
+            default:
+                break;
+        }
+        ob_clean();
+        echo $result;
+        Yii::app()->end();
+    }
 
     //获取请求内容以及根据类型回复相关消息
     public function responseMsg() {
