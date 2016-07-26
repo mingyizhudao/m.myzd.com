@@ -60,8 +60,8 @@ class WechatapiController extends WeixinpubController {
         if ($this->checkSignature()) {
             Yii::log("验证成功，返回随机字符串：" . $this->echostr);
             ob_clean();
-            var_dump($this->echostr); 
-            //echo $this->echostr;
+            //var_dump($this->echostr); 
+            echo $this->echostr;
         } else {
             Yii::log("验证失败，返回Null");
             echo "null";
