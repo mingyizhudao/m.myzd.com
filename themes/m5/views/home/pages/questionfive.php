@@ -36,6 +36,6 @@ $this->show_footer = false;
                 下一步
             </button>
         </div>
-        <div class="text-center mt90"><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146761944631242" class="w50" /></div>
+        <div class="text-center mt90"><img src="http://static.mingyizhudao.com/146761944631242" class="w50" /></div>
     </div>
 </article>

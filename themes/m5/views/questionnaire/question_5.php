@@ -63,7 +63,7 @@ if ($source == 0) {
         </div>
     </div>
     <div id="logoImg" class="text-center hide pb20">
-        <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146761944631242" class="w125p">
+        <img src="http://static.mingyizhudao.com/146761944631242" class="w125p">
     </div>
 </article>
 <script>

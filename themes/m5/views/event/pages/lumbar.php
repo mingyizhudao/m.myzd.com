@@ -24,7 +24,7 @@ $this->show_footer = false;
 <article id="lumbar_article" class="active story_article" data-scroll="true">
     <div>
         <div>
-            <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146649675839945" class="w100">
+            <img src="http://static.mingyizhudao.com/146649675839945" class="w100">
         </div>
         <div class="pl10 pr10">
             <div class="brownText font-w800 font-s18 pt20">
@@ -43,7 +43,7 @@ $this->show_footer = false;
                 来自辽宁的曹先生由于工作和运动的原因，不幸患上了非常严重的腰椎间盘突出，稍稍劳累点，马上就疼，实在严重的时候就会吃止痛药。到后来，根本无法平卧，整晚无法睡觉，非常痛苦。之前曹先生也在沈阳当地的医院看过病，医生都是采用保守治疗的方法，让曹先生苦不堪言。
             </div>
             <div class="mt20">
-                <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/14664969399071" class="w100">
+                <img src="http://static.mingyizhudao.com/14664969399071" class="w100">
             </div>
             <div class="text-justify text-indent-2 mt20">
                 保守治疗效果不明显。曹先生开始寻求手术治疗的方法，在当地医院，有的医生建议做微创手术，有的建议做大手术，让曹先生和他的家属一下子没了主见。曹先生的女儿了解到名医主刀平台上签约了全国各个科室的顶尖医生，抱着试一试的心态来到了名医主刀平台，经过了解，北京积水潭医院脊柱外科是全国有名的科室，于是在名医主刀平台提交了预约单，预约了北京积水潭医院脊柱外科的刘波教授。
@@ -90,7 +90,7 @@ $this->show_footer = false;
                 俗话说“腰疼不是病，疼起来要人命”，可是真正经历过这种痛苦的曹先生说：“谁说腰疼不是病？”既然是病，就找名医主刀吧！
             </div>
             <div class="pt20 pb50">
-                <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/14664971248603" class="w100">
+                <img src="http://static.mingyizhudao.com/14664971248603" class="w100">
             </div>
         </div>
     </div>

@@ -57,7 +57,7 @@ if ($source == 0) {
                         <div id="container">
                             <a class="btn btn-default btn-lg" id="pickfiles" href="#">
                                 <span>
-                                    <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146770314701592" class="w90p">
+                                    <img src="http://static.mingyizhudao.com/146770314701592" class="w90p">
                                 </span>
                             </a>
                         </div>
@@ -81,7 +81,7 @@ if ($source == 0) {
         </div>
     </div>
     <div id="logoImg" class="text-center hide pb20">
-        <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146761944631242" class="w125p">
+        <img src="http://static.mingyizhudao.com/146761944631242" class="w125p">
     </div>
 </article>
 <div id="jingle_toast" class="toast"><a href="#"></a></div>
@@ -107,10 +107,10 @@ if ($source == 0) {
                     '<div>B超、X光片、CT片、MRL、检验报告、病理报告等。</div>' +
                     '<div class="grid pt10 text-center">' +
                     '<div class="col-1 w50">' +
-                    '<img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146786157891659" class="w123p">' +
+                    '<img src="http://static.mingyizhudao.com/146786157891659" class="w123p">' +
                     '</div>' +
                     '<div class="col-1 w50">' +
-                    '<img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146786157926638" class="w123p">' +
+                    '<img src="http://static.mingyizhudao.com/146786157926638" class="w123p">' +
                     '</div>' +
                     '</div>' +
                     '<img src="">' +

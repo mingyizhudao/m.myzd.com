@@ -21,7 +21,7 @@ $this->show_footer = false;
         <div class="col-0">
             <a href="" data-target="back">
                 <div class="pl20 pr15">
-                    <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146570271258952" class="w11p">
+                    <img src="http://static.mingyizhudao.com/146570271258952" class="w11p">
                 </div>
             </a>
         </div>

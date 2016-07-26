@@ -101,7 +101,7 @@ $urlUserView = $this->createUrl('user/view');
         } else {
             ?>
             <div class="text-center">
-                <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146295490734874" class="w170p pt50">
+                <img src="http://static.mingyizhudao.com/146295490734874" class="w170p pt50">
             </div>
             <div class="font-s30 color-gray9 text-center pt10">暂无订单</div>
             <?php

@@ -24,7 +24,7 @@ $this->show_footer = false;
 <article id="lungCancer_article" class="active" data-scroll="true">
     <div>
         <div>
-            <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146347843515058" class="w100">
+            <img src="http://static.mingyizhudao.com/146347843515058" class="w100">
         </div>
         <div class="pl8 pr8 text-justify">
             <div class="pt25 font-s16 color-red7">
@@ -101,7 +101,7 @@ $this->show_footer = false;
                 在诊疗和科研领域都拥有顶尖的专家和最专业的团队，其癌症五年生存率全球领先，远超平均预期值。同时，凯瑟琳癌症中心作为<span class="font-w800">名医主刀B轮1.5亿元融资的战略投资方之一</span>，在未来，将为名医主刀提供远程专家支持等医疗服务。
             </div>
             <div>
-                <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146347899337749" class="w100">
+                <img src="http://static.mingyizhudao.com/146347899337749" class="w100">
             </div>
             <div class="pt15 color-red7 font-w800 text-center font-s16 pb50">
                 敬请期待！

@@ -25,7 +25,7 @@ $this->show_footer = false;
             <div class="col-1 w50"></div>
             <div class="col-1 w50 grid">
                 <div class="col-0">
-                    <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/14639899828034" class="w40p">
+                    <img src="http://static.mingyizhudao.com/14639899828034" class="w40p">
                 </div>
                 <div class="font-s18 vertical-center pl10 color-green">
                     名医主刀

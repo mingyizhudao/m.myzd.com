@@ -90,37 +90,37 @@ $this->show_footer = false;
                 innerHtml += '<div class="mt5 bg-white"><div class="grid pad10 bb-gray">';
                 if (dpt == '内科') {
                     innerHtml += '<div class="col-0">' +
-                            '<img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146302535750635" class="w25p">' +
+                            '<img src="http://static.mingyizhudao.com/146302535750635" class="w25p">' +
                             '</div>' +
                             '<div class="col-1 pl5 font-s16">' + dpt + '</div>';
                 } else if (dpt == '外科') {
                     innerHtml += '<div class="col-0">' +
-                            '<img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146302539369261" class="w25p">' +
+                            '<img src="http://static.mingyizhudao.com/146302539369261" class="w25p">' +
                             '</div>' +
                             '<div class="col-1 pl5 font-s16">' + dpt + '</div>';
                 } else if (dpt == '妇产科') {
                     innerHtml += '<div class="col-0">' +
-                            '<img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146302542491035" class="w25p">' +
+                            '<img src="http://static.mingyizhudao.com/146302542491035" class="w25p">' +
                             '</div>' +
                             '<div class="col-1 pl5 font-s16">' + dpt + '</div>';
                 } else if (dpt == '骨科') {
                     innerHtml += '<div class="col-0">' +
-                            '<img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146302546159954" class="w25p">' +
+                            '<img src="http://static.mingyizhudao.com/146302546159954" class="w25p">' +
                             '</div>' +
                             '<div class="col-1 pl5 font-s16">' + dpt + '</div>';
                 } else if (dpt == '小儿外科') {
                     innerHtml += '<div class="col-0">' +
-                            '<img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146303115932864" class="w25p">' +
+                            '<img src="http://static.mingyizhudao.com/146303115932864" class="w25p">' +
                             '</div>' +
                             '<div class="col-1 pl5 font-s16">' + dpt + '</div>';
                 } else if (dpt == '五官科') {
                     innerHtml += '<div class="col-0">' +
-                            '<img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146303121523753" class="w25p">' +
+                            '<img src="http://static.mingyizhudao.com/146303121523753" class="w25p">' +
                             '</div>' +
                             '<div class="col-1 pl5 font-s16">' + dpt + '</div>';
                 } else {
                     innerHtml += '<div class="col-0">' +
-                            '<img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146302535750635" class="w25p">' +
+                            '<img src="http://static.mingyizhudao.com/146302535750635" class="w25p">' +
                             '</div>' +
                             '<div class="col-1 pl5 font-s16">' + dpt + '</div>';
                 }
@@ -151,7 +151,7 @@ $this->show_footer = false;
             $('#hosDescription').html(hospital.description);
         } else {
             var noInformation = '<div class="text-center">' +
-                    '<img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146295490734874" class="w170p pt30">' +
+                    '<img src="http://static.mingyizhudao.com/146295490734874" class="w170p pt30">' +
                     '<div class="font-s30 color-gray9 pt10">暂无信息</div>' +
                     '</div>';
             $('#hosDescription').html(noInformation);

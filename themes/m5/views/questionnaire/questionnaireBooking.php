@@ -124,7 +124,7 @@ if ($sourceApp == 0) {
                     <?php
                     if ($source == 1) {
                         ?>
-                        <a id="modifyDoctor" href="javascript:;"><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146762518459118" class="w18p"></a>
+                        <a id="modifyDoctor" href="javascript:;"><img src="http://static.mingyizhudao.com/146762518459118" class="w18p"></a>
                         <?php
                     }
                     ?>

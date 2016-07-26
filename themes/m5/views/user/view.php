@@ -18,7 +18,7 @@ $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
     <div>
         <div class="bg-green">
             <div class="w100 pt20 pb10 text-center">
-                <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146303241586665" class="w80p">
+                <img src="http://static.mingyizhudao.com/146303241586665" class="w80p">
             </div>
             <div class="font-s16 text-center color-white pb10">
                 您好,<?php echo $user->username; ?>
@@ -148,7 +148,7 @@ $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
             <a href='<?php echo $urlUserCommonProblem; ?>'>
                 <div class="pad10 color-black grid">
                     <div class="col-0">
-                        <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146303228315924" class="w26p">
+                        <img src="http://static.mingyizhudao.com/146303228315924" class="w26p">
                     </div>
                     <div class="col-1 pl10 pt2 font-s16">
                         常见问题
@@ -160,7 +160,7 @@ $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
             <a id="aboutus">
                 <div class="pad10 color-black grid">
                     <div class="col-0">
-                        <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146303231180874" class="w26p">
+                        <img src="http://static.mingyizhudao.com/146303231180874" class="w26p">
                     </div>
                     <div class="col-1 pl10 pt2 font-s16">
                         关于我们
@@ -172,7 +172,7 @@ $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
             <a href='<?php echo $urlMygy; ?>'>
                 <div class="pad10 color-black grid">
                     <div class="col-0">
-                        <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146422811006124" class="w26p pl2">
+                        <img src="http://static.mingyizhudao.com/146422811006124" class="w26p pl2">
                     </div>
                     <div class="col-1 pl10 font-s16">
                         公益手术
@@ -184,7 +184,7 @@ $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
             <a id="contactUs">
                 <div class="pad10 color-black grid">
                     <div class="col-0">
-                        <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146303235982476" class="w26p">
+                        <img src="http://static.mingyizhudao.com/146303235982476" class="w26p">
                     </div>
                     <div class="col-1 pl10 pt2 font-s16">
                         联系客服

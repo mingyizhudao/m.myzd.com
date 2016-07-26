@@ -25,7 +25,7 @@ $this->show_footer = false;
 <article class="active story_article" data-scroll="true">
     <div class="color-black">
         <div>
-            <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146831665098074" class="w100">
+            <img src="http://static.mingyizhudao.com/146831665098074" class="w100">
         </div>
         <div class="pl10 pr10">
             <div class="c-green font-w800 font-s18 pt20">
@@ -50,7 +50,7 @@ $this->show_footer = false;
                 可是胡先生本人由于文化水平的限制，对互联网更是知之甚少，于是委托主治医生董主任找一位北京的专家为他做关节镜手术。关节镜手术<span class="font-w800">相较于传统的开放式手术，创伤更小，患者承受痛苦更小，恢复也较快。</span>
             </div>
             <div>
-                <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146831726530249" class="w100">
+                <img src="http://static.mingyizhudao.com/146831726530249" class="w100">
             </div>
             <div class="text-justify text-indent-2 pt10">
                 董主任在名医主刀平台为胡先生预约了<span class="font-w800">卢宏章教授，卢宏章教授是以膝关节置换和运动损伤见长的北大第一医院主任医师，</span>卢教授趁周六的业余休息时间，来到河北保定为胡先生面诊并手术。由于胡先生家庭较为困难，满足公益手术申请需求，于是，名医主刀工作人员帮胡先生申请，解决了胡先生的燃眉之急。
@@ -62,7 +62,7 @@ $this->show_footer = false;
                 术后，胡先生恢复得很快，并对前来探望他的名医主刀工作人员连声说“谢谢你们”，胡先生说：“以前我从来没想过，生病了还能让北京的专家过来帮我做手术，而且还是公益手术，免去了一部分费用，真是感谢你们公司的出现，切实解决了我的困难啊！”
             </div>
             <div class="pt20">
-                <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/14683174101322" class="w100">
+                <img src="http://static.mingyizhudao.com/14683174101322" class="w100">
             </div>
             <div class="text-center font-s12 c-black2">
                 左->右:医院医生、患者胡某、名医主刀工作人员

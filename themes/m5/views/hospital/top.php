@@ -43,10 +43,10 @@ $this->show_footer = false;
 <nav id="findDept_nav" class="header-secondary bg-white">
     <div class="grid w100 color-black font-s16 color-black6">
         <div id="deptSelect" class="col-1 w50 br-gray bb-gray grid middle grayImg">
-            <span id="deptTitle" data-dept=""></span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">
+            <span id="deptTitle" data-dept=""></span><img src="http://static.mingyizhudao.com/146735870119173">
         </div>
         <div id="citySelect" class="col-1 w50 bb-gray grid middle grayImg">
-            <span id="cityTitle" data-city=""></span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">
+            <span id="cityTitle" data-city=""></span><img src="http://static.mingyizhudao.com/146735870119173">
         </div>
     </div>
 </nav>

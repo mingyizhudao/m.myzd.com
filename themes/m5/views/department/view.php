@@ -30,10 +30,10 @@ $this->show_footer = false;
                     预约流程
                 </div>
                 <div id="showStep" class="col-0 pl5 pr5">
-                    <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/14683115446038" class="w11p">
+                    <img src="http://static.mingyizhudao.com/14683115446038" class="w11p">
                 </div>
                 <div id="hideStep" class="col-0 pl5 pr5 hide">
-                    <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146831524023035" class="w11p">
+                    <img src="http://static.mingyizhudao.com/146831524023035" class="w11p">
                 </div>
             </div>
             <div id="step" class="bt-gray hide">
@@ -46,7 +46,7 @@ $this->show_footer = false;
                     </div>
                 </div>
                 <div class="pl40 pr40">
-                    <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/14683144127117" class="w100">
+                    <img src="http://static.mingyizhudao.com/14683144127117" class="w100">
                 </div>
                 <div class="grid text-center">
                     <div class="col-1">
@@ -60,7 +60,7 @@ $this->show_footer = false;
                     </div>
                 </div>
                 <div class="pl40 pr40">
-                    <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146831442141948" class="w100">
+                    <img src="http://static.mingyizhudao.com/146831442141948" class="w100">
                 </div>
                 <div class="grid text-center pb20">
                     <div class="col-1">

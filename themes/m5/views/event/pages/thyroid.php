@@ -24,7 +24,7 @@ $this->show_footer = false;
 <article id="thyroid_article" class="active" data-scroll="true">
     <div>
         <div>
-            <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146252367903177" class="w100">
+            <img src="http://static.mingyizhudao.com/146252367903177" class="w100">
         </div>
         <div class="pl10 pr10">
             <div class="font-s18 pt20 font-w800">
@@ -43,7 +43,7 @@ $this->show_footer = false;
                 3月22日，李女士在名医主刀官网提交预约单，并对平台给予了充分信任，于当天支付了费用。为了更好的服务患者，名医主刀客服提前拿到患者就诊卡帮患者排队预约挂号，在帮患者预约好门诊时间后再通知患者来医院就诊，大大缩短了患者等候排队的时间。
             </div>
             <div class="pt10">
-                <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146252399368828" class="w100">
+                <img src="http://static.mingyizhudao.com/146252399368828" class="w100">
             </div>
             <div class="titleBg">
                 最优方案
@@ -61,7 +61,7 @@ $this->show_footer = false;
                 名医速度
             </div>
             <div class="pb50 text-justify">
-                <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146252529781342" class="w130p pull-right pl5 pt5">
+                <img src="http://static.mingyizhudao.com/146252529781342" class="w130p pull-right pl5 pt5">
                 4月26日，患者入院，并于第二天上午进行手术，此次手术非常成功。因为达芬奇机器人手术时看到的是3D的，可以将看到的东西放大3到5倍，用裸眼就可以看到更加清楚和准确，手术的时候就更加精确，创伤小，不易留疤，李女士在手术3天后就办理了出院手续。
             </div>
         </div>

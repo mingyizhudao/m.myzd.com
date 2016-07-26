@@ -22,7 +22,7 @@ $this->show_footer = false;
 <article id="myyz_article" class="active" data-scroll="true">
     <div>
         <div>
-            <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/14627627707821" class="w100">
+            <img src="http://static.mingyizhudao.com/14627627707821" class="w100">
         </div>
         <div class="pb20 pt10">
             <div class="font-s21 text-center color-brown font-w800">

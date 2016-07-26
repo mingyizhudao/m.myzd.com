@@ -36,10 +36,10 @@ if ($showHeader == 0) {
 <nav id="myyzDoctor_nav" class="header-secondary bg-white <?php echo $navTop; ?>">
     <div class="grid w100 color-black font-s16 color-black6">
         <div id="deptSelect" class="col-1 w50 br-gray bb-gray grid middle grayImg">
-            <span id="deptTitle" data-dept="1">外科</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146364721030297">
+            <span id="deptTitle" data-dept="1">外科</span><img src="http://static.mingyizhudao.com/146364721030297">
         </div>
         <div id="citySelect" class="col-1 w50 bb-gray grid middle grayImg">
-            <span id="cityTitle" data-city="73">上海</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146364721030297">
+            <span id="cityTitle" data-city="73">上海</span><img src="http://static.mingyizhudao.com/146364721030297">
         </div>
     </div>
 </nav>

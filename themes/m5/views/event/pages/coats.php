@@ -24,7 +24,7 @@ $this->show_footer = false;
 <article id="coats_article" class="active story_article" data-scroll="true">
     <div>
         <div>
-            <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146649186379063" class="w100">
+            <img src="http://static.mingyizhudao.com/146649186379063" class="w100">
         </div>
         <div class="pl10 pr10">
             <div class="brownText font-w800 font-s18 pt20">
@@ -76,7 +76,7 @@ $this->show_footer = false;
                 小马的眼睛在朱主任的柳叶刀下得到了彻底的改善，小马妈妈也一扫往日的阴霾，渐渐放宽了心。在我们的专业客服进行术后回访时，小马还跟她开玩笑称：“我代表‘国务院’向姐姐表示衷心的感谢。” 他开朗乐观的心态也感染了我们的工作人员，向身边的人传递着微笑与希望。
             </div>
             <div class="text-center mt20 mb50">
-                <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146649290591162" class="w60">
+                <img src="http://static.mingyizhudao.com/146649290591162" class="w60">
             </div>
         </div>
     </div>

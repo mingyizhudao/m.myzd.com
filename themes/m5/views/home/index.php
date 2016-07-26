@@ -18,7 +18,7 @@ $urlCatherine = $this->createUrl('event/view', array('page' => 'catherine'));
 <article id="home_article" data-active="home_footer" class="active bg-gray5" data-scroll="true">
     <div>
         <div class="titleImg">
-            <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146243634396635" class="w100">
+            <img src="http://static.mingyizhudao.com/146243634396635" class="w100">
         </div>
         <div class="titlePosition">
             <div class="font-s21 font-w800 text-center color-white">做手术就找名医主刀</div>
@@ -130,7 +130,7 @@ $urlCatherine = $this->createUrl('event/view', array('page' => 'catherine'));
                     <a href="<?php echo $urlDoctorSearch; ?>?disease_sub_category=2">
                         <div class="pad10 text-center">
                             <div class="text-center">
-                                <img class="w55p h55p" src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146243692944770">
+                                <img class="w55p h55p" src="http://static.mingyizhudao.com/146243692944770">
                             </div>
                             <div class="color-black10 pt10 font-s16">找名医</div>
                             <div class="color-gray4 font-s12">各地名医推荐</div>
@@ -141,7 +141,7 @@ $urlCatherine = $this->createUrl('event/view', array('page' => 'catherine'));
                     <a href="<?php echo $urlOperationTrain; ?>">
                         <div class="pt10 pb10 text-center">
                             <div class="text-center">
-                                <img class="w55p h55p" src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146295571287578">
+                                <img class="w55p h55p" src="http://static.mingyizhudao.com/146295571287578">
                             </div>
                             <div class="color-black10 pt10 font-s16">快速预约</div>
                             <div class="color-gray4 font-s12">省心放心找名医</div>
@@ -151,7 +151,7 @@ $urlCatherine = $this->createUrl('event/view', array('page' => 'catherine'));
                 <div id="consultation" class="col-1 w33">
                     <div class="pad10 text-center">
                         <div class="text-center">
-                            <img class="w55p h55p" src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146243699018730">
+                            <img class="w55p h55p" src="http://static.mingyizhudao.com/146243699018730">
                         </div>
                         <div class="color-black10 pt10 font-s16">在线客服</div>
                         <div class="color-gray4 font-s12">咨询了解我们</div>
@@ -186,17 +186,17 @@ $urlCatherine = $this->createUrl('event/view', array('page' => 'catherine'));
         //轮播图
         var html = '<li class="slide">' +
                 '<a href="<?php echo $urlZeroBooking; ?>?appId=ddaa785817d165e8&site=1">' +
-                '<img class="w100" src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146906610294170">' +
+                '<img class="w100" src="http://static.mingyizhudao.com/146906610294170">' +
                 '</a>' +
                 '</li>' +
                 '<li class="slide">' +
                 '<a href="<?php echo $urlHomeMyyzDoctor; ?>">' +
-                '<img class="w100" src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146606890329840">' +
+                '<img class="w100" src="http://static.mingyizhudao.com/146606890329840">' +
                 '</a>' +
                 '</li>' +
                 '<li class="slide">' +
                 '<a href="<?php echo $urlMygy; ?>">' +
-                '<img class="w100" src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146606890358056">' +
+                '<img class="w100" src="http://static.mingyizhudao.com/146606890358056">' +
                 '</a>' +
                 '</li>';
         $('#home_article .bxslider').html(html);

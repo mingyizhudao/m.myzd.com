@@ -24,7 +24,7 @@ $this->show_footer = false;
 <article id="catherine_article" class="active" data-scroll="true">
     <div>
         <div>
-            <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146527953417711" class="w100">
+            <img src="http://static.mingyizhudao.com/146527953417711" class="w100">
         </div>
         <div class="pl10 pr10 text-justify">
             <div class="font-s21 font-w800 pt20">

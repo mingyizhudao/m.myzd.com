@@ -24,7 +24,7 @@ $this->show_footer = false;
 <article id="cancer_article" class="active" data-scroll="true">
     <div>
         <div>
-            <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/14635370178605" class="w100">
+            <img src="http://static.mingyizhudao.com/14635370178605" class="w100">
         </div>
         <div class="pl8 pr8 text-justify">
             <div class="color-orange5 pt25 font-s16 font-w800">
@@ -32,7 +32,7 @@ $this->show_footer = false;
             </div>
             <div class="color-blue11">
                 <div class="pull-left pt5 pr10 pb10">
-                    <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146353850729111" class="w125p">
+                    <img src="http://static.mingyizhudao.com/146353850729111" class="w125p">
                 </div>
                 <div>
                     专家观点：事实上，遗传只是癌症发生的因素之一，环境污染、不良生活和饮食习惯、过度压力等，都和癌症的发生密切相关。
@@ -46,7 +46,7 @@ $this->show_footer = false;
             </div>
             <div class="color-blue11">
                 <div class="pull-left pt5 pr10 pb10">
-                    <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146353855607734" class="w125p">
+                    <img src="http://static.mingyizhudao.com/146353855607734" class="w125p">
                 </div>
                 <div>
                     专家观点：世界卫生组织提出，1/3恶性肿瘤可预防，1/3可治疗，1/3可治愈，预防癌症的主动权掌握在每个人自己手里。
@@ -60,7 +60,7 @@ $this->show_footer = false;
             </div>
             <div class="color-blue11">
                 <div class="pull-left pt5 pr10 pb10">
-                    <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146353855615390" class="w125p">
+                    <img src="http://static.mingyizhudao.com/146353855615390" class="w125p">
                 </div>
                 <div>
                     调查显示，24%受访者坚信素食者患癌风险低。
@@ -74,7 +74,7 @@ $this->show_footer = false;
             </div>
             <div class="color-blue11">
                 <div class="pull-left pt5 pr10 pb10">
-                    <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146353855621877" class="w125p">
+                    <img src="http://static.mingyizhudao.com/146353855621877" class="w125p">
                 </div>
                 <div>
                     专家观点：痣分为出生就有的原生痣和后天受环境、体质影响生成的痣。
@@ -88,7 +88,7 @@ $this->show_footer = false;
             </div>
             <div class="color-blue11">
                 <div class="pull-left pt5 pr10 pb10">
-                    <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146353855626942" class="w125p">
+                    <img src="http://static.mingyizhudao.com/146353855626942" class="w125p">
                 </div>
                 <div>
                     "乳房大易患乳腺癌"也是不少人的误区，但事实上，这并不科学。
@@ -102,7 +102,7 @@ $this->show_footer = false;
             </div>
             <div class="color-blue11">
                 <div class="pull-left pt5 pr10 pb10">
-                    <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146353855631138" class="w125p">
+                    <img src="http://static.mingyizhudao.com/146353855631138" class="w125p">
                 </div>
                 <div>
                     选购有机食物是近年来的健康新潮流。调查发现，39%的50~59岁的人认为吃有机食物可预防癌症，而在13~19岁人群中，这一比例高达53%。
@@ -116,7 +116,7 @@ $this->show_footer = false;
             </div>
             <div class="color-blue11">
                 <div class="pull-left pt5 pr10 pb10">
-                    <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146353855640644" class="w125p">
+                    <img src="http://static.mingyizhudao.com/146353855640644" class="w125p">
                 </div>
                 <div>
                     "人体只有呈弱碱性才是健康的"，"酸性体质特别容易患癌"……近年来"酸碱性体质"的各种说法被广泛传播，并成为一些保健品广告和养生类电视节目热捧的概念。
@@ -130,7 +130,7 @@ $this->show_footer = false;
             </div>
             <div class="color-blue11">
                 <div class="pull-left pt5 pr10 pb10">
-                    <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146353855694732" class="w125p">
+                    <img src="http://static.mingyizhudao.com/146353855694732" class="w125p">
                 </div>
                 <div>
                     大多数癌症患者最怕听到自己已是晚期，癌细胞从原发部位转移到肝、肺、骨等部位。调查发现，46%的50~59岁受访者认为癌症晚期没得救。
@@ -144,7 +144,7 @@ $this->show_footer = false;
             </div>
             <div class="color-blue11">
                 <div class="pull-left pt5 pr10 pb10">
-                    <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146353855698838" class="w125p">
+                    <img src="http://static.mingyizhudao.com/146353855698838" class="w125p">
                 </div>
                 <div>
                     不少癌症患者认为，不让癌细胞摄取到任何营养，就能将其"饿死"，于是采取"断食疗法"控制癌症。调查显示，14%的中年受访者赞同这一观点，60岁以上人群这一比例达到22%。
@@ -158,7 +158,7 @@ $this->show_footer = false;
             </div>
             <div class="color-blue11 pb50">
                 <div class="pull-left pt5 pr10 pb10">
-                    <img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146353855703914" class="w125p">
+                    <img src="http://static.mingyizhudao.com/146353855703914" class="w125p">
                 </div>
                 <div>
                     调查显示，76%的50~59岁受访者认为"接受放化疗一定会掉头发"。
