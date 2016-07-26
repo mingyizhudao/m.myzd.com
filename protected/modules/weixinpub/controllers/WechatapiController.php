@@ -42,6 +42,7 @@ class WechatapiController extends WeixinpubController {
     }
 
     public function actionApi() {
+        Yii::log("进入微信接口");
         if (!isset($_GET['echostr'])) {
             $this->responseMsg();
         } else {
@@ -51,6 +52,7 @@ class WechatapiController extends WeixinpubController {
 
     //验证签名
     public function valid() {
+        Yii::log("开始验证接口签名");
         if ($this->checkSignature()) {
             echo $_GET["echostr"];
         } else {
@@ -68,8 +70,6 @@ class WechatapiController extends WeixinpubController {
         $encrypt_type = (isset($_GET['encrypt_type']) && ($_GET['encrypt_type'] == 'aes')) ? "aes" : "raw";
 
         $postStr = isset($GLOBALS['HTTP_RAW_POST_DATA']) ? $GLOBALS['HTTP_RAW_POST_DATA'] : file_get_contents("php://input");
-        //$logMsg = "encrypt_type为：$encrypt_type,微信推送的消息内容为：$postStr";
-        //WeixinpubLog::log($logMsg, 'info', __METHOD__);
 
         if (!empty($postStr)) {
             if ($encrypt_type == 'aes') {//加密模式，先解密
@@ -78,8 +78,6 @@ class WechatapiController extends WeixinpubController {
                 $errCode = $pc->DecryptMsg($msg_signature, $timestamp, $nonce, $postStr, $decryptMsg);
                 $postStr = $decryptMsg;
             }
-            //$logMsg = "解密后消息内容为：$postStr";
-            //WeixinpubLog::log($logMsg, 'info', __METHOD__);
             $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
             $RX_TYPE = trim($postObj->MsgType);
         
@@ -99,8 +97,6 @@ class WechatapiController extends WeixinpubController {
                 $errCode = $pc->encryptMsg($result, $timestamp, $nonce, $encryptMsg);
                 $result = $encryptMsg;
             }
-            //$logMsg = "回复的消息内容为：$result";
-            //WeixinpubLog::log($logMsg, 'info', __METHOD__);
             echo $result;
         } else {
             echo "null";
@@ -114,11 +110,16 @@ class WechatapiController extends WeixinpubController {
         $timestamp = $_GET['timestamp'];
         $nonce = $_GET['nonce'];
         $token = $this->token;
+        Yii::log("签名字符串为：" . $signature);
+        Yii::log("时间戳为：" . $timestamp);
+        Yii::log("随机字符串为：" . $nonce);
+        Yii::log("Token为：" . $token);
 
         $tmpArr = array($token, $timestamp, $nonce);
         sort($tmpArr, SORT_STRING);
         $tmpStr = implode($tmpArr);
         $tmpStr = sha1($tmpStr);
+        Yii::log("系统内生成的签名为：" . $tmpStr);
         if ($tmpStr == $signature) {
             return true;
         } else {
