@@ -22,10 +22,17 @@ class QuestionnaireManager {
         $qustNum = $values['questionnaireNumber'] - 1;
         $value = isset($anwerList) ? $anwerList : '';
         if ($num >= $qustNum) {
-            if ($values['answer'] != 'picture') {
+            if (isset($values['type'])){
+                $value[$values['questionnaireNumber']] = $values['type'];
+                yii::app()->cache->set($key, $value, $alive);
+            }else{
                 $value[$values['questionnaireNumber']] = $values['answer'];
                 yii::app()->cache->set($key, $value, $alive);
             }
+//             if ($values['answer'] != 'picture') {
+//                 $value[$values['questionnaireNumber']] = $values['answer'];
+//                 yii::app()->cache->set($key, $value, $alive);
+//             }
         } else {
             Yii::app()->cache->delete($key);
             return $output = array('status' => 'no', 'errorMsg' => 'faile answer');
