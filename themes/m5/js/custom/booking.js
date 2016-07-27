@@ -367,6 +367,7 @@ $(function () {
                     //console.log(stats);
                     //location.href = uploadReturnUrl;
                     location.href = uploadReturnUrl;
+                    J.hideMask();
                 } else {
                     // 没有成功的图片，重设
                     //state = 'done';
@@ -566,14 +567,14 @@ $(function () {
             disabledBtn(btnSubmit);
             //form插件的异步无刷新提交
             actionUrl = domForm.attr('data-actionurl');
-            //returnUrl = domForm.attr("data-url-return");
-            //alert("asdf");
-            //btnSubmit.button("disable");
             var formdata = domForm.serializeArray();
+            var dataArray = structure_formdata('booking', formdata);
+            var encryptContext = do_encrypt(dataArray, pubkey);
+            var param = {param: encryptContext};
             domForm.ajaxSubmit({
                 type: 'post',
                 url: actionUrl,
-                data: formdata,
+                data: param,
                 success: function (data) {
                     console.log(data);
                     //图片上传
@@ -587,8 +588,8 @@ $(function () {
                         } else {
                             //没有上传文件 表单数据添加成功 页面跳转
                             location.href = uploadReturnUrl;
+                            enableBtn(btnSubmit);
                         }
-                        enableBtn(btnSubmit);
                     } else {
                         domForm.find("div.error").remove();
                         //append errorMsg
