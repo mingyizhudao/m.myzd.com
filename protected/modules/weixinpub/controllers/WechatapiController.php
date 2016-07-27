@@ -44,26 +44,21 @@ class WechatapiController extends WeixinpubController {
     }
 
     public function actionApi() {
-        Yii::log("进入微信接口");
         if (!isset($_GET['echostr'])) {
-            $this->responseMsg();
+            //$this->responseMsg();
+            $this->responseMsg1();
         } else {
             $this->echostr = $_GET['echostr'];
-            Yii::log("需要返回的字符串为：" . $this->echostr);
             $this->valid();
         }
     }
 
     //验证签名
     public function valid() {
-        Yii::log("开始验证接口签名");
         if ($this->checkSignature()) {
-            Yii::log("验证成功，返回随机字符串：" . $this->echostr);
             ob_clean();
-            //var_dump($this->echostr); 
             echo $this->echostr;
         } else {
-            Yii::log("验证失败，返回Null");
             echo "null";
         }
         Yii::app()->end();
@@ -138,16 +133,12 @@ class WechatapiController extends WeixinpubController {
         $timestamp = $_GET['timestamp'];
         $nonce = $_GET['nonce'];
         $token = $this->token;
-        Yii::log("签名字符串为：" . $signature);
-        Yii::log("时间戳为：" . $timestamp);
-        Yii::log("随机字符串为：" . $nonce);
-        Yii::log("Token为：" . $token);
 
         $tmpArr = array($token, $timestamp, $nonce);
         sort($tmpArr, SORT_STRING);
         $tmpStr = implode($tmpArr);
         $tmpStr = sha1($tmpStr);
-        Yii::log("系统内生成的签名为：" . $tmpStr);
+        
         if ($tmpStr == $signature) {
             return true;
         } else {
