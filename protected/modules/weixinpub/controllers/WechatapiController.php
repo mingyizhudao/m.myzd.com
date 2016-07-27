@@ -5,7 +5,6 @@
  *
  * @author zhongtw
  */
-require_once('protected/modules/weixinpub/components/wxBizMsgCrypt.php');
 class WechatapiController extends WeixinpubController {
 
     

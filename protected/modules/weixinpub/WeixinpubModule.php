@@ -3,7 +3,7 @@
 class WeixinpubModule extends CWebModule {
     
     //公众号ID
-    //public $weixinpubId = 'myzdztc';
+    //public $weixinpubId = 'myzd01';//患者端服务号正式环境
     public $weixinpubId = 'myzd_hzd';
     
     //微信二维码存取路径
