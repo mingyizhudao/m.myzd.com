@@ -34,6 +34,12 @@ class WechatMessage {
             $ToUserName = $object->ToUserName;
             $CreateTime = $object->CreateTime;
             Yii::log($FromUserName . "、" . $ToUserName . "、" . $event . "、" . $EventKey . "、" .$CreateTime);
+            $wechatEventRecord = new WechatEventRecord();
+            $wechatEventRecord->ToUserName = $object->ToUserName;
+            $wechatEventRecord->FromUserName = $object->FromUserName;
+            $wechatEventRecord->event = $object->Event;
+            $wechatEventRecord->EventKey = $object->EventKey;
+            $wechatEventRecord->save();
         }
         $result = $this->transmitText($object, $content);
         return $result;
@@ -49,7 +55,12 @@ class WechatMessage {
                    </xml>";
         $result = sprintf($xmlTpl, $object->FromUserName, $object->ToUserName, time());
         return $result;
-    }    
+    } 
+    
+    public function receiveDefault($object){
+        $result = $this->transmitText($object, "");
+        return $result;
+    }
     
     //回复文本消息
     public function transmitText($object, $content) {

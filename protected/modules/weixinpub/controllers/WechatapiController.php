@@ -76,7 +76,7 @@ class WechatapiController extends WeixinpubController {
                 $result = $this->wechatMessage->receiveText($postObj);
                 break;
             default:
-                $result = "";
+                $result = $this->wechatMessage->receiveDefault($object);
                 break;
         }
         ob_clean();
