@@ -38,7 +38,9 @@ class WechatMessage {
                 break;
         }
         $event = $object->event;
+        Yii::log("事件类型为：" . $event);
         if(isset($object->EventKey) && ($event == 'subscribe' || $event == 'unsubscribe' || $event == 'SCAN')){
+            Yii::log("将事件保存至数据库中");
             $wechatEventRecord = new WechatEventRecord();
             $wechatEventRecord->ToUserName = $object->ToUserName;
             $wechatEventRecord->FromUserName = $object->FromUserName;
