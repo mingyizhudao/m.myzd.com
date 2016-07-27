@@ -19,6 +19,10 @@ class WechatMessage {
                     \n点击右下角“更多”，领取红包（专属邀请码6000）。
                     \n谢谢关注，愿健康与您永远相伴！";
                 break;
+            //用户之前已关注公众号，然后扫描二维码进入公众号
+            case "SCAN":
+                $content = "欢迎来到名医主刀 - 国内最大的移动医疗手术平台！";
+                break;
             //在模版消息发送任务完成后，微信服务器会将是否送达成功作为通知推送过来
             case "TEMPLATESENDJOBFINISH":
                 $wechatMsgRecord = new WechatMsgRecord();
@@ -27,13 +31,8 @@ class WechatMessage {
             default:              
                 break;
         }
+        
         if(isset($object->EventKey)){
-            $event = $object->Event;
-            $EventKey = $object->EventKey;
-            $FromUserName = $object->FromUserName;
-            $ToUserName = $object->ToUserName;
-            $CreateTime = $object->CreateTime;
-            Yii::log($FromUserName . "、" . $ToUserName . "、" . $event . "、" . $EventKey . "、" .$CreateTime);
             $wechatEventRecord = new WechatEventRecord();
             $wechatEventRecord->ToUserName = $object->ToUserName;
             $wechatEventRecord->FromUserName = $object->FromUserName;
@@ -41,6 +40,7 @@ class WechatMessage {
             $wechatEventRecord->EventKey = $object->EventKey;
             $wechatEventRecord->save();
         }
+        
         $result = $this->transmitText($object, $content);
         return $result;
     }
@@ -58,7 +58,7 @@ class WechatMessage {
     } 
     
     public function receiveDefault($object){
-        $result = $this->transmitText($object, "");
+        $result = $this->transmitText($object, " ");
         return $result;
     }
     
