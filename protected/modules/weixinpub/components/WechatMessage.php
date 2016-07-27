@@ -29,8 +29,10 @@ class WechatMessage {
                 $wechatMsgRecord->templateSendBack($object->MsgID, $object->Status);
                 break;
             //菜单内点击【联系客服】
-            case "CUSTOMER_SERVICE";
-                $content = "拨打名医主刀客服热线400-6277-120";
+            case "CLICK";
+                if($object->EventKey == "CUSTOMER_SERVICE"){
+                    $content = "拨打名医主刀客服热线400-6277-120";
+                }
                 break;
             default:              
                 break;
