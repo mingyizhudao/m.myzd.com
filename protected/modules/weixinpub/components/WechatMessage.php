@@ -37,8 +37,8 @@ class WechatMessage {
             default:              
                 break;
         }
-        
-        if(isset($object->EventKey)){
+        $event = $object->event;
+        if(isset($object->EventKey) && ($event == 'subscribe' || $event == 'unsubscribe' || $event == 'SCAN')){
             $wechatEventRecord = new WechatEventRecord();
             $wechatEventRecord->ToUserName = $object->ToUserName;
             $wechatEventRecord->FromUserName = $object->FromUserName;
