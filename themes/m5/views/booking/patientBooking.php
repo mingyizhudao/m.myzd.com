@@ -17,7 +17,8 @@ $urlApiAppNav1 = $this->createAbsoluteUrl('/api/list', array('model' => 'appnav1
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $results = $data->results;
 $urlSubmitForm = $this->createUrl("booking/ajaxCreate");
-$urlUploadFile = $this->createUrl("booking/ajaxUploadFile");
+//$urlUploadFile = $this->createUrl("booking/ajaxUploadFile");
+$urlUploadFile = 'http://121.40.127.64:8089/api/uploadbookingfile';
 $showStatus = Yii::app()->request->getQuery('showStatus', 0);
 $urlReturn = $this->createUrl('booking/patientBookingList', array('status' => $showStatus));
 $user = $this->loadUser();
