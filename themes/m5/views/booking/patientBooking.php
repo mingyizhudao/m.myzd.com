@@ -23,7 +23,7 @@ $showStatus = Yii::app()->request->getQuery('showStatus', 0);
 $urlReturn = $this->createUrl('booking/patientBookingList', array('status' => $showStatus));
 $user = $this->loadUser();
 //$urlBookingFiles = 'http://192.168.31.118/file.myzd.com/api/loadbookingmr?userId=' . $user->id . '&bookingId=' . $results->id;
-$urlBookingFiles = 'http://121.40.127.64:8089/api/loadbookingmr?userId=' . $user->id . '&bookingId=' . $results->id;
+$urlBookingFiles = 'http://121.40.127.64:8089/api/loadbookingmr?bookingId=' . $results->id;
 $this->show_footer = false;
 ?>
 <header id="patientBooking_header" class="bg-green" >
