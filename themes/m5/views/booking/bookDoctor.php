@@ -18,7 +18,7 @@ $urlApiAppNav1 = $this->createAbsoluteUrl('/api/list', array('model' => 'appnav1
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $urlSubmitForm = $this->createUrl("booking/ajaxCreate");
 //$urlUploadFile = $this->createUrl("booking/ajaxUploadFile");
-$urlUploadFile = 'http://121.40.127.64:8089/api/uploadbookingfile';
+$urlUploadFile = 'http://file.mingyizhudao.com/api/uploadbookingfile';
 $urlReturn = $this->createUrl('order/view');
 $urlAgreement = $this->createUrl('user/index', array('page' => 'aboutAgreement'));
 $this->show_footer = false;

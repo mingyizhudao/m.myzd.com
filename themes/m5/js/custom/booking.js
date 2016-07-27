@@ -372,6 +372,7 @@ $(function () {
                     // 没有成功的图片，重设
                     //state = 'done';
                     location.reload();
+                    J.hideMask();
                 }
                 break;
         }

@@ -172,7 +172,7 @@ if ($results->bkStatusCode == $BK_STATUS_NEW) {
     $(document).ready(function () {
         $('#cancelOrder').click(function () {
             J.customConfirm('',
-                    '<div class="mb10">确定取消改订单?</div>',
+                    '<div class="mb10">确定取消该订单?</div>',
                     '<a id="colosePopup" class="w50">取消</a>',
                     '<a id="cancel" class="w50">确定</a>', function () {
                     }, function () {
