@@ -21,6 +21,7 @@ if ($sourceApp == 0) {
     $urlCompleteQuestionnaireView = $this->createUrl('questionnaire/completeQuestionnaireView', array('app' => 1));
 }
 $urlAgain = $this->createUrl('questionnaire/view');
+$urlApplogstat = $this->createUrl('/api/applogstat');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
@@ -196,6 +197,22 @@ if ($sourceApp == 0) {
 </article>
 <script>
     $(document).ready(function () {
+        //0元面诊添加页面访问次数访问
+        var sourceData = '';
+        if ('<?php echo $source == 1; ?>') {
+            sourceData = 3;
+        } else {
+            sourceData = 5
+        }
+        $.ajax({
+            type: 'post',
+            url: '<?php echo $urlApplogstat; ?>',
+            data: {'applogstat[source]': sourceData},
+            success: function () {
+
+            }
+        });
+
         //返回
         $('#giveUp').click(function (e) {
             e.preventDefault();
@@ -239,6 +256,14 @@ if ($sourceApp == 0) {
                     J.showToast('请补全信息', '', '1500');
                     pageChange = false;
                     return false;
+                }
+            });
+            $.ajax({
+                type: 'post',
+                url: '<?php echo $urlApplogstat; ?>',
+                data: {'applogstat[source]': 5},
+                success: function () {
+
                 }
             });
             $('#normalBack').addClass('hide');

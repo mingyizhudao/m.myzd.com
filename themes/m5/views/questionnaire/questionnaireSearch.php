@@ -10,6 +10,7 @@ if ($sourceApp == 0) {
     $urlQuestionnaireBookingView = $this->createUrl('questionnaire/questionnaireBookingView', array('app' => 1, 'source' => 1));
 }
 $urlSearch = $this->createAbsoluteUrl('/api/search', array('name' => ''));
+$urlApplogstat = $this->createUrl('/api/applogstat');
 $this->show_footer = false;
 ?>
 <style>
@@ -45,6 +46,16 @@ $this->show_footer = false;
 </article>
 <script>
     $(document).ready(function () {
+        //0元面诊添加页面访问次数访问
+        $.ajax({
+            type: 'post',
+            url: '<?php echo $urlApplogstat; ?>',
+            data: {'applogstat[source]': 2},
+            success: function () {
+
+            }
+        });
+
         var searchValue = $("input").val();
         if (searchValue != '') {
             ajaxPage(searchValue);

@@ -6,6 +6,7 @@ $isCommonweal = Yii::app()->request->getQuery('is_commonweal', '0');
 $source = Yii::app()->request->getQuery('source', '0');
 $sourceApp = Yii::app()->request->getQuery('app', '0');
 $urlQuestionnaireBookingView = $this->createAbsoluteUrl('questionnaire/questionnaireBookingView', array('id' => ''));
+$urlApplogstat = $this->createUrl('/api/applogstat');
 $doctor = $data->results->doctor;
 $honour = $doctor->honour;
 $this->show_footer = false;
@@ -230,6 +231,18 @@ if ($sourceApp == 0) {
 </article>
 <script>
     $(document).ready(function () {
+        //0元面诊添加页面访问次数访问
+        if ('<?php echo $source == 1; ?>') {
+            $.ajax({
+                type: 'post',
+                url: '<?php echo $urlApplogstat; ?>',
+                data: {'applogstat[source]': 4},
+                success: function () {
+
+                }
+            });
+        }
+
         //详情展开、收缩
         $('#showDoctorDetail').click(function () {
             $('#showCommentList').removeClass('bb2-green');

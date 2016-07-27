@@ -172,18 +172,28 @@ $(function () {
 
     $('#skip').click(function () {
         J.showMask();
+        $.ajax({
+            type: 'post',
+            url: $('article').attr('data-applogstat'),
+            data: {'applogstat[question]': 4, 'applogstat[answer]': 2},
+            success: function () {
+
+            }
+        });
         skip('');
     });
 
-    function skip(type) {
+    function skip(skipType) {
         var answer = '';
-        if (type == 'picture' && num > 0) {
+        var type = 0;
+        if (skipType == 'picture' && num > 0) {
             answer = 'picture';
+            type = 1;
         }
         $.ajax({
             type: 'post',
             url: $('article').attr('data-action-url'),
-            data: {"questionnaire[questionnaireNumber]": 4, "questionnaire[answer]": answer},
+            data: {"questionnaire[questionnaireNumber]": 4, "questionnaire[answer]": answer, "questionnaire[type]": type},
             success: function (data) {
                 if (data.status == 'ok') {
                     $('#loading_popup_mask').hide();
@@ -221,6 +231,14 @@ $(function () {
             return;
         }
         disabledBtn(btnSubmit);
+        $.ajax({
+            type: 'post',
+            url: $('article').attr('data-applogstat'),
+            data: {'applogstat[question]': 4, 'applogstat[answer]': 1},
+            success: function () {
+
+            }
+        });
         skip('picture');
     });
 

@@ -1,6 +1,7 @@
 <?php
 $this->setPageTitle('疾病信息');
 $urlQuestionnaire = $this->createUrl('/api/questionnaire');
+$urlApplogstat = $this->createUrl('/api/applogstat');
 $urlDoctorSearch = $this->createUrl('doctor/search');
 $source = Yii::app()->request->getQuery('app', 0);
 if ($source == 0) {
@@ -80,6 +81,14 @@ if ($source == 0) {
         var requestUrl = '<?php echo $urlQuestionnaire; ?>';
         var answer = '';
         $("input[name='questionnaire[answer]']").click(function () {
+            $.ajax({
+                type: 'post',
+                url: '<?php echo $urlApplogstat; ?>',
+                data: {'applogstat[question]': 5, 'applogstat[answer]': $(this).val()},
+                success: function () {
+
+                }
+            });
             $('.questionnaire-error').html('');
             $("input[name='questionnaire[answer]']").removeClass('active');
             $(this).addClass('active');
