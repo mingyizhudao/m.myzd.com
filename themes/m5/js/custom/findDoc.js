@@ -3,6 +3,7 @@ $('#deptSelect').tap(function () {
 });
 function deptSelect() {
     var source = $('#findDoc_nav').attr('data-source');
+    var sourceApp = $('#findDoc_nav').attr('data-sourceApp');
     var title = $('.title').html();
     var deptName = $('#deptTitle').html();
     var deptId = $('#deptTitle').attr('data-dept');
@@ -11,51 +12,60 @@ function deptSelect() {
     var diseaseId = $('#diseaseTitle').attr('data-disease');
     var cityName = $('#cityTitle').html();
     var cityId = $('#cityTitle').attr('data-city');
-    var innerPage = '<div id="findDoc_section">' +
-            '<header class="bg-green">' +
-            '<nav class="left">' +
-            '<a href="' + $homeView + '">' +
-            '<div class="pl5">' +
-            '<img src="../../themes/m5/images/back.png" class="w11p">' +
-            '</div>' +
-            '</a>' +
-            '</nav>' +
-            '<h1 class="title">' + title + '</h1>' +
-            '<nav class="right">' +
-            '<a onclick="javascript:history.go(0)">' +
-            '<img src="../../themes/m5/images/refresh.png" class="w24p">' +
-            '</a>' +
-            '</nav>' +
-            '</header>';
+    var innerPage = '<div id="findDoc_section">';
+    if (sourceApp == 0) {
+        innerPage += '<header class="bg-green">';
+        if (source == 0) {
+            innerPage += '<nav class="left">' +
+                    '<a href="' + $homeView + '">' +
+                    '<div class="pl5">' +
+                    '<img src="../../themes/m5/images/back.png" class="w11p">' +
+                    '</div>' +
+                    '</a>' +
+                    '</nav>';
+        }
+        innerPage += '<h1 class="title">' + title + '</h1>' +
+                '<nav class="right">' +
+                '<a onclick="javascript:history.go(0)">' +
+                '<img src="../../themes/m5/images/refresh.png" class="w24p">' +
+                '</a>' +
+                '</nav>' +
+                '</header>';
+    }
+
     if (source == 0) {
         innerPage += '<nav id="findDoc_nav" class="header-secondary bg-white">' +
                 '<div class="grid w100 color-black font-s16 color-black6">' +
                 '<div id="deptSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
-                '<span class="color-orange6" id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735831347598">' +
+                '<span class="color-orange6" id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="http://static.mingyizhudao.com/146735831347598">' +
                 '</div>' +
                 '<div id="diseaseSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
-                '<span id="diseaseTitle" data-disease="' + diseaseId + '">' + diseaseName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">' +
+                '<span id="diseaseTitle" data-disease="' + diseaseId + '">' + diseaseName + '</span><img src="http://static.mingyizhudao.com/146735870119173">' +
                 '</div>' +
                 '<div id="citySelect" data-target="closePopup" class="col-1 w33 bb-gray grid middle grayImg">' +
-                '<span id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">' +
+                '<span id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="http://static.mingyizhudao.com/146735870119173">' +
                 '</div>' +
                 '</div>' +
                 '</nav>';
     } else {
-        innerPage += '<nav id="findDoc_nav" class="header-secondary bg-white h94p">' +
-                '<div class="w100">' +
+        if (sourceApp == 1) {
+            innerPage += '<nav id="findDoc_nav" class="header-secondary bg-white h94p top0p">';
+        } else {
+            innerPage += '<nav id="findDoc_nav" class="header-secondary bg-white h94p">';
+        }
+        innerPage += '<div class="w100">' +
                 '<div id="searchBar">' +
                 '<div class="searchBtn">请输入你意向的专家</div>' +
                 '</div>' +
                 '<div class="grid w100 color-black font-s16 color-black6 h50p">' +
                 '<div id="deptSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
-                '<span class="color-orange6" id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735831347598">' +
+                '<span class="color-orange6" id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="http://static.mingyizhudao.com/146735831347598">' +
                 '</div>' +
                 '<div id="diseaseSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
-                '<span id="diseaseTitle" data-disease="' + diseaseId + '">' + diseaseName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">' +
+                '<span id="diseaseTitle" data-disease="' + diseaseId + '">' + diseaseName + '</span><img src="http://static.mingyizhudao.com/146735870119173">' +
                 '</div>' +
                 '<div id="citySelect" data-target="closePopup" class="col-1 w33 bb-gray grid middle grayImg">' +
-                '<span id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">' +
+                '<span id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="http://static.mingyizhudao.com/146735870119173">' +
                 '</div>' +
                 '</div>' +
                 '</div>' +
@@ -123,6 +133,7 @@ function deptSelect() {
 }
 $('#diseaseSelect').tap(function () {
     var source = $('#findDoc_nav').attr('data-source');
+    var sourceApp = $('#findDoc_nav').attr('data-sourceApp');
     var title = $('.title').html();
     var deptName = $('#deptTitle').html();
     var deptId = $('#deptTitle').attr('data-dept');
@@ -154,8 +165,13 @@ $('#diseaseSelect').tap(function () {
             var innerHtml = '<div id="diseaseList" class="grid color-black" data-scroll="true" style="margin-top:93px;height:315px;">' +
                     '<ul class="list w100">';
         } else {
-            var innerHtml = '<div id="diseaseList" class="grid color-black" data-scroll="true" style="margin-top:137px;height:315px;">' +
-                    '<ul class="list w100">';
+            if (sourceApp == 0) {
+                var innerHtml = '<div id="diseaseList" class="grid color-black" data-scroll="true" style="margin-top:137px;height:315px;">' +
+                        '<ul class="list w100">';
+            } else {
+                var innerHtml = '<div id="diseaseList" class="grid color-black" data-scroll="true" style="margin-top:93px;height:315px;">' +
+                        '<ul class="list w100">';
+            }
         }
         if (results) {
             var disease = results.disease;
@@ -175,51 +191,60 @@ $('#diseaseSelect').tap(function () {
 
     function ajaxPage(diseaseHtml) {
         var source = $('#findDoc_nav').attr('data-source');
-        var innerPage = '<div id="findDoc_section">' +
-                '<header class="bg-green">' +
-                '<nav class="left">' +
-                '<a href="' + $homeView + '">' +
-                '<div class="pl5">' +
-                '<img src="../../themes/m5/images/back.png" class="w11p">' +
-                '</div>' +
-                '</a>' +
-                '</nav>' +
-                '<h1 class="title">' + title + '</h1>' +
-                '<nav class="right">' +
-                '<a onclick="javascript:history.go(0)">' +
-                '<img src="../../themes/m5/images/refresh.png" class="w24p">' +
-                '</a>' +
-                '</nav>' +
-                '</header>';
+        var innerPage = '<div id="findDoc_section">';
+        if (sourceApp == 0) {
+            innerPage += '<header class="bg-green">';
+            if (source == 0) {
+                innerPage += '<nav class="left">' +
+                        '<a href="' + $homeView + '">' +
+                        '<div class="pl5">' +
+                        '<img src="../../themes/m5/images/back.png" class="w11p">' +
+                        '</div>' +
+                        '</a>' +
+                        '</nav>';
+            }
+            innerPage += '<h1 class="title">' + title + '</h1>' +
+                    '<nav class="right">' +
+                    '<a onclick="javascript:history.go(0)">' +
+                    '<img src="../../themes/m5/images/refresh.png" class="w24p">' +
+                    '</a>' +
+                    '</nav>' +
+                    '</header>';
+        }
+
         if (source == 0) {
             innerPage += '<nav id="findDoc_nav" class="header-secondary bg-white">' +
                     '<div class="grid w100 color-black font-s16 color-black6">' +
                     '<div id="deptSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
-                    '<span id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">' +
+                    '<span id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="http://static.mingyizhudao.com/146735870119173">' +
                     '</div>' +
                     '<div id="diseaseSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
-                    '<span class="color-orange6" id="diseaseTitle" data-disease="' + diseaseId + '">' + diseaseName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735831347598">' +
+                    '<span class="color-orange6" id="diseaseTitle" data-disease="' + diseaseId + '">' + diseaseName + '</span><img src="http://static.mingyizhudao.com/146735831347598">' +
                     '</div>' +
                     '<div id="citySelect" data-target="closePopup" class="col-1 w33 bb-gray grid middle grayImg">' +
-                    '<span id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">' +
+                    '<span id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="http://static.mingyizhudao.com/146735870119173">' +
                     '</div>' +
                     '</div>' +
                     '</nav>';
         } else {
-            innerPage += '<nav id="findDoc_nav" class="header-secondary bg-white h94p">' +
-                    '<div class="w100">' +
+            if (sourceApp == 0) {
+                innerPage += '<nav id="findDoc_nav" class="header-secondary bg-white h94p">';
+            } else {
+                innerPage += '<nav id="findDoc_nav" class="header-secondary bg-white h94p top0p">';
+            }
+            innerPage += '<div class="w100">' +
                     '<div id="searchBar">' +
                     '<div class="searchBtn">请输入你意向的专家</div>' +
                     '</div>' +
                     '<div class="grid w100 color-black font-s16 color-black6 h50p">' +
                     '<div id="deptSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
-                    '<span id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">' +
+                    '<span id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="http://static.mingyizhudao.com/146735870119173">' +
                     '</div>' +
                     '<div id="diseaseSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
-                    '<span class="color-orange6" id="diseaseTitle" data-disease="' + diseaseId + '">' + diseaseName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735831347598">' +
+                    '<span class="color-orange6" id="diseaseTitle" data-disease="' + diseaseId + '">' + diseaseName + '</span><img src="http://static.mingyizhudao.com/146735831347598">' +
                     '</div>' +
                     '<div id="citySelect" data-target="closePopup" class="col-1 w33 bb-gray grid middle grayImg">' +
-                    '<span id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">' +
+                    '<span id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="http://static.mingyizhudao.com/146735870119173">' +
                     '</div>' +
                     '</div>' +
                     '</div>' +
@@ -266,6 +291,7 @@ $('#diseaseSelect').tap(function () {
 });
 $('#citySelect').tap(function () {
     var source = $('#findDoc_nav').attr('data-source');
+    var sourceApp = $('#findDoc_nav').attr('data-sourceApp');
     var title = $('.title').html();
     var deptName = $('#deptTitle').html();
     var deptId = $('#deptTitle').attr('data-dept');
@@ -273,51 +299,60 @@ $('#citySelect').tap(function () {
     var diseaseId = $('#diseaseTitle').attr('data-disease');
     var cityName = $('#cityTitle').html();
     var cityId = $('#cityTitle').attr('data-city');
-    var innerPage = '<div id="findDoc_section">' +
-            '<header class="bg-green">' +
-            '<nav class="left">' +
-            '<a href="' + $homeView + '">' +
-            '<div class="pl5">' +
-            '<img src="../../themes/m5/images/back.png" class="w11p">' +
-            '</div>' +
-            '</a>' +
-            '</nav>' +
-            '<h1 class="title">' + title + '</h1>' +
-            '<nav class="right">' +
-            '<a onclick="javascript:history.go(0)">' +
-            '<img src="../../themes/m5/images/refresh.png" class="w24p">' +
-            '</a>' +
-            '</nav>' +
-            '</header>';
+    var innerPage = '<div id="findDoc_section">';
+    if (sourceApp == 0) {
+        innerPage += '<header class="bg-green">';
+        if (source == 0) {
+            innerPage += '<nav class="left">' +
+                    '<a href="' + $homeView + '">' +
+                    '<div class="pl5">' +
+                    '<img src="../../themes/m5/images/back.png" class="w11p">' +
+                    '</div>' +
+                    '</a>' +
+                    '</nav>';
+        }
+        innerPage += '<h1 class="title">' + title + '</h1>' +
+                '<nav class="right">' +
+                '<a onclick="javascript:history.go(0)">' +
+                '<img src="../../themes/m5/images/refresh.png" class="w24p">' +
+                '</a>' +
+                '</nav>' +
+                '</header>';
+    }
     if (source == 0) {
         innerPage += '<nav id="findDoc_nav" class="header-secondary bg-white">' +
                 '<div class="grid w100 color-black font-s16 color-black6">' +
                 '<div id="deptSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
-                '<span id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">' +
+                '<span id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="http://static.mingyizhudao.com/146735870119173">' +
                 '</div>' +
                 '<div id="diseaseSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
-                '<span id="diseaseTitle" data-disease="' + diseaseId + '">' + diseaseName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">' +
+                '<span id="diseaseTitle" data-disease="' + diseaseId + '">' + diseaseName + '</span><img src="http://static.mingyizhudao.com/146735870119173">' +
                 '</div>' +
                 '<div id="citySelect" data-target="closePopup" class="col-1 w33 bb-gray grid middle grayImg">' +
-                '<span class="color-orange6" id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735831347598">' +
+                '<span class="color-orange6" id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="http://static.mingyizhudao.com/146735831347598">' +
                 '</div>' +
                 '</div>' +
                 '</nav>';
     } else {
-        innerPage += '<nav id="findDoc_nav" class="header-secondary bg-white h94p">' +
-                '<div class="w100">' +
+        if (sourceApp == 0) {
+            innerPage += '<nav id="findDoc_nav" class="header-secondary bg-white h94p">';
+        } else {
+            innerPage += '<nav id="findDoc_nav" class="header-secondary bg-white h94p top0p">';
+        }
+
+        innerPage += '<div class="w100">' +
                 '<div id="searchBar">' +
                 '<div class="searchBtn">请输入你意向的专家</div>' +
                 '</div>' +
                 '<div class="grid w100 color-black font-s16 color-black6 h50p">' +
                 '<div id="deptSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
-                '<span id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">' +
+                '<span id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="http://static.mingyizhudao.com/146735870119173">' +
                 '</div>' +
                 '<div id="diseaseSelect" data-target="closePopup" class="col-1 w33 br-gray bb-gray grid middle grayImg">' +
-                '<span id="diseaseTitle" data-disease="' + diseaseId + '">' + diseaseName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">' +
+                '<span id="diseaseTitle" data-disease="' + diseaseId + '">' + diseaseName + '</span><img src="http://static.mingyizhudao.com/146735870119173">' +
                 '</div>' +
                 '<div id="citySelect" data-target="closePopup" class="col-1 w33 bb-gray grid middle grayImg">' +
-                '<span class="color-orange6" id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735831347598">' +
+                '<span class="color-orange6" id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="http://static.mingyizhudao.com/146735831347598">' +
                 '</div>' +
                 '</div>' +
                 '</div>' +
@@ -463,15 +498,22 @@ function readyDoc(data) {
 
 function readyDept(data, deptId, catId) {
     var source = $('#findDoc_nav').attr('data-source');
+    var sourceApp = $('#findDoc_nav').attr('data-sourceApp');
     var results = data.results;
     if (source == 0) {
         var innerHtml = '<div class="grid color-black" style="margin-top:93px;height:315px;">' +
                 '<div id="highDept" class="col-1 w50" data-scroll="true" style="height:315px;width: 50%;">' +
                 '<ul class="list">';
     } else {
-        var innerHtml = '<div class="grid color-black" style="margin-top:137px;height:315px;">' +
-                '<div id="highDept" class="col-1 w50" data-scroll="true" style="height:315px;width: 50%;">' +
-                '<ul class="list">';
+        if (sourceApp == 0) {
+            var innerHtml = '<div class="grid color-black" style="margin-top:137px;height:315px;">' +
+                    '<div id="highDept" class="col-1 w50" data-scroll="true" style="height:315px;width: 50%;">' +
+                    '<ul class="list">';
+        } else {
+            var innerHtml = '<div class="grid color-black" style="margin-top:93px;height:315px;">' +
+                    '<div id="highDept" class="col-1 w50" data-scroll="true" style="height:315px;width: 50%;">' +
+                    '<ul class="list">';
+        }
     }
     if (results.length > 0) {
         for (var i = 0; i < results.length; i++) {
@@ -507,16 +549,21 @@ function readyDept(data, deptId, catId) {
 
 function readyCity(data, cityId) {
     var source = $('#findDoc_nav').attr('data-source');
+    var sourceApp = $('#findDoc_nav').attr('data-sourceApp');
     var innerHtml = '';
     if (data != '') {
         var results = data.results;
-        console.log(source);
         if (source == 0) {
             innerHtml += '<div class="grid color-black" style="margin-top:93px;height:315px;">' +
                     '<ul class="list w100">';
         } else {
-            innerHtml += '<div class="grid color-black" style="margin-top:137px;height:315px;">' +
-                    '<ul class="list w100">';
+            if (sourceApp == 0) {
+                innerHtml += '<div class="grid color-black" style="margin-top:137px;height:315px;">' +
+                        '<ul class="list w100">';
+            } else {
+                innerHtml += '<div class="grid color-black" style="margin-top:93px;height:315px;">' +
+                        '<ul class="list w100">';
+            }
         }
         if (cityId == 0) {
             innerHtml += '<li class="switchCity activeIcon" data-city="0">全部</li>';

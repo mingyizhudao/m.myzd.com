@@ -39,6 +39,7 @@ if ($sourceApp == 0) {
 } else {
     $urlQuestionnaireSearch = $this->createAbsoluteUrl('questionnaire/questionnaireSearchView', array('app' => 1));
 }
+$urlApplogstat = $this->createUrl('/api/applogstat');
 $this->show_footer = false;
 ?>
 <style>
@@ -86,13 +87,13 @@ if ($sourceApp == 0) {
         ?>
         <div class="grid color-black font-s16 color-black6 h50p">
             <div id="deptSelect" class="col-1 w33 br-gray bb-gray grid middle grayImg">
-                <span id="deptTitle" data-dept="" data-cat=""></span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">
+                <span id="deptTitle" data-dept="" data-cat=""></span><img src="http://static.mingyizhudao.com/146735870119173">
             </div>
             <div id="diseaseSelect" class="col-1 w33 br-gray bb-gray grid middle grayImg">
-                <span id="diseaseTitle" data-disease=""></span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">
+                <span id="diseaseTitle" data-disease=""></span><img src="http://static.mingyizhudao.com/146735870119173">
             </div>
             <div id="citySelect" class="col-1 w33 bb-gray grid middle grayImg">
-                <span id="cityTitle" data-city=""></span><img src="http://7xsq2z.com2.z0.glb.qiniucdn.com/146735870119173">
+                <span id="cityTitle" data-city=""></span><img src="http://static.mingyizhudao.com/146735870119173">
             </div>
         </div>
     </div>
@@ -104,6 +105,18 @@ if ($sourceApp == 0) {
 </article>
 <script>
     $(document).ready(function () {
+        //0元面诊添加页面访问次数访问
+        if ('<?php echo $source == 1; ?>') {
+            $.ajax({
+                type: 'post',
+                url: '<?php echo $urlApplogstat; ?>',
+                data: {'applogstat[source]': 1},
+                success: function () {
+
+                }
+            });
+        }
+
         //返回首页
         $homeView = '<?php echo $urlHomeView; ?>';
 

@@ -15,6 +15,8 @@ if ($showApp == 1) {
     $urlEventLumbar = $this->createUrl('event/view', array('page' => 'lumbar'));
     $urlEventBasketballDream = $this->createUrl('event/view', array('page' => 'basketballDream'));
     $urlEventHujinshui = $this->createUrl('event/view', array('page' => 'hujinshui'));
+    $urlEventTick = $this->createUrl('event/view', array('page' => 'tick'));
+    $urlEventLife = $this->createUrl('event/view', array('page' => 'life'));
     $urlEventTumour = $this->createUrl('event/view', array('page' => 'tumour'));
     $urlEventZhuantiOne = $this->createUrl('event/view', array('page' => 'zhuantiOne'));
     $urlEventZhuantiTwo = $this->createUrl('event/view', array('page' => 'zhuantiTwo'));
@@ -40,6 +42,8 @@ if ($showApp == 1) {
     $urlEventLumbar = $this->createUrl('event/view', array('page' => 'lumbar', 'header' => '0'));
     $urlEventBasketballDream = $this->createUrl('event/view', array('page' => 'basketballDream', 'header' => '0'));
     $urlEventHujinshui = $this->createUrl('event/view', array('page' => 'hujinshui', 'header' => '0'));
+    $urlEventTick = $this->createUrl('event/view', array('page' => 'tick', 'header' => '0'));
+    $urlEventLife = $this->createUrl('event/view', array('page' => 'life', 'header' => '0'));
     $urlEventTumour = $this->createUrl('event/view', array('page' => 'tumour', 'header' => '0'));
     $urlEventZhuantiOne = $this->createUrl('event/view', array('page' => 'zhuantiOne', 'header' => '0'));
     $urlEventZhuantiTwo = $this->createUrl('event/view', array('page' => 'zhuantiTwo', 'header' => '0'));
@@ -157,6 +161,30 @@ if ($showPage == 0) {
 </article>
 <article id="story_article" class="<?php echo $showStory; ?>" data-scroll="true" data-active="find_footer">
     <div class="text-justify">
+        <div class="mt10 bg-white">
+            <a href="<?php echo $urlEventLife; ?>">
+                <div class="grid color-black10">
+                    <div class="col-1 w40">
+                        <img src="http://static.mingyizhudao.com/146959849335388">
+                    </div>
+                    <div class="col-1 w60 font-s17 vertical-center pl20 pr20">
+                        同病不同命
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="mt10 bg-white">
+            <a href="<?php echo $urlEventTick; ?>">
+                <div class="grid color-black10">
+                    <div class="col-1 w40">
+                        <img src="http://static.mingyizhudao.com/14695984486620">
+                    </div>
+                    <div class="col-1 w60 font-s17 vertical-center pl20 pr20">
+                        身首异处的蜱虫，你威风啥
+                    </div>
+                </div>
+            </a>
+        </div>
         <div class="mt10 bg-white">
             <a href="<?php echo $urlEventTumour; ?>">
                 <div class="grid color-black10">

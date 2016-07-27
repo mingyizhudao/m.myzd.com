@@ -9,6 +9,7 @@ $urlHomeMyyzDoctor = $this->createUrl('home/page', array('view' => 'myyzDoctor')
 $urlQiniuAjaxToken = $this->createUrl('qiniu/ajaxBookingToken');
 $urlUploadFile = $this->createUrl("/api/questionnairefile");
 $urlQuestionnaire = $this->createUrl('/api/questionnaire');
+$urlApplogstat = $this->createUrl('/api/applogstat');
 $source = Yii::app()->request->getQuery('app', 0);
 if ($source == 0) {
     $urlQuestion = $this->createUrl('questionnaire/view', array('id' => ''));
@@ -41,7 +42,7 @@ if ($source == 0) {
     <?php
 }
 ?>
-<article id="questionnairefour_article" class="active android_article logo_article" data-scroll="true" data-action-url="<?php echo $urlQuestionnaire; ?>" data-return-url="<?php echo $urlQuestion; ?>">
+<article id="questionnairefour_article" class="active android_article logo_article" data-scroll="true" data-action-url="<?php echo $urlQuestionnaire; ?>" data-return-url="<?php echo $urlQuestion; ?>" data-applogstat="<?php echo $urlApplogstat; ?>">
     <div id="outline" class="pad20 bg-white">
         <div class="w100 color-green text18">
             为了更好地给您提供诊疗意见，我们需要了解以下信息：
