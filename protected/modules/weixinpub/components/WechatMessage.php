@@ -51,23 +51,33 @@ class WechatMessage {
         return $result;
     }
     
-    //接收文本消息，直接转客服处理
+    //接收文本消息
     public function receiveText($object) {
-        $xmlTpl = "<xml>
-                   <ToUserName><![CDATA[%s]]></ToUserName>
-                   <FromUserName><![CDATA[%s]]></FromUserName>
-                   <CreateTime>%s</CreateTime>
-                   <MsgType><![CDATA[transfer_customer_service]]></MsgType>
-                   </xml>";
-        $result = sprintf($xmlTpl, $object->FromUserName, $object->ToUserName, time());
+        switch ($object->Content){
+            case "报名":
+            case "我要报名":
+                $content = "您好，恭喜您获得免费治疗白内障公益活动的报名资格，请您发送患者病例或检查报告图片到此微信号，并留下您的姓名和联系方式，我们会尽快将结果告知于您。感谢您对名医主刀的支持。";
+                break;
+            case "6000":
+            case "红包":
+            case "领取红包":
+                $content = "【免费领500元健康红包】
+                            \n1.点击菜单“更多”
+                            \n2.点击“领取红包”
+                            \n专属邀请码：6000
+                            \n立即领取您的专属红包！";
+                break;
+            case "名医主义":
+                $count = "“名医主义”是名医主刀旗下的医疗公益项目，希望通过整合全国医疗资源，借助资本力量和品牌影响力，为有手术需求的患者提供公益支持和帮助。期冀通过我们的平台，让全天下患者不仅可以好看病，更要看好病。";
+                break;
+            default:
+                $content = "感谢您的留言，我们会尽快与您联系。";
+                break;
+        }
+        $result = $this->transmitText($object, $content);
         return $result;
     } 
-    
-    public function receiveDefault($object){
-        $result = $this->transmitText($object, " ");
-        return $result;
-    }
-    
+     
     //回复文本消息
     public function transmitText($object, $content) {
         $xmlTpl = "<xml>
