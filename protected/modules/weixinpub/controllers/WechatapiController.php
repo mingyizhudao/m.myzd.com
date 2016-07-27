@@ -45,8 +45,7 @@ class WechatapiController extends WeixinpubController {
 
     public function actionApi() {
         if (!isset($_GET['echostr'])) {
-            //$this->responseMsg();
-            $this->responseMsg1();
+            $this->responseMsg();
         } else {
             $this->echostr = $_GET['echostr'];
             $this->valid();
@@ -59,13 +58,13 @@ class WechatapiController extends WeixinpubController {
             ob_clean();
             echo $this->echostr;
         } else {
-            echo "null";
+            echo "";
         }
         Yii::app()->end();
     }
     
     
-    public function responseMsg1() {
+    public function responseMsg() {
         $postStr = isset($GLOBALS['HTTP_RAW_POST_DATA']) ? $GLOBALS['HTTP_RAW_POST_DATA'] : file_get_contents("php://input");
         $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
         $RX_TYPE = trim($postObj->MsgType);
@@ -77,6 +76,7 @@ class WechatapiController extends WeixinpubController {
                 $result = $this->wechatMessage->receiveText($postObj);
                 break;
             default:
+                $result = "";
                 break;
         }
         ob_clean();
@@ -84,48 +84,6 @@ class WechatapiController extends WeixinpubController {
         Yii::app()->end();
     }
 
-    //获取请求内容以及根据类型回复相关消息
-    public function responseMsg() {
-
-        $timestamp = $_GET['timestamp'];
-        $nonce = $_GET["nonce"];
-        $msg_signature = $_GET['msg_signature'];
-        $encrypt_type = (isset($_GET['encrypt_type']) && ($_GET['encrypt_type'] == 'aes')) ? "aes" : "raw";
-
-        $postStr = isset($GLOBALS['HTTP_RAW_POST_DATA']) ? $GLOBALS['HTTP_RAW_POST_DATA'] : file_get_contents("php://input");
-
-        if (!empty($postStr)) {
-            if ($encrypt_type == 'aes') {//加密模式，先解密
-                $pc = new WXBizMsgCrypt($this->token, $this->EncodingAESKey, $this->AppID);
-                $decryptMsg = "";  //解密后的明文
-                $errCode = $pc->DecryptMsg($msg_signature, $timestamp, $nonce, $postStr, $decryptMsg);
-                $postStr = $decryptMsg;
-            }
-            $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
-            $RX_TYPE = trim($postObj->MsgType);
-        
-            switch ($RX_TYPE) {//消息类型分离
-                case "event":
-                    $result = $this->wechatMessage->receiveEvent($postObj);
-                    break;
-                case "text":
-                    $result = $this->wechatMessage->receiveText($postObj);
-                    break;
-                default:
-                    break;
-            }
-            
-            if ($encrypt_type == 'aes') {//对返回给微信服务器的消息进行加密处理
-                $encryptMsg = ''; //加密后的密文
-                $errCode = $pc->encryptMsg($result, $timestamp, $nonce, $encryptMsg);
-                $result = $encryptMsg;
-            }
-            echo $result;
-        } else {
-            echo "null";
-        }
-        Yii::app()->end();
-    }
 
     //验证消息是否来自微信服务器
     private function checkSignature() {

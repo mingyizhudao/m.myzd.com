@@ -15,16 +15,16 @@ class WechatMessage {
             //用户关注公众号
             case "subscribe":
                 $content = "感谢您关注名医主刀 - 国内最大的移动医疗手术平台！
-                    /n平台旨在为病患提供最合适，最便捷的医疗服务方案。医疗客服根据您提交的病例精准为您对接专家，为您在最短时间内安排手术。让中国人不再有“看病难”，“一床难求”的困扰。同时也为医生多点行医提供落地平台。
-                    /n点击右下角“更多”，领取红包（专属邀请码6000）。
-                    /n谢谢关注，愿健康与您永远相伴！";
+                    \n平台旨在为病患提供最合适，最便捷的医疗服务方案。医疗客服根据您提交的病例精准为您对接专家，为您在最短时间内安排手术。让中国人不再有“看病难”，“一床难求”的困扰。同时也为医生多点行医提供落地平台。
+                    \n点击右下角“更多”，领取红包（专属邀请码6000）。
+                    \n谢谢关注，愿健康与您永远相伴！";
                 break;
             //在模版消息发送任务完成后，微信服务器会将是否送达成功作为通知推送过来
             case "TEMPLATESENDJOBFINISH":
                 $wechatMsgRecord = new WechatMsgRecord();
                 $wechatMsgRecord->templateSendBack($object->MsgID, $object->Status);
                 break;
-            default:
+            default:              
                 break;
         }
         if(isset($object->EventKey)){
