@@ -19,7 +19,7 @@ class WechatMessage {
                     \n点击右下角“更多”，领取红包（专属邀请码6000）。
                     \n谢谢关注，愿健康与您永远相伴！";
                 break;
-            //用户之前已关注公众号，然后扫描二维码进入公众号
+            //用户之前已关注公众号，然后扫描带参数二维码进入公众号
             case "SCAN":
                 $content = "欢迎来到名医主刀 - 国内最大的移动医疗手术平台！";
                 break;
@@ -27,6 +27,10 @@ class WechatMessage {
             case "TEMPLATESENDJOBFINISH":
                 $wechatMsgRecord = new WechatMsgRecord();
                 $wechatMsgRecord->templateSendBack($object->MsgID, $object->Status);
+                break;
+            //菜单内点击【联系客服】
+            case "CUSTOMER_SERVICE";
+                $content = "拨打名医主刀客服热线400-6277-120";
                 break;
             default:              
                 break;

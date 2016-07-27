@@ -68,7 +68,8 @@ class WechatapiController extends WeixinpubController {
         $postStr = isset($GLOBALS['HTTP_RAW_POST_DATA']) ? $GLOBALS['HTTP_RAW_POST_DATA'] : file_get_contents("php://input");
         $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
         $RX_TYPE = trim($postObj->MsgType);
-        switch ($RX_TYPE) {//消息类型分离
+        //消息类型分离
+        switch ($RX_TYPE) {
             case "event":
                 $result = $this->wechatMessage->receiveEvent($postObj);
                 break;
@@ -76,7 +77,6 @@ class WechatapiController extends WeixinpubController {
                 $result = $this->wechatMessage->receiveText($postObj);
                 break;
             default:
-                $result = $this->wechatMessage->receiveDefault($object);
                 break;
         }
         ob_clean();
