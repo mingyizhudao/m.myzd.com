@@ -37,7 +37,24 @@ class WechatapiController extends WeixinpubController {
     }
     
     public function actionTest(){
-        return "111111111111111111\nwqerqeq123";
+        $xmlTpl = "<xml>
+                        <ToUserName>
+                            <![CDATA[ofwHPt5f2doHiEpT48EhNowXVGtc]]>
+                        </ToUserName>
+                        <FromUserName>
+                            <![CDATA[gh_0b1867f2aa86]]>
+                        </FromUserName>
+                        <CreateTime>1469676258</CreateTime>
+                        <MsgType>
+                            <![CDATA[text]]>
+                        </MsgType>
+                        <Content>
+                            <![CDATA[%s]]>
+                        </Content>
+                    </xml>";
+        $content = "准备换行/n换行成功";
+        $result = sprintf($xmlTpl, $content);
+        echo $result;
     }
 
     public function actionApi() {
