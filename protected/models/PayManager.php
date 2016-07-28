@@ -10,7 +10,7 @@ class PayManager {
     public function doPingxxPay($refNo, $channel, $refurl) {
         $model = new KeyConfig();
         $config = $model->getPayConfig();
-        var_dump($config);die;
+//        var_dump($config);die;
         $pingCharge = null;
         $apisvs = new ApiViewSalesOrder($refNo);
         $output = $apisvs->loadApiViewData();
