@@ -37,9 +37,7 @@ class WechatapiController extends WeixinpubController {
     }
     
     public function actionTest(){
-        echo "111111111111111111";
-        echo "</br>";
-        echo $this->AppID;
+        echo "111111111111111111\nwqerqeq";
     }
 
     public function actionApi() {
