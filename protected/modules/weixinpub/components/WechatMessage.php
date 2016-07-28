@@ -80,6 +80,7 @@ class WechatMessage {
      
     //回复文本消息
     public function transmitText($object, $content) {
+        Yii::log("第一步" . $content);
         $xmlTpl = "<xml>
                    <ToUserName><![CDATA[%s]]></ToUserName>
                    <FromUserName><![CDATA[%s]]></FromUserName>
@@ -88,6 +89,7 @@ class WechatMessage {
                    <Content><![CDATA[%s]]></Content>
                    </xml>";
         $result = sprintf($xmlTpl, $object->FromUserName, $object->ToUserName, time(), $content);
+        Yii::log("第一步" . $result);
         return $result;
     }  
     
