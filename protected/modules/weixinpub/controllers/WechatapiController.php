@@ -37,7 +37,7 @@ class WechatapiController extends WeixinpubController {
     }
     
     public function actionTest(){
-        echo "111111111111111111\nwqerqeq";
+        return "111111111111111111\nwqerqeq123";
     }
 
     public function actionApi() {
