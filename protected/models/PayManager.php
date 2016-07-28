@@ -8,6 +8,9 @@
 class PayManager {
 
     public function doPingxxPay($refNo, $channel, $refurl) {
+        $model = new KeyConfig();
+        $config = $model->getPayConfig();
+        var_dump($config);die;
         $pingCharge = null;
         $apisvs = new ApiViewSalesOrder($refNo);
         $output = $apisvs->loadApiViewData();
@@ -35,8 +38,8 @@ class PayManager {
         }
         $extra = $this->createPingxxExtra($payment, $channel, $refurl, $yeepayIndentity);
 //        \Pingpp\Pingpp::setApiKey('sk_test_W14qv9uPGuP4rbrnHKizLOaT');  // Ping++ test key.
-        \Pingpp\Pingpp::setApiKey('sk_live_bLGCW9m1aX5KvTSeT04G0KyP');  // Ping++ live key.
-
+//        \Pingpp\Pingpp::setApiKey('sk_live_bLGCW9m1aX5KvTSeT04G0KyP');  // Ping++ live key.
+        \Pingpp\Pingpp::setApiKey($config['setApiKey']);  // Ping++ live key.
         $requestArray = array(
             'subject' => $subject,
             'body' => $body,
@@ -46,7 +49,8 @@ class PayManager {
             'extra' => $extra,
             'channel' => $channel,
             'client_ip' => $_SERVER['REMOTE_ADDR'],
-            'app' => array('id' => 'app_SWv9qLSGWj1GKqbn'), // Ping++ app id.
+//            'app' => array('id' => 'app_SWv9qLSGWj1GKqbn'), // Ping++ app id.
+            'app' => array('id' => $config['id']),
 //            "refunds" => array(
 //                "object" => "list",
 //                "url" => "os=android&header=0&footer=0&addBackBtn=0&app=0",
