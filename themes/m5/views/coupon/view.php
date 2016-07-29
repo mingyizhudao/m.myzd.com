@@ -75,7 +75,7 @@ $this->show_footer = false;
                     <li class="bb-none ml20 mr20 color-white pb30">
 <!--                            <input id="btnSubmit" class="btn btn-yes btn-block" type="button" data-ajax="false"  name="yt0" value="登录/注册"> -->
                         <div class="">
-                            <button id="btnSubmit" class="btn btn-abs btn-login img-btn"><img src="<?php echo $urlResImage; ?>/hongbao/btn-hongbao.png"></button>
+                            <button id="btnSubmit" class="btn btn-abs btn-login img-btn"><img src="http://static.mingyizhudao.com/146976034349141"></button>
                         </div>
                     </li>
                 </ul>
@@ -88,7 +88,7 @@ $this->show_footer = false;
                     <div class="col-1"></div>
                     <div class="col-0 w80">
                         <a href="tel://4006277120" class="color-black">
-                            <img src="<?php echo $urlResImage; ?>/hongbao/telephone-hongbao.png">
+                            <img src="http://static.mingyizhudao.com/146976037411712">
                         </a>
                     </div>
                     <div class="col-1"></div>
@@ -174,11 +174,11 @@ $this->show_footer = false;
             var innerHtml = '<div class="bg-red color-white1">' +
                     '<div class="pb20 ml10 mr10">' +
                     '<div class="text-right color-yellow1 pt5 font-s14">' +
-                    '<span data-target="closePopup">收起<img src="<?php echo $urlResImage; ?>/hongbao/wire.png"></span>' +
+                    '<span data-target="closePopup">收起<img src="http://static.mingyizhudao.com/146976039842023"></span>' +
                     '</div>' +
                     '<div class="grid mt10 mb10">' +
                     '<div class="col-1"></div>' +
-                    '<div class="w60"><img src="<?php echo $urlResImage; ?>/hongbao/rule-hongbao.png"></div>' +
+                    '<div class="w60"><img src="http://static.mingyizhudao.com/146976043363376"></div>' +
                     '<div class="col-1"></div>' +
                     '</div>' +
                     '<div class="mt20 font-s12">' +

@@ -10,14 +10,14 @@ $this->show_footer = false;
         <nav class="left">
             <a href="" data-target="back">
                 <div class="pl5">
-                    <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                    <img src="http://static.mingyizhudao.com/146975795218858" class="w11p">
                 </div>
             </a>
         </nav>
         <div class="title">熬夜需警惕心血管疾病突发</div>
         <nav class="right">
             <a onclick="javascript:location.reload()">
-                <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
+                <img src="http://static.mingyizhudao.com/146975853464574"  class="w24p">
             </a>
         </nav>
     </header>
@@ -25,7 +25,7 @@ $this->show_footer = false;
 <article id="zhuantiXinxg_article" class="active" data-scroll="true">
     <div class="">
         <div>
-            <img src="<?php echo $urlResImage; ?>zhuanti/Xinxg/xinxgImg.png" class="w100">
+            <img src="http://static.mingyizhudao.com/146976295192665" class="w100">
         </div>
         <div class="titleBg font-s16 text-center color-blue7 font-w800">
             双11熬夜秒杀，警惕心血管疾病突发!
@@ -57,7 +57,7 @@ $this->show_footer = false;
                 <div class="col-1 grid w40 pl5 pr5">
                     <div class="col-1"></div>
                     <div class="col-0 max-w125p text-center">
-                        <img src="<?php echo $urlResImage; ?>zhuanti/Xinxg/girl.png">
+                        <img src="http://static.mingyizhudao.com/146976296927193">
                     </div>
                     <div class="col-1"></div>
                 </div>
@@ -80,7 +80,7 @@ $this->show_footer = false;
                 <span class="color-green7">上午6时～12时</span>被医学家喻为是心脑血管病的“魔鬼时间”，70%～80%的心脑血管病猝发都在此时。因此，<span class="color-green7">锻炼要避开这段时间</span>。
             </div>
             <div class="mt10">
-                <img src="<?php echo $urlResImage; ?>zhuanti/Xinxg/reasonOne.png" class="w100">
+                <img src="http://static.mingyizhudao.com/146976298948256" class="w100">
             </div>
             <div class="grid mt10">
                 <div class="col-0 bg-yellow4 pl5 pr5">
@@ -101,7 +101,7 @@ $this->show_footer = false;
                 <div class="col-1 grid text-center">
                     <div class="col-1"></div>
                     <div class="col-0 max-w128p">
-                        <img src="<?php echo $urlResImage; ?>zhuanti/Xinxg/reasonTwo.png">
+                        <img src="http://static.mingyizhudao.com/146976300610510">
                     </div>
                     <div class="col-1"></div>
                 </div>
@@ -142,7 +142,7 @@ $this->show_footer = false;
                     <div>拍双肩，唤双耳，搭脉搏，10秒钟完成。</div>
                 </div>
                 <div class="col-1 w50 pl5">
-                    <img src="<?php echo $urlResImage; ?>zhuanti/Xinxg/stepOne.png">
+                    <img src="http://static.mingyizhudao.com/146976302660360">
                 </div>
             </div>
             <div class="grid mt10">
@@ -151,7 +151,7 @@ $this->show_footer = false;
                     <div class="font-w800 pl24">呼叫（120）</div>
                 </div>
                 <div class="col-1 w50 pl5">
-                    <img src="<?php echo $urlResImage; ?>zhuanti/Xinxg/stepTwo.png">
+                    <img src="http://static.mingyizhudao.com/146976304569578">
                 </div>
             </div>
             <div class="grid mt10">
@@ -160,7 +160,7 @@ $this->show_footer = false;
                     <div class="font-w800 pl24">摆放仰卧体位</div>
                 </div>
                 <div class="col-1 w50 pl5">
-                    <img src="<?php echo $urlResImage; ?>zhuanti/Xinxg/stepThree.png">
+                    <img src="http://static.mingyizhudao.com/146976306459328">
                 </div>
             </div>
             <div class="grid mt10">
@@ -174,7 +174,7 @@ $this->show_footer = false;
                     <div>频率：至少100次/分钟</div>
                 </div>
                 <div class="col-1 w50 pl5">
-                    <img src="<?php echo $urlResImage; ?>zhuanti/Xinxg/stepFour.png">
+                    <img src="http://static.mingyizhudao.com/146976308148395">
                 </div>
             </div>
             <div class="grid mt10">
@@ -184,7 +184,7 @@ $this->show_footer = false;
                     <div>(仰头举额法)</div>
                 </div>
                 <div class="col-1 w50 pl5">
-                    <img src="<?php echo $urlResImage; ?>zhuanti/Xinxg/stepFive.png">
+                    <img src="http://static.mingyizhudao.com/146976309972393">
                 </div>
             </div>
             <div class="grid mt10">
@@ -195,7 +195,7 @@ $this->show_footer = false;
                     <div>捏鼻，口包口，吹气。</div>
                 </div>
                 <div class="col-1 w50 pl5">
-                    <img src="<?php echo $urlResImage; ?>zhuanti/Xinxg/stepSix.png">
+                    <img src="http://static.mingyizhudao.com/146976311670470">
                 </div>
             </div>
             <div class="lineBg mt30"></div>

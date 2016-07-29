@@ -24,14 +24,14 @@ $this->show_footer = false;
     <nav class="left">
         <a href="<?php echo $urlHomeView; ?>">
             <div class="pl5">
-                <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                <img src="http://static.mingyizhudao.com/146975795218858" class="w11p">
             </div>
         </a>
         <a>
             <span class="ml20 pb2 br-white"></span>
         </a>
         <a onclick="javascript:location.reload()">
-            <img src="<?php echo $urlResImage; ?>refresh.png" class="w24p ml20">
+            <img src="http://static.mingyizhudao.com/146975853464574" class="w24p ml20">
         </a>
     </nav>
     <h1 class="title">

@@ -9,14 +9,14 @@ $this->show_footer = false;
         <nav class="left">
             <a href="" data-target="back">
                 <div class="pl5">
-                    <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                    <img src="http://static.mingyizhudao.com/146975795218858" class="w11p">
                 </div>
             </a>
         </nav>
         <div class="title">名医主刀百万公益金</div>
         <nav class="right">
             <a onclick="javascript:location.reload()">
-                <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
+                <img src="http://static.mingyizhudao.com/146975853464574"  class="w24p">
             </a>
         </nav>
     </header>
@@ -24,7 +24,7 @@ $this->show_footer = false;
 <article id="zhuantiFour_article" class="active" data-scroll="true">
     <div class="pl15 pr15 mt26">
         <div>
-            <img src="<?php echo $urlResImage; ?>/zhuanti/gongyi.png" class="w100">
+            <img src="http://static.mingyizhudao.com/146345400264715" class="w100">
         </div>
         <div class=" mt16 font-s21 color-black5">名医主刀--百万公益金</div>
         <div class="mt21 font-s12">2015-12-09<span class="color-blue ml7">来源:名医主刀</span></div>
@@ -61,7 +61,7 @@ $this->show_footer = false;
                 <div class="col-1"></div>
             </div>
             <div class="pl20 pr20">
-                <img src="<?php echo $urlResImage; ?>/zhuanti/lineFour.png" class="w100">
+                <img src="http://static.mingyizhudao.com/146345400340873" class="w100">
             </div>
             <div class="grid">
                 <div class="col-0 w24">

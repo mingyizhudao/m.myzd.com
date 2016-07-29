@@ -24,7 +24,7 @@ if ($sourceApp == 0) {
         <nav class="left">
             <a href="" data-target="back">
                 <div class="pl5">
-                    <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                    <img src="http://static.mingyizhudao.com/146975795218858" class="w11p">
                 </div>
             </a>
         </nav>
@@ -38,7 +38,7 @@ if ($sourceApp == 0) {
         <h1 class="title"><?php echo $doctor->name . $doctorAtitle; ?></h1>
         <nav class="right">
             <a onclick="javascript:location.reload()">
-                <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
+                <img src="http://static.mingyizhudao.com/146975853464574"  class="w24p">
             </a>
         </nav>
     </header>
@@ -133,16 +133,16 @@ if ($sourceApp == 0) {
                     <div class="pad10 <?php echo $btGray; ?>">
                         <div class="grid">
                             <div class="col-0 h40p w40p">
-                                <img src="<?php echo $urlResImage; ?>headImg.png">
+                                <img src="http://static.mingyizhudao.com/146303241586665">
                             </div>
                             <div class="col-1 pl10">
                                 <div class="color-orange"><?php echo $comment[$i]->user_name; ?></div>
                                 <div>
-                                    <span><img src='<?php echo $urlResImage; ?>starFill.png' class='w10p'></span>
-                                    <span><img src='<?php echo $urlResImage; ?>starFill.png' class='w10p'></span>
-                                    <span><img src='<?php echo $urlResImage; ?>starFill.png' class='w10p'></span>
-                                    <span><img src='<?php echo $urlResImage; ?>starFill.png' class='w10p'></span>
-                                    <span><img src='<?php echo $urlResImage; ?>starFill.png' class='w10p'></span>
+                                    <span><img src='http://static.mingyizhudao.com/146975981120273' class='w10p'></span>
+                                    <span><img src='http://static.mingyizhudao.com/146975981120273' class='w10p'></span>
+                                    <span><img src='http://static.mingyizhudao.com/146975981120273' class='w10p'></span>
+                                    <span><img src='http://static.mingyizhudao.com/146975981120273' class='w10p'></span>
+                                    <span><img src='http://static.mingyizhudao.com/146975981120273' class='w10p'></span>
                                 </div>
                             </div>
                         </div>
@@ -164,7 +164,7 @@ if ($sourceApp == 0) {
             } else {
                 echo '<div class="pad10 text-center">' .
                 '<div class="pt50">' .
-                '<img src="' . $urlResImage . 'evaluate.png" class="w63p">' .
+                '<img src="http://static.mingyizhudao.com/146976057181123" class="w63p">' .
                 '</div>' .
                 '<div class="pt20 color-gray">' .
                 '该医生暂无患者评价' .

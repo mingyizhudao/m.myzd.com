@@ -10,14 +10,14 @@ $this->show_footer = false;
         <nav class="left">
             <a href="" data-target="back">
                 <div class="pl5">
-                    <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                    <img src="http://static.mingyizhudao.com/146975795218858" class="w11p">
                 </div>
             </a>
         </nav>
         <div class="title">身体肿块别小瞧</div>
         <nav class="right">
             <a onclick="javascript:location.reload()">
-                <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
+                <img src="http://static.mingyizhudao.com/146975853464574"  class="w24p">
             </a>
         </nav>
     </header>
@@ -29,7 +29,7 @@ $this->show_footer = false;
             <div class="col-1"></div>
             <div class="col-0">
                 <div class="pl5 pr5 bg-white">
-                    <div class="font-s16"><img class="w30p" src="<?php echo $urlResImage; ?>zhuanti/Six/80.png"><span class="pl5 font-w800">的人忽视的身体小肿块,险些成癌!</span></div>
+                    <div class="font-s16"><img class="w30p" src="http://static.mingyizhudao.com/146976270308154"><span class="pl5 font-w800">的人忽视的身体小肿块,险些成癌!</span></div>
                 </div>
             </div>
             <div class="col-1"></div>
@@ -135,7 +135,7 @@ $this->show_footer = false;
                 </div>
                 <div class="grid mt20 mb10">
                     <div class="col-0 w80p vertical-center">
-                        <img src="<?php echo $urlResImage; ?>zhuanti/Six/1.png">
+                        <img src="http://static.mingyizhudao.com/14697627239425">
                     </div>
                     <div class="col-1 pl10">
                         <span class="color-blue4 font-w800">口腔癌治疗方式</span>分为：手术切除、放射线治疗、化学治疗、中药治疗。 早期的口腔癌如未见颈部淋巴转移，单独使用手术或放射治疗都有不错的成效。中晚期的口腔癌，推荐使用外科手术。
@@ -143,7 +143,7 @@ $this->show_footer = false;
                 </div>
                 <div class="grid bt-gray4 mb10 pt10">
                     <div class="col-0 w80p vertical-center">
-                        <img src="<?php echo $urlResImage; ?>zhuanti/Six/2.png">
+                        <img src="http://static.mingyizhudao.com/14697627414958">
                     </div>
                     <div class="col-1 pl10">
                         <span class="color-blue4 font-w800">乳腺癌的外科手术</span>包括乳腺和腋窝淋巴结两部分。乳腺手术有保乳手术和全乳房切除术。腋窝淋巴结手术有前哨淋巴结活检和腋窝淋巴结清扫。目前还做不到所有的乳腺癌患者都能进行保乳手术。对不适合保乳手术的乳腺癌患者还需要切除乳房，但会采用整形外科技术重建乳房。进行乳房重建不会影响乳腺癌的整体治疗。
@@ -151,7 +151,7 @@ $this->show_footer = false;
                 </div>
                 <div class="grid bt-gray4 mb10 pt10">
                     <div class="col-0 w80p vertical-center">
-                        <img src="<?php echo $urlResImage; ?>zhuanti/Six/3.png">
+                        <img src="http://static.mingyizhudao.com/146976275709691">
                     </div>
                     <div class="col-1 pl10">
                         <span class="color-blue4 font-w800">甲状腺癌的手术</span>治疗包括甲状腺本身的手术，以及颈淋巴结清扫。甲状腺的切除范围目前仍有分歧，范围最小的为腺叶加峡部切除，最大至甲状腺全切除。
@@ -159,7 +159,7 @@ $this->show_footer = false;
                 </div>
                 <div class="grid bt-gray4 mb10 pt10">
                     <div class="col-0 w80p vertical-center">
-                        <img src="<?php echo $urlResImage; ?>zhuanti/Six/4.png">
+                        <img src="http://static.mingyizhudao.com/146976277584932">
                     </div>
                     <div class="col-1 pl10">
                         <span class="color-blue4 font-w800">治疗结肠癌的方案</span>是以手术切除为主的综合治疗方案。常采用根治性的切除+区域淋巴结清扫，根据癌肿所在部位确定根治切除范围及其手术方式。晚期患者若出现肠梗阻、严重肠出血时，不建议根治手术，可先切除部分，缓解症状，改善患者生活质量。
@@ -167,7 +167,7 @@ $this->show_footer = false;
                 </div>
                 <div class="grid bt-gray4 mb10 pt10">
                     <div class="col-0 w80p vertical-center">
-                        <img src="<?php echo $urlResImage; ?>zhuanti/Six/5.png">
+                        <img src="http://static.mingyizhudao.com/14697627996454">
                     </div>
                     <div class="col-1 pl10">
                         <span class="color-blue4 font-w800">皮肤癌手术治疗</span>作为皮肤癌首选的治疗方法，适当的手术切除治疗，治愈率达90%～100%。切除的范围随肿瘤的大小、浸润深度而异。其他治疗方式包括药物治疗、放射疗法等。
@@ -199,11 +199,11 @@ $this->show_footer = false;
                     </div>
                     <div class="col-1"></div>
                     <div class="col-0 w15p bg-white pl5">
-                        <img src="<?php echo $urlResImage; ?>zhuanti/Six/x.png">
+                        <img src="http://static.mingyizhudao.com/146976282242731">
                     </div>
                 </div>
                 <div class="text-center">
-                    <img class="w95p" src="<?php echo $urlResImage; ?>zhuanti/Six/PET-CT.png">
+                    <img class="w95p" src="http://static.mingyizhudao.com/146976284021835">
                 </div>
                 <div>
                     这种想法是不正确的。
@@ -224,11 +224,11 @@ $this->show_footer = false;
                     </div>
                     <div class="col-1"></div>
                     <div class="col-0 w15p bg-white pl5">
-                        <img src="<?php echo $urlResImage; ?>zhuanti/Six/x.png">
+                        <img src="http://static.mingyizhudao.com/146976282242731">
                     </div>
                 </div>
                 <div class="text-center">
-                    <img class="w95p" src="<?php echo $urlResImage; ?>zhuanti/Six/xueye.png">
+                    <img class="w95p" src="http://static.mingyizhudao.com/146976288226864">
                 </div>
                 <div>
                     一些外周肿瘤标志物如AFP对于肝癌、PSA对于前列腺癌有一定的诊断意义，其他常见的癌症与血的肿瘤标志物之间缺乏明确的对应关系。
@@ -246,11 +246,11 @@ $this->show_footer = false;
                     </div>
                     <div class="col-1"></div>
                     <div class="col-0 w15p bg-white pl5">
-                        <img src="<?php echo $urlResImage; ?>zhuanti/Six/x.png">
+                        <img src="http://static.mingyizhudao.com/146976282242731">
                     </div>
                 </div>
                 <div class="text-center">
-                    <img class="w95p" src="<?php echo $urlResImage; ?>zhuanti/Six/zhongliu.png">
+                    <img class="w95p" src="http://static.mingyizhudao.com/14697629005202">
                 </div>
                 <div>
                     目前，越来越多的体检中心把血液检查包括在体检项目中，于是发现了许多肿瘤标志物升高的人员。经常引起体检人员和家属的恐慌。
