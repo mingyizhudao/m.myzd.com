@@ -195,12 +195,13 @@ abstract class WebsiteController extends Controller {
      * Stores user's access info for every request.
      */
     public function storeUserAccessInfo() {
-        $coreAccess = new CoreAccess();
+        $coreAccess = new CoreAccessMongo();
         $coreAccess->user_host_ip = Yii::app()->request->getUserHostAddress();
         $coreAccess->url = Yii::app()->request->getUrl();
         $coreAccess->url_referrer = Yii::app()->request->getUrlReferrer();
         $coreAccess->user_agent = Yii::app()->request->getUserAgent();
         $coreAccess->user_host = Yii::app()->request->getUserHost();
+        $coreAccess->date_created = date("Y-m-d H:i:s");
         $coreAccess->save();
     }
 
@@ -209,6 +210,7 @@ abstract class WebsiteController extends Controller {
      */
     public function  storeAppAccessInfo($arr) {
         $coreAccess = new AppLog();
+//         $coreAccess = new AppLogMongo();
         if(isset($arr['vendorId']) && $arr['vendorId'] > 0){
             $coreAccess->vendor_id = $arr['vendorId'];
         }
@@ -236,6 +238,7 @@ abstract class WebsiteController extends Controller {
         $coreAccess->user_agent = Yii::app()->request->getUserAgent();
         $coreAccess->user_host = Yii::app()->request->getUserHost();
         $coreAccess->save();
+//         var_dump(AppLogMongo::model()->findAll());exit;
     }
 
     //验证第三方
