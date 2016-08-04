@@ -58,6 +58,7 @@ class WechatMessage {
         $reqContent = $object->Content;//请求文字内容
         $wechatKeyWord = WechatKeyWord::model()->getAll();
         $weixinpub_id = Yii::app()->getModule('weixinpub')->weixinpubId;
+        Yii::log("获取到的微信ID为：" . $weixinpub_id);
         foreach ($wechatKeyWord as $v){
             if($v['key_word'] == $reqContent && $v['weixinpub_id'] == $weixinpub_id && $v['msg_type'] == 'text'){
                 $rspContent = $v['reply_content'];//获取需要回复给用户的内容
