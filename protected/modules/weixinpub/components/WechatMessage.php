@@ -53,7 +53,7 @@ class WechatMessage {
     
     //接收文本消息
     public function receiveText($object) {
-        $rspContent = "";//回复文字内容
+        $rspContent = "感谢您的留言，我们会尽快与您联系。";//回复文字内容
         $reqContent = $object->Content;//请求文字内容
         $wechatKeyWord = WechatKeyWord::model()->getAll();
         foreach ($wechatKeyWord as $v){
@@ -67,7 +67,6 @@ class WechatMessage {
                 continue;
             }
         }
-        
         $result = $this->transmitText($object, $rspContent);
         return $result;
     } 
