@@ -195,6 +195,7 @@ abstract class WebsiteController extends Controller {
      * Stores user's access info for every request.
      */
     public function storeUserAccessInfo() {
+//        $coreAccess = new CoreAccess();
         $coreAccess = new CoreAccessMongo();
         $coreAccess->user_host_ip = Yii::app()->request->getUserHostAddress();
         $coreAccess->url = Yii::app()->request->getUrl();

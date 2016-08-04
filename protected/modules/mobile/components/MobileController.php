@@ -8,7 +8,7 @@ abstract class MobileController extends WebsiteController {
 
     public function init() {
         //  $this->handleMobileBrowserRedirect();
-        //return parent::init();
+        return parent::init();
     }
 
     public function getHomeUrl() {
