@@ -58,7 +58,7 @@ class WechatMessage {
         $reqContent = $object->Content;//请求文字内容
         $wechatKeyWord = WechatKeyWord::model()->getAll();
         $weixinpub_id = Yii::app()->getModule('weixinpub')->weixinpubId;
-        Yii::log("获取到的微信ID为：" . $weixinpub_id);
+        //Yii::log("获取到的微信ID为：" . $weixinpub_id);
         foreach ($wechatKeyWord as $v){
             if($v['key_word'] == $reqContent && $v['weixinpub_id'] == $weixinpub_id && $v['msg_type'] == 'text'){
                 $rspContent = $v['reply_content'];//获取需要回复给用户的内容
@@ -73,7 +73,7 @@ class WechatMessage {
      
     //回复文本消息
     public function transmitText($object, $content) {
-        Yii::log("第一步" . $content);
+        //Yii::log("第一步" . $content);
         $xmlTpl = "<xml>
                    <ToUserName><![CDATA[%s]]></ToUserName>
                    <FromUserName><![CDATA[%s]]></FromUserName>
@@ -82,7 +82,7 @@ class WechatMessage {
                    <Content><![CDATA[%s]]></Content>
                    </xml>";
         $result = sprintf($xmlTpl, $object->FromUserName, $object->ToUserName, time(), $content);
-        Yii::log("回复内容" . $result);
+        //Yii::log("回复内容" . $result);
         return $result;
     }  
     
