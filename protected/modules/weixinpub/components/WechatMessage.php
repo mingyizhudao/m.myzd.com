@@ -59,7 +59,7 @@ class WechatMessage {
         $wechatKeyWord = WechatKeyWord::model()->getAll();
         $weixinpub_id = Yii::app()->getModule('weixinpub')->weixinpubId;
         foreach ($wechatKeyWord as $v){
-            if($v['key_word'] == $reqContent && $v['weixinpub_id'] = $weixinpub_id && $v['msg_type'] == 'text'){
+            if($v['key_word'] == $reqContent && $v['weixinpub_id'] == $weixinpub_id && $v['msg_type'] == 'text'){
                 $rspContent = $v['reply_content'];//获取需要回复给用户的内容
                 break;
             }else{
