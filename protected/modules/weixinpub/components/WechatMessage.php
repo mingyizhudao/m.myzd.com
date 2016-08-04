@@ -1,6 +1,4 @@
 <?php
-
-
 /**
  * 接受来自微信服务器的消息，并处理回复相对应的消息
  *
@@ -14,10 +12,12 @@ class WechatMessage {
         switch ($object->Event) {
             //用户关注公众号
             case "subscribe":
-                $content = "感谢您关注名医主刀 - 国内最大的移动医疗手术平台！
-                    \n平台旨在为病患提供最合适，最便捷的医疗服务方案。医疗客服根据您提交的病例精准为您对接专家，为您在最短时间内安排手术。让中国人不再有“看病难”，“一床难求”的困扰。同时也为医生多点行医提供落地平台。
-                    \n点击右下角“更多”，领取红包（专属邀请码6000）。
-                    \n谢谢关注，愿健康与您永远相伴！";
+                $content = "感谢您关注名医主刀 - 国内最大的移动医疗手术平台！";
+                $content = $content . "\n平台旨在为病患提供最合适，最便捷的医疗服务方案。";
+                $content = $content . "医疗客服根据您提交的病例精准为您对接专家，为您在最短时间内安排手术。";
+                $content = $content . "让中国人不再有“看病难”，“一床难求”的困扰。同时也为医生多点行医提供落地平台。";
+                $content = $content . "\n点击右下角“更多”，领取红包（专属邀请码6000）。";
+                $content = $content . "\n谢谢关注，愿健康与您永远相伴！";
                 break;
             //用户之前已关注公众号，然后扫描带参数二维码进入公众号
             case "SCAN":
@@ -37,6 +37,7 @@ class WechatMessage {
             default:              
                 break;
         }
+        
         $event = $object->Event;
         if(isset($object->EventKey) && ($event == 'subscribe' || $event == 'unsubscribe' || $event == 'SCAN')){
             $wechatEventRecord = new WechatEventRecord();
@@ -53,16 +54,12 @@ class WechatMessage {
     
     //接收文本消息
     public function receiveText($object) {
-        $rspContent = "感谢您的留言，我们会尽快与您联系。";//回复文字内容
+        $rspContent = "感谢您的留言，我们会尽快与您联系。";//默认回复内容
         $reqContent = $object->Content;//请求文字内容
         $wechatKeyWord = WechatKeyWord::model()->getAll();
         foreach ($wechatKeyWord as $v){
-            $key_word = $v['key_word'];
-            $msg_type = $v['msg_type'];
-            $reply_content = $v['reply_content'];
-            if($key_word == $reqContent && $msg_type == 'text'){
-                $rspContent = str_replace("\n", ""
-                        . "", $reply_content);//获取需要回复给用户的内容
+            if($v['key_word'] == $reqContent && $v['msg_type'] == 'text'){
+                $rspContent = v['reply_content'];//获取需要回复给用户的内容
                 break;
             }else{
                 continue;

@@ -37,24 +37,7 @@ class WechatapiController extends WeixinpubController {
     }
     
     public function actionTest(){
-        $xmlTpl = "<xml>
-                        <ToUserName>
-                            <![CDATA[ofwHPt5f2doHiEpT48EhNowXVGtc]]>
-                        </ToUserName>
-                        <FromUserName>
-                            <![CDATA[gh_0b1867f2aa86]]>
-                        </FromUserName>
-                        <CreateTime>1469676258</CreateTime>
-                        <MsgType>
-                            <![CDATA[text]]>
-                        </MsgType>
-                        <Content>
-                            <![CDATA[%s]]>
-                        </Content>
-                    </xml>";
-        $content = "准备换行/n换行成功";
-        $result = sprintf($xmlTpl, $content);
-        echo $result;
+        echo "111111111111111111";
     }
 
     public function actionApi() {
@@ -93,7 +76,6 @@ class WechatapiController extends WeixinpubController {
             default:
                 break;
         }
-        //ob_clean();
         header("Content-type: text/xml");
         echo $result;
         Yii::app()->end();
