@@ -28,7 +28,7 @@ $this->show_footer = false;
             <input id="inputDisease" type="text" name="disease_name" class="w100" placeholder="请输入疾病、医生或医院名称">
             <span class="pr5 emptyImg hide">
                 <a id="emptyInput">
-                    <img src="<?php echo $urlResImage; ?>close.png" class="w15p">
+                    <img src="http://static.mingyizhudao.com/146976062142823" class="w15p">
                 </a>
             </span>
         </div>

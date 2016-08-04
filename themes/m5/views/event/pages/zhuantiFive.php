@@ -9,14 +9,14 @@ $this->show_footer = false;
         <nav class="left">
             <a href="" data-target="back">
                 <div class="pl5">
-                    <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                    <img src="http://static.mingyizhudao.com/146975795218858" class="w11p">
                 </div>
             </a>
         </nav>
         <div class="title">卡塔尔王子的中国寻医记</div>
         <nav class="right">
             <a onclick="javascript:location.reload()">
-                <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
+                <img src="http://static.mingyizhudao.com/146975853464574"  class="w24p">
             </a>
         </nav>
     </header>
@@ -24,7 +24,7 @@ $this->show_footer = false;
 <article id="zhuantiFive_article" class="active" data-scroll="true">
     <div>
         <div>
-            <img class="w100" src="<?php echo $urlResImage; ?>zhuanti/Five/header-01.jpg">
+            <img class="w100" src="http://static.mingyizhudao.com/146345314714624">
         </div>
         <div class="ml15 mr15 mt40 bt-blue"></div>
         <div class="grid mt-12">
@@ -44,7 +44,7 @@ $this->show_footer = false;
             <div class="text-center">现年22岁的Abdulaziz Althani王子。</div>
         </div>
         <div class="mt10">
-            <img class="w100" src="<?php echo $urlResImage; ?>zhuanti/Five/image_1.png">
+            <img class="w100" src="http://static.mingyizhudao.com/146345322361194">
         </div>
         <div class="ml15 mr15 mt20">
             <span class="font-w800">肢体僵硬22年</span>，这是正常人难以想象的一种痛苦，更别说作为王室成员，所以王子家属此前也咨询过很多世界顶级专家，并在英国接受专业的康复训练，效果甚微。这次是专程慕名前往北京天坛普华医院接受机器人辅助的微创手术。
@@ -64,10 +64,10 @@ $this->show_footer = false;
         </div>
         <div class="pl15 pr15 pt10 grid line-h12 font-s12">
             <div class="col-1 w50 pr10">
-                <img class="w100" src="<?php echo $urlResImage; ?>zhuanti/Five/1-01.png">
+                <img class="w100" src="http://static.mingyizhudao.com/146345328533135">
                 <div class="grid">
                     <div class="col-0 w15p pt3">
-                        <img src="<?php echo $urlResImage; ?>zhuanti/Five/01.png">
+                        <img src="http://static.mingyizhudao.com/146345341803292">
                     </div>
                     <div class="col-1 pt5 pl5">
                         <span>专家观察王子</span>
@@ -75,10 +75,10 @@ $this->show_footer = false;
                 </div>
             </div>
             <div class="col-1 w50 pl10">
-                <img class="w100" src="<?php echo $urlResImage; ?>zhuanti/Five/2-01.png">
+                <img class="w100" src="http://static.mingyizhudao.com/146345328557889">
                 <div class="grid">
                     <div class="col-0 w15p pt3">
-                        <img src="<?php echo $urlResImage; ?>zhuanti/Five/02.png">
+                        <img src="http://static.mingyizhudao.com/14634534181581">
                     </div>
                     <div class="col-1 pt5 pl5">
                         <span>以左侧GPI和内囊前肢为靶区制定手术计划</span>
@@ -88,10 +88,10 @@ $this->show_footer = false;
         </div>
         <div class="pl15 pr15 grid line-h12 font-s12 pt3">
             <div class="col-1 w50 pr10">
-                <img class="w100" src="<?php echo $urlResImage; ?>zhuanti/Five/3-01.png">
+                <img class="w100" src="http://static.mingyizhudao.com/146345328550645">
                 <div class="grid">
                     <div class="col-0 w15p pt3">
-                        <img src="<?php echo $urlResImage; ?>zhuanti/Five/03.png">
+                        <img src="http://static.mingyizhudao.com/146345341812486">
                     </div>
                     <div class="col-1 pt5 pl5">
                         <span>MRI数据传至Remebot机器人后,制定手术计划，自动注册,机器臂自动到位。</span>
@@ -99,10 +99,10 @@ $this->show_footer = false;
                 </div>
             </div>
             <div class="col-1 w50 pl10">
-                <img class="w100" src="<?php echo $urlResImage; ?>zhuanti/Five/4-01.png">
+                <img class="w100" src="http://static.mingyizhudao.com/146345328526166">
                 <div class="grid">
                     <div class="col-0 w15p pt3">
-                        <img src="<?php echo $urlResImage; ?>zhuanti/Five/04.png">
+                        <img src="http://static.mingyizhudao.com/146345341795766">
                     </div>
                     <div class="col-1 pt5 pl5">
                         <span>机器人自动到位指向靶点</span>
@@ -113,10 +113,10 @@ $this->show_footer = false;
         </div>
         <div class="pl15 pr15 grid line-h12 font-s12 pt3">
             <div class="col-1 w50 pr10">
-                <img class="w100" src="<?php echo $urlResImage; ?>zhuanti/Five/5-01.png">
+                <img class="w100" src="http://static.mingyizhudao.com/146345328508329">
                 <div class="grid">
                     <div class="col-0 w15p pt3">
-                        <img src="<?php echo $urlResImage; ?>zhuanti/Five/05.png">
+                        <img src="http://static.mingyizhudao.com/146345341789857">
                     </div>
                     <div class="col-1 pt5 pl5">
                         <span>射频针到位后行热凝损毁</span>
@@ -124,10 +124,10 @@ $this->show_footer = false;
                 </div>
             </div>
             <div class="col-1 w50 pl10">
-                <img class="w100" src="<?php echo $urlResImage; ?>zhuanti/Five/6-01.png">
+                <img class="w100" src="http://static.mingyizhudao.com/146345328541915">
                 <div class="grid">
                     <div class="col-0 w15p pt3">
-                        <img src="<?php echo $urlResImage; ?>zhuanti/Five/06.png">
+                        <img src="http://static.mingyizhudao.com/146345341806843">
                     </div>
                     <div class="col-1 pt5 pl5">
                         <span>术中CT</span>
@@ -168,7 +168,7 @@ $this->show_footer = false;
                 </div>
             </div>
             <div class="mt10">
-                <img class="w100" src="<?php echo $urlResImage; ?>zhuanti/Five/image_2.png">
+                <img class="w100" src="http://static.mingyizhudao.com/146345352188046">
             </div>
             <div class="mt20 text-indent-2">
                 Remebot机器人是目前世界上最先进的神经外科辅助定位系统， 将手术计划系统、导航功能及机器人辅助器械定位和操作系统（可提供触觉反馈即高级的可视化功能）整合于一体，并借以高精准度、低侵入性、大范围定位、简化操作，使手术入路不再受限制，大量节省术前、术中操作时间，将患者的创伤、手术风险和痛苦降至最低程度，开创了立体定位技术的里程碑。多应用于癫痫、帕金森等对精确度要求极高的手术，目前我国仅有数台，其中一台于2015年6月落户名医主刀签约医院北京市天坛普华医院。

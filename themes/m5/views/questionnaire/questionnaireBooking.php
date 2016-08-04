@@ -35,7 +35,7 @@ if ($sourceApp == 0) {
                 ?>
                 <a id="giveUp" href="">
                     <div class="pl5">
-                        <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                        <img src="http://static.mingyizhudao.com/146975795218858" class="w11p">
                     </div>
                 </a>
                 <?php
@@ -43,12 +43,12 @@ if ($sourceApp == 0) {
                 ?>
                 <a id="normalBack" href="" data-target="back">
                     <div class="pl5">
-                        <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                        <img src="http://static.mingyizhudao.com/146975795218858" class="w11p">
                     </div>
                 </a>
                 <a id="reFill" href="" class="hide">
                     <div class="pl5">
-                        <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                        <img src="http://static.mingyizhudao.com/146975795218858" class="w11p">
                     </div>
                 </a>
                 <?php

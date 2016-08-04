@@ -10,14 +10,14 @@ $this->show_footer = false;
         <nav class="left">
             <a href="" data-target="back">
                 <div class="pl5">
-                    <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                    <img src="http://static.mingyizhudao.com/146975795218858" class="w11p">
                 </div>
             </a>
         </nav>
         <div class="title">机器人微创手术</div>
         <nav class="right">
             <a onclick="javascript:location.reload()">
-                <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
+                <img src="http://static.mingyizhudao.com/146975853464574"  class="w24p">
             </a>
         </nav>
     </header>
@@ -25,7 +25,7 @@ $this->show_footer = false;
 <article id="zhuantiRobot_article" class="active" data-scroll="true">
     <div>
         <div>
-            <img src="<?php echo $urlResImage; ?>zhuanti/Robot/robotTitle.jpg" class="w100">
+            <img src="http://static.mingyizhudao.com/146976237105554" class="w100">
         </div>
         <div class="bb-blue mt30"></div>
         <div class="grid mt-12">
@@ -46,7 +46,7 @@ $this->show_footer = false;
                 Remebot作为我国18年自主研发的神经外科手术机器人，经历了15年的临床探索和6次产品迭代，先后治愈上万名患者，无论在技术还是应用层面，都处于行业领先地位。
             </div>
             <div class="mt10">
-                <img src="<?php echo $urlResImage; ?>zhuanti/Robot/robotImg.png" class="w100">
+                <img src="http://static.mingyizhudao.com/14697623963730" class="w100">
             </div>
             <div class="grid mt20">
                 <div class="col-0 bg-blue3 color-white pl10 pr10 font-w800">
@@ -67,7 +67,7 @@ $this->show_footer = false;
                 摄像头则像人的“双眼”，可实时捕捉机械臂和患者的位置信息，确保机械臂按手术规划路径运动到指定位置。
             </div>
             <div class="mt10">
-                <img src="<?php echo $urlResImage; ?>zhuanti/Robot/robotImg2.png" class="w100">
+                <img src="http://static.mingyizhudao.com/146976241538668" class="w100">
             </div>
             <div class="grid mt30">
                 <div class="col-0 bg-blue3 color-white pl10 pr10 font-w800">
@@ -112,7 +112,7 @@ $this->show_footer = false;
                 Remebot 医疗机器人的六大核心功能保障了手术的微创、精准、高效。机器人辅助的手术平均用时仅30分钟，定位精度达到1mm，患者创口小于2mm，住院观察2~3天即可出院。
             </div>
             <div class="mt10">
-                <img src="<?php echo $urlResImage; ?>zhuanti/Robot/dataTable.png" class="w100">
+                <img src="http://static.mingyizhudao.com/146976244003199" class="w100">
             </div>
             <div class="grid mt30">
                 <div class="col-0 bg-blue3 color-white pl10 pr10 font-w800">
@@ -122,7 +122,7 @@ $this->show_footer = false;
             </div>
             <div class="grid mt10">
                 <div class="col-1 w60 pr10">
-                    <img src="<?php echo $urlResImage; ?>zhuanti/Robot/stepOne.png" class="w100">
+                    <img src="http://static.mingyizhudao.com/146976246773984" class="w100">
                 </div>
                 <div class="col-1 w40 font-s12">
                     第一步，患者贴上Remebot专用标志点，进行CT/MRI医学影像扫描。<span class="color-blue6 font-w800">手术规划软件会自动合成患者颅部的三维模型和冠状图、矢状图</span>，辅助医生诊断并制定手术方案。
@@ -130,7 +130,7 @@ $this->show_footer = false;
             </div>
             <div class="grid mt10">
                 <div class="col-1 w60 pr10">
-                    <img src="<?php echo $urlResImage; ?>zhuanti/Robot/stepTwo.png" class="w100">
+                    <img src="http://static.mingyizhudao.com/146976249151468" class="w100">
                 </div>
                 <div class="col-1 w40 font-s12">
                     第二步，医生选择图像，勾勒出病灶的轮廓，<span class="color-blue6 font-w800">手术规划软件实时展示病灶形状、位置及大小。</span>
@@ -138,7 +138,7 @@ $this->show_footer = false;
             </div>
             <div class="grid mt20">
                 <div class="col-1 w60 pr10">
-                    <img src="<?php echo $urlResImage; ?>zhuanti/Robot/stepThree.png" class="w100">
+                    <img src="http://static.mingyizhudao.com/146976251847038" class="w100">
                 </div>
                 <div class="col-1 w40 font-s12">
                     第三步，医生观察病灶，确定穿刺靶点，<span class="color-blue6 font-w800">然后根据病灶周边的环境选择最佳的入颅角度</span>，完成手术规划。
@@ -146,7 +146,7 @@ $this->show_footer = false;
             </div>
             <div class="grid mt20">
                 <div class="col-1 w60 pr10">
-                    <img src="<?php echo $urlResImage; ?>zhuanti/Robot/stepFour.png" class="w100">
+                    <img src="http://static.mingyizhudao.com/146976253887483" class="w100">
                 </div>
                 <div class="col-1 w40 font-s12">
                     第四步，<span class="color-blue6 font-w800">手术注册是为了确定脑、眼、手三部分的位置关系</span>，并计算出机械臂的运动路径。其中，机器人注册是摄像头和机械臂建立关系，患者注册则是摄像头与患者建立关系。
@@ -154,7 +154,7 @@ $this->show_footer = false;
             </div>
             <div class="grid mt20">
                 <div class="col-1 w60 pr10">
-                    <img src="<?php echo $urlResImage; ?>zhuanti/Robot/stepFive.png" class="w100">
+                    <img src="http://static.mingyizhudao.com/146976256988426" class="w100">
                 </div>
                 <div class="col-1 w40 font-s12">
                     第五步，医生在软件上模拟走位，确认无误后机器人走位，标记入颅点。撤离机械臂，对患者进行术前消毒，<span class="color-blue6 font-w800">机器人二次走位锁定入颅点。</span>
@@ -162,7 +162,7 @@ $this->show_footer = false;
             </div>
             <div class="grid mt20">
                 <div class="col-1 w60 pr10">
-                    <img src="<?php echo $urlResImage; ?>zhuanti/Robot/stepSix.png" class="w100">
+                    <img src="http://static.mingyizhudao.com/146976259581278" class="w100">
                 </div>
                 <div class="col-1 w40 font-s12">
                     最后，<span class="color-blue6 font-w800">医生在机械臂末端安装作为手术操作平台的导向器</span>，用钻头在入颅点开1个2mm以内的小孔，换上适配的手术针，沿导向器将针推送至底部即为手术规划的路径和靶点位置。
@@ -181,7 +181,7 @@ $this->show_footer = false;
                 Remebot医疗机器人搭载多功能操作平台，<span class="color-blue6 font-w800">可进行活检、抽吸、毁损、移植、放疗等操作，适用于12类近百种神经外科疾病</span>。下表将其分为功能性和器质性颅脑疾患，涵盖脑出血、脑囊肿、帕金森病、癫痫、三叉神经痛等。
             </div>
             <div class="mt10">
-                <img src="<?php echo $urlResImage; ?>zhuanti/Robot/dataTable2.png" class="w100">
+                <img src="http://static.mingyizhudao.com/14697626246237" class="w100">
             </div>
             <div class="grid mt30">
                 <div class="col-0 bg-blue3 color-white pl10 pr10 font-w800">
@@ -193,7 +193,7 @@ $this->show_footer = false;
                 早在2005年，机器人辅助的无框架定位技术即获得国家认可，进入了北京市定点医保范围。这意味着患者将来不仅可以享受高端技术带来的便利，而且还能极大缓解手术带来的经济压力。
             </div>
             <div class="mt10">
-                <img src="<?php echo $urlResImage; ?>zhuanti/Robot/dataTable3.png" class="w100">
+                <img src="http://static.mingyizhudao.com/146976264496961" class="w100">
             </div>
         </div>
         <div class="bb-blue mt30"></div>
