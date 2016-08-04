@@ -5,6 +5,7 @@
  *
  * The followings are the available columns in table 'wechat_key_word':
  * @property integer $id
+ * @property string $weixinpub_id
  * @property string $key_word
  * @property string $msg_type
  * @property string $reply_content
@@ -30,13 +31,14 @@ class WechatKeyWord extends EActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('weixinpub_id', 'length', 'max'=>20),
 			array('key_word', 'length', 'max'=>100),
 			array('msg_type', 'length', 'max'=>50),
 			array('reply_content', 'length', 'max'=>1000),
 			array('date_created, date_updated, date_deleted', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, key_word, msg_type, reply_content, date_created, date_updated, date_deleted', 'safe', 'on'=>'search'),
+			array('id, weixinpub_id, key_word, msg_type, reply_content, date_created, date_updated, date_deleted', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -58,6 +60,7 @@ class WechatKeyWord extends EActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+			'weixinpub_id' => 'Weixinpub',
 			'key_word' => 'Key Word',
 			'msg_type' => 'Msg Type',
 			'reply_content' => 'Reply Content',
@@ -86,6 +89,7 @@ class WechatKeyWord extends EActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
+		$criteria->compare('weixinpub_id',$this->weixinpub_id,true);
 		$criteria->compare('key_word',$this->key_word,true);
 		$criteria->compare('msg_type',$this->msg_type,true);
 		$criteria->compare('reply_content',$this->reply_content,true);

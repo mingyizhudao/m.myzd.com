@@ -57,8 +57,9 @@ class WechatMessage {
         $rspContent = "感谢您的留言，我们会尽快与您联系。";//默认回复内容
         $reqContent = $object->Content;//请求文字内容
         $wechatKeyWord = WechatKeyWord::model()->getAll();
+        $weixinpub_id = Yii::app()->getModule('weixinpub')->weixinpubId;
         foreach ($wechatKeyWord as $v){
-            if($v['key_word'] == $reqContent && $v['msg_type'] == 'text'){
+            if($v['key_word'] == $reqContent && $v['weixinpub_id'] = $weixinpub_id && $v['msg_type'] == 'text'){
                 $rspContent = $v['reply_content'];//获取需要回复给用户的内容
                 break;
             }else{
