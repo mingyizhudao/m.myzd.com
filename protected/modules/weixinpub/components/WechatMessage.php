@@ -59,7 +59,7 @@ class WechatMessage {
         foreach ($wechatKeyWord as $v){
             $key_word = $v['key_word'];
             $msg_type = $v['msg_type'];
-            $reply_content = $v['reply_conten'];
+            $reply_content = $v['reply_content'];
             if($key_word == $reqContent && $msg_type == 'text'){
                 $rspContent = $reply_content;//获取需要回复给用户的内容
                 break;
