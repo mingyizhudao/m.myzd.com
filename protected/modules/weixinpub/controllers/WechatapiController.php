@@ -93,8 +93,8 @@ class WechatapiController extends WeixinpubController {
             default:
                 break;
         }
-        ob_clean();
-        header("Content-type: text/xml");
+        //ob_clean();
+        //header("Content-type: text/xml");
         echo $result;
         Yii::app()->end();
     }
