@@ -61,7 +61,8 @@ class WechatMessage {
             $msg_type = $v['msg_type'];
             $reply_content = $v['reply_content'];
             if($key_word == $reqContent && $msg_type == 'text'){
-                $rspContent = nl2br($reply_content);//获取需要回复给用户的内容
+                $rspContent = str_replace("\n", ""
+                        . "", $reply_content);//获取需要回复给用户的内容
                 break;
             }else{
                 continue;
@@ -82,7 +83,7 @@ class WechatMessage {
                    <Content><![CDATA[%s]]></Content>
                    </xml>";
         $result = sprintf($xmlTpl, $object->FromUserName, $object->ToUserName, time(), $content);
-        Yii::log("第一步" . $result);
+        Yii::log("回复内容" . $result);
         return $result;
     }  
     
