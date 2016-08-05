@@ -332,10 +332,10 @@ class BookingController extends MobileController {
                         $apiRequest = new ApiRequestUrl();
                         $remote_url = $apiRequest->getUrlAdminSalesBookingCreate() . '?type=' . StatCode::TRANS_TYPE_BK . '&id=' . $booking->id;
                         $data = $this->send_get($remote_url);
+                        $questionnaireArray='';
                         if ($data['status'] == "ok") {
                             //循环取memcache键(res.sessionId)值(问卷ID )插入订单图片表
                             foreach ($questionnaireList as $k => $v) {
-                                $questionnaireArray='';
                                 if ($k == 'picture') {
                                     foreach ($v as $k1 => $v1) {
                                         $bookingFile = new BookingFile();
@@ -359,9 +359,10 @@ class BookingController extends MobileController {
                                     //问卷填入user_id
                                     $questionnaire = Questionnaire::model()->getById($v);
                                     if (isset($questionnaire)) {
+                                        $questionnaireArray .= 'Q'.$k.':'.'</br>'.$questionnaire->answer_note.'</br>';
                                         $questionnaire->user_id = $booking->user_id;
                                         $questionnaire->save();
-                                        $questionnaireArray .= 'Q'.$k.':'.'</br>'.$questionnaire->answer_note.'</br>';
+                                       
                                     }
                                 }
                             }
@@ -370,7 +371,7 @@ class BookingController extends MobileController {
                             $output['status'] = 'ok';
                             $output['salesOrderRefNo'] = $data['salesOrderRefNo'];
                             $output['booking']['id'] = $booking->getId();
-                            AdminBooking::model()->updateAllByAttributes(array('disease_detail'=>$questionnaireArray,'date_updated'=>new CDbExpression("NOW()")), array('booking_id'=>$booking->getId()));
+                            AdminBooking::model()->updateAllByAttributes(array('disease_detail  '=>$questionnaireArray,'date_updated'=>new CDbExpression("NOW()")), array('booking_id'=>$booking->getId()));
                         } else {
                             $output['status'] = 'error';
                             throw new CException('error saving data.');
