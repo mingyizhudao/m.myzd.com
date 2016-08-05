@@ -39,8 +39,8 @@ class WechatjssdkController extends WeixinpubController {
             "signature" => $signature,
             "rawString" => $string
         );
-        
-        return $signPackage;
+        ob_clean();
+        echo $signPackage;
     }
     
 
