@@ -39,13 +39,13 @@ abstract class WebsiteController extends Controller {
         if (isset(Yii::app()->theme)) {
             Yii::app()->clientScript->scriptMap = array(
                 //'jquery.js' => Yii::app()->theme->baseUrl . '/js/jquery-1.8.3.min.js',            
-                'jquery.js' => 'http://myzd.oss-cn-hangzhou.aliyuncs.com/static/web/js/jquery-1.9.1.min.js',
-                'jquery.min.js' => 'http://myzd.oss-cn-hangzhou.aliyuncs.com/static/web/js/jquery-1.9.1.min.js',
-                'jquery.yiiactiveform.js' => 'http://myzd.oss-cn-hangzhou.aliyuncs.com/static/web/js/jquery.yiiactiveform.js',
+//                 'jquery.js' => 'http://myzd.oss-cn-hangzhou.aliyuncs.com/static/web/js/jquery-1.9.1.min.js',
+//                 'jquery.min.js' => 'http://myzd.oss-cn-hangzhou.aliyuncs.com/static/web/js/jquery-1.9.1.min.js',
+//                 'jquery.yiiactiveform.js' => 'http://myzd.oss-cn-hangzhou.aliyuncs.com/static/web/js/jquery.yiiactiveform.js',
             );
         }
 
-        Yii::app()->clientScript->registerCoreScript('jquery');
+//         Yii::app()->clientScript->registerCoreScript('jquery');
 
         // show header.
         if (isset($_GET['header']) && $_GET['header'] != 1) {
