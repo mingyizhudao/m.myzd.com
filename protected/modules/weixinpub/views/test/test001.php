@@ -7,6 +7,7 @@ $signPackage = $jssdk->GetSignPackage();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <title></title>
     <script>
         wx.config({
@@ -27,6 +28,4 @@ $signPackage = $jssdk->GetSignPackage();
 <body>
     <h2>just test</h2>
 </body>
-<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-
 </html>
