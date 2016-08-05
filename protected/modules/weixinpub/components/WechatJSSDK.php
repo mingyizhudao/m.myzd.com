@@ -1,49 +1,47 @@
 <?php
-
 /**
- * 微信JSSDK
+ * 微信JSSDK签名验证
  *
  * @author zhongtw
  */
-class WechatJSSDK {
+class WechatJSSDK extends WeixinpubController {
     
+    private $app_id;
     
-    public function getSignPackage(){
-         
-        $wechatConfig = new WechatConfig();
-        $weixinpub_id = $wechatConfig->getWeixinpubId();
-                
-        $wechatBaseInfo = new WechatBaseInfo();	
-        $wechatAccount = new WechatAccount();
+    private $jsapi_ticket;
+    
+    public function init() {
+
+        parent::init();
         
-        //根据weixinpub_id从数据库获取公众号的app_id
-        $result = $wechatAccount->getByPubId($weixinpub_id);
-        $app_id = $result['app_id'];
+        $this->loadWechatAccount();
+        $this->app_id = $this->wechatAccount->getAppId();    
         
-        //根据weixinpub_id从数据库获取access_token和jsapi_ticket
-	$result = $wechatBaseInfo->getByPubId(Yii::app()->getModule('weixinpub')->weixinpubId);
-        $jsapi_ticket = $result['jsapi_ticket'];
+        $this->loadWechatBaseInfo();
+        $this->jsapi_ticket = $this->wechatBaseInfo->getJsapiTicket();
         
-        $nonceStr = $wechatConfig->createNonceStr(16);
+    }
+    
+    public function GetSignPackage(){
+        $nonceStr = CommonConfig::createNonceStr(16);
         $timestamp = time();
         $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         
         // 这里参数的顺序要按照 key 值 ASCII 码升序排序
-        $string = "jsapi_ticket=$jsapi_ticket&noncestr=$nonceStr&timestamp=$timestamp&url=$url";
+        $string = "jsapi_ticket=$this->jsapi_ticket&noncestr=$nonceStr&timestamp=$timestamp&url=$url";
         $signature = sha1($string);
 
         $signPackage = array(
-            "appId"     => $app_id,
+            "appId"     => $this->app_id,
             "nonceStr"  => $nonceStr,
             "timestamp" => $timestamp,
             "url"       => $url,
             "signature" => $signature,
             "rawString" => $string
         );
-        
+        //ob_clean();
+        //var_dump($signPackage);
         return $signPackage;
-            
     }
-    
     
 }
