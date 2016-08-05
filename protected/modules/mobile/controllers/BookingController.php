@@ -359,7 +359,7 @@ class BookingController extends MobileController {
                                     //问卷填入user_id
                                     $questionnaire = Questionnaire::model()->getById($v);
                                     if (isset($questionnaire)) {
-                                        $questionnaireArray .= 'Q'.$k.':'.'</br>'.$questionnaire->answer_note.'</br>';
+                                        $questionnaireArray .= 'Q'.$k.':'.$questionnaire->answer_note.'</br>';
                                         $questionnaire->user_id = $booking->user_id;
                                         $questionnaire->save();
                                        
