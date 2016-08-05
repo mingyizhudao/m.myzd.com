@@ -49,8 +49,6 @@ class StatCode {
     const APP_NAME_MOBILEDOCTOR='md';   // 医生版
     const HAS_REMOTE = 1;
     const HASNOT_REMOTE = 0;
-    const QUESTIONNAIRE_PICTURE_EXISTENCE = "已上传图片";    // 图片存在为 1
-    const QUESTIONNAIRE_PICTURE_WITHOUT = "未上传图片"; // 图片不存在 0
 
     // gender.
 
