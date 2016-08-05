@@ -370,7 +370,7 @@ class BookingController extends MobileController {
                             $output['status'] = 'ok';
                             $output['salesOrderRefNo'] = $data['salesOrderRefNo'];
                             $output['booking']['id'] = $booking->getId();
-                            AdminBooking::model()->updateAllByAttributes(array('disease_name'=>$questionnaireArray,'date_updated'=>new CDbExpression("NOW()")), array('booking_id'=>$booking->getId()));
+                            AdminBooking::model()->updateAllByAttributes(array('disease_detail'=>$questionnaireArray,'date_updated'=>new CDbExpression("NOW()")), array('booking_id'=>$booking->getId()));
                         } else {
                             $output['status'] = 'error';
                             throw new CException('error saving data.');
