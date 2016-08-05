@@ -10,9 +10,9 @@ class WechatJSSDK {
         
         $weixinpubId = Yii::app()->getModule('weixinpub')->weixinpubId;
         $wechatAccount = new WechatAccount();
-        $app_id = $wechatAccount->getByPubId($weixinpubId);
+        $app_id = $wechatAccount->getByPubId($weixinpubId)->getAppId();
         $wechatBaseInfo = new WechatBaseInfo();
-        $jsapi_ticket = $wechatBaseInfo->getByPubId($weixinpubId);
+        $jsapi_ticket = $wechatBaseInfo->getByPubId($weixinpubId)->getJsapiTicket();
           
         $nonceStr = CommonConfig::createNonceStr(16);
         $timestamp = time();
