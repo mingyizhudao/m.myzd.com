@@ -2,12 +2,14 @@
 
 class WeixinpubController extends Controller {
     
-
+    
     public $weixinpubId;
     
     public $wechatAccount;
+    
+    public $wechatBaseInfo;
 
-
+    
     public function init() {
         parent::init();
         $this->weixinpubId = Yii::app()->getModule('weixinpub')->weixinpubId;
@@ -22,6 +24,16 @@ class WeixinpubController extends Controller {
             $this->wechatAccount = $wechatAccount->getByPubId($this->weixinpubId);
         }
     }
+    
+    /**
+     * 根据weixinpubId获取单个wechatBaseInfo
+     */
+    public function loadWechatBaseInfo(){
+        if(is_null($this->wechatBaseInfo)){
+            $wechatBaseInfo = new WechatBaseInfo();
+            $this->wechatBaseInfo = $wechatBaseInfo->getByPubId($this->weixinpubId);
+        }
+    }
+    
    
-
 }
