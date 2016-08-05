@@ -152,7 +152,11 @@ class ApiController extends Controller {
                 $query['city'] = isset($values['city']) ? $values['city'] : null;
                 $output['hospitals'] = $hospitalMgr->loadListHospital($query, array('order' => 't.name'));
                 break;
-
+            case "tophospital":
+                $values=$_GET;
+                $apiService = new ApiViewTopHospital($values);
+                $output = $apiService->loadApiViewData();
+                break;
             case 'doctor':
                 $values = $_GET;
                 if ($api >= 10){
