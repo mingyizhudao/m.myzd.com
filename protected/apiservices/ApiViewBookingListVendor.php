@@ -35,8 +35,13 @@ class ApiViewBookingListVendor extends EApiViewService {
 
     //加载booking的数据
     private function loadBookings() {
-        $models = Booking::model()->getAllByUserIdOrMobile($this->user->getId(), $this->user->getMobile(), null, array('order' => 'id DESC'),$this->bk_status,$this->vendorId);
-        $this->setBookings($models);
+        if($this->user){
+            $models = Booking::model()->getAllByUserIdOrMobile($this->user->getId(), $this->user->getMobile(), null, array('order' => 'id DESC'),$this->bk_status,$this->vendorId);
+            $this->setBookings($models);
+        }else{
+            $this->results->booking = array();
+        }
+
     }
 
     private function setBookings($models) {

@@ -24,31 +24,31 @@ class QuestionnaireController extends MobileController {
             $alive = 86400;
             $questionnaireList = Yii::app()->cache->get($key);
             if(is_array($questionnaireList)){
-                foreach ($questionnaireList as $k=>$v){
-                    if(is_array($v)){
-                        $questionnaire = new Questionnaire();
-                        $questionnaire->setAttributes(array('question_id'=>$k,'answer'=>null,'user_host_ip' => Yii::app()->request->userHostAddress), true);
-                        $questionnaire->save();
-                        $questionnaireId[$k] = $questionnaire->getId();
-                         foreach ($v as $k1=>$v1){
-                             $questionnaireFile = new QuestionnaireFile();
-                               $questionnaireFile->setAttributes(array(
-                                   'questionnaire_id'=>$questionnaireId[$k],
-                                   'file_name'=>$v1['file_name'],
-                                   'file_url'=>$v1['file_url'],
-                                   'file_size' => $v1['file_size'],
-                                   'mime_type' => $v1['mime_type'],
-                                   'file_ext'=> $v1['file_ext'],
-                                   'remote_domain'=>$v1['remote_domain'],
-                                   'remote_file_key'=>$v1['remote_file_key']), true);
-                               $questionnaireFile->save();
-                               $questionnaireId['picture'][$k1]= $questionnaireFile->getId();
-                         }
+                foreach ($questionnaireList as $k3=>$v3){
+                    if(isset($v3['picture'])){
+                            $questionnaire = new Questionnaire();
+                            $questionnaire->setAttributes(array('question_id'=>$k3,'answer'=>$v3['answer'],'answer_note'=>$v3['answer_note'] ,'user_host_ip' => Yii::app()->request->userHostAddress), true);
+                            $questionnaire->save();
+                            $questionnaireId[$k3] = $questionnaire->getId();
+                            foreach ($v3['picture'] as $k1=>$v1){
+                                $questionnaireFile = new QuestionnaireFile();
+                                $questionnaireFile->setAttributes(array(
+                                    'questionnaire_id'=>$questionnaireId[$k3],
+                                    'file_name'=>$v1['file_name'],
+                                    'file_url'=>$v1['file_url'],
+                                    'file_size' => $v1['file_size'],
+                                    'mime_type' => $v1['mime_type'],
+                                    'file_ext'=> $v1['file_ext'],
+                                    'remote_domain'=>$v1['remote_domain'],
+                                    'remote_file_key'=>$v1['remote_file_key']), true);
+                                $questionnaireFile->save();
+                                $questionnaireId['picture'][$k1]= $questionnaireFile->getId();
+                            }
                     }else{
-                        $questionnaire = new Questionnaire();
-                        $questionnaire->setAttributes(array('question_id'=>$k,'answer'=>$v,'user_host_ip' => Yii::app()->request->userHostAddress), true);
-                        $questionnaire->save();
-                        $questionnaireId[$k] = $questionnaire->getId();
+                             $questionnaire = new Questionnaire();
+                             $questionnaire->setAttributes(array('question_id'=>$k3,'answer'=>$v3['answer'],'answer_note'=>$v3['answer_note'] ,'user_host_ip' => Yii::app()->request->userHostAddress), true);
+                             $questionnaire->save();
+                             $questionnaireId[$k3] = $questionnaire->getId();
                     }
                 }
                 Yii::app()->cache->delete($key);
