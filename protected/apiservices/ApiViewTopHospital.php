@@ -41,7 +41,6 @@ class ApiViewTopHospital extends EApiViewService {
     }
     
     private function setTopHospitals(array $models) {
-//         print_r($models);exit;
         foreach ($models as $model) {
             $data = new stdClass();
             $data->id = $model->getId();
