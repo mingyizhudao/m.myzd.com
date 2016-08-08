@@ -62,7 +62,8 @@ class WechatMessage {
          * 因为时间很急，来不及从数据库读取，临时写进代码，后面优化
          */
         if($reqContent == "0" || $reqContent == "0元" || $reqContent == "0元面诊" ){
-            $result = $this->transmitImage($object, "ugMhvUD6Db5WH9vY4Yw4PZx_jgogVEYziqmybGewZ3IeV6YiX1iKUZmTPnS93xO4");
+            $result = $this->transmitImage($object, "ZTfuI8mc6tHntfOqhhuQ82jdYjuoeyKkGc1g6nEWmDt9INHRWvx7GtYA5QvAlS2o");
+            //$result = $this->transmitImage($object, "ugMhvUD6Db5WH9vY4Yw4PZx_jgogVEYziqmybGewZ3IeV6YiX1iKUZmTPnS93xO4");
             return $result;
         }
 
