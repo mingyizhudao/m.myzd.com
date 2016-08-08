@@ -56,6 +56,16 @@ class WechatMessage {
     public function receiveText($object) {
         $rspContent = "感谢您的留言，我们会尽快与您联系。";//默认回复内容
         $reqContent = $object->Content;//请求文字内容
+        
+        /**
+         * 回复图片消息临时代码
+         * 因为时间很急，来不及从数据库读取，临时写进代码，后面优化
+         */
+        if($reqContent == "0" || $reqContent == "0元" || $reqContent == "0元面诊" ){
+            $result = $this->transmitImage($object, "ugMhvUD6Db5WH9vY4Yw4PZx_jgogVEYziqmybGewZ3IeV6YiX1iKUZmTPnS93xO4");
+            return $result;
+        }
+
         $wechatKeyWord = WechatKeyWord::model()->getAll();
         $weixinpub_id = Yii::app()->getModule('weixinpub')->weixinpubId;
         //Yii::log("获取到的微信ID为：" . $weixinpub_id);
@@ -82,6 +92,23 @@ class WechatMessage {
                    <Content><![CDATA[%s]]></Content>
                    </xml>";
         $result = sprintf($xmlTpl, $object->FromUserName, $object->ToUserName, time(), $content);
+        //Yii::log("回复内容" . $result);
+        return $result;
+    }  
+    
+    //回复图片消息
+    public function transmitImage($object, $media_id) {
+        //Yii::log("第一步" . $content);
+        $xmlTpl = "<xml>
+                    <ToUserName><![CDATA[%s]]></ToUserName>
+                    <FromUserName><![CDATA[%s]]></FromUserName>
+                    <CreateTime>%s</CreateTime>
+                    <MsgType><![CDATA[image]]></MsgType>
+                    <Image>
+                    <MediaId><![CDATA[%s]]></MediaId>
+                    </Image>
+                   </xml>";
+        $result = sprintf($xmlTpl, $object->FromUserName, $object->ToUserName, time(), $media_id);
         //Yii::log("回复内容" . $result);
         return $result;
     }  
