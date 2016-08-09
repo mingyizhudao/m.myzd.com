@@ -19,6 +19,10 @@ class HospitalController extends MobileController {
     public function actionFacility() {
         $this->render('facility');
     }
+    
+    public function actionTopHospital() {
+        $this->render('topHospital');
+    }
 
     public function getHospitalList() {
         return array(1 => 'shrjyy', 2 => '', 3 => '', 4 => '', 5 => '', 6 => '', 7 => '', 8 => '', 9 => '', 10 => '');
