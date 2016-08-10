@@ -7,6 +7,8 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $urlDiseaseName = $this->createAbsoluteUrl('/api/diseasename', array('api' => 7, 'disease_name' => ''));
 $urlSearch = $this->createAbsoluteUrl('/api/search', array('name' => ''));
 $urlStat = $this->createAbsoluteUrl('/api/stat');
+//modify by wanglei   有结果进行统计
+$SITE_7  = PatientStatLog::SITE_7;
 $SITE_20 = PatientStatLog::SITE_20;
 $SITE_21 = PatientStatLog::SITE_21;
 $SITE_22 = PatientStatLog::SITE_22;
@@ -45,10 +47,11 @@ $this->show_footer = false;
     </div>
 </article>
 <script>
+    var firstpage=0;
     $(document).ready(function () {
         var disease_name = $("input[name='disease_name']").val();
         if (disease_name != '') {
-            ajaxPage();
+            ajaxPage(0);
         }
 
         document.addEventListener('input', function (e) {
@@ -60,7 +63,8 @@ $this->show_footer = false;
             } else if (disease_name.match(/[a-zA-Z]/g) != null) {
                 return;
             }
-            ajaxPage();
+            firstpage=0;
+            ajaxPage(1);
         });
 
         //点击取消时，记录搜索框中的词
@@ -78,12 +82,26 @@ $this->show_footer = false;
                 }
             });
         }
+        function searchdataStat(){
+            $.ajax({
+                type: 'post',
+                url: '<?php echo $urlStat; ?>',
+                data: {'stat[site]': '<?php echo $SITE_7; ?>', 'stat[key_word]':'搜索结果页展示'},
+                success: function (data) {
 
-        function ajaxPage() {
+                }
+            });
+        }
+        function ajaxPage(a) {
             $.ajax({
                 url: '<?php echo $urlSearch; ?>' + disease_name,
                 success: function (data) {
-                    //console.log(data);
+                    if(a==1){
+                        if(data.results && firstpage==0){
+                           searchdataStat();
+                           firstpage=1;
+                         }
+                    }
                     readyPage(data, disease_name);
                 }
             });
@@ -167,7 +185,9 @@ $this->show_footer = false;
             if (doctors == undefined && diseases == undefined && hospitals == undefined) {
                 innerHtml += '<div class="pl15 color-black6 pt5">对不起,暂没有搜索到"' + disease_name + '"的相关信息</div>';
             }
-
+            else{
+                
+           }
             innerHtml += '</div>';
             $('#search_article').html(innerHtml);
 
