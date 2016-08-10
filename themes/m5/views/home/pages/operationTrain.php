@@ -5,8 +5,8 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 //modify by wanglei 
 $urlStat = $this->createAbsoluteUrl('/api/stat');
-//点击预约按钮
-$SITE_9 = PatientStatLog::SITE_9;
+//点击快速预约按钮
+$SITE_4 = PatientStatLog::SITE_4;
 ?>
 <header class="bg-green">
     <nav class="left">
@@ -60,7 +60,7 @@ $SITE_9 = PatientStatLog::SITE_9;
               $.ajax({
                 type: 'post',
                 url: '<?php echo $urlStat; ?>',
-                data: {'stat[site]': '<?php echo $SITE_9; ?>', 'stat[key_word]': keyword},
+                data: {'stat[site]': '<?php echo $SITE_4; ?>', 'stat[key_word]': keyword},
                 success: function (data) {
 
                 }
