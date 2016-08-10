@@ -5,10 +5,13 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/c
 <?php
 $source = Yii::app()->request->getQuery('source', 0);
 $sourceApp = Yii::app()->request->getQuery('app', 0);
+$pagetitlenow="";
 if ($source == 0) {
     $this->setPageTitle('预约单信息');
+    $pagetitlenow = "预约单信息";
 } else {
     $this->setPageTitle('填写专家信息');
+    $pagetitlenow = "填写专家信息";
 }
 $booking = $this->createUrl('home/page', array('view' => 'booking'));
 $urlBooking = $this->createUrl('booking/ajaxQuestionnaireCreate');
@@ -24,6 +27,10 @@ $urlAgain = $this->createUrl('questionnaire/view');
 $urlApplogstat = $this->createUrl('/api/applogstat');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
+//modify by wanglei 
+$urlStat = $this->createAbsoluteUrl('/api/stat');
+//成功到达预约单页面
+$SITE_8 = PatientStatLog::SITE_8;
 ?>
 <?php
 if ($sourceApp == 0) {
@@ -212,7 +219,17 @@ if ($sourceApp == 0) {
 
             }
         });
+        function bookStat(keyword){
+              $.ajax({
+                type: 'post',
+                url: '<?php echo $urlStat; ?>',
+                data: {'stat[site]': '<?php echo $SITE_8; ?>', 'stat[key_word]':keyword},
+                success: function (data) {
 
+                }
+            });
+         }
+         bookStat('<?php echo $pagetitlenow?>');
         //返回
         $('#giveUp').click(function (e) {
             e.preventDefault();
