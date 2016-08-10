@@ -3,6 +3,10 @@ $this->setPageTitle('科室详情');
 $urlBookCreate = $this->createUrl("booking/create", array('hp_dept_id' => ''));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
+//modify by wanglei 
+$urlStat = $this->createAbsoluteUrl('/api/stat');
+//点击预约按钮
+$SITE_9 = PatientStatLog::SITE_9;
 ?>
 <header class="bg-green">
     <nav class="left">
@@ -153,7 +157,16 @@ $this->show_footer = false;
             $('#hideStep').removeClass('hide');
             $('#step').removeClass('hide');
         });
-        
+         function bookStat(keyword){
+              $.ajax({
+                type: 'post',
+                url: '<?php echo $urlStat; ?>',
+                data: {'stat[site]': '<?php echo $SITE_9; ?>', 'stat[key_word]': keyword},
+                success: function (data) {
+
+                }
+            });
+         }
         $('#hideStep').click(function(){
             $(this).addClass('hide');
             $('#showStep').removeClass('hide');
@@ -162,6 +175,8 @@ $this->show_footer = false;
 
         $('#btnSubmit').tap(function () {
             var deptId = $('#deptInf').attr('data-dept');
+            var name="科室详情";
+             bookStat(name);
             location.href = '<?php echo $urlBookCreate; ?>/' + deptId;
         });
     });
