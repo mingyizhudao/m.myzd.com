@@ -31,6 +31,10 @@ $urlReturn = $this->createUrl('order/view');
 $urlAgreement = $this->createUrl('user/index', array('page' => 'aboutAgreement'));
 $urlQiniuAjaxToken = $this->createUrl('qiniu/ajaxBookingToken');
 $this->show_footer = false;
+//modify by wanglei 
+$urlStat = $this->createAbsoluteUrl('/api/stat');
+//成功到达预约单页面
+$SITE_8 = PatientStatLog::SITE_8;
 ?>
 <header class="bg-green">
     <nav class="left">
@@ -149,6 +153,16 @@ $this->show_footer = false;
 </div>
 <div id="jingle_toast" class="mobileTip toast"><a href="#">网络异常，请稍后上传</a></div>
 <script>
+     function bookStat(keyword){
+              $.ajax({
+                type: 'post',
+                url: '<?php echo $urlStat; ?>',
+                data: {'stat[site]': '<?php echo $SITE_8; ?>', 'stat[key_word]':keyword},
+                success: function (data) {
+
+                }
+            });
+     }
     $(document).ready(function () {
         $('input[type="checkbox"]').click(function () {
             if ($(this).hasClass('active')) {
@@ -159,5 +173,6 @@ $this->show_footer = false;
                 $('#btnSubmit').removeAttr('disabled');
             }
         });
+        bookStat('预约科室');
     });
 </script>
