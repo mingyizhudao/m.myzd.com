@@ -161,7 +161,7 @@ $SITE_14 = PatientStatLog::SITE_14;
             success: function (data) {
                 //console.log(data);
                 if (data.status == 'ok') {
-                    payStat('支付成功','<?php echo $SITE_14 ?>');
+                   // payStat('支付成功','<?php echo $SITE_14 ?>');
                     location.href = '<?php echo $patientBookingList; ?>';
                 } else {
                     console.log(data);

@@ -3,6 +3,10 @@ $this->setPageTitle('支付成功');
 $bookingDetails = $this->createUrl('booking/bookingDetails');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
+//modify by wanglei 
+$urlStat = $this->createAbsoluteUrl('/api/stat');
+//点击支付按钮
+$SITE_14 = PatientStatLog::SITE_14;
 ?>
 <style>
     #success_article{
@@ -54,3 +58,18 @@ $this->show_footer = false;
         </div>
     </div>
 </article>
+<script type="text/javascript">
+    $(document).ready(function () {
+        function payStat(keyword,number){
+              $.ajax({
+                type: 'post',
+                url: '<?php echo $urlStat; ?>',
+                data: {'stat[site]': number, 'stat[key_word]': keyword},
+                success: function (data) {
+
+                }
+            });
+         }
+          payStat('支付成功','<?php echo $SITE_14 ?>');
+    });
+</script>
