@@ -59,7 +59,7 @@ class WechatMessage {
         $result = $this->transmitText($object, $rspContent);
         
         $weixinpub_id = Yii::app()->getModule('weixinpub')->weixinpubId;
-        $wechatKeyWord = WechatKeyWord::model()->getByAttributes(array('weixinpub_id'=>$weixinpub_id));
+        $wechatKeyWord = WechatKeyWord::model()->getAllByAttributes(array('weixinpub_id'=>$weixinpub_id));
         
         $reqContent = $object->Content;//请求文字内容
         foreach ($wechatKeyWord as $v){
