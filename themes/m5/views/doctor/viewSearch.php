@@ -50,7 +50,6 @@ $this->show_footer = false;
     var firstpage=0;
     $(document).ready(function () {
         var disease_name = $("input[name='disease_name']").val();
-        
         if (disease_name != '') {
             ajaxPage(0);
         }
@@ -64,7 +63,7 @@ $this->show_footer = false;
             } else if (disease_name.match(/[a-zA-Z]/g) != null) {
                 return;
             }
-            firstpage=0;
+           
             ajaxPage(1);
         });
 

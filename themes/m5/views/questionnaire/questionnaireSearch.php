@@ -12,6 +12,10 @@ if ($sourceApp == 0) {
 $urlSearch = $this->createAbsoluteUrl('/api/search', array('name' => ''));
 $urlApplogstat = $this->createUrl('/api/applogstat');
 $this->show_footer = false;
+$urlStat = $this->createAbsoluteUrl('/api/stat');
+//modify by wanglei   有结果进行统计
+$SITE_7  = PatientStatLog::SITE_7;
+
 ?>
 <style>
     .right10p{right:10px!important;}
@@ -55,7 +59,7 @@ $this->show_footer = false;
 
             }
         });
-
+        var firstpage=0;
         var searchValue = $("input").val();
         if (searchValue != '') {
             ajaxPage(searchValue);
@@ -76,13 +80,28 @@ $this->show_footer = false;
                 $('.icon_clear').removeClass('hide');
             } else {
                 $('.icon_clear').removeClass('hide');
+                firstpage=0;
                 ajaxPage(searchValue);
             }
         });
+         function searchdataStat(){
+            $.ajax({
+                type: 'post',
+                url: '<?php echo $urlStat; ?>',
+                data: {'stat[site]': '<?php echo $SITE_7; ?>', 'stat[key_word]':'搜索结果页展示'},
+                success: function (data) {
+
+                }
+            });
+        }
         function ajaxPage(searchValue) {
             $.ajax({
                 url: '<?php echo $urlSearch; ?>' + searchValue,
                 success: function (data) {
+                    if(data.results && firstpage==0){
+                        searchdataStat();
+                        firstpage=1;
+                    }
                     readyPage(data, searchValue);
                 }
             });
