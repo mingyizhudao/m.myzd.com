@@ -1,11 +1,11 @@
 <?php
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/jquery.formvalidate.min.js', CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/questionnaireBooking.min.js', CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/jquery.formvalidate.min.1.0.js', CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/questionnaireBooking.min.1.1.js', CClientScript::POS_END);
 ?>
 <?php
 $source = Yii::app()->request->getQuery('source', 0);
 $sourceApp = Yii::app()->request->getQuery('app', 0);
-$pagetitlenow="";
+$pagetitlenow = "";
 if ($source == 0) {
     $this->setPageTitle('预约单信息');
     $pagetitlenow = "预约单信息页面";
@@ -220,19 +220,19 @@ if ($sourceApp == 0) {
 
             }
         });
-        function bookStat(keyword){
-              $.ajax({
+        function bookStat(keyword) {
+            $.ajax({
                 type: 'post',
                 url: '<?php echo $urlStat; ?>',
-                data: {'stat[site]': '<?php echo $SITE_8; ?>', 'stat[key_word]':keyword},
+                data: {'stat[site]': '<?php echo $SITE_8; ?>', 'stat[key_word]': keyword},
                 success: function (data) {
 
                 }
             });
-         }
-         bookStat('<?php echo $pagetitlenow?>');
-         
-     
+        }
+        bookStat('<?php echo $pagetitlenow ?>');
+
+
         //返回
         $('#giveUp').click(function (e) {
             e.preventDefault();
