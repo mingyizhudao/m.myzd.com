@@ -18,6 +18,8 @@ if ($showApp == 1) {
     $urlEventTick = $this->createUrl('event/view', array('page' => 'tick'));
     $urlEventLife = $this->createUrl('event/view', array('page' => 'life'));
     $urlEventTumour = $this->createUrl('event/view', array('page' => 'tumour'));
+    $urlEventOperation = $this->createUrl('event/view', array('page' => 'operation'));
+    $urlEventRepeatCustomers = $this->createUrl('event/view', array('page' => 'repeatCustomers'));
     $urlEventZhuantiOne = $this->createUrl('event/view', array('page' => 'zhuantiOne'));
     $urlEventZhuantiTwo = $this->createUrl('event/view', array('page' => 'zhuantiTwo'));
     $urlEventZhuantiThree = $this->createUrl('event/view', array('page' => 'zhuantiThree'));
@@ -45,6 +47,8 @@ if ($showApp == 1) {
     $urlEventTick = $this->createUrl('event/view', array('page' => 'tick', 'header' => '0'));
     $urlEventLife = $this->createUrl('event/view', array('page' => 'life', 'header' => '0'));
     $urlEventTumour = $this->createUrl('event/view', array('page' => 'tumour', 'header' => '0'));
+    $urlEventOperation = $this->createUrl('event/view', array('page' => 'operation', 'header' => '0'));
+    $urlEventRepeatCustomers = $this->createUrl('event/view', array('page' => 'repeatCustomers', 'header' => '0'));
     $urlEventZhuantiOne = $this->createUrl('event/view', array('page' => 'zhuantiOne', 'header' => '0'));
     $urlEventZhuantiTwo = $this->createUrl('event/view', array('page' => 'zhuantiTwo', 'header' => '0'));
     $urlEventZhuantiThree = $this->createUrl('event/view', array('page' => 'zhuantiThree', 'header' => '0'));
@@ -161,6 +165,30 @@ if ($showPage == 0) {
 </article>
 <article id="story_article" class="<?php echo $showStory; ?>" data-scroll="true" data-active="find_footer">
     <div class="text-justify">
+        <div class="mt10 bg-white">
+            <a href="<?php echo $urlEventRepeatCustomers; ?>">
+                <div class="grid color-black10">
+                    <div class="col-1 w40">
+                        <img src="http://static.mingyizhudao.com/147090011817137">
+                    </div>
+                    <div class="col-1 w60 font-s17 vertical-center pl20 pr20">
+                        手术还有“回头客”
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="mt10 bg-white">
+            <a href="<?php echo $urlEventOperation; ?>">
+                <div class="grid color-black10">
+                    <div class="col-1 w40">
+                        <img src="http://static.mingyizhudao.com/147064363369322">
+                    </div>
+                    <div class="col-1 w60 font-s17 vertical-center pl20 pr20">
+                        小政政做手术准备当男孩
+                    </div>
+                </div>
+            </a>
+        </div>
         <div class="mt10 bg-white">
             <a href="<?php echo $urlEventLife; ?>">
                 <div class="grid color-black10">
