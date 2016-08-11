@@ -24,6 +24,7 @@ $urlDeptName = $this->createAbsoluteUrl('/api/subcategory');
 $urlCityName = $this->createAbsoluteUrl('/api/city');
 $this->show_footer = false;
 ?>
+
 <header id="findDept_header" class="bg-green">
     <nav class="left">
         <a href="<?php echo $urlHomeView; ?>">

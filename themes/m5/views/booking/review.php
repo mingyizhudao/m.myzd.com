@@ -14,6 +14,7 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 $orderInfo = $data->results->orderInfo;
 ?>
+
 <header class="bg-green">
     <nav class="left">
         <a href="" data-target="back">

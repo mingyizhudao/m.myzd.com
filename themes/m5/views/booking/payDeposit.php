@@ -19,6 +19,7 @@ $this->show_footer = false;
 $results = $data->results;
 $orderInfo = $results->orderInfo;
 ?>
+
 <style>
     .popup-title{color: #333333;}
 </style>

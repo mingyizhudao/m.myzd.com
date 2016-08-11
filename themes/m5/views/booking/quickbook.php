@@ -26,6 +26,7 @@ $urlStat = $this->createAbsoluteUrl('/api/stat');
 $SITE_8 = PatientStatLog::SITE_8;
 $SITE_9 = PatientStatLog::SITE_9;
 ?>
+
 <style>
     .btn {display: inline-block;padding: 6px 12px;margin-bottom: 0;font-size: 14px;font-weight: 400;line-height: 1.42857143;text-align: center;white-space: nowrap;vertical-align: middle;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;background-image: none;border: 1px solid transparent;border-radius: 4px;}
 </style>

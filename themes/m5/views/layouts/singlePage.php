@@ -17,6 +17,7 @@
         Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/statistics.1.0.js', CClientScript::POS_END);
         ?>
     </head>
+    
     <body>
         <div id="section_container">
             <section class="active" data-init="true">

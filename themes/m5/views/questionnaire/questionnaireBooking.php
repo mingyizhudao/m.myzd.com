@@ -33,6 +33,7 @@ $urlStat = $this->createAbsoluteUrl('/api/stat');
 $SITE_8 = PatientStatLog::SITE_8;
 $SITE_9 = PatientStatLog::SITE_9;
 ?>
+
 <?php
 if ($sourceApp == 0) {
     ?>

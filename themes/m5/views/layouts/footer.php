@@ -9,6 +9,7 @@ $urlEventIndex = $this->createUrl('event/index');
 $urlUserView = $this->createUrl('user/view');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 ?>
+
 <footer>
     <ul class="control-group w100">
         <li class="w25" data-active="home_footer">

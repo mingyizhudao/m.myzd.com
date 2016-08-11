@@ -15,7 +15,6 @@ $this->show_footer = false;
 $urlStat = $this->createAbsoluteUrl('/api/stat');
 //modify by wanglei   有结果进行统计
 $SITE_7  = PatientStatLog::SITE_7;
-
 ?>
 <style>
     .right10p{right:10px!important;}

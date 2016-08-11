@@ -15,6 +15,7 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $city = Yii::app()->request->getQuery('city', '');
 $page = Yii::app()->request->getQuery('page', '');
 ?>
+
 <header id="hospital_header" class="bg-green">
     <nav id="selectCity" class="left">
         <div class="grid mt17">

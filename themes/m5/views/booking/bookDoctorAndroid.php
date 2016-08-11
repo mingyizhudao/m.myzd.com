@@ -39,6 +39,7 @@ $urlStat = $this->createAbsoluteUrl('/api/stat');
 $SITE_8 = PatientStatLog::SITE_8;
 $SITE_9 = PatientStatLog::SITE_9;
 ?>
+
 <header class="bg-green">
     <nav class="left">
         <a href="" data-target="back">

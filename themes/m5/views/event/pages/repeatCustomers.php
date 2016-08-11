@@ -3,6 +3,7 @@ $this->setPageTitle('手术还有“回头客”？');
 $showHeader = Yii::app()->request->getQuery('header', 1);
 $this->show_footer = false;
 ?>
+
 <?php if ($showHeader == 1) { ?>
     <header class="bg-green">
         <nav class="left">

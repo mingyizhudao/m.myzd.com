@@ -6,6 +6,7 @@ $urlUserIndex = $this->createUrl('user/index', array('pages' => ''));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
+
 <?php if ($showHeader == 1) {
     ?>
     <header class="bg-green">

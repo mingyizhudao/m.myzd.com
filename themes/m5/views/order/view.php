@@ -27,6 +27,7 @@ $SITE_13 = PatientStatLog::SITE_13;
 //点击支付按钮
 $SITE_14 = PatientStatLog::SITE_14;
 ?>
+
 <div id="section_container" <?php echo $this->createPageAttributes(); ?>>
     <section id="order_section" class="active" data-init="true">
         <?php if ($isApp == 1) { ?>

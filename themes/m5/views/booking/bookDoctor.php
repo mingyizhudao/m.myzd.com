@@ -27,6 +27,7 @@ $urlStat = $this->createAbsoluteUrl('/api/stat');
 //成功到达预约单页面
 $SITE_8 = PatientStatLog::SITE_8;
 ?>
+
 <header class="bg-green">
     <nav class="left">
         <a href="" data-target="back">

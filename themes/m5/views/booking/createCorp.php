@@ -20,6 +20,7 @@ $urlReturn = $this->createUrl('home/view');
 $urlAgreement = $this->createUrl('user/index', array('page' => 'aboutAgreement'));
 $this->show_footer = false;
 ?>
+
 <header class="bg-green">
     <h1 class="title"><?php echo $this->pageTitle; ?></h1>
 </header>

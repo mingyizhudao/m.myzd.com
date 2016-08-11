@@ -5,6 +5,7 @@
         <span class="pull-right tel"><span class="phone-img"></span>400-6277-120</span>
     </div>
 </div>
+
 <script>
     $(document).ready(function () {
         var userAgent = getUrlVars()['agent'];

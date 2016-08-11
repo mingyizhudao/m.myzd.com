@@ -22,7 +22,6 @@ Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/b
  * $data.
  */
 $this->setPageTitle('预约科室');
-
 $urlApiAppNav1 = $this->createAbsoluteUrl('/api/list', array('model' => 'appnav1'));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $urlSubmitForm = $this->createUrl("booking/ajaxCreate");

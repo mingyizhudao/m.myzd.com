@@ -11,8 +11,6 @@ $bookingComment = $data->results->bookingComment;
 $results = $data->results;
 $orderInfo = $results->orderInfo;
 ?>
-<style>
-</style>
 <header class="bg-green">
     <nav class="left">
         <a href="" data-target="back">

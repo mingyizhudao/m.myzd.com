@@ -3,6 +3,7 @@ $this->setPageTitle('小政政做手术准备当男孩');
 $showHeader = Yii::app()->request->getQuery('header', 1);
 $this->show_footer = false;
 ?>
+
 <?php if ($showHeader == 1) { ?>
     <header class="bg-green">
         <nav class="left">

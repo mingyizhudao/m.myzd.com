@@ -8,6 +8,7 @@ $urlStat = $this->createAbsoluteUrl('/api/stat');
 //点击预约按钮
 $SITE_9 = PatientStatLog::SITE_9;
 ?>
+
 <header class="bg-green">
     <nav class="left">
         <a href="" data-target="back">

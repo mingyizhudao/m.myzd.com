@@ -12,6 +12,7 @@ if ($source == 0) {
 }
 $this->show_footer = false;
 ?>
+
 <?php
 if ($source == 0) {
     ?>

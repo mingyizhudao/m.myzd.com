@@ -16,6 +16,7 @@ $urlSearch = $this->createAbsoluteUrl('/api/search', array('name' => ''));
 $urlResImage = Yii::app()->theme->baseUrl . '/images/';
 $this->show_footer = false;
 ?>
+
 <header id="searchMore_header" class="bg-white">
     <div class="grid w100">
         <div class="col-0">

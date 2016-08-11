@@ -8,6 +8,7 @@ $urlDepartmentView = $this->createUrl('department/view', array('id' => ''));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
+
 <header id="hospitalView_header" class="bg-green">
     <nav class="left">
         <a href="" data-target="back">

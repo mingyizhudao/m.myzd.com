@@ -35,6 +35,7 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 $user = $this->getCurrentUser();
 ?>
+
 <header class="bg-green">
     <?php if ($urlBackBtn == 1) {
         ?>

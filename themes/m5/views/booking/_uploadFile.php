@@ -6,6 +6,7 @@ Yii::app()->clientScript->registerCssFile('http://static.mingyizhudao.com/m/webu
 //Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/jquery.validate.js', CClientScript::POS_END);
 Yii::app()->clientScript->registerScriptFile('http://myzd.oss-cn-hangzhou.aliyuncs.com/static/mobile/js/webuploader/js/webuploader.min.js', CClientScript::POS_END);
 ?>
+
 <style>
     .ui-field-contain a.ui-link{position: absolute;margin: 20px 0 0 141px;z-index: 99;font-size: 16px;}
     #tipPage-popup.ui-popup-container{max-width: 375px;width: 100%;bottom:16em!important;top:auto!important;}

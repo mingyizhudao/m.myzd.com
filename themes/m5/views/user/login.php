@@ -22,6 +22,7 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $returnUrl = $returnUrl;
 $this->show_footer = false;
 ?>
+
 <header class="bg-green">
     <nav class="left">
         <a href="<?php echo $urlHomeView; ?>">

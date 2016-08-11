@@ -7,6 +7,7 @@ $urlLeaderboard = $this->createAbsoluteUrl('/api/tophospital');
 $urlHospitalDetail = $this->createUrl('hospital/view', array('id' => ''));
 $this->show_footer = false;
 ?>
+
 <header class="bg-green">
     <nav class="left">
         <a href="" data-target="back">

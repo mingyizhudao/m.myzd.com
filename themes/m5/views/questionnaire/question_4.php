@@ -19,6 +19,7 @@ if ($source == 0) {
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
+
 <style>
     #jingle_popup {
         background-color: #ffffff;

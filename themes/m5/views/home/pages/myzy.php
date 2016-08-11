@@ -4,6 +4,7 @@ $showApp = Yii::app()->request->getQuery('app', 1);
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
+
 <?php if ($showApp == 1) {
     ?>
     <header class="bg-green">

@@ -77,6 +77,7 @@ if ($showPage == 0) {
     $showStory = 'active';
 }
 ?>
+
 <?php if ($showHeader == 1) { ?>
     <header class="bg-green text-center">
         <ul class="control-group">

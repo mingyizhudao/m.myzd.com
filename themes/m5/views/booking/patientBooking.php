@@ -25,6 +25,7 @@ $user = $this->loadUser();
 $urlBookingFiles = 'http://file.mingyizhudao.com/api/loadbookingmr?userId=' . $user->id . '&bookingId=' . $results->id;
 $this->show_footer = false;
 ?>
+
 <header id="patientBooking_header" class="bg-green" >
     <nav class="left">
         <a href="" data-target="back">

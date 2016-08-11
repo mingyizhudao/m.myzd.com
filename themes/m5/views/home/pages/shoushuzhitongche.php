@@ -5,6 +5,7 @@ $showExpTeamBtn = Yii::app()->request->getQuery("showBtn", 1);
 $isShowHeader = Yii::app()->request->getQuery('header', 0);
 $this->show_footer = false;
 ?>
+
 <div id="section_container">
     <section class="active">
         <?php if ($isShowHeader == 1) { ?>

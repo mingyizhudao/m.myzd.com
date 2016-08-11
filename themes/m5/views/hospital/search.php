@@ -20,6 +20,7 @@ $urlHospital = $this->createAbsoluteUrl('/api/hospital', array('api' => 7));
 $urlDiseaseName = $this->createAbsoluteUrl('/api/diseasename', array('api' => 7, 'disease_name' => ''));
 $this->show_footer = false;
 ?>
+
 <header id="searchDept_header" class="bg-green">
     <nav class="left">
         <a href="<?php echo $urlHomeView; ?>">

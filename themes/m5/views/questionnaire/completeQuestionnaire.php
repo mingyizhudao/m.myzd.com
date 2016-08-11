@@ -7,6 +7,7 @@ $urlStat = $this->createAbsoluteUrl('/api/stat');
 //成功到达预约单页面
 $SITE_10 = PatientStatLog::SITE_10;
 ?>
+
 <?php
 if ($source == 0) {
     ?>

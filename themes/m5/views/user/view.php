@@ -14,6 +14,7 @@ $urlPatientBookingList = $this->createUrl('booking/patientBookingList');
 $urlUserCommonProblem = $this->createUrl('user/commonProblem');
 $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
 ?>
+
 <article id="user_article" data-active="user_footer" class="active"  data-scroll="true">
     <div>
         <div class="bg-green">

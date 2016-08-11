@@ -6,6 +6,7 @@
         <meta charset="utf-8" />
         <link rel="shortcut icon" type="image/ico" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/icons/favicon.ico" />
         <?php
+        
         Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.custom.css');
         Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . "/css/mobile.css" . "?v=" . time());
         Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/jquery-1.9.1.min.js', CClientScript::POS_HEAD);

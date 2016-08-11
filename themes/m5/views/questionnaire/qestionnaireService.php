@@ -4,6 +4,7 @@ $source = Yii::app()->request->getQuery('app', 0);
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
+
 <?php
 if ($source == 0) {
     ?>

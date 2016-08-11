@@ -9,7 +9,6 @@ $urlRegister = $this->createUrl("user/register");
 $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/auth/sendSmsVerifyCode');
 $authActionType = AuthSmsVerify::ACTION_DEFAULT;
 $urlResImage = Yii::app()->theme->baseUrl . "/images";
-
 $this->show_footer = false;
 ?>
 <div id="section_container">

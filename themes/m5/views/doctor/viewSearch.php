@@ -18,6 +18,7 @@ $urlHospitalView = $this->createAbsoluteUrl('hospital/view', array('id' => ''));
 $urlSearchMore = $this->createUrl('doctor/viewSearchMore');
 $this->show_footer = false;
 ?>
+
 <style>
     #jingle_toast{top:30%;}
     #search_article{

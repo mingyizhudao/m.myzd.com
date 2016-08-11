@@ -8,6 +8,7 @@ $urlStat = $this->createAbsoluteUrl('/api/stat');
 //点击支付按钮
 $SITE_14 = PatientStatLog::SITE_14;
 ?>
+
 <style>
     #success_article{
         background-color: #F1F1F1;

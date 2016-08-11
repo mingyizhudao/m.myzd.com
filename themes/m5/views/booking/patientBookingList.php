@@ -11,6 +11,7 @@ $this->show_footer = false;
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $urlUserView = $this->createUrl('user/view');
 ?>
+
 <header id="orderList_header" class="bg-green" >
     <nav class="left">
         <a href="<?php echo $urlUserView; ?>">

@@ -19,6 +19,7 @@ if ($showHeader == 0) {
     $articleTop = 'top30p';
 }
 ?>
+
 <style>
     .top0p{top: 0px!important;}
     .top30p{top: 30px!important;}

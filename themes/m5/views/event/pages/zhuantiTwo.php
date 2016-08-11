@@ -5,6 +5,7 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('id' => ''));
 $this->show_footer = false;
 ?>
+
 <?php if ($showHeader == 1) { ?>
     <header class="bg-green">
         <nav class="left">

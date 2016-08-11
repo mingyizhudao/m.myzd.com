@@ -42,6 +42,7 @@ if ($sourceApp == 0) {
 $urlApplogstat = $this->createUrl('/api/applogstat');
 $this->show_footer = false;
 ?>
+
 <style>
     .top0p{top:0px;}
 </style>
