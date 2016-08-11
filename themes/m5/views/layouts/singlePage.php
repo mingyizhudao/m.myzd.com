@@ -9,24 +9,13 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
         <meta name="format-detection" content="telephone=no"/>
         <?php
-//        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/Jingle.min.css?ts=' . time());
-//        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/app.css');
-//        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/mymain.css?ts=' . time());
-//        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/mobile.css?ts=' . time());
-        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/base.min.css?ts=' . time());
-        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/custom.min.css?ts=' . time());
-
-        //Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/lib/Jingle.custom.js?ts=' . time(), CClientScript::POS_END);
-
-        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/lib/zepto.min.js', CClientScript::POS_HEAD);
-        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/base.min.js?ts=' . time(), CClientScript::POS_END);
-        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/main.min.js?ts=' . time(), CClientScript::POS_END);
-		Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/statistics.js?ts=' . time(), CClientScript::POS_END);
+        Yii::app()->clientScript->registerCssFile('http://static.mingyizhudao.com/m/base.min.1.0.css');
+        Yii::app()->clientScript->registerCssFile('http://static.mingyizhudao.com/m/custom.min.1.1.css');
+        Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/zepto.min.1.0.js', CClientScript::POS_HEAD);
+        Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/base.min.1.0.js', CClientScript::POS_END);
+        Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/main.min.1.0.js', CClientScript::POS_END);
+        Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/statistics.1.0.js', CClientScript::POS_END);
         ?>
-        <!--        <script type="text/javascript" src="<?php //echo Yii::app()->theme->baseUrl    ?>/js/lib/zepto.min.js"></script>
-        <script type="text/javascript" src="<?php //echo Yii::app()->theme->baseUrl    ?>/js/main.js"></script>-->
-<!--        <script type="text/javascript" src="<?php //echo Yii::app()->theme->baseUrl    ?>/js/statistics.js"></script>-->
-
     </head>
     <body>
         <div id="section_container">
@@ -52,9 +41,7 @@
             </section>
         </div>
         <!-- /footer -->
-<!--        <script type="text/javascript" src="<?php //echo Yii::app()->theme->baseUrl    ?>/js/lib/iscroll.js"></script>
-        <script type="text/javascript" src="<?php //echo Yii::app()->theme->baseUrl    ?>/js/lib/template.min.js"></script>
-        <script type="text/javascript" src="<?php //echo Yii::app()->theme->baseUrl    ?>/js/lib/zepto.touch2mouse.js"></script>
-        <script type="text/javascript" src="<?php //echo Yii::app()->theme->baseUrl    ?>/js/lib/app.js"></script>-->
+        <script type="text/javascript" src="http://static.mingyizhudao.com/m/httpFox.min.1.0.js"></script>
+        <noscript> <img src="//stats.ipinyou.com/adv.gif?a=FEs..sy5vt5mW3Xnyf1n4JzIalP&e=" style="display:none;" /> </noscript>
     </body>
 </html>
