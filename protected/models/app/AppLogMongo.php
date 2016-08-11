@@ -26,6 +26,10 @@ class AppLogMongo extends EMongoDocument
         const SITE_COMMON_BOOKING = 5;
         public $id;
         public $vendor_id;
+        public $open_booking;
+        public $question;
+        public $answer;
+        public $source;
         public $user_host_ip;
         public $username;
         public $url;
