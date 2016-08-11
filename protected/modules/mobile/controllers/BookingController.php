@@ -280,7 +280,7 @@ class BookingController extends MobileController {
                $user = $this->getCurrentUser();
                if (isset($user)) {
                    // 快速预约
-                   $form->mobile = $user->username;
+//                    $form->mobile = $user->username;
                    $form->validate();
                    $authMgr = new AuthManager();
                    $authSmsVerify = $authMgr->verifyCodeForBooking($form->mobile, $form->verify_code, null);
