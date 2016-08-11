@@ -57,7 +57,7 @@ $SITE_9 = PatientStatLog::SITE_9;
             </label>
             <a href="<?php echo $urlAgreement; ?>" class="color-green">名医主刀服务协议</a>
         </div>
-        <button id="btnSubmit" type="button" class="button buttonSubmit font-s16" disabled="true" onclick="alert('eee')">预约</button>
+        <button id="btnSubmit" type="button" class="button buttonSubmit font-s16" disabled="true" >预约</button>
     </div>
 </footer>
 <article id="quickBookIos_article" class="active" data-scroll="true">
