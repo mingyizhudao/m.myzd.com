@@ -22,7 +22,9 @@ class HomeController extends MobileController {
                         Yii::app()->session['vendorId'] = $appKey->id;
                         Yii::app()->session['userId'] = $user->getId();
                         Yii::app()->session['mobile'] = $mobile;
-                        $this->storeUserAccessInfo($appKey->id, $mobile);
+                        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                            $this->storeUserAccessInfo($appKey->id, $mobile);
+                        }
                     }else{
                         $this->renderJsonOutput(array('status'=>EApiViewService::RESPONSE_NO, 'errorCode'=>4, 'errorMsg'=>'sign error'));
                     }

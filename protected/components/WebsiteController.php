@@ -55,7 +55,9 @@ abstract class WebsiteController extends Controller {
         if (isset($_GET['footer']) && $_GET['footer'] != 1) {
             $this->show_footer = false;
         }
-        $this->storeUserAccessInfo();
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+           $this->storeUserAccessInfo();
+        }
         return parent::init();
     }
 
@@ -204,14 +206,15 @@ abstract class WebsiteController extends Controller {
         $coreAccess->user_host = Yii::app()->request->getUserHost();
         $coreAccess->date_created = date("Y-m-d H:i:s");
         $coreAccess->save();
+//         var_dump(CoreAccessMongo::model()->findAll());exit;
     }
 
     /**
      * Stores user's access info for every request.
      */
     public function  storeAppAccessInfo($arr) {
-        $coreAccess = new AppLog();
-//         $coreAccess = new AppLogMongo();
+//         $coreAccess = new AppLog();
+        $coreAccess = new AppLogMongo();
         if(isset($arr['vendorId']) && $arr['vendorId'] > 0){
             $coreAccess->vendor_id = $arr['vendorId'];
         }
