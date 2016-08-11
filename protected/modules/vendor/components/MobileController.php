@@ -79,7 +79,8 @@ abstract class MobileController extends WebsiteController {
      * Stores user's access info for every request.
      */
     public function storeUserAccessInfo($vendorId = 0, $username = "") {
-        $coreAccess = new AppLog();
+//         $coreAccess = new AppLog();
+        $coreAccess = new AppLogMongo();
         if($vendorId > 0){
             $coreAccess->vendor_id = $vendorId;
         }

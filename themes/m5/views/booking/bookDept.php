@@ -22,6 +22,11 @@ $urlUploadFile = 'http://file.mingyizhudao.com/api/uploadbookingfile';
 $urlReturn = $this->createUrl('order/view');
 $urlAgreement = $this->createUrl('user/index', array('page' => 'aboutAgreement'));
 $this->show_footer = false;
+//modify by wanglei 
+$urlStat = $this->createAbsoluteUrl('/api/stat');
+//成功到达预约单页面
+$SITE_8 = PatientStatLog::SITE_8;
+$SITE_9 = PatientStatLog::SITE_9;
 ?>
 <header class="bg-green">
     <nav class="left">
@@ -146,6 +151,17 @@ $this->show_footer = false;
     </div>
 </article>
 <script>
+    function bookStat(keyword){
+              $.ajax({
+                type: 'post',
+                url: '<?php echo $urlStat; ?>',
+                data: {'stat[site]': '<?php echo $SITE_8; ?>', 'stat[key_word]':keyword},
+                success: function (data) {
+
+                }
+            });
+     }
+     
     $(document).ready(function () {
         $('input[type="checkbox"]').click(function () {
             if ($(this).hasClass('active')) {
@@ -156,5 +172,6 @@ $this->show_footer = false;
                 $('#btnSubmit').removeAttr('disabled');
             }
         });
+        bookStat('预约科室页面');
     });
 </script>

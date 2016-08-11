@@ -60,6 +60,7 @@ class UserController extends MobileController {
             if ($form->hasErrors() === false) {
                 // success                
                 $loginForm = $userMgr->autoLoginUser($form->username, $form->password, $userRole, 1);
+                $output['userId'] = $this->getCurrentUserId();
                 $output['status'] = 'ok';
             }
             $output['error'] = $form->getErrors();

@@ -2,6 +2,10 @@
 $this->setPageTitle('提交成功');
 $source = Yii::app()->request->getQuery('app', 0);
 $this->show_footer = false;
+//modify by wanglei 
+$urlStat = $this->createAbsoluteUrl('/api/stat');
+//成功到达预约单页面
+$SITE_10 = PatientStatLog::SITE_10;
 ?>
 <?php
 if ($source == 0) {
@@ -31,3 +35,18 @@ if ($source == 0) {
         </div>
     </div>
 </article>
+<script>
+    $(document).ready(function () {
+        /* function bookStat(keyword){
+              $.ajax({
+                type: 'post',
+                url: '<?php echo $urlStat; ?>',
+                data: {'stat[site]': '<?php echo $SITE_10; ?>', 'stat[key_word]':keyword},
+                success: function (data) {
+
+                }
+            });
+         }*/
+         //bookStat('提交成功');
+      });
+ </script>     

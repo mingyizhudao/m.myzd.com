@@ -15,7 +15,7 @@ $this->show_footer = false;
     <h1 class="title">手术直通车</h1>
 </header>
 <footer id="operationTrain_footer">
-    <a href="<?php echo $urlBookingQuickbook; ?>" class="font-s18 grid middle">快速预约</a>
+    <a href="<?php echo $urlBookingQuickbook; ?>" class="font-s18 grid middle" id="quickbook">快速预约</a>
 </footer>
 <article id="operationTrain_article" class="active" data-scroll="true">
     <div>

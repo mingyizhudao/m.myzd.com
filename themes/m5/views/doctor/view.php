@@ -10,6 +10,10 @@ $urlApplogstat = $this->createUrl('/api/applogstat');
 $doctor = $data->results->doctor;
 $honour = $doctor->honour;
 $this->show_footer = false;
+//modify by wanglei 
+$urlStat = $this->createAbsoluteUrl('/api/stat');
+//点击预约按钮
+$SITE_9 = PatientStatLog::SITE_9;
 ?>
 <style>
     .header-secondary {
@@ -242,7 +246,7 @@ if ($sourceApp == 0) {
                 }
             });
         }
-
+      
         //详情展开、收缩
         $('#showDoctorDetail').click(function () {
             $('#showCommentList').removeClass('bb2-green');
@@ -271,6 +275,7 @@ if ($sourceApp == 0) {
             $(this).prev('.cutComment').removeClass('hide');
         });
         $('#btnSubmit').click(function () {
+          
             if ('<?php echo $source == 0; ?>') {
                 if ('<?php echo $isCommonweal; ?>' == 0) {
                     location.href = '<?php echo $urlBookingDoctor; ?>' + '/<?php echo $doctor->id; ?>';

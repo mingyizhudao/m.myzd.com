@@ -3,6 +3,10 @@ $this->setPageTitle('名医义诊');
 $urlHomeMyyzDoctor = $this->createUrl('home/page', array('view' => 'myyzDoctor'));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
+//modify by wanglei 
+$urlStat = $this->createAbsoluteUrl('/api/stat');
+//点击预约按钮
+$SITE_9 = PatientStatLog::SITE_9;
 ?>
 <header class="bg-green">
     <nav class="left">
@@ -62,7 +66,9 @@ $this->show_footer = false;
 </article>
 <script>
     $(document).ready(function () {
+       
         $('#booking').click(function () {
+            
             location.href = "<?php echo $urlHomeMyyzDoctor; ?>";
         });
     });

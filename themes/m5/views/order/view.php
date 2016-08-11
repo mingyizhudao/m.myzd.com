@@ -16,6 +16,16 @@ $patientBookingList = $this->createAbsoluteUrl('booking/patientBookingList');
 $urlPatientBookingList = $this->createUrl('booking/patientBookingList');
 $urlSuccess = $this->createUrl('user/view');
 $this->show_footer = false;
+//modify by wanglei 
+$urlStat = $this->createAbsoluteUrl('/api/stat');
+//成功开启订单页面
+$SITE_11 = PatientStatLog::SITE_11;
+//点击暂不支付按钮
+$SITE_12 = PatientStatLog::SITE_12;
+//点击支付按钮
+$SITE_13 = PatientStatLog::SITE_13;
+//点击支付按钮
+$SITE_14 = PatientStatLog::SITE_14;
 ?>
 <div id="section_container" <?php echo $this->createPageAttributes(); ?>>
     <section id="order_section" class="active" data-init="true">
@@ -69,10 +79,10 @@ $this->show_footer = false;
                         } else {
                             ?>
                             <div class="col-1">
-                                <a href="<?php echo $urlSuccess; ?>" class="btn btn-default btn-block" data-target="link">暂不支付</a>
+                                <a href="<?php echo $urlSuccess; ?>" class="btn btn-default btn-block" data-target="link" id="nopay" data-id="<?php echo $SITE_12; ?>" >暂不支付</a>
                             </div>
                             <div class="col-1">
-                                <a id="pay" href="javascript:;" class="btn btn-yes btn-block">立即支付</a>
+                                <a id="pay" href="javascript:;" class="btn btn-yes btn-block" data-id="<?php echo $SITE_13; ?>">立即支付</a>
                             </div>
                             <?php
                         }
@@ -106,6 +116,42 @@ $this->show_footer = false;
 <!--<script type="text/javascript" src="https://one.pingxx.com/lib/pingpp_one.js"></script>-->
 <script type="text/javascript" src="http://myzd.oss-cn-hangzhou.aliyuncs.com/static/mobile/js/pingpp-one/pingpp-one.js"></script>
 <script type="text/javascript">
+      $(document).ready(function () {
+        function orderStat(keyword){
+              $.ajax({
+                type: 'post',
+                url: '<?php echo $urlStat; ?>',
+                data: {'stat[site]': '<?php echo $SITE_11; ?>', 'stat[key_word]': keyword},
+                success: function (data) {
+
+                }
+            });
+         }
+        function payStat(keyword,number){
+              $.ajax({
+                type: 'post',
+                url: '<?php echo $urlStat; ?>',
+                data: {'stat[site]': number, 'stat[key_word]': keyword},
+                success: function (data) {
+
+                }
+            });
+         }
+       orderStat('订单开启，订单号：<?php echo $order->refNo ?>');
+        $('#nopay').click(function () {
+                var obj=$(this);
+                var data_id=obj.attr("data-id");
+                var name=obj.html();
+                payStat(name,data_id);
+         });
+           $('#pay').click(function () {
+                var obj=$(this);
+                var data_id=obj.attr("data-id");
+                var name=obj.html();
+                payStat(name,data_id);
+         });
+         
+    });
     $('#completePay').click(function () {
         var formdata = $('.form-horizontal').serializeArray();
         $.ajax({
@@ -115,6 +161,7 @@ $this->show_footer = false;
             success: function (data) {
                 //console.log(data);
                 if (data.status == 'ok') {
+                   // payStat('支付成功','<?php echo $SITE_14 ?>');
                     location.href = '<?php echo $patientBookingList; ?>';
                 } else {
                     console.log(data);

@@ -10,8 +10,8 @@ $this->setPageTitle('快速预约');
 $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/auth/sendSmsVerifyCode');
 $authActionType = AuthSmsVerify::ACTION_BOOKING;
 $urlSubmitForm = $this->createUrl("booking/ajaxQuickbook");
-//$urlUploadFile = $this->createUrl("booking/ajaxUploadFile");
-$urlUploadFile = 'http://file.mingyizhudao.com/api/uploadbookingfile';
+$urlUploadFile = $this->createUrl("booking/ajaxUploadFile");
+//$urlUploadFile = 'http://file.mingyizhudao.com/api/uploadbookingfile';
 $urlUserValiCaptcha = $this->createUrl("user/valiCaptcha");
 $urlReturn = $this->createUrl('order/view');
 $urlHomeView = $this->createUrl('home/view');
@@ -20,6 +20,11 @@ $urlAgreement = $this->createUrl('user/index', array('page' => 'aboutAgreement')
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 $user = $this->getCurrentUser();
+//modify by wanglei 
+$urlStat = $this->createAbsoluteUrl('/api/stat');
+//成功到达预约单页面
+$SITE_8 = PatientStatLog::SITE_8;
+$SITE_9 = PatientStatLog::SITE_9;
 ?>
 <style>
     .btn {display: inline-block;padding: 6px 12px;margin-bottom: 0;font-size: 14px;font-weight: 400;line-height: 1.42857143;text-align: center;white-space: nowrap;vertical-align: middle;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;background-image: none;border: 1px solid transparent;border-radius: 4px;}
@@ -52,7 +57,7 @@ $user = $this->getCurrentUser();
             </label>
             <a href="<?php echo $urlAgreement; ?>" class="color-green">名医主刀服务协议</a>
         </div>
-        <button id="btnSubmit" type="button" class="button buttonSubmit font-s16" disabled="true">预约</button>
+        <button id="btnSubmit" type="button" class="button buttonSubmit font-s16" disabled="true" onclick="alert('eee')">预约</button>
     </div>
 </footer>
 <article id="quickBookIos_article" class="active" data-scroll="true">
@@ -159,6 +164,18 @@ $user = $this->getCurrentUser();
 </article>
 <div id="jingle_toast" class="mobileTip toast"><a href="#">请填写手机号</a></div>
 <script type="text/javascript">
+     function bookStat(keyword){
+              $.ajax({
+                type: 'post',
+                url: '<?php echo $urlStat; ?>',
+                data: {'stat[site]': '<?php echo $SITE_8; ?>', 'stat[key_word]':keyword},
+                success: function (data) {
+
+                }
+            });
+    }
+
+    
     $(document).ready(function () {
         $('input[type="checkbox"]').click(function () {
             if ($(this).hasClass('active')) {
@@ -175,6 +192,8 @@ $user = $this->getCurrentUser();
             e.preventDefault();
             checkCaptchaCode($(this));
         });
+  
+        bookStat('快速预约页面');
     });
 
     function vailcode() {
