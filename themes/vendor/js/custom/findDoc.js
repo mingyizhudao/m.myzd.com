@@ -393,7 +393,7 @@ function readyDoc(data) {
         innerHtml += '<div class="grid pl15 pr15 pt10 pb10 bb-gray2">暂无信息</div>';
     }
     if (data.dataNum != null) {
-        var dataPage = Math.ceil(data.dataNum / 10);
+        var dataPage = Math.ceil(data.dataNum / 12);
         if (dataPage > 1) {
             innerHtml += '<div class="grid pl15 pr15 pt10 pb10 bb-gray3 bt-gray2"><div class="grid w100">' +
                     '<div class="col-1 w40">' +

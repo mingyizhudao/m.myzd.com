@@ -22,14 +22,14 @@ $this->show_footer = false;
     <nav class="left">
         <a href="<?php echo $urlHomeView; ?>">
             <div class="pl5">
-                <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                <img src="http://static.mingyizhudao.com/146975795218858" class="w11p">
             </div>
         </a>
         <a>
             <span class="ml20 pb2 br-white"></span>
         </a>
         <a onclick="javascript:history.go(0)">
-            <img src="<?php echo $urlResImage; ?>refresh.png" class="w24p ml20">
+            <img src="http://static.mingyizhudao.com/146975853464574" class="w24p ml20">
         </a>
     </nav>
     <h1 class="title">
@@ -112,7 +112,7 @@ $this->show_footer = false;
 
         //ajax异步加载地区
         $cityHtml = ''
-        var requestCity = '<?php echo $urlCity; ?>?has_team=0';
+        var requestCity = '<?php echo $urlCity; ?>?has_team=0&type=hospital';
         $.ajax({
             url: requestCity,
             success: function (data) {
@@ -123,34 +123,13 @@ $this->show_footer = false;
 
         function readyCity(data) {
             var results = data.results;
-            var innerHtml = '<div class="grid color-black" style="margin-top:43px;height:315px;">' +
-                    '<div id="leftCity" class="col-1 w50" data-scroll="true" style="height:315px;width: 50%;">' +
-                    '<ul class="list">';
+            var innerHtml = '<div class="color-black" data-scroll="true" style="margin-top:44px;height:315px;">';
             if (results.length > 0) {
+                innerHtml += '<ul class="list" data-city="">';
                 for (var i = 0; i < results.length; i++) {
-                    //第一个为白色
-                    if (i == 0) {
-                        innerHtml += '<li class="aCity bg-white" data-city="' + results[i].id + '">' + results[i].state + '</li>';
-                    } else {
-                        innerHtml += '<li class="aCity" data-city="' + results[i].id + '">' + results[i].state + '</li>';
-                    }
+                    innerHtml += '<li class="cCity" data-city="' + results[i].id + '">' + results[i].city + '</li>';
                 }
-                innerHtml += '</ul></div><div id="rightCity" class="col-1 w50" data-scroll="true" data- style="height:315px;">'
-                for (var i = 0; i < results.length; i++) {
-                    var subCat = results[i].subCity;
-                    //第一个不隐藏
-                    if (i == 0) {
-                        innerHtml += '<ul class="bCity list" data-city="' + results[i].id + '">';
-                    } else {
-                        innerHtml += '<ul class="bCity list hide" data-city="' + results[i].id + '">';
-                    }
-                    if (subCat.length > 0) {
-                        for (var j = 0; j < subCat.length; j++) {
-                            innerHtml += '<li class="cCity" data-city="' + subCat[j].id + '">' + subCat[j].city + '</li>';
-                        }
-                    }
-                    innerHtml += '</ul>';
-                }
+                innerHtml += '</ul>';
             }
             innerHtml += '</div></div>';
             return innerHtml;

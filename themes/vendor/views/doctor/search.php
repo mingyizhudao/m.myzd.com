@@ -29,27 +29,27 @@ $this->show_footer = false;
     <nav class="left">
         <a href="<?php echo $urlHomeView; ?>">
             <div class="pl5">
-                <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                <img src="http://static.mingyizhudao.com/146975795218858" class="w11p">
             </div>
         </a>
     </nav>
     <h1 class="title">找名医</h1>
     <nav class="right">
         <a onclick="javascript:history.go(0)">
-            <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
+            <img src="http://static.mingyizhudao.com/146975853464574"  class="w24p">
         </a>
     </nav>
 </header>
 <nav id="findDoc_nav" class="header-secondary bg-white">
     <div class="grid w100 color-black font-s16 color-black6">
         <div id="deptSelect" class="col-1 w33 br-gray bb-gray grid middle grayImg">
-            <span id="deptTitle" data-dept="">科室</span><img src="<?php echo $urlResImage; ?>gray.png">
+            <span id="deptTitle" data-dept="">科室</span><img src="http://static.mingyizhudao.com/147073952471094">
         </div>
         <div id="diseaseSelect" class="col-1 w33 br-gray bb-gray grid middle grayImg">
-            <span id="diseaseTitle" data-disease="">疾病</span><img src="<?php echo $urlResImage; ?>gray.png">
+            <span id="diseaseTitle" data-disease="">疾病</span><img src="http://static.mingyizhudao.com/147073952471094">
         </div>
         <div id="citySelect" class="col-1 w33 bb-gray grid middle grayImg">
-            <span id="cityTitle" data-city="">地区</span><img src="<?php echo $urlResImage; ?>gray.png">
+            <span id="cityTitle" data-city="">地区</span><img src="http://static.mingyizhudao.com/147073952471094">
         </div>
     </div>
 </nav>
@@ -152,7 +152,7 @@ $this->show_footer = false;
 
         //ajax异步加载地区
         $cityHtml = ''
-        var requestCity = '<?php echo $urlCity; ?>?has_team=0';
+        var requestCity = '<?php echo $urlCity; ?>?has_team=0&type=doctor';
         $.ajax({
             url: requestCity,
             success: function (data) {
@@ -198,34 +198,13 @@ $this->show_footer = false;
 
         function readyCity(data) {
             var results = data.results;
-            var innerHtml = '<div class="grid color-black" style="margin-top:93px;height:315px;">' +
-                    '<div id="leftCity" class="col-1 w50" data-scroll="true" style="height:315px;width: 50%;">' +
-                    '<ul class="list">';
+            var innerHtml = '<div class="color-black" data-scroll="true" style="margin-top:93px;height:315px;">';
             if (results.length > 0) {
+                innerHtml += '<ul class="list" data-city="">';
                 for (var i = 0; i < results.length; i++) {
-                    //第一个为白色
-                    if (i == 0) {
-                        innerHtml += '<li class="aCity bg-white" data-city="' + results[i].id + '">' + results[i].state + '</li>';
-                    } else {
-                        innerHtml += '<li class="aCity" data-city="' + results[i].id + '">' + results[i].state + '</li>';
-                    }
+                    innerHtml += '<li class="cCity" data-city="' + results[i].id + '">' + results[i].city + '</li>';
                 }
-                innerHtml += '</ul></div><div id="rightCity" class="col-1 w50" data-scroll="true" data- style="height:315px;">'
-                for (var i = 0; i < results.length; i++) {
-                    var subCat = results[i].subCity;
-                    //第一个不隐藏
-                    if (i == 0) {
-                        innerHtml += '<ul class="bCity list" data-city="' + results[i].id + '">';
-                    } else {
-                        innerHtml += '<ul class="bCity list hide" data-city="' + results[i].id + '">';
-                    }
-                    if (subCat.length > 0) {
-                        for (var j = 0; j < subCat.length; j++) {
-                            innerHtml += '<li class="cCity" data-city="' + subCat[j].id + '">' + subCat[j].city + '</li>';
-                        }
-                    }
-                    innerHtml += '</ul>';
-                }
+                innerHtml += '</ul>';
             }
             innerHtml += '</div></div>';
             return innerHtml;
