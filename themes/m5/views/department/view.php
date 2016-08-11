@@ -24,7 +24,7 @@ $SITE_9 = PatientStatLog::SITE_9;
     </nav>
 </header>
 <footer id="hosDept_footer">
-    <button id="btnSubmit" type="button" class="button btn-yellow font-s16 state-pedding">预约医院</button>
+    <button id="btnSubmit" type="button" class="button btn-yellow font-s16 state-pedding">预约科室</button>
 </footer>
 <article id="hosDept_article" class="active" data-scroll="true">
     <div class="">

@@ -122,7 +122,16 @@ if ($results->bkStatusCode == $BK_STATUS_NEW) {
     <div>
         <ul class="list">
             <li class="font-s16">
-                当前状态：<span class="color-yellow5"><?php echo $results->bkStatus; ?></span>
+                当前状态：
+                <span class="color-yellow5">
+                    <?php
+                    if ($results->bkStatusCode == $BK_STATUS_NEW) {
+                        echo '待支付手术预约金';
+                    } else {
+                        echo $results->bkStatus;
+                    }
+                    ?>
+                </span>
             </li>
             <li class="grid">
                 <div class="col-0 color-black6">就诊专家</div>

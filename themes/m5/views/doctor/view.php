@@ -32,14 +32,7 @@ if ($sourceApp == 0) {
                 </div>
             </a>
         </nav>
-        <?php
-        if ($doctor->aTitle == '无') {
-            $doctorAtitle = '';
-        } else {
-            $doctorAtitle = $doctor->aTitle;
-        }
-        ?>
-        <h1 class="title"><?php echo $doctor->name . $doctorAtitle; ?></h1>
+        <h1 class="title"><?php echo $doctor->name; ?></h1>
         <nav class="right">
             <a onclick="javascript:location.reload()">
                 <img src="http://static.mingyizhudao.com/146975853464574"  class="w24p">
@@ -50,7 +43,7 @@ if ($sourceApp == 0) {
 }
 ?>
 <footer>
-    <button id="btnSubmit" type="button" class="button btn-yellow font-s16 state-pedding">预约</button>
+    <button id="btnSubmit" type="button" class="button btn-yellow font-s16 state-pedding">预约医生</button>
 </footer>
 <article id="bookingDoc_article" class="active" data-scroll="true">
     <div>
