@@ -4,6 +4,7 @@ Yii::app()->clientScript->registerScriptFile('http://myzd.oss-cn-hangzhou.aliyun
 Yii::app()->clientScript->registerScriptFile('http://myzd.oss-cn-hangzhou.aliyuncs.com/static/mobile/js/jquery-1.9.1.min.js', CClientScript::POS_HEAD);
 ?>
 <?php
+
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $urlDoctorViewSearch = $this->createAbsoluteUrl('doctor/viewSearch');
 $urlHospitalTop = $this->createAbsoluteUrl('hospital/top');
