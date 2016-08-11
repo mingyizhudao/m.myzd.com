@@ -157,16 +157,7 @@ $SITE_9 = PatientStatLog::SITE_9;
             $('#hideStep').removeClass('hide');
             $('#step').removeClass('hide');
         });
-         function bookStat(keyword){
-              $.ajax({
-                type: 'post',
-                url: '<?php echo $urlStat; ?>',
-                data: {'stat[site]': '<?php echo $SITE_9; ?>', 'stat[key_word]': keyword},
-                success: function (data) {
-
-                }
-            });
-         }
+      
         $('#hideStep').click(function(){
             $(this).addClass('hide');
             $('#showStep').removeClass('hide');
@@ -175,8 +166,6 @@ $SITE_9 = PatientStatLog::SITE_9;
 
         $('#btnSubmit').tap(function () {
             var deptId = $('#deptInf').attr('data-dept');
-            var name="科室详情";
-             bookStat(name);
             location.href = '<?php echo $urlBookCreate; ?>/' + deptId;
         });
     });

@@ -127,7 +127,7 @@ $SITE_14 = PatientStatLog::SITE_14;
                 }
             });
          }
-           function payStat(keyword,number){
+        function payStat(keyword,number){
               $.ajax({
                 type: 'post',
                 url: '<?php echo $urlStat; ?>',

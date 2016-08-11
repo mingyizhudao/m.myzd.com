@@ -66,18 +66,9 @@ $SITE_9 = PatientStatLog::SITE_9;
 </article>
 <script>
     $(document).ready(function () {
-        function bookStat(keyword){
-              $.ajax({
-                type: 'post',
-                url: '<?php echo $urlStat; ?>',
-                data: {'stat[site]': '<?php echo $SITE_9; ?>', 'stat[key_word]': keyword},
-                success: function (data) {
-
-                }
-            });
-         }
+       
         $('#booking').click(function () {
-            bookStat('名医义诊');
+            
             location.href = "<?php echo $urlHomeMyyzDoctor; ?>";
         });
     });

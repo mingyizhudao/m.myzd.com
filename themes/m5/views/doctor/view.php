@@ -246,16 +246,7 @@ if ($sourceApp == 0) {
                 }
             });
         }
-         function bookStat(keyword){
-              $.ajax({
-                type: 'post',
-                url: '<?php echo $urlStat; ?>',
-                data: {'stat[site]': '<?php echo $SITE_9; ?>', 'stat[key_word]': keyword},
-                success: function (data) {
-
-                }
-            });
-         }
+      
         //详情展开、收缩
         $('#showDoctorDetail').click(function () {
             $('#showCommentList').removeClass('bb2-green');
@@ -284,7 +275,7 @@ if ($sourceApp == 0) {
             $(this).prev('.cutComment').removeClass('hide');
         });
         $('#btnSubmit').click(function () {
-             bookStat('医生详情');
+          
             if ('<?php echo $source == 0; ?>') {
                 if ('<?php echo $isCommonweal; ?>' == 0) {
                     location.href = '<?php echo $urlBookingDoctor; ?>' + '/<?php echo $doctor->id; ?>';

@@ -37,6 +37,7 @@ $this->show_footer = false;
 $urlStat = $this->createAbsoluteUrl('/api/stat');
 //成功到达预约单页面
 $SITE_8 = PatientStatLog::SITE_8;
+$SITE_9 = PatientStatLog::SITE_9;
 ?>
 <header class="bg-green">
     <nav class="left">
@@ -180,6 +181,6 @@ $SITE_8 = PatientStatLog::SITE_8;
                 $('#btnSubmit').removeAttr('disabled');
             }
         });
-        bookStat('预约医生');
+        bookStat('预约医生页面');
     });
 </script>

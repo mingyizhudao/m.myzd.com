@@ -8,10 +8,10 @@ $sourceApp = Yii::app()->request->getQuery('app', 0);
 $pagetitlenow="";
 if ($source == 0) {
     $this->setPageTitle('预约单信息');
-    $pagetitlenow = "预约单信息";
+    $pagetitlenow = "预约单信息页面";
 } else {
     $this->setPageTitle('填写专家信息');
-    $pagetitlenow = "填写专家信息";
+    $pagetitlenow = "填写专家信息页面";
 }
 $booking = $this->createUrl('home/page', array('view' => 'booking'));
 $urlBooking = $this->createUrl('booking/ajaxQuestionnaireCreate');
@@ -31,6 +31,7 @@ $this->show_footer = false;
 $urlStat = $this->createAbsoluteUrl('/api/stat');
 //成功到达预约单页面
 $SITE_8 = PatientStatLog::SITE_8;
+$SITE_9 = PatientStatLog::SITE_9;
 ?>
 <?php
 if ($sourceApp == 0) {
@@ -230,6 +231,8 @@ if ($sourceApp == 0) {
             });
          }
          bookStat('<?php echo $pagetitlenow?>');
+         
+     
         //返回
         $('#giveUp').click(function (e) {
             e.preventDefault();
