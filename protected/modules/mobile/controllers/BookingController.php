@@ -282,6 +282,11 @@ class BookingController extends MobileController {
                    // 快速预约
                    $form->mobile = $user->username;
                    $form->validate();
+                   $authMgr = new AuthManager();
+                   $authSmsVerify = $authMgr->verifyCodeForBooking($form->mobile, $form->verify_code, null);
+                   if ($authSmsVerify->isValid() === false) {
+                       $form->addError('verify_code', $authSmsVerify->getError('code'));
+                   }
                } else {
                    $form->validate();
                    //验证码校验
