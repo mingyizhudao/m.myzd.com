@@ -37,7 +37,7 @@ if ($source == 0) {
 </article>
 <script>
     $(document).ready(function () {
-         function bookStat(keyword){
+        /* function bookStat(keyword){
               $.ajax({
                 type: 'post',
                 url: '<?php echo $urlStat; ?>',
@@ -46,7 +46,7 @@ if ($source == 0) {
 
                 }
             });
-         }
-         bookStat('提交成功');
+         }*/
+         //bookStat('提交成功');
       });
  </script>     

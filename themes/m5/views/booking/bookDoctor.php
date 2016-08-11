@@ -175,6 +175,6 @@ $SITE_8 = PatientStatLog::SITE_8;
                 $('#btnSubmit').removeAttr('disabled');
             }
         });
-        bookStat('预约医生');
+        bookStat('预约医生页面');
     });
 </script>
