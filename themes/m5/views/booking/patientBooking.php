@@ -17,7 +17,7 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $results = $data->results;
 $urlSubmitForm = $this->createUrl("booking/ajaxCreate");
 //$urlUploadFile = $this->createUrl("booking/ajaxUploadFile");
-$urlUploadFile = 'http://121.40.127.64:8089/api/uploadbookingfile';
+$urlUploadFile = 'http://file.mingyizhudao.com/api/uploadbookingfile';
 $showStatus = Yii::app()->request->getQuery('showStatus', 0);
 $urlReturn = $this->createUrl('booking/patientBookingList', array('status' => $showStatus));
 $user = $this->loadUser();
@@ -30,7 +30,7 @@ $this->show_footer = false;
     <nav class="left">
         <a href="" data-target="back">
             <div class="pl5">
-                <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                <img src="http://static.mingyizhudao.com/146975795218858" class="w11p">
             </div>
         </a>
     </nav>

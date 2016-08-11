@@ -1,6 +1,6 @@
 <?php
 //Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/hospitalIndex.min.js?ts=' . time(), CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/hospitalIndex.min.1.0.js', CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/hospitalIndex.min.1.1.js', CClientScript::POS_END);
 ?>
 <?php
 $this->setPageTitle('推荐');
