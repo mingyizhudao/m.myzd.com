@@ -78,7 +78,7 @@ $(function () {
         formData: {'booking[id]': domForm.find("input#booking_id").val()},
         // server: 'http://webuploader.duapp.com/server/fileupload.php',
         server: urlUploadFile,
-        fileNumLimit: 10,
+        fileNumLimit: 9,
         fileSizeLimit: 10 * 1024 * 1024, // 200 M
         fileSingleSizeLimit: 100 * 1024 * 1024    // 50 M
     });
@@ -125,10 +125,10 @@ $(function () {
 
 
     // 添加“添加文件”的按钮，
-    uploader.addButton({
-        id: '#filePicker2',
-        label: '&nbsp;添加资料'
-    });
+    // uploader.addButton({
+    //     id: '#filePicker2',
+    //     label: '&nbsp;添加资料'
+    // });
 
     // 当有文件添加进来时执行，负责view的创建
     function addFile(file) {
@@ -247,7 +247,18 @@ $(function () {
             }
         });
 
-        $li.appendTo($queue);
+        // $li.appendTo($queue);
+        var hasAdd = document.getElementById('filePicker3');
+        if (!$queue.children().length&&!hasAdd) {
+            $li.appendTo($queue);
+            var $addBtn = $('<li id="filePicker3" class="btn-add-img">+</li>')
+            $addBtn.appendTo($queue);
+            uploader.addButton({
+                id: '#filePicker3'
+            });
+        }else{
+            $li.prependTo($queue);
+        }
     }
 
     // 负责view的销毁
@@ -328,7 +339,8 @@ $(function () {
             case 'ready':
                 $('#btnSubmit').removeClass('hide');
                 $placeHolder.addClass('element-invisible');
-                $('#filePicker2').removeClass('element-invisible');
+                // $('#filePicker2').find('.webuploader-pick').text('确认添加');
+                // $('#filePicker2').removeClass('element-invisible');
                 $queue.parent().addClass('filled');
                 $queue.show();
                 $statusBar.removeClass('element-invisible');
@@ -349,7 +361,7 @@ $(function () {
             case 'confirm':
                 $progress.hide();
                 $upload.addClass('disabled');
-                $('#filePicker2').addClass('element-invisible');
+                // $('#filePicker2').addClass('element-invisible');
                 stats = uploader.getStats();
                 if (stats.successNum && !stats.uploadFailNum) {
                     setState('finish');

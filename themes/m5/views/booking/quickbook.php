@@ -1,8 +1,8 @@
 <?php
 //Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/quickBooking.js?ts=' . time(), CClientScript::POS_END);
 //Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/jquery.validate.js', CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/quickBooking.min.js?ts=' . time(), CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/jquery.validate.min.js', CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/jquery.formvalidate.min.1.0.js', CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/quickBooking.min.1.0.js', CClientScript::POS_END);
 /*
  * $model BookQuickForm.
  */

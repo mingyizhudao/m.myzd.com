@@ -85,8 +85,8 @@ $(function () {
         chunked: true,
         // server: 'http://webuploader.duapp.com/server/fileupload.php',
         server: urlUploadFile,
-        fileNumLimit: 10,
-        fileSizeLimit: 10 * 1024 * 1024, // 200 M
+        fileNumLimit: 9,
+        fileSizeLimit: 9 * 1024 * 1024, // 200 M
         fileSingleSizeLimit: 100 * 1024 * 1024    // 50 M
     });
 
@@ -449,8 +449,9 @@ $(function () {
                 errorinfo = "请选择jpg/jpeg/png或gif格式的图片!";
                 break;
         }
-        $("#tipPage .tipcontent p").html(errorinfo);
-        $("#toTip").trigger("click");
+//        $("#tipPage .tipcontent p").html(errorinfo);
+//        $("#toTip").trigger("click");
+        J.showToast(errorinfo, '', 2000);
         //console.log(errorinfo);
         //alert('错误信息: ' + errorinfo);
     };

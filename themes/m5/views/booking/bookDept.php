@@ -1,12 +1,12 @@
 <?php
 Yii::app()->clientScript->registerCssFile('http://myzd.oss-cn-hangzhou.aliyuncs.com/static/mobile/js/webuploader/css/webuploader.css');
-Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/js/webuploader/css/webuploader.custom.css');
+Yii::app()->clientScript->registerCssFile('http://static.mingyizhudao.com/m/webuploader.custom.1.1.css');
 Yii::app()->clientScript->registerScriptFile('http://myzd.oss-cn-hangzhou.aliyuncs.com/static/mobile/js/webuploader/js/webuploader.min.js', CClientScript::POS_END);
 //Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/jquery.validate.js', CClientScript::POS_END);
 //Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/jquery.form.js', CClientScript::POS_END);
 //Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/booking.js', CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/jquery.formvalidate.min.js', CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/booking.min.js?ts=' . time(), CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/jquery.formvalidate.min.1.0.js', CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/booking.min.1.0.js', CClientScript::POS_END);
 ?>
 <?php
 /**
@@ -151,17 +151,17 @@ $SITE_9 = PatientStatLog::SITE_9;
     </div>
 </article>
 <script>
-    function bookStat(keyword){
-              $.ajax({
-                type: 'post',
-                url: '<?php echo $urlStat; ?>',
-                data: {'stat[site]': '<?php echo $SITE_8; ?>', 'stat[key_word]':keyword},
-                success: function (data) {
+    function bookStat(keyword) {
+        $.ajax({
+            type: 'post',
+            url: '<?php echo $urlStat; ?>',
+            data: {'stat[site]': '<?php echo $SITE_8; ?>', 'stat[key_word]': keyword},
+            success: function (data) {
 
-                }
-            });
-     }
-     
+            }
+        });
+    }
+
     $(document).ready(function () {
         $('input[type="checkbox"]').click(function () {
             if ($(this).hasClass('active')) {

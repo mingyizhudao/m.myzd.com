@@ -87,8 +87,8 @@ $(function () {
         chunked: true,
         // server: 'http://webuploader.duapp.com/server/fileupload.php',
         server: urlUploadFile,
-        fileNumLimit: 10,
-        fileSizeLimit: 10 * 1024 * 1024, // 200 M
+        fileNumLimit: 9,
+        fileSizeLimit: 9 * 1024 * 1024, // 200 M
         fileSingleSizeLimit: 100 * 1024 * 1024    // 50 M
     });
 

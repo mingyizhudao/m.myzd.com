@@ -1,10 +1,9 @@
 <?php
 Yii::app()->clientScript->registerCssFile('http://myzd.oss-cn-hangzhou.aliyuncs.com/static/mobile/js/webuploader/css/webuploader.css');
-Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/js/webuploader/css/webuploader.custom.css');
+Yii::app()->clientScript->registerCssFile('http://static.mingyizhudao.com/m/webuploader.custom.1.1.css');
 Yii::app()->clientScript->registerScriptFile('http://myzd.oss-cn-hangzhou.aliyuncs.com/static/mobile/js/webuploader/js/webuploader.min.js', CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/uploadMRFile.js?ts=' . time(), CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/jquery.validate.js', CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/jquery.form.js', CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/jquery.formvalidate.min.1.0.js', CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/uploadMRFile.js', CClientScript::POS_END);
 ?>
 <?php
 /**
@@ -18,7 +17,7 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $results = $data->results;
 $urlSubmitForm = $this->createUrl("booking/ajaxCreate");
 //$urlUploadFile = $this->createUrl("booking/ajaxUploadFile");
-$urlUploadFile = 'http://file.mingyizhudao.com/api/uploadbookingfile';
+$urlUploadFile = 'http://121.40.127.64:8089/api/uploadbookingfile';
 $showStatus = Yii::app()->request->getQuery('showStatus', 0);
 $urlReturn = $this->createUrl('booking/patientBookingList', array('status' => $showStatus));
 $user = $this->loadUser();
@@ -30,15 +29,15 @@ $this->show_footer = false;
     <nav class="left">
         <a href="" data-target="back">
             <div class="pl5">
-                <img src="http://static.mingyizhudao.com/146975795218858" class="w11p">
+                <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
             </div>
         </a>
     </nav>
     <h1 class="title">查看详情</h1>
     <nav class="right">
-        <a id="btnSubmit" href="javascript:;" class="uploadBtn hide">
+        <!-- <a id="btnSubmit" href="javascript:;" class="uploadBtn hide">
             保存
-        </a>
+        </a> -->
     </nav>
 </header>
 <article id="patientBooking_article" class="active"  data-scroll="true">
@@ -111,7 +110,8 @@ $this->show_footer = false;
                 <!--图片上传区域 -->
                 <div id="uploader" class="uploader wu-example">
                     <div class="imglist">
-                        <ul class="filelist"></ul>
+                        <ul class="filelist">
+                        </ul>
                     </div>
                     <div class="queueList nomargin">
                         <div id="dndArea" class="placeholder">
@@ -130,6 +130,7 @@ $this->show_footer = false;
                         <div class="display-block pull-right w100">
                             <!-- btn 继续添加 -->
                             <div id="filePicker2" class="w100"></div>
+                            <div id="btnSubmit" class="webuploader-pick uploadBtn">确认添加</div>
                         </div>
                     </div>
                 </div>
