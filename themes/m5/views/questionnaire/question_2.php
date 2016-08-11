@@ -29,36 +29,38 @@ if ($source == 0) {
 }
 ?>
 <article id="questionnairetwo_article" class="active logo_article" data-scroll="true">
-    <div id="outline" class="pad20 bg-white">
-        <div class="w100 color-green text18">
-            为了更好地给您提供诊疗意见，我们需要了解以下信息：
-        </div>
-        <div class="w100 mt30 font-s16">
-            <div>2/5：有找医生看过吗？</div>
-            <div class="border-gray border-r3 mt20">
-                <label for="answer1">
-                    <div class="pad10 border-bottom">
-                        <input id="answer1" type="radio" name="questionnaire[answer]" value="1" data_attr="看过"/>
-                        看过
-                    </div>
-                </label>
-                <label for="answer2">
-                    <div class="pad10 border-bottom">
-                        <input id="answer2" type="radio" name="questionnaire[answer]" value="2" data_attr="没看过"/>
-                        没看过
-                    </div>
-                </label>
+    <div>
+        <div id="outline" class="pad20 bg-white">
+            <div class="w100 color-green text18">
+                为了更好地给您提供诊疗意见，我们需要了解以下信息：
             </div>
-            <div class="questionnaire-error"></div>
+            <div class="w100 mt30 font-s16">
+                <div>2/5：有找医生看过吗？</div>
+                <div class="border-gray border-r3 mt20">
+                    <label for="answer1">
+                        <div class="pad10 border-bottom">
+                            <input id="answer1" type="radio" name="questionnaire[answer]" value="1" data_attr="看过"/>
+                            看过
+                        </div>
+                    </label>
+                    <label for="answer2">
+                        <div class="pad10 border-bottom">
+                            <input id="answer2" type="radio" name="questionnaire[answer]" value="2" data_attr="没看过"/>
+                            没看过
+                        </div>
+                    </label>
+                </div>
+                <div class="questionnaire-error"></div>
+            </div>
+            <div>
+                <button id="QuestionnairetwoSubmit" class="btn btn-abs font-s16 bg-green mt40">
+                    下一步
+                </button>
+            </div>
         </div>
-        <div>
-            <button id="QuestionnairetwoSubmit" class="btn btn-abs font-s16 bg-green mt40">
-                下一步
-            </button>
+        <div id="logoImg" class="text-center hide pb20 bg-white">
+            <img src="http://static.mingyizhudao.com/146761944631242" class="w125p">
         </div>
-    </div>
-    <div id="logoImg" class="text-center hide pb20">
-        <img src="http://static.mingyizhudao.com/146761944631242" class="w125p">
     </div>
 </article>
 <script>
@@ -79,7 +81,7 @@ if ($source == 0) {
             $.ajax({
                 type: 'post',
                 url: '<?php echo $urlApplogstat; ?>',
-                data: {'applogstat[question]': 2, 'applogstat[answer]': $(this).val() ,'applogstat[answer_note]':$(this).attr('data_attr')},
+                data: {'applogstat[question]': 2, 'applogstat[answer]': $(this).val(), 'applogstat[answer_note]': $(this).attr('data_attr')},
                 success: function () {
 
                 }
@@ -103,7 +105,7 @@ if ($source == 0) {
                 $.ajax({
                     type: 'post',
                     url: requestUrl,
-                    data: {"questionnaire[questionnaireNumber]": 2, "questionnaire[answer]": answer ,"questionnaire[answer_note]": answer_note},
+                    data: {"questionnaire[questionnaireNumber]": 2, "questionnaire[answer]": answer, "questionnaire[answer_note]": answer_note},
                     success: function (data) {
                         if (data.status == 'ok') {
                             J.hideMask();

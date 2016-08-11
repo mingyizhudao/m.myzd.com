@@ -44,46 +44,48 @@ if ($source == 0) {
 }
 ?>
 <article id="questionnairefour_article" class="active android_article logo_article" data-scroll="true" data-action-url="<?php echo $urlQuestionnaire; ?>" data-return-url="<?php echo $urlQuestion; ?>" data-applogstat="<?php echo $urlApplogstat; ?>">
-    <div id="outline" class="pad20 bg-white">
-        <div class="w100 color-green text18">
-            为了更好地给您提供诊疗意见，我们需要了解以下信息：
-        </div>
-        <div class="w100 mt30 font-s16">
-            <div>4/5：请将您近期检查报告拍照上传</div>
-            <div class="mt5"><span class="color-red">图片需清晰可见</span><span>（最多9张）</span><span class="border-grayD learn-example">查看示例</span></div>
-            <input type="hidden" id="domain" value="http://mr.file.mingyizhudao.com">
-            <input type="hidden" id="uptoken_url" value="<?php echo $urlQiniuAjaxToken; ?>">
-            <div id="fileAction" class="mt20" data-action="<?php echo $urlUploadFile; ?>">
-                <div class="body mt10">
-                    <div>
-                        <div id="container">
-                            <a class="btn btn-default btn-lg" id="pickfiles" href="#">
-                                <span>
-                                    <img src="http://static.mingyizhudao.com/146770314701592" class="w90p">
-                                </span>
-                            </a>
+    <div>
+        <div id="outline" class="pad20 bg-white">
+            <div class="w100 color-green text18">
+                为了更好地给您提供诊疗意见，我们需要了解以下信息：
+            </div>
+            <div class="w100 mt30 font-s16">
+                <div>4/5：请将您近期检查报告拍照上传</div>
+                <div class="mt5"><span class="color-red">图片需清晰可见</span><span>（最多9张）</span><span class="border-grayD learn-example">查看示例</span></div>
+                <input type="hidden" id="domain" value="http://mr.file.mingyizhudao.com">
+                <input type="hidden" id="uptoken_url" value="<?php echo $urlQiniuAjaxToken; ?>">
+                <div id="fileAction" class="mt20" data-action="<?php echo $urlUploadFile; ?>">
+                    <div class="body mt10">
+                        <div>
+                            <div id="container">
+                                <a class="btn btn-default btn-lg" id="pickfiles" href="#">
+                                    <span>
+                                        <img src="http://static.mingyizhudao.com/146770314701592" class="w90p">
+                                    </span>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-12 mt10">
-                        <table class="table table-striped table-hover text-left" style="display:none">
-                            <tbody id="fsUploadProgress">
-                            </tbody>
-                        </table>
+                        <div class="col-md-12 mt10">
+                            <table class="table table-striped table-hover text-left" style="display:none">
+                                <tbody id="fsUploadProgress">
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="pt20">
+                <button id="btnSubmit" class="btn-file">
+                    下一步
+                </button>
+            </div>
+            <div class="pt20">
+                <a id="skip" href="javascript:;" class="skipBtn">跳过</a>
+            </div>
         </div>
-        <div class="pt20">
-            <button id="btnSubmit" class="btn-file">
-                下一步
-            </button>
+        <div id="logoImg" class="text-center hide pb20 bg-white">
+            <img src="http://static.mingyizhudao.com/146761944631242" class="w125p">
         </div>
-        <div class="pt20">
-            <a id="skip" href="javascript:;" class="skipBtn">跳过</a>
-        </div>
-    </div>
-    <div id="logoImg" class="text-center hide pb20">
-        <img src="http://static.mingyizhudao.com/146761944631242" class="w125p">
     </div>
 </article>
 <div id="jingle_toast" class="toast"><a href="#"></a></div>

@@ -29,44 +29,46 @@ if ($source == 0) {
 }
 ?>
 <article id="questionnaireone_article" class="active logo_article" data-scroll="true">
-    <div id="outline" class="pad20 bg-white">
-        <div class="w100 color-green text18">
-            为了更好地给您提供诊疗意见，我们需要了解以下信息：
-        </div>
-        <div id="questionnaireone-form">
-            <div class="w100 mt30 font-s16">
-                <div>1/5：请问有什么可以帮您？</div>
-                <div class="border-gray border-r3 mt20">
-                    <label for="answer1">
-                        <div class="pad10 border-bottom">
-                            <input id="answer1" type="radio" name="questionnaire[answer]" value="1" data_attr="想找个能帮我做手术的专家"/>
-                             想找个能帮我做手术的专家
-                        </div>
-                    </label>
-                    <label for="answer2">
-                        <div class="pad10 border-bottom">
-                            <input id="answer2" type="radio" name="questionnaire[answer]" value="2" data_attr="不知是否要手术，想找专家咨询"/>
-                            不知是否要手术，想找专家咨询
-                        </div>
-                    </label>
-                    <label for="answer3">
-                        <div class="pad10 border-bottom">
-                            <input id="answer3" type="radio" name="questionnaire[answer]" value="3" data_attr="不需要手术，只想咨询一下"/>
-                            不需要手术，只想咨询一下
-                        </div>
-                    </label>
+    <div>
+        <div id="outline" class="pad20 bg-white">
+            <div class="w100 color-green text18">
+                为了更好地给您提供诊疗意见，我们需要了解以下信息：
+            </div>
+            <div id="questionnaireone-form">
+                <div class="w100 mt30 font-s16">
+                    <div>1/5：请问有什么可以帮您？</div>
+                    <div class="border-gray border-r3 mt20">
+                        <label for="answer1">
+                            <div class="pad10 border-bottom">
+                                <input id="answer1" type="radio" name="questionnaire[answer]" value="1" data_attr="想找个能帮我做手术的专家"/>
+                                想找个能帮我做手术的专家
+                            </div>
+                        </label>
+                        <label for="answer2">
+                            <div class="pad10 border-bottom">
+                                <input id="answer2" type="radio" name="questionnaire[answer]" value="2" data_attr="不知是否要手术，想找专家咨询"/>
+                                不知是否要手术，想找专家咨询
+                            </div>
+                        </label>
+                        <label for="answer3">
+                            <div class="pad10 border-bottom">
+                                <input id="answer3" type="radio" name="questionnaire[answer]" value="3" data_attr="不需要手术，只想咨询一下"/>
+                                不需要手术，只想咨询一下
+                            </div>
+                        </label>
+                    </div>
+                    <div class="questionnaire-error"></div>
                 </div>
-                <div class="questionnaire-error"></div>
-            </div>
-            <div>
-                <button id="QuestionnaireoneSubmit" class="btn btn-abs font-s16 bg-green mt40">
-                    下一步
-                </button>
+                <div>
+                    <button id="QuestionnaireoneSubmit" class="btn btn-abs font-s16 bg-green mt40">
+                        下一步
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
-    <div id="logoImg" class="text-center hide pb20">
-        <img src="http://static.mingyizhudao.com/146761944631242" class="w125p">
+        <div id="logoImg" class="text-center hide pb20 bg-white">
+            <img src="http://static.mingyizhudao.com/146761944631242" class="w125p">
+        </div>
     </div>
 </article>
 <script>
@@ -87,7 +89,7 @@ if ($source == 0) {
             $.ajax({
                 type: 'post',
                 url: '<?php echo $urlApplogstat; ?>',
-                data: {'applogstat[question]': 1, 'applogstat[answer]': $(this).val(),'applogstat[answer_note]':$(this).attr('data_attr')},
+                data: {'applogstat[question]': 1, 'applogstat[answer]': $(this).val(), 'applogstat[answer_note]': $(this).attr('data_attr')},
                 success: function () {
 
                 }
@@ -111,7 +113,7 @@ if ($source == 0) {
                 $.ajax({
                     type: 'post',
                     url: requestUrl,
-                    data: {"questionnaire[questionnaireNumber]": 1, "questionnaire[answer]": answer ,"questionnaire[answer_note]": answer_note},
+                    data: {"questionnaire[questionnaireNumber]": 1, "questionnaire[answer]": answer, "questionnaire[answer_note]": answer_note},
                     success: function (data) {
                         if (data.status == 'ok') {
                             J.hideMask();
