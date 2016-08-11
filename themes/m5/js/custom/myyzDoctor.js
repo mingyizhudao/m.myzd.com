@@ -18,7 +18,7 @@ $("#deptSelect").tap(function () {
             '<nav class="left">' +
             '<a href="" data-target="back">' +
             '<div class="pl5">' +
-            '<img src="' + urlRootPath + '/m5/images/back.png" class="w11p">' +
+            '<img src="http://static.mingyizhudao.com/146975795218858" class="w11p">' +
             '</div>' +
             '</a>' +
             '</nav>' +
@@ -84,7 +84,7 @@ $("#citySelect").tap(function () {
             '<nav class="left">' +
             '<a href="" data-target="back">' +
             '<div class="pl5">' +
-            '<img src="' + urlRootPath + '/m5/images/back.png" class="w11p">' +
+            '<img src="http://static.mingyizhudao.com/146975795218858" class="w11p">' +
             "</div>" +
             "</a>" +
             "</nav>" +

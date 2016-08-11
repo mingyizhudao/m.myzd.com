@@ -1,6 +1,6 @@
 <?php
-//Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/hospitalIndex.js?ts=' . time(), CClientScript::POS_END);
 Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/hospitalIndex.min.js?ts=' . time(), CClientScript::POS_END);
+//Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/hospitalIndex.min.1.0.js', CClientScript::POS_END);
 ?>
 <?php
 $this->setPageTitle('推荐');
@@ -10,6 +10,7 @@ $urlCity = $this->createAbsoluteUrl('/api/city');
 $urlCityName = $this->createAbsoluteUrl('/api/city');
 
 $urlHospitalIndex = $this->createUrl('hospital/index');
+$urlTopHospital = $this->createUrl('hospital/topHospital');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $city = Yii::app()->request->getQuery('city', '');
 $page = Yii::app()->request->getQuery('page', '');
@@ -33,6 +34,7 @@ $page = Yii::app()->request->getQuery('page', '');
         $requestHospitalView = '<?php echo $urlHospitalView; ?>';
         $requestHospital = '<?php echo $urlHospital; ?>';
         $requestHospitalIndex = '<?php echo $urlHospitalIndex; ?>';
+        $urlTopHospital = '<?php echo $urlTopHospital; ?>';
 
         $condition = new Array();
         $condition["city"] = '<?php echo $city ?>';

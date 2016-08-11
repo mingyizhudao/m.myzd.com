@@ -12,7 +12,7 @@ $('#deptSelect').tap(function () {
             '<nav class="left">' +
             '<a href="' + $homeView + '">' +
             '<div class="pl5">' +
-            '<img src="../../themes/m5/images/back.png" class="w11p">' +
+            '<img src="http://static.mingyizhudao.com/146975795218858" class="w11p">' +
             '</div>' +
             '</a>' +
             '</nav>' +
@@ -20,7 +20,7 @@ $('#deptSelect').tap(function () {
             '</h1>' +
             '<nav class="right">' +
             '<a onclick="javascript:history.go(0)">' +
-            '<img src="../../themes/m5/images/refresh.png"  class="w24p">' +
+            '<img src="http://static.mingyizhudao.com/146975853464574"  class="w24p">' +
             '</a>' +
             '</nav>' +
             '</header>' +
@@ -132,7 +132,7 @@ $('#citySelect').tap(function () {
             '<nav class="left">' +
             '<a href="' + $homeView + '">' +
             '<div class="pl5">' +
-            '<img src="../../themes/m5/images/back.png" class="w11p">' +
+            '<img src="http://static.mingyizhudao.com/146975795218858" class="w11p">' +
             '</div>' +
             '</a>' +
             '</nav>' +
@@ -140,7 +140,7 @@ $('#citySelect').tap(function () {
             '</h1>' +
             '<nav class="right">' +
             '<a onclick="javascript:history.go(0)">' +
-            '<img src="../../themes/m5/images/refresh.png"  class="w24p">' +
+            '<img src="http://static.mingyizhudao.com/146975853464574"  class="w24p">' +
             '</a>' +
             '</nav>' +
             '</header>' +
@@ -209,7 +209,7 @@ function setLocationUrl() {
 //医院页面
 function readyHospital(data) {
     var results = data.results;
-    var innerHtml = '<div id="hospitalPage"><div><img class="w100" src="../../themes/m5/images/hospitalDept.png"><ul class="list">';
+    var innerHtml = '<div id="hospitalPage"><div><img class="w100" src="http://static.mingyizhudao.com/147063732649923"><ul class="list">';
     if (results) {
         if (results.length > 0) {
             for (var i = 0; i < results.length; i++) {

@@ -60,8 +60,10 @@ $SITE_14 = PatientStatLog::SITE_14;
 </article>
 <script type="text/javascript">
     $(document).ready(function () {
-        function payStat(keyword,number){
-              $.ajax({
+        //品友
+        pyRegisterCvt('OrderNo=[<?php echo $model->ref_no; ?>]&Money=[<?php echo $model->total_amount / 100; ?>]');
+        function payStat(keyword, number) {
+            $.ajax({
                 type: 'post',
                 url: '<?php echo $urlStat; ?>',
                 data: {'stat[site]': number, 'stat[key_word]': keyword},
@@ -69,7 +71,7 @@ $SITE_14 = PatientStatLog::SITE_14;
 
                 }
             });
-         }
-          payStat('支付成功','<?php echo $SITE_14 ?>');
+        }
+        payStat('支付成功', '<?php echo $SITE_14 ?>');
     });
 </script>

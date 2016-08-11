@@ -19,7 +19,7 @@ function deptSelect() {
             innerPage += '<nav class="left">' +
                     '<a href="' + $homeView + '">' +
                     '<div class="pl5">' +
-                    '<img src="../../themes/m5/images/back.png" class="w11p">' +
+                    '<img src="http://static.mingyizhudao.com/146975795218858" class="w11p">' +
                     '</div>' +
                     '</a>' +
                     '</nav>';
@@ -27,7 +27,7 @@ function deptSelect() {
         innerPage += '<h1 class="title">' + title + '</h1>' +
                 '<nav class="right">' +
                 '<a onclick="javascript:history.go(0)">' +
-                '<img src="../../themes/m5/images/refresh.png" class="w24p">' +
+                '<img src="http://static.mingyizhudao.com/146975853464574" class="w24p">' +
                 '</a>' +
                 '</nav>' +
                 '</header>';
@@ -198,7 +198,7 @@ $('#diseaseSelect').tap(function () {
                 innerPage += '<nav class="left">' +
                         '<a href="' + $homeView + '">' +
                         '<div class="pl5">' +
-                        '<img src="../../themes/m5/images/back.png" class="w11p">' +
+                        '<img src="http://static.mingyizhudao.com/146975795218858" class="w11p">' +
                         '</div>' +
                         '</a>' +
                         '</nav>';
@@ -206,7 +206,7 @@ $('#diseaseSelect').tap(function () {
             innerPage += '<h1 class="title">' + title + '</h1>' +
                     '<nav class="right">' +
                     '<a onclick="javascript:history.go(0)">' +
-                    '<img src="../../themes/m5/images/refresh.png" class="w24p">' +
+                    '<img src="http://static.mingyizhudao.com/146975853464574" class="w24p">' +
                     '</a>' +
                     '</nav>' +
                     '</header>';
@@ -306,7 +306,7 @@ $('#citySelect').tap(function () {
             innerPage += '<nav class="left">' +
                     '<a href="' + $homeView + '">' +
                     '<div class="pl5">' +
-                    '<img src="../../themes/m5/images/back.png" class="w11p">' +
+                    '<img src="http://static.mingyizhudao.com/146975795218858" class="w11p">' +
                     '</div>' +
                     '</a>' +
                     '</nav>';
@@ -314,7 +314,7 @@ $('#citySelect').tap(function () {
         innerPage += '<h1 class="title">' + title + '</h1>' +
                 '<nav class="right">' +
                 '<a onclick="javascript:history.go(0)">' +
-                '<img src="../../themes/m5/images/refresh.png" class="w24p">' +
+                '<img src="http://static.mingyizhudao.com/146975853464574" class="w24p">' +
                 '</a>' +
                 '</nav>' +
                 '</header>';
