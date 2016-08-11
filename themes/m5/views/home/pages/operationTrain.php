@@ -3,10 +3,7 @@ $this->setPageTitle('手术直通车');
 $urlBookingQuickbook = $this->createAbsoluteUrl('booking/quickbook');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
-//modify by wanglei 
-$urlStat = $this->createAbsoluteUrl('/api/stat');
-//点击快速预约按钮
-$SITE_4 = PatientStatLog::SITE_4;
+
 ?>
 <header class="bg-green">
     <nav class="left">
@@ -54,22 +51,3 @@ $SITE_4 = PatientStatLog::SITE_4;
         </div>
     </div>
 </article>
-<script>
-    $(document).ready(function () {
-           function bookStat(keyword){
-              $.ajax({
-                type: 'post',
-                url: '<?php echo $urlStat; ?>',
-                data: {'stat[site]': '<?php echo $SITE_4; ?>', 'stat[key_word]': keyword},
-                success: function (data) {
-
-                }
-            });
-         }
-           $('#quickbook').click(function () {
-                var obj=$(this);
-                var name="手术直通车";
-                bookStat(name);
-         });
-     });
-    </script>
