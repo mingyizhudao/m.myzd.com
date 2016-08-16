@@ -8,6 +8,7 @@ class ApiViewDoctorSearchV7 extends EApiViewService {
     private $doctorSearch;  // DoctorSearch model.
     private $doctors;
     private $doctorCount;     // count no. of Doctors.
+    private $doctorsCityList;
 
     public function __construct($searchInputs) {
         parent::__construct();
@@ -26,6 +27,7 @@ class ApiViewDoctorSearchV7 extends EApiViewService {
     protected function loadData() {
         // load Doctors.
         $this->loadDoctors();
+        $this->loadDoctorsCityList();
         if ($this->getCount) {
             $this->loadDoctorCount();
         }
@@ -38,6 +40,7 @@ class ApiViewDoctorSearchV7 extends EApiViewService {
                 'errorCode' => 0,
                 'errorMsg' => 'success',
                 'dataNum' => $this->doctorCount,
+                'dataCity' => $this->doctorsCityList,
                 'results' => $this->doctors,
             );
         }
@@ -75,8 +78,10 @@ class ApiViewDoctorSearchV7 extends EApiViewService {
             $data->isContracted = $model->getIsContracted();
             $data->reasons = $model->getReasons();
             $data->isExpteam = $model->getIsExpteam();
+            $this->doctorsCityList[] = $model->getCityId();
             $this->doctors[] = $data;
         }
+   
     }
 
     private function loadDoctorCount() {
@@ -88,6 +93,18 @@ class ApiViewDoctorSearchV7 extends EApiViewService {
 
     private function setCount($count) {
         $this->doctorCount = $count;
+    }
+    
+    private function loadDoctorsCityList() {
+       $doctorCityList = $this->doctorsCityList;
+       if (arrayNotEmpty($doctorCityList)) {
+                $this->setDoctorCityList($doctorCityList);
+       }
+    }
+    
+    private function setDoctorCityList($doctorCityList) {
+        $cityList = array_unique($doctorCityList);
+        $this->doctorsCityList = $cityList;
     }
 
 }
