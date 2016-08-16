@@ -37,7 +37,7 @@ if (!empty($orderInfos)) {
             ?>
             <a id="noPay">
                 <div class="pl5">
-                    <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                    <img src="http://static.mingyizhudao.com/146975795218858" class="w11p">
                 </div>
             </a>
             <?php
@@ -45,7 +45,7 @@ if (!empty($orderInfos)) {
             ?>
             <a href="" data-target="back">
                 <div class="pl5">
-                    <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                    <img src="http://static.mingyizhudao.com/146975795218858" class="w11p">
                 </div>
             </a>
             <?php
@@ -55,7 +55,7 @@ if (!empty($orderInfos)) {
     <h1 class="title">支付订单</h1>
     <nav class="right">
         <a onclick="javascript:history.go(0)">
-            <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
+            <img src="http://static.mingyizhudao.com/146975853464574"  class="w24p">
         </a>
     </nav>
 </header>
@@ -73,7 +73,7 @@ if (!empty($orderInfos)) {
     <div>
         <div class="grid pl10 pr10 mt20 color-green font-s18">
             <div class="col-0">
-                <img src="<?php echo $urlResImage; ?>payOrderImg.png" class="w20p mr10">
+                <img src="http://static.mingyizhudao.com/147073662987596" class="w20p mr10">
             </div>
             <div class="col-1 pt3">
                 当前状态:待处理

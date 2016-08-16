@@ -27,7 +27,7 @@ $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
         </div>
         <div class="col-1 w15 text-right pt11 pr15">
             <a onclick="javascript:history.go(0)">
-                <img src="<?php echo $urlResImage; ?>refresh.png" class="w24p">
+                <img src="http://static.mingyizhudao.com/146975853464574" class="w24p">
             </a>
         </div>
     </div>
@@ -46,7 +46,7 @@ $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
             <div class="col-1 w33">
                 <a href="<?php echo $urlHospitalTop; ?>?innerDeptId=1">
                     <div class="text-center">
-                        <img class="w54p" src="<?php echo $urlResImage; ?>wai.png">
+                        <img class="w54p" src="http://static.mingyizhudao.com/147073964818369">
                     </div>
                     <div class="color-black text-center font-s16">外科</div>
                 </a>
@@ -54,7 +54,7 @@ $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
             <div class="col-1 w33">
                 <a href="<?php echo $urlHospitalTop; ?>?innerDeptId=2">
                     <div class="text-center">
-                        <img class="w54p" src="<?php echo $urlResImage; ?>gu.png">
+                        <img class="w54p" src="http://static.mingyizhudao.com/147073967123728">
                     </div>
                     <div class="color-black text-center font-s16">骨科</div>
                 </a>
@@ -62,7 +62,7 @@ $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
             <div class="col-1 w33">
                 <a href="<?php echo $urlHospitalTop; ?>?innerDeptId=3">
                     <div class="text-center">
-                        <img class="w54p" src="<?php echo $urlResImage; ?>fu.png">
+                        <img class="w54p" src="http://static.mingyizhudao.com/147073969394445">
                     </div>
                     <div class="color-black text-center font-s16">妇产科</div>
                 </a>
@@ -72,7 +72,7 @@ $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
             <div class="col-1 w33">
                 <a href="<?php echo $urlHospitalTop; ?>?innerDeptId=4">
                     <div class="text-center">
-                        <img class="w54p" src="<?php echo $urlResImage; ?>xiao.png">
+                        <img class="w54p" src="http://static.mingyizhudao.com/147073971873251">
                     </div>
                     <div class="color-black text-center font-s16">小儿外科</div>
                 </a>
@@ -80,7 +80,7 @@ $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
             <div class="col-1 w33">
                 <a href="<?php echo $urlHospitalTop; ?>?innerDeptId=5">
                     <div class="text-center">
-                        <img class="w54p" src="<?php echo $urlResImage; ?>wu.png">
+                        <img class="w54p" src="http://static.mingyizhudao.com/147073974463930">
                     </div>
                     <div class="color-black text-center font-s16">五官科</div>
                 </a>
@@ -88,7 +88,7 @@ $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
             <div class="col-1 w33">
                 <a href="<?php echo $urlHospitalTop; ?>?innerDeptId=6">
                     <div class="text-center">
-                        <img class="w54p" src="<?php echo $urlResImage; ?>nei.png">
+                        <img class="w54p" src="http://static.mingyizhudao.com/147073976943897">
                     </div>
                     <div class="color-black text-center font-s16">内科</div>
                 </a>
@@ -98,7 +98,7 @@ $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
             <div class="col-1 w45 br-gray">
                 <a href="<?php echo $urlBookingQuickbook; ?>">
                     <div class="text-center pt20">
-                        <img class="w75p" src="<?php echo $urlResImage; ?>shoushuzhitongche.png">
+                        <img class="w75p" src="http://static.mingyizhudao.com/14707398035618">
                     </div>
                     <div class="mt10 mb20 color-black text-center font-s16">手术直通车</div>
                 </a>
@@ -108,7 +108,7 @@ $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
                     <a href="<?php echo $urlDoctorSearch; ?>?disease_sub_category=2">
                         <div class="grid pt15 pb15">
                             <div class="col-0 text-center pl20 pr20">
-                                <img class="w46p" src="<?php echo $urlResImage; ?>findDoctor.png">
+                                <img class="w46p" src="http://static.mingyizhudao.com/147073983586692">
                             </div>
                             <div class="col-1 color-black font-s16 vertical-center">
                                 找名医
@@ -119,7 +119,7 @@ $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
                 <div>
                     <div class="grid pt15 pb15" onclick="NTKF.im_openInPageChat('kf_9138_1451451713805');">
                         <div class="col-0 text-center pl20 pr20">
-                            <img class="w44p" src="<?php echo $urlResImage; ?>onlineService.png">
+                            <img class="w44p" src="http://static.mingyizhudao.com/147073987291314">
                         </div>
                         <div class="col-1 color-black font-s16 vertical-center">
                             在线客服
@@ -134,7 +134,7 @@ $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
     $(document).ready(function () {
         $html = '<li class="slide">' +
                 '<a href="https://weixin.91160.com/news/detail.html?id=12747">' +
-                '<img class="w100" src="<?php echo $urlResImage; ?>vendor160/banner1.jpg">' +
+                '<img class="w100" src="http://static.mingyizhudao.com/147073990922378">' +
                 '</a>' +
                 '</li>';
 

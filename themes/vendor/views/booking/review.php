@@ -49,14 +49,14 @@ $this->show_footer = false;
     <nav class="left">
         <a href="" data-target="back">
             <div class="pl5">
-                <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                <img src="http://static.mingyizhudao.com/146975795218858" class="w11p">
             </div>
         </a>
     </nav>
     <h1 class="title">订单详情</h1>
     <nav class="right">
         <a onclick="javascript:history.go(0)">
-            <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
+            <img src="http://static.mingyizhudao.com/146975853464574"  class="w24p">
         </a>
     </nav>
 </header>
@@ -96,11 +96,11 @@ $this->show_footer = false;
                         治疗效果:
                     </div>
                     <div class='col-1'>
-                        <span data-star='1' class='effectStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
-                        <span data-star='2' class='effectStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
-                        <span data-star='3' class='effectStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
-                        <span data-star='4' class='effectStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
-                        <span data-star='5' class='effectStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                        <span data-star='1' class='effectStar pl10'><img src='http://static.mingyizhudao.com/147073907794816' class='w20p'></span>
+                        <span data-star='2' class='effectStar pl10'><img src='http://static.mingyizhudao.com/147073907794816' class='w20p'></span>
+                        <span data-star='3' class='effectStar pl10'><img src='http://static.mingyizhudao.com/147073907794816' class='w20p'></span>
+                        <span data-star='4' class='effectStar pl10'><img src='http://static.mingyizhudao.com/147073907794816' class='w20p'></span>
+                        <span data-star='5' class='effectStar pl10'><img src='http://static.mingyizhudao.com/147073907794816' class='w20p'></span>
                         <?php echo $form->hiddenField($model, 'effect', array('name' => 'comment[effect]', 'value' => 5)); ?>
                     </div>
                 </div>
@@ -111,11 +111,11 @@ $this->show_footer = false;
                         医生态度:
                     </div>
                     <div class='col-1 color-gray'>
-                        <span data-star='1' class='doctorAttitudeStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
-                        <span data-star='2' class='doctorAttitudeStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
-                        <span data-star='3' class='doctorAttitudeStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
-                        <span data-star='4' class='doctorAttitudeStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
-                        <span data-star='5' class='doctorAttitudeStar pl10'><img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'></span>
+                        <span data-star='1' class='doctorAttitudeStar pl10'><img src='http://static.mingyizhudao.com/147073907794816' class='w20p'></span>
+                        <span data-star='2' class='doctorAttitudeStar pl10'><img src='http://static.mingyizhudao.com/147073907794816' class='w20p'></span>
+                        <span data-star='3' class='doctorAttitudeStar pl10'><img src='http://static.mingyizhudao.com/147073907794816' class='w20p'></span>
+                        <span data-star='4' class='doctorAttitudeStar pl10'><img src='http://static.mingyizhudao.com/147073907794816' class='w20p'></span>
+                        <span data-star='5' class='doctorAttitudeStar pl10'><img src='http://static.mingyizhudao.com/147073907794816' class='w20p'></span>
                         <?php echo $form->hiddenField($model, 'doctor_attitude', array('name' => 'comment[doctor_attitude]', 'value' => 5)); ?>
                     </div>
                 </div>
@@ -177,9 +177,9 @@ $this->show_footer = false;
             $('input[id="comment_effect"]').attr('value', number);
             $('.effectStar').each(function () {
                 if ($(this).attr('data-star') <= number) {
-                    $(this).html("<img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'>");
+                    $(this).html("<img src='http://static.mingyizhudao.com/147073907794816' class='w20p'>");
                 } else {
-                    $(this).html("<img src='<?php echo $urlResImage; ?>star.png' class='w20p'>");
+                    $(this).html("<img src='http://static.mingyizhudao.com/147073918143189' class='w20p'>");
                 }
             });
         });
@@ -189,9 +189,9 @@ $this->show_footer = false;
             $('input[id="comment_doctor_attitude"]').attr('value', number);
             $('.doctorAttitudeStar').each(function () {
                 if ($(this).attr('data-star') <= number) {
-                    $(this).html("<img src='<?php echo $urlResImage; ?>starFill.png' class='w20p'>");
+                    $(this).html("<img src='http://static.mingyizhudao.com/147073907794816' class='w20p'>");
                 } else {
-                    $(this).html("<img src='<?php echo $urlResImage; ?>star.png' class='w20p'>");
+                    $(this).html("<img src='http://static.mingyizhudao.com/147073918143189' class='w20p'>");
                 }
             });
         });
