@@ -29,8 +29,8 @@ class TestController extends WeixinpubController {
     //memcache 缓存技术测试
     public function actionTest004(){
         $mem = Yii::app()->cache;
-        echo $mem->getVersion();
-        echo "</br>";
+        //echo $mem->getVersion();
+        //echo "</br>";
         
         $mem->set('key01','hello today');
         echo $mem->get('key01');
