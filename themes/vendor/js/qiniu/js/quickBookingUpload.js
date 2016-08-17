@@ -274,7 +274,7 @@ $(function () {
             data: formdata,
             success: function (data) {
                 if (data.status == 'ok') {
-                    $('#booking_id').val(data.booking.id);
+                    $('#booking_id').val(data.booking_id);
                     $('#salesOrderRefNo').val(data.salesOrderRefNo);
                     if ($('#fsUploadProgress').find('tr').length = 0) {
                         location.href = urlReturn + '?refNo=' + data.salesOrderRefNo;
