@@ -90,7 +90,7 @@ $this->show_footer = false;
                 <div class="col-1">
                 </div>
             </div>
-            <div id="imgList" class="mt10">
+            <div id="imglist" class="mt10">
                 
             </div>
             <?php
