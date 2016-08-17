@@ -8,7 +8,7 @@ $this->setPageTitle('快速预约');
 $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/auth/sendSmsVerifyCode');
 $authActionType = AuthSmsVerify::ACTION_BOOKING;
 $urlSubmitForm = $this->createUrl("booking/ajaxQuickbook");
-$urlUploadFile = $this->createUrl("booking/ajaxUploadFile");
+$urlUploadFile = 'http://121.40.127.64:8089/api/uploadbookingfile';
 $urlReturn = $this->createUrl('order/view');
 $urlHomeView = $this->createUrl('home/view');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
@@ -22,14 +22,14 @@ $user = $this->getCurrentUser();
     <nav class="left">
         <a href="" data-target="back">
             <div class="pl5">
-                <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                <img src="http://static.mingyizhudao.com/146975795218858" class="w11p">
             </div>
         </a>
     </nav>
     <h1 class="title">快速预约</h1>
     <nav class="right">
         <a onclick="javascript:history.go(0)">
-            <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
+            <img src="http://static.mingyizhudao.com/146975853464574"  class="w24p">
         </a>
     </nav>
 </header>

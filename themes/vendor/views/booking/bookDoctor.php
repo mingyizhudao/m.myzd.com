@@ -15,7 +15,7 @@ $this->setPageTitle('预约单');
 $urlApiAppNav1 = $this->createAbsoluteUrl('/api/list', array('model' => 'appnav1'));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $urlSubmitForm = $this->createUrl("booking/ajaxCreate");
-$urlUploadFile = $this->createUrl("booking/ajaxUploadFile");
+$urlUploadFile = 'http://121.40.127.64:8089/api/uploadbookingfile';
 $urlReturn = $this->createUrl('order/view');
 $this->show_footer = false;
 ?>
@@ -23,14 +23,14 @@ $this->show_footer = false;
     <nav class="left">
         <a href="" data-target="back">
             <div class="pl5">
-                <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                <img src="http://static.mingyizhudao.com/146975795218858" class="w11p">
             </div>
         </a>
     </nav>
     <h1 class="title"><?php echo $this->pageTitle; ?></h1>
     <nav class="right">
         <a onclick="javascript:history.go(0)">
-            <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
+            <img src="http://static.mingyizhudao.com/146975853464574"  class="w24p">
         </a>
     </nav>
 </header>

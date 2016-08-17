@@ -9,15 +9,13 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
         <meta name="format-detection" content="telephone=no"/>
         <?php
-        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/Jingle.min.css?ts=' . time());
-        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/app.css');
-        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/mobile.css?ts=' . time());
-        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/mymain.css?ts=' . time());
-        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/lib/Jingle.custom.js?ts=' . time(), CClientScript::POS_END);
+        Yii::app()->clientScript->registerCssFile('http://static.mingyizhudao.com/vendor/base.min.1.0.css');
+        Yii::app()->clientScript->registerCssFile('http://static.mingyizhudao.com/vendor/custom.min.1.2.css');
+        Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/vendor/zepto.min.1.0.js', CClientScript::POS_HEAD);
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/base.min.js?ts=' . time(), CClientScript::POS_END);
+        Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/vendor/main.min.1.0.js', CClientScript::POS_END);
+        Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/vendor/baiduStatistics.min.1.0.js', CClientScript::POS_END);
         ?>
-        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/js/lib/zepto.min.js"></script>
-        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/js/main.js"></script>
-        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/js/baiduStatistics.js"></script>
     </head>
     <body>
         <div id="section_container">
@@ -43,10 +41,6 @@
             </section>
         </div>
         <!-- /footer -->
-        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/js/lib/iscroll.js"></script>
-        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/js/lib/template.min.js"></script>
-        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/js/lib/zepto.touch2mouse.js"></script>
-        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/js/lib/app.js"></script>
         <script type="text/javascript" src="http://dl.ntalker.com/js/xn6/ntkfstat.js?siteid=kf_9138"></script>
     </body>
 </html>

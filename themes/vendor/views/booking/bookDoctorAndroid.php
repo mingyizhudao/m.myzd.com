@@ -1,8 +1,8 @@
 <?php
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/jquery.validate.js', CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/jquery.form.js', CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/ajaxfileupload.js', CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/bookingCreateAndroid.js', CClientScript::POS_END);
+Yii::app()->clientScript->registerCssFile('http://static.mingyizhudao.com/m/qiniu.base.min.1.0.css');
+Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/qiniu.base.min.1.0.js', CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/jquery.formvalidate.min.1.0.js', CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/qiniu/js/bookingUpload.js?ts=' . time(), CClientScript::POS_END);
 ?>
 <?php
 /**
@@ -13,42 +13,30 @@ $this->setPageTitle('预约单');
 $urlApiAppNav1 = $this->createAbsoluteUrl('/api/list', array('model' => 'appnav1'));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $urlSubmitForm = $this->createUrl("booking/ajaxCreate");
-$urlUploadFile = $this->createUrl("booking/ajaxUploadFile");
+$urlUploadFile = $this->createUrl("qiniu/ajaxBookingFile");
 $urlReturn = $this->createUrl('order/view');
+$urlQiniuAjaxToken = $this->createUrl('qiniu/ajaxBookingToken');
 $this->show_footer = false;
 ?>
 <header class="bg-green">
     <nav class="left">
         <a href="" data-target="back">
             <div class="pl5">
-                <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                <img src="http://static.mingyizhudao.com/146975795218858" class="w11p">
             </div>
         </a>
     </nav>
     <h1 class="title"><?php echo $this->pageTitle; ?></h1>
     <nav class="right">
         <a onclick="javascript:history.go(0)">
-            <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
+            <img src="http://static.mingyizhudao.com/146975853464574"  class="w24p">
         </a>
     </nav>
 </header>
 <footer>
     <button id="btnSubmit" type="button" class="button btn-yellow font-s16">预约</button>
 </footer>
-<article id="bookingAndroid_article" class="active"  data-scroll="true">
-    <style>
-        .uploadfile .ui-input-text{border: 0;box-shadow: 0 0 0 #fff;}
-        .uploadfile .ui-body-inherit{border-color: #fff;}
-        .uploadfile .ui-focus{box-shadow: 0 0 0 #fff;}
-        .uploadfile{padding-top: 20px;}
-        .uploadfile:before{content: '选择文件';padding: 10px 15px;font-size: 14px;background-color: #428bca;color: #fff;border-radius: 5px;}
-        .uploadfile{position:relative;}
-        .uploadfile input[type="file"]{position:absolute;top:5px;right:35%;width:30%;line-height:36px;opacity:0;}
-        .uploadfile .btn:hover, #btn-addfiles:hover{cursor:pointer;}
-        .MultiFile-list{margin: 10px;}
-        .MultiFile-list .MultiFile-label{margin: 3px 0;}
-        .MultiFile-list .MultiFile-label .MultiFile-remove{color: #f00;font-size: 16px;padding-right: 10px;text-decoration: initial;}
-    </style>
+<article id="bookingAndroid_article" class="active android_article"  data-scroll="true">
     <div class="form-wrapper">
         <?php
         $form = $this->beginWidget('CActiveForm', array(
@@ -65,6 +53,10 @@ $this->show_footer = false;
         ));
         echo $form->hiddenField($model, 'doctor_id', array('name' => 'booking[doctor_id]'));
         ?>
+        <input type="hidden" id="booking_id" value="">
+        <input type="hidden" id="salesOrderRefNo" value="">
+        <input type="hidden" id="domain" value="http://mr.file.mingyizhudao.com">
+        <input type="hidden" id="uptoken_url" value="<?php echo $urlQiniuAjaxToken; ?>">
         <div class="grid pt20 pb20 bb-gray">
             <div class="col-0 w100p pl15 color-black4">就诊专家:</div>
             <div class="col-1"><?php echo $model->doctor_name; ?></div>
@@ -112,25 +104,21 @@ $this->show_footer = false;
         ?>
         <div class="pt20 pl15 pr15 pb20 ui-field-contain">
             <div class="">
-                <label for="uploaderCorp">请选择病历</label>
-                <div class="uploadfile text-center mt10">
-                    <?php
-                    $this->widget('CMultiFileUpload', array(
-                        //'model' => $model,
-                        'attribute' => 'file',
-                        'id' => "btn-addfiles",
-                        'name' => 'file', //$_FILES['BookingFiles'].
-                        'accept' => 'jpeg|jpg|png',
-                        'options' => array(),
-                        'denied' => '请上传jpg、png格式',
-                        'duplicate' => '该文件已被选择',
-                        'max' => 8, // max 8 files
-                        //'htmlOptions' => array(),
-                        'value' => '上传病历',
-                        'selected' => '已选文件',
-                            //'file'=>'文件'
-                    ));
-                    ?>
+                <label for="uploaderCorp">上传病例</label>
+                <div class="body mt10">
+                    <div class="text-center">
+                        <div id="container">
+                            <a class="btn btn-default btn-lg" id="pickfiles" href="#">
+                                <span>选择影像资料</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mt10">
+                        <table class="table table-striped table-hover text-left" style="display:none">
+                            <tbody id="fsUploadProgress">
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

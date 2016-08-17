@@ -17,22 +17,25 @@ $urlApiAppNav1 = $this->createAbsoluteUrl('/api/list', array('model' => 'appnav1
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $results = $data->results;
 $urlSubmitForm = $this->createUrl("booking/ajaxCreate");
-$urlUploadFile = $this->createUrl("booking/ajaxUploadFile");
+$urlUploadFile = 'http://121.40.127.64:8089/api/uploadbookingfile';
 $urlReturn = $this->createUrl('booking/patientBookingList');
+$userId = Yii::app()->session['userId'];
+//$urlBookingFiles = 'http://file.mingyizhudao.com/api/loadbookingmr?userId=' . $user->id . '&bookingId=' . $results->id;
+$urlBookingFiles = 'http://121.40.127.64:8089/api/loadbookingmr?userId=' . $userId . '&bookingId=' . $results->id;
 $this->show_footer = false;
 ?>
 <header class="bg-green" >
     <nav class="left">
         <a href="" data-target="back">
             <div class="pl5">
-                <img src="<?php echo $urlResImage; ?>back.png" class="w11p">
+                <img src="http://static.mingyizhudao.com/146975795218858" class="w11p">
             </div>
         </a>
     </nav>
     <h1 class="title"><?php echo $this->pageTitle; ?></h1>
     <nav class="right">
         <a onclick="javascript:history.go(0)">
-            <img src="<?php echo $urlResImage; ?>refresh.png"  class="w24p">
+            <img src="http://static.mingyizhudao.com/146975853464574"  class="w24p">
         </a>
     </nav>
 </header>
@@ -88,26 +91,7 @@ $this->show_footer = false;
                 </div>
             </div>
             <div id="imgList" class="mt10">
-                <?php
-                $files = $results->files;
-                if (count($files) > 0) {
-                    $n = floor(count($files) / 3);
-                    for ($i = 0; $i < $n + 1; $i++) {
-                        echo '<div class="grid">';
-                        for ($j = 0; $j < 3; $j++) {
-                            $num = $i * 3 + $j;
-                            if ($num < count($files)) {
-                                ?>
-                                <div class="col-0 w33 text-center mt5">
-                                    <img class="btn-img" src="<?php echo $files[$num]->absThumbnailUrl; ?>" data-img="<?php echo $files[$num]->absFileUrl; ?>">
-                                </div>
-                                <?php
-                            }
-                        }
-                        echo '</div>';
-                    }
-                }
-                ?>
+                
             </div>
             <?php
             $form = $this->beginWidget('CActiveForm', array(
@@ -161,12 +145,44 @@ $this->show_footer = false;
     </ul>
 </article>
 <script>
-    $('.btn-img').tap(function () {
-        var imgUrl = $(this).attr("data-img");
-        J.popup({
-            html: '<div class="imgpopup"><img src="' + imgUrl + '"></div>',
-            pos: 'top-second',
-            showCloseBtn: true
+    $(document).ready(function () {
+        //加载病人病历图片
+        var urlBookingFiles = "<?php echo $urlBookingFiles; ?>";
+        $.ajax({
+            url: urlBookingFiles,
+            success: function (data) {
+                setImgHtml(data.results.files);
+            }
         });
     });
+
+    function setImgHtml(imgfiles) {
+        var innerHtml = '';
+        if (imgfiles && imgfiles.length > 0) {
+            var n = Math.ceil((imgfiles.length) / 3);
+            for (var i = 0; i < n; i++) {
+                innerHtml += '<div class="grid">';
+                for (var j = 0; j < 3; j++) {
+                    var num = i * 3 + j;
+                    if (num < (imgfiles.length)) {
+                        innerHtml += '<div class="col-0 w33 text-center mt5">' +
+                                '<img class="btn-img" src="' + imgfiles[num].absFileUrl + '" data-img="' + imgfiles[num].thumbnailUrl + '">' +
+                                '</div>';
+                    }
+                }
+                innerHtml += '</div>';
+            }
+        } else {
+            innerHtml += '';
+        }
+        $("#imglist").html(innerHtml);
+        $('.btn-img').click(function () {
+            var imgUrl = $(this).attr("data-img");
+            J.popup({
+                html: '<div class="imgpopup"><img src="' + imgUrl + '"></div>',
+                pos: 'top-second',
+                showCloseBtn: true
+            });
+        });
+    }
 </script>
