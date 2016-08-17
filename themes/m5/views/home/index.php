@@ -250,7 +250,7 @@ $SITE_6 = PatientStatLog::SITE_6;
     <div>
         <div>
             <a href="http://mp.weixin.qq.com/s?__biz=MzIzMjAxNTcxMg==&mid=2673616672&idx=1&sn=49bd12171ab0efe0e47afd2c781486c5&scene=1&srcid=0816OpMPNMVBhQbugd9zJO1b#rd">
-                <img src="<?php echo $urlResImage; ?>1.jpg" class="w100">
+                <img src="http://static.mingyizhudao.com/147141556066739" class="w100">
             </a>
         </div>
     </div>
