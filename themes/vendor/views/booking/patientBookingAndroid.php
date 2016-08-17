@@ -110,7 +110,6 @@ $this->show_footer = false;
             <input type="hidden" id="uptoken_url" value="<?php echo $urlQiniuAjaxToken; ?>">
             <div class="pt20 pl15 pr15 pb20 ui-field-contain">
                 <div class="">
-                    <label for="uploaderCorp">上传病例</label>
                     <div class="body mt10">
                         <div class="text-center">
                             <div id="container">

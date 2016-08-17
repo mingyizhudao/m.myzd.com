@@ -578,7 +578,7 @@ $(function () {
                     //console.log(data);
                     //图片上传
                     if (data.status == 'ok') {
-                        fileParam.id = data.booking.id;
+                        fileParam.id = data.booking_id;
                         //基本数据插入成功  判断是否有图片
                         uploadReturnUrl = uploadReturnUrl + '?refNo=' + data.salesOrderRefNo;
                         if (state == 'ready') {
