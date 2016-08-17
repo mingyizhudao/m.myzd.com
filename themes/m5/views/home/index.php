@@ -14,6 +14,11 @@ $urlHomeMyyzDoctor = $this->createUrl('home/page', array('view' => 'myyzDoctor')
 $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
 $urlZeroBooking = $this->createUrl('questionnaire/beginQuestionnaireView');
 $urlCatherine = $this->createUrl('event/view', array('page' => 'catherine'));
+$urlHomeView = $this->createUrl('home/view');
+$urlHospitalIndex = $this->createUrl('hospital/index');
+$urlEventIndex = $this->createUrl('event/index');
+$urlUserView = $this->createUrl('user/view');
+$this->show_footer = false;
 //modify by wanglei 
 $urlStat = $this->createAbsoluteUrl('/api/stat');
 //激活搜索框搜索
@@ -29,6 +34,68 @@ $SITE_5 = PatientStatLog::SITE_5;
 //点击在线客服按钮
 $SITE_6 = PatientStatLog::SITE_6;
 ?>
+<style>
+    #countdown{
+        background-color: #b1b1b1;
+        border-radius: 5px;
+        padding: 3px 10px;
+        color: #fff;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 99;
+    }
+    #skip{
+        color: #eaeaea;
+    }
+    footer.hide~article {
+        bottom: 0px;
+    }
+</style>
+<footer class="hide">
+    <ul class="control-group w100">
+        <li class="w25 active" data-active="home_footer">
+            <a href="<?php echo $urlHomeView; ?>">
+                <div class="grid">
+                    <div class="col-1"></div>
+                    <div class="col-0 imgHome"></div>
+                    <div class="col-1"></div>
+                </div>
+                首页
+            </a>
+        </li>
+        <li class="w25" data-active="hospital_footer">
+            <a href="<?php echo $urlHospitalIndex; ?>?city=0">
+                <div class="grid">
+                    <div class="col-1"></div>
+                    <div class="col-0 imgHospital"></div>
+                    <div class="col-1"></div>
+                </div>
+                医院
+            </a>
+        </li>
+        <li class="w25" data-active="find_footer">
+            <a href="<?php echo $urlEventIndex; ?>">
+                <div class="grid">
+                    <div class="col-1"></div>
+                    <div class="col-0 imgFind"></div>
+                    <div class="col-1"></div>
+                </div>
+                发现
+            </a>
+        </li>
+        <li class="w25" data-active="user_footer">
+            <a href="<?php echo $urlUserView; ?>">
+                <div class="grid">
+                    <div class="col-1"></div>
+                    <div class="col-0 imgCenter"></div>
+                    <div class="col-1"></div>
+                </div>
+                个人
+            </a>
+        </li>
+    </ul>
+</footer>
 <article id="home_article" data-active="home_footer" class="active bg-gray5" data-scroll="true">
     <div>
         <div class="titleImg">
@@ -175,8 +242,38 @@ $SITE_6 = PatientStatLog::SITE_6;
         </div>
     </div>
 </article>
+<div id="countdown">
+    <span id="timeData">5</span>
+    <span id="skip">跳过</span>
+</div>
+<article id="activity_article" data-scroll="true" class="active">
+    <div>
+        <div>
+            <a href="http://mp.weixin.qq.com/s?__biz=MzIzMjAxNTcxMg==&mid=2673616672&idx=1&sn=49bd12171ab0efe0e47afd2c781486c5&scene=1&srcid=0816OpMPNMVBhQbugd9zJO1b#rd">
+                <img src="<?php echo $urlResImage; ?>1.jpg" class="w100">
+            </a>
+        </div>
+    </div>
+</article>
 <script>
     $(document).ready(function () {
+        //活动5s倒计时
+        setInterval(function () {
+            var num = Number($('#timeData').text());
+            if (num <= 0) {
+                $('footer').removeClass('hide');
+                $('#countdown').addClass('hide');
+                $('#activity_article').addClass('hide');
+            } else {
+                $('#timeData').text(num - 1);
+            }
+        }, 1000);
+        //跳过
+        $('#countdown').click(function () {
+            $('footer').removeClass('hide');
+            $('#countdown').addClass('hide');
+            $('#activity_article').addClass('hide');
+        });
         $('#freePhone').click(function () {
             J.customConfirm('友情提示',
                     '<div class="mb10">立即拨打免费客服热线400-6277-120</div>',
@@ -196,8 +293,8 @@ $SITE_6 = PatientStatLog::SITE_6;
         $('#consultation').click(function () {
             location.href = 'http://p.qiao.baidu.com/im/index?siteid=9290674&ucid=10135139';
         });
-           function searchStat(keyword){
-              $.ajax({
+        function searchStat(keyword) {
+            $.ajax({
                 type: 'post',
                 url: '<?php echo $urlStat; ?>',
                 data: {'stat[site]': '<?php echo $SITE_1; ?>', 'stat[key_word]': keyword},
@@ -205,8 +302,8 @@ $SITE_6 = PatientStatLog::SITE_6;
 
                 }
             });
-         }
-         function buttonStat(keyword,data_id) {
+        }
+        function buttonStat(keyword, data_id) {
             $.ajax({
                 type: 'post',
                 url: '<?php echo $urlStat; ?>',
@@ -226,7 +323,7 @@ $SITE_6 = PatientStatLog::SITE_6;
                 }
             });
         }
-        function bannerStat(keyword){
+        function bannerStat(keyword) {
             $.ajax({
                 type: 'post',
                 url: '<?php echo $urlStat; ?>',
@@ -235,31 +332,31 @@ $SITE_6 = PatientStatLog::SITE_6;
 
                 }
             });
-        
+
         }
-         $('#searchIcon').click(function () {
-                var obj=$(this);
-                var name=obj.attr("data-name");
-                searchStat(name);
-  
-         });
+        $('#searchIcon').click(function () {
+            var obj = $(this);
+            var name = obj.attr("data-name");
+            searchStat(name);
+
+        });
         $('.departmentcontent').click(function () {
-                var obj=$(this);
-                var name=obj.attr("data-name");
-                var url=obj.attr("data-href");
-                departmentStat(name);
-                window.location=url;
-         });
-         $('img.w55p.h55p').click(function () {
-                var obj=$(this);
-                var data_id=obj.attr("data-id");
-                var name=obj.attr("data-name");
-                buttonStat(name,data_id);
-         });
-         
-         
-      
-     
+            var obj = $(this);
+            var name = obj.attr("data-name");
+            var url = obj.attr("data-href");
+            departmentStat(name);
+            window.location = url;
+        });
+        $('img.w55p.h55p').click(function () {
+            var obj = $(this);
+            var data_id = obj.attr("data-id");
+            var name = obj.attr("data-name");
+            buttonStat(name, data_id);
+        });
+
+
+
+
         //轮播图
         var html = '<li class="slide">' +
                 '<a href="<?php echo $urlZeroBooking; ?>?appId=ddaa785817d165e8&site=1">' +
@@ -277,7 +374,7 @@ $SITE_6 = PatientStatLog::SITE_6;
                 '</a>' +
                 '</li>';
         $('#home_article .bxslider').html(html);
-       
+
         $('.bxslider').bxSlider({
             mode: 'fade',
             slideMargin: 0,
@@ -285,10 +382,10 @@ $SITE_6 = PatientStatLog::SITE_6;
             auto: true
         });
         $('#home_article .bxslider').click(function () {
-                var obj=$(this);
-                bannerStat('banner');
-         });
-        
+            var obj = $(this);
+            bannerStat('banner');
+        });
+
         var height = $('.titleImg').height() - 110;
         $('.titlePosition').css({"margin-top": height + "px"});
     });
