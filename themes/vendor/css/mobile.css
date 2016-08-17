@@ -19,89 +19,13 @@ header nav{
 footer{
     background-color: #fff;
 }
-footer .control-group li.active{
-    background: #fff;
-    color: #06c1ae;
-}
-footer .control-group li {
-    border-color: #fff;
-}
-footer .control-group li.active a {
-    color: #06c1ae;
-}
-footer .control-group li>a {
-    color: #868686;
-}
-footer .control-group li.active .imgHome{
-    width:100%;
-    height:23px;
-    background:url('../images/home2.png') no-repeat;
-    background-size:23px 23px;
-    background-position:center; 
-}
-footer .control-group li .imgHome{
-    width:100%;
-    height:23px;
-    background:url('../images/home1.png') no-repeat;
-    background-size:23px 23px;
-    background-position:center; 
-}
-footer .control-group li.active .imgHospital{
-    width:100%;
-    height:23px;
-    background:url('../images/hospital2.png') no-repeat;
-    background-size:23px 23px;
-    background-position:center; 
-}
-footer .control-group li .imgHospital{
-    width:100%;
-    height:23px;
-    background:url('../images/hospital1.png') no-repeat;
-    background-size:23px 23px;
-    background-position:center; 
-}
-footer .control-group li.active .imgFind{
-    width:100%;
-    height:23px;
-    background:url('../images/find2.png') no-repeat;
-    background-size:23px 23px;
-    background-position:center; 
-}
-footer .control-group li .imgFind{
-    width:100%;
-    height:23px;
-    background:url('../images/find1.png') no-repeat;
-    background-size:23px 23px;
-    background-position:center; 
-}
-footer .control-group li.active .imgCenter{
-    width:100%;
-    height:23px;
-    background:url('../images/center2.png') no-repeat;
-    background-size:23px 23px;
-    background-position:center; 
-}
-footer .control-group li .imgCenter{
-    width:100%;
-    height:23px;
-    background:url('../images/center1.png') no-repeat;
-    background-size:23px 23px;
-    background-position:center; 
-}
 
 /*医院科室*/
-#hosDept_footer{
-    //border-top: 1px solid #ffffff;
-}
 #hosDept_article .bgDiv{
     padding:15px 10px 10px 10px;
 }
-#hosDept_article .bgDiv img{
-    //width:18px;
-    //height:15px;
-}
 #hosDept_nav #deptInf{
-    background: url('../images/dept.png') no-repeat;
+    background: url('http://static.mingyizhudao.com/147072730476667') no-repeat;
     background-size: 18px 15px;
     padding-left: 30px;
     background-position: 10px 16px;
@@ -196,7 +120,7 @@ footer .control-group li .imgCenter{
 @media screen and (max-width:360px){
     #bookingDoc_article .bgSC{
         padding-left:25px;
-        background:url('../images/shanchang.png') no-repeat;
+        background:url('http://static.mingyizhudao.com/14707273550097') no-repeat;
         background-size:16px 16px;
         background-position: 2px 0px;
     }
@@ -204,7 +128,7 @@ footer .control-group li .imgCenter{
 @media screen and (min-width:361px){
     #bookingDoc_article .bgSC{
         padding-left:25px;
-        background:url('../images/shanchang.png') no-repeat;
+        background:url('http://static.mingyizhudao.com/14707273550097') no-repeat;
         background-size:22px 22px;
     }
 }
@@ -217,7 +141,7 @@ footer .control-group li .imgCenter{
 @media screen and (max-width:360px){
     #bookingDoc_article .bgHonor{
         padding-left:25px;
-        background:url('../images/honor.png') no-repeat;
+        background:url('http://static.mingyizhudao.com/147072740619864') no-repeat;
         background-size:16px 16px;
         background-position: 3px 0px;
     }
@@ -225,13 +149,13 @@ footer .control-group li .imgCenter{
 @media screen and (min-width:361px){
     #bookingDoc_article .bgHonor{
         padding-left:25px;
-        background:url('../images/honor.png') no-repeat;
+        background:url('http://static.mingyizhudao.com/147072740619864') no-repeat;
         background-size:21px 17px;
     }
 }
 #bookingDoc_article .bgStars{
     padding-left:25px;
-    background:url('../images/stars.png') no-repeat;
+    background:url('http://static.mingyizhudao.com/147062719719056') no-repeat;
     background-size:11px 11px;
     background-position:10px 3px;
 }
@@ -244,7 +168,7 @@ footer .control-group li .imgCenter{
 @media screen and (max-width:360px){
     #bookingDoc_article .bgCareer{
         padding-left:25px;
-        background:url('../images/career.png') no-repeat;
+        background:url('http://static.mingyizhudao.com/14707275392346') no-repeat;
         background-size:16px 16px;
         background-position: 2px 1px;
     }
@@ -252,13 +176,13 @@ footer .control-group li .imgCenter{
 @media screen and (min-width:361px){
     #bookingDoc_article .bgCareer{
         padding-left:25px;
-        background:url('../images/career.png') no-repeat;
+        background:url('http://static.mingyizhudao.com/14707275392346') no-repeat;
         background-size:21px 21px;
     }
 }
 @media screen and (max-width:360px){
     #bookingDoc_article .bgReason{
-        background: url('../images/reason.png') no-repeat;
+        background: url('http://static.mingyizhudao.com/147072758863025') no-repeat;
         background-size: 20px 20px;
         padding-left: 25px;
         background-position-y: 0px;
@@ -266,7 +190,7 @@ footer .control-group li .imgCenter{
 }
 @media screen and (min-width:361px){
     #bookingDoc_article .bgReason{
-        background: url('../images/reason.png') no-repeat;
+        background: url('http://static.mingyizhudao.com/147072758863025') no-repeat;
         background-size: 22px 22px;
         padding-left: 25px;
         background-position-y: 2px;
@@ -277,7 +201,7 @@ footer .control-group li .imgCenter{
     border-radius: 7px;
     background-color: #ffffff!important;
     padding: 15px;
-    background: url('../images/tuijian.png') no-repeat;
+    background: url('http://static.mingyizhudao.com/147072762688732') no-repeat;
     background-size: 37px 37px;
     background-position-y: 0;
     background-position-x: 100%;
@@ -364,8 +288,7 @@ footer .control-group li .imgCenter{
     line-height: 1em;
 }
 #findDept_header .cityImg{
-    //margin-top: 17px;
-    background: url('../images/cityLogo.png') no-repeat;
+    background: url('http://static.mingyizhudao.com/147062685064685') no-repeat;
     background-size: 15px 8px;
     width:15px;
     background-position-y: 5px;
@@ -374,7 +297,7 @@ footer .control-group li .imgCenter{
     border-bottom:1px solid #c2c2c2;
 }
 #findDept_article .list>li.nextImg{
-    background: url('../images/nextImg.png') no-repeat;
+    background: url('http://static.mingyizhudao.com/147062693031054') no-repeat;
     background-position: 95% 50%;
     background-size: 8px 15px;
 }
@@ -432,8 +355,7 @@ footer .control-group li .imgCenter{
     line-height: 1em;
 }
 #searchDept_header .cityImg{
-    //margin-top: 17px;
-    background: url('../images/cityLogo.png') no-repeat;
+    background: url('http://static.mingyizhudao.com/147062685064685') no-repeat;
     background-size: 15px 8px;
     width:15px;
     background-position-y: 5px;
@@ -442,7 +364,7 @@ footer .control-group li .imgCenter{
     border-bottom:1px solid #c2c2c2;
 }
 #searchDept_article .list>li.nextImg{
-    background: url('../images/nextImg.png') no-repeat;
+    background: url('http://static.mingyizhudao.com/147062693031054') no-repeat;
     background-position: 95% 50%;
     background-size: 8px 15px;
 }
@@ -477,7 +399,7 @@ footer .control-group li .imgCenter{
     display: inline;
 }
 #home_header .searchDiv{
-    background: url('../images/searchBlack.png') no-repeat;
+    background: url('http://static.mingyizhudao.com/147072792051846') no-repeat;
     background-position: 17px 5px;
     background-size: 14px;
     margin: 8px auto 0px;
@@ -509,46 +431,6 @@ footer .control-group li .imgCenter{
     }
 }
 
-/*搜索页面*/
-/*#search_header input[type=text]{
-    padding-top: 0px;
-    padding-left: 0px;
-    padding-right: 0px;
-    padding-bottom: 0px;
-    color:#fff;
-    background-color:#06c1ae;
-    margin-bottom:0px;
-    border-radius: 0!important;
-    -webkit-box-shadow: none!important;
-    box-shadow: none!important;
-    //padding: 0!important;
-    height: 20px!important;
-    border:none!important;
-    margin-top:13px;
-}
-#search_header .borderLine{
-    height:5px;
-    border-bottom:1px solid #fff;
-    border-left:1px solid #fff;
-    border-right:1px solid #fff;
-}
-#search_header .lineDiv{
-    position:fixed;
-    top:33px;
-    width:100%;
-}
-#search_header .title ::-webkit-input-placeholder {  WebKit browsers 
-    color: #fff;
-}
-#search_header .title :-moz-placeholder {  Mozilla Firefox 4 to 18 
-    color: #fff;
-}
-#search_header .title ::-moz-placeholder {  Mozilla Firefox 19+ 
-    color: #fff;
-}
-#search_header .title :-ms-input-placeholder {  Internet Explorer 10+ 
-    color: #fff;
-}*/
 /*搜索页面*/
 header#search_header{
     border-bottom: inherit;
@@ -599,13 +481,13 @@ header#search_header{
     color: #fff;
 }
 #search_atricle #moreDoctor{
-    background: url('../images/searchBlue.png') no-repeat;
+    background: url('http://static.mingyizhudao.com/147072797063699') no-repeat;
     background-size: 16px;
     background-position: 10px 16px;
     padding-left: 35px;
 }
 #search_atricle #moreDisease{
-    background: url('../images/searchBlue.png') no-repeat;
+    background: url('http://static.mingyizhudao.com/147072797063699') no-repeat;
     background-size: 16px;
     background-position: 10px 16px;
     padding-left: 35px;
@@ -631,9 +513,9 @@ header{
 #order .order-content .title{display: inline-block;width: 5em;font-size: 16px;}
 #order .ch{text-align:center;}
 #order  .up{background-color: #e4e4e4;border:1px solid #ddd!important;border-radius:10px;background-position:center;background-repeat:no-repeat;width:190px!important;margin:5px auto 0!important;padding:10px!important;}
-#order .alipay{background-image: url(../images/icons/ic-alipay.png);}
-#order .yeepay{background-image: url(../images/icons/ic-yeepay.png);}
-#order .weixin{background-image: url(../images/icons/ic-weixin.png);}
+#order .alipay{background-image: url('http://static.mingyizhudao.com/146967393574041');}
+#order .yeepay{background-image: url('http://static.mingyizhudao.com/14696739647743');}
+#order .weixin{background-image: url('http://static.mingyizhudao.com/146967398730692');}
 
 /*预约单列表*/
 #orderList_article .order_list {
@@ -704,130 +586,6 @@ img {
     color: #f00;
 }
 
-/*专题1*/
-#zhuantiOne_article .askTitle{
-    background: url('../images/zhuanti/askTitle.png') no-repeat;
-    background-size: 110px 40px;
-    height:40px;
-}
-#zhuantiTwo_article .lineGreen{
-    background: url('../images/zhuanti/lineGreen.png') no-repeat;
-    background-size: 5px 1em;
-    width: 10px;
-    margin-top: 2px;
-}
-#zhuantiTwo_article .doctorTitle{
-    font-size: 16px;
-    color: #fff;
-    padding-left: 1em;
-    border-top: 1px solid #21D443;
-    background: url('../images/zhuanti/askTitle.png') no-repeat;
-    background-size: 110px 50px;
-    height: 25px;
-}
-#zhuantiThree_article .askTitle{
-    background: url('../images/zhuanti/askTitle.png') no-repeat;
-    background-size: 110px 40px;
-    height: 40px;
-}
-#zhuantiFour_article .yellowTitle{
-    background-color: #fe8c08;
-    padding: 2px 5px;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 16px;
-}
-#zhuantiFour_article .redTable{
-    padding: 2px;
-    color:#fff;
-    background-color: #f56c6c;
-    font-size: 12px;
-}
-#zhuantiFour_article .stepImg{
-    background: url('../images/zhuanti/step.png') no-repeat;
-    background-size: 100% 100%;
-    height: 115px;
-}
-@media screen and (max-width:360px){
-    #zhuantiSix_article .widthDoc{
-        width: 90%;
-    }
-}
-@media screen and (min-width:361px){
-    #zhuantiSix_article .widthDoc{
-        width:80%;
-    }
-}
-@media screen and (min-width:400px){
-    #zhuantiSix_article .widthDoc{
-        width:75%;
-    }
-}
-@media screen and (min-width:420px){
-    #zhuantiSix_article .widthDoc{
-        width:70%;
-    }
-}
-@media screen and (min-width:300px){
-    #zhuantiFour_article .plStep{
-        padding-left: 5px;
-    }
-    #zhuantiFour_article .prStep{
-        padding-right: 5px;
-    }
-}
-@media screen and (min-width:360px){
-    #zhuantiFour_article .plStep{
-        padding-left: 10px;
-    }
-    #zhuantiFour_article .prStep{
-        padding-right: 10px;
-    }
-}
-@media screen and (min-width:410px){
-    #zhuantiFour_article .plStep{
-        padding-left: 15px;
-    }
-    #zhuantiFour_article .prStep{
-        padding-right: 15px;
-    }
-}
-#zhuantiRobot_article .titleBlue{
-    background: url('../images/zhuanti/Robot/titleBlue.png') no-repeat;
-    background-size: auto 100%;
-}
-#zhuantiRobot_article .borderLeft{
-    background: url('../images/zhuanti/Robot/borderLeft.png') no-repeat;
-    background-size: 1em 100%;
-    padding-left: 20px;
-    background-color: #EFEFEF;
-}
-#zhuantiRobot_article .doctorBg{
-    padding: 0px 8px;
-    background: url('../images/zhuanti/Robot/doctorBg.png') no-repeat;
-    background-size: 48px auto;
-    background-position-x: 100%;
-}
-#zhuantiRobot_article .doctorBorder{
-    border-bottom: 1px solid #e4e4e4;
-    border-top: 1px solid #e4e4e4;
-    border-left: 1px solid #e4e4e4;
-}
-#zhuantiRobot_article .divShadow{
-    box-shadow: 2px 2px 2px #cccccc;
-}
-#zhuantiXinxg_article .titleBg{
-    background: url('../images/zhuanti/Xinxg/xinxgTitle.png') no-repeat;
-    background-size: 100% 100%;
-    padding-top: 5px;
-    padding-bottom: 10px;
-}
-#zhuantiXinxg_article .lineBg{
-    background: url('../images/zhuanti/Xinxg/lineBg.png') no-repeat;
-    background-size: 100% 100%;
-    height: 7px;
-}
-
 /*弹窗*/
 .popup-title {
     text-align: center;
@@ -869,4 +627,35 @@ img {
 }
 #loading_popup.loading p {
     color: #BDC3C7;
+}
+
+/*七牛上传*/
+.android_article .progressName{
+    word-break:break-all;
+    word-wrap:break-word;
+}
+.android_article .table-striped>tbody>tr:nth-child(odd)>td,.table-striped>tbody>tr:nth-child(odd)>th{
+    background-color:#fff;
+}
+.android_article .table>thead>tr>th,.table>tbody>tr>th,.table>tfoot>tr>th,.table>thead>tr>td,.table>tbody>tr>td,.table>tfoot>tr>td{
+    border-top:inherit;
+    padding:0;
+}
+.android_article tr .progressCancel{
+    font-size:30px;
+    color:#ff1818;
+    line-height:22px;
+}
+.android_article #container{
+    margin-bottom:0;
+}
+.android_article .btn-default{
+    background-color:#19aea5!important;
+}
+.android_article .body .btn-default{
+    border:inherit;
+    color:#fff;
+}
+.android_article .btn{
+    padding:3px 10px;
 }

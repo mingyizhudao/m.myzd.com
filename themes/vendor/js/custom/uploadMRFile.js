@@ -364,6 +364,7 @@ $(function () {
                 } else {
                     // 没有成功的图片，重设
                     //state = 'done';
+                    J.hideMask();
                     location.reload();
                 }
                 break;
@@ -476,6 +477,7 @@ $(function () {
             return false;
         }
         if (state === 'ready') {
+            J.showMask();
             uploader.upload();
         }
     });
