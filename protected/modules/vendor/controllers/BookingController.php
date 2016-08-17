@@ -182,6 +182,7 @@ class BookingController extends MobileController {
                     $emailMgr->sendEmailAppBooking($booking, "就医160");
 
                     if ($data['status'] == "ok") {
+                        var_dump($data);die;
                         $output['status'] = 'ok';
                         $output['salesOrderRefNo'] = $data['salesOrderRefNo'];
                         $output['booking']['id'] = $booking->getId();
