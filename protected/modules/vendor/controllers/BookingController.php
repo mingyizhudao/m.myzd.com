@@ -184,7 +184,7 @@ class BookingController extends MobileController {
                     if ($data['status'] == "ok") {
                         $output['status'] = 'ok';
                         $output['salesOrderRefNo'] = $data['salesOrderRefNo'];
-                        $output['booking']['id'] = $booking->getId();
+                        $output['booking_id'] = $booking->getId();
 
                         $values = array(
                             'diagnosis'=>$booking->disease_name,
