@@ -23,7 +23,7 @@ class RedpackController extends WeixinpubController {
      * 进入红包活动页面
      * @param type $subscriptions_id    订阅号openid
      */
-    public function actionActivepage($subscriptions_id) {
+    public function actionActivepage($subscriptions_id, $code=null) {
         $output = new stdClass();
         $mem = Yii::app()->cache;
         if($mem->get('peopleNum') === false){
@@ -37,7 +37,9 @@ class RedpackController extends WeixinpubController {
         }else{
             $mem->set('peopleNum',$peopleNum + 1);//初始化参与活动人数
             $wechatOauth2 = new WechatOauth2($this->appId, $this->appSecret);
-            echo $wechatOauth2->GetOpenid();
+            $code = isset($_GET['code']) ? $_GET['code'] : null;
+            echo $wechatOauth2->GetOpenid($code);
+            Yii::app()->end();
         }
         
     }

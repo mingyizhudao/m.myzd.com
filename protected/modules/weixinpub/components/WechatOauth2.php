@@ -22,7 +22,7 @@ class WechatOauth2 {
      * 通过code获得openid
      * @return type
      */
-    public function GetOpenid(){
+    public function GetOpenid($code){
         if (!isset($_GET['code'])){//请求中没有code,通过页面跳转获取code
             $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=%s&redirect_uri=%s&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect";
             $redirect_uri = urlencode('http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].$_SERVER['QUERY_STRING']);
