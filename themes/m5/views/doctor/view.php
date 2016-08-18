@@ -165,7 +165,7 @@ if ($sourceApp == 0) {
                 '<img src="http://static.mingyizhudao.com/146976057181123" class="w63p">' .
                 '</div>' .
                 '<div class="pt20 color-gray">' .
-                '该医生暂无患者评价' .
+                '暂无评论' .
                 '</div>' .
                 '</div>';
             }

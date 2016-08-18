@@ -221,7 +221,13 @@ function readyHospital(data) {
                         '</li>';
             }
         } else {
-            innerHtml += '<li>暂无信息</li>';
+            innerHtml += '<div class="pad10 text-center">' +
+                            '<div class="pt50">' +
+                             '<img src="http://static.mingyizhudao.com/147142841787362" class="w63p">' +
+                            '</div>'+
+                         '<div class="pt20 color-gray">'+
+                         '暂无评价'+
+                         '</div>';
         }
     } else {
         innerHtml += '<li>暂无信息</li>';

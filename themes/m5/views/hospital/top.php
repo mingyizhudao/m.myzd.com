@@ -1,6 +1,6 @@
 <?php
 //Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/findHospital.js?ts=' . time(), CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/findHospital.min.1.1.js', CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/findHospital.min.1.2.js', CClientScript::POS_END);
 ?>
 <?php
 $this->setPageTitle('医院科室');

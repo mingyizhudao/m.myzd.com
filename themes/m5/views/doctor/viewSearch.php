@@ -184,7 +184,13 @@ $this->show_footer = false;
             }
             //若无查询到信息
             if (doctors == undefined && diseases == undefined && hospitals == undefined) {
-                innerHtml += '<div class="pl15 color-black6 pt5">对不起,暂没有搜索到"' + disease_name + '"的相关信息</div>';
+                innerHtml += '<div class="pad10 text-center">'+ 
+                          ' <div class="pt50">'+
+                            '<img src="http://static.mingyizhudao.com/147148658317831" class="w63p">'+
+                           ' </div>'+
+                         '<div class="pt10 color-gray">'+
+                         '暂无搜索信息'+
+                         '</div>';
             }
             else{
                 
