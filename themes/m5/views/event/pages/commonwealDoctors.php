@@ -77,9 +77,8 @@ $this->show_footer = false;
                         hp_dept_desc +
                         '</div>';
 
-                if (number == 3) {
-                    innerHtml += '<div class="mt10"><a href="/mobile/event/view/page/commonwealDoctors" class="mDoctor">查看更多专家</a></div>';
-                }
+                
+                
                 innerHtml += '</div></a></div>';
                 number++;
             }

@@ -165,8 +165,8 @@ $this->show_footer = false;
                         hp_dept_desc +
                         '</div>';
 
-                if (number == 3) {
-                    innerHtml += '<div class="mt10"><a href="<?php echo $commonwealDoctors; ?>" class="mDoctor">查看更多专家</a></div>';
+                if (number == doctors.length-1) {
+                    innerHtml += '<div class="mt10"><a href="<?php echo $commonwealDoctors; ?>" class="moreDoctor">查看更多专家</a></div>';
                 }
                 innerHtml += '</div></a></div>';
                 number++;
