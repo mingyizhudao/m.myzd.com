@@ -553,11 +553,6 @@ class ApiController extends Controller {
             case 'applogstat':
                 if(isset($post['applogstat'])){
                     $values = $post['applogstat'];
-                    $values['user_host_ip'] = Yii::app()->request->getUserHostAddress();
-                    $values['url'] = Yii::app()->request->getUrl();
-                    $values['url_referrer'] = Yii::app()->request->getUrlReferrer();
-                    $values['user_agent'] = Yii::app()->request->getUserAgent();
-
                     $model = new StatManager();
                     $output = $model->createAppLogStat($values);
                 }
