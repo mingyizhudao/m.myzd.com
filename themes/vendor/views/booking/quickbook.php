@@ -8,7 +8,7 @@ $this->setPageTitle('快速预约');
 $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/auth/sendSmsVerifyCode');
 $authActionType = AuthSmsVerify::ACTION_BOOKING;
 $urlSubmitForm = $this->createUrl("booking/ajaxQuickbook");
-$urlUploadFile = 'http://121.40.127.64:8089/api/uploadbookingfile';
+$urlUploadFile = 'http://file.mingyizhudao.com/api/uploadbookingfile';
 $urlReturn = $this->createUrl('order/view');
 $urlHomeView = $this->createUrl('home/view');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";

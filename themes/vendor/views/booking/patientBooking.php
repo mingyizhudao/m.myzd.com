@@ -15,11 +15,11 @@ $urlApiAppNav1 = $this->createAbsoluteUrl('/api/list', array('model' => 'appnav1
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $results = $data->results;
 $urlSubmitForm = $this->createUrl("booking/ajaxCreate");
-$urlUploadFile = 'http://121.40.127.64:8089/api/uploadbookingfile';
+$urlUploadFile = 'http://file.mingyizhudao.com/api/uploadbookingfile';
 $urlReturn = $this->createUrl('booking/patientBookingList', array('status' => 0));
 $userId = Yii::app()->session['userId'];
 //$urlBookingFiles = 'http://file.mingyizhudao.com/api/loadbookingmr?userId=' . $user->id . '&bookingId=' . $results->id;
-$urlBookingFiles = 'http://121.40.127.64:8089/api/loadbookingmr?userId=' . $userId . '&bookingId=' . $results->id;
+$urlBookingFiles = 'http://file.mingyizhudao.com/api/loadbookingmr?userId=' . $userId . '&bookingId=' . $results->id;
 $this->show_footer = false;
 ?>
 <header class="bg-green" >

@@ -14,7 +14,7 @@ $this->setPageTitle('预约单');
 $urlApiAppNav1 = $this->createAbsoluteUrl('/api/list', array('model' => 'appnav1'));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $urlSubmitForm = $this->createUrl("booking/ajaxCreate");
-$urlUploadFile = 'http://121.40.127.64:8089/api/uploadbookingfile';
+$urlUploadFile = 'http://file.mingyizhudao.com/api/uploadbookingfile';
 $urlReturn = $this->createUrl('order/view');
 $this->show_footer = false;
 ?>

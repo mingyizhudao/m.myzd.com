@@ -7,7 +7,7 @@ class QiniuController extends MobileController {
      */
     public function actionAjaxBookingToken() {
 //        $url = 'http://file.mingyizhudao.com/api/tokenbookingmr';
-        $url = 'http://121.40.127.64:8089/api/tokenbookingmr';
+        $url = 'http://file.mingyizhudao.com/api/tokenbookingmr';
         $data = $this->send_get($url);
         $output = array('uptoken' => $data['results']['uploadToken']);
         $this->renderJsonOutput($output);
