@@ -13,8 +13,7 @@ $(function () {
             btnSubmit = $("#btnSubmit"),
             $wrap = $('#uploader'),
             // 图片容器
-            $queue = $('<ul class="filelist"></ul>')
-            .appendTo($wrap.find('.queueList')),
+            $queue = $('.filelist'),
             // 状态栏，包括进度和控制按钮
             $statusBar = $wrap.find('.statusBar'),
             // 文件总体选择信息。
@@ -66,10 +65,10 @@ $(function () {
 
     // 实例化
     uploader = WebUploader.create({
-        pick: {
-            id: '#filePicker',
-            innerHTML: '&nbsp;选择图片'
-        },
+        // pick: {
+        //     id: '#filePicker',
+        //     innerHTML: ''
+        // },
         dnd: '#uploader .queueList',
         //paste: document.body,
         accept: {
@@ -132,11 +131,13 @@ $(function () {
 
 
     // 添加“添加文件”的按钮，
+    // uploader.addButton({
+    //     id: '#filePicker2',
+    //     label: '&nbsp;继续添加'
+    // });
     uploader.addButton({
-        id: '#filePicker2',
-        label: '&nbsp;继续添加'
+        id: '#filePicker3'
     });
-
 
     // 当有文件添加进来时执行，负责view的创建
     function addFile(file) {
@@ -254,7 +255,7 @@ $(function () {
             }
         });
 
-        $li.appendTo($queue);
+        $li.prependTo($queue);
     }
 
     // 负责view的销毁
@@ -326,16 +327,16 @@ $(function () {
             case 'pedding':
                 $placeHolder.removeClass('element-invisible');
                 $queue.parent().removeClass('filled');
-                $queue.hide();
+                // $queue.hide();
                 $statusBar.addClass('element-invisible');
                 uploader.refresh();
                 break;
 
             case 'ready':
                 $placeHolder.addClass('element-invisible');
-                $('#filePicker2').removeClass('element-invisible');
+                // $('#filePicker2').removeClass('element-invisible');
                 $queue.parent().addClass('filled');
-                $queue.show();
+                // $queue.show();
                 $statusBar.removeClass('element-invisible');
                 uploader.refresh();
                 break;
@@ -354,7 +355,7 @@ $(function () {
             case 'confirm':
                 $progress.hide();
                 $upload.addClass('disabled');
-                $('#filePicker2').addClass('element-invisible');
+                // $('#filePicker2').addClass('element-invisible');
                 stats = uploader.getStats();
                 if (stats.successNum && !stats.uploadFailNum) {
                     setState('finish');

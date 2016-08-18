@@ -1,5 +1,5 @@
 <?php
-//Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/findDoc.js?ts=' . time(), CClientScript::POS_END);
+// Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/findDoc.js?ts=' . time(), CClientScript::POS_END);
 Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/findDoc.min.1.1.js', CClientScript::POS_END);
 ?>
 <?php
@@ -217,7 +217,9 @@ if ($sourceApp == 0) {
         $.ajax({
             url: urlAjaxLoadDoctor,
             success: function (data) {
-                //console.log(data);
+                if ($cityData) {
+                    $cityData.curRes = data.dataCity;
+                }
                 readyDoc(data);
                 setLocationUrl();
             }
