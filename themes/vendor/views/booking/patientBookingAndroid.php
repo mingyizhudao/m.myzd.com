@@ -136,6 +136,7 @@ $this->show_footer = false;
         </li>
     </ul>
 </article>
+<div id="jingle_toast" class="mobileTip toast"><a href="#">网络异常，请稍后上传</a></div>
 <script>
     $(document).ready(function () {
         //加载病人病历图片
