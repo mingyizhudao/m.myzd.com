@@ -121,11 +121,9 @@ $SITE_9 = PatientStatLog::SITE_9;
         <div class="ui-field-contain pl15 pr15">
             <div class="grid pt20">
                 <div class="col-0 w90p color-black4">疾病描述:</div>
-            </div>
-        </div>
-        <div class="ui-field-contain pl15 pr15 bb-gray">
-            <div class="col-1 pb20">
-                <?php echo $form->textArea($model, 'disease_detail', array('name' => 'booking[disease_detail]', 'minlength' => 10, 'maxlength' => 1000, 'rows' => '6', 'placeholder' => '请你简要描述下您的病情')); ?>
+                <div class="col-1">
+                    <?php echo $form->textField($model, 'disease_detail', array('name' => 'booking[disease_detail]', 'minlength' => 10, 'maxlength' => 1000, 'class' => 'text-right', 'placeholder' => '请你简要描述下您的病情（至少20字）')); ?>
+                </div>
             </div>
         </div>
         <?php

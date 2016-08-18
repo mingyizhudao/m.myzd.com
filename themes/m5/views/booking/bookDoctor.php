@@ -1,12 +1,14 @@
+
+
 <?php
 Yii::app()->clientScript->registerCssFile('http://myzd.oss-cn-hangzhou.aliyuncs.com/static/mobile/js/webuploader/css/webuploader.css');
 Yii::app()->clientScript->registerCssFile('http://static.mingyizhudao.com/m/webuploader.custom.1.1.css');
 Yii::app()->clientScript->registerScriptFile('http://myzd.oss-cn-hangzhou.aliyuncs.com/static/mobile/js/webuploader/js/webuploader.min.js', CClientScript::POS_END);
 //Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/jquery.validate.js', CClientScript::POS_END);
 //Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/jquery.form.js', CClientScript::POS_END);
-//Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/booking.js', CClientScript::POS_END);
+// Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/booking.js', CClientScript::POS_END);
 Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/jquery.formvalidate.min.1.0.js', CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/booking.min.1.0.js', CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/booking.min.1.1.js', CClientScript::POS_END);
 ?>
 <?php
 /**
@@ -105,16 +107,19 @@ $SITE_8 = PatientStatLog::SITE_8;
         <div class="ui-field-contain pl15 pr15">
             <div class="grid pt20">
                 <div class="col-0 w90p color-black4">疾病描述:</div>
+                <div class="col-1">
+                    <?php echo $form->textField($model, 'disease_detail', array('name' => 'booking[disease_detail]', 'minlength' => 10, 'maxlength' => 1000, 'class' => 'text-right', 'placeholder' => '请你简要描述下您的病情（至少20字）')); ?>
+                </div>
             </div>
         </div>
-        <div class="ui-field-contain pl15 pr15 bb-gray">
+        <!-- <div class="ui-field-contain pl15 pr15 bb-gray">
             <div class="col-1 pb20">
-                <?php echo $form->textArea($model, 'disease_detail', array('name' => 'booking[disease_detail]', 'minlength' => 10, 'maxlength' => 1000, 'rows' => '6', 'placeholder' => '请你简要描述下您的病情')); ?>
             </div>
-        </div>
+        </div> -->
         <div class="grid pt20 pb20 pl15 pr15">
             <div class="col-0 w90p color-black4">上传病例:</div>
-            <div class="col-1 mr15">
+            <div class="col-1 mr15" style="color:#a9a9a9">
+                （影像资料、检查报告、门诊病历、住院病历、出院小结等病史资料）
             </div>
         </div>
         <?php
@@ -123,14 +128,17 @@ $SITE_8 = PatientStatLog::SITE_8;
         <div class="pl10 pr10 pb20">    
             <!--图片上传区域 -->
             <div id="uploader" class="uploader wu-example">
-                <div class="imglist">
+                <!-- <div class="imglist">
                     <ul class="filelist"></ul>
-                </div>
+                </div> -->
                 <div class="queueList">
                     <div id="dndArea" class="placeholder">
                         <div id="filePicker"></div>
                         <!-- <p>或将照片拖到这里，单次最多可选10张</p>-->
                     </div>
+                    <ul class="filelist">
+                        <li id="filePicker3" class="btn-add-img">+</li>
+                    </ul>
                 </div>
                 <div class="statusBar" style="display:none; padding-bottom: 40px;">
                     <div class="progress">
