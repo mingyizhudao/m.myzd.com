@@ -103,7 +103,7 @@ $SITE_9 = PatientStatLog::SITE_9;
             <div class="grid pt20">
                 <div class="col-0 w90p color-black4">疾病描述:</div>
                 <div class="col-1">
-                    <?php echo $form->textField($model, 'disease_detail', array('name' => 'booking[disease_detail]', 'minlength' => 10, 'maxlength' => 1000, 'class' => 'text-right', 'placeholder' => '请你简要描述下您的病情（至少20字）')); ?>
+                    <?php echo $form->textField($model, 'disease_detail', array('name' => 'booking[disease_detail]', 'minlength' => 10, 'maxlength' => 1000, 'class' => 'text-right', 'placeholder' => '请您简要描述(至少10个字)')); ?>
                 </div>
             </div>
         </div>
