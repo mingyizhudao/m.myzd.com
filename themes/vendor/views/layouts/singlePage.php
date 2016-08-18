@@ -12,7 +12,7 @@
         Yii::app()->clientScript->registerCssFile('http://static.mingyizhudao.com/vendor/base.min.1.0.css');
         Yii::app()->clientScript->registerCssFile('http://static.mingyizhudao.com/vendor/custom.min.1.2.css');
         Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/vendor/zepto.min.1.0.js', CClientScript::POS_HEAD);
-        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/base.min.js?ts=' . time(), CClientScript::POS_END);
+        Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/vendor/base.min.1.0.js', CClientScript::POS_END);
         Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/vendor/main.min.1.0.js', CClientScript::POS_END);
         Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/vendor/baiduStatistics.min.1.0.js', CClientScript::POS_END);
         ?>

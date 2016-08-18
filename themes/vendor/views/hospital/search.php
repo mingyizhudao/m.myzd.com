@@ -1,5 +1,5 @@
 <?php
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/searchHospital.js?ts=' . time(), CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/vendor/searchHospital.min.1.0.js', CClientScript::POS_END);
 ?>
 <?php
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
