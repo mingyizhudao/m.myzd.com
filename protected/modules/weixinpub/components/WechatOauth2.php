@@ -28,7 +28,7 @@ class WechatOauth2 {
             $redirect_uri = urlencode('http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].$_SERVER['QUERY_STRING']);
             $url = sprintf($url, $this->appId, $redirect_uri);           
             Header("Location: $url");
-            Yii::app()->exit();
+            Yii::app()->end();
         } else {//请求中有code，通过code获取openid
             $code = $_GET['code'];
             $data = $this->getOpenidFromMp($code);
