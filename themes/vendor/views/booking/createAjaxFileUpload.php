@@ -137,3 +137,4 @@ $user = $this->getCurrentUser();
     <i class="icon spinner"></i>
     <p>加载中...</p>
 </div>
+<div id="jingle_toast" class="mobileTip toast"><a href="#">网络异常，请稍后上传</a></div>

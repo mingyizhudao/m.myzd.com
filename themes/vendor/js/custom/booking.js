@@ -370,6 +370,7 @@ $(function () {
                 } else {
                     // 没有成功的图片，重设
                     //state = 'done';
+                    J.hideMask();
                     location.reload();
                 }
                 break;
@@ -587,8 +588,8 @@ $(function () {
                         } else {
                             //没有上传文件 表单数据添加成功 页面跳转
                             location.href = uploadReturnUrl;
+                            enableBtn(btnSubmit);
                         }
-                        enableBtn(btnSubmit);
                     } else {
                         domForm.find("div.error").remove();
                         //append errorMsg
