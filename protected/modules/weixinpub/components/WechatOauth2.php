@@ -25,7 +25,7 @@ class WechatOauth2 {
     public function GetOpenid($code){
         if (!isset($code)){//请求中没有code,通过页面跳转获取code
             $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=%s&redirect_uri=%s&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect";
-            $redirect_uri = "wap.dev.mingyizd.com/weixinpub/redpack/activepage?subscriptions_id=123";
+            $redirect_uri = urlencode("wap.dev.mingyizd.com/weixinpub/redpack/activepage?subscriptions_id=123");
             $url = sprintf($url, $this->appId, $redirect_uri);           
             Header("Location: $url");
             Yii::app()->end();
