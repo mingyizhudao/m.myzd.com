@@ -1,25 +1,6 @@
-
 $('#deptSelect').tap(function () {
     deptSelect();
 });
-function checkCityList(){
-    if ($cityData.curRes) {
-        var cArray = [];
-        var cityData = $cityData.results;
-        var cityCurData = $cityData.curRes;
-
-        for(var c in cityCurData){
-            for(var j=0; j<cityData.length; j++){
-                if (cityCurData[c] == cityData[j].id) {
-                    cArray.push(cityData[j]);
-                }
-            }
-        }
-        return readyCity(cArray,0);
-    }else{
-        return readyCity($cityData.results,0);
-    }
-}
 function deptSelect() {
     var source = $('#findDoc_nav').attr('data-source');
     var sourceApp = $('#findDoc_nav').attr('data-sourceApp');
@@ -90,7 +71,8 @@ function deptSelect() {
                 '</div>' +
                 '</nav>';
     }
-    innerPage += '<article id="findDoc_article" class="active" style="position:static;">' + readyDept($deptData, deptId, catId) +
+    innerPage += '<article id="findDoc_article" class="active" style="position:static;">' +
+     readyDept($deptData, deptId, catId) +
             '</article>' +
             '</div>';
 
@@ -119,7 +101,6 @@ function deptSelect() {
         });
     });
 
-    //c
     $('.cDept').click(function (e) {
         e.preventDefault();
         $deptId = $(this).attr('data-dept');
@@ -145,15 +126,12 @@ function deptSelect() {
                 $('#diseaseTitle').attr('data-disease', '');
                 $('#cityTitle').html('全部');
                 $('#cityTitle').attr('data-city', '0');
-                $cityData.curRes = data.dataCity;
-                // checkCityList(data.dataCity);
                 setLocationUrl();
                 $('#findDoc_article').scrollTop(0);
             }
         });
     });
 }
-
 $('#diseaseSelect').tap(function () {
     var source = $('#findDoc_nav').attr('data-source');
     var sourceApp = $('#findDoc_nav').attr('data-sourceApp');
@@ -282,7 +260,6 @@ $('#diseaseSelect').tap(function () {
             showCloseBtn: false
         });
 
-        //c
         $('.aDisease').click(function (e) {
             e.preventDefault();
             $diseaseNameB = $(this).html();
@@ -306,8 +283,6 @@ $('#diseaseSelect').tap(function () {
                     $('#diseaseTitle').attr('data-disease', $diseaseIdB);
                     $('#cityTitle').html('全部');
                     $('#cityTitle').attr('data-city', '0');
-                    $cityData.curRes = data.dataCity;
-                    // checkCityList(data.dataCity);
                     setLocationUrl();
                     $('#findDoc_article').scrollTop(0);
                 }
@@ -385,7 +360,7 @@ $('#citySelect').tap(function () {
                 '</nav>';
     }
 
-    innerPage += '<article id="findDoc_article" class="active" data-scroll="true" style="position:static;">' + checkCityList() +
+    innerPage += '<article id="findDoc_article" class="active" data-scroll="true" style="position:static;">' + readyCity($cityData, cityId) +
             '</article>' +
             '</div>';
     J.popup({
@@ -491,7 +466,13 @@ function readyDoc(data) {
             }
         }
     } else {
-        innerHtml += '<div class="grid pl15 pr15 pt10 pb10 bb-gray2">暂无信息</div>';
+        innerHtml += '<div class="pad10 text-center">' +
+                            '<div class="pt50">' +
+                             '<img src="http://static.mingyizhudao.com/147142891798638" class="w63p">' +
+                            '</div>'+
+                         '<div class="pt10 color-gray">'+
+                         '暂无名医主刀签约专家'+
+                         '</div>';
     }
     if (data.dataNum != null) {
         var dataPage = Math.ceil(data.dataNum / 12);
@@ -578,7 +559,7 @@ function readyCity(data, cityId) {
     var sourceApp = $('#findDoc_nav').attr('data-sourceApp');
     var innerHtml = '';
     if (data != '') {
-        var results = data;
+        var results = data.results;
         if (source == 0) {
             innerHtml += '<div class="grid color-black" style="margin-top:93px;height:315px;">' +
                     '<ul class="list w100">';
