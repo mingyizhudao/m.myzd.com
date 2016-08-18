@@ -1,8 +1,8 @@
 <?php
-Yii::app()->clientScript->registerCssFile('http://static.mingyizhudao.com/m/qiniu.base.min.1.0.css');
-Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/qiniu.base.min.1.0.js', CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/jquery.formvalidate.min.1.0.js', CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/qiniu/js/bookingUpload.js?ts=' . time(), CClientScript::POS_END);
+Yii::app()->clientScript->registerCssFile('http://static.mingyizhudao.com/vendor/qiniu.base.min.1.0.css');
+Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/vendor/qiniu.base.min.1.0.js', CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/vendor/jquery.formvalidate.min.1.0.js', CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/vendor/bookingUpload.min.1.0.js', CClientScript::POS_END);
 ?>
 <?php
 /**

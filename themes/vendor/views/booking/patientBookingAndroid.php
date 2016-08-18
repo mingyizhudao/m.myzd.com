@@ -1,7 +1,7 @@
 <?php
-Yii::app()->clientScript->registerCssFile('http://static.mingyizhudao.com/m/qiniu.base.min.1.0.css');
-Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/qiniu.base.min.1.0.js', CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/qiniu/js/patientBookingUpload.js', CClientScript::POS_END);
+Yii::app()->clientScript->registerCssFile('http://static.mingyizhudao.com/vendor/qiniu.base.min.1.0.css');
+Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/vendor/qiniu.base.min.1.0.js', CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/vendor/patientBookingUpload.min.1.0.js', CClientScript::POS_END);
 ?>
 <?php
 /**

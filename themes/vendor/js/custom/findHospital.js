@@ -11,18 +11,18 @@ $('#deptTitle').tap(function () {
             '<nav class="left">' +
             '<a href="' + $homeView + '">' +
             '<div class="pl5">' +
-            '<img src="../../themes/m5/images/back.png" class="w11p">' +
+            '<img src="http://static.mingyizhudao.com/146975795218858" class="w11p">' +
             '</div>' +
             '</a>' +
             '<a>' +
             '<span class="ml20 pb2 br-white"></span>' +
             '</a>' +
             '<a onclick="javascript:history.go(0)">' +
-            '<img src="../../themes/m5/images/refresh.png" class="w24p ml20">' +
+            '<img src="http://static.mingyizhudao.com/146975853464574" class="w24p ml20">' +
             '</a>' +
             '</nav>' +
             '<h1 class="title"><span id="deptTitle" data-target="closePopup" data-dept="' + deptId + '">' + deptName + '</span>' +
-            '<span class="pl6"><img class="w10p" src="../../themes/m5/images/triangleWhite.png"></span>' +
+            '<span class="pl6"><img class="w10p" src="http://static.mingyizhudao.com/146976027712626"></span>' +
             '</h1>' +
             '<nav id="selectCity" class="right">' +
             '<div class="grid mt17" data-target="closePopup">' +
@@ -132,18 +132,18 @@ $('#selectCity').tap(function () {
             '<nav class="left">' +
             '<a href="' + $homeView + '">' +
             '<div class="pl5">' +
-            '<img src="../../themes/m5/images/back.png" class="w11p">' +
+            '<img src="http://static.mingyizhudao.com/146975795218858" class="w11p">' +
             '</div>' +
             '</a>' +
             '<a>' +
             '<span class="ml20 pb2 br-white"></span>' +
             '</a>' +
             '<a onclick="javascript:history.go(0)">' +
-            '<img src="../../themes/m5/images/refresh.png" class="w24p ml20">' +
+            '<img src="http://static.mingyizhudao.com/146975853464574" class="w24p ml20">' +
             '</a>' +
             '</nav>' +
             '<h1 class="title"><span id="deptTitle" data-target="closePopup" data-dept="' + deptId + '">' + deptName + '</span>' +
-            '<span class="pl6"><img class="w10p" src="../../themes/m5/images/triangleWhite.png"></span>' +
+            '<span class="pl6"><img class="w10p" src="http://static.mingyizhudao.com/146976027712626"></span>' +
             '</h1>' +
             '<nav id="selectCity" class="right" data-target="closePopup">' +
             '<div class="grid mt17">' +
@@ -228,7 +228,7 @@ function setLocationUrl() {
 //医院页面
 function readyHospital(data) {
     var results = data.results;
-    var innerHtml = '<div id="hospitalPage"><div><img class="w100" src="../../themes/m5/images/hospitalDept.png"><ul class="list">';
+    var innerHtml = '<div id="hospitalPage"><div><img class="w100" src="http://static.mingyizhudao.com/147063732649923"><ul class="list">';
     if (results) {
         if (results.length > 0) {
             for (var i = 0; i < results.length; i++) {

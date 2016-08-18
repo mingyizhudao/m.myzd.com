@@ -1,5 +1,5 @@
 <?php
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/findDoc.js?ts=' . time(), CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/vendor/findDoc.min.1.0.js', CClientScript::POS_END);
 ?>
 <?php
 $urlApiAppNav1 = $this->createAbsoluteUrl('/api/list');
