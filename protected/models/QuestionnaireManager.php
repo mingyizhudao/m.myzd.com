@@ -15,6 +15,7 @@ class QuestionnaireManager {
         $key = session_id();
         $alive = '3600';
         $anwerList = Yii::app()->cache->get($key);
+
         $num = count($anwerList);
         if ($values['questionnaireNumber'] == 1) {
             $num = 1;
@@ -35,7 +36,10 @@ class QuestionnaireManager {
                 yii::app()->cache->set($key, $value, $alive);
             }
         } else {
+
             Yii::app()->cache->delete($key);
+            print_r($anwerList); echo '</br>';
+            echo $num.'  |  '.$qustNum;exit;
             return $output = array('status' => 'no', 'errorMsg' => 'faile answer');
         }
         return $output = array('status' => 'ok', 'errorCode' => '200', 'errorMsg' => '200');
