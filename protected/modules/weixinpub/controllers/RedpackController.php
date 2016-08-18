@@ -26,7 +26,7 @@ class RedpackController extends WeixinpubController {
     public function actionActivepage($subscriptions_id) {
         $output = new stdClass();
         $mem = Yii::app()->cache;
-        if(!isset($mem->get('peopleNum'))){
+        if(!check_key_exists($mem, 'peopleNum')){
             $mem->set('peopleNum','0');//初始化参与活动人数
         }
         $peopleNum = $mem->get('peopleNum');//获取已经参与活动的人数
