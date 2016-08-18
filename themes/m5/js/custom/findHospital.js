@@ -226,7 +226,7 @@ function readyHospital(data) {
                              '<img src="http://static.mingyizhudao.com/147142841787362" class="w63p">' +
                             '</div>'+
                          '<div class="pt20 color-gray">'+
-                         '暂无评价'+
+                         '该地区暂无顶尖医院科室推荐'+
                          '</div>';
         }
     } else {
