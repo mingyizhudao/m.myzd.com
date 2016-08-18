@@ -59,7 +59,7 @@ $this->show_footer = false;
                     } else {
                         ?>
                         <div class="col-1">
-                            <a href="<?php echo $urlSuccess; ?>" class="btn btn-default btn-block" data-target="link">暂不支付</a>
+                            <a href="https://weixin.91160.com/news/detail.html?id=12747" class="btn btn-default btn-block" data-target="link">暂不支付</a>
                         </div>
                         <div class="col-1">
                             <a id="pay" href="javascript:;" class="btn btn-yes btn-block">立即支付</a>

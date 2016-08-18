@@ -370,7 +370,7 @@ $SITE_6 = PatientStatLog::SITE_6;
                 '</li>' +
                 '<li class="slide">' +
                 '<a href="<?php echo $urlMygy; ?>">' +
-                '<img class="w100" src="http://static.mingyizhudao.com/146606890358056">' +
+                '<img class="w100" src="http://static.mingyizhudao.com/147150951177488">' +
                 '</a>' +
                 '</li>';
         $('#home_article .bxslider').html(html);
