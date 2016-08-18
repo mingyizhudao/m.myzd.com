@@ -23,7 +23,7 @@ class RedpackController extends WeixinpubController {
      * 进入红包活动页面
      * @param type $subscriptions_id    订阅号openid
      */
-    public function actionActivepage($subscriptions_id, $code=null) {
+    public function actionActivepage($subscriptions_id) {
         $output = new stdClass();
         $mem = Yii::app()->cache;
         if($mem->get('peopleNum') === false){
