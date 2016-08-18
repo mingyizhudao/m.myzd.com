@@ -30,7 +30,7 @@ class RedpackController extends WeixinpubController {
             $mem->set('peopleNum','0');//初始化参与活动人数
         }
         $peopleNum = $mem->get('peopleNum');//获取已经参与活动的人数
-        if($peopleNum >= 5){//活动人数达到5000
+        if($peopleNum >= 5000){//活动人数达到5000
             //$this->render("redpackPage",array('flag'=>'1'));
             echo '活动参与人数达到限制';
             Yii::app()->end();
