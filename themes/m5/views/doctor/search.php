@@ -214,8 +214,21 @@ if ($sourceApp == 0) {
 
         var urlAjaxLoadDoctor = '<?php echo $urlDoctor; ?>' + setUrlCondition() + '&getcount=1';
         J.showMask();
+
+
+        //ajax异步加载地区
+        var requestCity = '<?php echo $urlCity; ?>?has_team=0&&type=doctor';
+        $.ajax({
+            url: requestCity,
+            async: false,
+            success: function (data) {
+                $cityData = data;
+            }
+        });
+
         $.ajax({
             url: urlAjaxLoadDoctor,
+            async: false,
             success: function (data) {
                 if ($cityData) {
                     $cityData.curRes = data.dataCity;
@@ -235,15 +248,6 @@ if ($sourceApp == 0) {
             url: urlloadDiseaseCategory,
             success: function (data) {
                 $deptData = data;
-            }
-        });
-
-        //ajax异步加载地区
-        var requestCity = '<?php echo $urlCity; ?>?has_team=0&&type=doctor';
-        $.ajax({
-            url: requestCity,
-            success: function (data) {
-                $cityData = data;
             }
         });
     });
