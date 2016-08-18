@@ -4,7 +4,6 @@ $this->setPageTitle('关于我们');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
-
 <header class="bg-green" >
     <nav class="left">
         <a href="" data-target="back">
