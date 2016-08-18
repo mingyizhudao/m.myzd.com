@@ -49,43 +49,39 @@ $this->show_footer = false;
             var innerHtml = '';
             var doctors = data.results.page[1];
             var number = 0;
-            var rowNum = Math.ceil(doctors.length / 3);
-            for (var i = 0; i < rowNum; i++) {
-                for (var j = 0; j < 3; j++) {
-                    if (number < doctors.length) {
-                        var hp_dept_desc = (doctors[number] == '' || doctors[number].desc == null) ? '暂无信息' : doctors[number].desc;
-                        hp_dept_desc = hp_dept_desc.length > 45 ? hp_dept_desc.substr(0, 45) + '...' : hp_dept_desc;
-                        innerHtml += '<div class="bg-white mt10 br5">' +
-                                '<a href="<?php echo $urlDoctorView; ?>/' + doctors[number].id + '" class="color-black10">' +
-                                '<div class="pb10">' +
-                                '<div class="grid pl15 pr15 pb10 pt10">' +
-                                '<div class="col-1 w25">' +
-                                '<div class="w60p h60p br50" style="overflow:hidden;">' +
-                                '<img class="imgDoc" src="' + doctors[number].imageUrl + '">' +
-                                '</div>' +
-                                '</div>' +
-                                '<div class="ml10 col-1 w75">' +
-                                '<div class="grid">' +
-                                '<div class="col-0 font-s16">' + doctors[number].name +
-                                '</div>' +
-                                '</div>';
-                        if (doctors[number].hpDeptName == null) {
-                            innerHtml += '<div class="color-black6">' + doctors[number].mTitle + '</div>';
-                        } else {
-                            innerHtml += '<div class="color-black6">' + doctors[number].hpDeptName + '<span class="ml5">' + doctors[number].mTitle + '</span></div>';
-                        }
-                        innerHtml += '<div class="color-black6">' + doctors[number].hpName + '</div>' +
-                                '</div>' +
-                                '</div>' +
-                                '<div class="ml5 mr5 pad10 bg-gray2 text-justify">' +
-                                '擅长：' + hp_dept_desc +
-                                '</div>';
-                        innerHtml += '</div></a></div>';
-                        number += 1;
-                    } else {
-                        innerHtml += '<div class="col-1 w33 ml3 mr3"></div>';
-                    }
+            for (var i = 0; i < doctors.length; i++) {
+                var hp_dept_desc = (doctors[number] == '' || doctors[number].desc == null) ? '暂无信息' : doctors[number].desc;
+                hp_dept_desc = (hp_dept_desc.length > 45) ? hp_dept_desc.substr(0, 45) + '...' : hp_dept_desc;
+                innerHtml += '<div class="bg-white mt10 border-grayD2">' +
+                        '<a href="/mobile/doctor/view/id/' + doctors[number].id + '" class="color-black10">' +
+                        '<div class="pb10">' +
+                        '<div class="grid pl15 pr15 pb10 pt10">' +
+                        '<div class="col-1 w25">' +
+                        '<div class="w60p h60p br50" style="overflow:hidden">' +
+                        '<img class="imgDoc" src="' + doctors[number].imageUrl + '">' +
+                        '</div>' +
+                        ' </div>' +
+                        '<div class="ml10 col-1 w75">' +
+                        '<div class="grid">' +
+                        '<div class="col-0 "><span class="font-s18 font-w600">' + doctors[number].name + '</span><span class="font-s16 ml3">' + doctors[number].aTitle + '</span></div>' +
+                        '</div>';
+                if (doctors[number].hpDeptName == null) {
+                    innerHtml += '<div class="color-black6">' + doctors[number].mTitle + '</div>';
+                } else {
+                    innerHtml += '<div class="color-black6">' + doctors[number].hpDeptName + '<span class="ml5">' + doctors[number].mTitle + '</span></div>'
                 }
+                innerHtml += '<div class="color-black6">' + doctors[number].hpName + '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="ml10 mr10 pad10 bg-gray2 text-justify">' + '擅长：' +
+                        hp_dept_desc +
+                        '</div>';
+
+                if (number == 3) {
+                    innerHtml += '<div class="mt10"><a href="/mobile/event/view/page/commonwealDoctors" class="mDoctor">查看更多专家</a></div>';
+                }
+                innerHtml += '</div></a></div>';
+                number++;
             }
             $('#doctorList').html(innerHtml);
             J.hideMask();
