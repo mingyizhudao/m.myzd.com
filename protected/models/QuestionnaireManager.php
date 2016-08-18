@@ -15,6 +15,7 @@ class QuestionnaireManager {
         $key = session_id();
         $alive = '3600';
         $anwerList = Yii::app()->cache->get($key);
+        var_dump($anwerList);die;
         $num = count($anwerList);
         if ($values['questionnaireNumber'] == 1) {
             $num = 1;
