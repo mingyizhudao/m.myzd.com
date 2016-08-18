@@ -11,7 +11,6 @@ if ($showHeader == 1) {
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
-
 <?php if ($showHeader == 1) {
     ?>
     <header class="bg-green">
@@ -33,11 +32,11 @@ $this->show_footer = false;
 ?>
 <article id="mygy_article" class="active" data-scroll="true">
     <div class="pageBg">
-        <div>
-            <img src="http://static.mingyizhudao.com/146356505242989" class="w100">
+        <div>      
+            <img src="http://static.mingyizhudao.com/147124030180342" class="w100">
         </div>
         <div class="pl10 pr10 color-black11 text-justify">
-            <div class="font-s18 color-brown2 bl2-brown pl10 font-w800">
+            <div class="font-s18 c-blue bl2-blue pl10 font-w800">
                 名医公益联盟是什么？
             </div>
             <div class="pt10">
@@ -46,20 +45,21 @@ $this->show_footer = false;
             <div>
                 作为国内最大的移动医疗手术平台，名医主刀每天都能接触到大量需要手术的患者，其中不少患者家境贫寒难以全部承担手术服务费用。名医主刀一直将“仁爱”视为核心文化，希望通过名医公益联盟，汇聚社会爱心力量，帮助贫困患者解决“好看病，看好病”的切实需求。
             </div>
-            <div class="font-s18 color-brown2 bl2-brown pl10 font-w800 mt10">
+            <div class="font-s18 c-blue bl2-blue pl10 font-w800 mt10">
                 如何预约公益联盟？
             </div>
             <div class="pt10">
-                您可以直接在线点击或拨打客服热线预约以下医生，名医助手会在1个工作日回访确认，并指导填写申请表格。 通过审核的申请者可以免支付专家会诊费。如有家庭条件特别困难的患者，可以申请“名医公益援助金”。通过审核的申请者可以获得5000-10000元的援助金。如患者本人因病暂无能力自行申请，需指定委托人填写。
+                您可以直接在线点击或拨打客服热线预约以下医生，名医助手会在1个工作日回访确认，并指导填写申请表格。 通过审核的申请者可以免支付专家会诊费。如有家庭条件特别困难的患者，可以申请“名医公益援助金”。通过审核的申请者可以获得5000-10000元的援助金。如患者本人因病暂无能力自行申请，需指定委托人填写。（客服回访确认后会单独发送表格）
             </div>
-            <div class="font-s18 color-brown2 bl2-brown pl10 font-w800 mt10">
-                捐赠手术的名医？
+            <div class="font-s18 c-blue bl2-blue pl10 font-w800 mt10">
+                捐赠手术的名医
             </div>
-            <div id="doctorList">
+            <div id="doctorList" >
 
             </div>
-            <div class="font-s18 color-brown2 bl2-brown pl10 font-w800 mt10">
-                公益合作？
+
+            <div class="font-s18 c-blue bl2-blue pl10 font-w800 mt10">
+                公益合作
             </div>
             <div class="grid mt10">
                 <div class="col-1 w33 text-center">
@@ -137,43 +137,43 @@ $this->show_footer = false;
             var innerHtml = '';
             var doctors = data.results.page[0];
             var number = 0;
-            for (var i = 0; i < 3; i++) {
-                for (var j = 0; j < 3; j++) {
-                    var hp_dept_desc = (doctors[number] == '' || doctors[number].desc == null) ? '暂无信息' : doctors[number].desc;
-                    hp_dept_desc = hp_dept_desc.length > 45 ? hp_dept_desc.substr(0, 45) + '...' : hp_dept_desc;
-                    innerHtml += '<div class="bg-white mt10 border-grayD2">' +
-                            '<a href="<?php echo $urlDoctorView; ?>/' + doctors[number].id + '" class="color-black10">' +
-                            '<div class="pb10">' +
-                            '<div class="grid pl15 pr15 pb10 pt10">' +
-                            '<div class="col-1 w25">' +
-                            '<div class="w60p h60p br50" style="overflow:hidden;">' +
-                            '<img class="imgDoc" src="' + doctors[number].imageUrl + '">' +
-                            '</div>' +
-                            '</div>' +
-                            '<div class="ml10 col-1 w75">' +
-                            '<div class="grid">' +
-                            '<div class="col-0 font-s16">' + doctors[number].name +
-                            '</div>' +
-                            '</div>';
-                    if (doctors[number].hpDeptName == null) {
-                        innerHtml += '<div class="color-black6">' + doctors[number].mTitle + '</div>';
-                    } else {
-                        innerHtml += '<div class="color-black6">' + doctors[number].hpDeptName + '<span class="ml5">' + doctors[number].mTitle + '</span></div>';
-                    }
-                    innerHtml += '<div class="color-black6">' + doctors[number].hpName + '</div>' +
-                            '</div>' +
-                            '</div>' +
-                            '<div class="ml10 mr10 pad10 bg-gray2 text-justify">' +
-                            '擅长：' + hp_dept_desc +
-                            '</div>';
-                    if (number == 8) {
-                        innerHtml += '<div class="mt10"><a href="<?php echo $commonwealDoctors; ?>" class="moreDoctor">查看更多专家</a></div>';
-                    }
-                    innerHtml += '</div></a></div>';
-                    number += 1;
+            for (var i = 0; i < doctors.length; i++) {
+                var hp_dept_desc = (doctors[number] == '' || doctors[number].desc == null) ? '暂无信息' : doctors[number].desc;
+                hp_dept_desc = (hp_dept_desc.length > 45) ? hp_dept_desc.substr(0, 45) + '...' : hp_dept_desc;
+                innerHtml += '<div class="bg-white mt10 border-grayD2">' +
+                        '<a href="/mobile/doctor/view/id/' + doctors[number].id + '" class="color-black10">' +
+                        '<div class="pb10">' +
+                        '<div class="grid pl15 pr15 pb10 pt10">' +
+                        '<div class="col-1 w25">' +
+                        '<div class="w60p h60p br50" style="overflow:hidden">' +
+                        '<img class="imgDoc" src="' + doctors[number].imageUrl + '">' +
+                        '</div>' +
+                        ' </div>' +
+                        '<div class="ml10 col-1 w75">' +
+                        '<div class="grid">' +
+                        '<div class="col-0 "><span class="font-s18 font-w600">' + doctors[number].name + '</span><span class="font-s16 ml3">' + doctors[number].aTitle + '</span></div>' +
+                        '</div>';
+                if (doctors[number].hpDeptName == null) {
+                    innerHtml += '<div class="color-black6">' + doctors[number].mTitle + '</div>';
+                } else {
+                    innerHtml += '<div class="color-black6">' + doctors[number].hpDeptName + '<span class="ml5">' + doctors[number].mTitle + '</span></div>'
                 }
+                innerHtml += '<div class="color-black6">' + doctors[number].hpName + '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="ml10 mr10 pad10 bg-gray2 text-justify">' + '擅长：' +
+                        hp_dept_desc +
+                        '</div>';
+
+                if (number == 3) {
+                    innerHtml += '<div class="mt10"><a href="<?php echo $commonwealDoctors; ?>" class="mDoctor">查看更多专家</a></div>';
+                }
+                innerHtml += '</div></a></div>';
+                number++;
+
             }
             $('#doctorList').html(innerHtml);
         }
     });
+
 </script>
