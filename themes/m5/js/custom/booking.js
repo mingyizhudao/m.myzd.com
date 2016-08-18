@@ -217,11 +217,11 @@ $(function () {
         });
 
         $li.on('mouseenter', function () {
-            $btns.stop().animate({height: 30});
+            // $btns.stop().animate({height: 30});
         });
 
         $li.on('mouseleave', function () {
-            $btns.stop().animate({height: 0});
+            // $btns.stop().animate({height: 0});
         });
 
         $btns.on('click', 'span', function () {
