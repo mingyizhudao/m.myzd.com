@@ -132,6 +132,8 @@ $SITE_9 = PatientStatLog::SITE_9;
         <div class="pt20 pl15 pr15 pb20 ui-field-contain">
             <div class="">
                 <label for="uploaderCorp">上传病例</label>
+                <span class="col-1 mr15" style="color:#a9a9a9">
+                （影像资料、检查报告、门诊病历、住院病历、出院小结等病史资料）</span>
                 <div class="body mt10">
                     <div class="text-center">
                         <div id="container">
