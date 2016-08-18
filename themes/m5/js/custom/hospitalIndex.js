@@ -44,23 +44,31 @@ $('#selectCity').tap(function (e) {
 
 //医院页面
 function readyHospital(data) {
+    // console.log('123');
     var hospitals = data.hospitals;
-    var innerHtml = '<div><div><a href="' + $urlTopHospital + '"><img src="http://static.mingyizhudao.com/146423335398248" class="w100"></a></div><ul class="list">'
+    var innerHtml = '<div><div><a href="' + $urlTopHospital + '"><img src="http://static.mingyizhudao.com/146423335398248" class="w100"></a></div>'
     if (hospitals.length > 0) {
         for (var i = 0; i < hospitals.length; i++) {
-            innerHtml += '<li>' +
+            innerHtml += '<ul class="list">'+'<li>' +
                     '<a href="' + $requestHospitalView + '/' + hospitals[i].id + '">' +
                     '<div class="pl10">' +
                     '<div class="font-s16 color-black10">' + hospitals[i].name + '</div>' +
                     '<div class="color-black6 pt5"><span class="hpClassBg">' + hospitals[i].hpClass + '<span></div>' +
                     '</div>' +
                     '</a>' +
-                    '</li>';
+                    '</li>'+'</ul></div>';
         }
     } else {
-        innerHtml += '<li>暂无信息</li>';
+        innerHtml +=  '<div class="pad10 text-center">'+
+                '<div class="pt50">'+
+                '<img src="http://static.mingyizhudao.com/147142841787362" class="w63p">'+
+                '</div>'+
+                '<div class="pt10 color-gray">'+
+                '该地区暂无顶尖医院科室推荐'+
+                '</div>' +
+                '</div>';
     }
-    innerHtml += '</ul></div>';
+    
     $('#hospital_article').html(innerHtml);
     J.hideMask();
 }
