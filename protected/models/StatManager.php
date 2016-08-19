@@ -5,9 +5,9 @@ class StatManager {
     public function createPatientStat($values) {
         $output['status'] = 'no';
         $output['errorCode'] = 400;
-        $model = new PatientStatLog();
+        $model = new PatientStatLogMongo();
         $model->setAttributes($values, true);
-
+        $model->date_created=date("Y-m-d H:i:s");
         if ($model->save()) {
                 $output['status'] = 'ok';
                 $output['errorCode'] = 200;
@@ -49,6 +49,7 @@ class StatManager {
         $model->url_referrer = Yii::app()->request->getUrlReferrer();
         $model->user_agent = Yii::app()->request->getUserAgent();
         $model->user_host = Yii::app()->request->getUserHost();
+        $model->date_created=date("Y-m-d H:i:s");
         if ($model->save()) {
             $output['status'] = 'ok';
             $output['errorCode'] = 200;
