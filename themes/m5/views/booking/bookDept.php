@@ -112,11 +112,11 @@ $SITE_9 = PatientStatLog::SITE_9;
                 
             </div>
         </div> -->
-        <div class="grid pt20 pb20">
-            <div class="col-0 w90p pl15 color-black4">上传病例:</div>
-            <div class="col-1 mr15" style="color:#a9a9a9">
+        <div class="grid pt20 pb20 pl15">
+            <span class="w90p color-black4">上传病例:</span>
+            <span class="mr15" style="color:#a9a9a9">
                 （影像资料、检查报告、门诊病历、住院病历、出院小结等病史资料）
-            </div>
+            </span>
         </div>
         <?php
         $this->endWidget();
