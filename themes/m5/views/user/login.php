@@ -9,6 +9,8 @@ Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/l
  * $data.
  */
 $this->setPageTitle('登录');
+$this->setPageKeywords('登录123');
+$this->setPageDescription('登录123123123');
 
 $urlRegister = $this->createUrl("user/register");
 $urlUserValiCaptcha = $this->createUrl("user/valiCaptcha");

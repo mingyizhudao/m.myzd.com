@@ -4,7 +4,9 @@ abstract class MobileController extends WebsiteController {
 
     public $layout = 'layoutSinglePage';
     public $jqPageId;   //must be unique across all pages in jquery mobile.
-    public $pageTitle = '名医主刀';
+    public $pageTitle = '三甲医院手术预约,专家,主任医生手术,床位预约_名医主刀网移动版';
+    public $pageKeywords = '预约手术,专家手术,名医主刀网';
+    public $pageDescription = '名医随时有,手术不再难!【名医主刀】汇聚国内外顶级名医和床位资源,利用互联网技术实现医患精准匹配,帮助广大患者在第一时间预约到名医专家进行主刀治疗-www.mingyizhudao.com';
 
     public function init() {
         //  $this->handleMobileBrowserRedirect();
@@ -29,6 +31,22 @@ abstract class MobileController extends WebsiteController {
 
     public function getPageTitle() {
         return $this->pageTitle;
+    }
+
+    public function setPageKeywords($keywords, $siteName = false) {
+        parent::setPageKeywords($keywords, $siteName);
+    }
+
+    public function getPageKeywords() {
+        return $this->pageKeywords;
+    }
+
+    public function setPageDescription($description, $siteName = false) {
+        parent::setPageDescription($description, $siteName);
+    }
+
+    public function getPageDescription() {
+        return $this->pageDescription;
     }
 
     public function showBrowserModeMenu() {
