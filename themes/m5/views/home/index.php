@@ -242,21 +242,43 @@ $SITE_6 = PatientStatLog::SITE_6;
         </div>
     </div>
 </article>
-<div id="countdown">
-    <span id="timeData">5</span>
+<div id="countdown" class="hide">
+    <span id="timeData">3</span>
     <span id="skip">跳过</span>
 </div>
 <article id="activity_article" data-scroll="true" class="active">
     <div>
         <div>
-            <a href="http://mp.weixin.qq.com/s?__biz=MzIzMjAxNTcxMg==&mid=2673616672&idx=1&sn=49bd12171ab0efe0e47afd2c781486c5&scene=1&srcid=0816OpMPNMVBhQbugd9zJO1b#rd">
+            <a id="activityPage" href="javascript:;">
                 <img src="http://static.mingyizhudao.com/147141556066739" class="w100">
             </a>
         </div>
     </div>
 </article>
+<article id="blankPage" class="active">
+    <div>
+
+    </div>
+</article>
 <script>
     $(document).ready(function () {
+        var number = sessionStorage.getItem('num');
+        console.log(number);
+        if (number != null) {
+            $('#activity_article').addClass('hide');
+            $('footer').removeClass('hide');
+            $('#blankPage').addClass('hide');
+        } else {
+            sessionStorage.setItem('num', '1');
+            $('#countdown').removeClass('hide');
+            $('#blankPage').addClass('hide');
+        }
+
+        $('#activityPage').click(function () {
+            sessionStorage.removeItem('num');
+            location.href = 'http://mp.weixin.qq.com/s?__biz=MzIzMjAxNTcxMg==&mid=2673616672&idx=1&sn=49bd12171ab0efe0e47afd2c781486c5&scene=1&srcid=0816OpMPNMVBhQbugd9zJO1b#rd';
+        });
+
         //活动5s倒计时
         setInterval(function () {
             var num = Number($('#timeData').text());
