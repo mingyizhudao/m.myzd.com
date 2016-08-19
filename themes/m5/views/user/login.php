@@ -9,6 +9,8 @@ Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/l
  * $data.
  */
 $this->setPageTitle('登录');
+$this->setPageKeywords('登录123');
+$this->setPageDescription('登录123123123');
 
 $urlRegister = $this->createUrl("user/register");
 $urlUserValiCaptcha = $this->createUrl("user/valiCaptcha");
@@ -16,7 +18,7 @@ $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/auth/sendSmsVerifyCode');
 $urlUserAjaxLogin = $this->createUrl('user/ajaxLogin');
 $urlUserForgetPassword = $this->createUrl('user/forgetPassword');
 $urlUserRegister = $this->createUrl('user/register');
-$urlHomeView = $this->createUrl('home/view');
+$urlHomeView = Yii::app()->baseUrl;//$this->createUrl('home/view');
 $authActionType = AuthSmsVerify::ACTION_USER_LOGIN;
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $returnUrl = $returnUrl;

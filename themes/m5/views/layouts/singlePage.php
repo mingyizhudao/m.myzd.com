@@ -1,7 +1,9 @@
 <!DOCTYPE html> 
 <html lang="zh" xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
     <head>
-        <title><?php echo $this->pageTitle; ?></title>
+        <title><?php echo $this->pageTitle; ?></title>  
+        <meta name="description" content="<?php echo $this->pageKeywords; ?>">
+        <meta name="keyword" content="<?php echo $this->pageDescription; ?>">
         <!--        <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no" />-->
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no" />
