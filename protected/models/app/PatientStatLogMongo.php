@@ -41,7 +41,7 @@ class PatientStatLogMongo extends EMongoDocument
 		// will receive user inputs.
 		return array(
 			//array('site', 'numerical', 'integerOnly'=>true),
-			array('user_host_ip', 'length', 'max'=>20),
+			array('user_host_ip,site', 'length', 'max'=>20),
 			array('url, key_word, url_referrer, user_agent', 'length', 'max'=>255),
 			array('date_created, date_updated, date_deleted', 'safe'),
 			// The following rule is used by search().

@@ -12,9 +12,9 @@ class StatManager {
                 $output['status'] = 'ok';
                 $output['errorCode'] = 200;
                 $output['errorMsg'] = "success";
-                $output['result']['id'] = $model->getId();
+                //$output['result']['id'] = $model->getId();
         } else {
-            $output['errorMsg'] = $model->getFirstErrors();
+           // $output['errorMsg'] = $model->getFirstErrors();
         }
         return $output;
     }
