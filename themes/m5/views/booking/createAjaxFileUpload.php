@@ -20,7 +20,9 @@ Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/q
 /*
  * $model BookQuickForm.
  */
-$this->setPageTitle('快速预约');
+$this->setPageTitle('手术直通车快速预约_名医主刀网移动版');
+$this->setPageKeywords('手术直通车快速预约');
+$this->setPageDescription('名医主刀手术直通车让您快速预约专家医师，切实解决看病难的问题，让患者得到最快的治疗。');
 $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/auth/sendSmsVerifyCode');
 $authActionType = AuthSmsVerify::ACTION_BOOKING;
 $urlSubmitForm = $this->createUrl("booking/ajaxQuickbook");
