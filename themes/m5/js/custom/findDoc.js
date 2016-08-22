@@ -445,7 +445,7 @@ function readyDoc(data) {
                         '<a href="' + $requestDoctorView + '/' + results[i].id + '" data-target="link">' +
                         '<div class="grid pl15 pr15 ' + btGray + '">' +
                         '<div class="col-1 w25 pt10">' +
-                        '<div class="w60p h60p br50" style="overflow:hidden;"><img class="imgDoc" src="' + results[i].imageUrl + '"></div>';
+                        '<div class="w60p h60p br50" style="overflow:hidden;"><img class="imgDoc" alt="'+ results[i].name + results[i].aTitle +'" src="' + results[i].imageUrl + '"></div>';
                 var doctorAtitle = '';
                 if (results[i].aTitle != '无') {
                     doctorAtitle = results[i].aTitle;
