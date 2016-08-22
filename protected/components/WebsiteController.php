@@ -17,9 +17,11 @@ abstract class WebsiteController extends Controller {
      * @var array context menu items. This property will be assigned to {@link CMenu::items}.
      */
     public $menu = array();
-    public $pageTitle = '名医主刀_三甲医院名医,专家,主任医生手术,床位预约,网上挂号,手机APP';
-    public $htmlMetaKeywords = '名医主刀,三甲医院,名医,专家,主任医生,手术预约,网上挂号,手机APP';
-    public $htmlMetaDescription = '名医随时有,手术不再难！【名医主刀】汇聚国内外顶级名医资源和床位资源，利用互联网技术实现医患精准匹配，帮助广大患者得以在第一时间预约到名医专家进行主刀治疗。www.mingyizhudao.com';
+    public $pageTitle = '三甲医院手术预约,专家,主任医生手术,床位预约_名医主刀网移动版';
+    public $pageKeywords = '预约手术,专家手术,名医主刀网';
+    public $pageDescription = '名医随时有,手术不再难!【名医主刀】汇聚国内外顶级名医和床位资源,利用互联网技术实现医患精准匹配,帮助广大患者在第一时间预约到名医专家进行主刀治疗-www.mingyizhudao.com';
+    // public $htmlMetaKeywords = '名医主刀,三甲医院,名医,专家,主任医生,手术预约,网上挂号,手机APP';
+    // public $htmlMetaDescription = '名医随时有,手术不再难！【名医主刀】汇聚国内外顶级名医资源和床位资源，利用互联网技术实现医患精准匹配，帮助广大患者得以在第一时间预约到名医专家进行主刀治疗。www.mingyizhudao.com';
 
     /**
      * @var array the breadcrumbs of the current page. The value of this property will
@@ -90,6 +92,22 @@ abstract class WebsiteController extends Controller {
             $this->pageTitle = Yii::app()->name . ' - ' . $title;
         } else {
             $this->pageTitle = $title;
+        }
+    }
+
+    public function setPageKeywords($keywords, $siteName = true) {
+        if ($siteName) {
+            $this->pageKeywords = Yii::app()->name . ' - ' . $keywords;
+        } else {
+            $this->pageKeywords = $keywords;
+        }
+    }
+
+    public function setPageDescription($description, $siteName = true) {
+        if ($siteName) {
+            $this->pageDescription = Yii::app()->name . ' - ' . $description;
+        } else {
+            $this->pageDescription = $description;
         }
     }
 
