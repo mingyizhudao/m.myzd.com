@@ -241,6 +241,7 @@ abstract class WebsiteController extends Controller {
         $coreAccess->url_referrer = Yii::app()->request->getUrlReferrer();
         $coreAccess->user_agent = Yii::app()->request->getUserAgent();
         $coreAccess->user_host = Yii::app()->request->getUserHost();
+        $coreAccess->date_created = date("Y-m-d H:i:s");
         $coreAccess->save();
 //         var_dump(AppLogMongo::model()->findAll());exit;
     }
