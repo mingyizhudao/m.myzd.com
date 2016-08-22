@@ -1,5 +1,7 @@
 <?php
-$this->setPageTitle('疾病信息');
+$this->setPageTitle('0元见名医申请流程_名医主刀网移动版');
+$this->setPageKeywords('0元见名医申请流程');
+$this->setPageDescription('名医主刀作为国内最大的移动医疗手术预约平台,旨在为有手术需求的患者提供专业、高效、安全的手术医疗预约服务,帮助广大有手术需求的患者,在第一时间预约全国知名专家,安排入院手术。');
 $urlQuestionnaire = $this->createUrl('/api/questionnaire');
 $urlApplogstat = $this->createUrl('/api/applogstat');
 $source = Yii::app()->request->getQuery('app', 0);

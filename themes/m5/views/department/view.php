@@ -1,5 +1,7 @@
 <?php
-$this->setPageTitle('科室详情');
+$this->setPageTitle('【 '.$data->hpDeptHospital->short_name.'】【'.$data->name.'】手术预约,床位预约,专家预约,哪个医生好_名医主刀网移动版');
+$this->setPageKeywords('【 '.$data->hpDeptHospital->short_name.'】【'.$data->name.'】专家预约');
+$this->setPageDescription('名医主刀网为您提供国内医院预约手术,医院排行榜,医院大全,医院哪家好等权威信息;助您在第一时间找到好医院,以最快的时间预约医院并安排手术,网上预约手术就看名医主刀网。');
 $urlBookCreate = $this->createUrl("booking/create", array('hp_dept_id' => ''));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
