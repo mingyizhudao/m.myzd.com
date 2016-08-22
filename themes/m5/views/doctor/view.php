@@ -1,4 +1,5 @@
 <?php
+$this->setPageTitle('医生详情');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $urlBookingDoctor = $this->createAbsoluteUrl('booking/create', array('did' => ''));
 $isCommonweal = Yii::app()->request->getQuery('is_commonweal', '0');
@@ -7,9 +8,6 @@ $sourceApp = Yii::app()->request->getQuery('app', '0');
 $urlQuestionnaireBookingView = $this->createAbsoluteUrl('questionnaire/questionnaireBookingView', array('id' => ''));
 $urlApplogstat = $this->createUrl('/api/applogstat');
 $doctor = $data->results->doctor;
-$this->setPageTitle('['.$doctor->name.']介绍,擅长哪些手术_名医主刀网移动版');
-$this->setPageKeywords('['.$doctor->name.']介绍,擅长哪些手术');
-$this->setPageDescription( substr($doctor->careerExp, 200));
 $honour = $doctor->honour;
 $this->show_footer = false;
 //modify by wanglei 

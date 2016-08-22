@@ -6,7 +6,7 @@ Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/f
 /**
  * $data.
  */
-$this->setPageTitle('找回名医主刀网移动版');
+$this->setPageTitle('找回密码');
 $urlRegister = $this->createUrl("user/register");
 $urlUserValiCaptcha = $this->createUrl("user/valiCaptcha");
 $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/auth/sendSmsVerifyCode');

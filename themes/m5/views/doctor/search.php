@@ -6,10 +6,7 @@ Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/f
 $source = Yii::app()->request->getQuery('source', '0');
 $sourceApp = Yii::app()->request->getQuery('app', 0);
 if ($source == 0) {
-    $this->setPageTitle('[上海][外科]医生排行,哪个医生好,专家医生预约_名医主刀网移动版
-上海血管外科动脉瘤医生排行,哪个医生好,专家医生预约_名医主刀网移动版');
-    $this->setPageKeywords('手术预约,找医生,网上预约医生');
-    $this->setPageDescription('名医主刀网为您提供[上海][外科]医生排行榜,手术预约,专家医生预约,哪个医生好等信息;帮助广大有手术需求的患者,在第一时间预约全国知名专家,安排入院手术。');
+    $this->setPageTitle('找名医');
     $urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('id' => ''));
 } else {
     $this->setPageTitle('选择意向专家');

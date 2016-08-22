@@ -1,7 +1,5 @@
 <?php
-$this->setPageTitle('手术直通车_名医主刀网');
-$this->setPageKeywords('手术直通车');
-$this->setPageDescription('让每一位患者在名医主刀“好看病，看好病”是我们不变的宗旨,名医主刀可以给患者带去更多的希望,不仅可以帮助患者尽快预约到专家,还能大大节省患者等待床位的时间,让患者得到最快的治疗。');
+$this->setPageTitle('手术直通车');
 $urlBookingQuickbook = $this->createAbsoluteUrl('booking/quickbook');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;

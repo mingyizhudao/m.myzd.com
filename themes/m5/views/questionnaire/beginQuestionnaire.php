@@ -1,5 +1,7 @@
 <?php
-$this->setPageTitle('0元见名医');
+$this->setPageTitle('0元见名医_名医主刀网移动版');
+$this->setPageKeywords('0元见名医流程');
+$this->setPageDescription('针对有手术需求的患者,名医主刀提供全国知名三甲医院专家的面对面术前咨询服务, 让患者获得更全面、更权威的诊疗建议;本服务只针对非初诊手术患者,首诊患者可以先到附近正规医院,有初步诊断后方可预约0元面诊服务。');
 $appId = Yii::app()->request->getQuery('appId', '');
 $site = Yii::app()->request->getQuery('site', '');
 $source = Yii::app()->request->getQuery('app', 0);
