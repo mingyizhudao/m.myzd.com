@@ -2,7 +2,9 @@
 /**
  * $data.
  */
-$this->setPageTitle('合作医院');
+$this->setPageTitle('手术预约,床位预约,专家预约,哪个医生好_名医主刀网移动版');
+$this->setPageKeywords('手术预约,哪个医生好');
+
 $urlHospitalView = $this->createAbsoluteUrl('/api/list', array('model' => 'hospital'));
 $urlDepartmentView = $this->createUrl('department/view', array('id' => ''));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";

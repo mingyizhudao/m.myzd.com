@@ -1,5 +1,7 @@
 <?php
-$this->setPageTitle('手术还有“回头客”？');
+$this->setPageTitle('手术还有“回头客”？_名医主刀网移动版');
+$this->setPageKeywords('名医主刀网');
+$this->setPageDescription('回头客，是指在商店、旅馆、饭馆等场所再次光顾的顾客。在生活中，我们很容易就成为某个地点的回头客，可是，做手术还有“回头客”，您是否听说过呢？');
 $showHeader = Yii::app()->request->getQuery('header', 1);
 $this->show_footer = false;
 ?>

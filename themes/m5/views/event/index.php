@@ -6,6 +6,9 @@ $showPage = Yii::app()->request->getQuery('page', 0);
 $showApp = Yii::app()->request->getQuery('app', 1);
 $urlEventIndex = $this->createUrl('event/index');
 if ($showApp == 1) {
+    $this->setPageTitle('就医故事_名医主刀网移动版');
+    $this->setPageKeywords('就医故事');
+    $this->setPageDescription('让每一位患者在名医主刀“好看病，看好病”是我们不变的宗旨,名医主刀可以给患者带去更多的希望,不仅可以帮助患者尽快预约到专家,还能大大节省患者等待床位的时间,让患者得到最快的治疗。');
     $urlEventStoryOne = $this->createUrl('event/view', array('page' => 'storyOne'));
     $urlEventStoryTwo = $this->createUrl('event/view', array('page' => 'storyTwo'));
     $urlEventStoryThree = $this->createUrl('event/view', array('page' => 'storyThree'));
@@ -35,6 +38,9 @@ if ($showApp == 1) {
     $urlEventZhuantiCatherine = $this->createUrl('event/view', array('page' => 'catherine'));
     $urlEventZhuantiInternetOperation = $this->createUrl('event/view', array('page' => 'internetOperation'));
 } else {
+    $this->setPageTitle('手术专题报道_名医主刀网移动版');
+    $this->setPageKeywords('手术专题');
+    $this->setPageDescription('名医公益联盟是名医主刀倡导发起,并联合公益组织,医生共建的一种可持续公益模式,旨在让更多患者有机会接受更好的治疗。希望通过名医公益联盟,汇聚社会爱心力量,帮助贫困患者解决“好看病,看好病”的切实需求。');
     $urlEventStoryOne = $this->createUrl('event/view', array('page' => 'storyOne', 'header' => '0'));
     $urlEventStoryTwo = $this->createUrl('event/view', array('page' => 'storyTwo', 'header' => '0'));
     $urlEventStoryThree = $this->createUrl('event/view', array('page' => 'storyThree', 'header' => '0'));
