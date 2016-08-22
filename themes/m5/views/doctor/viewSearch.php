@@ -184,7 +184,7 @@ $this->show_footer = false;
             }
             //若无查询到信息
             if (doctors == undefined && diseases == undefined && hospitals == undefined) {
-                innerHtml += '<div class="pad10 text-center">'+ 
+                innerHtml +='<div class="pad10 text-center">'+ 
                           ' <div class="pt50">'+
                             '<img src="http://static.mingyizhudao.com/147148658317831" class="w63p">'+
                            ' </div>'+

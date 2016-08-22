@@ -23,6 +23,8 @@ $SITE_9 = PatientStatLog::SITE_9;
         height: auto;
         line-height: 1.5;
     }
+    .inline{display: inline;}
+    h1,h2,h3{font-family: 'Microsoft YaHei', 微软雅黑, 'Microsoft Yahei', 黑体, 宋体, Arial, Simsun, Helvetica, sans-serif !important;}
 </style>
 <?php
 if ($sourceApp == 0) {
@@ -98,13 +100,13 @@ if ($sourceApp == 0) {
                     echo $doctor->mTitle;
                 } else {
                     ?>
-                    <?php echo $doctor->hpDeptName; ?><span class="ml10"><?php echo $doctor->mTitle; ?></span>
+                 <h2 class="font-s14 inline" >   <?php echo $doctor->hpDeptName; ?><span class="ml10"><?php echo $doctor->mTitle; ?></span></h2>
                 <?php }
                 ?>
             </div>
-            <div class="text-center">
+            <h2 class="text-center font-s14 mt-1 mt2">
                 <?php echo $doctor->hospitalName; ?>
-            </div>
+            </h2>
         </div>
         <?php
         $comment = '';
@@ -178,7 +180,7 @@ if ($sourceApp == 0) {
             if (isset($doctor->description) && (trim($doctor->description) != '')) {
                 ?>
                 <div class="pl10 pr10 pt10">
-                    <div class="color-orange">擅长</div>
+                    <h3 class="color-orange font-s14 mt-1"style="font-family:'Microsoft YaHei';">擅长</h3>
                     <div class="mt5 color-black6 bFontSize"><?php echo $doctor->description; ?></div>
                 </div>
                 <?php
@@ -187,9 +189,9 @@ if ($sourceApp == 0) {
             <div id="moreDetail" class="pad10">
                 <?php if (count($doctor->reasons) != 0) { ?>
                     <div class="bt-gray pt10 pb10">
-                        <div class="color-orange mb5">
+                        <h3 class="color-orange mb5 font-s14 mt-1">
                             推荐理由
-                        </div>
+                        </h3>
                         <?php
                         for ($i = 0; $i < count($doctor->reasons); $i++) {
                             ?>
@@ -203,9 +205,9 @@ if ($sourceApp == 0) {
                 <?php } ?>
                 <?php if (isset($honour) && !is_null($honour)) { ?>
                     <div class="bt-gray pt10 pb10">
-                        <div class="color-orange mb5">
+                        <h3 class="color-orange mb5 font-s14 mt-1">
                             荣誉
-                        </div>
+                        </h3>
                         <?php
                         for ($i = 0; $i < count($honour); $i++) {
                             ?>
