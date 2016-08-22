@@ -100,72 +100,72 @@ if ($showPage == 0) {
     <div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiCatherine; ?>">
-                <img src="http://static.mingyizhudao.com/146529036735212" class="w100">
+                <img alt="名医主刀牵手美国凯瑟琳癌症中心_首秀中国" src="http://static.mingyizhudao.com/146529036735212" class="w100">
             </a>
         </div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiInternetOperation; ?>">
-                <img src="http://static.mingyizhudao.com/146529829828030" class="w100">
+                <img alt="互联网手术中心公益正在进行时" src="http://static.mingyizhudao.com/146529829828030" class="w100">
             </a>
         </div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiCancer; ?>">
-                <img src="http://static.mingyizhudao.com/146353686584387" class="w100">
+                <img alt="澄清癌症的十个错误认知" src="http://static.mingyizhudao.com/146353686584387" class="w100">
             </a>
         </div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiLungCancer; ?>">
-                <img src="http://static.mingyizhudao.com/146348338505141" class="w100">
+                <img alt="美国哈弗大学公共卫生学院根据" src="http://static.mingyizhudao.com/146348338505141" class="w100">
             </a>
         </div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiShapingHealth; ?>">
-                <img src="http://static.mingyizhudao.com/14630233122529" class="w100">
+                <img alt="共享名医资源_共筹健康中国" src="http://static.mingyizhudao.com/14630233122529" class="w100">
             </a>
         </div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiMygy; ?>">
-                <img src="http://static.mingyizhudao.com/146302377992350" class="w100">
+                <img alt="名医公益联盟" src="http://static.mingyizhudao.com/146302377992350" class="w100">
             </a>
         </div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiRobot; ?>">
-                <img src="http://static.mingyizhudao.com/146302381725650" class="w100">
+                <img alt="十年磨一剑_一见必倾心" src="http://static.mingyizhudao.com/146302381725650" class="w100">
             </a>
         </div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiFive; ?>">
-                <img src="http://static.mingyizhudao.com/146302384917628" class="w100">
+                <img alt="名医实力_卡塔尔王子中国寻医记" src="http://static.mingyizhudao.com/146302384917628" class="w100">
             </a>
         </div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiSix; ?>">
-                <img src="http://static.mingyizhudao.com/14630238789848" class="w100">
+                <img alt="80%的人忽视的身体小肿块_险些成癌" src="http://static.mingyizhudao.com/14630238789848" class="w100">
             </a>
         </div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiFour; ?>">
-                <img src="http://static.mingyizhudao.com/146302390598546" class="w100">
+                <img alt="100万冬日暖阳" src="http://static.mingyizhudao.com/146302390598546" class="w100">
             </a>
         </div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiOne; ?>">
-                <img src="http://static.mingyizhudao.com/146302393608770" class="w100">
+                <img alt="【医生专访】陆劲松" src="http://static.mingyizhudao.com/146302393608770" class="w100">
             </a>
         </div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiTwo; ?>">
-                <img src="http://static.mingyizhudao.com/146302397500068" class="w100">
+                <img alt="预防冬季冠心病发作_名医专家有妙招" src="http://static.mingyizhudao.com/146302397500068" class="w100">
             </a>
         </div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiThree; ?>">
-                <img src="http://static.mingyizhudao.com/146302402203799" class="w100">
+                <img alt="您身边真实的大白_达芬奇手术机器人" src="http://static.mingyizhudao.com/146302402203799" class="w100">
             </a>
         </div>
         <div class="mt10 mb10">
             <a href="<?php echo $urlEventZhuantiXinxg; ?>">
-                <img src="http://static.mingyizhudao.com/146302405313136" class="w100">
+                <img alt="警惕双11熬夜秒杀？诱发心血管疾病发！" src="http://static.mingyizhudao.com/146302405313136" class="w100">
             </a>
         </div>
     </div>
