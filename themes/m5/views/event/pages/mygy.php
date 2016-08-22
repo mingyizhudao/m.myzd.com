@@ -33,7 +33,7 @@ $this->show_footer = false;
 <article id="mygy_article" class="active" data-scroll="true">
     <div class="pageBg">
         <div>      
-            <img src="http://static.mingyizhudao.com/147124030180342" class="w100">
+            <img alt="名医公益行" src="http://static.mingyizhudao.com/147124030180342" class="w100">
         </div>
         <div class="pl10 pr10 color-black11 text-justify">
             <div class="font-s18 c-blue bl2-blue pl10 font-w800">

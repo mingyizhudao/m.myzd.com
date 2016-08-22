@@ -54,7 +54,7 @@ if ($sourceApp == 0) {
             <div class="grid">
                 <div class="col-1 w50"></div>
                 <div class="col-0 imgDiv">
-                    <img class="imgDoc" src="<?php echo $doctor->imageUrl; ?>">
+                    <img class="imgDoc" alt="<?php echo $doctor->name; ?>" src="<?php echo $doctor->imageUrl; ?>">
                 </div>
                 <div class="col-1 w50">
                     <?php
