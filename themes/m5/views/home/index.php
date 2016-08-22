@@ -36,7 +36,7 @@ $SITE_6 = PatientStatLog::SITE_6;
 ?>
 <style>
     #countdown{
-        background-color: #7d7d81;
+        background-color: #b1b1b1;
         border-radius: 5px;
         padding: 3px 10px;
         color: #fff;
