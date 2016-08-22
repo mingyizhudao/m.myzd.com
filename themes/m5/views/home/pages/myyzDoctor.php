@@ -3,7 +3,9 @@
 Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/myyzDoctor.min.1.2.js', CClientScript::POS_END);
 ?>
 <?php
-$this->setPageTitle('免费术前方案评估');
+$this->setPageTitle('名医义诊,免费术前方案评估_名医主刀网移动版');
+$this->setPageKeywords('名医义诊,免费术前方案评估');
+$this->setPageDescription('名医义诊,免费术前方案评估,现约现看！');
 $urlApiDiagnosisdoctors = $this->createAbsoluteUrl('/api/diagnosisdoctors', array('api' => 9));
 $showHeader = Yii::app()->request->getQuery('header', 1);
 $urlDoctorView = $this->createUrl('doctor/view', array('id' => ''));
