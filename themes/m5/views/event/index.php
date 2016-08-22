@@ -172,6 +172,20 @@ if ($showPage == 0) {
 </article>
 <article id="story_article" class="<?php echo $showStory; ?>" data-scroll="true" data-active="find_footer">
     <div class="text-justify">
+        
+       <div class="mt10 bg-white"style="">
+            <a href="<?php echo $urlEventRepeatCustomers; ?>">
+                <div class="grid color-black10">
+                    <div class="col-1 w40">
+                        <img src="http://static.mingyizhudao.com/147186370045038">
+                    </div>
+                    <div class="col-1 w60 font-s17 vertical-center pl20 pr20 pt20 pb20">
+                        他说，活下去的希望是你们给的！
+                    </div>
+                </div>
+            </a>
+        </div> 
+
         <div class="mt10 bg-white">
             <a href="<?php echo $urlEventRepeatCustomers; ?>">
                 <div class="grid color-black10">
