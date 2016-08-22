@@ -18,7 +18,6 @@ $urlHomeView = Yii::app()->baseUrl;
 $urlHospitalIndex = $this->createUrl('hospital/index');
 $urlEventIndex = $this->createUrl('event/index');
 $urlUserView = $this->createUrl('user/view');
-$this->show_footer = false;
 //modify by wanglei 
 $urlStat = $this->createAbsoluteUrl('/api/stat');
 //激活搜索框搜索
@@ -34,68 +33,6 @@ $SITE_5 = PatientStatLog::SITE_5;
 //点击在线客服按钮
 $SITE_6 = PatientStatLog::SITE_6;
 ?>
-<style>
-    #countdown{
-        background-color: #b1b1b1;
-        border-radius: 5px;
-        padding: 3px 10px;
-        color: #fff;
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        z-index: 99;
-    }
-    #skip{
-        color: #eaeaea;
-    }
-    footer.hide~article {
-        bottom: 0px;
-    }
-</style>
-<footer class="hide">
-    <ul class="control-group w100">
-        <li class="w25 active" data-active="home_footer">
-            <a href="<?php echo $urlHomeView; ?>">
-                <div class="grid">
-                    <div class="col-1"></div>
-                    <div class="col-0 imgHome"></div>
-                    <div class="col-1"></div>
-                </div>
-                首页
-            </a>
-        </li>
-        <li class="w25" data-active="hospital_footer">
-            <a href="<?php echo $urlHospitalIndex; ?>?city=0">
-                <div class="grid">
-                    <div class="col-1"></div>
-                    <div class="col-0 imgHospital"></div>
-                    <div class="col-1"></div>
-                </div>
-                医院
-            </a>
-        </li>
-        <li class="w25" data-active="find_footer">
-            <a href="<?php echo $urlEventIndex; ?>">
-                <div class="grid">
-                    <div class="col-1"></div>
-                    <div class="col-0 imgFind"></div>
-                    <div class="col-1"></div>
-                </div>
-                发现
-            </a>
-        </li>
-        <li class="w25" data-active="user_footer">
-            <a href="<?php echo $urlUserView; ?>">
-                <div class="grid">
-                    <div class="col-1"></div>
-                    <div class="col-0 imgCenter"></div>
-                    <div class="col-1"></div>
-                </div>
-                个人
-            </a>
-        </li>
-    </ul>
-</footer>
 <article id="home_article" data-active="home_footer" class="active bg-gray5" data-scroll="true">
     <div>
         <div class="titleImg">
@@ -242,60 +179,8 @@ $SITE_6 = PatientStatLog::SITE_6;
         </div>
     </div>
 </article>
-<div id="countdown" class="hide">
-    <span id="timeData">3</span>
-    <span id="skip">跳过</span>
-</div>
-<article id="activity_article" data-scroll="true" class="active">
-    <div>
-        <div>
-            <a id="activityPage" href="javascript:;">
-                <img src="http://static.mingyizhudao.com/147141556066739" class="w100">
-            </a>
-        </div>
-    </div>
-</article>
-<article id="blankPage" class="active">
-    <div>
-
-    </div>
-</article>
 <script>
     $(document).ready(function () {
-        var number = sessionStorage.getItem('num');
-        console.log(number);
-        if (number != null) {
-            $('#activity_article').addClass('hide');
-            $('footer').removeClass('hide');
-            $('#blankPage').addClass('hide');
-        } else {
-            sessionStorage.setItem('num', '1');
-            $('#countdown').removeClass('hide');
-            $('#blankPage').addClass('hide');
-        }
-
-        $('#activityPage').click(function () {
-            sessionStorage.removeItem('num');
-            location.href = 'http://mp.weixin.qq.com/s?__biz=MzIzMjAxNTcxMg==&mid=2673616672&idx=1&sn=49bd12171ab0efe0e47afd2c781486c5&scene=1&srcid=0816OpMPNMVBhQbugd9zJO1b#rd';
-        });
-
-        //活动5s倒计时
-        setInterval(function () {
-            var num = Number($('#timeData').text());
-            if (num <= 0) {
-                $('footer').removeClass('hide');
-                $('#countdown').addClass('hide');
-                $('#activity_article').addClass('hide');
-            } else {
-                $('#timeData').text(num - 1);
-            }
-        }, 1000);
-        //跳过
-        $('#countdown').click(function () {
-            $('footer').removeClass('hide');
-            $('#countdown').addClass('hide');
-            $('#activity_article').addClass('hide');
-        });
         $('#freePhone').click(function () {
             J.customConfirm('友情提示',
                     '<div class="mb10">立即拨打免费客服热线400-6277-120</div>',
