@@ -29,7 +29,7 @@ $urlSubmitForm = $this->createUrl("booking/ajaxQuickbook");
 $urlUploadFile = $this->createUrl("qiniu/ajaxBookingFile");
 $urlUserValiCaptcha = $this->createUrl("user/valiCaptcha");
 $urlReturn = $this->createUrl('order/view');
-$urlHomeView = $this->createUrl('home/view');
+$urlHomeView = Yii::app()->baseUrl;
 $urlQiniuAjaxToken = $this->createUrl('qiniu/ajaxBookingToken');
 $urlBackBtn = Yii::app()->request->getQuery('backBtn', '1');
 $urlAgreement = $this->createUrl('user/index', array('page' => 'aboutAgreement'));

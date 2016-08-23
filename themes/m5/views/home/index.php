@@ -14,7 +14,7 @@ $urlHomeMyyzDoctor = $this->createUrl('home/page', array('view' => 'myyzDoctor')
 $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
 $urlZeroBooking = $this->createUrl('questionnaire/beginQuestionnaireView');
 $urlCatherine = $this->createUrl('event/view', array('page' => 'catherine'));
-$urlHomeView = $this->createUrl('home/view');;
+$urlHomeView = Yii::app()->baseUrl;
 $urlHospitalIndex = $this->createUrl('hospital/index');
 $urlEventIndex = $this->createUrl('event/index');
 $urlUserView = $this->createUrl('user/view');
