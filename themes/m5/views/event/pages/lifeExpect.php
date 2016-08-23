@@ -117,7 +117,7 @@ $this->show_footer = false;
         <div class="grid mt20 mb50">
                 <div class="col-1"></div>
                 <div class="col-0 w80 border-gray">
-                    <a class="color-black" href="<?php echo $urlDoctorView; ?>/88">
+                    <a class="color-black" href="<?php echo $urlDoctorView; ?>">
                         <div class="">
                             <div class="grid pt10">
                                 <div class="col-1"></div>
