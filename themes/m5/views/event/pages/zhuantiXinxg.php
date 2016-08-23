@@ -243,7 +243,7 @@ $this->show_footer = false;
                             <div class="grid pt10">
                                 <div class="col-1"></div>
                                 <div class="col-0 br50 w60p h60p overflow-hidden">
-                                    <img class="" src="http://mingyizhudao.com/resource/doctor/avatar/xujianping.jpg">
+                                    <img class="imgDoc" src="http://dr.static.mingyizhudao.com/E7D0DEFA9BE34C1A13CCD948E70BBC80">
                                 </div>
                                 <div class="col-1"></div>
                             </div>
@@ -279,7 +279,7 @@ $this->show_footer = false;
                             <div class="grid pt10">
                                 <div class="col-1"></div>
                                 <div class="col-0 br50 w60p h60p overflow-hidden">
-                                    <img class="" src="http://mingyizhudao.com/resource/doctor/avatar/02906.jpg">
+                                    <img class="imgDoc" src="http://dr.static.mingyizhudao.com/39187900A035CACF9CFE846FEBF55C83">
                                 </div>
                                 <div class="col-1"></div>
                             </div>

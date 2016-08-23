@@ -9,7 +9,7 @@ if ($showApp == 1) {
     $this->setPageKeywords('就医故事');
     $this->setPageDescription('让每一位患者在名医主刀“好看病，看好病”是我们不变的宗旨,名医主刀可以给患者带去更多的希望,不仅可以帮助患者尽快预约到专家,还能大大节省患者等待床位的时间,让患者得到最快的治疗。');
     $urlEventStoryOne = $this->createUrl('event/view', array('page' => 'storyOne'));
-    $urlEventLifeExpect=$this->createUrl('event/view',array('page'=>'lifeExpect'))
+    $urlEventLifeExpect=$this->createUrl('event/view',array('page'=>'lifeExpect'));
     $urlEventStoryTwo = $this->createUrl('event/view', array('page' => 'storyTwo'));
     $urlEventStoryThree = $this->createUrl('event/view', array('page' => 'storyThree'));
     $urlEventEightHour = $this->createUrl('event/view', array('page' => 'storyEightHour'));
