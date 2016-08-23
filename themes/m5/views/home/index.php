@@ -33,6 +33,71 @@ $SITE_5 = PatientStatLog::SITE_5;
 //点击在线客服按钮
 $SITE_6 = PatientStatLog::SITE_6;
 ?>
+<<<<<<< HEAD
+=======
+<style>
+    #countdown{
+        background-color: #b1b1b1;
+        border-radius: 5px;
+        padding: 3px 10px;
+        color: #fff;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 99;
+    }
+    #skip{
+        color: #eaeaea;
+    }
+    footer.hide~article {
+        bottom: 0px;
+    }
+</style>
+<footer class="hide">
+    <ul class="control-group w100">
+        <li class="w25 active" data-active="home_footer">
+            <a href="<?php echo $urlHomeView; ?>">
+                <div class="grid">
+                    <div class="col-1"></div>
+                    <div class="col-0 imgHome"></div>
+                    <div class="col-1"></div>
+                </div>
+                首页
+            </a>
+        </li>
+        <li class="w25" data-active="hospital_footer">
+            <a href="<?php echo $urlHospitalIndex; ?>?city=0">
+                <div class="grid">
+                    <div class="col-1"></div>
+                    <div class="col-0 imgHospital"></div>
+                    <div class="col-1"></div>
+                </div>
+                医院
+            </a>
+        </li>
+        <li class="w25" data-active="find_footer">
+            <a href="<?php echo $urlEventIndex; ?>">
+                <div class="grid">
+                    <div class="col-1"></div>
+                    <div class="col-0 imgFind"></div>
+                    <div class="col-1"></div>
+                </div>
+                发现
+            </a>
+        </li>
+        <li class="w25" data-active="user_footer">
+            <a href="<?php echo $urlUserView; ?>">
+                <div class="grid">
+                    <div class="col-1"></div>
+                    <div class="col-0 imgCenter"></div>
+                    <div class="col-1"></div>
+                </div>
+                个人
+            </a>
+        </li>
+    </ul>
+</footer>
+>>>>>>> parent of 87cad60... 首页跳过颜色优化
 <article id="home_article" data-active="home_footer" class="active bg-gray5" data-scroll="true">
     <div>
         <div class="titleImg">
