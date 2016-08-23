@@ -52,7 +52,7 @@ $SITE_6 = PatientStatLog::SITE_6;
             <div class="pl10 pr10 bg-white mt20 pb10">
                 <div class="grid pt10">
                     <div class="col-1 w33 pr10">
-                        <a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>?innerDeptId=1&disease_sub_category=1" data-name="外科">
+                        <a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/innerDeptId/1/disease_sub_category/1" data-name="外科">
                             <div class="bg-blue4">
                                 <div class="font-s16 pl5 pt5">
                                     外科
@@ -65,7 +65,7 @@ $SITE_6 = PatientStatLog::SITE_6;
                         </a>
                     </div>
                     <div class="col-1 w33 pl5 pr5">
-                        <a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>?innerDeptId=2&disease_sub_category=13" data-name="骨科">
+                        <a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/innerDeptId/2/disease_sub_category/13" data-name="骨科">
                             <div class="bg-yellow6">
                                 <div class="font-s16 pl5 pt5">
                                     骨科
@@ -78,7 +78,7 @@ $SITE_6 = PatientStatLog::SITE_6;
                         </a>
                     </div>
                     <div class="col-1 w33 pl10">
-                        <a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>?innerDeptId=3&disease_sub_category=18" data-name="妇产科">
+                        <a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/innerDeptId/3/disease_sub_category/18" data-name="妇产科">
                             <div class="bg-red2">
                                 <div class="font-s16 pl5 pt5">
                                     妇产科
@@ -93,7 +93,7 @@ $SITE_6 = PatientStatLog::SITE_6;
                 </div>
                 <div class="grid mt15">
                     <div class="col-1 w33 pr10">
-                        <a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>?innerDeptId=4&disease_sub_category=21" data-name="小儿外科">
+                        <a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/innerDeptId/4/disease_sub_category/21" data-name="小儿外科">
                             <div class="bg-orange">
                                 <div class="font-s16 pl5 pt5">
                                     小儿外科
@@ -106,7 +106,7 @@ $SITE_6 = PatientStatLog::SITE_6;
                         </a>
                     </div>
                     <div class="col-1 w33 pl5 pr5">
-                        <a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>?innerDeptId=5&disease_sub_category=28" data-name="五官科">
+                        <a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/innerDeptId/5/disease_sub_category/28" data-name="五官科">
                             <div class="bg-blue5">
                                 <div class="font-s16 pl5 pt5">
                                     五官科
@@ -119,7 +119,7 @@ $SITE_6 = PatientStatLog::SITE_6;
                         </a>
                     </div>
                     <div class="col-1 w33 pl10">
-                        <a class="departmentcontent" data-name="内科" data-href="<?php echo $urlHospitalTop; ?>?innerDeptId=6&disease_sub_category=31">
+                        <a class="departmentcontent" data-name="内科" data-href="<?php echo $urlHospitalTop; ?>/innerDeptId/6/disease_sub_category/31">
                             <div class="bg-blue6">
                                 <div class="font-s16 pl5 pt5">
                                     内科
@@ -145,7 +145,7 @@ $SITE_6 = PatientStatLog::SITE_6;
             </div>
             <div class="grid bg-white">
                 <div class="col-1 w33 br-gray2">
-                    <a href="<?php echo $urlDoctorSearch; ?>?disease_sub_category=2">
+                    <a href="<?php echo $urlDoctorSearch; ?>/disease_sub_category/2">
                         <div class="pad10 text-center">
                             <div class="text-center">
                                 <img class="w55p h55p" src="http://static.mingyizhudao.com/146243692944770" data-id="<?php echo $SITE_3; ?>" data-name="找名医">
@@ -266,7 +266,7 @@ $SITE_6 = PatientStatLog::SITE_6;
 
         //轮播图
         var html = '<li class="slide">' +
-                '<a href="<?php echo $urlZeroBooking; ?>?appId=ddaa785817d165e8&site=1">' +
+                '<a href="<?php echo $urlZeroBooking; ?>/appId/ddaa785817d165e8/site/1">' +
                 '<img class="w100" alt="0元见名医_专家面对面" src="http://static.mingyizhudao.com/146906610294170">' +
                 '</a>' +
                 '</li>' +

@@ -23,7 +23,7 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
             </a>
         </li>
         <li class="w25" data-active="hospital_footer">
-            <a href="<?php echo $urlHospitalIndex; ?>?city=0">
+            <a href="<?php echo $urlHospitalIndex; ?>/city/0">
                 <div class="grid">
                     <div class="col-1"></div>
                     <div class="col-0 imgHospital"></div>
