@@ -31,7 +31,7 @@ $disease_name = Yii::app()->request->getQuery('disease_name', '');
 $disease_category = Yii::app()->request->getQuery('disease_category', '');
 $disease_sub_category = Yii::app()->request->getQuery('disease_sub_category', '');
 $page = Yii::app()->request->getQuery('page', '');
-$urlHomeView = Yii::app()->baseUrl;//$this->createUrl('home/view');
+$urlHomeView = $this->createUrl('home/view');
 $urlDoctorSearch = $this->createUrl('doctor/search');
 $urlSearchDeptName = $this->createAbsoluteUrl('/api/diseasename', array('api' => 7, 'disease_name' => ''));
 if ($sourceApp == 0) {

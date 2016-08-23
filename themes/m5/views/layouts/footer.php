@@ -3,7 +3,7 @@ $urlExpertteam = $this->createUrl('expertteam/index');
 $urlHospital = $this->createUrl('hospital/index');
 $urlBooking = $this->createUrl('booking/create');
 
-$urlHomeView = Yii::app()->baseUrl;//$this->createUrl('home/view');
+$urlHomeView = $this->createUrl('home/view');
 $urlHospitalIndex = $this->createUrl('hospital/index');
 $urlEventIndex = $this->createUrl('event/index');
 $urlUserView = $this->createUrl('user/view');
