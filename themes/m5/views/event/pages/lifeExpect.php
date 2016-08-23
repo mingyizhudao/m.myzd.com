@@ -112,37 +112,45 @@ $this->show_footer = false;
             </div>
             <div class="col-1"></div>
         </div>
-        <div class="pt10 pl10 pr10 pb50">
-            <a href="<?php echo $urlDoctorView; ?>" class="color-black">
-                <div id="doctorView" class="bg-gray">
-                    <div class="grid pt10">
-                        <div class="col-0"style="width:15%;"></div>
-                        <div class="col-0"style="width:25%;">
-                            <div class="col-0 br50 w80p h80p overflow-hidden">
-                                <img class="imgDoc" src="http://dr.static.mingyizhudao.com/146493000701688.jpg">
+       
+
+        <div class="grid mt20 mb50">
+                <div class="col-1"></div>
+                <div class="col-0 w80 border-gray">
+                    <a class="color-black" href="<?php echo $urlDoctorView; ?>/88">
+                        <div class="">
+                            <div class="grid pt10">
+                                <div class="col-1"></div>
+                                <div class="col-0 br50 w60p h60p overflow-hidden">
+                                    <img class="imgDoc" src="http://dr.static.mingyizhudao.com/146493000701688.jpg">
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
+                            <div class="pull-right signDoctor"></div>
+                            <div class="clearfix"></div>
+                            <div class="text-center">
+                                <div>
+                                    <span class="font-w800">程光齐</span>
+                                    <span class="color-gray7">副主任医师</span>
+                                    <span class="color-gray7">副教授</span>
+                                </div>
+                                <div class="color-blue6 pt5 font-s12">
+                                     上海交通大学医学院附属仁济医院 
+                                </div>
+                                <div class="pt5 pb5">
+                                    骨科 
+                                </div>
+                            </div>
+                            <div class="pull-right robotDoctor"></div>
+                            <div class="pl5 pr5 pb10 text-justify">
+                                <span class="font-w800">擅长领域：</span>人工关节置换、老年性骨关节炎、关节疾病的
                             </div>
                         </div>
-                        <div class="col-0 pl10"style="width:60%;">
-                            <div class="pt10">
-                                <sapn class="font-w800 colorGreen">程光齐</sapn><span class="pl10">副主任医师副教授</span>
-                            </div>
-                            <div class="grid">
-                                <div class="col-0"width="20%">
-                                   骨科 
-                                </div>
-                                <div class="col-1 pl10">
-                                   上海交通大学医学院附属仁济医院 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-1"></div>
-                    </div>
-                    <div class="pad10 font-s13 text-justify">
-                        <span class="font-w800">擅长领域：</span>人工关节置换、老年性骨关节炎、关节疾病的
-                    </div>
+                    </a>
                 </div>
-            </a>
-        </div>
+                <div class="col-1"></div>
+            </div>
+         
     </div>
 </article>
 <script>
