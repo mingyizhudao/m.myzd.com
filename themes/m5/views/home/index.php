@@ -14,7 +14,7 @@ $urlHomeMyyzDoctor = $this->createUrl('home/page', array('view' => 'myyzDoctor')
 $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
 $urlZeroBooking = $this->createUrl('questionnaire/beginQuestionnaireView');
 $urlCatherine = $this->createUrl('event/view', array('page' => 'catherine'));
-$urlHomeView = $this->createUrl('home/view');;
+$urlHomeView = Yii::app()->baseUrl;
 $urlHospitalIndex = $this->createUrl('hospital/index');
 $urlEventIndex = $this->createUrl('event/index');
 $urlUserView = $this->createUrl('user/view');
@@ -267,17 +267,17 @@ $SITE_6 = PatientStatLog::SITE_6;
         //轮播图
         var html = '<li class="slide">' +
                 '<a href="<?php echo $urlZeroBooking; ?>?appId=ddaa785817d165e8&site=1">' +
-                '<img class="w100" src="http://static.mingyizhudao.com/146906610294170">' +
+                '<img class="w100" alt="0元见名医_专家面对面" src="http://static.mingyizhudao.com/146906610294170">' +
                 '</a>' +
                 '</li>' +
                 '<li class="slide">' +
                 '<a href="<?php echo $urlHomeMyyzDoctor; ?>">' +
-                '<img class="w100" src="http://static.mingyizhudao.com/146606890329840">' +
+                '<img class="w100" alt="名医义诊" src="http://static.mingyizhudao.com/146606890329840">' +
                 '</a>' +
                 '</li>' +
                 '<li class="slide">' +
                 '<a href="<?php echo $urlMygy; ?>">' +
-                '<img class="w100" src="http://static.mingyizhudao.com/147150951177488">' +
+                '<img class="w100" alt="名医公益行" src="http://static.mingyizhudao.com/147150951177488">' +
                 '</a>' +
                 '</li>';
         $('#home_article .bxslider').html(html);

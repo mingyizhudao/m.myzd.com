@@ -14,7 +14,7 @@ $urlSubmitForm = $this->createUrl("booking/ajaxQuickbook");
 $urlUploadFile = 'http://file.mingyizhudao.com/api/uploadbookingfile';
 $urlUserValiCaptcha = $this->createUrl("user/valiCaptcha");
 $urlReturn = $this->createUrl('order/view');
-$urlHomeView = $this->createUrl('home/view');
+$urlHomeView = Yii::app()->baseUrl;
 $urlBackBtn = Yii::app()->request->getQuery('backBtn', '1');
 $urlAgreement = $this->createUrl('user/index', array('page' => 'aboutAgreement'));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
