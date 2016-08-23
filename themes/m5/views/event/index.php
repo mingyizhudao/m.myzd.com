@@ -1,12 +1,15 @@
 <?php
-$this->setPageTitle('发现');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $showHeader = Yii::app()->request->getQuery('header', 1);
 $showPage = Yii::app()->request->getQuery('page', 0);
 $showApp = Yii::app()->request->getQuery('app', 1);
 $urlEventIndex = $this->createUrl('event/index');
 if ($showApp == 1) {
+    $this->setPageTitle('就医故事_名医主刀网移动版');
+    $this->setPageKeywords('就医故事');
+    $this->setPageDescription('让每一位患者在名医主刀“好看病，看好病”是我们不变的宗旨,名医主刀可以给患者带去更多的希望,不仅可以帮助患者尽快预约到专家,还能大大节省患者等待床位的时间,让患者得到最快的治疗。');
     $urlEventStoryOne = $this->createUrl('event/view', array('page' => 'storyOne'));
+    $urlEventLifeExpect=$this->createUrl('event/view',array('page'=>'lifeExpect'))
     $urlEventStoryTwo = $this->createUrl('event/view', array('page' => 'storyTwo'));
     $urlEventStoryThree = $this->createUrl('event/view', array('page' => 'storyThree'));
     $urlEventEightHour = $this->createUrl('event/view', array('page' => 'storyEightHour'));
@@ -35,6 +38,9 @@ if ($showApp == 1) {
     $urlEventZhuantiCatherine = $this->createUrl('event/view', array('page' => 'catherine'));
     $urlEventZhuantiInternetOperation = $this->createUrl('event/view', array('page' => 'internetOperation'));
 } else {
+    $this->setPageTitle('手术专题报道_名医主刀网移动版');
+    $this->setPageKeywords('手术专题');
+    $this->setPageDescription('名医公益联盟是名医主刀倡导发起,并联合公益组织,医生共建的一种可持续公益模式,旨在让更多患者有机会接受更好的治疗。希望通过名医公益联盟,汇聚社会爱心力量,帮助贫困患者解决“好看病,看好病”的切实需求。');
     $urlEventStoryOne = $this->createUrl('event/view', array('page' => 'storyOne', 'header' => '0'));
     $urlEventStoryTwo = $this->createUrl('event/view', array('page' => 'storyTwo', 'header' => '0'));
     $urlEventStoryThree = $this->createUrl('event/view', array('page' => 'storyThree', 'header' => '0'));
@@ -94,78 +100,92 @@ if ($showPage == 0) {
     <div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiCatherine; ?>">
-                <img src="http://static.mingyizhudao.com/146529036735212" class="w100">
+                <img alt="名医主刀牵手美国凯瑟琳癌症中心_首秀中国" src="http://static.mingyizhudao.com/146529036735212" class="w100">
             </a>
         </div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiInternetOperation; ?>">
-                <img src="http://static.mingyizhudao.com/146529829828030" class="w100">
+                <img alt="互联网手术中心公益正在进行时" src="http://static.mingyizhudao.com/146529829828030" class="w100">
             </a>
         </div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiCancer; ?>">
-                <img src="http://static.mingyizhudao.com/146353686584387" class="w100">
+                <img alt="澄清癌症的十个错误认知" src="http://static.mingyizhudao.com/146353686584387" class="w100">
             </a>
         </div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiLungCancer; ?>">
-                <img src="http://static.mingyizhudao.com/146348338505141" class="w100">
+                <img alt="美国哈弗大学公共卫生学院根据" src="http://static.mingyizhudao.com/146348338505141" class="w100">
             </a>
         </div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiShapingHealth; ?>">
-                <img src="http://static.mingyizhudao.com/14630233122529" class="w100">
+                <img alt="共享名医资源_共筹健康中国" src="http://static.mingyizhudao.com/14630233122529" class="w100">
             </a>
         </div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiMygy; ?>">
-                <img src="http://static.mingyizhudao.com/146302377992350" class="w100">
+                <img alt="名医公益联盟" src="http://static.mingyizhudao.com/146302377992350" class="w100">
             </a>
         </div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiRobot; ?>">
-                <img src="http://static.mingyizhudao.com/146302381725650" class="w100">
+                <img alt="十年磨一剑_一见必倾心" src="http://static.mingyizhudao.com/146302381725650" class="w100">
             </a>
         </div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiFive; ?>">
-                <img src="http://static.mingyizhudao.com/146302384917628" class="w100">
+                <img alt="名医实力_卡塔尔王子中国寻医记" src="http://static.mingyizhudao.com/146302384917628" class="w100">
             </a>
         </div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiSix; ?>">
-                <img src="http://static.mingyizhudao.com/14630238789848" class="w100">
+                <img alt="80%的人忽视的身体小肿块_险些成癌" src="http://static.mingyizhudao.com/14630238789848" class="w100">
             </a>
         </div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiFour; ?>">
-                <img src="http://static.mingyizhudao.com/146302390598546" class="w100">
+                <img alt="100万冬日暖阳" src="http://static.mingyizhudao.com/146302390598546" class="w100">
             </a>
         </div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiOne; ?>">
-                <img src="http://static.mingyizhudao.com/146302393608770" class="w100">
+                <img alt="【医生专访】陆劲松" src="http://static.mingyizhudao.com/146302393608770" class="w100">
             </a>
         </div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiTwo; ?>">
-                <img src="http://static.mingyizhudao.com/146302397500068" class="w100">
+                <img alt="预防冬季冠心病发作_名医专家有妙招" src="http://static.mingyizhudao.com/146302397500068" class="w100">
             </a>
         </div>
         <div class="mt10">
             <a href="<?php echo $urlEventZhuantiThree; ?>">
-                <img src="http://static.mingyizhudao.com/146302402203799" class="w100">
+                <img alt="您身边真实的大白_达芬奇手术机器人" src="http://static.mingyizhudao.com/146302402203799" class="w100">
             </a>
         </div>
         <div class="mt10 mb10">
             <a href="<?php echo $urlEventZhuantiXinxg; ?>">
-                <img src="http://static.mingyizhudao.com/146302405313136" class="w100">
+                <img alt="警惕双11熬夜秒杀？诱发心血管疾病发！" src="http://static.mingyizhudao.com/146302405313136" class="w100">
             </a>
         </div>
     </div>
 </article>
 <article id="story_article" class="<?php echo $showStory; ?>" data-scroll="true" data-active="find_footer">
     <div class="text-justify">
+        
+       <div class="mt10 bg-white"style="">
+            <a href="<?php echo $urlEventLifeExpect; ?>">
+                <div class="grid color-black10">
+                    <div class="col-1 w40">
+                        <img src="http://static.mingyizhudao.com/147186370045038">
+                    </div>
+                    <div class="col-1 w60 font-s17 vertical-center pl20 pr20 pt20 pb20">
+                        他说，活下去的希望是你们给的！
+                    </div>
+                </div>
+            </a>
+        </div> 
+
         <div class="mt10 bg-white">
             <a href="<?php echo $urlEventRepeatCustomers; ?>">
                 <div class="grid color-black10">

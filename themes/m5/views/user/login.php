@@ -8,7 +8,7 @@ Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/l
 /**
  * $data.
  */
-$this->setPageTitle('登录');
+$this->setPageTitle('登陆名医主刀网移动版');
 
 $urlRegister = $this->createUrl("user/register");
 $urlUserValiCaptcha = $this->createUrl("user/valiCaptcha");

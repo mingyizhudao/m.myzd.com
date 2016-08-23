@@ -1,5 +1,8 @@
 <?php
-$this->setPageTitle('名医主刀牵手凯瑟琳癌症中心');
+$this->setPageTitle('【名医主刀牵手凯瑟琳癌症中心】_名医主刀网移动版
+名医主刀牵手凯瑟琳癌症中心-名医主刀移动版');
+$this->setPageKeywords('癌症中心，癌症患者');
+$this->setPageDescription('日前，中国最大的互联网医疗手术平台名医主刀牵手美国凯瑟琳癌症中心。众所周知，美国凯瑟琳癌症中心是全球历史最悠久、规模最大的私立癌症中心，之所以选择“名医主刀”成为中国投资的唯一项目，毫无疑问是源于名医主刀在商业模式、医疗资源、团队实力等独特的优势。');
 $showHeader = Yii::app()->request->getQuery('header', 1);
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
@@ -10,7 +13,7 @@ $this->show_footer = false;
         <nav class="left">
             <a href="" data-target="back">
                 <div class="pl5">
-                    <img src="http://static.mingyizhudao.com/146975795218858" class="w11p">
+                    <img src="http://static.mingyizhudao.com/146975795218858" class="w11p" >
                 </div>
             </a>
         </nav>
@@ -25,7 +28,7 @@ $this->show_footer = false;
 <article id="catherine_article" class="active" data-scroll="true">
     <div>
         <div>
-            <img src="http://static.mingyizhudao.com/146527953417711" class="w100">
+            <img alt="名医主刀牵手凯瑟琳癌症中心" src="http://static.mingyizhudao.com/146527953417711" class="w100">
         </div>
         <div class="pl10 pr10 text-justify">
             <div class="font-s21 font-w800 pt20">

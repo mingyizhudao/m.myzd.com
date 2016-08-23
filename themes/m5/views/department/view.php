@@ -1,5 +1,7 @@
 <?php
-$this->setPageTitle('科室详情');
+$this->setPageTitle('【 '.$data->hpDeptHospital->short_name.'】【'.$data->name.'】手术预约,床位预约,专家预约,哪个医生好_名医主刀网移动版');
+$this->setPageKeywords('【 '.$data->hpDeptHospital->short_name.'】【'.$data->name.'】专家预约');
+$this->setPageDescription('名医主刀网为您提供国内医院预约手术,医院排行榜,医院大全,医院哪家好等权威信息;助您在第一时间找到好医院,以最快的时间预约医院并安排手术,网上预约手术就看名医主刀网。');
 $urlBookCreate = $this->createUrl("booking/create", array('hp_dept_id' => ''));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
@@ -8,7 +10,9 @@ $urlStat = $this->createAbsoluteUrl('/api/stat');
 //点击预约按钮
 $SITE_9 = PatientStatLog::SITE_9;
 ?>
-
+<style>
+    h1,h2,h3{font-family: 'Microsoft YaHei', 微软雅黑, 'Microsoft Yahei', 黑体, 宋体, Arial, Simsun, Helvetica, sans-serif !important;}
+</style>
 <header class="bg-green">
     <nav class="left">
         <a href="" data-target="back">
@@ -30,11 +34,11 @@ $SITE_9 = PatientStatLog::SITE_9;
 <article id="hosDept_article" class="active" data-scroll="true">
     <div class="">
         <div class="bg-white">
-            <div class="grid pad10">
-                <div class="col-1 color-yellow4">
+            <div class="grid pad10 pb5">
+                <h3 class="col-1 color-yellow4 font-s14 mt-1 pt3"style="font-family: 'Microsoft YaHei';">
                     预约流程
-                </div>
-                <div id="showStep" class="col-0 pl5 pr5">
+                </h3>
+                <div id="showStep" class="col-0 pl5 pr5 mt-3 ">
                     <img src="http://static.mingyizhudao.com/14683115446038" class="w11p">
                 </div>
                 <div id="hideStep" class="col-0 pl5 pr5 hide">
@@ -80,14 +84,14 @@ $SITE_9 = PatientStatLog::SITE_9;
                 </div>
             </div>
         </div>
-        <div class="mt10 text-justify bg-white">
-            <div class="color-blue8 bb-gray pad10">
+        <div class="mt-10 text-justify bg-white">
+            <h2 class="color-blue8 bb-gray pad10 font-s14 ">
                 科室介绍
-            </div>
-            <div class="pad10">
-                <div class="titleBg">
+            </h2>
+            <div class="pad10 mt-4">
+                <h3 class="titleBg font-s14 mt-1 pb5 pt5">
                     学科地位
-                </div>
+                </h3>
                 <div class="pt10 pb10">
                     <?php
                     if (isset($data->position)) {
@@ -97,10 +101,10 @@ $SITE_9 = PatientStatLog::SITE_9;
                     }
                     ?>
                 </div>
-                <div class="titleBg">
+                <h3 class="titleBg font-s14 pb5 pt5 mt-1">
                     学科规模
-                </div>
-                <div class="pt10 pb10">
+                </h3>
+                <div class="pt10 pb10 ">
                     <?php
                     if (isset($data->scale)) {
                         echo $data->scale;
@@ -109,9 +113,9 @@ $SITE_9 = PatientStatLog::SITE_9;
                     }
                     ?>
                 </div>
-                <div class="titleBg">
+                <h3 class="titleBg font-s14 pb5 pt5 mt-1">
                     学科专长
-                </div>
+                </h3>
                 <div class="pt10 pb10">
                     <?php
                     if (isset($data->specialty)) {
@@ -121,9 +125,9 @@ $SITE_9 = PatientStatLog::SITE_9;
                     }
                     ?>
                 </div>
-                <div class="titleBg">
+                <h3 class="titleBg font-s14 pb5 pt5 mt-1">
                     学科力量
-                </div>
+                </h3>
                 <div class="pt10 pb10">
                     <?php
                     if (isset($data->strength)) {
@@ -133,9 +137,9 @@ $SITE_9 = PatientStatLog::SITE_9;
                     }
                     ?>
                 </div>
-                <div class="titleBg">
+                <h3 class="titleBg font-s14 pb5 pt5 mt-1">
                     学科荣誉
-                </div>
+                </h3>
                 <div class="pt10 pb10">
                     <?php
                     if (isset($data->honor)) {

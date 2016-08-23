@@ -6,7 +6,7 @@ Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/r
 /**
  * $data.
  */
-$this->setPageTitle('注册');
+$this->setPageTitle('注册名医主刀网移动版');
 $urlUserValiCaptcha = $this->createUrl("user/valiCaptcha");
 $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/auth/sendSmsVerifyCode');
 $urlUserAjaxRegister = $this->createUrl('user/ajaxRegister');
