@@ -4,7 +4,7 @@
  */
 $this->setPageTitle('复旦版中国最佳医院排行榜');
 $urlLeaderboard = $this->createAbsoluteUrl('/api/tophospital');
-$urlHospitalDetail = $this->createUrl('hospital/view', array('id' => ''));
+$urlHospitalDetail = $this->createUrl('hospital/view');
 $this->show_footer = false;
 ?>
 
@@ -79,7 +79,7 @@ $this->show_footer = false;
         var list = '';
         for (var i = 0; i < res.length; i++) {
             var ficon = res[i].sort == 1 ? '<i class="first1"></i>' : '<i class="">' + res[i].sort + '</i>';
-            var hasLink = res[i].hospital_id ? '<a class="a-check" href="<?php echo $urlHospitalDetail ?>/' + res[i].hospital_id + '">查看详情 ></a>' : '<a class="a-uncheck" href="javascript:;">敬请期待></a>';
+            var hasLink = res[i].hospital_id ? '<a class="a-check" href="<?php echo $urlHospitalDetail ?>/id/' + res[i].hospital_id + '">查看详情 ></a>' : '<a class="a-uncheck" href="javascript:;">敬请期待></a>';
             list += '<li>' +
                     ficon +
                     '<span>' + res[i].hospital_name + '</span>' +

@@ -50,7 +50,7 @@ function readyHospital(data) {
     if (hospitals.length > 0) {
         for (var i = 0; i < hospitals.length; i++) {
             innerHtml += '<ul class="list">'+'<li>' +
-                    '<a href="' + $requestHospitalView + '/' + hospitals[i].id + '">' +
+                    '<a href="' + $requestHospitalView + '/id/' + hospitals[i].id + '">' +
                     '<div class="pl10">' +
                     '<div class="font-s16 color-black10">' + hospitals[i].name + '</div>' +
                     '<div class="color-black6 pt5"><span class="hpClassBg">' + hospitals[i].hpClass + '<span></div>' +
@@ -114,11 +114,11 @@ function setLocationUrl() {
     var urlCondition = '';
     for ($key in $condition) {
         if ($condition[$key] && $condition[$key] !== "") {
-            urlCondition += "/" + $key + "/" + $condition[$key];
+            urlCondition += "-" + $key + "-" + $condition[$key];
         }
     }
     urlCondition = urlCondition.substring(1);
-    urlCondition = "/" + urlCondition;
+    urlCondition = "-" + urlCondition;
     var newUrl = $requestHospitalIndex + urlCondition;
     history.pushState(stateObject, title, newUrl);
 }

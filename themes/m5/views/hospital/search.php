@@ -13,7 +13,7 @@ $page = Yii::app()->request->getQuery('page', '');
 
 $urlHomeView = Yii::app()->baseUrl;
 $urlHospitalSearch = $this->createUrl('hospital/search');
-$urlDepartmentView = $this->createUrl('department/view', array('id' => ''));
+$urlDepartmentView = $this->createUrl('department/view');
 $urlCity = $this->createAbsoluteUrl('/api/city');
 $urlCityName = $this->createAbsoluteUrl('/api/city');
 $urlHospital = $this->createAbsoluteUrl('/api/hospital', array('api' => 7));

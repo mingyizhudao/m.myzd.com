@@ -5,7 +5,7 @@
 $this->setPageTitle('手术预约,床位预约,专家预约,哪个医生好_名医主刀网移动版');
 $this->setPageKeywords('手术预约,哪个医生好');
 $urlHospitalView = $this->createAbsoluteUrl('/api/list', array('model' => 'hospital'));
-$urlDepartmentView = $this->createUrl('department/view', array('id' => ''));
+$urlDepartmentView = $this->createUrl('department/view');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
@@ -129,7 +129,7 @@ $this->show_footer = false;
                 innerHtml += '</div>' +
                         '<div class="dptStyle pad10">';
                 for (var i = 0; i < departments[dpt].length; i++) {
-                    innerHtml += '<a href="<?php echo $urlDepartmentView ?>/' + departments[dpt][i].id + '" data-target="link">' +
+                    innerHtml += '<a href="<?php echo $urlDepartmentView ?>/id/' + departments[dpt][i].id + '" data-target="link">' +
                             '<div class="ml20 button2">' + departments[dpt][i].name + '</div>' +
                             '</a>';
                 }

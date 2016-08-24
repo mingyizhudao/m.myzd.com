@@ -71,11 +71,11 @@ function setLocationUrl() {
     var urlCondition = '';
     for ($key in $condition) {
         if ($condition[$key] && $condition[$key] !== "") {
-            urlCondition += "/" + $key + "/" + $condition[$key];
+            urlCondition += "-" + $key + "-" + $condition[$key];
         }
     }
     urlCondition = urlCondition.substring(1);
-    urlCondition = "/" + urlCondition;
+    urlCondition = "-" + urlCondition;
     var newUrl = $requestHospitalSearch + urlCondition;
     history.pushState(stateObject, title, newUrl);
 }
@@ -88,7 +88,7 @@ function readyHospital(data) {
         if (results.length > 0) {
             for (var i = 0; i < results.length; i++) {
                 innerHtml += '<li class="nextImg">' +
-                        '<a href="' + $requestDepartment + '/' + results[i].hp_dept_id + '">' +
+                        '<a href="' + $requestDepartment + '/id/' + results[i].hp_dept_id + '">' +
                         '<div class="font-s16 color-black">' + results[i].name + '</div>' +
                         '<div class="color-black6">医院实际科室名称:' + results[i].hp_dept_name + '</div>' +
                         '</a>' +
