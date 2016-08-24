@@ -163,7 +163,7 @@ $this->show_footer = false;
     }
     function getHospitalId() {
         var url = window.location.href;
-        var id = url.substr(url.lastIndexOf('/') + 1, url.length).split('.html')[0];
+        var id = url.substr(url.lastIndexOf('-') + 1, url.length).split('.html')[0];
         return id;
     }
 </script>

@@ -118,7 +118,7 @@ function setLocationUrl() {
         }
     }
     urlCondition = urlCondition.substring(1);
-    urlCondition = "-" + urlCondition;
+    urlCondition = "-" + urlCondition + '.html';
     var newUrl = $requestHospitalIndex + urlCondition;
     history.pushState(stateObject, title, newUrl);
 }
