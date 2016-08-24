@@ -442,7 +442,7 @@ function readyDoc(data) {
                 var hp_dept_desc = (results[i].desc == '' || results[i].desc == null) ? '暂无信息' : results[i].desc;
                 hp_dept_desc = hp_dept_desc.length > 40 ? hp_dept_desc.substr(0, 40) + '...' : hp_dept_desc;
                 innerHtml += '<div>' +
-                        '<a href="' + $requestDoctorView + '/' + results[i].id + '" data-target="link">' +
+                        '<a href="' + $requestDoctorView + '/id/' + results[i].id + '" data-target="link">' +
                         '<div class="grid pl15 pr15 ' + btGray + '">' +
                         '<div class="col-1 w25 pt10">' +
                         '<div class="w60p h60p br50" style="overflow:hidden;"><img class="imgDoc" alt="'+ results[i].name + results[i].aTitle +'" src="' + results[i].imageUrl + '"></div>';

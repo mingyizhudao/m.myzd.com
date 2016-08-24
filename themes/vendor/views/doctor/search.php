@@ -1,7 +1,24 @@
 <?php
-Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/vendor/findDoc.min.1.0.js', CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/findDoc.js?ts=' . time(), CClientScript::POS_END);
+// Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/findDoc.min.1.5.js', CClientScript::POS_END);
 ?>
 <?php
+$source = Yii::app()->request->getQuery('source', '0');
+$sourceApp = Yii::app()->request->getQuery('app', 0);
+if ($source == 0) {
+    $this->setPageTitle('医生排行,哪个医生好,专家医生预约_名医主刀网移动版
+上海血管外科动脉瘤医生排行,哪个医生好,专家医生预约_名医主刀网移动版');
+    $this->setPageKeywords('手术预约,找医生,网上预约医生');
+    $this->setPageDescription('名医主刀网为您提供医生排行榜,手术预约,专家医生预约,哪个医生好等信息;帮助广大有手术需求的患者,在第一时间预约全国知名专家,安排入院手术。');
+    $urlDoctorView = $this->createAbsoluteUrl('doctor/view');
+} else {
+    $this->setPageTitle('选择意向专家');
+    if ($sourceApp == 0) {
+        $urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('source' => 1, 'id' => ''));
+    } else {
+        $urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('app' => 1, 'source' => 1, 'id' => ''));
+    }
+}
 $urlApiAppNav1 = $this->createAbsoluteUrl('/api/list');
 $urlCity = $this->createAbsoluteUrl('/api/city');
 $urlDisease = $this->createAbsoluteUrl('/api/diseasebycategory');
@@ -17,39 +34,71 @@ $disease_name = Yii::app()->request->getQuery('disease_name', '');
 $disease_category = Yii::app()->request->getQuery('disease_category', '');
 $disease_sub_category = Yii::app()->request->getQuery('disease_sub_category', '');
 $page = Yii::app()->request->getQuery('page', '');
-$source = Yii::app()->request->getQuery('source', '');
-$urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('id' => ''));
-$urlHomeView = $this->createUrl('home/view');
+$urlHomeView = Yii::app()->baseUrl;
 $urlDoctorSearch = $this->createUrl('doctor/search');
+$urlSearchDeptName = $this->createAbsoluteUrl('/api/diseasename', array('api' => 7, 'disease_name' => ''));
+if ($sourceApp == 0) {
+    $urlQuestionnaireSearch = $this->createAbsoluteUrl('questionnaire/questionnaireSearchView');
+} else {
+    $urlQuestionnaireSearch = $this->createAbsoluteUrl('questionnaire/questionnaireSearchView', array('app' => 1));
+}
+$urlApplogstat = $this->createUrl('/api/applogstat');
 $this->show_footer = false;
 ?>
+
 <style>
+    .top0p{top:0px;}
 </style>
-<header class="bg-green">
-    <nav class="left">
-        <a href="<?php echo $urlHomeView; ?>">
-            <div class="pl5">
-                <img src="http://static.mingyizhudao.com/146975795218858" class="w11p">
+<?php
+if ($sourceApp == 0) {
+    ?>
+    <header class="bg-green">
+        <?php
+        if ($source == 0) {
+            ?>
+            <nav class="left">
+                <a href="<?php echo $urlHomeView; ?>">
+                    <div class="pl5">
+                        <img src="http://static.mingyizhudao.com/146975795218858" class="w11p">
+                    </div>
+                </a>
+            </nav>
+            <?php
+        }
+        ?>
+        <h1 class="title">
+            <?php echo $source == 0 ? '找名医' : '选择意向专家'; ?>
+        </h1>
+        <nav class="right">
+            <a onclick="javascript:location.reload()">
+                <img src="http://static.mingyizhudao.com/146975853464574"  class="w24p">
+            </a>
+        </nav>
+    </header>
+    <?php
+}
+?>
+<nav id="findDoc_nav" data-sourceApp="<?php echo $sourceApp; ?>" class="header-secondary bg-white <?php echo $source == 0 ? '' : 'h94p'; ?> <?php echo $sourceApp == 0 ? '' : 'top0p' ?>" data-source="<?php echo $source; ?>">
+    <div class="w100">
+        <?php
+        if ($source == 1) {
+            ?>
+            <div id="searchBar">
+                <div class="searchBtn">请输入你意向的专家</div>
             </div>
-        </a>
-    </nav>
-    <h1 class="title">找名医</h1>
-    <nav class="right">
-        <a onclick="javascript:history.go(0)">
-            <img src="http://static.mingyizhudao.com/146975853464574"  class="w24p">
-        </a>
-    </nav>
-</header>
-<nav id="findDoc_nav" class="header-secondary bg-white">
-    <div class="grid w100 color-black font-s16 color-black6">
-        <div id="deptSelect" class="col-1 w33 br-gray bb-gray grid middle grayImg">
-            <span id="deptTitle" data-dept="">科室</span><img src="http://static.mingyizhudao.com/147073952471094">
-        </div>
-        <div id="diseaseSelect" class="col-1 w33 br-gray bb-gray grid middle grayImg">
-            <span id="diseaseTitle" data-disease="">疾病</span><img src="http://static.mingyizhudao.com/147073952471094">
-        </div>
-        <div id="citySelect" class="col-1 w33 bb-gray grid middle grayImg">
-            <span id="cityTitle" data-city="">地区</span><img src="http://static.mingyizhudao.com/147073952471094">
+            <?php
+        }
+        ?>
+        <div class="grid color-black font-s16 color-black6 h50p">
+            <div id="deptSelect" class="col-1 w33 br-gray bb-gray grid middle grayImg">
+                <span id="deptTitle" data-dept="" data-cat=""></span><img src="http://static.mingyizhudao.com/146735870119173">
+            </div>
+            <div id="diseaseSelect" class="col-1 w33 br-gray bb-gray grid middle grayImg">
+                <span id="diseaseTitle" data-disease=""></span><img src="http://static.mingyizhudao.com/146735870119173">
+            </div>
+            <div id="citySelect" class="col-1 w33 bb-gray grid middle grayImg">
+                <span id="cityTitle" data-city=""></span><img src="http://static.mingyizhudao.com/146735870119173">
+            </div>
         </div>
     </div>
 </nav>
@@ -60,11 +109,20 @@ $this->show_footer = false;
 </article>
 <script>
     $(document).ready(function () {
-        //访问来源
-        $source = '<?php echo $source; ?>';
+        //0元面诊添加页面访问次数访问
+        if ('<?php echo $source == 1; ?>') {
+            $.ajax({
+                type: 'post',
+                url: '<?php echo $urlApplogstat; ?>',
+                data: {'applogstat[source]': 1},
+                success: function () {
+
+                }
+            });
+        }
 
         //返回首页
-        $homeView = '<?php echo $urlHomeView; ?>'
+        $homeView = '<?php echo $urlHomeView; ?>';
 
         //请求医生
         $requestDoc = '<?php echo $urlDoctor; ?>';
@@ -74,12 +132,19 @@ $this->show_footer = false;
         $requestDoctorView = '<?php echo $urlDoctorView; ?>';
 
         $condition = new Array();
+        $condition["source"] = '<?php echo $source ?>';
+        $condition["app"] = '<?php echo $sourceApp ?>';
         $condition["city"] = '<?php echo $city ?>';
         $condition["disease"] = '<?php echo $disease; ?>';
         $condition["disease_name"] = '<?php echo $disease_name; ?>';
         $condition["disease_category"] = '<?php echo $disease_category; ?>';
         $condition["disease_sub_category"] = '<?php echo $disease_sub_category; ?>';
         $condition["page"] = '<?php echo $page == '' ? 1 : $page; ?>';
+
+        //进入搜索页面
+        $('#searchBar').click(function () {
+            location.href = '<?php echo $urlQuestionnaireSearch; ?>';
+        });
 
         //首次进入，更新科室
         if ('<?php echo $disease_sub_category; ?>' != '') {
@@ -91,8 +156,27 @@ $this->show_footer = false;
                     deptName = deptName.length > 4 ? deptName.substr(0, 3) + '...' : deptName;
                     $('#deptTitle').html(deptName);
                     $('#deptTitle').attr('data-dept', data.results.id);
+                    $('#deptTitle').attr('data-cat', data.results.catId);
                 }
             });
+        } else if ('<?php echo $disease_name; ?>' != '') {
+            $.ajax({
+                url: '<?php echo $urlSearchDeptName; ?>' + '<?php echo $disease_name; ?>',
+                success: function (data) {
+                    //console.log(data);
+                    var subCatName = data.results.subCatName;
+                    subCatName = subCatName.length > 4 ? subCatName.substr(0, 3) + '...' : subCatName;
+                    $('#deptTitle').html(subCatName);
+                    $('#deptTitle').attr('data-dept', data.results.subCatId);
+                    $('#deptTitle').attr('data-cat', data.results.catId);
+                    var name = data.results.name;
+                    name = name.length > 4 ? name.substr(0, 3) + '...' : name;
+                    $('#diseaseTitle').html(name);
+                    $('#diseaseTitle').attr('data-disease', data.results.id);
+                }
+            });
+        } else {
+            $('#deptTitle').html('科室');
         }
 
 
@@ -108,10 +192,15 @@ $this->show_footer = false;
                     $('#diseaseTitle').attr('data-disease', data.disease.id);
                 }
             });
+        } else {
+            $('#diseaseTitle').html('疾病');
         }
 
         //首次进入，更新城市
-        if ('<?php echo $city; ?>' != '') {
+        if ('<?php echo $city; ?>' == 0) {
+            $('#cityTitle').html('全部');
+            $('#cityTitle').attr('data-city', 0);
+        } else if ('<?php echo $city; ?>' != '') {
             $.ajax({
                 url: '<?php echo $urlCityName; ?>/' + '<?php echo $city; ?>',
                 success: function (data) {
@@ -122,14 +211,31 @@ $this->show_footer = false;
                     $('#cityTitle').attr('data-city', data.results.id);
                 }
             });
+        } else {
+            $('#cityTitle').html('地区');
         }
 
         var urlAjaxLoadDoctor = '<?php echo $urlDoctor; ?>' + setUrlCondition() + '&getcount=1';
         J.showMask();
+
+
+        //ajax异步加载地区
+        var requestCity = '<?php echo $urlCity; ?>?has_team=0&&type=doctor';
+        $.ajax({
+            url: requestCity,
+            async: false,
+            success: function (data) {
+                $cityData = data;
+            }
+        });
+
         $.ajax({
             url: urlAjaxLoadDoctor,
+            async: false,
             success: function (data) {
-                //console.log(data);
+                if ($cityData) {
+                    $cityData.curRes = data.dataCity;
+                }
                 readyDoc(data);
                 setLocationUrl();
             }
@@ -138,77 +244,14 @@ $this->show_footer = false;
         $deptId = '';
         $deptName = '科室';
 
-
         //ajax异步加载科室
-        $deptHtml = '';
+        $deptData = '';
         var urlloadDiseaseCategory = '<?php echo $urlDiseasecategory; ?>';
         $.ajax({
             url: urlloadDiseaseCategory,
             success: function (data) {
-                //console.log(data);
-                $deptHtml = readyDept(data);
+                $deptData = data;
             }
         });
-
-        //ajax异步加载地区
-        $cityHtml = ''
-        var requestCity = '<?php echo $urlCity; ?>?has_team=0&type=doctor';
-        $.ajax({
-            url: requestCity,
-            success: function (data) {
-                //console.log(data);
-                $cityHtml = readyCity(data);
-            }
-        });
-
-        function readyDept(data) {
-            var results = data.results;
-            var innerHtml = '<div class="grid color-black" style="margin-top:93px;height:315px;">' +
-                    '<div id="highDept" class="col-1 w50" data-scroll="true" style="height:315px;width: 50%;">' +
-                    '<ul class="list">';
-            if (results.length > 0) {
-                for (var i = 0; i < results.length; i++) {
-                    //第一个为白色
-                    if (i == 0) {
-                        innerHtml += '<li class="aDept bg-white" data-dept="' + results[i].id + '">' + results[i].name + '</li>';
-                    } else {
-                        innerHtml += '<li class="aDept" data-dept="' + results[i].id + '">' + results[i].name + '</li>';
-                    }
-                }
-                innerHtml += '</ul></div><div id="secondDept" class="col-1 w50" data-scroll="true" data- style="height:315px;">'
-                for (var i = 0; i < results.length; i++) {
-                    var subCat = results[i].subCat;
-                    //第一个不隐藏
-                    if (i == 0) {
-                        innerHtml += '<ul class="bDept list" data-dept="' + results[i].id + '">';
-                    } else {
-                        innerHtml += '<ul class="bDept list hide" data-dept="' + results[i].id + '">';
-                    }
-                    if (subCat.length > 0) {
-                        for (var j = 0; j < subCat.length; j++) {
-                            innerHtml += '<li class="cDept" data-dept="' + subCat[j].id + '">' + subCat[j].name + '</li>';
-                        }
-                    }
-                    innerHtml += '</ul>';
-                }
-            }
-            innerHtml += '</div></div>';
-            return innerHtml;
-        }
-
-        function readyCity(data) {
-            var results = data.results;
-            var innerHtml = '<div class="color-black" data-scroll="true" style="margin-top:93px;height:315px;">';
-            if (results.length > 0) {
-                innerHtml += '<ul class="list" data-city="">';
-                for (var i = 0; i < results.length; i++) {
-                    innerHtml += '<li class="cCity" data-city="' + results[i].id + '">' + results[i].city + '</li>';
-                }
-                innerHtml += '</ul>';
-            }
-            innerHtml += '</div></div>';
-            return innerHtml;
-        }
-
     });
 </script>
