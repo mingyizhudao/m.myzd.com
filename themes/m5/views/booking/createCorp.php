@@ -239,7 +239,6 @@ $this->show_footer = false;
                 url: '<?php echo $urlUserValiCaptcha; ?>?co_code=' + captchaCode,
                 data: formdata,
                 success: function (data) {
-                    //console.log(data);
                     if (data.status == 'ok') {
                         sendSmsVerifyCode(domBtn, mobile, captchaCode);
                     } else {
@@ -266,11 +265,10 @@ $this->show_footer = false;
             processData: false, contentType: false,
             'success': function (data) {
                 if (data.status === true) {
-                    buttonTimerStart(domBtn, 60000);
+                    createCorpButtonTimerStart(domBtn, 60000);
                     //domForm[0].reset();
                 }
                 else {
-                    console.log(data);
                     if (data.errors.captcha_code != undefined) {
                         $('#captchaCode').after('<div id="booking_captcha_code-error" class="error">' + data.errors.captcha_code + '</div>');
                     }
@@ -284,11 +282,13 @@ $this->show_footer = false;
         });
     }
 
-    function buttonTimerStart(domBtn, timer) {
+    function createCorpButtonTimerStart(domBtn, timer) {
         timer = timer / 1000 //convert to second.
         var interval = 1000;
         var timerTitle = '秒后重发';
+
         domBtn.attr("disabled", true);
+
         domBtn.html(timer + timerTitle);
 
         timerId = setInterval(function () {
@@ -299,8 +299,7 @@ $this->show_footer = false;
                 clearInterval(timerId);
                 timerId = null;
                 domBtn.html("重新发送");
-                domBtn.attr("disabled", false).removeAttr("disabled");
-                ;
+                domBtn.removeAttr('disabled');
             }
         }, interval);
     }
