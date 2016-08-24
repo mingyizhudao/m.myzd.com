@@ -680,11 +680,11 @@ function setLocationUrl() {
     var urlCondition = '';
     for ($key in $condition) {
         if ($condition[$key] && $condition[$key] !== "") {
-            urlCondition += "&" + $key + "=" + $condition[$key];
+            urlCondition += "/" + $key + "/" + $condition[$key];
         }
     }
     urlCondition = urlCondition.substring(1);
-    urlCondition = "?" + urlCondition;
+    urlCondition = "/" + urlCondition;
     var newUrl = $requestDoctorSearch + urlCondition;
     history.pushState(stateObject, title, newUrl);
 }

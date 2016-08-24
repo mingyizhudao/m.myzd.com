@@ -1,6 +1,6 @@
 <?php
-//Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/hospitalIndex.js?ts=' . time(), CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/hospitalIndex.min.1.3.js', CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/hospitalIndex.js?ts=' . time(), CClientScript::POS_END);
+// Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/hospitalIndex.min.1.3.js', CClientScript::POS_END);
 ?>
 <?php
 $this->setPageTitle('[上海]医院排行,哪家医院好,床位预约_名医主刀网移动版,北京医院排行,哪家医院好,床位预约_名医主刀网移动版');
@@ -66,7 +66,6 @@ $page = Yii::app()->request->getQuery('page', '');
         $.ajax({
             url: '<?php echo $urlHospital; ?>' + setUrlCondition() + '&getcount=1',
             success: function (data) {
-                //console.log(data);
                 readyHospital(data);
                 setLocationUrl();
             }
