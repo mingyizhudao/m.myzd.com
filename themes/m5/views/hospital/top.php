@@ -18,7 +18,7 @@ $page = Yii::app()->request->getQuery('page', '');
 
 $urlHomeView = Yii::app()->baseUrl;
 $urlHospitalTop = $this->createUrl('hospital/top');
-$urlDepartmentView = $this->createUrl('department/view', array('id' => ''));
+$urlDepartmentView = $this->createUrl('department/view');
 $urlCity = $this->createAbsoluteUrl('/api/city');
 $urlHospital = $this->createAbsoluteUrl('/api/hospital', array('api' => 7));
 $urlDiseasecategory = $this->createAbsoluteUrl('/api/diseasecategory', array('api' => 7));
