@@ -2,7 +2,7 @@
 $this->setPageTitle('搜索');
 $searchDoc = $this->createUrl("doctor/search");
 $searchDept = $this->createUrl("hospital/search");
-$urlHomeView = Yii::app()->baseUrl;
+$urlHomeView =$this->createUrl('/');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $urlDiseaseName = $this->createAbsoluteUrl('/api/diseasename', array('api' => 7, 'disease_name' => ''));
 $urlSearch = $this->createAbsoluteUrl('/api/search', array('name' => ''));
