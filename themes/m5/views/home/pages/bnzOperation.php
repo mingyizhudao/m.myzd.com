@@ -3,9 +3,7 @@ $this->setPageTitle('白内障公益手术');
 $this->show_footer = false;
 $showHeader = Yii::app()->request->getQuery('header', 1);
 ?>
-<style>
-  {text-align: justify;}
-</style>
+
 <?php if ($showHeader == 1) { ?>
  <header class="bg-green">
         <nav class="left">
