@@ -3,7 +3,7 @@
  * $model DoctorForm.
  */
 $this->setPageTitle('预约单详情');
-$urlPatientBooking = $this->createUrl('booking/patientBooking', array('id' => ''));
+$urlPatientBooking = $this->createUrl('booking/patientBooking');
 $urlPatientBookingList = $this->createUrl('booking/patientBookingList');
 $showStatus = Yii::app()->request->getQuery('showStatus', 0);
 $payUrl = $this->createUrl('/payment/doPingxxPay');
@@ -155,7 +155,7 @@ if ($results->bkStatusCode == $BK_STATUS_NEW) {
                 <div class="w100"><?php echo $results->diseaseDetail; ?></div>
             </li>
             <li>
-                <a href="<?php echo $urlPatientBooking; ?>/<?php echo $results->id; ?>/showStatus/<?php echo $showStatus; ?>" class="color-black6">
+                <a href="<?php echo $urlPatientBooking; ?>/id/<?php echo $results->id; ?>/showStatus/<?php echo $showStatus; ?>" class="color-black6">
                     <div class="text-center">
                         <span class="viewOrders">查看订单详情</span>
                     </div>

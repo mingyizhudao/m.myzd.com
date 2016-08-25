@@ -8,7 +8,7 @@ $this->setPageKeywords('[上海][外科]医生排行');
 $this->setPageDescription('名医主刀网为您提供[上海][外科]医院排行榜,医院大全,床位预约,哪家医院好等信息;帮助有手术需求的患者提供专业、高效、安全的手术医疗预约服务。');
 $urlApiDiagnosisdoctors = $this->createAbsoluteUrl('/api/diagnosisdoctors', array('api' => 9));
 $showHeader = Yii::app()->request->getQuery('header', 1);
-$urlDoctorView = $this->createUrl('doctor/view', array('id' => ''));
+$urlDoctorView = $this->createUrl('doctor/view');
 $urlRootPath = $this->createAbsoluteUrl('/themes/');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
@@ -46,7 +46,7 @@ if ($showHeader == 0) {
         </div>
     </div>
 </nav>
-<article id="myyzDoctor_article" class="active <?php echo $articleTop; ?>" data-scroll="true" data-api="<?php echo $urlApiDiagnosisdoctors; ?>" data-doctorView="<?php echo $urlDoctorView; ?>">
+<article id="myyzDoctor_article" class="active <?php echo $articleTop; ?>" data-scroll="true" data-api="<?php echo $urlApiDiagnosisdoctors; ?>" data-doctorView="<?php echo $urlDoctorView; ?>/id">
     <div class="pt20">
     </div>
 </article>
