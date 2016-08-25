@@ -119,6 +119,6 @@ function setLocationUrl() {
     }
     urlCondition = urlCondition.substring(1);
     urlCondition = "-" + urlCondition + '.html';
-    var newUrl = $requestHospitalIndex + urlCondition;
+    var newUrl = $requestHospitalIndex + urlCondition + '.html';
     history.pushState(stateObject, title, newUrl);
 }

@@ -76,7 +76,7 @@ function setLocationUrl() {
     }
     urlCondition = urlCondition.substring(1);
     urlCondition = "-" + urlCondition;
-    var newUrl = $requestHospitalSearch + urlCondition;
+    var newUrl = $requestHospitalSearch + urlCondition + '.html';
     history.pushState(stateObject, title, newUrl);
 }
 

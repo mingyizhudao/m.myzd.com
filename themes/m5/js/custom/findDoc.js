@@ -685,6 +685,6 @@ function setLocationUrl() {
     }
     urlCondition = urlCondition.substring(1);
     urlCondition = "-" + urlCondition;
-    var newUrl = $requestDoctorSearch + urlCondition;
+    var newUrl = $requestDoctorSearch + urlCondition + '.html';
     history.pushState(stateObject, title, newUrl);
 }
