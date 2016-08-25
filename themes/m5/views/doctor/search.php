@@ -14,9 +14,9 @@ if ($source == 0) {
 } else {
     $this->setPageTitle('选择意向专家');
     if ($sourceApp == 0) {
-        $urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('source' => 1, 'id' => ''));
+        $urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('source' => 1));
     } else {
-        $urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('app' => 1, 'source' => 1, 'id' => ''));
+        $urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('app' => 1, 'source' => 1));
     }
 }
 $urlApiAppNav1 = $this->createAbsoluteUrl('/api/list');

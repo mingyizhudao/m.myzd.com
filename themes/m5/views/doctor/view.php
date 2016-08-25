@@ -1,11 +1,11 @@
 <?php
 
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
-$urlBookingDoctor = $this->createAbsoluteUrl('booking/create', array('did' => ''));
+$urlBookingDoctor = $this->createAbsoluteUrl('booking/create');
 $isCommonweal = Yii::app()->request->getQuery('is_commonweal', '0');
 $source = Yii::app()->request->getQuery('source', '0');
 $sourceApp = Yii::app()->request->getQuery('app', '0');
-$urlQuestionnaireBookingView = $this->createAbsoluteUrl('questionnaire/questionnaireBookingView', array('id' => ''));
+$urlQuestionnaireBookingView = $this->createAbsoluteUrl('questionnaire/questionnaireBookingView');
 $urlApplogstat = $this->createUrl('/api/applogstat');
 $doctor = $data->results->doctor;
 $this->setPageTitle('['.$doctor->name.']介绍，擅长哪些手术_名医主刀网移动版');
@@ -277,15 +277,15 @@ if ($sourceApp == 0) {
           
             if ('<?php echo $source == 0; ?>') {
                 if ('<?php echo $isCommonweal; ?>' == 0) {
-                    location.href = '<?php echo $urlBookingDoctor; ?>' + '/<?php echo $doctor->id; ?>';
+                    location.href = '<?php echo $urlBookingDoctor; ?>' + '/did/<?php echo $doctor->id; ?>';
                 } else {
-                    location.href = '<?php echo $urlBookingDoctor; ?>' + '/<?php echo $doctor->id; ?>/is_commonweal/1';
+                    location.href = '<?php echo $urlBookingDoctor; ?>' + '/did/<?php echo $doctor->id; ?>/is_commonweal/1';
                 }
             } else {
                 if ('<?php echo $sourceApp == 0; ?>') {
-                    location.href = '<?php echo $urlQuestionnaireBookingView; ?>' + '/<?php echo $doctor->id; ?>';
+                    location.href = '<?php echo $urlQuestionnaireBookingView; ?>' + '/id/<?php echo $doctor->id; ?>';
                 } else {
-                    location.href = '<?php echo $urlQuestionnaireBookingView; ?>' + '/<?php echo $doctor->id; ?>/app/1';
+                    location.href = '<?php echo $urlQuestionnaireBookingView; ?>' + '/id/<?php echo $doctor->id; ?>/app/1';
                 }
             }
         });

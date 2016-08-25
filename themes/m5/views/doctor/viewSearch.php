@@ -13,8 +13,8 @@ $SITE_20 = PatientStatLog::SITE_20;
 $SITE_21 = PatientStatLog::SITE_21;
 $SITE_22 = PatientStatLog::SITE_22;
 $SITE_23 = PatientStatLog::SITE_23;
-$urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('id' => ''));
-$urlHospitalView = $this->createAbsoluteUrl('hospital/view', array('id' => ''));
+$urlDoctorView = $this->createAbsoluteUrl('doctor/view');
+$urlHospitalView = $this->createAbsoluteUrl('hospital/view');
 $urlSearchMore = $this->createUrl('doctor/viewSearchMore');
 $this->show_footer = false;
 ?>
@@ -226,7 +226,7 @@ $this->show_footer = false;
 
                     }
                 });
-                location.href = '<?php echo $urlDoctorView; ?>/' + id;
+                location.href = '<?php echo $urlDoctorView; ?>/id/' + id;
             });
 
             //疾病点击找医院，记录疾病信息
@@ -267,7 +267,7 @@ $this->show_footer = false;
 
                     }
                 });
-                location.href = '<?php echo $urlHospitalView; ?>/' + id;
+                location.href = '<?php echo $urlHospitalView; ?>/id/' + id;
             });
         }
 
