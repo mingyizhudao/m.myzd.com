@@ -11,7 +11,7 @@ $urlHospitalView = $this->createUrl('hospital/view');
 $urlCity = $this->createAbsoluteUrl('/api/city');
 $urlCityName = $this->createAbsoluteUrl('/api/city');
 
-$urlHospitalIndex = $this->createUrl('hospital/index');
+$urlHospitalIndex = $this->createUrl('index');
 $urlTopHospital = $this->createUrl('hospital/topHospital');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $city = Yii::app()->request->getQuery('city', '');

@@ -109,6 +109,9 @@ function setUrlCondition() {
 
 //更改url
 function setLocationUrl() {
+    console.log('$requestHospitalIndex',$requestHospitalIndex);
+
+
     var stateObject = {};
     var title = "";
     var urlCondition = '';
