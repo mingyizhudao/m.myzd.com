@@ -11,6 +11,7 @@ $urlDoctorSearch = $this->createAbsoluteUrl('doctor/search');
 $urlOperationTrain = $this->createUrl('home/page', array('view' => 'operationTrain'));
 $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
 $urlHomeMyyzDoctor = $this->createUrl('home/page', array('view' => 'myyzDoctor'));
+$urlBnzOperation=$this->createUrl('home/page',array('view'=>'bnzOperation'));
 $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
 $urlZeroBooking = $this->createUrl('questionnaire/beginQuestionnaireView');
 $urlCatherine = $this->createUrl('event/view', array('page' => 'catherine'));
@@ -266,6 +267,11 @@ $SITE_6 = PatientStatLog::SITE_6;
 
         //轮播图
         var html = '<li class="slide">' +
+                '<a href="<?php echo $urlBnzOperation; ?>">' +
+                '<img class="w100" alt="白内障公益手术_患者招募令" src="http://static.mingyizhudao.com/147208993702531">' +
+                '</a>' +
+                '</li>' +
+                '<li class="slide">' +
                 '<a href="<?php echo $urlZeroBooking; ?>/appId/ddaa785817d165e8/site/1">' +
                 '<img class="w100" alt="0元见名医_专家面对面" src="http://static.mingyizhudao.com/146906610294170">' +
                 '</a>' +
