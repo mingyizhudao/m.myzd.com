@@ -58,6 +58,12 @@ class ApiViewAppNav1V13 extends EApiViewService {
     private function setBanners() {
         $data = array(
             array(
+                'pageTitle' => '白内障公益',
+                'actionUrl' => 'http://m.mingyizhudao.com/mobile/home/page/view/bnzOperation/header/0',
+                'imageUrl' => 'http://static.mingyizhudao.com/147208993702531',
+                'type' => 0,
+            ),
+            array(
                 'pageTitle' => '0元面诊',
                 'actionUrl' => 'http://m.mingyizhudao.com/mobile/questionnaire/beginQuestionnaireView/header/0/app/1/appId/ce407e591c733022',
                 'imageUrl' => 'http://7xsq2z.com2.z0.glb.qiniucdn.com/146906610294170',
@@ -66,7 +72,7 @@ class ApiViewAppNav1V13 extends EApiViewService {
             array(
                 'pageTitle' => '名医公益',
                 'actionUrl' => 'http://m.mingyizhudao.com/mobile/event/view/page/mygy/header/0',
-                'imageUrl' => 'http://7xsq2z.com2.z0.glb.qiniucdn.com/146243704260418',
+                'imageUrl' => 'http://static.mingyizhudao.com/147150951177488',
                 'type' => 0,
             ),
             array(
