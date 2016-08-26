@@ -4,11 +4,7 @@ $showHeader = Yii::app()->request->getQuery('header', 1);
 $urlDoctorView = $this->createUrl('doctor/view', array('id' => '3402'));
 $this->show_footer = false;
 ?>
-<style>
-    .colorR{color:#7e4336;}
-    .colorH{color: #555;}
-    .colorH1{color: #333;}
-</style>
+
 <?php if ($showHeader == 1) { ?>
     <header class="bg-green">
         <nav class="left">
@@ -18,7 +14,7 @@ $this->show_footer = false;
                 </div>
             </a>
         </nav>
-        <div class="title">他说，活下去的希望是你们给的！</div>
+        <div class="title">他说,活下去的希望是你们给的</div>
         <nav class="right">
             <a onclick="javascript:location.reload()">
                 <img src="http://static.mingyizhudao.com/146975853464574"  class="w24p">
@@ -26,7 +22,7 @@ $this->show_footer = false;
         </nav>
     </header>
 <?php } ?>
-<article id="life_article" class="active story_article" data-scroll="true">
+<article id="lifeExpect_article" class="active story_article" data-scroll="true">
     <div class="color-black">
         <div>
             <img src="http://static.mingyizhudao.com/147191772619650" class="w100">

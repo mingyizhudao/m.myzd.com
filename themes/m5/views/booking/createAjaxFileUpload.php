@@ -1,4 +1,5 @@
 <?php
+
 //Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/jquery.validate.js', CClientScript::POS_END);
 //Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/jquery.form.js', CClientScript::POS_END);
 //Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/ajaxfileupload.js', CClientScript::POS_END);
@@ -29,7 +30,7 @@ $urlSubmitForm = $this->createUrl("booking/ajaxQuickbook");
 $urlUploadFile = $this->createUrl("qiniu/ajaxBookingFile");
 $urlUserValiCaptcha = $this->createUrl("user/valiCaptcha");
 $urlReturn = $this->createUrl('order/view');
-$urlHomeView = Yii::app()->baseUrl;
+$urlHomeView = Yii::app()->request->hostInfo;
 $urlQiniuAjaxToken = $this->createUrl('qiniu/ajaxBookingToken');
 $urlBackBtn = Yii::app()->request->getQuery('backBtn', '1');
 $urlAgreement = $this->createUrl('user/index', array('page' => 'aboutAgreement'));

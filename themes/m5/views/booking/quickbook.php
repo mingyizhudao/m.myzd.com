@@ -1,4 +1,5 @@
 <?php
+
 //Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/quickBooking.js?ts=' . time(), CClientScript::POS_END);
 //Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/jquery.validate.js', CClientScript::POS_END);
 Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/jquery.formvalidate.min.1.0.js', CClientScript::POS_END);
@@ -6,7 +7,9 @@ Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/q
 /*
  * $model BookQuickForm.
  */
-$this->setPageTitle('快速预约');
+$this->setPageTitle('手术直通车快速预约_名医主刀网移动版');
+$this->setPageKeywords('手术直通车快速预约');
+$this->setPageDescription('名医主刀手术直通车让您快速预约专家医师，切实解决看病难的问题，让患者得到最快的治疗。');
 $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/auth/sendSmsVerifyCode');
 $authActionType = AuthSmsVerify::ACTION_BOOKING;
 $urlSubmitForm = $this->createUrl("booking/ajaxQuickbook");
@@ -14,7 +17,7 @@ $urlSubmitForm = $this->createUrl("booking/ajaxQuickbook");
 $urlUploadFile = 'http://file.mingyizhudao.com/api/uploadbookingfile';
 $urlUserValiCaptcha = $this->createUrl("user/valiCaptcha");
 $urlReturn = $this->createUrl('order/view');
-$urlHomeView = Yii::app()->baseUrl;
+$urlHomeView = Yii::app()->request->hostInfo;
 $urlBackBtn = Yii::app()->request->getQuery('backBtn', '1');
 $urlAgreement = $this->createUrl('user/index', array('page' => 'aboutAgreement'));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";

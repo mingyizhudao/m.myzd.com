@@ -10,9 +10,9 @@
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
         <meta name="format-detection" content="telephone=no"/>
-        <?php
+        <?php                                           
         Yii::app()->clientScript->registerCssFile('http://static.mingyizhudao.com/m/base.min.1.0.css');
-        Yii::app()->clientScript->registerCssFile('http://static.mingyizhudao.com/m/custom.min.1.9.css');
+        Yii::app()->clientScript->registerCssFile('http://static.mingyizhudao.com/m/custom.min.2.2.css');
         Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/zepto.min.1.0.js', CClientScript::POS_HEAD);
         Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/base.min.1.0.js', CClientScript::POS_END);
         Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/main.min.1.0.js', CClientScript::POS_END);

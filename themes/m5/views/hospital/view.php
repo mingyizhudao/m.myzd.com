@@ -2,6 +2,8 @@
 /**
  * $data.
  */
+//$hospital = $data->results->hospital;
+//var_dump($data);die;
 $this->setPageTitle('手术预约,床位预约,专家预约,哪个医生好_名医主刀网移动版');
 $this->setPageKeywords('手术预约,哪个医生好');
 $urlHospitalView = $this->createAbsoluteUrl('/api/list', array('model' => 'hospital'));
@@ -85,6 +87,7 @@ $this->show_footer = false;
     });
     function readyPage(data) {
         var hospital = data.results.hospital;
+        console.log(hospital);
         var departments = data.results.departments;
         innerHtml = '<div>';
         if (departments != null) {
