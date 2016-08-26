@@ -5,7 +5,7 @@ $type = Yii::app()->request->getQuery('type', '');
 $searchDoc = $this->createUrl("doctor/search");
 $searchDept = $this->createUrl("hospital/search");
 $urlDoctorView = $this->createAbsoluteUrl('doctor/view');
-$urlHospitalView = $this->createAbsoluteUrl('hospital/view', array('id' => ''));
+$urlHospitalView = $this->createAbsoluteUrl('hospital/view').'/id';
 $urlHomeView = Yii::app()->request->hostInfo;
 $urlStat = $this->createAbsoluteUrl('/api/stat');
 $SITE_20 = PatientStatLog::SITE_20;
