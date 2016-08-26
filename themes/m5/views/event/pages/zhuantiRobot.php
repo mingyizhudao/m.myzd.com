@@ -2,7 +2,7 @@
 $this->setPageTitle('机器人微创手术');
 $showHeader = Yii::app()->request->getQuery('header', 1);
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
-$urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('id' => ''));
+$urlDoctorView = $this->createAbsoluteUrl('doctor/view');
 $this->show_footer = false;
 ?>
 
@@ -209,7 +209,7 @@ $this->show_footer = false;
             <div class="col-1"></div>
             <div class="col-0 w80 doctorBg">
                 <div class="doctorBorder">
-                    <a class="color-black" href="<?php echo $urlDoctorView; ?>/3208">
+                    <a class="color-black" href="<?php echo $urlDoctorView; ?>/id/3208">
                         <div class="">
                             <div class="grid pt10">
                                 <div class="col-1"></div>
@@ -244,7 +244,7 @@ $this->show_footer = false;
             <div class="col-1"></div>
             <div class="col-0 w80 doctorBg">
                 <div class="doctorBorder">
-                    <a class="color-black" href="<?php echo $urlDoctorView; ?>/3209">
+                    <a class="color-black" href="<?php echo $urlDoctorView; ?>/id/3209">
                         <div class="">
                             <div class="grid pt10">
                                 <div class="col-1"></div>
@@ -279,7 +279,7 @@ $this->show_footer = false;
             <div class="col-1"></div>
             <div class="col-0 w80 doctorBg">
                 <div class="doctorBorder">
-                    <a class="color-black" href="<?php echo $urlDoctorView; ?>/3207">
+                    <a class="color-black" href="<?php echo $urlDoctorView; ?>/id/3207">
                         <div class="">
                             <div class="grid pt10">
                                 <div class="col-1"></div>

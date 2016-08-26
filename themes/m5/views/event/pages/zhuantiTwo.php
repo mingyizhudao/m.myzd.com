@@ -2,7 +2,7 @@
 $this->setPageTitle('妙招预防冬季冠心病发作');
 $showHeader = Yii::app()->request->getQuery('header', 1);
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
-$urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('id' => ''));
+$urlDoctorView = $this->createAbsoluteUrl('doctor/view').'/id';
 $this->show_footer = false;
 ?>
 
