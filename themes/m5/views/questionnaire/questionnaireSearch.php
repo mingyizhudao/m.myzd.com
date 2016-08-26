@@ -3,10 +3,10 @@ $this->setPageTitle('意向专家');
 $source = Yii::app()->request->getQuery('source', 0);
 $sourceApp = Yii::app()->request->getQuery('app', 0);
 if ($sourceApp == 0) {
-    $doctorView = $this->createUrl('doctor/view', array('source' => '1', 'id' => ''));
+    $doctorView = $this->createUrl('doctor/view', array('source' => '1'));
     $urlQuestionnaireBookingView = $this->createUrl('questionnaire/questionnaireBookingView', array('source' => 1));
 } else {
-    $doctorView = $this->createUrl('doctor/view', array('app' => 1, 'source' => '1', 'id' => ''));
+    $doctorView = $this->createUrl('doctor/view', array('app' => 1, 'source' => '1'));
     $urlQuestionnaireBookingView = $this->createUrl('questionnaire/questionnaireBookingView', array('app' => 1, 'source' => 1));
 }
 $urlSearch = $this->createAbsoluteUrl('/api/search', array('name' => ''));
@@ -113,7 +113,7 @@ $SITE_7  = PatientStatLog::SITE_7;
                     var doctor = doctors[i];
                     var desc = (doctor.desc == '' || doctor.desc == null) ? '暂无信息' : doctor.desc;
                     innerHtml += '<div class="bg-white mb10">' +
-                            '<a href="<?php echo $doctorView; ?>/' + doctor.id + '" data-target="link">' +
+                            '<a href="<?php echo $doctorView; ?>/id/' + doctor.id + '" data-target="link">' +
                             '<div class="grid pl15 pr15">' +
                             '<div class="col-1 w25 pt10">' +
                             '<div class="w60p h60p br50" style="overflow:hidden;">' +

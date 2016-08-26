@@ -12,7 +12,9 @@
         <meta name="format-detection" content="telephone=no"/>
         <?php                                           
         Yii::app()->clientScript->registerCssFile('http://static.mingyizhudao.com/m/base.min.1.0.css');
-        Yii::app()->clientScript->registerCssFile('http://static.mingyizhudao.com/m/custom.min.2.2.css');
+        // Yii::app()->clientScript->registerCssFile('http://static.mingyizhudao.com/m/custom.min.2.2.css');
+        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/custom.min.css');
+
         Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/zepto.min.1.0.js', CClientScript::POS_HEAD);
         Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/base.min.1.0.js', CClientScript::POS_END);
         Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/main.min.1.0.js', CClientScript::POS_END);
