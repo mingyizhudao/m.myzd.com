@@ -2,7 +2,7 @@
 $this->setPageID('pMobile');
 $this->setPageTitle('关于平台');
 $showHeader = Yii::app()->request->getQuery('header', 1);
-$urlUserIndex = $this->createUrl('user/index', array('pages' => ''));
+// $urlUserIndex = $this->createUrl('user/index').'/pages';
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
