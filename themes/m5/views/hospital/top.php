@@ -4,9 +4,9 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/c
 // Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/findHospital.min.1.3.js', CClientScript::POS_END);
 ?>
 <?php
-$this->setPageTitle('【外科】科室推荐,【外科】科室哪家医院好_名医主刀网移动版');
+$this->setPageTitle('外科科室推荐,外科科室哪家医院好_名医主刀网移动版');
 $this->setPageDescription('名医主刀网为您提供国内医院预约手术,医院排行榜,医院大全,医院哪家好等权威信息;助您在第一时间找到好医院,以最快的时间预约医院并安排手术,网上预约手术就看名医主刀网。');
-$this->setPageKeywords('【外科】科室哪家医院好');
+$this->setPageKeywords('外科科室哪家医院好');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $city = Yii::app()->request->getQuery('city', '');
 $innerDeptId = Yii::app()->request->getQuery('innerDeptId', '');
