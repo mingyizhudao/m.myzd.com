@@ -1,15 +1,16 @@
 <!DOCTYPE html> 
 <html lang="zh" xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
     <head>
-        <title><?php echo $this->pageTitle; ?></title>  
-        <meta name="description" content="<?php echo $this->pageDescription; ?>">
-        <meta name="keywords" content="<?php echo $this->pageKeywords;?>">
         <!--        <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no" />-->
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
         <meta name="format-detection" content="telephone=no"/>
+        <title><?php echo $this->pageTitle; ?></title>  
+        <meta name="description" content="<?php echo $this->pageDescription; ?>">
+        <meta name="keywords" content="<?php echo $this->pageKeywords;?>">
         <?php                                           
         Yii::app()->clientScript->registerCssFile('http://static.mingyizhudao.com/m/base.min.1.0.css');
         Yii::app()->clientScript->registerCssFile('http://static.mingyizhudao.com/m/custom.min.2.3.css');
