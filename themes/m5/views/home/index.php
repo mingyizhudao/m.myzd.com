@@ -364,13 +364,6 @@ $SITE_6 = PatientStatLog::SITE_6;
             searchStat(name);
 
         });
-        $('.departmentcontent').click(function () {
-            var obj = $(this);
-            var name = obj.attr("data-name");
-            var url = obj.attr("data-href");
-            departmentStat(name);
-            window.location = url;
-        });
         $('img.w55p.h55p').click(function () {
             var obj = $(this);
             var data_id = obj.attr("data-id");
@@ -590,6 +583,13 @@ $SITE_6 = PatientStatLog::SITE_6;
             
          $('#home_article #dpm-bxslider .bxslider1').html(text);
 
+        $('.departmentcontent').click(function () {
+            var obj = $(this);
+            var name = obj.attr("data-name");
+            var url = obj.attr("data-href");
+            departmentStat(name);
+            window.location = url;
+        });
 
          $(' .bxslider1').bxSlider({
             mode: 'fade',
