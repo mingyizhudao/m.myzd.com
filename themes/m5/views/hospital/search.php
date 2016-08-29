@@ -1,6 +1,7 @@
 <?php
 // Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/searchHospital.js?ts=' . time(), CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/searchHospital.min.1.1.js', CClientScript::POS_END);
+
+Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/searchHospital.min.1.2.js', CClientScript::POS_END);
 ?>
 <?php
 $this->setPageTitle('医院科室');
@@ -13,7 +14,7 @@ $page = Yii::app()->request->getQuery('page', '');
 
 $urlHomeView = Yii::app()->request->hostInfo;
 $urlHospitalSearch = $this->createUrl('hospital/search');
-$urlDepartmentView = $this->createUrl('department/view', array('id' => ''));
+$urlDepartmentView = $this->createUrl('department/view');
 $urlCity = $this->createAbsoluteUrl('/api/city');
 $urlCityName = $this->createAbsoluteUrl('/api/city');
 $urlHospital = $this->createAbsoluteUrl('/api/hospital', array('api' => 7));

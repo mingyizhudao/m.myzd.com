@@ -1,7 +1,11 @@
 <?php
 
 // Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/findHospital.js?ts=' . time(), CClientScript::POS_END);
+<<<<<<< HEAD
 Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/findHospital.min.1.3.js', CClientScript::POS_END);
+=======
+Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/findHospital.min.1.4.js', CClientScript::POS_END);
+>>>>>>> m_seo20160901
 ?>
 <?php
 $this->setPageTitle('【外科】科室推荐,【外科】科室哪家医院好_名医主刀网移动版');
@@ -18,7 +22,7 @@ $page = Yii::app()->request->getQuery('page', '');
 
 $urlHomeView = Yii::app()->request->hostInfo;
 $urlHospitalTop = $this->createUrl('hospital/top');
-$urlDepartmentView = $this->createUrl('department/view', array('id' => ''));
+$urlDepartmentView = $this->createUrl('department/view');
 $urlCity = $this->createAbsoluteUrl('/api/city');
 $urlHospital = $this->createAbsoluteUrl('/api/hospital', array('api' => 7));
 $urlDiseasecategory = $this->createAbsoluteUrl('/api/diseasecategory', array('api' => 7));

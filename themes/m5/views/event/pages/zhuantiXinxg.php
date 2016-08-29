@@ -2,7 +2,7 @@
 $this->setPageTitle('熬夜需警惕心血管疾病突发');
 $showHeader = Yii::app()->request->getQuery('header', 1);
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
-$urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('id' => ''));
+$urlDoctorView = $this->createAbsoluteUrl('doctor/view').'/id';
 $this->show_footer = false;
 ?>
 

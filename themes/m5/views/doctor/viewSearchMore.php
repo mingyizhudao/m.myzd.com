@@ -4,8 +4,9 @@ $searchName = Yii::app()->request->getQuery('name', '');
 $type = Yii::app()->request->getQuery('type', '');
 $searchDoc = $this->createUrl("doctor/search");
 $searchDept = $this->createUrl("hospital/search");
-$urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('id' => ''));
-$urlHospitalView = $this->createAbsoluteUrl('hospital/view', array('id' => ''));
+
+$urlDoctorView = $this->createAbsoluteUrl('doctor/view');
+$urlHospitalView = $this->createAbsoluteUrl('hospital/view').'/id';
 $urlHomeView = Yii::app()->request->hostInfo;
 $urlStat = $this->createAbsoluteUrl('/api/stat');
 $SITE_20 = PatientStatLog::SITE_20;
@@ -142,7 +143,7 @@ $this->show_footer = false;
 
                 }
             });
-            location.href = '<?php echo $urlDoctorView; ?>/' + id;
+            location.href = '<?php echo $urlDoctorView; ?>/id/' + id;
         });
 
         //疾病点击找医院，记录疾病信息

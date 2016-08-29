@@ -2,7 +2,7 @@
 $this->setPageTitle('公益名医');
 $showHeader = Yii::app()->request->getQuery('header', 1);
 $urlCommonwealDoctors = $this->createAbsoluteUrl('/api/commonwealdoctors');
-$urlDoctorView = $this->createUrl('doctor/view', array('id' => ''));
+// $urlDoctorView = $this->createUrl('doctor/view', array('id' => ''));
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>

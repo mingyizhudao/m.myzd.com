@@ -1,6 +1,7 @@
 <?php
 // Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/findDoc.js?ts=' . time(), CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/findDoc.min.1.5.js', CClientScript::POS_END);
+
+Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/findDoc.min.1.6.js', CClientScript::POS_END);
 ?>
 <?php
 $source = Yii::app()->request->getQuery('source', '0');
@@ -10,13 +11,13 @@ if ($source == 0) {
 上海血管外科动脉瘤医生排行,哪个医生好,专家医生预约_名医主刀网移动版');
     $this->setPageKeywords('手术预约,找医生,网上预约医生');
     $this->setPageDescription('名医主刀网为您提供医生排行榜,手术预约,专家医生预约,哪个医生好等信息;帮助广大有手术需求的患者,在第一时间预约全国知名专家,安排入院手术。');
-    $urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('id' => ''));
+    $urlDoctorView = $this->createAbsoluteUrl('doctor/view');
 } else {
     $this->setPageTitle('选择意向专家');
     if ($sourceApp == 0) {
-        $urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('source' => 1, 'id' => ''));
+        $urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('source' => 1));
     } else {
-        $urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('app' => 1, 'source' => 1, 'id' => ''));
+        $urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('app' => 1, 'source' => 1));
     }
 }
 $urlApiAppNav1 = $this->createAbsoluteUrl('/api/list');

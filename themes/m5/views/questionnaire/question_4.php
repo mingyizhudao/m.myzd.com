@@ -12,9 +12,9 @@ $urlQuestionnaire = $this->createUrl('/api/questionnaire');
 $urlApplogstat = $this->createUrl('/api/applogstat');
 $source = Yii::app()->request->getQuery('app', 0);
 if ($source == 0) {
-    $urlQuestion = $this->createUrl('questionnaire/view', array('id' => ''));
+    $urlQuestion = $this->createUrl('questionnaire/view');
 } else {
-    $urlQuestion = $this->createUrl('questionnaire/view', array('app' => 1, 'id' => ''));
+    $urlQuestion = $this->createUrl('questionnaire/view', array('app' => 1));
 }
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
@@ -43,7 +43,7 @@ if ($source == 0) {
     <?php
 }
 ?>
-<article id="questionnairefour_article" class="active android_article logo_article" data-scroll="true" data-action-url="<?php echo $urlQuestionnaire; ?>" data-return-url="<?php echo $urlQuestion; ?>" data-applogstat="<?php echo $urlApplogstat; ?>">
+<article id="questionnairefour_article" class="active android_article logo_article" data-scroll="true" data-action-url="<?php echo $urlQuestionnaire; ?>" data-return-url="<?php echo $urlQuestion; ?>/id" data-applogstat="<?php echo $urlApplogstat; ?>">
     <div>
         <div id="outline" class="pad20 bg-white">
             <div class="w100 color-green text18">

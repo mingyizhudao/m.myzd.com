@@ -1,7 +1,7 @@
 <?php
 $this->setPageTitle('身体肿块别小瞧');
 $showHeader = Yii::app()->request->getQuery('header', 1);
-$urlDoctorView = $this->createAbsoluteUrl('doctor/view', array('id' => ''));
+$urlDoctorView = $this->createAbsoluteUrl('doctor/view');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 ?>
@@ -274,7 +274,7 @@ $this->show_footer = false;
             <div class="grid mt20">
                 <div class="col-1"></div>
                 <div class="col-0 widthDoc">
-                    <a class="color-black" href="<?php echo $urlDoctorView; ?>/82">
+                    <a class="color-black" href="<?php echo $urlDoctorView; ?>/id/82">
                         <div class="bg-yellow3">
                             <div class="grid pt10">
                                 <div class="col-1"></div>
@@ -320,7 +320,7 @@ $this->show_footer = false;
             <div class="grid mt20">
                 <div class="col-1"></div>
                 <div class="col-0 widthDoc">
-                    <a class="color-black" href="<?php echo $urlDoctorView; ?>/3054">
+                    <a class="color-black" href="<?php echo $urlDoctorView; ?>/id/3054">
                         <div class="bg-yellow3">
                             <div class="grid pt10">
                                 <div class="col-1"></div>
@@ -366,7 +366,7 @@ $this->show_footer = false;
             <div class="grid mt20">
                 <div class="col-1"></div>
                 <div class="col-0 widthDoc">
-                    <a class="color-black" href="<?php echo $urlDoctorView; ?>/369">
+                    <a class="color-black" href="<?php echo $urlDoctorView; ?>/id/369">
                         <div class="bg-yellow3">
                             <div class="grid pt10">
                                 <div class="col-1"></div>
@@ -412,7 +412,7 @@ $this->show_footer = false;
             <div class="grid mt20 mb50">
                 <div class="col-1"></div>
                 <div class="col-0 widthDoc">
-                    <a class="color-black" href="<?php echo $urlDoctorView; ?>/295">
+                    <a class="color-black" href="<?php echo $urlDoctorView; ?>/id/295">
                         <div class="bg-yellow3">
                             <div class="grid pt10">
                                 <div class="col-1"></div>

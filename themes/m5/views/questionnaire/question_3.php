@@ -4,9 +4,9 @@ $urlQuestionnaire = $this->createUrl('/api/questionnaire');
 $urlApplogstat = $this->createUrl('/api/applogstat');
 $source = Yii::app()->request->getQuery('app', 0);
 if ($source == 0) {
-    $urlQuestion = $this->createUrl('questionnaire/view', array('id' => ''));
+    $urlQuestion = $this->createUrl('questionnaire/view');
 } else {
-    $urlQuestion = $this->createUrl('questionnaire/view', array('app' => 1, 'id' => ''));
+    $urlQuestion = $this->createUrl('questionnaire/view', array('app' => 1));
 }
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
@@ -126,11 +126,11 @@ if ($source == 0) {
                     success: function (data) {
                         if (data.status == 'ok') {
                             J.hideMask();
-                            location.href = '<?php echo $urlQuestion; ?>/4';
+                            location.href = '<?php echo $urlQuestion; ?>/id/4';
                         } else {
                             if (data.errorMsg == 'faile answer') {
                                 J.hideMask();
-                                location.href = '<?php echo $urlQuestion; ?>/1';
+                                location.href = '<?php echo $urlQuestion; ?>/id/1';
                             }
                         }
                     },

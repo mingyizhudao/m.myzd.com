@@ -3,7 +3,7 @@
  * $model DoctorForm.
  */
 $this->setPageTitle('订单详情');
-$urlPatientBooking = $this->createUrl('booking/patientBooking', array('id' => ''));
+$urlPatientBooking = $this->createUrl('booking/patientBooking');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 $showStatus = Yii::app()->request->getQuery('showStatus', 0);
@@ -80,7 +80,7 @@ $orderInfo = $results->orderInfo;
                 </div>
             </div>
             <div class="mt10 font-s12 letter-s1 bg-white color-gray4">
-                <a href="<?php echo $urlPatientBooking; ?>/<?php echo $bookingComment->bk_id; ?>/showStatus/<?php echo $showStatus; ?>" class="color-black6">
+                <a href="<?php echo $urlPatientBooking; ?>/id/<?php echo $bookingComment->bk_id; ?>/showStatus/<?php echo $showStatus; ?>" class="color-black6">
                     <div class="text-center font-s14 pb10 pl20 pr20 pt10">
                         查看订单详情
                     </div>
