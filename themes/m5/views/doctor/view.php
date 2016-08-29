@@ -9,7 +9,7 @@ $urlQuestionnaireBookingView = $this->createAbsoluteUrl('questionnaire/questionn
 $urlApplogstat = $this->createUrl('/api/applogstat');
 $doctor = $data->results->doctor;
 $this->setPageTitle(''.$doctor->name.'介绍，擅长哪些手术_名医主刀网移动版');
-$this->setPageKeywords(''.$doctor->name.'介绍,擅长哪些手术_名医主刀网移动版');
+$this->setPageKeywords(''.$doctor->name.'介绍,擅长哪些手术');
 $this->setPageDescription(substr($doctor->careerExp, 0,200));
 $honour = $doctor->honour;
 $this->show_footer = false;
