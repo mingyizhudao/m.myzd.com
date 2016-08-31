@@ -16,7 +16,8 @@ class DiseaseSearch extends ESearchModel {
 
     public function addQueryConditions() {
         $this->criteria->addCondition('t.date_deleted is NULL');
-        $this->criteria->addCondition('t.app_version = 7');
+//         $this->criteria->addCondition('t.app_version = 7');
+        $this->criteria->addCondition('t.app_version = 8');//疾病新分类
 
         if ($this->hasQueryParams()) {
             // Disease.Name
