@@ -3,13 +3,19 @@ $('#selectCity').tap(function (e) {
     var cityName = $('#cityTitle').html();
     var cityId = $('#cityTitle').attr('data-city');
     var innerPage = '<header id="hospital_header" class="bg-green">' +
-            '<nav id="selectCity" class="left" data-target="closePopup">' +
+            // '<nav id="selectCity" class="left" data-target="closePopup">' +
+            // '<div class="grid mt17">' +
+            // '<div id="cityTitle" class="font-s16 col-0" data-city="' + cityId + '">' + cityName + '</div>' +
+            // '<div class="col-0 cityImg"></div>' +
+            // '</div>' +
+            // '</nav>' +
+            '<h1 class="title">推荐</h1>' +
+            '<nav id="selectCity" class="right">' +
             '<div class="grid mt17">' +
-            '<div id="cityTitle" class="font-s16 col-0" data-city="' + cityId + '">' + cityName + '</div>' +
+            '<div id="cityTitle" class="font-s16 col-0" data-city="' + cityId + '">' + cityName + '</div>'+
             '<div class="col-0 cityImg"></div>' +
             '</div>' +
             '</nav>' +
-            '<h1 class="title">推荐</h1>' +
             '</header>' +
             '<article id="hospital_article" class="active" data-scroll="true" style="position:static;">' + readyCity($cityData, cityId) + '</article>';
     J.popup({
