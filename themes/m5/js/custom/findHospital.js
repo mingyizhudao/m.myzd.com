@@ -125,8 +125,8 @@ $('#citySelect').tap(function () {
     var dept = $('.title').html();
     var deptName = $('#deptTitle').html();
     var deptId = $('#deptTitle').attr('data-dept');
-    var cityName = $('#cityTitle').html();
-    var cityId = $('#cityTitle').attr('data-city');
+    var cityName = $('#citySelect').html();
+    var cityId = $('#citySelect').attr('data-city');
     var innerPage = '<div id="findDoc_section">' +
             '<header id="findDept_header" class="bg-green">' +
             '<nav class="left">' +
@@ -139,21 +139,11 @@ $('#citySelect').tap(function () {
             '<h1 class="title">' + dept +
             '</h1>' +
             '<nav class="right">' +
-            '<a onclick="javascript:history.go(0)">' +
-            '<img src="http://static.mingyizhudao.com/146975853464574"  class="w24p">' +
+            '<a id="citySelect" href="#">' +
+            cityName +
             '</a>' +
             '</nav>' +
             '</header>' +
-            '<nav id="findDept_nav" class="header-secondary bg-white">' +
-            '<div class="grid w100 color-black font-s16 color-black6">' +
-            '<div id="deptSelect" data-target="closePopup" class="col-1 w50 br-gray bb-gray grid middle grayImg">' +
-            '<span id="deptTitle" data-dept="' + deptId + '">' + deptName + '</span><img src="http://static.mingyizhudao.com/146735870119173">' +
-            '</div>' +
-            '<div id="citySelect" data-target="closePopup" class="col-1 w50 bb-gray grid middle grayImg">' +
-            '<span class="color-orange6" id="cityTitle" data-city="' + cityId + '">' + cityName + '</span><img src="http://static.mingyizhudao.com/146735831347598">' +
-            '</div>' +
-            '</div>' +
-            '</nav>' +
             '<article id="findDept_article" class="active" data-scroll="true" style="position:static;">' + readyCity($cityData, cityId) +
             '</article>' +
             '</div>';
@@ -181,8 +171,8 @@ $('#citySelect').tap(function () {
             success: function (data) {
                 //console.log(data);
                 readyHospital(data);
-                $('#cityTitle').html($cityName);
-                $('#cityTitle').attr('data-city', $cityId);
+                $('#citySelect').html($cityName);
+                $('#citySelect').attr('data-city', $cityId);
                 setLocationUrl();
                 $('#findDept_article').scrollTop(0);
             }
@@ -266,7 +256,7 @@ function readyCity(data, cityId) {
     var innerHtml = '';
     if (data != '') {
         var results = data.results;
-        innerHtml += '<div id="cityList" class="grid color-black" style="margin-top:93px;height:315px;">' +
+        innerHtml += '<div id="cityList" class="grid color-black" style="margin-top:43px;height:315px;">' +
                 '<ul class="list w100">';
         if (cityId == 0) {
             innerHtml += '<li class="switchCity activeIcon" data-city="0">全部</li>';
