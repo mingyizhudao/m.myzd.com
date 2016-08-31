@@ -21,7 +21,8 @@ class ApiViewDiseaseCategory extends EApiViewService {
     }
     public function loadDiseaseCategory(){
         $disMgr = new DiseaseManager();
-        $models = $disMgr->loadDiseaseCategoryListV7();
+       // $models = $disMgr->loadDiseaseCategoryListV7();//科室具体分类
+        $models = $disMgr->loadDiseaseCategoryListV8();//新增12个科室
         $navList = array();
         foreach ($models as $model) {
             $data = new stdClass();
