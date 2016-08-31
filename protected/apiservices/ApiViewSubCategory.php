@@ -33,7 +33,8 @@ class ApiViewSubCategory extends EApiViewService {
      */
     private function loadSubCategory() {
 
-        $model = DiseaseCategory::model()->getByAttributes(array('sub_cat_id'=>$this->sub_category, 'app_version'=>7));
+//         $model = DiseaseCategory::model()->getByAttributes(array('sub_cat_id'=>$this->sub_category, 'app_version'=>7));
+        $model = DiseaseCategory::model()->getByAttributes(array('sub_cat_id'=>$this->sub_category, 'app_version'=>8));
         if (is_null($model)) {
             $this->throwNoDataException();
         }
