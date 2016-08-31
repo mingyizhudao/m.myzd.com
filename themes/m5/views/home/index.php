@@ -246,7 +246,7 @@ $SITE_6 = PatientStatLog::SITE_6;
         '<li class="slide">'+
                       '<div class="grid pt10"> ' +
                      '<div class="col-1 w33 pr10">  '+
-                        '<a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/1" data-name="普外科"> '+ 
+                        '<a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/101" data-name="普外科"> '+ 
                             '<div class="bg-blue4"> '+
                                  '<div class="font-s16 pl5 pt5">'+  
                                      '普外科 '+ 
@@ -261,7 +261,7 @@ $SITE_6 = PatientStatLog::SITE_6;
 
                      
                      '<div class="col-1 w33 pl5 pr5">' + 
-                         '<a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/13" data-name="骨科"> '+ 
+                         '<a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/102" data-name="骨科"> '+ 
                             ' <div class="y1"> '+
                                 ' <div class="font-s16 pl5 pt5"> '+
                                      '骨科 '+ 
@@ -274,7 +274,7 @@ $SITE_6 = PatientStatLog::SITE_6;
                          '</a> ' +
                      '</div> '+ 
                      '<div class="col-1 w33 pl10">' + 
-                        '<a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/8" data-name="神经外科">'+
+                        '<a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/103" data-name="神经外科">'+
                              '<div class="o1" > '+
                                  '<div class="font-s16 pl5 pt5"> '+ 
                                     ' 神经外科 ' +
@@ -289,7 +289,7 @@ $SITE_6 = PatientStatLog::SITE_6;
                  '</div> ' +
                  '<div class="grid mt15"> ' +
                     '<div class="col-1 w33 pr10"> '+ 
-                         '<a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/10" data-name="胸外科">  '+
+                         '<a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/104" data-name="胸外科">  '+
                              '<div class="b1"> '+
                                  '<div class="font-s16 pl5 pt5"> '+
                                     ' 胸外科'  +
@@ -302,7 +302,7 @@ $SITE_6 = PatientStatLog::SITE_6;
                          '</a> ' +
                      '</div>'+  
                      '<div class="col-1 w33 pl5 pr5">'+ 
-                        ' <a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/11" data-name="泌尿外科"> '+ 
+                        ' <a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/105" data-name="泌尿外科"> '+ 
                              '<div class="bg-blue5">' +
                                  '<div class="font-s16 pl5 pt5"> '+ 
                                      '泌尿外科 '+
@@ -315,7 +315,7 @@ $SITE_6 = PatientStatLog::SITE_6;
                         '</a>'+  
                      '</div> '+ 
                      '<div class="col-1 w33 pl10">'+  
-                         '<a class="departmentcontent" data-name="眼科 " data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/28">'+  
+                         '<a class="departmentcontent" data-name="眼科 " data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/106">'+  
                              '<div class="b2"> '+
                                  '<div class="font-s16 pl5 pt5"> '+ 
                                     '眼科  '+
@@ -332,7 +332,7 @@ $SITE_6 = PatientStatLog::SITE_6;
                 '<li class="slide">'+
                  '<div class="grid pt10"> '+ 
                      '<div class="col-0 w33 pr10">'+  
-                        '<a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/1" data-name="心血管外科">'+  
+                        '<a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/107" data-name="心血管外科">'+  
                             '<div class="y2" > '+
                                 ' <div class="font-s16 pl5 pt5"> '+ 
                                      '心血管外科  '+
@@ -345,7 +345,7 @@ $SITE_6 = PatientStatLog::SITE_6;
                          '</a>'+  
                      '</div>'+ 
                      '<div class="col-0 w33 pl5 pr5"> '+ 
-                         '<a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/30" data-name="耳鼻喉科"> '+ 
+                         '<a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/108" data-name="耳鼻喉科"> '+ 
                              '<div class="b3" >  '+
                                 ' <div class="font-s16 pl5 pt5"> '+ 
                                     '耳鼻喉科 '+ 
@@ -358,7 +358,7 @@ $SITE_6 = PatientStatLog::SITE_6;
                          '</a> '+ 
                      '</div>  '+
                      '<div class="col-0 w33 pl10"> '+ 
-                        '<a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/12" data-name="整形外科">'+  
+                        '<a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/109" data-name="整形外科">'+  
                              '<div class="h" > '+
                                '<div class="font-s16 pl5 pt5">  '+
                                     '整形外科 '+
@@ -373,7 +373,7 @@ $SITE_6 = PatientStatLog::SITE_6;
                  '</div> '+ 
                 ' <div class="grid mt15"> '+ 
                      '<div class="col-1 w33 pr10">' + 
-                         '<a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/21" data-name="颌面外科"> '+ 
+                         '<a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/110" data-name="颌面外科"> '+ 
                             ' <div class="b4" >  '+
                                 '<div class="font-s16 pl5 pt5"> '+ 
                                    ' 颌面外科  '+
@@ -386,7 +386,7 @@ $SITE_6 = PatientStatLog::SITE_6;
                          '</a> '+ 
                      '</div>'+  
                      '<div class="col-1 w33 pl5 pr5">'+  
-                         '<a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/18" data-name="妇科">'+  
+                         '<a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/111" data-name="妇科">'+  
                              '<div class="o2" > '+
                                  '<div class="font-s16 pl5 pt5"> ' +
                                      '妇科 '+
@@ -399,7 +399,7 @@ $SITE_6 = PatientStatLog::SITE_6;
                          '</a> ' +
                      '</div>' + 
                      '<div class="col-1 w33 pl10">' + 
-                        ' <a class="departmentcontent" data-name="小儿外科" data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/21"> '+ 
+                        ' <a class="departmentcontent" data-name="小儿外科" data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/112"> '+ 
                             ' <div  class="bg-orange"> '+ 
                                 ' <div class="font-s16 pl5 pt5"> ' +
                                    '小儿外科 '+ 
