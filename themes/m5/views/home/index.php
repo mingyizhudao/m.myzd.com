@@ -246,7 +246,7 @@ $SITE_6 = PatientStatLog::SITE_6;
         '<li class="slide">'+
                       '<div class="grid pt10"> ' +
                      '<div class="col-1 w33 pr10">  '+
-                        '<a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/innerDeptId/1/disease_sub_category/1" data-name="首外科"> '+ 
+                        '<a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/1" data-name="普外科"> '+ 
                             '<div class="bg-blue4"> '+
                                  '<div class="font-s16 pl5 pt5">'+  
                                      '普外科 '+ 
