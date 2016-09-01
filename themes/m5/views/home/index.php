@@ -3,33 +3,7 @@ Yii::app()->clientScript->registerCssFile('http://myzd.oss-cn-hangzhou.aliyuncs.
 Yii::app()->clientScript->registerScriptFile('http://myzd.oss-cn-hangzhou.aliyuncs.com/static/mobile/js/jquery.bxslider/jquery.bxslider.min.js', CClientScript::POS_END);
 Yii::app()->clientScript->registerScriptFile('http://myzd.oss-cn-hangzhou.aliyuncs.com/static/mobile/js/jquery-1.9.1.min.js', CClientScript::POS_HEAD);
 ?>
-<style>
-    .y1{background:#ffc24b;} 
-    .o1{background:#f1866e;} 
-    .b1{background:#84bef0;} 
-    .b2{background:#639deb;}
-    .y2{background:#fbd330;} 
-    .b3{background:#6dd2d5;}
-    .b4{background:#5cc6ee;}
-    .h{background:#fc7fc1;}
-    .o2{background:#f5856e ;} 
-    #home_article #dpm-bxslider  .bx-wrapper  .bx-pager.bx-default-pager a{width:23px;height: 3px;}
-    #home_article #dpm-bxslider .bx-wrapper .bx-pager{left: 40%;}
-    #home_article #dpm-bxslider .bx-pager{bottom:-19px;}
-    #home_article #dpm-bxslider .bx-pager.bx-default-pager a.active{background: #17D7C2;}
-    #home_article .shouwk{background: url('http://static.mingyizhudao.com/147219201837545') no-repeat;background-position:-96px 0;background-size: 200px 70px;}
-    #home_article .guk{background: url('http://static.mingyizhudao.com/147219201837545') no-repeat;background-position:-128px 0;background-size: 200px 70px;}
-    #home_article .shenjwk{background: url('http://static.mingyizhudao.com/147219201837545') no-repeat;background-position:-63px 0;background-size: 200px 70px;}
-    #home_article .xiongwk{background: url('http://static.mingyizhudao.com/147219201837545') no-repeat;background-position:-159px -35px;background-size: 200px 70px;}
-    #home_article .minwk{background: url('http://static.mingyizhudao.com/147219201837545') no-repeat;background-position:-131px -35px;width:30px;background-size: 200px 70px;}
-    #home_article .yank{background: url('http://static.mingyizhudao.com/147219201837545') no-repeat;background-position:0px 5px;background-size: 200px 70px;}
-    #home_article .xinxgwk{background: url('http://static.mingyizhudao.com/147219201837545') no-repeat;background-position:-30px -35px;background-size: 200px 70px;}
-    #home_article .erbhk{background: url('http://static.mingyizhudao.com/147219201837545') no-repeat;background-position:-33px 0px;background-size: 200px 70px;}
-    #home_article .zhengxwk{background: url('http://static.mingyizhudao.com/147219201837545') no-repeat;background-position:8px -37px;background-size: 200px 70px;}
-    #home_article .hemwk{background: url('http://static.mingyizhudao.com/147219201837545') no-repeat;background-position:-62px -35px;background-size: 200px 70px;}
-    #home_article .fuk{background: url('http://static.mingyizhudao.com/147219201837545') no-repeat;background-position:-159px 0px;background-size: 200px 70px;}
-    #home_article .xiaoewk{background: url('http://static.mingyizhudao.com/147219201837545') no-repeat;background-position:-96px -35px;background-size: 200px 70px;}
-</style>
+
 <?php
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $urlDoctorViewSearch = $this->createAbsoluteUrl('doctor/viewSearch');
