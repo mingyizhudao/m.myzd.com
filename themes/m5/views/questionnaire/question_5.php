@@ -140,9 +140,9 @@ if ($source == 0) {
                     if (data.status == 'ok') {
                         J.hideMask();
                         if ('<?php echo $source; ?>' == 0) {
-                            location.href = '<?php echo $urlDoctorSearch; ?>?source=1&disease_sub_category=2';
+                            location.href = '<?php echo $urlDoctorSearch; ?>?source=1&disease_sub_category=101';
                         } else {
-                            location.href = '<?php echo $urlDoctorSearch; ?>?app=1&source=1&disease_sub_category=2';
+                            location.href = '<?php echo $urlDoctorSearch; ?>?app=1&source=1&disease_sub_category=101';
                         }
                     }
                 },
