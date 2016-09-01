@@ -342,7 +342,12 @@ class Api2Controller extends Controller {
             case 'search':
                 $values = $_GET;
                 $values['name'] = urldecode($values['name']);
-                $apiService = new ApiViewSearch($values);
+                if($api>=14){
+                    $apiService = new ApiViewSearchV14($values);
+                }else{
+                    $apiService = new ApiViewSearch($values);
+                }
+
                 $output = $apiService->loadApiViewData();
                 break;
             case 'bookingstatus':

@@ -47,7 +47,7 @@ class ApiViewAppNav1V14 extends EApiViewService {
         if (is_null($this->disCategoryList)) {
             $this->disCategoryList = array();
             $disMgr = new DiseaseManager();
-            $models = $disMgr->loadDiseaseCategoryListV8();
+            $models = $disMgr->loadDiseaseCategoryListV7();
             if (arrayNotEmpty($models)) {
                 $this->setDiseaseCategoryList($models);
             }
