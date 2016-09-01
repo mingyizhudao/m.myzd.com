@@ -233,6 +233,7 @@ $this->show_footer = false;
             $('.hospitalDiseaseStat').click(function () {
                 var id = $(this).attr('data-id');
                 var name = $(this).attr('data-name');
+                alert(name);
                 diseaseStat(name);
                 location.href = '<?php echo $searchDept; ?>/disease/' + id + '/disease_name/' + name + '/page/1';
             });
