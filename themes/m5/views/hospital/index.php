@@ -51,7 +51,7 @@ $page = Yii::app()->request->getQuery('page', '');
 
         //返回时，更新城市
         if ('<?php echo $city ?>' == 0) {
-            $('#cityTitle').html('全部');
+            $('#cityTitle').html('全部地区');
             $('#cityTitle').attr('data-city', 0);
         } else if ('<?php echo $city ?>' != 1) {
             $.ajax({

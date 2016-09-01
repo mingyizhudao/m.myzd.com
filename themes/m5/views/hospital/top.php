@@ -134,7 +134,7 @@ $this->show_footer = false;
                     }
                 });
             } else {
-                $('#cityTitle').html('全部');
+                $('#cityTitle').html('全部地区');
                 $('#cityTitle').attr('data-city', '');
             }
 

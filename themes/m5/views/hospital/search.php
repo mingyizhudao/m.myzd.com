@@ -41,7 +41,7 @@ $this->show_footer = false;
     <nav id="selectCity" class="right">
         <div class="grid mt17">
             <div class="font-s16 col-0" id="cityTitle" data-city="0">
-                全部
+                全部地区
             </div>
             <div class="col-0 cityImg"></div>
         </div>
@@ -86,7 +86,7 @@ $this->show_footer = false;
 
         //首次进入，更新城市
         if ('<?php echo $city ?>' == 0) {
-            $('#cityTitle').html('全部');
+            $('#cityTitle').html('全部地区');
             $('#cityTitle').attr('data-city', 0);
         }
         if ('<?php echo $city ?>' != '') {
