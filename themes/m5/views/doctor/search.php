@@ -137,7 +137,6 @@ if ($sourceApp == 0) {
         $condition["city"] = '<?php echo $city ?>';
         $condition["disease"] = '<?php echo $disease; ?>';
         $condition["disease_name"] = '<?php echo $disease_name; ?>';
-        console.log($condition["disease_name"]);
         $condition["disease_category"] = '<?php echo $disease_category; ?>';
         $condition["disease_sub_category"] = '<?php echo $disease_sub_category; ?>';
         $condition["page"] = '<?php echo $page == '' ? 1 : $page; ?>';
@@ -163,7 +162,6 @@ if ($sourceApp == 0) {
             $.ajax({
                 url: '<?php echo $urlSearchDeptName; ?>' + '<?php echo $disease_name; ?>',
                 success: function (data) {
-                    console.log('<?php echo $disease_name; ?>');
                     //console.log(data);
                     var subCatName = data.results.subCatName;
                     subCatName = subCatName.length > 4 ? subCatName.substr(0, 3) + '...' : subCatName;
