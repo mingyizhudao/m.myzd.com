@@ -56,6 +56,7 @@ class ApiViewHospitalV4 extends EApiViewService {
         $data = new stdClass();
         $data->id = $model->getId();
         $data->name = $model->getName();
+        $data->ShortName = $model->getName(true);
         $data->class = $model->getClass();
         $data->type = $model->getType();
         $data->description = $model->getDescription();

@@ -49,6 +49,7 @@ class ApiViewTopHospital extends EApiViewService {
             $data->sort = $model->getSort();
             $this->tophospitals[] = $data;
         }
+        
     }
     
 
