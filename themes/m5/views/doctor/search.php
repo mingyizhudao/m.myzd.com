@@ -162,6 +162,7 @@ if ($sourceApp == 0) {
             $.ajax({
                 url: '<?php echo $urlSearchDeptName; ?>' + '<?php echo $disease_name; ?>',
                 success: function (data) {
+                    alert('<?php echo $disease_name; ?>');
                     //console.log(data);
                     var subCatName = data.results.subCatName;
                     subCatName = subCatName.length > 4 ? subCatName.substr(0, 3) + '...' : subCatName;
