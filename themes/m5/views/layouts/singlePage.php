@@ -13,7 +13,7 @@
         <meta name="keywords" content="<?php echo $this->pageKeywords;?>">
         <?php                                           
         Yii::app()->clientScript->registerCssFile('http://static.mingyizhudao.com/m/base.min.1.0.css');
-        Yii::app()->clientScript->registerCssFile('http://static.mingyizhudao.com/m/custom.min.2.3.css');
+        Yii::app()->clientScript->registerCssFile('http://static.mingyizhudao.com/m/custom.min.2.4.css');
         // Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/custom.min.css');
 
         Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/zepto.min.1.0.js', CClientScript::POS_HEAD);
