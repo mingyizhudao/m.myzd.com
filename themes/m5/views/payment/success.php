@@ -1,6 +1,7 @@
 <?php
 $this->setPageTitle('支付成功');
-$bookingDetails = $this->createUrl('booking/bookingDetails');
+// $bookingDetails = $this->createUrl('booking/bookingDetails');
+$urlUserView = $this->createUrl('user/view');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $this->show_footer = false;
 //modify by wanglei 
@@ -17,13 +18,7 @@ $SITE_14 = PatientStatLog::SITE_14;
 <header class="bg-green">
     <h1 class="title">支付成功</h1>
     <nav class="right">
-        <?php
-        if ($model->order_type == 'deposit') {
-            echo '<a href="' . $bookingDetails . '?id=' . $model->bk_id . '&status=1">确认</a>';
-        } else {
-            echo '<a href="' . $bookingDetails . '?id=' . $model->bk_id . '&status=5">确认</a>';
-        }
-        ?>
+        <a href=" <?php echo $urlUserView ?>">确认</a>
     </nav>
 </header>
 <article id="success_article" class="active" data-scroll="true">

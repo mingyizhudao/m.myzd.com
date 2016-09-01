@@ -138,10 +138,11 @@ $('#citySelect').tap(function () {
             '</nav>' +
             '<h1 class="title">' + dept +
             '</h1>' +
-            '<nav class="right">' +
+            '<nav class="right" data-target="closePopup">' +
             '<a id="citySelect" href="#">' +
             cityName +
             '</a>' +
+            '<div class="col-0 cityImg isSelectedCity"></div>' +
             '</nav>' +
             '</header>' +
             '<article id="findDept_article" class="active" data-scroll="true" style="position:static;">' + readyCity($cityData, cityId) +

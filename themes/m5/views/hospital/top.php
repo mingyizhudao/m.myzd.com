@@ -1,7 +1,7 @@
 <?php
 
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/findHospital.js?ts=' . time(), CClientScript::POS_END);
-// Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/findHospital.min.1.4.js', CClientScript::POS_END);
+// Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/findHospital.js?ts=' . time(), CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/findHospital.min.1.5.js', CClientScript::POS_END);
 ?>
 <?php
 $this->setPageTitle('外科推荐,外科哪家医院好_名医主刀网移动版');
@@ -43,6 +43,7 @@ $this->show_footer = false;
             <img src="http://static.mingyizhudao.com/146975853464574"  class="w24p">
         </a> -->
         <a id="citySelect" data-city="" href="javascript:;">全部地区</a>
+        <div class="col-0 cityImg"></div>
     </nav>
 </header>
 <!-- <nav id="findDept_nav" class="header-secondary bg-white">
@@ -108,7 +109,6 @@ $this->show_footer = false;
                 $.ajax({
                     url: '<?php echo $urlDeptName; ?>/' + '<?php echo $disease_sub_category; ?>',
                     success: function (data) {
-                        //console.log(data);
                         var deptName = data.results.name;
                         //deptName = deptName.length > 4 ? deptName.substr(0, 3) + '...' : deptName;
                         // $('#deptTitle').html(deptName);

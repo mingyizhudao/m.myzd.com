@@ -100,24 +100,24 @@ function deptSelect() {
         showCloseBtn: false
     });
 
-    $('.aDept').click(function (e) {
-        e.preventDefault();
-        var dataDept = $(this).attr('data-dept');
-        $('.aDept').each(function () {
-            if (dataDept == $(this).attr('data-dept')) {
-                $(this).addClass('activeIcon');
-            } else {
-                $(this).removeClass('activeIcon');
-            }
-        });
-        $('.bDept').each(function () {
-            if (dataDept == $(this).attr('data-dept')) {
-                $(this).removeClass('hide');
-            } else {
-                $(this).addClass('hide');
-            }
-        });
-    });
+    // $('.aDept').click(function (e) {
+    //     e.preventDefault();
+    //     var dataDept = $(this).attr('data-dept');
+    //     $('.aDept').each(function () {
+    //         if (dataDept == $(this).attr('data-dept')) {
+    //             $(this).addClass('activeIcon');
+    //         } else {
+    //             $(this).removeClass('activeIcon');
+    //         }
+    //     });
+    //     $('.bDept').each(function () {
+    //         if (dataDept == $(this).attr('data-dept')) {
+    //             $(this).removeClass('hide');
+    //         } else {
+    //             $(this).addClass('hide');
+    //         }
+    //     });
+    // });
 
     //c
     $('.cDept').click(function (e) {
@@ -550,32 +550,33 @@ function readyDept(data, deptId, catId) {
     if (results.length > 0) {
         for (var i = 0; i < results.length; i++) {
             if (results[i].id == catId) {
-                innerHtml += '<li class="aDept activeIcon" data-dept="' + results[i].id + '">' + results[i].name + '</li>';
+                innerHtml += '<li class="cDept activeIcon" data-dept="' + results[i].subCat[0].id + '">' + results[i].subCat[0].name + '</li>';
             } else {
-                innerHtml += '<li class="aDept" data-dept="' + results[i].id + '">' + results[i].name + '</li>';
+                innerHtml += '<li class="cDept" data-dept="' + results[i].subCat[0].id + '">' + results[i].subCat[0].name + '</li>';
             }
         }
-        innerHtml += '</ul></div><div id="secondDept" class="col-1 w50" data-scroll="true" data- style="height:315px;">'
-        for (var i = 0; i < results.length; i++) {
-            var subCat = results[i].subCat;
-            if (results[i].id == catId) {
-                innerHtml += '<ul class="bDept list" data-dept="' + results[i].id + '">';
-            } else {
-                innerHtml += '<ul class="bDept list hide" data-dept="' + results[i].id + '">';
-            }
-            if (subCat.length > 0) {
-                for (var j = 0; j < subCat.length; j++) {
-                    if (deptId == subCat[j].id) {
-                        innerHtml += '<li class="cDept activeIcon" data-cat="' + results[i].id + '" data-dept="' + subCat[j].id + '">' + subCat[j].name + '</li>';
-                    } else {
-                        innerHtml += '<li class="cDept" data-cat="' + results[i].id + '" data-dept="' + subCat[j].id + '">' + subCat[j].name + '</li>';
-                    }
-                }
-            }
-            innerHtml += '</ul>';
-        }
+        innerHtml += '</ul></div>';
+        // innerHtml += '</ul></div><div id="secondDept" class="col-1 w50" data-scroll="true" data- style="height:315px;">'
+        // for (var i = 0; i < results.length; i++) {
+        //     var subCat = results[i].subCat;
+        //     if (results[i].id == catId) {
+        //         innerHtml += '<ul class="bDept list" data-dept="' + results[i].id + '">';
+        //     } else {
+        //         innerHtml += '<ul class="bDept list hide" data-dept="' + results[i].id + '">';
+        //     }
+        //     if (subCat.length > 0) {
+        //         for (var j = 0; j < subCat.length; j++) {
+        //             if (deptId == subCat[j].id) {
+        //                 innerHtml += '<li class="cDept activeIcon" data-cat="' + results[i].id + '" data-dept="' + subCat[j].id + '">' + subCat[j].name + '</li>';
+        //             } else {
+        //                 innerHtml += '<li class="cDept" data-cat="' + results[i].id + '" data-dept="' + subCat[j].id + '">' + subCat[j].name + '</li>';
+        //             }
+        //         }
+        //     }
+        //     innerHtml += '</ul></div>';
+        // }
     }
-    innerHtml += '</div></div>';
+    innerHtml += '</div>';
     return innerHtml;
 }
 

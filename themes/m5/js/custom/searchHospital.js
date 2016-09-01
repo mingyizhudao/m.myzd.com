@@ -24,7 +24,7 @@ $('#selectCity').tap(function () {
             '<div class="grid mt17" data-target="closePopup">' +
             '<div class="font-s16 col-0" id="cityTitle" data-city="' + cityId + '">' + cityName +
             '</div>' +
-            '<div class="col-0 cityImg"></div>' +
+            '<div class="col-0 cityImg isSelectedCity"></div>' +
             '</div>' +
             '</nav>' +
             '</header>' +
