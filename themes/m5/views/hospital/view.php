@@ -140,10 +140,10 @@ $this->show_footer = false;
             }
         }
         innerHtml += '</div>';
-        if (hospital.name.length > 13) {
+        if (hospital.ShortName.length > 13) {
             $('.title').addClass('font-s16');
         }
-        $('#hosName').html(hospital.name);
+        $('#hosName').html(hospital.ShortName);
         var hosGrade = '<div class="col-1"></div>' +
                 '<div id="hosClass" class="col-0 pr5">' + hospital.class.substr(0, 2) + '</div>';
         if (hospital.type != '') {
