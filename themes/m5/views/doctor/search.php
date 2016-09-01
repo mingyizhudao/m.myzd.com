@@ -1,7 +1,6 @@
 <?php
 // Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/findDoc.js?ts=' . time(), CClientScript::POS_END);
-
-Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/findDoc.min.1.6.js', CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/findDoc.min.1.7.js', CClientScript::POS_END);
 ?>
 <?php
 $source = Yii::app()->request->getQuery('source', '0');
@@ -152,7 +151,6 @@ if ($sourceApp == 0) {
             $.ajax({
                 url: '<?php echo $urlDeptName; ?>/' + '<?php echo $disease_sub_category; ?>',
                 success: function (data) {
-                    //console.log(data);
                     var deptName = data.results.name;
                     deptName = deptName.length > 4 ? deptName.substr(0, 3) + '...' : deptName;
                     $('#deptTitle').html(deptName);

@@ -1,0 +1,661 @@
+﻿/*专题*/
+header h1.title{
+    font-size: 18px;
+    line-height: 1em;
+    top:15px;
+}
+header .control-group li.active {
+    background: #fff;
+}
+header .control-group li.active a {
+    color: #06c1ae;
+}
+header .control-group li>a {
+    color: #fff;
+}
+header nav{
+    padding: 0 15px;
+}
+footer{
+    background-color: #fff;
+}
+
+/*医院科室*/
+#hosDept_article .bgDiv{
+    padding:15px 10px 10px 10px;
+}
+#hosDept_nav #deptInf{
+    background: url('http://static.mingyizhudao.com/147072730476667') no-repeat;
+    background-size: 18px 15px;
+    padding-left: 30px;
+    background-position: 10px 16px;
+}
+#hosDept_nav .button, #hosDept_nav button{
+    padding: 8px 23px;
+}
+
+/*预约单*/
+#bookingIos_article input[type=text]{
+    margin-bottom:0px;
+    border: none!important;
+    border-radius: 0!important;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+    padding: 0!important;
+    height: 20px!important;
+}
+#bookingIos_article textarea{
+    margin-bottom:0px;
+    border: none!important;
+    border-radius: 0!important;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+    padding: 0!important;
+    height: 60px!important;
+}
+#bookingIos_article .ui-field-contain div.error {
+    color: #f00;
+}
+
+#bookingAndroid_article input[type=text]{
+    margin-bottom:0px;
+    border: none!important;
+    border-radius: 0!important;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+    padding: 0!important;
+    height: 20px!important;
+}
+#bookingAndroid_article textarea{
+    margin-bottom:0px;
+    border: none!important;
+    border-radius: 0!important;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+    padding: 0!important;
+    height: 60px!important;
+}
+#bookingAndroid_article .ui-field-contain div.error {
+    color: #f00;
+}
+
+
+
+/*预约医生*/
+#bookingDoc_nav .imgDiv{
+    width:70px;
+    height:70px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+#bookingDoc_nav .imgDoc{
+    display: block;
+    width: 100%;
+    border: 1px solid #ddd;
+    z-index: 0;
+}
+#bookingDoc_nav .doctorInf{
+    padding: 15px;
+    background-color: #ffffff;
+}
+@media screen and (min-width:361px){
+    #bookingDoc_nav .button{
+        padding:10px 20px 6px;
+    }
+}
+@media screen and (max-width:360px){
+    #bookingDoc_nav .button{
+        padding:8px 17px 4px;
+    }
+}
+#bookingDoc_article{
+    background-color: #eeeeee;
+}
+#bookingDoc_article .divSC{
+    padding: 15px;
+    margin: 10px 5px 0px;
+    background-color: #ffffff!important;
+    border-radius: 7px;
+}
+@media screen and (max-width:360px){
+    #bookingDoc_article .bgSC{
+        padding-left:25px;
+        background:url('http://static.mingyizhudao.com/14707273550097') no-repeat;
+        background-size:16px 16px;
+        background-position: 2px 0px;
+    }
+}
+@media screen and (min-width:361px){
+    #bookingDoc_article .bgSC{
+        padding-left:25px;
+        background:url('http://static.mingyizhudao.com/14707273550097') no-repeat;
+        background-size:22px 22px;
+    }
+}
+#bookingDoc_article .divHonor{
+    padding: 15px;
+    margin: 10px 5px 0px;
+    background-color: #ffffff!important;
+    border-radius: 7px;
+}
+@media screen and (max-width:360px){
+    #bookingDoc_article .bgHonor{
+        padding-left:25px;
+        background:url('http://static.mingyizhudao.com/147072740619864') no-repeat;
+        background-size:16px 16px;
+        background-position: 3px 0px;
+    }
+}
+@media screen and (min-width:361px){
+    #bookingDoc_article .bgHonor{
+        padding-left:25px;
+        background:url('http://static.mingyizhudao.com/147072740619864') no-repeat;
+        background-size:21px 17px;
+    }
+}
+#bookingDoc_article .bgStars{
+    padding-left:25px;
+    background:url('http://static.mingyizhudao.com/147062719719056') no-repeat;
+    background-size:11px 11px;
+    background-position:10px 3px;
+}
+#bookingDoc_article .divCareer{
+    padding: 15px;
+    margin: 10px 5px 0px;
+    background-color: #ffffff!important;
+    border-radius: 7px;
+}
+@media screen and (max-width:360px){
+    #bookingDoc_article .bgCareer{
+        padding-left:25px;
+        background:url('http://static.mingyizhudao.com/14707275392346') no-repeat;
+        background-size:16px 16px;
+        background-position: 2px 1px;
+    }
+}
+@media screen and (min-width:361px){
+    #bookingDoc_article .bgCareer{
+        padding-left:25px;
+        background:url('http://static.mingyizhudao.com/14707275392346') no-repeat;
+        background-size:21px 21px;
+    }
+}
+@media screen and (max-width:360px){
+    #bookingDoc_article .bgReason{
+        background: url('http://static.mingyizhudao.com/147072758863025') no-repeat;
+        background-size: 20px 20px;
+        padding-left: 25px;
+        background-position-y: 0px;
+    }
+}
+@media screen and (min-width:361px){
+    #bookingDoc_article .bgReason{
+        background: url('http://static.mingyizhudao.com/147072758863025') no-repeat;
+        background-size: 22px 22px;
+        padding-left: 25px;
+        background-position-y: 2px;
+    }
+}
+#bookingDoc_article .divTJ{
+    margin: 10px 5px 0px 5px;
+    border-radius: 7px;
+    background-color: #ffffff!important;
+    padding: 15px;
+    background: url('http://static.mingyizhudao.com/147072762688732') no-repeat;
+    background-size: 37px 37px;
+    background-position-y: 0;
+    background-position-x: 100%;
+}
+/*小页面字体设置*/
+@media screen and (max-width:360px){
+    #bookingDoc_article .aFontSize{
+        font-size: 14px;
+    }
+    #bookingDoc_article .bFontSize{
+        font-size: 12px;
+    }
+}
+
+/*找医生*/
+#findDoc_article .imgDoc{
+    display: block;
+    width: 100px;
+    border-radius: 5px;
+    z-index: 0;
+    overflow: hidden;
+}
+#findDoc_article select{
+    text-align: center;
+    background-color: #ffffff;
+    background-image: inherit;
+    border: 1px solid #cccccc;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+    padding: 10px 15px 10px 10px;
+}
+#findDoc_article .sign{
+    font-size:12px;
+    text-align:center;
+    background-color:#ee7635;
+    color:#fff;
+    border-radius:3px;
+}
+#findDoc_article #highDept ul.list{
+    background-color: #efefef;
+}
+#findDoc_article #highDept ul.list>li{
+    border-bottom: 1px solid #efefef;
+}
+#findDoc_article #secondDept ul.list>li{
+    border-bottom: 1px solid #efefef;
+}
+#findDoc_article #diseaseList ul.list>li{
+    border-bottom: 1px solid #efefef;
+}
+#findDoc_article #leftCity{
+    background-color: #efefef;
+}
+#findDoc_article #rightCity{
+    background-color: #fff;
+}
+#findDoc_article #leftCity ul.list{
+    background-color: #efefef;
+}
+#findDoc_article #leftCity ul.list>li{
+    border-bottom: 1px solid #efefef;
+}
+#findDoc_article #rightCity ul.list>li{
+    border-bottom: 1px solid #efefef;
+}
+#findDoc_article .button, button{
+    padding: 10px 10px;
+}
+#findDoc_nav .grayImg>img{
+    margin-left:10px;
+    width:10px;
+    height:10px;
+}
+
+/*找科室*/
+#findDept_header nav span:not(.button)>.icon {
+    font-size: 1em;
+    float: right;
+}
+#findDept_header nav.selectCity {
+    padding: 0px 10px;
+}
+#findDept_header #cityTitle{
+    line-height: 1em;
+}
+#findDept_header .cityImg{
+    background: url('http://static.mingyizhudao.com/147062685064685') no-repeat;
+    background-size: 15px 8px;
+    width:15px;
+    background-position-y: 5px;
+}
+#findDept_article .list>li{
+    border-bottom:1px solid #c2c2c2;
+}
+#findDept_article .list>li.nextImg{
+    background: url('http://static.mingyizhudao.com/147062693031054') no-repeat;
+    background-position: 95% 50%;
+    background-size: 8px 15px;
+}
+#findDept_article #leftDept{
+    background-color: #efefef;
+}
+#findDept_article #leftDept ul.list{
+    background-color: #efefef;
+}
+#findDept_article #leftDept ul.list>li{
+    border-bottom: 1px solid #efefef;
+}
+#findDept_article #rightDept ul.list>li{
+    border-bottom: 1px solid #efefef;
+}
+#findDept_article #leftCity{
+    background-color: #efefef;
+}
+#findDept_article #leftCity ul.list{
+    background-color: #efefef;
+}
+#findDept_article #leftCity ul.list>li{
+    border-bottom: 1px solid #efefef;
+}
+#findDept_article #rightCity ul.list>li{
+    border-bottom: 1px solid #efefef;
+}
+#findDept_nav .grayImg>img{
+    margin-left:10px;
+    width:10px;
+    height:10px;
+}
+#findDept_article .button, button{
+    padding: 10px 10px;
+}
+#findDept_article select{
+    text-align: center;
+    background-color: #ffffff;
+    background-image: inherit;
+    border: 1px solid #cccccc;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+    padding: 10px 15px 10px 10px;
+}
+
+/*搜索科室*/
+#searchDept_header nav span:not(.button)>.icon {
+    font-size: 1em;
+    float: right;
+}
+#searchDept_header nav.selectCity {
+    padding: 0px 10px;
+}
+#searchDept_header #cityTitle{
+    line-height: 1em;
+}
+#searchDept_header .cityImg{
+    background: url('http://static.mingyizhudao.com/147062685064685') no-repeat;
+    background-size: 15px 8px;
+    width:15px;
+    background-position-y: 5px;
+}
+#searchDept_article .list>li{
+    border-bottom:1px solid #c2c2c2;
+}
+#searchDept_article .list>li.nextImg{
+    background: url('http://static.mingyizhudao.com/147062693031054') no-repeat;
+    background-position: 95% 50%;
+    background-size: 8px 15px;
+}
+#searchDept_article #leftCity{
+    background-color: #efefef;
+}
+#searchDept_article #leftCity ul.list{
+    background-color: #efefef;
+}
+#searchDept_article #leftCity ul.list>li{
+    border-bottom: 1px solid #efefef;
+}
+#searchDept_article #rightCity ul.list>li{
+    border-bottom: 1px solid #efefef;
+}
+#searchDept_article .button, button{
+    padding: 10px 10px;
+}
+#searchDept_article select{
+    text-align: center;
+    background-color: #ffffff;
+    background-image: inherit;
+    border: 1px solid #cccccc;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+    padding: 10px 15px 10px 10px;
+}
+
+/*首页*/
+#home_header{
+    line-height: normal;
+    display: inline;
+}
+#home_header .searchDiv{
+    background: url('http://static.mingyizhudao.com/147072792051846') no-repeat;
+    background-position: 17px 5px;
+    background-size: 14px;
+    margin: 8px auto 0px;
+    border-radius:5px;
+    color:#333;
+    padding:5px 5px 5px 42px!important;
+    background-color: #fff;
+    text-align: left;
+}
+#home_article .bx-pager{
+    background-color: transparent;
+    bottom: 0px;
+    z-index: 99;
+}
+#home_article .bx-wrapper{
+    margin: 0 auto 20px;
+}
+#home_article .sliderImg img{
+    width:100%;
+}
+@media screen and (min-width:300px){
+    #home_article .mtSize{
+        margin-top:20px;
+    }
+}
+@media screen and (min-width:350px){
+    #home_article .mtSize{
+        margin-top:30px;
+    }
+}
+
+/*搜索页面*/
+header#search_header{
+    border-bottom: inherit;
+}
+#search_header input[type=text]{
+    color:#000;
+    background-color:#E7E8EA;
+    margin-bottom:0px;
+    border-radius: 5px!important;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+    padding: 15px!important;
+    height: 20px!important;
+    border:none!important;
+    margin-top: 7px;
+}
+#search_header .borderLine{
+    /*    height:5px;
+        border-bottom:1px solid #fff;
+        border-left:1px solid #fff;
+        border-right:1px solid #fff;*/
+}
+#search_header .lineDiv{
+    /*    position:fixed;
+        top:33px;
+        width:100%;*/
+}
+#search_header .title ::-webkit-input-placeholder { /* WebKit browsers */
+    color: #000;
+}
+#search_header .title :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #000;
+}
+#search_header .title ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #000;
+}
+#search_header .title :-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #000;
+}
+#search_atricle .blueButton{
+    padding: 5px 10px;
+    background-color: #00B7EE;
+    color: #fff;
+}
+#search_atricle .greenButton{
+    padding: 5px 10px;
+    background-color: #06C1AE;
+    color: #fff;
+}
+#search_atricle #moreDoctor{
+    background: url('http://static.mingyizhudao.com/147072797063699') no-repeat;
+    background-size: 16px;
+    background-position: 10px 16px;
+    padding-left: 35px;
+}
+#search_atricle #moreDisease{
+    background: url('http://static.mingyizhudao.com/147072797063699') no-repeat;
+    background-size: 16px;
+    background-position: 10px 16px;
+    padding-left: 35px;
+}
+
+/*应用于所有页面*/
+header{
+    border-bottom:1px solid #09a697;
+}
+.header-secondary {
+    height: 40px;
+}
+#findDoc_nav.header-secondary {
+    height: 50px;
+}
+#hosDept_nav.header-secondary {
+    height: 50px;
+}
+
+/**** order ****/
+#order{line-height: 2em;font-size: 18px;padding: 1em;}
+#order .order-content{color: #333;font-size: 16px;}
+#order .order-content .title{display: inline-block;width: 5em;font-size: 16px;}
+#order .ch{text-align:center;}
+#order  .up{background-color: #e4e4e4;border:1px solid #ddd!important;border-radius:10px;background-position:center;background-repeat:no-repeat;width:190px!important;margin:5px auto 0!important;padding:10px!important;}
+#order .alipay{background-image: url('http://static.mingyizhudao.com/146967393574041');}
+#order .yeepay{background-image: url('http://static.mingyizhudao.com/14696739647743');}
+#order .weixin{background-image: url('http://static.mingyizhudao.com/146967398730692');}
+
+/*预约单列表*/
+#orderList_article .order_list {
+    font-size: 14px;
+    color: #000;
+    padding-top: 10px;
+    padding-left: 14px;
+}
+#orderList_article .orderDiv{
+    margin-top: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+.imgpopup {
+    padding: 2.3em;
+    background-color: rgba(0,0,0,0.3);
+}
+.imgpopup>img {
+    display: block;
+    margin: 0 auto;
+}
+img {
+    max-width: 100%;
+}
+
+/*科室下医生列表*/
+#hospitalDept_article .img80 {
+    display: block;
+    margin: 10px auto 0;
+    width: 80px;
+    height: 80px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    z-index: 0;
+    overflow: hidden;
+}
+#hospitalDept_article .team-name {
+    font-size: 18px;
+    color: #000;
+}
+#hospitalDept_article .team-hospital {
+    color: #000;
+}
+
+/*快速预约*/
+#quickBookIos_article .ui-field-contain div.error {
+    color: #f00;
+}
+
+#quickBookAndroid .bookingConfirm {
+    top: 50%!important;
+    left: 5%!important;
+    right: 5%!important;
+    border-radius: 3px!important;
+    display: block!important;
+    margin-top: -55px!important;
+    position: fixed!important;
+}
+#quickBookAndroid .bookingDiv {
+    height: 100px!important;
+    text-align: center!important;
+    font-size: 20px!important;
+    font-weight: 600!important;
+    margin-top: 10px!important;
+    color: #222!important;
+}
+#quickBookAndroid .ui-field-contain div.error {
+    color: #f00;
+}
+
+/*弹窗*/
+.popup-title {
+    text-align: center;
+    font-size: 20px;
+}
+.popup-content {
+    text-align: center;
+    padding: 0 10px 10px;
+    line-height: 1.2em;
+}
+
+/*加载中*/
+#loading_popup.loading {
+}
+#loading_popup {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 98;
+    min-height: 50px;
+    background-color: #2C3E50;
+    border-radius: 10px;
+    width: 150px;
+    height: 150px;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    margin: -75px 0 0 -75px;
+    opacity: .9;
+}
+#loading_popup.loading i.icon {
+    color: #fff;
+}
+#loading_popup.loading i.icon {
+    font-size: 4em;
+    line-height: 110px;
+    margin: 0;
+}
+#loading_popup.loading p {
+    color: #BDC3C7;
+}
+
+/*七牛上传*/
+.android_article .progressName{
+    word-break:break-all;
+    word-wrap:break-word;
+}
+.android_article .table-striped>tbody>tr:nth-child(odd)>td,.table-striped>tbody>tr:nth-child(odd)>th{
+    background-color:#fff;
+}
+.android_article .table>thead>tr>th,.table>tbody>tr>th,.table>tfoot>tr>th,.table>thead>tr>td,.table>tbody>tr>td,.table>tfoot>tr>td{
+    border-top:inherit;
+    padding:0;
+}
+.android_article tr .progressCancel{
+    font-size:30px;
+    color:#ff1818;
+    line-height:22px;
+}
+.android_article #container{
+    margin-bottom:0;
+}
+.android_article .btn-default{
+    background-color:#19aea5!important;
+}
+.android_article .body .btn-default{
+    border:inherit;
+    color:#fff;
+}
+.android_article .btn{
+    padding:3px 10px;
+}

@@ -1,11 +1,10 @@
 <?php
 
 // Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/findHospital.js?ts=' . time(), CClientScript::POS_END);
-
-Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/findHospital.min.1.4.js', CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/findHospital.min.1.5.js', CClientScript::POS_END);
 ?>
 <?php
-$this->setPageTitle('外科科室推荐,外科科室哪家医院好_名医主刀网移动版');
+$this->setPageTitle('外科推荐,外科哪家医院好_名医主刀网移动版');
 $this->setPageDescription('名医主刀网为您提供国内医院预约手术,医院排行榜,医院大全,医院哪家好等权威信息;助您在第一时间找到好医院,以最快的时间预约医院并安排手术,网上预约手术就看名医主刀网。');
 $this->setPageKeywords('外科科室哪家医院好');
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
@@ -40,12 +39,14 @@ $this->show_footer = false;
     <h1 class="title">
     </h1>
     <nav class="right">
-        <a onclick="javascript:location.reload()">
+        <!-- <a onclick="javascript:location.reload()">
             <img src="http://static.mingyizhudao.com/146975853464574"  class="w24p">
-        </a>
+        </a> -->
+        <a id="citySelect" data-city="" href="javascript:;">全部地区</a>
+        <div class="col-0 cityImg"></div>
     </nav>
 </header>
-<nav id="findDept_nav" class="header-secondary bg-white">
+<!-- <nav id="findDept_nav" class="header-secondary bg-white">
     <div class="grid w100 color-black font-s16 color-black6">
         <div id="deptSelect" class="col-1 w50 br-gray bb-gray grid middle grayImg">
             <span id="deptTitle" data-dept=""></span><img src="http://static.mingyizhudao.com/146735870119173">
@@ -54,8 +55,8 @@ $this->show_footer = false;
             <span id="cityTitle" data-city=""></span><img src="http://static.mingyizhudao.com/146735870119173">
         </div>
     </div>
-</nav>
-<article id="findDept_article" class="active pt20" data-scroll="true">
+</nav> -->
+<article id="findDept_article" class="active" data-scroll="true">
     <div id="hospitalPage">
     </div>
 </article>
@@ -68,23 +69,23 @@ $this->show_footer = false;
         $innerDeptId = '<?php echo $innerDeptId; ?>';
         $diseaseData = '';
         $deptHtml = '';
-        var urlloadDiseaseCategory = '<?php echo $urlDiseasecategory; ?>';
-        $.ajax({
-            url: urlloadDiseaseCategory,
-            async: false,
-            success: function (data) {
-                //console.log(data);
-                $diseaseData = data;
-                var results = data.results;
-                if (results.length > 0) {
-                    for (var i = 0; i < results.length; i++) {
-                        if ($innerDeptId == results[i].id) {
-                            $('#findDept_header .title').html(results[i].name);
-                        }
-                    }
-                }
-            }
-        });
+        // var urlloadDiseaseCategory = '<?php echo $urlDiseasecategory; ?>';
+        // $.ajax({
+        //     url: urlloadDiseaseCategory,
+        //     async: false,
+        //     success: function (data) {
+        //         //console.log(data);
+        //         $diseaseData = data;
+        //         var results = data.results;
+        //         if (results.length > 0) {
+        //             for (var i = 0; i < results.length; i++) {
+        //                 if ($innerDeptId == results[i].id) {
+        //                     $('#findDept_header .title').html(results[i].name);
+        //                 }
+        //             }
+        //         }
+        //     }
+        // });
 
         ready('<?php echo $disease_sub_category; ?>');
         function ready(readyDeptId) {
@@ -108,10 +109,10 @@ $this->show_footer = false;
                 $.ajax({
                     url: '<?php echo $urlDeptName; ?>/' + '<?php echo $disease_sub_category; ?>',
                     success: function (data) {
-                        //console.log(data);
                         var deptName = data.results.name;
                         //deptName = deptName.length > 4 ? deptName.substr(0, 3) + '...' : deptName;
-                        $('#deptTitle').html(deptName);
+                        // $('#deptTitle').html(deptName);
+                        $('#findDept_header .title').html(deptName);
                         $('#deptTitle').attr('data-dept', data.results.id);
                     }
                 });
@@ -119,7 +120,7 @@ $this->show_footer = false;
 
             //首次进入，更新城市
             if ('<?php echo $city; ?>' == 0) {
-                $('#cityTitle').html('全部');
+                $('#cityTitle').html('全部地区');
                 $('#cityTitle').attr('data-city', '0');
             } else if ('<?php echo $city; ?>' != '') {
                 $.ajax({

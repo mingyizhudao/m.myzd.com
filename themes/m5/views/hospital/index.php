@@ -1,7 +1,6 @@
 <?php
 // Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/custom/hospitalIndex.js?ts=' . time(), CClientScript::POS_END);
-
-Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/hospitalIndex.min.1.4.js', CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile('http://static.mingyizhudao.com/m/hospitalIndex.min.1.5.js', CClientScript::POS_END);
 ?>
 <?php
 $this->setPageTitle('上海医院排行,哪家医院好,床位预约_名医主刀网移动版');
@@ -20,13 +19,19 @@ $page = Yii::app()->request->getQuery('page', '');
 ?>
 
 <header id="hospital_header" class="bg-green">
-    <nav id="selectCity" class="left">
+    <!-- <nav id="selectCity" class="left">
+        <div class="grid mt17">
+            <div id="cityTitle" class="font-s16 col-0" data-city=""></div>
+            <div class="col-0 cityImg"></div>
+        </div>
+    </nav> -->
+    <h1 class="title">推荐</h1>
+    <nav id="selectCity" class="right">
         <div class="grid mt17">
             <div id="cityTitle" class="font-s16 col-0" data-city=""></div>
             <div class="col-0 cityImg"></div>
         </div>
     </nav>
-    <h1 class="title">推荐</h1>
 </header>
 <article id="hospital_article" data-active="hospital_footer" class="active" data-scroll="true">
     <div>

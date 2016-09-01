@@ -4,7 +4,6 @@ $searchName = Yii::app()->request->getQuery('name', '');
 $type = Yii::app()->request->getQuery('type', '');
 $searchDoc = $this->createUrl("doctor/search");
 $searchDept = $this->createUrl("hospital/search");
-
 $urlDoctorView = $this->createAbsoluteUrl('doctor/view');
 $urlHospitalView = $this->createAbsoluteUrl('hospital/view').'/id';
 $urlHomeView = Yii::app()->request->hostInfo;
