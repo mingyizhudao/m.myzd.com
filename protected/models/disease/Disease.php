@@ -100,7 +100,7 @@ class Disease extends EActiveRecord {
         ));
     }
 
-    public function getByName($name,$app_version = 8) {
+    public function getByName($name,$app_version = 7) {
         $criteria = new CDbCriteria();
         $criteria->addCondition('t.date_deleted is NULL');
         $criteria->addSearchCondition('name', $name);
