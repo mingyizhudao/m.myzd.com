@@ -139,7 +139,7 @@ $('#citySelect').tap(function () {
             '<h1 class="title">' + dept +
             '</h1>' +
             '<nav class="right" data-target="closePopup">' +
-            '<a id="citySelect" href="#">' +
+            '<a id="citySelect" href="javascript:;">' +
             cityName +
             '</a>' +
             '<div class="col-0 cityImg isSelectedCity"></div>' +
@@ -206,7 +206,7 @@ function readyHospital(data) {
             for (var i = 0; i < results.length; i++) {
                 innerHtml += '<li class="">' +
                         '<a href="' + $requestDepartment + '/id/' + results[i].hp_dept_id + '">' +
-                        '<div class="font-s16 color-black">' + results[i].name + '</div>' +
+                        '<div class="font-s16 color-black">' + results[i].ShortName + '</div>' +
                         '<div class="color-black6">医院实际科室名称:' + results[i].hp_dept_name + '</div>' +
                         '</a>' +
                         '</li>';

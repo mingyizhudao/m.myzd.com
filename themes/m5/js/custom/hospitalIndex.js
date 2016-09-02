@@ -12,7 +12,7 @@ $('#selectCity').tap(function (e) {
             '<h1 class="title">推荐</h1>' +
             '<nav id="selectCity" class="right" data-target="closePopup">' +
             '<div class="grid mt17">' +
-            '<div id="cityTitle" class="font-s16 col-0" data-city="' + cityId + '">' + cityName + '</div>'+
+            '<div id="cityTitle" class="font-s16 col-0" data-city="' + cityId + '">' + cityName + '</div>' +
             '<div class="col-0 cityImg isSelectedCity"></div>' +
             '</div>' +
             '</nav>' +
@@ -55,26 +55,26 @@ function readyHospital(data) {
     var innerHtml = '<div><div><a href="' + $urlTopHospital + '"><img src="http://static.mingyizhudao.com/146423335398248" class="w100"></a></div>'
     if (hospitals.length > 0) {
         for (var i = 0; i < hospitals.length; i++) {
-            innerHtml += '<ul class="list">'+'<li>' +
+            innerHtml += '<ul class="list">' + '<li>' +
                     '<a href="' + $requestHospitalView + '/id/' + hospitals[i].id + '">' +
                     '<div class="pl10">' +
-                    '<div class="font-s16 color-black10">' + hospitals[i].name + '</div>' +
+                    '<div class="font-s16 color-black10">' + hospitals[i].ShortName + '</div>' +
                     '<div class="color-black6 pt5"><span class="hpClassBg">' + hospitals[i].hpClass + '<span></div>' +
                     '</div>' +
                     '</a>' +
-                    '</li>'+'</ul></div>';
+                    '</li>' + '</ul></div>';
         }
     } else {
-        innerHtml +=  '<div class="pad10 text-center">'+
-                '<div class="pt50">'+
-                '<img src="http://static.mingyizhudao.com/147142841787362" class="w63p">'+
-                '</div>'+
-                '<div class="pt10 color-gray">'+
-                '该地区暂无顶尖医院科室推荐'+
+        innerHtml += '<div class="pad10 text-center">' +
+                '<div class="pt50">' +
+                '<img src="http://static.mingyizhudao.com/147142841787362" class="w63p">' +
+                '</div>' +
+                '<div class="pt10 color-gray">' +
+                '该地区暂无顶尖医院科室推荐' +
                 '</div>' +
                 '</div>';
     }
-    
+
     $('#hospital_article').html(innerHtml);
     J.hideMask();
 }
