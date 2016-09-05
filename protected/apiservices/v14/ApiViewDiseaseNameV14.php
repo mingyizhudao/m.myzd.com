@@ -1,6 +1,6 @@
 <?php
 
-class ApiViewDiseaseName extends EApiViewService {
+class ApiViewDiseaseNameV14 extends EApiViewService {
     public function __construct($values) {
         parent::__construct();
         $this->disease_name = isset($values['disease_name']) ? $values['disease_name'] : null;
@@ -24,7 +24,7 @@ class ApiViewDiseaseName extends EApiViewService {
         $disease = new Disease();
         $data = new stdClass();
         if(!empty($this->disease_name)){
-            $model = $disease->getByName($this->disease_name,8);
+            $model = $disease->getByName($this->disease_name, 8);
             if (isset($model)) {
                 $data->id = $model->getId();
                 $data->name = $model->getName();

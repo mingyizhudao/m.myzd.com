@@ -132,7 +132,11 @@ class Api2Controller extends Controller {
                 break;
             // app v2.0 api
             case "appnav1"://首屏接口
-                if ($api >= 13) {
+                if ($api >= 14) {
+                    set_time_limit(0);
+                    $apiService = new ApiViewAppNav1V14();
+                    $output = $apiService->loadApiViewData();
+                }elseif ($api >= 13) {
                     $apiService = new ApiViewAppNav1V13();
                     $output = $apiService->loadApiViewData();
                 }elseif ($api >= 9) {
@@ -328,13 +332,22 @@ class Api2Controller extends Controller {
                 break;
             case 'diseasename'://根据疾病名称获取疾病信息
                 $values = $_GET;
-                $apiService = new ApiViewDiseaseName($values);
+                if($api>=14){
+                    $apiService = new ApiViewDiseaseNameV14($values);
+                }else{
+                    $apiService = new ApiViewDiseaseNameV7($values);
+                }
                 $output = $apiService->loadApiViewData();
                 break;
             case 'search':
                 $values = $_GET;
                 $values['name'] = urldecode($values['name']);
-                $apiService = new ApiViewSearch($values);
+                if($api>=14){
+                    $apiService = new ApiViewSearchV14($values);
+                }else{
+                    $apiService = new ApiViewSearch($values);
+                }
+
                 $output = $apiService->loadApiViewData();
                 break;
             case 'bookingstatus':
@@ -345,6 +358,12 @@ class Api2Controller extends Controller {
                 $values = $_GET;
                 $user = $this->userLoginRequired($values,true);
                 $apiService = new ApiViewOrderStatusCount($user);
+                $output = $apiService->loadApiViewData();
+                break;
+            case 'categorydisease':
+                $values = $_GET;
+                set_time_limit(0);
+                $apiService = new ApiViewAppCategoryDisease();
                 $output = $apiService->loadApiViewData();
                 break;
             default:
@@ -399,7 +418,10 @@ class Api2Controller extends Controller {
 
                 break;
             case 'doctor':
-                if ($api >= 12) {
+                if ($api >= 14) {
+                    $apiService = new ApiViewDoctorV14($id);
+                    $output = $apiService->loadApiViewData();
+                }elseif ($api >= 12) {
                     $apiService = new ApiViewDoctorV12($id);
                     $output = $apiService->loadApiViewData();
                 }elseif ($api >= 8) {

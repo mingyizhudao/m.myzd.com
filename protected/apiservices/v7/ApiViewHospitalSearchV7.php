@@ -62,6 +62,7 @@ class ApiViewHospitalSearchV7 extends EApiViewService {
             $data = new stdClass();
             $data->hospital_id = $hospital->getId();
             $data->name = $hospital->getName();
+            $data->ShortName = $hospital->getName(true);
             $data->imageUrl = $hospital->getAbsUrlAvatar();
 
             $hospitalDept = $model->getHpDept();

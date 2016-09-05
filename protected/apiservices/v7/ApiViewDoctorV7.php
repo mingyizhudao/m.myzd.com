@@ -122,7 +122,7 @@ class ApiViewDoctorV7 extends EApiViewService {
     }
 
     public function setNavigation($subCatId){
-        $model = DiseaseCategory::model()->getBySubCatId($subCatId);
+        $model = DiseaseCategory::model()->getBySubCatId($subCatId,8);
         $data = new stdClass();
         $data->cate_id = $model->getCategoryId();
         $data->cate_name = $model->getCategoryName();
