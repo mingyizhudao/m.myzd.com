@@ -7,12 +7,13 @@ class ApiWapController extends Controller {
      * Key which has to be in HTTP USERNAME and PASSWORD headers 
      */
     Const APPLICATION_ID = 'ASCCPE';
-
     /**
      * Default response format
      * either 'json' or 'xml'
      */
     private $format = 'json';
+
+    
 
     /**
      * @return array action filters
@@ -22,6 +23,13 @@ class ApiWapController extends Controller {
     }
 
     public function init() {
+ 
+      // $newmongmanage=new UserTokenManager();
+       //$condition=array("user_id"=>5000);
+       //$order=array("_id"=>EMongoCriteria::SORT_DESC);   
+      // $newlist=$newmongmanage->SelectOne($condition,$order);
+
+  
         header("Access-Control-Allow-Origin: *");
         //header('Access-Control-Allow-Origin:http://m.mingyizhudao.com');
         header('Access-Control-Allow-Headers: X-Requested-With');
@@ -30,9 +38,15 @@ class ApiWapController extends Controller {
         return parent::init();
     }
 
+   
+    
+ 
+
   // Actions
     public function actionList($model) {
+     
         $api = $this->getApiVersionFromRequest();
+       
         // Get the respective model instance
         switch ($model) {
             // 医院列表
@@ -41,6 +55,8 @@ class ApiWapController extends Controller {
                 break;
                 // 城市列表
             
+
+                
             default:
                 // Model not implemented error
                 //$this->_sendResponse(501, sprintf('Error: Mode <b>list</b> is not implemented for model <b>%s</b>', $model));
@@ -60,6 +76,7 @@ class ApiWapController extends Controller {
     }
 
     public function actionView($model, $id) {
+
         // Check if id was submitted via GET
         if (isset($id) === false) {
             $this->_sendResponse(500, 'Error: Parameter <b>id</b> is missing');
@@ -147,7 +164,28 @@ class ApiWapController extends Controller {
                        $output['errorMsg'] = 'Wrong parameters.';
                    }
                 break;
-          
+              case 'userlogin':   // remote user login.
+                if (isset($post['userLogin'])) {
+                    // get user ip from request.
+                    $values = $post['userLogin'];
+                    $values['userHostIp'] = Yii::app()->request->userHostAddress;
+                    $authMgr = new UserTokenManager();
+                    $output = $authMgr->apiTokenUserLoginByPassword($values);
+                } else {
+                    $output['errorMsg'] = 'Wrong parameters.';
+                }
+                break;
+                case 'userregister':    // remote user register.
+                if (isset($post['userRegister'])) {
+                    $values = $post['userRegister'];
+                    $values['userHostIp'] = Yii::app()->request->userHostAddress;
+                    $userMgr = new UserManager();
+                    $values['autoLogin']= true;
+                    $output = $userMgr->apiTokenUserRegister($values);
+                } else {
+                    $output['errorMsg'] = 'Wrong parameters.';
+                }
+                break;
             default:
                 $this->_sendResponse(501, sprintf('Error: Invalid request', $model));
                 Yii::app()->end();
