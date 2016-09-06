@@ -34,7 +34,7 @@ $this->show_footer = false;
             <div class="font-s12 pt5 color-gray8">
                 名医主刀<span class="ml7">2016-07-26</span>
             </div>
-            <div class="font-s14 mt10 grayBg text-justify colorH">
+            <div class=" mt10 grayBg text-justify c-black">
                 <div class="text-indent-2">
                 2016年7月，我们在安徽宿州一家医院里看到了这对可怜的老夫妻。躺在病床上的老人名叫郑安详，今年60岁。但他的晚年并不像他的名字那样安详。
                 </div>

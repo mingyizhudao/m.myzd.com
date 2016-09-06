@@ -10,6 +10,7 @@ if ($showApp == 1) {
     $this->setPageDescription('让每一位患者在名医主刀“好看病，看好病”是我们不变的宗旨,名医主刀可以给患者带去更多的希望,不仅可以帮助患者尽快预约到专家,还能大大节省患者等待床位的时间,让患者得到最快的治疗。');
     $urlEventStoryOne = $this->createUrl('event/view', array('page' => 'storyOne'));
     $urlEventLifeExpect=$this->createUrl('event/view',array('page'=>'lifeExpect'));
+    $urlEventLoveOperation=$this->createUrl('event/view',array('page'=>'loveOperation'));
     $urlEventStoryTwo = $this->createUrl('event/view', array('page' => 'storyTwo'));
     $urlEventStoryThree = $this->createUrl('event/view', array('page' => 'storyThree'));
     $urlEventEightHour = $this->createUrl('event/view', array('page' => 'storyEightHour'));
@@ -44,6 +45,7 @@ if ($showApp == 1) {
     $urlEventStoryOne = $this->createUrl('event/view', array('page' => 'storyOne', 'header' => '0'));
     $urlEventStoryTwo = $this->createUrl('event/view', array('page' => 'storyTwo', 'header' => '0'));
     $urlEventLifeExpect=$this->createUrl('event/view',array('page'=>'lifeExpect','header'=>'0'));
+     $urlEventLoveOperation=$this->createUrl('event/view',array('page'=>'loveOperation','header'=>'0'));
     $urlEventStoryThree = $this->createUrl('event/view', array('page' => 'storyThree', 'header' => '0'));
     $urlEventEightHour = $this->createUrl('event/view', array('page' => 'storyEightHour', 'header' => '0'));
     $urlEventThyroid = $this->createUrl('event/view', array('page' => 'thyroid', 'header' => '0'));
@@ -173,8 +175,21 @@ if ($showPage == 0) {
 </article>
 <article id="story_article" class="<?php echo $showStory; ?>" data-scroll="true" data-active="find_footer">
     <div class="text-justify">
+
+        <div class="mt10 bg-white">
+            <a href="<?php echo $urlEventLoveOperation; ?>">
+                <div class="grid color-black10">
+                    <div class="col-1 w40">
+                        <img src="http://static.mingyizhudao.com/147313181236776">
+                    </div>
+                    <div class="col-1 w60 font-s17 vertical-center pl20 pr20 pt20 pb20">
+                        名医公益行，潍坊爱心手术！
+                    </div>
+                </div>
+            </a>
+        </div> 
         
-       <div class="mt10 bg-white"style="">
+       <div class="mt10 bg-white">
             <a href="<?php echo $urlEventLifeExpect; ?>">
                 <div class="grid color-black10">
                     <div class="col-1 w40">
