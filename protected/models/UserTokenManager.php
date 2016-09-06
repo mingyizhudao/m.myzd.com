@@ -27,5 +27,28 @@ class UserTokenManager{
         $UserTokenMongo = UserTokenMongo::model()->findAll($criteria);
         return $UserTokenMongo[0];
     }
+    //删除mongodb从ID中
+    //params---------$_id
+    //return-----------无
+    public function DeleteById($_id){
+        $modelmongodb=new UserTokenMongo();
+        $modelmongodb->_id=new MongoId($_id);
+        $modelmongodb->delete();
+    }
+    //当前对象删除
+    public function DeleteByModel($model){
+        $modelmongodb=new UserTokenMongo();
+        $modelmongodb=$model;
+        $modelmongodb->delete();
+    }
+     //当前对象更新
+     public function UpdateByModel($model){
+        $modelmongodb=new UserTokenMongo();
+        $modelmongodb=$model;
+        $modelmongodb->update();
+        
+    }
+    
+  
 }  
 ?>
