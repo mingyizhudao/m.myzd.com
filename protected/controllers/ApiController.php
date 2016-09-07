@@ -469,7 +469,6 @@ class ApiController extends Controller {
                 if (isset($post['userLogin'])) {
                     // get user ip from request.
                     $values = $post['userLogin'];
-
                     $values['userHostIp'] = Yii::app()->request->userHostAddress;
                     $authMgr = new AuthManager();
                     $output = $authMgr->apiTokenUserLoginByMobile($values);
@@ -569,7 +568,15 @@ class ApiController extends Controller {
                     $model = new StatManager();
                     $output = $model->createAppLogStat($values);
                 }
-                break;
+            break;
+            //免费咨询
+            case 'feedbackwifi':
+                 if(isset($post['wifi'])){
+                    $values = $post['wifi'];
+                    $model = new FeedbackManager();
+                    $output = $model->createfeedback($values);
+                }
+            break;    
             default:
                 $this->_sendResponse(501, sprintf('Error: Invalid request', $model));
                 Yii::app()->end();
