@@ -7,13 +7,12 @@ class ApiController extends Controller {
      * Key which has to be in HTTP USERNAME and PASSWORD headers 
      */
     Const APPLICATION_ID = 'ASCCPE';
-
     /**
      * Default response format
      * either 'json' or 'xml'
      */
     private $format = 'json';
-
+            
     /**
      * @return array action filters
      */
@@ -22,6 +21,7 @@ class ApiController extends Controller {
     }
 
     public function init() {
+        
         //header('Access-Control-Allow-Origin:http://m.mingyizhudao.com'); 
         header('Access-Control-Allow-Origin:http://mingyizhudao.com');    // Cross-domain access.
         header('Access-Control-Allow-Credentials:true');      // 允许携带 用户认证凭据（也就是允许客户端发送的请求携带Cookie）
@@ -250,6 +250,18 @@ class ApiController extends Controller {
                 $apiService = new ApiViewSearch($values);
                 $output = $apiService->loadApiViewData();
                 break;
+            //成功案例
+            case "successfulcase":
+                $values = $_GET;
+                $apiService = new ApiViewSuccessCase($values);
+                $output = $apiService->loadApiViewData();
+                break;
+             //专家展示
+            case "expertsshow":
+                $values = $_GET;
+                $apiService = new ApiViewExpertsShow($values);
+                $output = $apiService->loadApiViewData();
+                break;
             default:
                 // Model not implemented error
                 //$this->_sendResponse(501, sprintf('Error: Mode <b>list</b> is not implemented for model <b>%s</b>', $model));
@@ -286,6 +298,7 @@ class ApiController extends Controller {
                 //  $with = array('hospitalCity', 'hospitalDepartments' => array('on' => 'hospitalDepartments.is_show=1'));
                 //  $output['hospital'] = $hospitalMgr->loadIHospitalById($id, $with);
                 // $id Hospital.id
+
                 if ($api >= 4) {
                     $apiService = new ApiViewHospitalV4($id);
                     $output = $apiService->loadApiViewData();
