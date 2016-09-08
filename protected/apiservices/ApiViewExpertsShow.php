@@ -4,6 +4,7 @@ class ApiViewExpertsShow extends EApiViewService {
     private $doctors;
     private $doctorsids;
     private $doctorsdesc;
+    private $key="exportsshow_token";
     public function __construct($searchInputs) {
         $this->searchInputs = $searchInputs;
         $this->doctorSearch = new DoctorSearch($this->searchInputs);
@@ -18,8 +19,14 @@ class ApiViewExpertsShow extends EApiViewService {
      * @param integer $diseaeId Disease.id     
      */
     protected function loadData() {
-         // load Doctors.
-        $this->loadDoctors();
+        $ttdoctors = Yii::app()->cache->get($this->key);
+        if(empty($ttdoctors)){
+            // load Doctors.
+           $this->loadDoctors();
+        }
+        else{
+            $this->doctors=$ttdoctors;
+        }
     }
     protected function createOutput() {
         if (is_null($this->output)) {
@@ -33,9 +40,10 @@ class ApiViewExpertsShow extends EApiViewService {
      *
      * @throws CException
      */
-     private function loadDoctors() {
+     private function loadDoctors() {         
         if (is_null($this->doctors)) {
             $models = $this->doctorSearch->search();
+           
             if (arrayNotEmpty($models)) {
                 $this->setDoctors($models,$this->doctorsids);
             }
@@ -43,6 +51,7 @@ class ApiViewExpertsShow extends EApiViewService {
     }
 
     private function setDoctors(array $models,$doctorsids) {
+    
         foreach($doctorsids as $k=>$v){
             foreach ($models as $model) {
                 if($v==$model->getId()){
@@ -59,6 +68,8 @@ class ApiViewExpertsShow extends EApiViewService {
                 }
             }
         }
+        $alive=1800;
+        Yii::app()->cache->set($this->key, $this->doctors ,$alive);
     }
     /*生成描述信息数组和医生信息
      * @params $doctorlist 配置文件中doctorlist数组
