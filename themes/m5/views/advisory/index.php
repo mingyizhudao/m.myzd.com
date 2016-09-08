@@ -1,408 +1,56 @@
-<?php
-Yii::app()->clientScript->registerCssFile('http://myzd.oss-cn-hangzhou.aliyuncs.com/static/mobile/js/jquery.bxslider/jquery.bxslider.css');
-Yii::app()->clientScript->registerScriptFile('http://myzd.oss-cn-hangzhou.aliyuncs.com/static/mobile/js/jquery.bxslider/jquery.bxslider.min.js', CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile('http://myzd.oss-cn-hangzhou.aliyuncs.com/static/mobile/js/jquery-1.9.1.min.js', CClientScript::POS_HEAD);
-?>
 
 <?php
-$urlResImage = Yii::app()->theme->baseUrl . "/images/";
-$urlDoctorViewSearch = $this->createAbsoluteUrl('doctor/viewSearch');
-$urlHospitalTop = $this->createAbsoluteUrl('hospital/top');
-$urlDoctorSearch = $this->createAbsoluteUrl('doctor/search');
-$urlOperationTrain = $this->createUrl('home/page', array('view' => 'operationTrain'));
-$urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
-$urlHomeMyyzDoctor = $this->createUrl('home/page', array('view' => 'myyzDoctor'));
-$urlBnzOperation=$this->createUrl('home/page',array('view'=>'bnzOperation'));
-$urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
-$urlZeroBooking = $this->createUrl('questionnaire/beginQuestionnaireView');
-$urlCatherine = $this->createUrl('event/view', array('page' => 'catherine'));
-$urlHomeView = Yii::app()->request->hostInfo;
-$urlHospitalIndex = $this->createUrl('hospital/index');
-$urlEventIndex = $this->createUrl('event/index');
-$urlUserView = $this->createUrl('user/view');
-//modify by wanglei 
-$urlStat = $this->createAbsoluteUrl('/api/stat');//http://localhost/myzd/api/stat;
-//激活搜索框搜索
-$SITE_1 = PatientStatLog::SITE_1;
-//点击科室按钮
-$SITE_2 = PatientStatLog::SITE_2;
-//点击找名医按钮
-$SITE_3 = PatientStatLog::SITE_3;
-//点击快速预约按钮
-$SITE_4 = PatientStatLog::SITE_4;
-//banner
-$SITE_5 = PatientStatLog::SITE_5;
-//点击在线客服按钮
-$SITE_6 = PatientStatLog::SITE_6;
+/**
+ * $data.
+ */
+$this->setPageTitle('WIFI落地页');
+$urlDoctorcase = $this->createAbsoluteUrl('/api/successfulcase/');
+$urlSucCase = $this->createAbsoluteUrl('/api/expertsshow');
+$feedbackwifi = $this->createAbsoluteUrl('/api/feedbackwifi');
 ?>
-<article id="home_article" data-active="home_footer" class="active bg-gray5" data-scroll="true">
-    <div>
-        <div class="titleImg">
-            <img src="http://static.mingyizhudao.com/146243634396635" class="w100">
+<style type="text/css">
+    .tshadow{text-shadow:1px 1px 1px #666}.a-log{background:url('http://static.mingyizhudao.com/147322867742061') no-repeat 50% 5px;background-size:contain;padding:55px 0 0 0}.a-log .des{background-color:#20a69f}.a-log .des .des1{color:#efc825;font-size:18px;padding-top:30px;padding-bottom:10px;text-align:center}.a-log .des .des2,.a-log .des .des3{color:#fff;font-size:22px;text-align:center}.a-log .des .des2{text-indent:-3rem;padding-bottom:10px}.a-log .des .des3{text-indent:3rem;padding-bottom:20px}.a-doc .a-wrap-doc-list{overflow-x:hidden;height:260px}.a-doc-list{width:1300px;padding:5px;overflow:hidden}.a-doc-list:after{display:block;content:'';clear:both}.a-doc-list li{height:250px;list-style-type:none;width:120px;background-color:#efc825;margin:0 5px;float:left;padding:5px;text-align:center;font-size:14px}.a-doc-list li img{width:80px;background:#eee;height:80px}.a-doc-list li .a-doc-name{font-size:16px}.a-doc-adv{padding:10px 0;text-align:center;background-color:#efc825}.a-doc-adv button{background:#3ee0d5;border-radius:10px;box-shadow:1px 1px 1px #989898;font-size:24px;animation:bling 1s infinite;-webkit-animation:bling 1s infinite}@keyframes bling{0%{background:#3ee0d5}50%{background:#3ee0d5}51%{background:#989898}100%{background:#989898}}@-webkit-keyframes bling{0%{background:#3ee0d5}50%{background:#3ee0d5}51%{background:#989898}100%{background:#989898}}.a-suc{background:#f32323;padding:5px 20px;-moz-box-shadow:inset 0 -1px 1px #2f2f2f;-webkit-box-shadow:inset 0 -1px 1px #2f2f2f;box-shadow:inset 0 -1px 1px #2f2f2f}.a-suc .a-suc-inner{background:#fff;padding:10px 5px;display:flex;-moz-box-shadow:inset 0 1px 1px #2f2f2f;-webkit-box-shadow:inset 0 1px 1px #2f2f2f;box-shadow:inset 0 1px 1px #2f2f2f}.a-suc .a-suc-inner li{text-decoration:underline}.a-suc .a-suc-inner>p{float:left;width:40px;text-align:center;border-right:2px solid #efc825;color:#f32323;font-size:24px;line-height:26px}.a-suc .a-suc-inner>ul{float:left;list-style-type:decimal;padding:5px 5px 5px 25px}.a-booking{padding:5px;border-bottom:50px solid #efc825}.a-booking:after{content:'';display:block;clear:both}.a-booking>div{width:50%;float:left}.a-booking .a-booking-img{background:url('http://static.mingyizhudao.com/147322867855642') no-repeat;background-size:contain;display:block;width:100%;height:100px}.a-booking .a-booking-form{background:#20a69e;border-radius:8px;padding:5px 10px;text-align:center;margin:2px 0 0 0;color:#fff}.a-booking .a-booking-form input{width:100px;height:25px}.a-booking .a-booking-form p{display:flex;margin:1px 0 0 0}.a-booking .a-booking-form button{padding:5px;background:#efca24;margin:5px 0 0 0}#advisory_article #freePhone{position:relative;background:url('http://static.mingyizhudao.com/146710564184583') no-repeat;background-size:100% 100%;color:#fff;width:57px;height:57px;padding:28px 13px;z-index:999;position:fixed;right:0;top:50%}
+</style>
+<article id="advisory_article" class="active" data-scroll="true" class="advisory-page">
+    <div class="a-log">
+        <div class="des">
+            <p class="des1 tshadow">三万三甲名医/数千床位/24小时全天候</p>
+            <p class="des2 tshadow">随时随地快速预约</p>
+            <p class="des3 tshadow">做手术就找名医主刀</p>
         </div>
-        <div class="titlePosition">
-            <div class="font-s21 font-w800 text-center color-white">做手术就找名医主刀</div>
-            <div class="ml10 mr10 bg-white br5 mt20">
-                <div class="bg-white pad10">
-                    <a href="<?php echo $urlDoctorViewSearch; ?>" id="searchIcon" data-name="激活搜索框搜索">
-                        <div class="searchIcon color-black6">
-                            搜索疾病、医生或医院
-                        </div>
-                    </a>
-                </div> 
-            </div>
-            <div class="pl10 pr10 bg-white mt20 pb10" id="dpm-bxslider">
-                <ul class="bxslider1">
-             
-                </ul>
-            </div>
+    </div>
+    <div id="clickService" class="a-doc" data-track="wifi点击免费咨询">
+        <div class="a-wrap-doc-list">
+            <ul id="doc-list" class="a-doc-list">
+            </ul>
+        </div>
+        <div class="a-doc-adv">
+            <button>点击免费咨询</button>
+        </div>
+    </div>
+    <div class="a-suc">
+        <div class="a-suc-inner">
+            <p>成功案例</p>
+            <ul id="suc-list">
+            </ul>
+        </div>
+    </div>
+    <div class="a-booking">
+        <div>
+            <a id="dial" class="a-booking-img" href="javascript:;"></a>
+        </div>
+        <div class="a-booking-form">
+            <p>姓名:<input id="bookingName" type="" name=""></p>
+            <p>电话:<input id="bookingMobile" type="" name=""></p>
+            <button data-track="wifi点击预约回电" class="tshadow" id="bookingServiceBtn">免费预约回电</button>
+        </div>
 
-            <div class="text-right">
-                <div id="freePhone" href="javascript:;">
-                    免费
-                </div>
-            </div>
-            <div id="team-bxslider" class="mt-57">
-                <ul class="bxslider">
-                  
-                </ul>
-            </div>
-            <div class="grid bg-white">
-                <div class="col-1 w33 br-gray2">
-                    <a href="<?php echo $urlDoctorSearch; ?>/disease_sub_category/2">
-                        <div class="pad10 text-center">
-                            <div class="text-center">
-                                <img class="w55p h55p" src="http://static.mingyizhudao.com/146243692944770" data-id="<?php echo $SITE_3; ?>" data-name="找名医">
-                            </div>
-                            <div class="color-black10 pt10 font-s16">找名医</div>
-                            <div class="color-gray4 font-s12">各地名医推荐</div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-1 w33 br-gray2">
-                    <a href="<?php echo $urlOperationTrain; ?>">
-                        <div class="pt10 pb10 text-center">
-                            <div class="text-center">
-                                <img class="w55p h55p" src="http://static.mingyizhudao.com/146295571287578" data-id="<?php echo $SITE_4; ?>" data-name="快速预约">
-                            </div>
-                            <div class="color-black10 pt10 font-s16">快速预约</div>
-                            <div class="color-gray4 font-s12">省心放心找名医</div>
-                        </div>
-                    </a>
-                </div>
-                <div id="consultation" class="col-1 w33">
-                    <div class="pad10 text-center">
-                        <div class="text-center">
-                            <img class="w55p h55p" src="http://static.mingyizhudao.com/146243699018730" data-id="<?php echo $SITE_6; ?>" data-name="在线客服">
-                        </div>
-                        <div class="color-black10 pt10 font-s16">在线客服</div>
-                        <div class="color-gray4 font-s12">咨询了解我们</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+    </div>
+    <div id="freePhone" href="javascript:;">
+        免费
     </div>
 </article>
 <script>
-    $(document).ready(function () {
-        $('#freePhone').click(function () {
-            J.customConfirm('友情提示',
-                    '<div class="mb10">立即拨打免费客服热线400-6277-120</div>',
-                    '<a id="closeLogout" class="w50">取消</a>',
-                    '<a id="dial" class="color-green w50">拨打</a>',
-                    function () {
-                    });
-            $('#closeLogout').click(function () {
-                J.closePopup();
-            });
-            $('#dial').click(function () {
-                J.closePopup();
-                location.href = 'tel://4006277120';
-            });
-        });
-
-        $('#consultation').click(function () {
-            location.href = 'http://p.qiao.baidu.com/im/index?siteid=9290674&ucid=10135139';
-        });
-        function searchStat(keyword) {
-            $.ajax({
-                type: 'post',
-                url: '<?php echo $urlStat; ?>',
-                data: {'stat[site]': '<?php echo $SITE_1; ?>', 'stat[key_word]': keyword},
-                success: function (data) {
-
-                }
-            });
-        }
-        function buttonStat(keyword, data_id) {
-            $.ajax({
-                type: 'post',
-                url: '<?php echo $urlStat; ?>',
-                data: {'stat[site]': data_id, 'stat[key_word]': keyword},
-                success: function (data) {
-
-                }
-            });
-        }
-        function departmentStat(keyword) {
-            $.ajax({
-                type: 'post',
-                url: '<?php echo $urlStat; ?>',
-                data: {'stat[site]': '<?php echo $SITE_2; ?>', 'stat[key_word]': keyword},
-                success: function (data) {
-
-                }
-            });
-        }
-        function bannerStat(keyword) {
-            $.ajax({
-                type: 'post',
-                url: '<?php echo $urlStat; ?>',
-                data: {'stat[site]': '<?php echo $SITE_5; ?>', 'stat[key_word]': keyword},
-                success: function (data) {
-
-                }
-            });
-
-        }
-        $('#searchIcon').click(function () {
-            var obj = $(this);
-            var name = obj.attr("data-name");
-            searchStat(name);
-
-        });
-        $('img.w55p.h55p').click(function () {
-            var obj = $(this);
-            var data_id = obj.attr("data-id");
-            var name = obj.attr("data-name");
-            buttonStat(name, data_id);
-        });
-
-
-
-
-        //轮播图
-        var html = '<li class="slide">' +
-                '<a href="<?php echo $urlZeroBooking; ?>/appId/ddaa785817d165e8/site/1">' +
-                '<img class="w100" alt="0元见名医_专家面对面" src="http://static.mingyizhudao.com/146906610294170">' +
-                '</a>' +
-                '</li>' +
-                '<li class="slide">' +
-                '<a href="<?php echo $urlHomeMyyzDoctor; ?>">' +
-                '<img class="w100" alt="名医义诊" src="http://static.mingyizhudao.com/146606890329840">' +
-                '</a>' + 
-                '</li>' +
-                '<li class="slide">' +
-                '<a href="<?php echo $urlMygy; ?>">' +
-                '<img class="w100" alt="名医公益行" src="http://static.mingyizhudao.com/147150951177488">' +
-                '</a>' +
-                '</li>';
-        $('#home_article #team-bxslider .bxslider').html(html);
-
-        $(' .bxslider').bxSlider({
-            mode: 'fade',
-            slideMargin: 0,
-            controls: false,
-            auto: true
-        });
-        $('#home_article #team-bxslider .bxslider').click(function () {
-            var obj = $(this);
-            bannerStat('banner');
-        });
-
-        //轮播图2
-        var text= 
-        '<li class="slide">'+
-                      '<div class="grid pt10"> ' +
-                     '<div class="col-1 w33 pr10">  '+
-                        '<a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/101" data-name="普外科"> '+ 
-                            '<div class="bg-blue4"> '+
-                                 '<div class="font-s16 pl5 pt5">'+  
-                                     '普外科 '+ 
-                                 '</div> '+ 
-                                 '<div class="grid pb5 pr5">' + 
-                                    ' <div class="col-1"></div> '+ 
-                                     '<div class="col-0 shouwk w35p h35p"></div>' + 
-                                 '</div> ' +
-                             '</div>  '+
-                        ' </a> '+ 
-                     '</div>' + 
-
-                     
-                     '<div class="col-1 w33 pl5 pr5">' + 
-                         '<a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/102" data-name="骨科"> '+ 
-                            ' <div class="y1"> '+
-                                ' <div class="font-s16 pl5 pt5"> '+
-                                     '骨科 '+ 
-                                 '</div> ' +
-                                 '<div class="grid pb5 pr5"> ' +
-                                     '<div class="col-1"></div> ' +
-                                     '<div class="col-0 guk w35p h35p"></div> ' +
-                                 '</div>  '+
-                            '</div> '+ 
-                         '</a> ' +
-                     '</div> '+ 
-                     '<div class="col-1 w33 pl10">' + 
-                        '<a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/103" data-name="神经外科">'+
-                             '<div class="o1" > '+
-                                 '<div class="font-s16 pl5 pt5"> '+ 
-                                    ' 神经外科 ' +
-                                 '</div>  '+
-                                 '<div class="grid pb5 pr5">  '+
-                                     '<div class="col-1"></div>  '+
-                                     '<div class="col-0 shenjwk w35p h35p"></div> '+ 
-                                 '</div>'+  
-                             '</div> ' +
-                         '</a>' + 
-                    '</div>' +
-                 '</div> ' +
-                 '<div class="grid mt15"> ' +
-                    '<div class="col-1 w33 pr10"> '+ 
-                         '<a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/105" data-name="胸外科">  '+
-                             '<div class="b1"> '+
-                                 '<div class="font-s16 pl5 pt5"> '+
-                                    ' 胸外科'  +
-                                '</div> ' +
-                                '<div class="grid pb5 pr5"> ' +
-                                     '<div class="col-1"></div> ' +
-                                     '<div class="col-0 xiongwk w35p h35p"></div>'+
-                                ' </div>'  +
-                             '</div> ' +
-                         '</a> ' +
-                     '</div>'+  
-                     '<div class="col-1 w33 pl5 pr5">'+ 
-                        ' <a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/104" data-name="泌尿外科"> '+ 
-                             '<div class="bg-blue5">' +
-                                 '<div class="font-s16 pl5 pt5"> '+ 
-                                     '泌尿外科 '+
-                                 '</div>'+  
-                                 '<div class="grid pb5 pr5">'+  
-                                    ' <div class="col-1"></div>'+  
-                                     '<div class="col-0 minwk w35p h35p"></div> '+ 
-                                 '</div>'+  
-                            '</div> '+ 
-                        '</a>'+  
-                     '</div> '+ 
-                     '<div class="col-1 w33 pl10">'+  
-                         '<a class="departmentcontent" data-name="眼科 " data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/108">'+  
-                             '<div class="b2"> '+
-                                 '<div class="font-s16 pl5 pt5"> '+ 
-                                    '眼科  '+
-                                 '</div>  '+
-                                 '<div class="grid pb5 pr5">'  +
-                                     '<div class="col-1"></div>'  +
-                                     '<div class="col-0 yank w35p h35p"></div> ' +
-                                 '</div>  '+
-                             '</div>' + 
-                         '</a>  '+
-                     '</div> ' +
-                 '</div> '+   
-                '</li>'+
-                '<li class="slide">'+
-                 '<div class="grid pt10"> '+ 
-                     '<div class="col-0 w33 pr10">'+  
-                        '<a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/106" data-name="心血管外科">'+  
-                            '<div class="y2" > '+
-                                ' <div class="font-s16 pl5 pt5"> '+ 
-                                     '心血管外科  '+
-                                 '</div> '+ 
-                                 '<div class="grid pb5 pr5">'+ 
-                                     '<div class="col-1"></div> '+ 
-                                     '<div class="col-0 xinxgwk w35p h35p"></div>'+ 
-                                 '</div> ' +
-                             '</div> '+
-                         '</a>'+  
-                     '</div>'+ 
-                     '<div class="col-0 w33 pl5 pr5"> '+ 
-                         '<a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/109" data-name="耳鼻喉科"> '+ 
-                             '<div class="b3" >  '+
-                                ' <div class="font-s16 pl5 pt5"> '+ 
-                                    '耳鼻喉科 '+ 
-                                 '</div>'+  
-                                 '<div class="grid pb5 pr5"> '+ 
-                                     '<div class="col-1"></div> '+ 
-                                     '<div class="col-0 erbhk w35p h35p"></div>'+  
-                                ' </div> '+
-                             '</div> '+ 
-                         '</a> '+ 
-                     '</div>  '+
-                     '<div class="col-0 w33 pl10"> '+ 
-                        '<a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/107" data-name="整形外科">'+  
-                             '<div class="h" > '+
-                               '<div class="font-s16 pl5 pt5">  '+
-                                    '整形外科 '+
-                                 '</div> '+
-                                 '<div class="grid pb5 pr5"> '+ 
-                                    '<div class="col-1"></div>  '+
-                                     '<div class="col-0 zhengxwk w35p h35p"></div>  '+
-                                 '</div> '+
-                            '</div>'+ 
-                         '</a> ' +
-                    '</div> '+
-                 '</div> '+ 
-                ' <div class="grid mt15"> '+ 
-                     '<div class="col-1 w33 pr10">' + 
-                         '<a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/110" data-name="颌面外科"> '+ 
-                            ' <div class="b4" >  '+
-                                '<div class="font-s16 pl5 pt5"> '+ 
-                                   ' 颌面外科  '+
-                                 '</div> '+
-                                 '<div class="grid pb5 pr5">'+  
-                                    '<div class="col-1"></div>  '+
-                                    '<div class="col-0 hemwk w35p h35p"></div> '+
-                                 '</div>  '+
-                             '</div>'+  
-                         '</a> '+ 
-                     '</div>'+  
-                     '<div class="col-1 w33 pl5 pr5">'+  
-                         '<a class="departmentcontent" data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/111" data-name="妇科">'+  
-                             '<div class="o2" > '+
-                                 '<div class="font-s16 pl5 pt5"> ' +
-                                     '妇科 '+
-                                ' </div> ' +
-                                 '<div class="grid pb5 pr5">'+  
-                                    ' <div class="col-1"></div> '+ 
-                                    ' <div class="col-0 fuk w35p h35p"></div> '+ 
-                                 '</div> ' +
-                             '</div> '+
-                         '</a> ' +
-                     '</div>' + 
-                     '<div class="col-1 w33 pl10">' + 
-                        ' <a class="departmentcontent" data-name="小儿外科" data-href="<?php echo $urlHospitalTop; ?>/disease_sub_category/112"> '+ 
-                            ' <div  class="bg-orange"> '+ 
-                                ' <div class="font-s16 pl5 pt5"> ' +
-                                   '小儿外科 '+ 
-                                ' </div>'+
-                                 '<div class="grid pb5 pr5"> '+ 
-                                     '<div class="col-1"></div> '+
-                                     '<div class="col-0 xiaoewk w35p h35p"></div> ' +
-                                 '</div> '+ 
-                             '</div>' + 
-                         '</a> '+
-                     '</div> ' +
-                 '</div> '   +
-                '</li>';
-          
-            
-         $('#home_article #dpm-bxslider .bxslider1').html(text);
-
-        $('.departmentcontent').click(function () {
-            var obj = $(this);
-            var name = obj.attr("data-name");
-            var url = obj.attr("data-href");
-            departmentStat(name);
-            window.location = url;
-        });
-
-         $(' .bxslider1').bxSlider({
-            mode: 'fade',
-            slideMargin: 0,
-            controls: false,
-            auto: true
-        });
-        
-
-        var height = $('.titleImg').height() - 110;
-        $('.titlePosition').css({"margin-top": height + "px"});
-    });
+    $(document).ready(function(){J.showMask();$("#dial,#freePhone").click(function(){console.log("phone");location.href="tel://4006277120"});$("[data-track]").on("click",function(){console.log("track");var label=$(this).data("track");window._hmt&&window._hmt.push(["_trackEvent",label,"click"])});$("#bookingServiceBtn").click(function(){console.log("click!");var name=$("#bookingName").val();var mobile=$("#bookingMobile").val();if(name.length==""){J.showToast("请输入姓名","toast",1000)}else{if(mobile.length===0){J.showToast("请输入手机号","toast",1000)}else{if(!validatorMobile(mobile)){J.showToast("请输入有效的手机号","toast",1000)}else{bookingService(name,mobile)}}}});$("#clickService").click(function(){location.href="http://p.qiao.baidu.com/im/index?siteid=9290674&ucid=10135139"});$.ajax({type:"get",url:"<?php echo $urlDoctorcase; ?>",success:function(data){J.hideMask();if(data.status=="ok"){if(data.results!=null){getDocList(data.results)}}else{J.showToast("加载失败，请重试","toast",1000)}},error:function(){J.hideMask()}});$.ajax({type:"get",url:"<?php echo $urlSucCase; ?>"+"?limit="+8,success:function(data){J.hideMask();if(data.status=="ok"){if(data.doctors!=null){getSucList(data.doctors)}}else{J.showToast("加载失败，请重试","toast",1000)}},error:function(){J.hideMask()}})});function getDocList(res){var sucList="";for(var i=0;i<res.length;i++){var li;li='<li data-href="'+res[i].link+'" data-track="wifi'+res[i].content+'">'+res[i].content+"</li>";sucList+=li}$(sucList).appendTo($("#suc-list"));$("#suc-list li").click(function(){var url=$(this).attr("data-href");window.location=url})}var _docLiLength,_docLiAnimatime,sucList,_tFlag=0,_docLiW=130;function getSucList(res){sucList="";for(var i=0;i<res.length;i++){var li;li="<li>"+'<img class="imgDoc" alt="白继教授" src="'+res[i].imageUrl+'">'+'<p class="a-doc-name">'+res[i].docName+"</p>"+"<p>"+res[i].hpName+"</p>"+"<p>"+res[i].mTitle+"</p>"+"<p>"+res[i].desc+"</p>"+"</li>";sucList+=li}sucList+=sucList;$(sucList).appendTo($("#doc-list"));_docLiLength=res.length*_docLiW;$(".a-doc-list").css("width",_docLiLength*2+_docLiW);_docLiAnimatime=setInterval(function(){$(".a-wrap-doc-list").scrollLeft(_tFlag);_tFlag+=0.5;if(_tFlag>_docLiLength){_tFlag=0}},10)}function bookingService(name,mobile){J.showMask();$.ajax({type:"post",url:"<?php echo $feedbackwifi; ?>",data:{"wifi[username]":name,"wifi[moible]":mobile},success:function(data){J.hideMask();J.showToast("免费预约成功！请等待客服致电！","toast",1000)}})}function validatorMobile(mobile){var mobileReg=/^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;return mobileReg.test(mobile)};
 </script>
