@@ -9,4 +9,4 @@ header h1.title{font-size:18px;line-height:1em;top:15px}header .control-group li
 #patientBooking_article .uploader .filelist li{width:33%;padding: 0 6px}#patientBooking_article .uploader .filelist li img{height: 100%}#patientBookingAndroid_article .uploader .filelist li{width:33%;padding: 0 6px;}
 
 @media only screen and (max-width:320px){#bookingIos_article .uploader .filelist div.file-panel{top:60px}#bookingIos_article .uploader .filelist li{height:90px}#bookingIos_article #filePicker3 .webuploader-pick{line-height:5rem}}
-#operation_article #freePhone,#life_article #freePhone{color:#fff;width:57px;height:57px;padding:8px 13px;z-index:999;position:fixed;right:0;top:50%;background:#00b38a;border-radius:28px;display:none}
+#operation_article #freePhone,#life_article #freePhone, #lifeExpect_article #freePhone{color:#fff;width:57px;height:57px;padding:8px 13px;z-index:999;position:fixed;right:0;top:50%;background:#00b38a;border-radius:28px;display:none}
