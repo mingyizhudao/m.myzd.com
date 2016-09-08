@@ -1,3 +1,4 @@
+
 <?php
 $this->setPageTitle('我代表“国务院”感谢你');
 $showHeader = Yii::app()->request->getQuery('header', 1);
@@ -61,4 +62,19 @@ $this->show_footer = false;
             
         </div>
     </div>
+    <div id="freePhone" href="javascript:;" data-track="wifi点击免费咨询">
+        免费咨询
+    </div>
 </article>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var _prevUrl = document.referrer;
+        if (_prevUrl.indexOf('advisory') != -1) {
+            $('#freePhone').css('display','block');
+            console.log('come form wifi');
+        }
+        $('#freePhone').click(function () {
+            location.href = 'http://p.qiao.baidu.com/im/index?siteid=9290674&ucid=10135139';
+        });
+    });
+</script>
