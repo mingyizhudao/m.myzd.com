@@ -33,7 +33,7 @@ class ApiWapController extends Controller
         // $newlist=$newmongmanage->SelectOne($condition,$order);
         header("Access-Control-Allow-Origin: *");
         // header('Access-Control-Allow-Origin:http://m.mingyizhudao.com');
-        header('Access-Control-Allow-Headers: X-Requested-With');
+        header('Access-Control-Allow-Headers: Origin,X-Requested-With,Authorization,Accept,Content-Type');
         header('Access-Control-Allow-Origin:http://mingyizhudao.com'); // Cross-domain access.
         header('Access-Control-Allow-Credentials:true'); // 允许携带 用户认证凭据（也就是允许客户端发送的请求携带Cookie）
         return parent::init();
@@ -136,6 +136,7 @@ class ApiWapController extends Controller
             case 'quickbooking': // 快速预约
                 if (isset($post['booking'])) {
                     $values = $post['booking'];
+                    $values['token'] = $this->em_getallheaders();
                     $values['userHostIp'] = Yii::app()->request->userHostAddress;
                     $values['user_agent'] = ($this->isUserAgentWeixin()) ? StatCode::USER_AGENT_WEIXIN : StatCode::USER_AGENT_MOBILEWEB;
                     if (! isset($values['verify_code'])) {
@@ -152,6 +153,17 @@ class ApiWapController extends Controller
                     $output = $bookingMgr->apiCreateQuickBooking($values, $checkVerifyCode);
                 } else {
                     $output['error'] = 'missing parameters';
+                }
+                break;
+            
+            case 'smsverifycode': // sends sms verify code AuthSmsVerify.
+                if (isset($post['smsVerifyCode'])) {
+                    $values = $post['smsVerifyCode'];
+                    $values['userHostIp'] = Yii::app()->request->userHostAddress;
+                    $authMgr = new AuthManager();
+                    $output = $authMgr->apiSendVerifyCode($values);
+                } else {
+                    $output['error'] = 'Wrong parameters.';
                 }
                 break;
             
@@ -183,7 +195,7 @@ class ApiWapController extends Controller
 
     /**
      * 用户登录验证
-     * 
+     *
      * @param unknown $values            
      * @param string $pwd            
      * @return User
@@ -367,13 +379,19 @@ else {
      * 接收头信息
      * by 20160905
      */
-    private function em_getallheaders()
-    {
-        foreach ($_SERVER as $name => $value) {
-            if (substr($name, 0, 5) == 'HTTP_') {
-                $headers[str_replace(' ', '-', ucwords(strtolower(str_replace('_', ' ', substr($name, 5)))))] = $value;
+    private function em_getallheaders() {
+        if (!function_exists('getallheaders')) {
+            function getallheaders() {
+                foreach ($_SERVER as $name => $value) {
+                    if (substr($name, 0, 5) == 'HTTP_') {
+                        $headers[str_replace(' ', '-', ucwords(strtolower(str_replace('_', ' ', substr($name, 5)))))] = $value;
+                    }
+                }
             }
+        }else{
+            $hearders = getallheaders();
         }
-        return $headers;
+        $token = isset($hearders['Authorization']) ? $hearders['Authorization'] : '';
+        return $token;
     }
 }
