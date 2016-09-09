@@ -8,6 +8,7 @@ class ApiWapController extends Controller
      * Key which has to be in HTTP USERNAME and PASSWORD headers
      */
     Const APPLICATION_ID = 'ASCCPE';
+    Const AGENT_PARAMETER = 'WAP';
 
     /**
      * Default response format
@@ -126,6 +127,7 @@ class ApiWapController extends Controller
                     // get user ip from request.
                     $values = $post['userLogin'];
                     $values['userHostIp'] = Yii::app()->request->userHostAddress;
+                    $values['agent_parmas'] = $this->AGENT_PARAMETER;
                     $authMgr = new AuthManager();
                     $output = $authMgr->apiTokenUserLoginByPassword($values);
                 } else {
@@ -207,9 +209,12 @@ class ApiWapController extends Controller
             $this->renderJsonOutput($output->status = EApiViewService::RESPONSE_NO, $output->errorCode = ErrorList::BAD_REQUEST, $output->errorMsg = '没有权限执行此操作');
         }
         $authMgr = new AuthManager();
-        $authUserIdentity = $authMgr->authenticateUserByToken($values['username'], $values['token']);
+        $authUserIdentity = $authMgr->authenticateWapUserByToken($values['username'], $values['token'], $this->AGENT_PARAMETER);
         if (is_null($authUserIdentity) || $authUserIdentity->isAuthenticated === false) {
             $this->renderJsonOutput($output->status = EApiViewService::RESPONSE_NO, $output->errorCode = ErrorList::BAD_REQUEST, $output->errorMsg = '用户名或token不正确');
+        }else{
+            $authTokenMsg = new AuthTokenUser();
+            $authTokenMsg->durationTokenPatient($values['token'], $values['username']);
         }
         return $authUserIdentity->getUser();
     }
@@ -227,7 +232,7 @@ class ApiWapController extends Controller
             // send the body
             echo $body;
         }  // we need to create the body if none is passed
-else {
+        else {
             // create some body messages
             $message = '';
             
@@ -379,16 +384,19 @@ else {
      * 接收头信息
      * by 20160905
      */
-    private function em_getallheaders() {
-        if (!function_exists('getallheaders')) {
-            function getallheaders() {
+    private function em_getallheaders()
+    {
+        if (! function_exists('getallheaders')) {
+
+            function getallheaders()
+            {
                 foreach ($_SERVER as $name => $value) {
                     if (substr($name, 0, 5) == 'HTTP_') {
                         $headers[str_replace(' ', '-', ucwords(strtolower(str_replace('_', ' ', substr($name, 5)))))] = $value;
                     }
                 }
             }
-        }else{
+        } else {
             $hearders = getallheaders();
         }
         $token = isset($hearders['Authorization']) ? $hearders['Authorization'] : '';

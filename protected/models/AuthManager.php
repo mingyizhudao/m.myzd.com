@@ -68,8 +68,8 @@ class AuthManager {
         $username = $values['username'];
         $password = $values['password'];
         $userHostIp = isset($values['userHostIp']) ? $values['userHostIp'] : null;
-
-        $output = $this->doTokenUserLoginByPassword($username, $password, $userHostIp);
+        $agent = isset($values['agent_parmas']) ? $values['agent_parmas'] : null;
+        $output = $this->doTokenUserLoginByPassword($username, $password, $userHostIp, $agent);
 
         return $output;
     }
@@ -334,7 +334,7 @@ class AuthManager {
      * @param string $userHostIp    user's ip address.
      * @return string AuthTokenUser.token.
      */
-    public function doTokenUserLoginByPassword($username, $password, $userHostIp = null) {
+    public function doTokenUserLoginByPassword($username, $password, $userHostIp = null, $agent = NULL) {
         $output = array('status' => 'no','errorCode' => 0,'errorMsg' =>'' ,'results' => array()); // default status is false.
         $authUserIdentity = $this->authenticateUserByPassword($username, $password);
         if ($authUserIdentity->isAuthenticated) {
@@ -343,7 +343,11 @@ class AuthManager {
             $userMacAddress = null;
             $deActivateFlag = true;
             //$tokenUser = $this->createTokenUser($user->getId(), $userHostIp, $userMacAddress, $deActivateFlag);
-            $tokenUser = $this->createTokenUser($user->getId(), $username, $userHostIp, $userMacAddress, $deActivateFlag);  //@2015-10-28 by Hou Zhen Chuan
+            if($agent){
+                $tokenUser = $this->createWapTokenUser($user->getId(), $username, $userHostIp); //wap患者端支持多登录
+            }else {
+                $tokenUser = $this->createTokenUser($user->getId(), $username, $userHostIp, $userMacAddress, $deActivateFlag);  //@2015-10-28 by Hou Zhen Chuan
+            }
             if (isset($tokenUser)) {
                 $output['errorCode'] = 0;
                 $output['errorMsg'] = 'success';
@@ -435,6 +439,13 @@ class AuthManager {
 
         return $authUserIdentity;
     }
+    
+    //验证WAP患者用户端的 token信息
+    public function authenticateWapUserByToken($username, $token, $agent = NULL) {
+        $authUserIdentity = new AuthUserIdentity($username, $token, AuthUserIdentity::AUTH_TYPE_TOKEN, StatCode::USER_ROLE_PATIENT, $agent);
+        $authUserIdentity->authenticate();
+        return $authUserIdentity;
+    }
 
     //验证医生端的 token信息
     public function authenticateDoctorByToken($username, $token) {
@@ -450,6 +461,20 @@ class AuthManager {
         $tokenUser = new AuthTokenUser();
         //$tokenUser->initModel($userId, $username, $userHostIp, $userMacAddress);
         $tokenUser->createTokenPatient($userId, $username, $userHostIp, $userMacAddress);
+        if ($deActivateFlag) {
+            // deActivate all this user's tokens before creating a new one.
+            $tokenUser->deActivateAllOldTokens($userId);
+        }
+        $tokenUser->save();
+        return $tokenUser;
+    }
+    
+    //患者用户： USER_ROLE_PATIENT
+    public function createWapTokenUser($userId, $username, $userHostIp, $userMacAddress = null, $deActivateFlag = FALSE) {
+    
+        $tokenUser = new AuthTokenUser();
+        //$tokenUser->initModel($userId, $username, $userHostIp, $userMacAddress);
+        $tokenUser->createWapTokenPatient($userId, $username, $userHostIp, $userMacAddress);
         if ($deActivateFlag) {
             // deActivate all this user's tokens before creating a new one.
             $tokenUser->deActivateAllOldTokens($userId);

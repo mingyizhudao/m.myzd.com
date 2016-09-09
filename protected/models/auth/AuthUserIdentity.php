@@ -14,13 +14,15 @@ class AuthUserIdentity extends CUserIdentity {
     private $user;  // User model.
     private $token; // AuthTokenUser.
     private $role; //User role
-
-    public function __construct($username, $password, $authType, $role=StatCode::USER_ROLE_PATIENT) {
+    private $agent; //User role
+    
+    public function __construct($username, $password, $authType, $role=StatCode::USER_ROLE_PATIENT, $agent = NULL) {
         // $this->login_type = $loginType;
         $this->username = $username;
         $this->password = $password;    // used as token is action_type is 'by token'.
         $this->auth_type = $authType;
         $this->role = $role;
+        $this->agent = $agent;
     }
 
     public function authenticate() {
@@ -66,7 +68,7 @@ class AuthUserIdentity extends CUserIdentity {
      */
     public function authenticateToken() {
         if($this->role == StatCode::USER_ROLE_PATIENT){
-            $this->token = AuthTokenUser::model()->verifyTokenPatient($this->password, $this->username);
+            $this->token = AuthTokenUser::model()->verifyTokenPatient($this->password, $this->username, $this->agent);
         }elseif($this->role == StatCode::USER_ROLE_DOCTOR){
             $this->token = AuthTokenUser::model()->verifyTokenDoctor($this->password, $this->username);
         }
