@@ -225,6 +225,8 @@ class UserManager {
         $mobile = $values['username'];
         $password = $values['password'];
         $verifyCode = $values['verify_code'];
+        //add by wanglei --------------加入argualjs 参数--------------
+        $agent = isset($values['agent_parmas']) ? $values['agent_parmas'] : null;
         $userHostIp = isset($values['userHostIp']) ? $values['userHostIp'] : null;
         $autoLogin = false;
         if (isset($values['autoLogin']) && $values['autoLogin'] == 1) {
@@ -259,7 +261,7 @@ class UserManager {
             return $output;
         } else if ($autoLogin) {
             // auto login user and return token.
-            $output = $authMgr->doTokenUserLoginByPassword($mobile, $password, $userHostIp);
+            $output = $authMgr->doTokenUserLoginByPassword($mobile, $password, $userHostIp,$agent);
         } else {
             $output['status'] = 'ok';
             $output['errorCode'] = 0;

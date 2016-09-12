@@ -121,6 +121,18 @@ class ApiWapController extends Controller
         
         switch ($get['model']) {
             // Get an instance of the respective model
+             case 'userregister':    // remote user register.
+                if (isset($post['userRegister'])) {
+                    $values = $post['userRegister'];
+                    $values['userHostIp'] = Yii::app()->request->userHostAddress;
+                    $values['agent_parmas'] = self::AGENT_PARAMETER;
+                    $userMgr = new UserManager();
+                    $output = $userMgr->apiTokenUserRegister($values);
+                } else {
+                    $output['error'] = 'Wrong parameters.';
+                }
+
+                break;
             // 手机密码登录
             case 'userlogin': // remote user login.
                 if (isset($post['userLogin'])) {
