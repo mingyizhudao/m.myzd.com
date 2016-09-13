@@ -334,11 +334,11 @@ class AuthManager {
      * @return string AuthTokenUser.token.
      */
     public function doTokenUserLoginByPassword($username, $password, $userHostIp = null, $agent = NULL) {
-        $output = array('status' => 'no','errorCode' => 0,'errorMsg' =>'' ,'results' => array()); // default status is false.
-        //         $output = new stdClass();
-        //         $output->status = EApiViewService::RESPONSE_NO;
-        //         $output->errorCode = ErrorList::BAD_REQUEST;
-        //         $output->errorMsg = '';
+        $output = new stdClass();
+        $output->status = EApiViewService::RESPONSE_NO;
+        $output->errorCode = ErrorList::BAD_REQUEST;
+        $output->errorMsg = '';
+        $output->results = array();
         $authUserIdentity = $this->authenticateUserByPassword($username, $password);
         if ($authUserIdentity->isAuthenticated) {
             // username and password are correct. continue to create AuthTokenUser.
@@ -352,19 +352,19 @@ class AuthManager {
                 $tokenUser = $this->createTokenUser($user->getId(), $username, $userHostIp, $userMacAddress, $deActivateFlag);  //@2015-10-28 by Hou Zhen Chuan
             }
             if (isset($tokenUser)) {
-                $output['errorCode'] = 0;
-                $output['errorMsg'] = 'success';
-                $output['status'] = 'ok';
-                $output['results']['token'] = $tokenUser->getToken();
+                $output->status = 'ok';
+                $output->errorCode = 0;
+                $output->errorMsg = '';
+                $output->results = array('token' => $tokenUser->getToken());
                 // TODO: log.
             } else {
-                $output['errorCode'] = ErrorList::ERROR_TOKEN_CREATE_FAILED;
-                $output['errorMsg'] = '生成token失败!';
+                $output->errorCode = ErrorList::ERROR_TOKEN_CREATE_FAILED;
+                $output->errorMsg = '生成token失败!';
                 // TODO: log.
             }
         } else {
-            $output['errorCode'] = $authUserIdentity->errorCode;
-            $output['errorMsg'] = '用户名或密码不正确';
+            $output->errorCode = $authUserIdentity->errorCode;
+            $output->errorMsg = '用户名或密码不正确';
         }
         return $output;
     }
@@ -444,8 +444,8 @@ class AuthManager {
     }
     
     //验证WAP患者用户端的 token信息
-    public function authenticateWapUserByToken($token, $agent = NULL) {
-        $authUserIdentity = new AuthUserIdentity($username = NULL, $token, AuthUserIdentity::AUTH_TYPE_TOKEN, StatCode::USER_ROLE_PATIENT, $agent);
+    public function authenticateWapUserByToken($username,$token, $agent = NULL) {
+        $authUserIdentity = new AuthUserIdentity($username, $token, AuthUserIdentity::AUTH_TYPE_TOKEN, StatCode::USER_ROLE_PATIENT, $agent);
         $authUserIdentity->authenticate();
         return $authUserIdentity;
     }

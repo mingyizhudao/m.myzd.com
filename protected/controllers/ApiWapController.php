@@ -216,13 +216,16 @@ class ApiWapController extends Controller
      */
     private function userLoginRequired($values)
     {
+        $userMgr = new UserManager();
+        $user = $userMgr->loadUserAndTokenBytoken($values['token']);
+        $values['username'] = (isset($user->token->username)) ? $user->token->username: NULL;
         $output = new stdClass();
         if (isset($values['username']) === false || isset($values['token']) === false) {
             $this->renderJsonOutput($output->status = EApiViewService::RESPONSE_NO, $output->errorCode = ErrorList::BAD_REQUEST, $output->errorMsg = '没有权限执行此操作');
         }
         $authMgr = new AuthManager();
         $authUserIdentity = $authMgr->authenticateWapUserByToken($values['username'], $values['token'], $agent = 'wap');
-        if (is_null($authUserIdentity) || $authUserIdentity->isAuthenticated === false) {
+            if (is_null($authUserIdentity) || $authUserIdentity->isAuthenticated === false) {
             $this->renderJsonOutput($output->status = EApiViewService::RESPONSE_NO, $output->errorCode = ErrorList::BAD_REQUEST, $output->errorMsg = '用户名或token不正确');
         } else {
             $authTokenMsg = new AuthTokenUser();
