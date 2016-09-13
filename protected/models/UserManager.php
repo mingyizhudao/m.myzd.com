@@ -511,5 +511,16 @@ class UserManager {
             return $model;
         }
     }
+    public function loadUserAndTokenBytoken($token){
+        $authtoken=new AuthTokenUser();
+        $model=$authtoken->getAllByToken($token,array('atuUser'));
+        if (!empty($model)) {
+            $outtoken=new stdClass();
+            $outtoken->user=$model->getUser();
+            $outtoken->token=$model;
+            return $outtoken;
+        }
+        return null;
+    }
     
 }
