@@ -58,7 +58,6 @@ class AuthManager {
      * @return string
      */
     public function apiTokenUserLoginByPassword($values) {
-        $output = array('status' => 'no','errorCode' => 0,'errorMsg' =>'' ,'results' => array());
         // TODO: wrap the following method. first, validates the parameters in $values.        
         if (isset($values['username']) == false || isset($values['password']) == false) {
             $output['errorCode'] = 400;
@@ -336,6 +335,10 @@ class AuthManager {
      */
     public function doTokenUserLoginByPassword($username, $password, $userHostIp = null, $agent = NULL) {
         $output = array('status' => 'no','errorCode' => 0,'errorMsg' =>'' ,'results' => array()); // default status is false.
+        //         $output = new stdClass();
+        //         $output->status = EApiViewService::RESPONSE_NO;
+        //         $output->errorCode = ErrorList::BAD_REQUEST;
+        //         $output->errorMsg = '';
         $authUserIdentity = $this->authenticateUserByPassword($username, $password);
         if ($authUserIdentity->isAuthenticated) {
             // username and password are correct. continue to create AuthTokenUser.
@@ -441,8 +444,8 @@ class AuthManager {
     }
     
     //验证WAP患者用户端的 token信息
-    public function authenticateWapUserByToken($username, $token, $agent = NULL) {
-        $authUserIdentity = new AuthUserIdentity($username, $token, AuthUserIdentity::AUTH_TYPE_TOKEN, StatCode::USER_ROLE_PATIENT, $agent);
+    public function authenticateWapUserByToken($token, $agent = NULL) {
+        $authUserIdentity = new AuthUserIdentity($username = NULL, $token, AuthUserIdentity::AUTH_TYPE_TOKEN, StatCode::USER_ROLE_PATIENT, $agent);
         $authUserIdentity->authenticate();
         return $authUserIdentity;
     }

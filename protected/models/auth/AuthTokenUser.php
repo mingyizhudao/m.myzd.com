@@ -22,9 +22,9 @@ class AuthTokenUser extends EActiveRecord
 {
 
     const EXPIRY_DEFAULT = 31536000;
- // one year
+    // one year
     const WAP_EXPIRY_DEFAULT = 1800;
- // half a hour
+    // half a hour
     const ERROR_NONE = 0;
 
     const ERROR_NOT_FOUND = 1;
@@ -36,7 +36,7 @@ class AuthTokenUser extends EActiveRecord
     public $error_code;
 
     private $verified = false;
- // flag indicating if token is verified.
+    // flag indicating if token is verified.
     
     /**
      *
@@ -172,7 +172,7 @@ class AuthTokenUser extends EActiveRecord
     /**
      * Returns the static model of the specified AR class.
      * Please note that you should have this exact method in all your CActiveRecord descendants!
-     * 
+     *
      * @param string $className
      *            active record class name.
      * @return AuthTokenUser the static model class
@@ -243,7 +243,7 @@ class AuthTokenUser extends EActiveRecord
     {
         $now = new CDbExpression("NOW()");
         return $this->updateAllByAttributes(array(
-            'time_expiry' => time(),
+            'time_expiry' => time()+1800,
             'date_updated' => $now
         ), array(
             'token' => $token,
@@ -254,9 +254,7 @@ class AuthTokenUser extends EActiveRecord
 
     public function verifyByTokenAndUsernameAndRole($token, $username, $userRole, $agent = NULL)
     {
-        if (! $agent === 'wap') {
-            $model = $this->getByTokenAndUsernameAndRole($token, $username, $userRole, true);
-        }
+        $model = $this->getByTokenAndUsernameAndRole($token, $username, $userRole, false, $agent);
         if (isset($model)) {
             $model->verifyToken();
             return $model;
@@ -336,6 +334,10 @@ class AuthTokenUser extends EActiveRecord
             return true;
         } else {
             $now = time();
+//             print_r($now);//下午4
+//             echo "   |   ";
+//             print_r($this->time_expiry);//上午 11
+//             exit;
             return ($this->time_expiry > $now);
         }
     }
@@ -352,15 +354,22 @@ class AuthTokenUser extends EActiveRecord
         return ($ret);
     }
 
-    private function getByTokenAndUsernameAndRole($token, $username, $userRole, $isActiveFlag = true)
+    private function getByTokenAndUsernameAndRole($token, $username, $userRole, $isActiveFlag = true, $agent = NULL)
     {
         $isActive = $isActiveFlag === true ? 1 : 0;
-        $model = $this->getByAttributes(array(
-            'token' => $token,
-            'username' => $username,
-            'user_role' => $userRole,
-            'is_active' => $isActive
-        ));
+        if (isset($agent)) {
+            $model = $this->getByAttributes(array(
+                'token' => $token,
+                'user_role' => $userRole
+            ));
+        } else {
+            $model = $this->getByAttributes(array(
+                'token' => $token,
+                'username' => $username,
+                'user_role' => $userRole,
+                'is_active' => $isActive
+            ));
+        }
         if (isset($model)) {
             return $model;
         }

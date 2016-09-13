@@ -8,7 +8,6 @@ class ApiWapController extends Controller
      * Key which has to be in HTTP USERNAME and PASSWORD headers
      */
     Const APPLICATION_ID = 'ASCCPE';
-    Const AGENT_PARAMETER = 'WAP';
 
     /**
      * Default response format
@@ -121,7 +120,8 @@ class ApiWapController extends Controller
         
         switch ($get['model']) {
             // Get an instance of the respective model
-             case 'userregister':    // remote user register.
+            //手机用户注册
+            case 'userregister': // remote user register.
                 if (isset($post['userRegister'])) {
                     $values = $post['userRegister'];
                     $values['userHostIp'] = Yii::app()->request->userHostAddress;
@@ -131,7 +131,7 @@ class ApiWapController extends Controller
                 } else {
                     $output['error'] = 'Wrong parameters.';
                 }
-
+                
                 break;
             // 手机密码登录
             case 'userlogin': // remote user login.
@@ -221,10 +221,10 @@ class ApiWapController extends Controller
             $this->renderJsonOutput($output->status = EApiViewService::RESPONSE_NO, $output->errorCode = ErrorList::BAD_REQUEST, $output->errorMsg = '没有权限执行此操作');
         }
         $authMgr = new AuthManager();
-        $authUserIdentity = $authMgr->authenticateWapUserByToken($values['username'], $values['token'], $this->AGENT_PARAMETER);
+        $authUserIdentity = $authMgr->authenticateWapUserByToken($values['username'], $values['token'], $agent = 'wap');
         if (is_null($authUserIdentity) || $authUserIdentity->isAuthenticated === false) {
             $this->renderJsonOutput($output->status = EApiViewService::RESPONSE_NO, $output->errorCode = ErrorList::BAD_REQUEST, $output->errorMsg = '用户名或token不正确');
-        }else{
+        } else {
             $authTokenMsg = new AuthTokenUser();
             $authTokenMsg->durationTokenPatient($values['token'], $values['username']);
         }
@@ -244,7 +244,7 @@ class ApiWapController extends Controller
             // send the body
             echo $body;
         }  // we need to create the body if none is passed
-        else {
+else {
             // create some body messages
             $message = '';
             

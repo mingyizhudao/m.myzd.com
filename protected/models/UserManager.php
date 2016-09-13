@@ -235,7 +235,7 @@ class UserManager {
 
         // Verifies AuthSmsVerify by using $mobile & $verifyCode.     手机验证码验证
         $authMgr = new AuthManager();
-        $authSmsVerify = $authMgr->verifyCodeForRegister($mobile, $verifyCode, $userHostIp);
+        $authSmsVerify = $authMgr->verifyCodeForRegister($mobile, $verifyCode, $userHostIp, $agent);
         if ($authSmsVerify->isValid() === false) {
             $output['errorMsg'] = $authSmsVerify->getError('code');
             return $output;
@@ -261,7 +261,7 @@ class UserManager {
             return $output;
         } else if ($autoLogin) {
             // auto login user and return token.
-            $output = $authMgr->doTokenUserLoginByPassword($mobile, $password, $userHostIp,$agent);
+            $output = $authMgr->doTokenUserLoginByPassword($mobile, $password, $userHostIp);
         } else {
             $output['status'] = 'ok';
             $output['errorCode'] = 0;
@@ -511,5 +511,5 @@ class UserManager {
             return $model;
         }
     }
-
+    
 }
