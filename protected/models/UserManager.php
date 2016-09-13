@@ -214,11 +214,15 @@ class UserManager {
      * @return string
      */
     public function apiTokenUserRegister($values) {
-        $output = array('status' => 'no','errorCode' => 0,'errorMsg' =>'' ,'results' => array()); // default status is false.
+        $output =new stdClass();
+        $output->status='no';
+        $output->errorCode=0;
+        $output->errorMsg='';
+        $output->results=array();
         // TODO: wrap the following method. first, validates the parameters in $values.
         if (isset($values['username']) === false || isset($values['password']) === false || isset($values['verify_code']) === false) {
-            $output['errorCode'] = ErrorList::BAND_REQUEST;
-            $output['errorMsg'] = 'Wrong parameters.';
+            $output->errorCode=ErrorList::BAD_REQUEST;
+            $output->errorMsg='Wrong parameters.';
             return $output;
         }
         // assign parameters.
@@ -237,13 +241,13 @@ class UserManager {
         $authMgr = new AuthManager();
         $authSmsVerify = $authMgr->verifyCodeForRegister($mobile, $verifyCode, $userHostIp, $agent);
         if ($authSmsVerify->isValid() === false) {
-            $output['errorMsg'] = $authSmsVerify->getError('code');
+            $output->errorMsg= $authSmsVerify->getError('code');
             return $output;
         }
         // Check if username exists.
         if (User::model()->exists('username=:username AND role=:role', array(':username' => $mobile, ':role' => StatCode::USER_ROLE_PATIENT))) {
-            $output['status'] = 'no';
-            $output['errorMsg'] = '该手机号已被注册';
+            $output->status='no';
+            $output->errorMsg='该手机号已被注册';
             return $output;
         }
 
@@ -255,7 +259,7 @@ class UserManager {
             $array= $user->getFirstErrors();
             if(is_array($array)){
                 foreach ($array as $k=>$v){
-                    $output['errorMsg']=$v;
+                    $output->errorMsg=$v;
                 }
             }
             return $output;
@@ -263,9 +267,9 @@ class UserManager {
             // auto login user and return token.
             $output = $authMgr->doTokenUserLoginByPassword($mobile, $password, $userHostIp);
         } else {
-            $output['status'] = 'ok';
-            $output['errorCode'] = 0;
-            $output['errorMsg'] = 'success';
+            $output->status= 'ok';
+            $output->errorCode= 0;
+            $output->errorMsg='success';
         }
         // deactive current smsverify.
         if (isset($authSmsVerify)) {
@@ -511,6 +515,7 @@ class UserManager {
             return $model;
         }
     }
+    //根据token得到usertoken信息和user信息
     public function loadUserAndTokenBytoken($token){
         $authtoken=new AuthTokenUser();
         $model=$authtoken->getAllByToken($token,array('atuUser'));

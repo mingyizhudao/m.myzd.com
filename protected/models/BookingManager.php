@@ -75,13 +75,14 @@ class BookingManager {
 
     public function apiCreateQuickBooking($values, $checkVerifyCode = true, $sendEmail = true) {
         $results = array();
+        $output=new stdClass();
         if($checkVerifyCode){
             $authMgr = new AuthManager();
             $authSmsVerify = $authMgr->verifyCodeForBooking($values['mobile'], $values['verify_code'], null);
             if ($authSmsVerify->isValid() === false) {
-                $output['status'] = 'no';
-                $output['errorCode'] = 400;
-                $output['errorMsg'] = $authSmsVerify->getError('code');
+                $output->status= 'no';
+                $output->errorCode= 400;
+                $output->errorMsg= $authSmsVerify->getError('code');
                 return $output;
             }else{
                 $authMgr = new AuthManager();
@@ -103,18 +104,19 @@ class BookingManager {
         $model->setAttributes($values, true);
         $ret = $this->createAdminBooking($model);
         if ($ret['status'] == 'no') {
-            $output['status'] = 'no';
-            $output['errorCode'] = 400;
-            $output['errorMsg'] = $model->getFirstErrors();
+            $output->status= 'no';
+            $output->errorCode= 400;
+            $output->errorMsg= $model->getFirstErrors();
             return $output;
         }else{
-            $output['status'] = 'ok';
-            $output['errorCode'] = 0;
-            $output['errorMsg'] = 'success';
-            $results['booking_id'] = $model->getId();
-            $results['refNo'] = $ret['salesOrderRefNo'];
-            $results['actionUrl'] = Yii::app()->createAbsoluteUrl('/api2/bookingfile');
-            $output['results'] = $results;
+            $output->status= 'ok';
+            $output->errorCode= 0;
+            $output->errorMsg= 'success';
+            $results=new stdClass();
+            $results->booking_id= $model->getId();
+            $results->refNo=$ret['salesOrderRefNo'];
+            $results->actionUrl=Yii::app()->createAbsoluteUrl('/api2/bookingfile');
+            $output->results= $results;
         }
 //         load this booking from db and convert it to IBooking model for viewing.
         try {

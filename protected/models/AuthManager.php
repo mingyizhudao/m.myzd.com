@@ -8,23 +8,27 @@ class AuthManager {
     /*     * ** API 3.0 *** */
 
     public function apiSendVerifyCode($values) {
-        $output = array('status' => EApiViewService::RESPONSE_NO, 'errorCode' => ErrorList::BAD_REQUEST, 'errorMsg' => 'Invalid request.');
+        $output=new stdClass();
+        $output->status=EApiViewService::RESPONSE_NO;
+        $output->errorCode=ErrorList::BAD_REQUEST;
+        $output->errorMsg= 'Invalid request.';
         if (isset($values['mobile']) == false || isset($values['action_type']) == false) {
-            $output['errorMsg'] = 'Wrong parameters.';
+            $output->errorMsg= 'Wrong parameters.';
             return $output;
         }
         $mobile = $values['mobile'];
         $actionType = $values['action_type'];
         $userHostIp = isset($values['userHostIp']) ? $values['userHostIp'] : null;
-
         $errors = $this->sendAuthSmsVerifyCode($mobile, $actionType, $userHostIp);
         if (empty($errors)) {
-            $output['status'] = 'ok';
-            $output['errorCode'] = ErrorList::ERROR_NONE;
-            $output['errorMsg'] = 'success';
+            $output->status= 'ok';
+            $output->errorCode=ErrorList::ERROR_NONE;
+            $output->errorMsg = 'success';
+             
         } else {
-            $output['errorMsg'] = '发送失败';
-            $output['results'] = $errors;
+            $output->errorMsg = '发送失败';
+            $output->results= $errors;
+       
         }
         return $output;
     }
@@ -58,10 +62,11 @@ class AuthManager {
      * @return string
      */
     public function apiTokenUserLoginByPassword($values) {
+        $output=new stdClass();
         // TODO: wrap the following method. first, validates the parameters in $values.        
         if (isset($values['username']) == false || isset($values['password']) == false) {
-            $output['errorCode'] = 400;
-            $output['errorMsg'] = 'Wrong parameters.';
+            $output->errorCode = 400;
+            $output->errorMsg = 'Wrong parameters.';
             return $output;
         }
         $username = $values['username'];
@@ -69,7 +74,6 @@ class AuthManager {
         $userHostIp = isset($values['userHostIp']) ? $values['userHostIp'] : null;
         $agent = isset($values['agent_parmas']) ? $values['agent_parmas'] : null;
         $output = $this->doTokenUserLoginByPassword($username, $password, $userHostIp, $agent);
-
         return $output;
     }
 
@@ -83,14 +87,15 @@ class AuthManager {
         $mobile = $values['username'];
         $verifyCode = $values['verify_code'];
         $userHostIp = $values['userHostIp'];
-
+        //add by wanglei
+        $output=new stdClass();    
         if (isset($verifyCode)) {
             $authMgr = new AuthManager();
             $authSmsVerify = $authMgr->verifyCodeForMobileLogin($mobile, $verifyCode, $userHostIp);
             if ($authSmsVerify->isValid() === false) {
-                $output['status'] = EApiViewService::RESPONSE_NO;
-                $output['errorCode'] = ErrorList::BAD_REQUEST;
-                $output['errorMsg'] = $authSmsVerify->getError('code');
+                $output->status = EApiViewService::RESPONSE_NO;
+                $output->errorCode = ErrorList::BAD_REQUEST;
+                $output->errorMsg = $authSmsVerify->getError('code');
                 return $output;
             }
         }
@@ -101,9 +106,9 @@ class AuthManager {
             $user = $userMR->doRegisterUser($mobile, $password);
             if ($user->hasErrors()) {
                 // error, so return errors.
-                $output['status'] = EApiViewService::RESPONSE_NO;
-                $output['errorCode'] = ErrorList::BAD_REQUEST;
-                $output['errorMsg'] = $user->getFirstErrors();
+                $output->status  = EApiViewService::RESPONSE_NO;
+                $output->errorCode = ErrorList::BAD_REQUEST;
+                $output->errorMsg = $user->getFirstErrors();
                 return $output;
             }
             $is_new_user=2;
@@ -334,11 +339,16 @@ class AuthManager {
      * @return string AuthTokenUser.token.
      */
     public function doTokenUserLoginByPassword($username, $password, $userHostIp = null, $agent = NULL) {
-        $output = new stdClass();
-        $output->status = EApiViewService::RESPONSE_NO;
-        $output->errorCode = ErrorList::BAD_REQUEST;
-        $output->errorMsg = '';
-        $output->results = array();
+       // $output = array('status' => 'no','errorCode' => 0,'errorMsg' =>'' ,'results' => array()); // default status is false.
+            $output=new stdClass();
+            $output->status='no';
+            $output->errorCode=0;
+            $output->errorMsg = '';
+            $output->result=array();
+        //         $output = new stdClass();
+        //         $output->status = EApiViewService::RESPONSE_NO;
+        //         $output->errorCode = ErrorList::BAD_REQUEST;
+        //         $output->errorMsg = '';
         $authUserIdentity = $this->authenticateUserByPassword($username, $password);
         if ($authUserIdentity->isAuthenticated) {
             // username and password are correct. continue to create AuthTokenUser.
@@ -352,19 +362,29 @@ class AuthManager {
                 $tokenUser = $this->createTokenUser($user->getId(), $username, $userHostIp, $userMacAddress, $deActivateFlag);  //@2015-10-28 by Hou Zhen Chuan
             }
             if (isset($tokenUser)) {
-                $output->status = 'ok';
-                $output->errorCode = 0;
-                $output->errorMsg = '';
-                $output->results = array('token' => $tokenUser->getToken());
+                $output->errorCode=0;
+                $output->errorMsg='success';
+                $output->status='ok';
+                $newtoken=new stdClass();
+                $newtoken->token=$tokenUser->getToken();
+                $output->resutls=$newtoken;
+               // $output['errorCode'] = 0;
+               // $output['errorMsg'] = 'success';
+               // $output['status'] = 'ok';
+              //  $output['results']['token'] = $tokenUser->getToken();
                 // TODO: log.
             } else {
-                $output->errorCode = ErrorList::ERROR_TOKEN_CREATE_FAILED;
-                $output->errorMsg = '生成token失败!';
+                $output->errorCode=ErrorList::ERROR_TOKEN_CREATE_FAILED;
+                $output->errorMsg='生成token失败!';
+                //$output['errorCode'] = ErrorList::ERROR_TOKEN_CREATE_FAILED;
+                //$output['errorMsg'] = '生成token失败!';
                 // TODO: log.
             }
         } else {
-            $output->errorCode = $authUserIdentity->errorCode;
-            $output->errorMsg = '用户名或密码不正确';
+                $output->errorCode=$authUserIdentity->errorCode;
+                $output->errorMsg='用户名或密码不正确';
+           // $output['errorCode'] = $authUserIdentity->errorCode;
+            //$output['errorMsg'] = '用户名或密码不正确';
         }
         return $output;
     }
@@ -444,8 +464,8 @@ class AuthManager {
     }
     
     //验证WAP患者用户端的 token信息
-    public function authenticateWapUserByToken($username,$token, $agent = NULL) {
-        $authUserIdentity = new AuthUserIdentity($username, $token, AuthUserIdentity::AUTH_TYPE_TOKEN, StatCode::USER_ROLE_PATIENT, $agent);
+    public function authenticateWapUserByToken($token, $agent = NULL) {
+        $authUserIdentity = new AuthUserIdentity($username = NULL, $token, AuthUserIdentity::AUTH_TYPE_TOKEN, StatCode::USER_ROLE_PATIENT, $agent);
         $authUserIdentity->authenticate();
         return $authUserIdentity;
     }
