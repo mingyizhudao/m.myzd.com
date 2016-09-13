@@ -3,7 +3,7 @@
 /**
  * $data.
  */
-$this->setPageTitle('WIFI落地页');
+$this->setPageTitle('名医主刀');
 $this->show_footer = false;
 $urlDoctorcase = $this->createAbsoluteUrl('/api/successfulcase/');
 $urlSucCase = $this->createAbsoluteUrl('/api/expertsshow');
