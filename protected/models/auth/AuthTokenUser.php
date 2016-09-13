@@ -390,10 +390,10 @@ class AuthTokenUser extends EActiveRecord
         }
         return null;
     }
-	 // 得到当前token信息 add by wanglei
+    // 得到当前token信息 add by wanglei 2016-09-13
      public function getAllByToken($token,$with=NULL)
     {
-          $model = $this->getByAttributes(array(
+        $model = $this->getByAttributes(array(
             'token' => $token,        
         ),$with);
         if (isset($model)) {
