@@ -251,7 +251,7 @@ class AuthManager {
         } else {
             $smsVerify->checkValidity(true,true);
         }
-
+     
         return $smsVerify;
     }
 
@@ -464,7 +464,7 @@ class AuthManager {
     }
     
     //验证WAP患者用户端的 token信息
-    public function authenticateWapUserByToken($token, $agent = NULL) {
+    public function authenticateWapUserByToken($username, $token, $agent = NULL) {
         $authUserIdentity = new AuthUserIdentity($username = NULL, $token, AuthUserIdentity::AUTH_TYPE_TOKEN, StatCode::USER_ROLE_PATIENT, $agent);
         $authUserIdentity->authenticate();
         return $authUserIdentity;

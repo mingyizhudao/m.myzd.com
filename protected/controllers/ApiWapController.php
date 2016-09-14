@@ -149,11 +149,13 @@ class ApiWapController extends Controller
             
             case 'quickbooking': // 快速预约
                 if (isset($post['booking'])) {
+                    
                     $values = $post['booking'];
                     $values['token'] = $this->em_getallheaders();
+                  
                     $values['userHostIp'] = Yii::app()->request->userHostAddress;
                     $values['user_agent'] = ($this->isUserAgentWeixin()) ? StatCode::USER_AGENT_WEIXIN : StatCode::USER_AGENT_MOBILEWEB;
-                    if (! isset($values['verify_code'])) {
+                    if (! isset($values['verify_code'])) {   
                         $checkVerifyCode = false;
                         $user = $this->userLoginRequired($values); // check if user has login.
                         if (is_object($user)) {
@@ -217,6 +219,7 @@ class ApiWapController extends Controller
     private function userLoginRequired($values)
     {
         $userMgr = new UserManager();
+      
         $user = $userMgr->loadUserAndTokenBytoken($values['token']);
         $values['username'] = (isset($user->token->username)) ? $user->token->username: NULL;
         $output = new stdClass();
@@ -226,11 +229,17 @@ class ApiWapController extends Controller
         $authMgr = new AuthManager();
         $authUserIdentity = $authMgr->authenticateWapUserByToken($values['username'], $values['token'], $agent = 'wap');
             if (is_null($authUserIdentity) || $authUserIdentity->isAuthenticated === false) {
-            $this->renderJsonOutput($output->status = EApiViewService::RESPONSE_NO, $output->errorCode = ErrorList::BAD_REQUEST, $output->errorMsg = '用户名或token不正确');
+            $output->status =EApiViewService::RESPONSE_NO;
+            $output->errorCode = ErrorList::BAD_REQUEST;
+            $output->errorMsg = '用户名或token不正确';
+            $this->renderJsonOutput($output);
+        
         } else {
             $authTokenMsg = new AuthTokenUser();
+        
             $authTokenMsg->durationTokenPatient($values['token'], $values['username']);
         }
+          
         return $authUserIdentity->getUser();
     }
 
