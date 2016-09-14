@@ -8,7 +8,7 @@ class ApiWapController extends Controller
      * Key which has to be in HTTP USERNAME and PASSWORD headers
      */
     Const APPLICATION_ID = 'ASCCPE';
-
+            
     /**
      * Default response format
      * either 'json' or 'xml'
@@ -42,16 +42,132 @@ class ApiWapController extends Controller
     // Actions
     public function actionList($model)
     {
-        $api = $this->getApiVersionFromRequest();
-        
+    
         // Get the respective model instance
         switch ($model) {
-            // 医院列表
-            case "hospital":
-                echo 1;
-                exit();
+            case 'dataversion'://数据版本号
+                $output=new stdClass();
+                $output->status=EApiViewService::RESPONSE_OK;
+                $output->errorCode=ErrorList::ERROR_NONE;
+                $output->errorMsg='success';
+                $output->results=array(
+                    'version' => '20151215',
+                    'localdataUrl' => Yii::app()->createAbsoluteUrl('/api/localdata'),
+                );
+            break;
+            case 'localdata'://本地需要缓存的数据
+                $apiService = new ApiViewPatientLocalData();
+                $output = $apiService->loadApiViewData();
                 break;
-            // 城市列表
+            case 'faculty'://科室
+                $facultyMgr = new FacultyManager();
+                $output = $facultyMgr->loadFacultyList();
+                break;
+            case 'overseas'://医院
+                $overseasMgr = new OverseasManager();
+                $output = $overseasMgr->loadHospitalsJson();
+                break;
+            case 'appversion'://android ,ios 版本号 参数  
+                $get = $_GET;
+                $appMgr = new AppManager();
+                $output = $appMgr->loadAppVersionJson($get);
+            break;
+            // app v2.0 api
+            case "appnav1"://首屏接口 
+                $apiService = new ApiViewAppNav1V6();
+                $output = $apiService->loadApiViewData();
+            break;
+            case "appnav2"://专家团队
+                    $values = $_GET;
+                    $apiService = new ApiViewExpertTeamSearchV5($values);
+                    $output = $apiService->loadApiViewData();
+            break;
+            case "appnav3": //合作医院
+                $values = $_GET;
+                $apiService = new ApiViewAppNav3V4($values);
+                $output = $apiService->loadApiViewData();
+            break;
+            case "faculty2":    // can be deleted, use appnav1 instead.
+                $facultyMgr = new FacultyManager();
+                $output = $facultyMgr->loadFacultyList2();
+            break;
+            //---------------------前端接口---------------
+            case "hospital":
+                $values = $_GET;
+                $values['isNotPaging'] = 1;
+                $apiService = new ApiViewHospitalSearchV7($values);
+                $output = $apiService->loadApiViewData();
+            break;
+            case "listhospital":
+                $values = $_GET;
+                $hospitalMgr = new HospitalManager();
+                $query['city'] = isset($values['city']) ? $values['city'] : null;
+                $output['hospitals'] = $hospitalMgr->loadListHospital($query, array('order' => 't.name'));
+                break;
+            case "tophospital"://医院排行榜
+                $values=$_GET;
+                $apiService = new ApiViewTopHospital($values);
+                $output = $apiService->loadApiViewData();
+                break;
+            case 'doctor'://医生
+                $values=$_GET;
+                $apiService = new ApiViewDoctorSearchV7($values);
+                $output = $apiService->loadApiViewData();
+            break;
+            case"userbooking"://需要修改
+                $values = $_GET;
+                $values['token'] = $this->em_getallheaders();
+                $user = $this->userLoginRequired($values);
+                if($user){
+                    $apiService = new ApiViewBookingListV4($user,$values['bk_status'],true);
+                    $output = $apiService->loadApiViewData();
+                }
+            break;
+            case 'expertteam':
+                $values = $_GET;
+                $query['city'] = isset($values['city']) ? $values['city'] : null;
+                $options = $this->parseQueryOptions($values);
+                $with = array('expteamLeader');
+                $expteamMgr = new ExpertTeamManager();
+                $output['expertTeams'] = $expteamMgr->loadAllIExpertTeams($query, $with, $options);
+            break;
+            case 'disease':
+                $diseaseMgr = new DiseaseManager();
+                $output = $diseaseMgr->loadListDisease();
+                break;
+            case 'diseasename'://根据疾病名称获取疾病信息
+                $values = $_GET;
+                $apiService = new ApiViewDiseaseName($values);
+                $output = $apiService->loadApiViewData();
+                break;
+            case 'city':
+                $values = $_GET;
+                $values['type']='doctor';
+                $city = new ApiViewOpenCity($values);
+                $output = $city->loadApiViewData();
+                break;
+            case 'diseasecategory'://获取疾病分类
+                $apiService = new ApiViewDiseaseCategory();
+                $output = $apiService->loadApiViewData();
+                break;
+            case 'recommendeddoctors'://首页推荐的医生
+                $apiService = new ApiViewRecommendedDoctors();
+                $output = $apiService->loadApiViewData();
+                break;
+            case 'commonwealdoctors'://名医公益推荐的医生
+                $apiService = new ApiViewCommonwealDoctors();
+                $output = $apiService->loadApiViewData();
+                break;
+            case 'diagnosisdoctors'://名医公益推荐的医生
+                $values = $_GET;
+                $apiService = new ApiViewDiagnosisDoctor($values);
+                $output = $apiService->loadApiViewData();
+                break;
+            case 'search':
+                $values = $_GET;
+                $apiService = new ApiViewSearch($values);
+                $output = $apiService->loadApiViewData();
+            break;
             
             default:
                 // Model not implemented error
@@ -177,7 +293,7 @@ class ApiWapController extends Controller
                 if (isset($post['userRegister'])) {
                     $values = $post['userRegister'];
                     $values['userHostIp'] = Yii::app()->request->userHostAddress;
-                    $values['agent_parmas'] = self::AGENT_PARAMETER;
+                    $values['agent_parmas'] = 'wap';
                     $userMgr = new UserManager();
                     $output = $userMgr->apiTokenUserRegister($values);
                 } else {
@@ -278,6 +394,7 @@ class ApiWapController extends Controller
         if (isset($values['username']) === false || isset($values['token']) === false) {
             $this->renderJsonOutput($output->status = EApiViewService::RESPONSE_NO, $output->errorCode = ErrorList::BAD_REQUEST, $output->errorMsg = '没有权限执行此操作');
         }
+     
         $authMgr = new AuthManager();
         $authUserIdentity = $authMgr->authenticateWapUserByToken($values['username'], $values['token'], $agent = 'wap');
             if (is_null($authUserIdentity) || $authUserIdentity->isAuthenticated === false) {
