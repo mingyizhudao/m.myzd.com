@@ -79,23 +79,75 @@ class ApiWapController extends Controller
             $this->_sendResponse(500, 'Error: Parameter <b>id</b> is missing');
         }
         $output = null;
-        $api = $this->getApiVersionFromRequest();
         switch ($model) {
-            // 科室列表
+             // Find respective model    
+            case 'faculty':  //TODO: this api is used in v1. will not be supported after v2.0.
+                $facultyMgr = new FacultyManager();
+                $output = $facultyMgr->loadIFacultyJson($id);
+                break;
+            case 'hospital':
+                $apiService = new ApiViewHospitalV4($id);
+                $output = $apiService->loadApiViewData();
+                break;
+            case 'doctor':
+                $doctorMgr = new DoctorManager();
+                $output = $doctorMgr->loadIDoctorJson($id);
+                break;
+
+            // app v2.0 api.            
+            case 'faculty2':
+                $facultyMgr = new FacultyManager();
+                $ifaculty = $facultyMgr->loadIFaculty2($id);
+                $faculty = new stdClass();
+                $faculty->id = $ifaculty->id;
+                $faculty->code = $ifaculty->code;
+                $faculty->name = $ifaculty->name;
+                $faculty->desc = $ifaculty->desc;
+                $output['faculty'] = $faculty;
+                $output['diseases'] = $ifaculty->diseases;
+                $output['expertTeams'] = $ifaculty->expertTeams;
+                $output['doctors'] = $ifaculty->doctors;
+                break;
+            case 'expertteam':
+                $apiService = new ApiViewExpertTeamV5($id);
+                $output = $apiService->loadApiViewData();
+                break;
+            case 'userbooking':
+                $values = $_GET;
+                $user = $this->userLoginRequired($values);
+                $apiService = new ApiViewBookingV4($user, $id);
+                $output = $apiService->loadApiViewData();
+                break;
+            case 'hospitaldept':
+                $searchInputs = $_GET;
+                $apiService = new ApiViewHospitalDeptV5($id, $searchInputs);
+                $output = $apiService->loadApiViewData();
+                break;
+            case'disease':
+                $apiSvc = new ApiViewDiseaseV4($id);
+                $output = $apiSvc->loadApiViewData();
+                break;
+            case 'diseasebycategory'://根据疾病分类获取疾病
+                $apiService = new ApiViewDiseaseByCategory($id);
+                $output = $apiService->loadApiViewData();
+                break;
             case 'subcategory':
-                echo 1;
-                exit();
+                $apiService = new ApiViewSubCategory($id);
+                $output = $apiService->loadApiViewData();
+                break;
+            case 'city':
+                $apiService = new ApiViewCity($id);
+                $output = $apiService->loadApiViewData();
                 break;
             
             default:
-                $this->_sendResponse(501, sprintf('Mode <b>view</b> is not implemented for model <b>%s</b>', $model));
+                $this->_sendResponse(501, sprintf('Mode <b>view</b>  is not implemented for model <b>%s</b>', $model));
                 Yii::app()->end();
         }
         // Did we find the requested model? If not, raise an error
         if (is_null($output)) {
             $this->_sendResponse(404, 'No result');
         } else {
-            // $this->_sendResponse(200, CJSON::encode($output));
             $this->renderJsonOutput($output);
         }
     }
