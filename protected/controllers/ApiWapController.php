@@ -31,10 +31,11 @@ class ApiWapController extends Controller
         // $condition=array("user_id"=>5000);
         // $order=array("_id"=>EMongoCriteria::SORT_DESC);
         // $newlist=$newmongmanage->SelectOne($condition,$order);
-        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Origin:*");
         // header('Access-Control-Allow-Origin:http://m.mingyizhudao.com');
         header('Access-Control-Allow-Headers: Origin,X-Requested-With,Authorization,Accept,Content-Type');
-        header('Access-Control-Allow-Origin:http://mingyizhudao.com'); // Cross-domain access.
+
+        //header('Access-Control-Allow-Origin:http://mingyizhudao.com'); // Cross-domain access.
         header('Access-Control-Allow-Credentials:true'); // 允许携带 用户认证凭据（也就是允许客户端发送的请求携带Cookie）
         return parent::init();
     }
@@ -168,7 +169,19 @@ class ApiWapController extends Controller
                 $apiService = new ApiViewSearch($values);
                 $output = $apiService->loadApiViewData();
             break;
-            
+            //验证码
+            case 'getcaptcha';
+                $values = $_GET;
+                //$output=new stdClass();
+                $captcha = new CaptchaManage();
+                $captcha->showImg();
+                exit;
+            //验证验证码
+            case 'checkcaptcha':
+                $values = $_GET;
+                $apiService = new ApiCheckCaptcha($values);
+                $output = $apiService->loadApiViewData();
+            break;    
             default:
                 // Model not implemented error
                 // $this->_sendResponse(501, sprintf('Error: Mode <b>list</b> is not implemented for model <b>%s</b>', $model));
@@ -349,8 +362,9 @@ class ApiWapController extends Controller
                 } else {
                     $output['error'] = 'Wrong parameters.';
                 }
-                break;
-            
+            break;
+              
+                  
             default:
                 $this->_sendResponse(501, sprintf('Error: Invalid request', $model));
                 Yii::app()->end();
