@@ -14,6 +14,7 @@ class AuthCaptchaManage {
             $output->status = 'no';
             $model->image=$captchamodel->src;
             $model->code=$captchamodel->code;
+            $model->user_host_ip= Yii::app()->request->getUserHostAddress();
             $model->is_active=1;
             $model->time_expiry=time()+600;
             $model->date_created=date("Y-m-d H:i:s");
