@@ -26,7 +26,8 @@ class ApiWapController extends Controller
 
     public function init()
     {
-        
+          
+        $this->getmethod();
         // $newmongmanage=new UserTokenManager();
         // $condition=array("user_id"=>5000);
         // $order=array("_id"=>EMongoCriteria::SORT_DESC);
@@ -39,11 +40,18 @@ class ApiWapController extends Controller
         header('Access-Control-Allow-Credentials:true'); // 允许携带 用户认证凭据（也就是允许客户端发送的请求携带Cookie）
         return parent::init();
     }
-    
+    //options返回200
+    public function getmethod(){
+        $method=$_SERVER['REQUEST_METHOD'];
+        switch($method){
+            case "OPTIONS":
+                Yii::app()->end();
+            break;    
+        }
+    }
     // Actions
     public function actionList($model)
     {
-    
         // Get the respective model instance
         switch ($model) {
             case 'dataversion'://数据版本号
@@ -179,7 +187,7 @@ class ApiWapController extends Controller
             break;
             //验证验证码
             case 'checkcaptcha':
-                 $values = $_GET;;
+                 $values = $_GET;
                 $auth_captcha=new AuthCaptchaManage();
                 $output = $auth_captcha->checkCaptcha($values); 
             break;
@@ -284,8 +292,10 @@ class ApiWapController extends Controller
 
     public function actionCreate($model)
     {
+        
         $get = $_GET;
         $post = $_POST;
+       
         if (empty($_POST)) {
             // application/json
             $post = CJSON::decode($this->getPostData());
