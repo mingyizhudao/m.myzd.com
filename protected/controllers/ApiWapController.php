@@ -172,16 +172,17 @@ class ApiWapController extends Controller
             //验证码
             case 'getcaptcha';
                 $values = $_GET;
-                //$output=new stdClass();
-                $captcha = new CaptchaManage();
-                $captcha->showImg();
-                exit;
+                $captcha = new CaptchaManage(125,16,6,"wap");
+                $resultimage=$captcha->showImg();
+                $auth_captcha=new AuthCaptchaManage();
+                $output = $auth_captcha->createCaptcha($resultimage); 
+            exit;
             //验证验证码
             case 'checkcaptcha':
-                $values = $_GET;
-                $apiService = new ApiCheckCaptcha($values);
-                $output = $apiService->loadApiViewData();
-            break;    
+                 $values = $_GET;;
+                $auth_captcha=new AuthCaptchaManage();
+                $output = $auth_captcha->checkCaptcha($values); 
+            break;
             default:
                 // Model not implemented error
                 // $this->_sendResponse(501, sprintf('Error: Mode <b>list</b> is not implemented for model <b>%s</b>', $model));
@@ -363,7 +364,7 @@ class ApiWapController extends Controller
                     $output['error'] = 'Wrong parameters.';
                 }
             break;
-              
+           
                   
             default:
                 $this->_sendResponse(501, sprintf('Error: Invalid request', $model));

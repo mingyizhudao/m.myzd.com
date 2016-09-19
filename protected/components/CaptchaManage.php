@@ -7,15 +7,22 @@ class CaptchaManage
     private $codeNum;
     private $code;
     private $im;
-
-    function __construct($width=125, $height=26, $codeNum=6)
+    //add by wanglei
+    //wap标志
+    private $wap;
+    //image信息
+    private $image;
+    //答案
+    private $replay;
+    function __construct($width=125, $height=26, $codeNum=6,$wap="")
     {
         $this->width = $width;
         $this->height = $height;
         $this->codeNum = $codeNum;
+        $this->wap=$wap;
+        $this->image=new stdClass();
         ob_clean();
     }
-
     public function showImg()
     {
         //创建图片
@@ -25,7 +32,14 @@ class CaptchaManage
         //设置验证码
         $this->setCaptcha();
         //输出图片
-        $this->outputImg();
+        if($this->wap){
+            $this->outputcontent();
+            $this->image->code=$this->replay;
+            return $this->image;
+        }
+        else{
+            $this->outputImg();
+        }
     }
 
     public function getCaptcha()
@@ -68,9 +82,13 @@ class CaptchaManage
         for ($i = 0; $i < $this->codeNum; $i++) {
             $code .= $str{rand(0, strlen($str) - 1)};
         }
-
-        Yii::app()->session['code'] = $code;
-
+        if($this->wap){
+             $this->replay= $code;
+             
+        }
+        else{
+             Yii::app()->session['code'] = $code;
+        }
         return $code;
     }
 
@@ -80,7 +98,6 @@ class CaptchaManage
 
         $mode = rand(1,9999) % 4;
         $code = '';
-
         $left_num = rand(1,10);
         $right_num = rand(1,10);
 
@@ -134,9 +151,13 @@ class CaptchaManage
             $result = $mid_num - $left_num - $right_num;
             $code = $mid_num.$oper.$left_num.$oper.$right_num;
             $code = $code.'=?';
-        }        
-
-        Yii::app()->session['code'] = $result;
+        } 
+        if($this->wap){
+             $this->replay= $result;
+        }
+        else{
+             Yii::app()->session['code'] = $result;
+        }
 
         return $code;
     }
@@ -144,18 +165,6 @@ class CaptchaManage
     private function setCaptcha()
     {
         $this->createCode();
-
-        /*$len = strlen($this->code);
-        for ($i = 0; $i < $len; $i++) {
-            //$color = imagecolorallocate($this->im, rand(50, 250), rand(100, 250), rand(128, 250));
-            $color = imagecolorallocate($this->im, 36, 85, 170);
-            //$size = rand(floor($this->height / 5), floor($this->height / 3));
-            $size = 200;   
-            $x = floor($this->width / $len) * $i + 4;
-            $y = rand(0, $this->height - 20);
-            imagechar($this->im, $size, $x, $y, $this->code{$i}, $color);           
-        }*/
-
         $len = strlen($this->code);
         for ($i = 0; $i < $len; $i++) 
         {
@@ -182,6 +191,35 @@ class CaptchaManage
         } else {
             die("Don't support image type!");
         }
+    }
+    //生成图片
+    private function outputcontent(){
+        $filepath="upload/captcha/";
+        $imagesrc=new stdClass();
+       if (imagetypes() & IMG_JPG) {
+            $filearray=$this->getfilename($filepath,"jpg");
+            $imagesrc->src=$filearray['src'];
+            imagejpeg($this->im,$filearray['filesrc'],100);
+        } elseif (imagetypes() & IMG_GIF) {
+            $filearray=$this->getfilename($filepath,"gif");
+            $imagesrc->src=$filearray['src'];
+            imagegif($this->im,$filearray['filesrc'],1000);
+        } elseif (imagetypes() & IMG_PNG) {
+            $filearray=$this->getfilename($filepath,"png");
+            $imagesrc->src=$filearray['src'];
+            imagepng($this->im,$filearray['filesrc'],1000);
+        } else {
+            die("Don't support image type!");
+        }
+        $this->image=$imagesrc;
+        
+    }
+    //图片处理
+    private function getfilename($filepath,$ext){
+        $filename['filename']=$filepath.time().rand(1,100).".".$ext;
+        $filename['filesrc']=Yii::app()->basePath.'/../'.$filename['filename'];
+        $filename['src']="/".$filename['filename'];
+        return $filename;
     }
 
 }
