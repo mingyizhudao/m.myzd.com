@@ -26,6 +26,7 @@ class AuthCaptchaManage {
                 $resultcaptcha->image=$captchamodel->src;
                 $resultcaptcha->code=$captchamodel->code;
 		$output->result = $resultcaptcha;
+
 	    } else {
 		$output->errorMsg= $model->getFirstErrors();
             }
@@ -50,25 +51,25 @@ class AuthCaptchaManage {
         /**
 	 * 
 	 * 验证验证码信息是否正确
-	 * @param $values-get值
+	 * @param $values-captcha_code 验证CODE，id--验证码ID 值
 	 * @return  验证状态  验证码通过
 	 */
         public function  checkCaptcha($values){
             $model=$this->getCaptcha($values['id']);
             $Captcha=new stdClass();
+            $Captcha->status= 'no';
+            $Captcha->errorCode = 200;
             if($model){
                 if (strcmp($values['captcha_code'], $model->code)!= 0){
-                     $Captcha->status= 'no';
                      $Captcha->errorMsg = '验证码错误';
                 }
                  else{
                     if($model->time_expiry<time()){
-                        $Captcha->status= 'no';
                         $Captcha->errorMsg= '验证码已经失效';
                     }
                      else{
                         $Captcha->status= 'ok';
-                        $Captcha->errorMsg= 'no';
+                        $Captcha->errorMsg= 'success';
                     }
                 }    
             }
@@ -76,6 +77,7 @@ class AuthCaptchaManage {
                 $Captcha->status= 'no';
                 $Captcha->errorMsg= '验证码错误';
             }
+            $Captcha->result= array();
             return  $Captcha;
       
         }
