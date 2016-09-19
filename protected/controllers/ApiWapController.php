@@ -176,7 +176,7 @@ class ApiWapController extends Controller
                 $resultimage=$captcha->showImg();
                 $auth_captcha=new AuthCaptchaManage();
                 $output = $auth_captcha->createCaptcha($resultimage); 
-            exit;
+            break;
             //验证验证码
             case 'checkcaptcha':
                  $values = $_GET;;
