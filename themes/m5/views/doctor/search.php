@@ -136,7 +136,6 @@ if ($sourceApp == 0) {
         $condition["app"] = '<?php echo $sourceApp ?>';
         $condition["city"] = '<?php echo $city ?>';
         $condition["disease"] = '<?php echo $disease; ?>';
-        $condition["disease_id"] = '';
         // $condition["disease_name"] = '<?php echo $disease_name; ?>';
         $condition["disease_category"] = '<?php echo $disease_category; ?>';
         $condition["disease_sub_category"] = '<?php echo $disease_sub_category; ?>';
@@ -173,7 +172,7 @@ if ($sourceApp == 0) {
                     name = name.length > 4 ? name.substr(0, 3) + '...' : name;
                     $('#diseaseTitle').html(name);
                     $('#diseaseTitle').attr('data-disease', data.results.id);
-                    $condition["disease_id"] = data.results.id;
+                    $condition["disease"] = data.results.id;
                     var urlAjaxLoadDoctor = '<?php echo $urlDoctor; ?>' + setUrlCondition() + '&getcount=1';
                     
                     $.ajax({
