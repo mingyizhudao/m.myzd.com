@@ -188,10 +188,21 @@ class ApiwapController extends Controller
             break;
             //验证验证码
             case 'checkcaptcha':
-                 $values = $_GET;
+                $values = $_GET;
                 $auth_captcha=new AuthCaptchaManage();
                 $output = $auth_captcha->checkCaptcha($values); 
             break;
+            case "successfulcase":
+                $values = $_GET;
+                $apiService = new ApiViewSuccessCase($values);
+                $output = $apiService->loadApiViewData();
+                break;
+             //专家展示
+            case "expertsshow":
+                $values = $_GET;
+                $apiService = new ApiViewExpertsShow($values);
+                $output = $apiService->loadApiViewData();
+                break;
             default:
                 // Model not implemented error
                 // $this->_sendResponse(501, sprintf('Error: Mode <b>list</b> is not implemented for model <b>%s</b>', $model));
