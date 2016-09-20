@@ -105,7 +105,7 @@ class ApiwapController extends Controller
             case "hospital":
                 $values = $_GET;
                 $values['isNotPaging'] = 1;
-                $apiService = new ApiViewHospitalSearchV7($values);
+                $apiService = new ApiViewHospitalSearchV2($values);
                 $output = $apiService->loadApiViewData();
             break;
             case "listhospital":
