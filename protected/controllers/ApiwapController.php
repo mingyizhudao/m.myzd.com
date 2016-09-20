@@ -339,7 +339,18 @@ class ApiwapController extends Controller
                     $output['errorMsg'] = 'Wrong parameters.';
                 }
                 break;
-            
+            case 'usermobilelogin'://手机号和验证码登录
+                if (isset($post['userLogin'])) {
+                    // get user ip from request.
+                    $values = $post['userLogin'];
+
+                    $values['userHostIp'] = Yii::app()->request->userHostAddress;
+                    $authMgr = new AuthManager();
+                    $output = $authMgr->apiTokenUserLoginByMobile($values);
+                } else {
+                    $output['error_msg'] = 'Wrong parameters.';
+                }
+            break;
             case 'quickbooking': // 快速预约
                 if (isset($post['booking'])) {
                     
