@@ -259,8 +259,8 @@ class ApiwapController extends Controller
                 break;
             case 'hospitaldept':
                 $searchInputs = $_GET;
-                $apiService = new ApiViewHospitalDeptV5($id, $searchInputs);
-                $output = $apiService->loadApiViewData();
+                $apiService = new ApiViewHospitalDeptV11($id, $searchInputs);
+                $output = $apiService->loadApiViewData();   
                 break;
             case'disease':
                 $apiSvc = new ApiViewDiseaseV4($id);
