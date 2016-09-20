@@ -332,7 +332,7 @@ class ApiwapController extends Controller
                     // get user ip from request.
                     $values = $post['userLogin'];
                     $values['userHostIp'] = Yii::app()->request->userHostAddress;
-                    $values['agent_parmas'] = $this->AGENT_PARAMETER;
+                    $values['agent_parmas'] = "wap";
                     $authMgr = new AuthManager();
                     $output = $authMgr->apiTokenUserLoginByPassword($values);
                 } else {
