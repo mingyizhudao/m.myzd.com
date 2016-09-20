@@ -367,7 +367,7 @@ class AuthManager {
                 $output->status='ok';
                 $newtoken=new stdClass();
                 $newtoken->token=$tokenUser->getToken();
-                $output->resutls=$newtoken;
+                $output->results=$newtoken;
                // $output['errorCode'] = 0;
                // $output['errorMsg'] = 'success';
                // $output['status'] = 'ok';
