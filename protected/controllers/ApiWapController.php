@@ -27,7 +27,7 @@ class ApiWapController extends Controller
     public function init()
     {
           
-        $this->getmethod();
+       
         // $newmongmanage=new UserTokenManager();
         // $condition=array("user_id"=>5000);
         // $order=array("_id"=>EMongoCriteria::SORT_DESC);
@@ -35,9 +35,10 @@ class ApiWapController extends Controller
         header("Access-Control-Allow-Origin:*");
         // header('Access-Control-Allow-Origin:http://m.mingyizhudao.com');
         header('Access-Control-Allow-Headers: Origin,X-Requested-With,Authorization,Accept,Content-Type');
-
+        header('Access-Control-Max-Age:' , 3600 * 24);    
         //header('Access-Control-Allow-Origin:http://mingyizhudao.com'); // Cross-domain access.
         header('Access-Control-Allow-Credentials:true'); // 允许携带 用户认证凭据（也就是允许客户端发送的请求携带Cookie）
+        $this->getmethod();
         return parent::init();
     }
     //options返回200
