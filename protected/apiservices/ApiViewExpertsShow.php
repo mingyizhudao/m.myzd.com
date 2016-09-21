@@ -68,7 +68,7 @@ class ApiViewExpertsShow extends EApiViewService {
                 }
             }
         }
-        $alive=1800;
+        $alive=43200;
         Yii::app()->cache->set($this->key, $this->doctors ,$alive);
     }
     /*生成描述信息数组和医生信息
