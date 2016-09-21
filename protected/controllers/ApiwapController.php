@@ -108,6 +108,12 @@ class ApiwapController extends Controller
                 $apiService = new ApiViewHospitalSearchV2($values);
                 $output = $apiService->loadApiViewData();
             break;
+            //找医院
+            case "findhospital":
+                $values = $_GET;
+                $apiService = new ApiViewHospitalSearchV7($values);
+                $output = $apiService->loadApiViewData();
+            break;
             case "listhospital":
                 $values = $_GET;
                 $hospitalMgr = new HospitalManager();
