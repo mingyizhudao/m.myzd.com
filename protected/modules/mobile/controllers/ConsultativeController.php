@@ -1,8 +1,6 @@
 <?php
-class AdvisoryController extends MobileController {
+class ConsultativeController extends MobileController {
     public function actionIndex() {
         $this->render('index');
     }
-
-
 }
