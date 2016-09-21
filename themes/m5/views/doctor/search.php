@@ -136,7 +136,7 @@ if ($sourceApp == 0) {
         $condition["app"] = '<?php echo $sourceApp ?>';
         $condition["city"] = '<?php echo $city ?>';
         $condition["disease"] = '<?php echo $disease; ?>';
-        $condition["disease_name"] = '<?php echo $disease_name; ?>';
+        // $condition["disease_name"] = '<?php echo $disease_name; ?>';
         $condition["disease_category"] = '<?php echo $disease_category; ?>';
         $condition["disease_sub_category"] = '<?php echo $disease_sub_category; ?>';
         $condition["page"] = '<?php echo $page == '' ? 1 : $page; ?>';
@@ -172,6 +172,20 @@ if ($sourceApp == 0) {
                     name = name.length > 4 ? name.substr(0, 3) + '...' : name;
                     $('#diseaseTitle').html(name);
                     $('#diseaseTitle').attr('data-disease', data.results.id);
+                    $condition["disease"] = data.results.id;
+                    var urlAjaxLoadDoctor = '<?php echo $urlDoctor; ?>' + setUrlCondition() + '&getcount=1';
+                    
+                    $.ajax({
+                        url: urlAjaxLoadDoctor,
+                        async: false,
+                        success: function (data) {
+                            if ($cityData) {
+                                $cityData.curRes = data.dataCity;
+                            }
+                            readyDoc(data);
+                            setLocationUrl();
+                        }
+                    });
                 }
             });
         } else {
@@ -214,7 +228,6 @@ if ($sourceApp == 0) {
             $('#cityTitle').html('地区');
         }
 
-        var urlAjaxLoadDoctor = '<?php echo $urlDoctor; ?>' + setUrlCondition() + '&getcount=1';
         J.showMask();
 
 
@@ -228,17 +241,6 @@ if ($sourceApp == 0) {
             }
         });
 
-        $.ajax({
-            url: urlAjaxLoadDoctor,
-            async: false,
-            success: function (data) {
-                if ($cityData) {
-                    $cityData.curRes = data.dataCity;
-                }
-                readyDoc(data);
-                setLocationUrl();
-            }
-        });
 
         $deptId = '';
         $deptName = '科室';
