@@ -206,7 +206,7 @@ if ($sourceApp == 0) {
                     $('#deptTitle').html(deptName);
                     $('#deptTitle').attr('data-dept', data.results.id);
                     $('#deptTitle').attr('data-cat', data.results.catId);
-                    getDocList();
+                    getDocList('<?php echo $disease; ?>');
                 }
             });
         } 
