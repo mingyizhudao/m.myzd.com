@@ -132,8 +132,10 @@ class Api2Controller extends Controller {
                 break;
             // app v2.0 api
             case "appnav1"://首屏接口
-                if ($api >= 14) {
-                    set_time_limit(0);
+                if ($api >= 15) {
+                    $apiService = new ApiViewAppNav1V15();
+                    $output = $apiService->loadApiViewData();
+                }elseif ($api >= 14) {
                     $apiService = new ApiViewAppNav1V14();
                     $output = $apiService->loadApiViewData();
                 }elseif ($api >= 13) {
@@ -241,7 +243,10 @@ class Api2Controller extends Controller {
 
             case 'doctor':
                 $values = $_GET;
-                if($api >= 8){
+                if($api >= 15){
+                    $apiService = new ApiViewDoctorSearchV15($values);
+                    $output = $apiService->loadApiViewData();
+                }elseif($api >= 8){
                     $apiService = new ApiViewDoctorSearchV8($values);
                     $output = $apiService->loadApiViewData();
                 }elseif($api == 7){
@@ -323,11 +328,11 @@ class Api2Controller extends Controller {
                 break;
             case 'city':
                 $values = $_GET;
-//                if($api>=14){
-//                    $city = new ApiViewOpenCity($values);
-//                }else{
+                if($api>=15){
+                    $city = new ApiViewOpenCity($values);
+                }else{
                     $city = new ApiViewAppCity($values);
-//                }
+                }
                 $output = $city->loadApiViewData();
                 break;
             case 'diseasename'://根据疾病名称获取疾病信息

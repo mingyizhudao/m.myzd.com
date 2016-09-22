@@ -69,7 +69,7 @@ $this->show_footer = false;
 <script type="text/javascript">
     $(document).ready(function () {
         var _prevUrl = document.referrer;
-        if (_prevUrl.indexOf('advisory') != -1) {
+        if (_prevUrl.indexOf('consultative') != -1) {
             $('#freePhone').css('display','block');
             console.log('come form wifi');
         }

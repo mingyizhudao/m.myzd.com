@@ -111,7 +111,7 @@ $this->show_footer = false;
         });
 
         var _prevUrl = document.referrer;
-        if (_prevUrl.indexOf('advisory') != -1) {
+        if (_prevUrl.indexOf('consultative') != -1) {
             $('#freePhone').css('display','block');
         }
         $('#freePhone').click(function () {
