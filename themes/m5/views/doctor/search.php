@@ -136,7 +136,7 @@ if ($sourceApp == 0) {
         $condition["app"] = '<?php echo $sourceApp ?>';
         $condition["city"] = '<?php echo $city ?>';
         $condition["disease"] = '<?php echo $disease; ?>';
-        // $condition["disease_name"] = '<?php echo $disease_name; ?>';
+        $condition["disease_name"] = '<?php echo $disease_name; ?>';
         $condition["disease_category"] = '<?php echo $disease_category; ?>';
         $condition["disease_sub_category"] = '<?php echo $disease_sub_category; ?>';
         $condition["page"] = '<?php echo $page == '' ? 1 : $page; ?>';
@@ -172,26 +172,30 @@ if ($sourceApp == 0) {
                     name = name.length > 4 ? name.substr(0, 3) + '...' : name;
                     $('#diseaseTitle').html(name);
                     $('#diseaseTitle').attr('data-disease', data.results.id);
-                    $condition["disease"] = data.results.id;
-                    var urlAjaxLoadDoctor = '<?php echo $urlDoctor; ?>' + setUrlCondition() + '&getcount=1';
-                    
-                    $.ajax({
-                        url: urlAjaxLoadDoctor,
-                        async: false,
-                        success: function (data) {
-                            if ($cityData) {
-                                $cityData.curRes = data.dataCity;
-                            }
-                            readyDoc(data);
-                            setLocationUrl();
-                        }
-                    });
+                    getDocList(data.results.id);
                 }
             });
         } else {
             $('#deptTitle').html('科室');
         }
 
+        function getDocList(disId){
+            $condition["disease_name"] = '';
+            $condition["disease"] = disId;
+            var urlAjaxLoadDoctor = '<?php echo $urlDoctor; ?>' + setUrlCondition() + '&getcount=1';
+            
+            $.ajax({
+                url: urlAjaxLoadDoctor,
+                async: false,
+                success: function (data) {
+                    if ($cityData) {
+                        $cityData.curRes = data.dataCity;
+                    }
+                    readyDoc(data);
+                    setLocationUrl();
+                }
+            });
+        }
 
         //首次进入，更新疾病
         if ('<?php echo $disease; ?>' != '') {
@@ -203,6 +207,7 @@ if ($sourceApp == 0) {
                     diseaseName = diseaseName.length > 4 ? diseaseName.substr(0, 3) + '...' : diseaseName;
                     $('#diseaseTitle').html(diseaseName);
                     $('#diseaseTitle').attr('data-disease', data.disease.id);
+                    getDocList(data.disease.id);
                 }
             });
         } else {
