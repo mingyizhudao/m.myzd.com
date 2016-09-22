@@ -64,10 +64,10 @@ class ApiViewAppNav1V15 extends EApiViewService {
 //                'type' => 0,
 //            ),
             array(
-                'pageTitle' => '0元面诊',
-                'actionUrl' => 'http://m.mingyizhudao.com/mobile/questionnaire/beginQuestionnaireView/header/0/app/1/appId/ce407e591c733022',
-                'imageUrl' => 'http://7xsq2z.com2.z0.glb.qiniucdn.com/146906610294170',
-                'type' => 1,
+                'pageTitle' => '改变从现在开始',
+                'actionUrl' => 'http://m.mingyizhudao.com/mobile/home/page/view/change/header/0',
+                'imageUrl' => 'http://static.mingyizhudao.com/147330339912652',
+                'type' => 0,
             ),
             array(
                 'pageTitle' => '名医公益',
@@ -81,12 +81,12 @@ class ApiViewAppNav1V15 extends EApiViewService {
                 'imageUrl' => 'http://7xsq2z.com2.z0.glb.qiniucdn.com/146243704275720',
                 'type' => 0,
             ),
-            array(
-                'pageTitle' => '凯瑟琳',
-                'actionUrl' => 'http://m.mingyizhudao.com/mobile/event/view/page/catherine/header/0',
-                'imageUrl' => 'http://7xsq2z.com2.z0.glb.qiniucdn.com/14652900984794',
-                'type' => 0,
-            ),
+//            array(
+//                'pageTitle' => '凯瑟琳',
+//                'actionUrl' => 'http://m.mingyizhudao.com/mobile/event/view/page/catherine/header/0',
+//                'imageUrl' => 'http://7xsq2z.com2.z0.glb.qiniucdn.com/14652900984794',
+//                'type' => 0,
+//            ),
         );
 
         $this->results->banners = $data;
