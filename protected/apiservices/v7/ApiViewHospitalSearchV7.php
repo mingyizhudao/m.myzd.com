@@ -64,11 +64,13 @@ class ApiViewHospitalSearchV7 extends EApiViewService {
             $data->name = $hospital->getName();
             $data->ShortName = $hospital->getName(true);
             $data->imageUrl = $hospital->getAbsUrlAvatar();
-
+            //add by wanglei
+            $data->hpClass =$hospital->getClass();
             $hospitalDept = $model->getHpDept();
             $data->hp_dept_id = $model->hp_dept_id;
             $data->hp_dept_name = $hospitalDept->getName();
             $data->hp_dept_desc = $hospitalDept->getDescription();
+           
             $this->hospitals[] = $data;
         }
     }
