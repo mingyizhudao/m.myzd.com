@@ -329,6 +329,7 @@ class Api2Controller extends Controller {
             case 'city':
                 $values = $_GET;
                 if($api>=15){
+                    $values['type']='doctor';
                     $city = new ApiViewOpenCity($values);
                 }else{
                     $city = new ApiViewAppCity($values);
