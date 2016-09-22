@@ -70,7 +70,7 @@ $SITE_6 = PatientStatLog::SITE_6;
             </div>
             <div class="grid bg-white">
                 <div class="col-1 w33 br-gray2">
-                    <a href="<?php echo $urlDoctorSearch; ?>/disease_sub_category/2">
+                    <a href="<?php echo $urlDoctorSearch; ?>">
                         <div class="pad10 text-center">
                             <div class="text-center">
                                 <img class="w55p h55p" src="http://static.mingyizhudao.com/146243692944770" data-id="<?php echo $SITE_3; ?>" data-name="找名医">

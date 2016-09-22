@@ -146,21 +146,6 @@ if ($sourceApp == 0) {
             location.href = '<?php echo $urlQuestionnaireSearch; ?>';
         });
 
-        //首次进入，更新科室
-        // if ('<?php echo $disease_sub_category; ?>' != '') {
-        //     $.ajax({
-        //         url: '<?php echo $urlDeptName; ?>/' + '<?php echo $disease_sub_category; ?>',
-        //         success: function (data) {
-        //             var deptName = data.results.name;
-        //             deptName = deptName.length > 4 ? deptName.substr(0, 3) + '...' : deptName;
-        //             $('#deptTitle').html(deptName);
-        //             $('#deptTitle').attr('data-dept', data.results.id);
-        //             $('#deptTitle').attr('data-cat', data.results.catId);
-        //         }
-        //     });
-        // } else 
-
-
 
         //首次进入，更新疾病
         if ('<?php echo $disease; ?>' != '') {
@@ -210,7 +195,22 @@ if ($sourceApp == 0) {
             }
         });
 
-        if ('<?php echo $disease_name; ?>' != '') {
+
+        //首次进入，更新科室
+        if ('<?php echo $disease_sub_category; ?>' != '') {
+            $.ajax({
+                url: '<?php echo $urlDeptName; ?>/' + '<?php echo $disease_sub_category; ?>',
+                success: function (data) {
+                    var deptName = data.results.name;
+                    deptName = deptName.length > 4 ? deptName.substr(0, 3) + '...' : deptName;
+                    $('#deptTitle').html(deptName);
+                    $('#deptTitle').attr('data-dept', data.results.id);
+                    $('#deptTitle').attr('data-cat', data.results.catId);
+                    getDocList();
+                }
+            });
+        } 
+        else if ('<?php echo $disease_name; ?>' != '') {
             $.ajax({
                 url: '<?php echo $urlSearchDeptName; ?>' + '<?php echo $disease_name; ?>',
                 success: function (data) {
