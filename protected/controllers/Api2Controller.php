@@ -133,11 +133,9 @@ class Api2Controller extends Controller {
             // app v2.0 api
             case "appnav1"://首屏接口
                 if ($api >= 15) {
-                    set_time_limit(0);
                     $apiService = new ApiViewAppNav1V15();
                     $output = $apiService->loadApiViewData();
                 }elseif ($api >= 14) {
-                    set_time_limit(0);
                     $apiService = new ApiViewAppNav1V14();
                     $output = $apiService->loadApiViewData();
                 }elseif ($api >= 13) {
@@ -330,7 +328,7 @@ class Api2Controller extends Controller {
                 break;
             case 'city':
                 $values = $_GET;
-                if($api>=14){
+                if($api>=15){
                     $city = new ApiViewOpenCity($values);
                 }else{
                     $city = new ApiViewAppCity($values);
