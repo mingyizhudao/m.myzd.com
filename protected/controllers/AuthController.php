@@ -53,15 +53,15 @@ class AuthController extends WebsiteController {
                     $actionType = $values['actionType'];
 
                     $authMgr = new AuthManager();
-                    $errors = $authMgr->sendAuthSmsVerifyCode($mobile, $actionType, $userIp);
+                    $result = $authMgr->sendAuthSmsVerifyCode($mobile, $actionType, $userIp);
 
-                    if (empty($errors)) {
-                        // success.
+                    if (isset($result['status']) && $result['status'] == 'ok') {
+                        $this->renderJsonOutput(array('status' => true));
                     } else {
+                        $errors = isset($result['errorMsg']) ? $result['errorMsg'] : '发送失败';
                         throw new CException("Error.");
                     }
 
-                    $this->renderJsonOutput(array('status' => true));
                 } else {
                     $errors[] = "Invalid request.";
                     throw new CException("Invalid request.");
