@@ -660,10 +660,13 @@ else {
                         $headers[str_replace(' ', '-', ucwords(strtolower(str_replace('_', ' ', substr($name, 5)))))] = $value;
                     }
                 }
+                return $headers;
             }
         }
-        
         $hearders = getallheaders();
+
+        
+        
         print_r($hearders);
         exit;
         $token = isset($hearders['Authorization']) ? $hearders['Authorization'] : '';
