@@ -53,6 +53,7 @@ class ApiwapController extends Controller
     // Actions
     public function actionList($model)
     {
+       
         // Get the respective model instance
         switch ($model) {
             case 'dataversion'://数据版本号
@@ -130,7 +131,7 @@ class ApiwapController extends Controller
                 $apiService = new ApiViewDoctorSearchV7($values);
                 $output = $apiService->loadApiViewData();
             break;
-            case"userbooking"://需要修改
+            case "userbooking"://需要修改
                 $values = $_GET;
                 $values['token'] = $this->em_getallheaders();
                 $user = $this->userLoginRequired($values);
