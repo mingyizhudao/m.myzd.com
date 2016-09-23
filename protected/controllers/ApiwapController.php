@@ -133,8 +133,6 @@ class ApiwapController extends Controller
             break;
             case "userbooking"://需要修改
                 $values = $_GET;
-                print_r($values);
-                exit;
                 $values['token'] = $this->em_getallheaders();
                 $user = $this->userLoginRequired($values);
                 if($user){
@@ -654,7 +652,7 @@ else {
     private function em_getallheaders()
     {
         if (! function_exists('getallheaders')) {
-
+                
             function getallheaders()
             {
                 foreach ($_SERVER as $name => $value) {
@@ -664,6 +662,8 @@ else {
                 }
             }
         } else {
+            print_r($_SERVER);
+            exit;
             $hearders = getallheaders();
         }
         $token = isset($hearders['Authorization']) ? $hearders['Authorization'] : '';
