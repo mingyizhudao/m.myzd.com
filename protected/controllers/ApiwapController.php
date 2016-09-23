@@ -246,8 +246,8 @@ class ApiwapController extends Controller
                 $output = $apiService->loadApiViewData();
                 break;
             case 'doctor':
-                $doctorMgr = new DoctorManager();
-                $output = $doctorMgr->loadIDoctorJson($id);
+                $apiService = new ApiViewDoctorV14($id);
+                $output = $apiService->loadApiViewData();
                 break;
 
             // app v2.0 api.            
