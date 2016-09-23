@@ -135,6 +135,8 @@ class ApiwapController extends Controller
                 $values = $_GET;
                 $values['token'] = $this->em_getallheaders();
                 $user = $this->userLoginRequired($values);
+                print_r($user);
+                exit;
                 if($user){
                     $apiService = new ApiViewBookingListV4($user,$values['bk_status'],true);
                     $output = $apiService->loadApiViewData();
