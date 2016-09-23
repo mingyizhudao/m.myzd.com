@@ -664,11 +664,6 @@ else {
             }
         }
         $hearders = getallheaders();
-
-        
-        
-        print_r($hearders);
-        exit;
         $token = isset($hearders['Authorization']) ? $hearders['Authorization'] : '';
         return $token;
     }
