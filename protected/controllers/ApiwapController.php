@@ -369,11 +369,9 @@ class ApiwapController extends Controller
                 }
             break;
             case 'quickbooking': // 快速预约
-                if (isset($post['booking'])) {
-                    
+                if (isset($post['booking'])) {  
                     $values = $post['booking'];
                     $values['token'] = $this->em_getallheaders();
-                  
                     $values['userHostIp'] = Yii::app()->request->userHostAddress;
                     $values['user_agent'] = ($this->isUserAgentWeixin()) ? StatCode::USER_AGENT_WEIXIN : StatCode::USER_AGENT_MOBILEWEB;
                     if (! isset($values['verify_code'])) {   
@@ -403,8 +401,27 @@ class ApiwapController extends Controller
                     $output['error'] = 'Wrong parameters.';
                 }
             break;
+            case 'booking':
+                if (isset($post['booking'])) {
+                    $values = $post['booking'];
+                    $values['token'] = $this->em_getallheaders();
+                    $values['userHostIp'] = Yii::app()->request->userHostAddress;
+                    $values['user_agent'] = ($this->isUserAgentIOS()) ? StatCode::USER_AGENT_APP_IOS : StatCode::USER_AGENT_APP_ANDROID;
+                    $user = $this->userLoginRequired($values); // check if user has login.
+                    if (is_object($user)) {
+                        $values['user_id'] = $user->getId();
+                        $values['mobile'] = $user->getUserName();
+                    }
+                    $checkVerifyCode = true;
+                    $bookingMgr = new BookingManager();
+                   // $checkVerifyCode = true;    // checks verify_code before creating a new booking in db.
+                    $sendEmail = false;  // send email to admin after booking is created.
+                    $output = $bookingMgr->apiCreateBookingV9($user, $values, $checkVerifyCode, $sendEmail);
+                    } else {
+                        $output['errorMsg'] = 'Wrong parameters.';
+                    }
            
-                  
+            break;      
             default:
                 $this->_sendResponse(501, sprintf('Error: Invalid request', $model));
                 Yii::app()->end();
@@ -451,6 +468,7 @@ class ApiwapController extends Controller
      
         $authMgr = new AuthManager();
         $authUserIdentity = $authMgr->authenticateWapUserByToken($values['username'], $values['token'], $agent = 'wap');
+       
             if (is_null($authUserIdentity) || $authUserIdentity->isAuthenticated === false) {
             $output->status =EApiViewService::RESPONSE_NO;
             $output->errorCode = ErrorList::BAD_REQUEST;
@@ -459,10 +477,9 @@ class ApiwapController extends Controller
         
         } else {
             $authTokenMsg = new AuthTokenUser();
-        
             $authTokenMsg->durationTokenPatient($values['token'], $values['username']);
         }
-          
+        
         return $authUserIdentity->getUser();
     }
 
