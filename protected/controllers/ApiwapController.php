@@ -133,10 +133,10 @@ class ApiwapController extends Controller
             break;
             case "userbooking"://需要修改
                 $values = $_GET;
+                print_r($values);
+                exit;
                 $values['token'] = $this->em_getallheaders();
                 $user = $this->userLoginRequired($values);
-                print_r($user);
-                exit;
                 if($user){
                     $apiService = new ApiViewBookingListV4($user,$values['bk_status'],true);
                     $output = $apiService->loadApiViewData();
