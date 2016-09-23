@@ -655,15 +655,17 @@ else {
                 
             function getallheaders()
             {
+                    print_r($_SERVER);
+            exit;
                 foreach ($_SERVER as $name => $value) {
                     if (substr($name, 0, 5) == 'HTTP_') {
                         $headers[str_replace(' ', '-', ucwords(strtolower(str_replace('_', ' ', substr($name, 5)))))] = $value;
                     }
                 }
             }
+            $hearders = getallheaders();
         } else {
-            print_r($_SERVER);
-            exit;
+        
             $hearders = getallheaders();
         }
         $token = isset($hearders['Authorization']) ? $hearders['Authorization'] : '';
