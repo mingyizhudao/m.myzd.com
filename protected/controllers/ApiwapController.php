@@ -422,7 +422,26 @@ class ApiwapController extends Controller
                         $output['errorMsg'] = 'Wrong parameters.';
                     }
            
-            break;      
+            break; 
+            //加入统计
+            case 'stat':
+                if(isset($post['stat'])){
+                    $values = $post['stat'];
+                    $values['user_host_ip'] = Yii::app()->request->getUserHostAddress();
+                    $values['url'] = Yii::app()->request->getUrl();
+                    $values['url_referrer'] = Yii::app()->request->getUrlReferrer();
+                    $values['user_agent'] = Yii::app()->request->getUserAgent();
+                   $model = new StatManager();
+                    $output = $model->createPatientStat($values);
+                }
+            break;
+            case 'applogstat':
+                if(isset($post['applogstat'])){
+                    $values = $post['applogstat'];
+                    $model = new StatManager();
+                    $output = $model->createAppLogStat($values);
+                }
+                break;
             default:
                 $this->_sendResponse(501, sprintf('Error: Invalid request', $model));
                 Yii::app()->end();
