@@ -478,23 +478,27 @@ class ApiwapController extends Controller
     private function userLoginRequired($values)
     {
         $userMgr = new UserManager();
-      
         $user = $userMgr->loadUserAndTokenBytoken($values['token']);
         $values['username'] = (isset($user->token->username)) ? $user->token->username: NULL;
         $output = new stdClass();
         if (isset($values['username']) === false || isset($values['token']) === false) {
             $this->renderJsonOutput($output->status = EApiViewService::RESPONSE_NO, $output->errorCode = ErrorList::BAD_REQUEST, $output->errorMsg = '没有权限执行此操作');
         }
-     
+      
+        //加入过期
+        if(!$this->token_expired($user->token->time_expiry)){
+            $output->status =EApiViewService::RESPONSE_NO;
+            $output->errorCode = ErrorList::UNAUTHORIZED;
+            $output->errorMsg = 'token过期';
+            $this->renderJsonOutput($output);
+        }
         $authMgr = new AuthManager();
         $authUserIdentity = $authMgr->authenticateWapUserByToken($values['username'], $values['token'], $agent = 'wap');
-       
-            if (is_null($authUserIdentity) || $authUserIdentity->isAuthenticated === false) {
+       if (is_null($authUserIdentity) || $authUserIdentity->isAuthenticated === false) {
             $output->status =EApiViewService::RESPONSE_NO;
             $output->errorCode = ErrorList::BAD_REQUEST;
             $output->errorMsg = '用户名或token不正确';
             $this->renderJsonOutput($output);
-        
         } else {
             $authTokenMsg = new AuthTokenUser();
             $authTokenMsg->durationTokenPatient($values['token'], $values['username']);
@@ -502,6 +506,7 @@ class ApiwapController extends Controller
         
         return $authUserIdentity->getUser();
     }
+    
 
     private function _sendResponse($status = 200, $body = '', $content_type = 'text/html')
     {
@@ -686,4 +691,14 @@ else {
         $token = isset($hearders['Authorization']) ? $hearders['Authorization'] : '';
         return $token;
     }
+    //加入过期判断
+    private function token_expired($time_expiry){
+         if (is_null($time_expiry)) {
+            return true;
+        } else {
+            $now = time();;
+            return ($time_expiry > $now);
+        }    
+    }       
+    
 }
