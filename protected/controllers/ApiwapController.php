@@ -140,6 +140,15 @@ class ApiwapController extends Controller
                     $output = $apiService->loadApiViewData();
                 }
             break;
+            case "userinfo"://用户详细界面
+                $values = $_GET;
+                $values['token'] = $this->em_getallheaders();
+                $user = $this->userLoginRequired($values);
+                if($user){
+                    $apiService = new ApiViewUserinfo($user);
+                    $output = $apiService->loadApiViewData();
+                }
+            break;
             case 'expertteam':
                 $values = $_GET;
                 $query['city'] = isset($values['city']) ? $values['city'] : null;
@@ -484,7 +493,7 @@ class ApiwapController extends Controller
         if (isset($values['username']) === false || isset($values['token']) === false) {
             $this->renderJsonOutput($output->status = EApiViewService::RESPONSE_NO, $output->errorCode = ErrorList::BAD_REQUEST, $output->errorMsg = '没有权限执行此操作');
         }
-      
+   
         //加入过期
         if(!$this->token_expired($user->token->time_expiry)){
             $output->status =EApiViewService::RESPONSE_NO;
