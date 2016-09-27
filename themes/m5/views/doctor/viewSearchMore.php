@@ -240,13 +240,13 @@ $this->show_footer = false;
                     '<div class="col-1 w50 grid">' +
                     '<div class="col-1"></div>' +
                     '<a class="hospitalDiseaseStat" href="javascript:;" data-id="' + diseases[i].id + '" data-name="' + diseases[i].name + '">' +
-                    '<div class="col-0 findDept">找医院</div>' +
+                    '<div class="col-0 findDoctor">找医院</div>' +
                     '</a>' +
                     '</div>' +
                     '<div class="col-1 w50 grid">' +
                     '<div class="col-1"></div>' +
                     '<a class="doctorDiseaseStat" href="javascript:;" data-id="' + diseases[i].id + '" data-name="' + diseases[i].name + '">' +
-                    '<div class="col-0 findDoctor">找医生</div>' +
+                    '<div class="col-0 findDept">找医生</div>' +
                     '</a>' +
                     '</div>' +
                     '</div>' +
