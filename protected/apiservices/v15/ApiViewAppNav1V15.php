@@ -1,6 +1,6 @@
 <?php
 
-class ApiViewAppNav1V14 extends EApiViewService {
+class ApiViewAppNav1V15 extends EApiViewService {
 
     private $diseaesUrl;
     private $doctorUrl;
@@ -47,7 +47,7 @@ class ApiViewAppNav1V14 extends EApiViewService {
         if (is_null($this->disCategoryList)) {
             $this->disCategoryList = array();
             $disMgr = new DiseaseManager();
-            $models = $disMgr->loadDiseaseCategoryListV7();
+            $models = $disMgr->loadDiseaseCategoryListV8();
             if (arrayNotEmpty($models)) {
                 $this->setDiseaseCategoryList($models);
             }

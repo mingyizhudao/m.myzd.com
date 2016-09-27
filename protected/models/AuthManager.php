@@ -16,15 +16,13 @@ class AuthManager {
         $mobile = $values['mobile'];
         $actionType = $values['action_type'];
         $userHostIp = isset($values['userHostIp']) ? $values['userHostIp'] : null;
-
-        $errors = $this->sendAuthSmsVerifyCode($mobile, $actionType, $userHostIp);
-        if (empty($errors)) {
+        $result = $this->sendAuthSmsVerifyCode($mobile, $actionType, $userHostIp);
+        if (isset($result['status']) && $result['status'] == 'ok') {
             $output['status'] = 'ok';
             $output['errorCode'] = ErrorList::ERROR_NONE;
             $output['errorMsg'] = 'success';
         } else {
-            $output['errorMsg'] = '发送失败';
-            $output['results'] = $errors;
+            $output['errorMsg'] = isset($result['errorMsg']) ? $result['errorMsg'] : '发送失败';
         }
         return $output;
     }
@@ -42,12 +40,10 @@ class AuthManager {
         $actionType = $values['action_type'];
         $userHostIp = isset($values['userHostIp']) ? $values['userHostIp'] : null;
 
-        $errors = $this->sendAuthSmsVerifyCode($mobile, $actionType, $userHostIp);
-        if (empty($errors)) {
+        $result = $this->sendAuthSmsVerifyCode($mobile, $actionType, $userHostIp);
+        if (isset($result['status']) && $result['status'] == 'ok')  {
             $output['status'] = true;
-        } else {
-            $output['errors'] = $errors;
-            $output['errorMsg'] = '验证码发送失败';
+            $output['errorMsg'] = $output['errors'] = isset($result['errorMsg']) ? $result['errorMsg'] : '发送失败';
         }
         return $output;
     }
@@ -223,11 +219,16 @@ class AuthManager {
         }
 
         // send sms verify code.
-        $smsMgr = new SmsManager();
-        //$errors = $smsMgr->sendVerifyUserRegisterSms($smsVerify->getMobile(), $smsVerify->getCode(), $smsVerify->getExpiryDuration());
-        $errors = $smsMgr->sendSmsVerifyCode($smsVerify->getMobile(), $smsVerify->getCode(), $smsVerify->getExpiryDuration());
-
-        return $errors;
+//        $smsMgr = new SmsManager();
+//        $errors = $smsMgr->sendSmsVerifyCode($smsVerify->getMobile(), $smsVerify->getCode(), $smsVerify->getExpiryDuration());
+        try {
+            $rpc = new RPC();
+            $client = $rpc->rpcClient(Yii::app()->params['rpcSmsUrl']);
+            $result = $client->sendSmsVerifyCode($smsVerify->getMobile(), $smsVerify->getCode());
+        } catch (CException $ex) {
+            $result = array('status'=>'no', 'errorCode'=>400, 'errorMsg'=>'发送失败');
+        }
+        return $result;
     }
 
     /**
