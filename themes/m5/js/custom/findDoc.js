@@ -15,7 +15,7 @@ function checkCityList(){
                 }
             }
         }
-        return readyCity(cArray,0);
+        return readyCity(cArray,$('#cityTitle').attr('data-city'));
     }else{
         return readyCity($cityData.results,0);
     }
@@ -99,7 +99,9 @@ function deptSelect() {
         pos: 'top',
         showCloseBtn: false
     });
-
+    if (document.getElementsByClassName('activeIcon')[0]) {
+        document.getElementById('highDept').scrollTop = document.getElementsByClassName('activeIcon')[0].offsetTop - 94;
+    }
     // $('.aDept').click(function (e) {
     //     e.preventDefault();
     //     var dataDept = $(this).attr('data-dept');
@@ -122,10 +124,11 @@ function deptSelect() {
     //c
     $('.cDept').click(function (e) {
         e.preventDefault();
-        $deptId = $(this).attr('data-dept');
-        $catId = $(this).attr('data-cat');
+        // $deptId = $(this).attr('data-dept');
+        // $catId = $(this).attr('data-cat');
+        $catId = $(this).attr('data-dept');
         $deptName = $(this).html();
-        $condition["disease_sub_category"] = $deptId;
+        $condition["disease_sub_category"] = $catId;
         $condition["disease"] = '';
         $condition["disease_name"] = '';
         $condition["city"] = '';
@@ -139,7 +142,7 @@ function deptSelect() {
                 readyDoc(data);
                 $deptName = $deptName.length > 4 ? $deptName.substr(0, 3) + '...' : $deptName;
                 $('#deptTitle').html($deptName);
-                $('#deptTitle').attr('data-dept', $deptId);
+                $('#deptTitle').attr('data-dept', $catId);
                 $('#deptTitle').attr('data-cat', $catId);
                 $('#diseaseTitle').html('疾病');
                 $('#diseaseTitle').attr('data-disease', '');
@@ -281,7 +284,10 @@ $('#diseaseSelect').tap(function () {
             pos: 'top',
             showCloseBtn: false
         });
-
+        //scroll to 
+        if (document.getElementsByClassName('activeIcon')[0]) {
+            document.getElementById('diseaseList').scrollTop = document.getElementsByClassName('activeIcon')[0].offsetTop - 94;
+        }
         //c
         $('.aDisease').click(function (e) {
             e.preventDefault();
@@ -393,6 +399,10 @@ $('#citySelect').tap(function () {
         pos: 'top',
         showCloseBtn: false
     });
+    //scroll to
+    if (document.getElementsByClassName('activeIcon')[0]) {
+        document.getElementById('citySelectList').scrollTop = document.getElementsByClassName('activeIcon')[0].offsetTop - 94;
+    }
 
     $('.switchCity').click(function (e) {
         e.preventDefault();
@@ -533,7 +543,7 @@ function readyDept(data, deptId, catId) {
     var sourceApp = $('#findDoc_nav').attr('data-sourceApp');
     var results = data.results;
     if (source == 0) {
-        var innerHtml = '<div class="grid color-black" style="margin-top:93px;height:315px;">' +
+        var innerHtml = '<div id="citySelectList" class="grid color-black" style="margin-top:93px;height:315px;">' +
                 '<div id="highDept" class="col-1 w50" data-scroll="true" style="height:315px;width: 50%;">' +
                 '<ul class="list">';
     } else {
@@ -542,7 +552,7 @@ function readyDept(data, deptId, catId) {
                     '<div id="highDept" class="col-1 w50" data-scroll="true" style="height:315px;width: 50%;">' +
                     '<ul class="list">';
         } else {
-            var innerHtml = '<div class="grid color-black" style="margin-top:93px;height:315px;">' +
+            var innerHtml = '<div id="citySelectList" class="grid color-black" style="margin-top:93px;height:315px;">' +
                     '<div id="highDept" class="col-1 w50" data-scroll="true" style="height:315px;width: 50%;">' +
                     '<ul class="list">';
         }
@@ -587,14 +597,14 @@ function readyCity(data, cityId) {
     if (data != '') {
         var results = data;
         if (source == 0) {
-            innerHtml += '<div class="grid color-black" style="margin-top:93px;height:315px;">' +
+            innerHtml += '<div id="citySelectList" class="grid color-black" style="margin-top:93px;height:315px;">' +
                     '<ul class="list w100">';
         } else {
             if (sourceApp == 0) {
                 innerHtml += '<div class="grid color-black" style="margin-top:137px;height:315px;">' +
                         '<ul class="list w100">';
             } else {
-                innerHtml += '<div class="grid color-black" style="margin-top:93px;height:315px;">' +
+                innerHtml += '<div id="citySelectList" class="grid color-black" style="margin-top:93px;height:315px;">' +
                         '<ul class="list w100">';
             }
         }
