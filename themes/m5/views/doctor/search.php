@@ -152,7 +152,6 @@ if ($sourceApp == 0) {
             $.ajax({
                 url: '<?php echo $urlDiseaseName; ?>/' + '<?php echo $disease; ?>',
                 success: function (data) {
-                    //console.log(data);
                     var diseaseName = data.disease.name;
                     diseaseName = diseaseName.length > 4 ? diseaseName.substr(0, 3) + '...' : diseaseName;
                     $('#diseaseTitle').html(diseaseName);
@@ -171,7 +170,6 @@ if ($sourceApp == 0) {
             $.ajax({
                 url: '<?php echo $urlCityName; ?>/' + '<?php echo $city; ?>',
                 success: function (data) {
-                    //console.log(data);
                     var cityName = data.results.name;
                     cityName = cityName.length > 4 ? cityName.substr(0, 3) + '...' : cityName;
                     $('#cityTitle').html(cityName);
@@ -195,7 +193,6 @@ if ($sourceApp == 0) {
             }
         });
 
-
         //首次进入，更新科室
         if ('<?php echo $disease_sub_category; ?>' != '') {
             $.ajax({
@@ -214,7 +211,6 @@ if ($sourceApp == 0) {
             $.ajax({
                 url: '<?php echo $urlSearchDeptName; ?>' + '<?php echo $disease_name; ?>',
                 success: function (data) {
-                    //console.log(data);
                     var subCatName = data.results.subCatName;
                     subCatName = subCatName.length > 4 ? subCatName.substr(0, 3) + '...' : subCatName;
                     $('#deptTitle').html(subCatName);
@@ -235,10 +231,11 @@ if ($sourceApp == 0) {
 
         function getDocList(_disId){
             J.showMask();
+            var _diseaseName = $condition["disease_name"];
             $condition["disease_name"] = '';
             $condition["disease"] = _disId?_disId:'';
             var urlAjaxLoadDoctor = '<?php echo $urlDoctor; ?>' + setUrlCondition() + '&getcount=1';
-            
+            $condition["disease_name"] = _diseaseName;
             $.ajax({
                 url: urlAjaxLoadDoctor,
                 async: false,
