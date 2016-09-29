@@ -10,3 +10,5 @@ header h1.title{font-size:18px;line-height:1em;top:15px}header .control-group li
 
 @media only screen and (max-width:320px){#bookingIos_article .uploader .filelist div.file-panel{top:60px}#bookingIos_article .uploader .filelist li{height:90px}#bookingIos_article #filePicker3 .webuploader-pick{line-height:5rem}}
 #operation_article #freePhone,#life_article #freePhone, #lifeExpect_article #freePhone{color:#fff;width:57px;height:57px;padding:8px 13px;z-index:999;position:fixed;right:0;top:50%;background:#00b38a;border-radius:28px;display:none}
+
+#medicalSevice_article .titleBg{background:url('http://static.mingyizhudao.com/147505384436741') no-repeat;background-size:100% 100%}#medicalSevice_article .color-z{color:#7970b1}#medicalSevice_article .font-s9{font-size:9px!important}#medicalSevice_article .text-indent-1{text-indent:1em}#medicalSevice_article .color-green1{color:#52bfb4}#medicalSevice_article .choose div.active{border-radius:5px;background:#52bfb4}#medicalSevice_article .fontblack1{color:#555}#medicalSevice_article .bgh{background:#fafafa}
