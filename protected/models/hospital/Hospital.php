@@ -319,6 +319,10 @@ class Hospital extends EActiveRecord {
     public function getDepartments() {
         return $this->hospitalDepartments;
     }
+    
+    public function getCityId() {
+        return $this->city_id;
+    }
 
     public function getName($short = false) {
         if ($short)
