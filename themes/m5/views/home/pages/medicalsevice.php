@@ -49,7 +49,11 @@ $this->show_footer = false;
                   请在wifi环境下播放
                 </div>
                 <div >
+<<<<<<< HEAD
                     <video class="w100"  controls>
+=======
+                    <video width="300"  controls>
+>>>>>>> f556186fe5670d4c74b7782ab58c458f4851d2e0
                     <source src="http://static.mingyizhudao.com/pc/samsungHospital.mp4" type="video/mp4">
                     </video>
                 </div>
