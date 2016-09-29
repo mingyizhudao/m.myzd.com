@@ -45,12 +45,11 @@ $this->show_footer = false;
                 <div class="text-indent-2 mt10 text-justify">
                   1981年，最早将综合体检概念引入韩国，各领域专业医疗团队通过尖端医疗设备，提供最佳健康管理服务。江北三星医院综合体检中心作为韩国最早、最大的体检中心，实现着预防疾病及国民的健康管理，不断开启医学的未来。  
                 </div>
-                <div class="fontblack1 font-s12 text-center">
+                <div class="fontblack1 font-s12 text-center mt10">
                   请在wifi环境下播放
                 </div>
                 <div >
-
-                    <video class="w100"  controls>
+                   <video class="w100"  controls>
                      <source src="http://static.mingyizhudao.com/pc/samsungHospital.mp4" type="video/mp4">
                     </video>
                 </div>
@@ -209,7 +208,7 @@ $this->show_footer = false;
             申请方式
          </div>
          <div class="color-black">
-          拨打名医主刀热线电话<span class="color-green1 font-w800">400-6277-120</span> ，参加三星体检 项目。 
+          拨打名医主刀热线电话<span class="color-green1 font-w800">400-6277-120</span> ，参加三星体检项目。 
          </div>
        </div>
        </div>
