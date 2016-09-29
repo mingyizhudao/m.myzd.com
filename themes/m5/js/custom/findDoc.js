@@ -2,24 +2,26 @@
 $('#deptSelect').tap(function () {
     deptSelect();
 });
-function checkCityList(){
-    if ($cityData.curRes) {
-        var cArray = [];
-        var cityData = $cityData.results;
-        var cityCurData = $cityData.curRes;
+// function checkCityList(){
+//         // console.log('before',$cityData.curRes,$cityData.results);
+//     if ($cityData.curRes) {
+//         // var cArray = [];
+//         // var cityData = $cityData.results;
+//         // var cityCurData = $cityData.curRes;
 
-        for(var c in cityCurData){
-            for(var j=0; j<cityData.length; j++){
-                if (cityCurData[c] == cityData[j].id) {
-                    cArray.push(cityData[j]);
-                }
-            }
-        }
-        return readyCity(cArray,$('#cityTitle').attr('data-city'));
-    }else{
-        return readyCity($cityData.results,0);
-    }
-}
+//         // for(var c in cityCurData){
+//         //     for(var j=0; j<cityData.length; j++){
+//         //         if (cityCurData[c] == cityData[j].id) {
+//         //             cArray.push(cityData[j]);
+//         //         }
+//         //     }
+//         // }
+//         // return readyCity(cArray,$('#cityTitle').attr('data-city'));
+//         return readyCity($cityData.curRes,$('#cityTitle').attr('data-city'));
+//     }else{
+//         return readyCity($cityData.results,0);
+//     }
+// }
 function deptSelect() {
     var source = $('#findDoc_nav').attr('data-source');
     var sourceApp = $('#findDoc_nav').attr('data-sourceApp');
@@ -391,7 +393,7 @@ $('#citySelect').tap(function () {
                 '</nav>';
     }
 
-    innerPage += '<article id="findDoc_article" class="active" data-scroll="true" style="position:static;">' + checkCityList() +
+    innerPage += '<article id="findDoc_article" class="active" data-scroll="true" style="position:static;">' + readyCity($cityData.curRes,$('#cityTitle').attr('data-city')) +
             '</article>' +
             '</div>';
     J.popup({
