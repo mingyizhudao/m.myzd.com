@@ -104,14 +104,20 @@ class ApiViewDoctorSearchV7 extends EApiViewService {
     
     private function setDoctorCityList($doctorCityList) {
         $cityList = array_unique($doctorCityList);
+        unset($this->doctorsCityList);
         foreach ($cityList as $k=>$v) {
            $model = RegionCity::model()->getByAttributes(array('id'=> $v));
            if(isset($model)){
-               $cityDate[$k]['id'] =  $model->id;
-               $cityDate[$k]['name'] =  $model->name;
+               $cityobj=new stdClass();
+               $cityobj->id=  $model->id;
+               $cityobj->name =  $model->name;
+               $this->doctorsCityList[] = $cityobj;
+//               $cityDate[$k]['id'] =  $model->id;
+//               $cityDate[$k]['name'] =  $model->name;
            }
         }
-        $this->doctorsCityList = $cityDate;
+      
+        
     }
 
 }
