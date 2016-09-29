@@ -13,6 +13,7 @@ $urlOperationTrain = $this->createUrl('home/page', array('view' => 'operationTra
 $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
 $urlHomeMyyzDoctor = $this->createUrl('home/page', array('view' => 'myyzDoctor'));
 $urlChange = $this->createUrl('home/page', array('view' => 'change'));
+$urlMedicalSevice = $this->createUrl('home/page', array('view' => 'medicalsevice'));
 $urlBnzOperation=$this->createUrl('home/page',array('view'=>'bnzOperation'));
 $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
 $urlZeroBooking = $this->createUrl('questionnaire/beginQuestionnaireView');
@@ -183,7 +184,12 @@ $SITE_6 = PatientStatLog::SITE_6;
 
 
         //轮播图
-        var html = '<li class="slide">' +
+        var html ='<li class="slide">' +
+                '<a href="<?php echo $urlMedicalSevice; ?>">' +
+                '<img class="w100" src="http://static.mingyizhudao.com/147505375737374">' +
+                '</a>' +
+                '</li>' +
+                '<li class="slide">' +
                 '<a href="<?php echo $urlChange; ?>/appId/ddaa785817d165e8/site/1">' +
                 '<img class="w100" alt="改变，从现在开始" src="http://static.mingyizhudao.com/147330339912652">' +
                 '</a>' +
