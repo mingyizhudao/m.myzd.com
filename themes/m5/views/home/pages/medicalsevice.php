@@ -51,10 +51,7 @@ $this->show_footer = false;
                 <div >
 
                     <video class="w100"  controls>
-
-                    <video width="300"  controls>
-
-                    <source src="http://static.mingyizhudao.com/pc/samsungHospital.mp4" type="video/mp4">
+                     <source src="http://static.mingyizhudao.com/pc/samsungHospital.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="text-center color-z font-s9">
