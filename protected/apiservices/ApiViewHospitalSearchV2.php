@@ -11,7 +11,6 @@ class ApiViewHospitalSearchV2 extends EApiViewService {
     private $cityId;
     private $currentLocation;
     private $count;
-    private $hospitalCityList;
 
     public function __construct($searchInputs) {
         parent::__construct();
@@ -33,7 +32,6 @@ class ApiViewHospitalSearchV2 extends EApiViewService {
     protected function loadData() {
         // load Hospitals.
         $this->loadHospitals();
-        $this->loadHospitalCityList();
         // load Location Navigation.
 //        $this->loadLocations();
         if ($this->getCount) {
@@ -52,7 +50,6 @@ class ApiViewHospitalSearchV2 extends EApiViewService {
         if (is_null($this->output)) {
             $this->output = array(
                 'status' => self::RESPONSE_OK,
-                'dataCity' => $this->hospitalCityList,
 //                'currentLocation' => $this->currentLocation,
 //                'locations' => $this->locations, //@used by app.
                 'hospitals' => $this->hospitals,
@@ -108,7 +105,6 @@ class ApiViewHospitalSearchV2 extends EApiViewService {
             $data->hpClass = $model->getClass();
             $data->hpType = $model->getType();
             $data->phone = $model->getPhone();
-            $this->hospitalCityList[] = $model->getCityId();
             $this->hospitals[] = $data;
         }
     }
@@ -130,28 +126,5 @@ class ApiViewHospitalSearchV2 extends EApiViewService {
             }
         }
     }
-    
-    private function loadHospitalCityList() {
-        $hospitalCityList = $this->hospitalCityList;
-        if (arrayNotEmpty($hospitalCityList)) {
-            $this->setHospitalCityList($hospitalCityList);
-        }
-    }
-    
-    private function setHospitalCityList($hospitalCityList) {
-        $cityList = array_unique($hospitalCityList);
-        unset($this->hospitalCityList);
-        foreach ($cityList as $k=>$v) {
-            $model = RegionCity::model()->getByAttributes(array('id'=> $v));
-            if(isset($model)){
-               $cityobj=new stdClass();
-               $cityobj->id=  $model->id;
-               $cityobj->name = $model->name;
-               $this->hospitalCityList[] = $cityobj;
-            }
-        }
-       // $this->hospitalCityList = $cityDate;
-    }
-    
 
 }
