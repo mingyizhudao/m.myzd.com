@@ -150,7 +150,6 @@ function deptSelect() {
                 $('#diseaseTitle').attr('data-disease', '');
                 $('#cityTitle').html('全部');
                 $('#cityTitle').attr('data-city', '0');
-                consolelog('data.dataCity',data.dataCity);
                 $cityData.curRes = data.dataCity;
                 // checkCityList(data.dataCity);
                 setLocationUrl();
@@ -315,7 +314,6 @@ $('#diseaseSelect').tap(function () {
                     $('#diseaseTitle').attr('data-disease', $diseaseIdB);
                     $('#cityTitle').html('全部');
                     $('#cityTitle').attr('data-city', '0');
-                consolelog('data.dataCity',data.dataCity);
                     $cityData.curRes = data.dataCity;
                     // checkCityList(data.dataCity);
                     setLocationUrl();
@@ -617,14 +615,13 @@ function readyCity(data, cityId) {
         } else {
             innerHtml += '<li class="switchCity" data-city="0">全部</li>';
         }
-        console.log('results',results);
 
         for (var i = 0; i < results.length; i++) {
 
             if (cityId == results[i].id) {
-                innerHtml += '<li class="switchCity activeIcon" data-city="' + results[i].id + '">' + results[i].city + '</li>';
+                innerHtml += '<li class="switchCity activeIcon" data-city="' + results[i].id + '">' + results[i].name + '</li>';
             } else {
-                innerHtml += '<li class="switchCity" data-city="' + results[i].id + '">' + results[i].city + '</li>';
+                innerHtml += '<li class="switchCity" data-city="' + results[i].id + '">' + results[i].name + '</li>';
             }
         }
         innerHtml += '</ul></div>';
