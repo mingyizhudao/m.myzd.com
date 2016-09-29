@@ -5,6 +5,9 @@ $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $urlDoctorView = $this->createAbsoluteUrl('doctor/view').'/id';
 $this->show_footer = false;
 ?>
+<style>
+  #medicalSevice_article .color-z2{color: #7b71b0;}
+</style>
 <?php if ($showHeader == 1) { ?>
     <header class="bg-green">
         <nav class="left">
@@ -153,7 +156,7 @@ $this->show_footer = false;
                 </div> 
             </div>
             <div class="mt10 pl10 pr10 plan"data-choose="1">
-                <div>套餐一  全面体检项目</div>
+                <div class="color-z2 font-w800">套餐一  全面体检项目</div>
                 <div>1. 价格：¥22,500</div>
                 <div>2. 时间：行程三天两夜，一天体检。</div>
                 <div>3. 体检地点：江北三星医院首尔综合体检中心</div>
@@ -173,7 +176,7 @@ $this->show_footer = false;
             </div>
 
             <div class="mt10 pl10 pr10 hide plan"data-choose="2">
-              <div>套餐二 癌症精密体检项目</div>
+              <div class="color-z2 font-w800">套餐二 癌症精密体检项目</div>
               <div>1. 价格：¥39,500</div>
               <div>2. 时间：行程三天两夜，一天体检。</div>
               <div class="text-justify">3. 体检地点：江北三星医院首尔综合体检中心</div>
@@ -188,7 +191,7 @@ $this->show_footer = false;
               <div><img src="http://static.mingyizhudao.com/147512121783186" ></div>
             </div>
              <div class="mt10 pl10 pr10 hide plan" data-choose="3">
-               <div>套餐三  深度体检中心</div>
+               <div class="color-z2 font-w800">套餐三  深度体检中心</div>
                <div>1. 价格：¥79,500</div>
                <div class="text-justify">2. 时间：行程四天三夜，两天体检。</div>
                <div class="text-justify">3. 体检地点：江北三星医院水原综合体检中心</div>
