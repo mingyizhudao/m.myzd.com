@@ -108,6 +108,10 @@ class DoctorCitySearch  {
                 $this->criteria->params[":category_id"] = $category_id;
                 $this->criteria->distinct = true;
             }
+            if (isset($this->queryParams['disease_sub_category'])) {
+                $subCatId = $this->queryParams['disease_sub_category'];
+                $this->criteria->compare('t.sub_cat_id', $subCatId);
+            }
     
         }
 }

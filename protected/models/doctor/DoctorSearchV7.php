@@ -74,6 +74,10 @@ class DoctorSearchV7 extends ESearchModel {
                 $this->criteria->params[":app"] = 7;
                 $this->criteria->distinct = true;
             }
+            if (isset($this->queryParams['disease_sub_category'])) {
+                $subCatId = $this->queryParams['disease_sub_category'];
+                $this->criteria->compare('t.sub_cat_id', $subCatId);
+            }
             // disease_sub_category.
             if (isset($this->queryParams['disease_sub_category'])) {
                 $category_id = $this->queryParams['disease_sub_category'];
