@@ -19,7 +19,7 @@ class DoctorSearchV7 extends ESearchModel {
         $this->criteria->addCondition('t.date_deleted is NULL');
         if ($this->hasQueryParams()) {
             // Doctor.Name
-			if (isset($this->queryParams['name'])) {
+	     if (isset($this->queryParams['name'])) {
                 $name = $this->queryParams['name'];
                 $this->criteria->addSearchCondition('name', $name);
             }
