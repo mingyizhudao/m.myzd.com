@@ -1,5 +1,5 @@
 <?php
-$this->setPageTitle('江北三星集团');
+$this->setPageTitle('三星集团江北三星医院');
 $showHeader = Yii::app()->request->getQuery('header', 1);
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $urlDoctorView = $this->createAbsoluteUrl('doctor/view').'/id';
@@ -17,7 +17,7 @@ $this->show_footer = false;
                 </div>
             </a>
         </nav>
-        <div class="title">江北三星集团</div>
+        <div class="title">三星集团江北三星医院</div>
         <nav class="right">
             <a onclick="javascript:location.reload()">
                 <img src="http://static.mingyizhudao.com/146975853464574"  class="w24p">
