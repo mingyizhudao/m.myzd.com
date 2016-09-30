@@ -163,22 +163,22 @@ if ($sourceApp == 0) {
         }
 
         //首次进入，更新城市
-        if ('<?php echo $city; ?>' == 0) {
-            $('#cityTitle').html('全部');
-            $('#cityTitle').attr('data-city', 0);
-        } else if ('<?php echo $city; ?>' != '') {
-            $.ajax({
-                url: '<?php echo $urlCityName; ?>/' + '<?php echo $city; ?>',
-                success: function (data) {
-                    var cityName = data.results.name;
-                    cityName = cityName.length > 4 ? cityName.substr(0, 3) + '...' : cityName;
-                    $('#cityTitle').html(cityName);
-                    $('#cityTitle').attr('data-city', data.results.id);
-                }
-            });
-        } else {
-            $('#cityTitle').html('地区');
-        }
+        // if ('<?php echo $city; ?>' == 0) {
+        //     $('#cityTitle').html('全部');
+        //     $('#cityTitle').attr('data-city', 0);
+        // } else if ('<?php echo $city; ?>' != '') {
+        //     $.ajax({
+        //         url: '<?php echo $urlCityName; ?>/' + '<?php echo $city; ?>',
+        //         success: function (data) {
+        //             var cityName = data.results.name;
+        //             cityName = cityName.length > 4 ? cityName.substr(0, 3) + '...' : cityName;
+        //             $('#cityTitle').html(cityName);
+        //             $('#cityTitle').attr('data-city', data.results.id);
+        //         }
+        //     });
+        // } else {
+        //     $('#cityTitle').html('地区');
+        // }
 
         
 
@@ -242,6 +242,17 @@ if ($sourceApp == 0) {
                 success: function (data) {
                     if ($cityData) {
                         $cityData.curRes = data.dataCity;
+                        var _cityList = data.dataCity;
+                        var _curCityId = '<?php echo $city; ?>' ;
+                        if (_curCityId != '') {
+                            for(var i=0;i<_cityList.length;i++){
+                                if(_cityList[i].id == _curCityId){
+                                    $('#cityTitle').html(_cityList[i].name);
+                                }
+                            }
+                        }else{
+                            $('#cityTitle').html('全部');
+                        }
                     }
                     readyDoc(data);
                     setLocationUrl();
