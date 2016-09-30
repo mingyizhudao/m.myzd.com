@@ -60,8 +60,11 @@ class DoctorCitySearch  {
             }
             // Doctor.city
             if (isset($this->queryParams['city'])) {
-                $cityId = $this->queryParams['city'];
-                $this->criteria->compare('t.city_id', $cityId);
+               
+                    $cityId = $this->queryParams['city'];
+                    if(!empty($cityId)){    
+                        $this->criteria->compare('t.city_id', $cityId);
+                    }
             }
             // Disease.
             if (isset($this->queryParams['disease'])) {
