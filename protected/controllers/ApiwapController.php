@@ -323,14 +323,15 @@ class ApiwapController extends Controller
         
         $get = $_GET;
         $post = $_POST;
-       
         if (empty($_POST)) {
             // application/json
             $post = CJSON::decode($this->getPostData());
+            
         } else {
             // application/x-www-form-urlencoded
             $post = $_POST;
         }
+       
         // $api = $this->getApiVersionFromRequest();
         // if ($api >= 4) {
         // $output = array('status' => EApiViewService::RESPONSE_NO, 'errorCode' => ErrorList::BAD_REQUEST, 'errorMsg' => 'Invalid request.');
@@ -491,7 +492,11 @@ class ApiwapController extends Controller
         $values['username'] = (isset($user->token->username)) ? $user->token->username: NULL;
         $output = new stdClass();
         if (isset($values['username']) === false || isset($values['token']) === false) {
-            $this->renderJsonOutput($output->status = EApiViewService::RESPONSE_NO, $output->errorCode = ErrorList::BAD_REQUEST, $output->errorMsg = '没有权限执行此操作');
+            $output->status = EApiViewService::RESPONSE_NO;
+            $output->errorCode = ErrorList::BAD_REQUEST;
+            $output->errorMsg = '用户没有登陆或者没有该用户';
+            $this->renderJsonOutput($output);
+           // $this->renderJsonOutput($output->status = EApiViewService::RESPONSE_NO, $output->errorCode = ErrorList::BAD_REQUEST, $output->errorMsg = '没有权限执行此操作');
         }
    
         //加入过期
