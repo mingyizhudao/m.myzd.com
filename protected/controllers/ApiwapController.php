@@ -133,6 +133,7 @@ class ApiwapController extends Controller
             break;
             case "userbooking"://需要修改
                 $values = $_GET;
+                
                 $values['token'] = $this->em_getallheaders();
                 $user = $this->userLoginRequired($values);
                 if($user){
@@ -239,6 +240,7 @@ class ApiwapController extends Controller
 
     public function actionView($model, $id)
     {
+      
         
         // Check if id was submitted via GET
         if (isset($id) === false) {
@@ -280,9 +282,13 @@ class ApiwapController extends Controller
                 break;
             case 'userbooking':
                 $values = $_GET;
-                $user = $this->userLoginRequired($values);
-                $apiService = new ApiViewBookingV4($user, $id);
+                $values['token'] = $this->em_getallheaders();
+                $user = $this->userLoginRequired($values,true);
+                $apiService = new ApiViewBookingV12($user, $id);
                 $output = $apiService->loadApiViewData();
+                //$user = $this->userLoginRequired($values);
+                //$apiService = new ApiViewBookingV4($user, $id);
+               //$output = $apiService->loadApiViewData();
                 break;
             case 'hospitaldept':
                 $searchInputs = $_GET;

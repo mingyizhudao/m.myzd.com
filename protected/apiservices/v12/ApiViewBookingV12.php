@@ -44,7 +44,7 @@ class ApiViewBookingV12 extends EApiViewService
         // $model = Booking::model()->getByIdAndUserId($this->bookingId, $this->user->getId());
         // 旧的booking.user_id 为NULL， 所以在查找时，需要比较 (user_id=$userId OR mobile=$mobile);
         $model = Booking::model()->getByIdAndUser($this->bookingId, $this->user->getId(), $this->user->getMobile());
-        if($model->ref_no){
+        if(is_object($model) && $model->ref_no){
             $modelo = SalesOrder::model()->getOrderByBkIdAndrefNo($this->bookingId, $model->ref_no);
             if (isset($modelo)) {
                 if (is_array($modelo)) {
@@ -66,6 +66,7 @@ class ApiViewBookingV12 extends EApiViewService
                 }
             }
         }
+
        
         if (isset($model)) {
             $this->setBooking($model);
