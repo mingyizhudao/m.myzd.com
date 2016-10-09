@@ -493,7 +493,7 @@ class ApiwapController extends Controller
         $output = new stdClass();
         if (isset($values['username']) === false || isset($values['token']) === false) {
             $output->status = EApiViewService::RESPONSE_NO;
-            $output->errorCode = ErrorList::BAD_REQUEST;
+            $output->errorCode = ErrorList::FORBIDDEN;
             $output->errorMsg = '用户没有登陆或者没有该用户';
             $this->renderJsonOutput($output);
            // $this->renderJsonOutput($output->status = EApiViewService::RESPONSE_NO, $output->errorCode = ErrorList::BAD_REQUEST, $output->errorMsg = '没有权限执行此操作');
