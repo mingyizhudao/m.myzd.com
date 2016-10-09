@@ -96,7 +96,9 @@ class ApiViewBookingV12 extends EApiViewService
         $data->depositAmount = $this->depositAmount;
         $data->serviceTotalAmount = $this->serviceTotalAmount;
         $data->depositTotalAmount = $this->depositTotalAmount;
+        //加入创建更新时间
         $data->dateCreate = $model->getDateCreated();
+        $data->dateUpdate = $model->getDateUpdated();
         $data->actionUrl = Yii::app()->createAbsoluteUrl('/api2/bookingfile');
         $bookingFiles = $model->getBkFiles();
         if (arrayNotEmpty($bookingFiles)) {
