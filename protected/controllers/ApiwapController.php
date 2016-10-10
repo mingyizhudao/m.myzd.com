@@ -36,6 +36,8 @@ class ApiwapController extends Controller
         // header('Access-Control-Allow-Origin:http://m.mingyizhudao.com');
         header('Access-Control-Allow-Headers: Origin,X-Requested-With,Authorization,Accept,Content-Type');
         header('Access-Control-Max-Age:' , 3600 * 24);    
+        //加入put可以使用
+        header("Access-Control-Allow-Methods:DELETE GET HEAD POST PUT OPTIONS");
         //header('Access-Control-Allow-Origin:http://mingyizhudao.com'); // Cross-domain access.
         header('Access-Control-Allow-Credentials:true'); // 允许携带 用户认证凭据（也就是允许客户端发送的请求携带Cookie）
         $this->getmethod();
