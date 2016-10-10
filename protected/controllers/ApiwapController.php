@@ -385,6 +385,16 @@ class ApiwapController extends Controller
                     $output['error_msg'] = 'Wrong parameters.';
                 }
             break;
+            case 'userresetpassword':    // rsest user password.
+                if (isset($post['userReset'])) {
+                    $values = $post['userReset'];
+                    $values['userHostIp'] = Yii::app()->request->userHostAddress;
+                    $userMgr = new UserManager();
+                    $output = $userMgr->apiTokenUserReset($values);
+                } else {
+                    $output['errorMsg'] = 'Wrong parameters.';
+                }
+            break;
             case 'quickbooking': // 快速预约
                 if (isset($post['booking'])) {  
                     $values = $post['booking'];
