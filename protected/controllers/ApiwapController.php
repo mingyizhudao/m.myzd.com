@@ -475,20 +475,60 @@ class ApiwapController extends Controller
         $this->renderJsonOutput($output);
     }
 
-    public function actionUpdate($model, $id)
+    public function actionUpdate($model, $id,$type=NULL)
     {
-        if ($model == 'booking') {
-            $bookingMgr = new BookingManager();
-            $userId = $this->getCurrentUserId();
-            if (empty($userId) || empty($id)) {
-                $output['status'] = 'no';
-                $output['error_code'] = EApiViewService::RESPONSE_VALIDATION_ERRORS;
-                $output['message'] = 'Wrong parameters';
-                $this->renderJsonOutput($output);
-            }
-            $output = $bookingMgr->actionCancelBooking($id, $userId);
-            $this->renderJsonOutput($output);
+        
+        if (isset($id) === false) {
+            $this->renderJsonOutput(array('status' => EApiViewService::RESPONSE_NO, 'errorCode' => ErrorList::BAD_REQUEST, 'errorMsg' => 'Error: Parameter <b>id</b> is missing'));
         }
+        $get = $_GET;
+        $post = $_POST;
+        if (empty($_POST)) {
+            // application/json
+            $post = CJSON::decode($this->getPostData());
+            
+        } else {
+            // application/x-www-form-urlencoded
+            $post = $_POST;
+        }
+        $output = array('status' => EApiViewService::RESPONSE_NO, 'errorCode' => ErrorList::BAD_REQUEST, 'errorMsg' => 'Invalid request.');
+        switch ($model) {
+                case 'booking':
+                switch ($type){
+                    case 'cancelBooking':
+                            $bookingMgr = new BookingManager();
+                            $values=$post;
+                            $values['token'] = $this->em_getallheaders();
+                            $user = $this->userLoginRequired($values);
+                            $userId=$user->getId();
+                            if(empty($userId) || empty($id)){
+                                $output['status'] = 'no';
+                                $output['errorCode'] = EApiViewService::RESPONSE_VALIDATION_ERRORS;
+                                $output['message'] = 'Wrong parameters';
+                            }else{
+                                $output = $bookingMgr->actionCancelBooking($id,$userId);
+                            }
+                        break;
+                    default:
+                        $this->_sendResponse(501, sprintf('Error: Invalid request', $type));
+                        Yii::app()->end();
+                }
+                break;
+                case 'profile'://个人信息（基本信息）
+                    if (isset($post['profile'])) {
+                        $values = $post['profile'];
+                        $values['userHostIp'] = Yii::app()->request->userHostAddress;
+                        $user = $this->userLoginRequired($values);  // check if doctor has login.
+                        $doctorMgr = new DoctorManager();
+                        $output = $doctorMgr->apiCreateProfile($user, $values, $id);
+
+                    } else {
+                        $output['errorMsg'] = 'Wrong parameters.';
+                    }
+                break;
+            
+        } 
+        $this->renderJsonOutput($output);
     }
 
     public function actionDelete($model, $id)
