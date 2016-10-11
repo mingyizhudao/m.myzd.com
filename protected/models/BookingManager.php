@@ -76,6 +76,7 @@ class BookingManager {
     public function apiCreateQuickBooking($values, $checkVerifyCode = true, $sendEmail = true) {
         $results = array();
         $output=new stdClass();
+
         if($checkVerifyCode){
             $authMgr = new AuthManager();
             $authSmsVerify = $authMgr->verifyCodeForBooking($values['mobile'], $values['verify_code'], null);
@@ -89,6 +90,7 @@ class BookingManager {
                 $values['username'] = $values['mobile'];
                 $values['verify_code'] = null;
                 $res = $authMgr->apiTokenUserLoginByMobile($values);
+              
                 if($res){
                     $results['token'] = $res['results']['token'];
                 }
@@ -112,11 +114,15 @@ class BookingManager {
             $output->status= 'ok';
             $output->errorCode= 0;
             $output->errorMsg= 'success';
-            $results=new stdClass();
-            $results->booking_id= $model->getId();
-            $results->refNo=$ret['salesOrderRefNo'];
-            $results->actionUrl=Yii::app()->createAbsoluteUrl('/api2/bookingfile');
-            $output->results= $results;
+            $resultt=new stdClass();
+            $resultt->booking_id= $model->getId();
+            $resultt->refNo=$ret['salesOrderRefNo'];
+            $resultt->actionUrl=Yii::app()->createAbsoluteUrl('/api2/bookingfile');
+            //加入results
+            if(!empty($results['token'])){
+                $resultt->token=$results['token'];
+            }
+            $output->results= $resultt;
         }
 //         load this booking from db and convert it to IBooking model for viewing.
         try {
