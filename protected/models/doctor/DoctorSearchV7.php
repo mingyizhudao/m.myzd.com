@@ -19,7 +19,7 @@ class DoctorSearchV7 extends ESearchModel {
         $this->criteria->addCondition('t.date_deleted is NULL');
         if ($this->hasQueryParams()) {
             // Doctor.Name
-			if (isset($this->queryParams['name'])) {
+	     if (isset($this->queryParams['name'])) {
                 $name = $this->queryParams['name'];
                 $this->criteria->addSearchCondition('name', $name);
             }
@@ -73,6 +73,10 @@ class DoctorSearchV7 extends ESearchModel {
                 $this->criteria->params[":cateId"] = $cateId;
                 $this->criteria->params[":app"] = 7;
                 $this->criteria->distinct = true;
+            }
+            if (isset($this->queryParams['disease_sub_category'])) {
+                $subCatId = $this->queryParams['disease_sub_category'];
+                $this->criteria->compare('t.sub_cat_id', $subCatId);
             }
             // disease_sub_category.
             if (isset($this->queryParams['disease_sub_category'])) {

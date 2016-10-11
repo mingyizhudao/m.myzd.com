@@ -9,10 +9,15 @@ class ApiViewDoctorSearchV7 extends EApiViewService {
     private $doctors;
     private $doctorCount;     // count no. of Doctors.
     private $doctorsCityList;
+   //加入医生全部城市查询
+    private $doctorsCitySearch;
+    private $searchcityInputs;
 
     public function __construct($searchInputs) {
         parent::__construct();
         $this->searchInputs = $searchInputs;
+       //add by wanglei
+        $this->searchcityInputs=$searchInputs;
         $this->getCount = isset($searchInputs['getcount']) && $searchInputs['getcount'] == 1 ? true : false;
         $this->searchInputs['pagesize'] = isset($searchInputs['pagesize']) && $searchInputs['pagesize'] > 0 ? $searchInputs['pagesize'] : $this->pageSize;
         if(isset($this->searchInputs['city'])){
@@ -22,11 +27,16 @@ class ApiViewDoctorSearchV7 extends EApiViewService {
         }
         $this->doctorSearch = new DoctorSearchV7($this->searchInputs);
         $this->doctorSearch->addSearchCondition("t.date_deleted is NULL");
+        //加入医生全部城市查询
+        $this->doctorsCitySearch = new DoctorCitySearch($this->searchcityInputs);
+        $this->doctorsCitySearch->addSearchCondition("t.date_deleted is NULL");
     }
 
     protected function loadData() {
         // load Doctors.
+       
         $this->loadDoctors();
+        $this->loadDoctorsCity();
         $this->loadDoctorsCityList();
         if ($this->getCount) {
             $this->loadDoctorCount();
@@ -78,12 +88,26 @@ class ApiViewDoctorSearchV7 extends EApiViewService {
             $data->isContracted = $model->getIsContracted();
             $data->reasons = $model->getReasons();
             $data->isExpteam = $model->getIsExpteam();
-            $this->doctorsCityList[] = $model->getCityId();
+           // $this->doctorsCityList[] = $model->getCityId();
             $this->doctors[] = $data;
         }
    
     }
+     private function loadDoctorsCity() {
+            $models = $this->doctorsCitySearch->search();
+            if (arrayNotEmpty($models)) {
+                $this->setDoctorsCity($models);
+            }
 
+    }
+
+    private function setDoctorsCity(array $models) {
+        foreach ($models as $model) {
+            $datacity = new stdClass();
+            $this->doctorsCityList[] =$model->getCityId();
+        }
+   
+    }
     private function loadDoctorCount() {
         if (is_null($this->doctorCount)) {
             $count = $this->doctorSearch->count();
@@ -104,7 +128,18 @@ class ApiViewDoctorSearchV7 extends EApiViewService {
     
     private function setDoctorCityList($doctorCityList) {
         $cityList = array_unique($doctorCityList);
-        $this->doctorsCityList = $cityList;
+        unset($this->doctorsCityList);
+        foreach ($cityList as $k=>$v) {
+           $model = RegionCity::model()->getByAttributes(array('id'=> $v));
+           if(isset($model)){
+               $cityobj=new stdClass();
+               $cityobj->id=  $model->id;
+               $cityobj->name =  $model->name;
+               $this->doctorsCityList[] = $cityobj;
+           }
+        }
+      
+        
     }
 
 }
