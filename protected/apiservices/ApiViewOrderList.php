@@ -42,7 +42,7 @@ class ApiViewOrderList extends EApiViewService {
         $hasPay = 0;
         $noPay = 0;
         foreach ($payList as $pay) {
-            if($pay->order_type == 'service'){
+            if($pay->order_type == 'deposit'){
                 continue;
             }
             $data = new stdClass();
