@@ -57,12 +57,12 @@ class ApiViewAppNav1V14 extends EApiViewService {
 
     private function setBanners() {
         $data = array(
-//            array(
-//                'pageTitle' => '白内障公益',
-//                'actionUrl' => 'http://m.mingyizhudao.com/mobile/home/page/view/bnzOperation/header/0',
-//                'imageUrl' => 'http://static.mingyizhudao.com/147208993702531',
-//                'type' => 0,
-//            ),
+            array(
+                'pageTitle' => '韩国三星',
+                'actionUrl' => 'http://m.mingyizhudao.com/mobile/home/page/view/medicalsevice/header/0',
+                'imageUrl' => 'http://static.mingyizhudao.com/147505375737374',
+                'type' => 0,
+            ),
             array(
                 'pageTitle' => '改变从现在开始',
                 'actionUrl' => 'http://m.mingyizhudao.com/mobile/home/page/view/change/header/0',
@@ -70,15 +70,15 @@ class ApiViewAppNav1V14 extends EApiViewService {
                 'type' => 0,
             ),
             array(
-                'pageTitle' => '名医公益',
-                'actionUrl' => 'http://m.mingyizhudao.com/mobile/event/view/page/mygy/header/0',
-                'imageUrl' => 'http://static.mingyizhudao.com/147150951177488',
+                'pageTitle' => '名医义诊',
+                'actionUrl' => 'http://m.mingyizhudao.com/mobile/home/page/view/myyzDoctor/header/0',
+                'imageUrl' => 'http://static.mingyizhudao.com/146606890329840',
                 'type' => 0,
             ),
             array(
-                'pageTitle' => '名医义诊',
-                'actionUrl' => 'http://m.mingyizhudao.com/mobile/home/page/view/myyzDoctor/header/0',
-                'imageUrl' => 'http://7xsq2z.com2.z0.glb.qiniucdn.com/146243704275720',
+                'pageTitle' => '名医公益',
+                'actionUrl' => 'http://m.mingyizhudao.com/mobile/event/view/page/mygy/header/0',
+                'imageUrl' => 'http://static.mingyizhudao.com/147150951177488',
                 'type' => 0,
             ),
 //            array(
