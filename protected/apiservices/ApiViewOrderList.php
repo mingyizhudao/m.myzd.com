@@ -42,22 +42,20 @@ class ApiViewOrderList extends EApiViewService {
         $hasPay = 0;
         $noPay = 0;
         foreach ($payList as $pay) {
-            if($pay->order_type == 'deposit'){
-                continue;
+            if($pay->order_type == 'service'){
+                $data = new stdClass();
+                $data->id = $pay->id;
+                $data->refNo = $pay->ref_no;
+                $data->orderType = $pay->order_type;
+                $data->finalAmount = $pay->final_amount;
+                $data->isPaid = $pay->is_paid;
+                if($data->isPaid == 1){
+                    $hasPay += $pay->final_amount;
+                }else{
+                    $noPay += $pay->final_amount;
+                }
+                $this->results->orders[] = $data;
             }
-            $data = new stdClass();
-            $data->id = $pay->id;
-            $data->refNo = $pay->ref_no;
-            $data->orderType = $pay->order_type;
-            $data->finalAmount = $pay->final_amount;
-            $data->isPaid = $pay->is_paid;
-            if($data->isPaid == 1){
-                $hasPay += $pay->final_amount;
-            }else{
-                $noPay += $pay->final_amount;
-            }
-//            $data->actionUrl = "http://192.168.1.216/new.md/apimd/orderview";
-            $this->results->orders[] = $data;
         }
         $this->results->hasPay = $hasPay;
         $this->results->noPay = $noPay;
