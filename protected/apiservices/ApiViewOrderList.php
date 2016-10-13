@@ -45,7 +45,7 @@ class ApiViewOrderList extends EApiViewService {
             if($pay->order_type == 'service'){
                 $data = new stdClass();
                 $data->id = $pay->id;
-                $data->refNo = $pay->ref_no;
+                $data->saleRefNo = $pay->ref_no;
                 $data->orderType = $pay->order_type;
                 $data->finalAmount = $pay->final_amount;
                 $data->isPaid = $pay->is_paid;

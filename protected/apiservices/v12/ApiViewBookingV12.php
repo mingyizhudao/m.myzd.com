@@ -10,6 +10,7 @@ class ApiViewBookingV12 extends EApiViewService
     private $depositAmount = 0;
     private $serviceTotalAmount = 0;
     private $depositTotalAmount = 0;
+    private $saleRefNo;
     
     // 初始化类的时候将参数注入
     public function __construct($user, $id)
@@ -49,17 +50,18 @@ class ApiViewBookingV12 extends EApiViewService
             if (isset($modelo)) {
                 if (is_array($modelo)) {
                     foreach ($modelo as $k => $v) {
-                        if ($v['order_type'] == SalesOrder::ORDER_TYPE_DEPOSIT) {} else {
-                            if($v['is_paid'] == 1){
-                                $this->serviceAmount = $v['final_amount'] + $this->serviceAmount ;
-                            }
-                            $this->serviceTotalAmount = $v['final_amount']+$this->serviceTotalAmount;
-                        }
-                        if ($v['order_type'] == SalesOrder::ORDER_TYPE_SERVICE) {} else {
+                        if ($v['order_type'] == SalesOrder::ORDER_TYPE_DEPOSIT) {
+                            $this->saleRefNo = $v['ref_no'];
                             if($v['is_paid'] == 1){
                                 $this->depositAmount = $v['final_amount'];
                             }
                             $this->depositTotalAmount = $v['final_amount'];
+                        }
+                        if ($v['order_type'] == SalesOrder::ORDER_TYPE_SERVICE) {
+                            if($v['is_paid'] == 1){
+                                $this->serviceAmount = $v['final_amount'] + $this->serviceAmount ;
+                            }
+                            $this->serviceTotalAmount = $v['final_amount']+$this->serviceTotalAmount;
                         }
             
                     }
@@ -79,6 +81,7 @@ class ApiViewBookingV12 extends EApiViewService
         $data = new stdClass();
         $data->id = $model->getId();
         $data->refNo = $model->getRefNo();
+        $data->saleRefNo = $this->saleRefNo;
         $data->userId = $model->getUserId();
         $data->bkStatus = $model->getBkStatusCode();
         $data->expertName = $model->getExpertNameBooked();
