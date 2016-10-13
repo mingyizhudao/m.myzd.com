@@ -23,7 +23,7 @@ class AuthTokenUser extends EActiveRecord
 
     const EXPIRY_DEFAULT = 31536000;
     // one year
-    const WAP_EXPIRY_DEFAULT = 1800;
+    const WAP_EXPIRY_DEFAULT = 3600;
     // half a hour
     const ERROR_NONE = 0;
 
