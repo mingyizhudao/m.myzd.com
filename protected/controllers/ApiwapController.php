@@ -430,26 +430,19 @@ class ApiwapController extends Controller
                     $output['error'] = 'Wrong parameters.';
                 }
             break;
-            case 'booking':
-                if (isset($post['booking'])) {
-                    $values = $post['booking'];
-                    $values['token'] = $this->em_getallheaders();
+            case 'smsverifycode': // sends sms verify code AuthSmsVerify.
+                if (isset($post['smsVerifyCode'])) {
+                    $values = $post['smsVerifyCode'];
                     $values['userHostIp'] = Yii::app()->request->userHostAddress;
-                    $values['user_agent'] = ($this->isUserAgentIOS()) ? StatCode::USER_AGENT_APP_IOS : StatCode::USER_AGENT_APP_ANDROID;
-                    $user = $this->userLoginRequired($values); // check if user has login.
-                    if (is_object($user)) {
-                        $values['user_id'] = $user->getId();
-                        $values['mobile'] = $user->getUserName();
-                    }
-                    $checkVerifyCode = true;
-                    $bookingMgr = new BookingManager();
-                   // $checkVerifyCode = true;    // checks verify_code before creating a new booking in db.
-                    $sendEmail = false;  // send email to admin after booking is created.
-                    $output = $bookingMgr->apiCreateBookingV9($user, $values, $checkVerifyCode, $sendEmail);
-                    } else {
-                        $output['errorMsg'] = 'Wrong parameters.';
-                    }
-           
+                    $authMgr = new AuthManager();
+                    $output = $authMgr->apiSendVerifyCode($values);
+                } else {
+                    $output['error'] = 'Wrong parameters.';
+                }
+                break;
+            case 'filetoken':
+                $qiniuMgr = new QiniuManager();
+                $output = $qiniuMgr->apiBookingToken();
             break; 
             //加入统计
             case 'stat':
