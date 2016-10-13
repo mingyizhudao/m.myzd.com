@@ -243,7 +243,7 @@ class AuthTokenUser extends EActiveRecord
     {
         $now = new CDbExpression("NOW()");
         return $this->updateAllByAttributes(array(
-            'time_expiry' => time()+1800,
+            'time_expiry' => time()+self::WAP_EXPIRY_DEFAULT,
             'date_updated' => $now
         ), array(
             'token' => $token,
