@@ -8,9 +8,7 @@ class QiniuManager {
     public function apiBookingToken() {
         $url = 'http://file.mingyizhudao.com/api/tokenbookingmr';
 //        $url = 'http://192.168.31.118/file.myzd.com/api/tokenbookingmr';
-        $data = $this->send_get($url);
-        $output = array('uptoken' => $data['results']['uploadToken']);
-        return $output;
+        return $url;
     }
 
     //保存文件信息

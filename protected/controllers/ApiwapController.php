@@ -432,7 +432,9 @@ class ApiwapController extends Controller
                 break;
             case 'filetoken':
                 $qiniuMgr = new QiniuManager();
-                $output = $qiniuMgr->apiBookingToken();
+                $url = $qiniuMgr->apiBookingToken();
+                $data = $this->send_get($url);
+                $output = array('uptoken' => $data['results']['uploadToken']);
                 break; 
             case 'bookingfile':
                 if (isset($post['bookingfile'])) {
