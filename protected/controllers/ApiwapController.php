@@ -110,6 +110,8 @@ class ApiwapController extends Controller
                 $values['isNotPaging'] = 1;
                 $apiService = new ApiViewHospitalSearchV2($values);
                 $output = $apiService->loadApiViewData();
+                //格式化接口
+                $output=$this->loadformathospital($output);
             break;
             //找医院
             case "findhospital":
@@ -786,6 +788,14 @@ else {
             $now = time();;
             return ($time_expiry > $now);
         }    
-    }       
+    }  
+    //统一医院格式
+    function loadformathospital($output){
+        $output->errcode=0;
+        $output->errorMsg= "success";
+        $output->results=$output->hospitals;
+        unset($output->hospitals);
+        return $output;
+    }
     
 }
