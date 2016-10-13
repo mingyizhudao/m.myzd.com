@@ -434,7 +434,7 @@ class ApiwapController extends Controller
                 $qiniuMgr = new QiniuManager();
                 $url = $qiniuMgr->apiBookingToken();
                 $data = $this->send_get($url);
-                $output = array('uptoken' => $data['results']['uploadToken']);
+                $output = array('remoteDomain'=>Yii::app()->params['qiniuyunurl'],'uploadToken' => $data['results']['uploadToken']);
                 break; 
             case 'bookingfile':
                 if (isset($post['bookingfile'])) {
