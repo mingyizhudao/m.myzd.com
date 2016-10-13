@@ -101,6 +101,7 @@ class AppManager {
         $appObj->cur_app_dl_url = $modelAppVersion->getAppDownloadUrl();
         $appObj->force_update = $modelAppVersion->getIsForceUpdate();
         $appObj->change_log = $modelAppVersion->getChangeLog();
+        $appObj->cur_app_version_name = $modelAppVersion->app_version_name;
 
         return $appObj;
     }
