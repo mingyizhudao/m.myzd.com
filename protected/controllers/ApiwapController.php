@@ -429,21 +429,20 @@ class ApiwapController extends Controller
                 } else {
                     $output['error'] = 'Wrong parameters.';
                 }
-            break;
-            case 'smsverifycode': // sends sms verify code AuthSmsVerify.
-                if (isset($post['smsVerifyCode'])) {
-                    $values = $post['smsVerifyCode'];
-                    $values['userHostIp'] = Yii::app()->request->userHostAddress;
-                    $authMgr = new AuthManager();
-                    $output = $authMgr->apiSendVerifyCode($values);
-                } else {
-                    $output['error'] = 'Wrong parameters.';
-                }
                 break;
             case 'filetoken':
                 $qiniuMgr = new QiniuManager();
                 $output = $qiniuMgr->apiBookingToken();
-            break; 
+                break; 
+            case 'bookingfile':
+                if (isset($post['bookingfile'])) {
+                    $values = $post['bookingfile'];
+                    $qiniuMgr = new QiniuManager();
+                    $output = $qiniuMgr->apiBookingFile($values);
+                } else {
+                    $output['error'] = 'Wrong parameters.';
+                }
+                break;
             //加入统计
             case 'stat':
                 if(isset($post['stat'])){

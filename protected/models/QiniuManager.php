@@ -14,10 +14,8 @@ class QiniuManager {
     }
 
     //保存文件信息
-    public function apiBookingFile() {
+    public function apiBookingFile($values) {
         $output = array('status' => 'no');
-        if (isset($_POST['booking'])) {
-            $values = $_POST['booking'];
             $form = new BookingFileForm();
             $form->setAttributes($values, true);
             $form->user_id = $this->getCurrentUserId();
@@ -32,35 +30,6 @@ class QiniuManager {
                     $output['errors'] = $file->getErrors();
                 }
             }
-        } else {
-            $output['errors'] = 'no data....';
-        }
         return $output;
     }
-
-    //保存企业证件信息
-    public function apiCorpIc() {
-        $output = array('status' => 'no');
-        if (isset($_POST['corp'])) {
-            $values = $_POST['corp'];
-            $form = new BookingFileForm();
-            $form->setAttributes($values, true);
-            $form->user_id = $this->getCurrentUserId();
-            $form->initModel();
-            if ($form->validate()) {
-                $file = new BookingCorpIc();
-                $file->setAttributes($form->attributes, true);
-                if ($file->save()) {
-                    $output['status'] = 'ok';
-                    $output['fileId'] = $file->getId();
-                } else {
-                    $output['errors'] = $file->getErrors();
-                }
-            }
-        } else {
-            $output['errors'] = 'no data....';
-        }
-        return $output;
-    }
-    
   }
