@@ -44,7 +44,7 @@ $this->show_footer = false;
              </div>
             </div>
             <div class="pt10">
-              <img src="http://static.mingyizhudao.com/147693899644193">
+              <img src="http://static.mingyizhudao.com/147693899644193"class="w100">
             </div>
             <div class="pt10">
               <p class="text-indent-2"> 
@@ -65,7 +65,7 @@ $this->show_footer = false;
              </div>
             </div>
             <div class="pt10">
-              <img src="http://static.mingyizhudao.com/147693925105741" >
+              <img src="http://static.mingyizhudao.com/147693925105741" class="w100">
             </div>
             <div class="pt10">
               <p class="text-indent-2">
@@ -97,7 +97,7 @@ $this->show_footer = false;
               正如文章开头讲到的共享单车一样，医疗行业也是一个存在大量医疗资源闲置而局部医疗需求又强烈的行业。如何优化资源配置、将有限的优质医疗资源发挥最大作用就成了名医主刀一直致力于解决的问题。9月，名医主刀入选首批国家信息中心分享经济案例研究基地代表就是学界对名医主刀最好的肯定。
             </div>
             <div class="pt10">
-              <img src="http://static.mingyizhudao.com/147694227303390" >
+              <img src="http://static.mingyizhudao.com/147694227303390" class="w100">
             </div>
             <div class="pt10 font-w800 text-indent-2">
               作为医疗界共享经济的代表，名医主刀在努力将最优质的医疗资源、通过共享经济的方式、以更为平民的价格分发出去。
