@@ -3,7 +3,9 @@ Yii::app()->clientScript->registerCssFile('http://myzd.oss-cn-hangzhou.aliyuncs.
 Yii::app()->clientScript->registerScriptFile('http://myzd.oss-cn-hangzhou.aliyuncs.com/static/mobile/js/jquery.bxslider/jquery.bxslider.min.js', CClientScript::POS_END);
 Yii::app()->clientScript->registerScriptFile('http://myzd.oss-cn-hangzhou.aliyuncs.com/static/mobile/js/jquery-1.9.1.min.js', CClientScript::POS_HEAD);
 ?>
-
+<style>
+    #home_article .bx-wrapper .bx-pager{left:77%;}
+</style>
 <?php
 $urlResImage = Yii::app()->theme->baseUrl . "/images/";
 $urlDoctorViewSearch = $this->createAbsoluteUrl('doctor/viewSearch');
@@ -14,7 +16,9 @@ $urlHomeMyzy = $this->createUrl('home/page', array('view' => 'myzy'));
 $urlHomeMyyzDoctor = $this->createUrl('home/page', array('view' => 'myyzDoctor'));
 $urlChange = $this->createUrl('home/page', array('view' => 'change'));
 $urlMedicalSevice = $this->createUrl('home/page', array('view' => 'medicalsevice'));
+$urlInternet = $this->createUrl('home/page', array('view' => 'internet'));
 $urlBnzOperation=$this->createUrl('home/page',array('view'=>'bnzOperation'));
+
 $urlMygy = $this->createUrl('event/view', array('page' => 'mygy'));
 $urlZeroBooking = $this->createUrl('questionnaire/beginQuestionnaireView');
 $urlCatherine = $this->createUrl('event/view', array('page' => 'catherine'));
@@ -185,6 +189,11 @@ $SITE_6 = PatientStatLog::SITE_6;
 
         //轮播图
         var html ='<li class="slide">' +
+                '<a href="<?php echo $urlInternet; ?>">' +
+                '<img class="w100" src="http://static.mingyizhudao.com/147693609846958">' +
+                '</a>' +
+                '</li>' +
+                '<li class="slide">' +
                 '<a href="<?php echo $urlMedicalSevice; ?>">' +
                 '<img class="w100" src="http://static.mingyizhudao.com/147505375737374">' +
                 '</a>' +
