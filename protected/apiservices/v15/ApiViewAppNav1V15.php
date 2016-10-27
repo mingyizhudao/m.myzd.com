@@ -57,6 +57,12 @@ class ApiViewAppNav1V15 extends EApiViewService {
 
     private function setBanners() {
         $data = array(
+            array(
+                'pageTitle' => '互联网共享经济医时代来啦',
+                'actionUrl' => 'http://m.mingyizhudao.com/mobile/home/page/view/internet/header/0',
+                'imageUrl' => 'http://static.mingyizhudao.com/147693609846958',
+                'type' => 0,
+            ),
            array(
                 'pageTitle' => '韩国三星',
                 'actionUrl' => 'http://m.mingyizhudao.com/mobile/home/page/view/medicalsevice/header/0',
