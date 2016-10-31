@@ -72,7 +72,76 @@ class BookingManager {
         );
         return $output;
     }
+    //WIFI快速预约
+    public function apiCreateNewQuick($values, $checkVerifyCode = true, $sendEmail = false){
+        $results = array();
+        if($checkVerifyCode){
+            $authMgr = new AuthManager();
+            $authSmsVerify = $authMgr->verifyCodeForBooking($values['mobile'], $values['verify_code'], null);
+            if ($authSmsVerify->isValid() === false) {
+                $output['status'] = 'no';
+                $output['errorCode'] = 401;
+                $output['errorMsg'] = $authSmsVerify->getError('code');
+                return $output;
+            }else{
+                $authMgr = new AuthManager();
+                $values['username'] = $values['mobile'];
+                $values['verify_code'] = null;
+                $user = User::model()->getByUsernameAndRole($values['mobile'], User::ROLE_PATIENT);   
+                if($user){
+                    $values['user_id'] = $user->getId();
+                }
+                //不存在自动注册
+                else{
+                    $userMR = new UserManager();
+                    $user = $userMR->createUser($mobile);
+                    if (empty($user)) {
+                         // error, so return errors.
+                        $output['status'] = EApiViewService::RESPONSE_NO;
+                        $output['errorCode'] = ErrorList::FORBIDDEN ;
+                        $output['errorMsg'] = $user->getFirstErrors();
+                        return $output;
+                    }
+                    $values['user_id'] = $user->getId();
+                }
+            }
+        }
+        $model = new Booking();
+        $model->bk_type = StatCode::BK_TYPE_WIFI;
+        $model->setAttributes($values, true);
+        if ($model->save() === false) {
+            $ret['status'] = 'no';
+        } else {
+            $apiRequest = new ApiRequestUrl();
+            //API线上配置
+            $remote_url = $apiRequest->getUrlAdminSalesBookingCreate() . '?type=' . StatCode::TRANS_TYPE_BK . '&id=' . $model->id;
+            $ret= $apiRequest->send_get($remote_url);
+        }
+        if ($ret['status'] == 'no') {
+            $output['status'] = 'no';
+            $output['errorCode'] = 402;
+            $output['errorMsg'] = $model->getFirstErrors();
+            return $output;
+        }else{
+            $output['status'] = 'ok';
+            $output['errorCode'] = 0;
+            $output['errorMsg'] = 'success';
+            $results['booking_id'] = $model->getId();
+            $results['refNo'] = $ret['salesOrderRefNo'];
+            $output['results'] = $results;
+        }
+        try {
+            if ($sendEmail && isset($model)) {
+                // Send email to inform admin.
+                $emailMgr = new EmailManager();
+                $emailMgr->sendEmailAppBooking($model);
+            }
+        } catch (CException $ex) {
+            Yii::log($ex->getMessage(), CLogger::LEVEL_ERROR, 'BookingManager.apiCreateBooking');
+        }
+        return $output;
 
+    }
     public function apiCreateQuickBooking($values, $checkVerifyCode = true, $sendEmail = true) {
         $results = array();
         if($checkVerifyCode){
@@ -99,7 +168,7 @@ class BookingManager {
         }
 
         $model = new Booking();
-        $model->bk_type = StatCode::BK_TYPE_QUICKBOOK;;
+        $model->bk_type = StatCode::BK_TYPE_QUICKBOOK;
         $model->setAttributes($values, true);
         $ret = $this->createAdminBooking($model);
         if ($ret['status'] == 'no') {

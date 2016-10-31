@@ -15,6 +15,7 @@ class StatCode {
     const BK_TYPE_EXPERTTEAM = 2; // 预约专家团队
     const BK_TYPE_DEPT = 3; // 预约医院科室
     const BK_TYPE_QUICKBOOK = 9;    // 快速预约
+    const BK_TYPE_WIFI = 10;    // WIFI预约
     const BK_TRAVELTYPE_PATIENT_GO = 1;    // 患者过去
     const BK_TRAVELTYPE_DOCTOR_COME = 2;   // 医生过来
     const BK_STATUS_NEW = 1;         // 待支付 旧版待处理
@@ -35,6 +36,7 @@ class StatCode {
     const TRANS_TYPE_AB = 0;          // booking.
     const TRANS_TYPE_BK = 1;          // booking.
     const TRANS_TYPE_PB = 2;          // patient_booking.
+
     const PAY_UNPAID = 0;           //未支付
     const PAY_SUCCESS = 1;          //支付成功
     const PAY_FAIL = 2;             //支付失败

@@ -505,7 +505,24 @@ class ApiController extends Controller {
                     }
                 }
 
-                break;
+             break;
+             case 'quickbooking':// 快速预约WIFI
+                if (isset($post['booking'])) {
+                    $values = $post['booking'];
+                    $values['userHostIp'] = Yii::app()->request->userHostAddress;
+                    $values['user_agent'] = ($this->isUserAgentIOS()) ? StatCode::USER_AGENT_APP_IOS : StatCode::USER_AGENT_APP_ANDROID;
+                    if(!isset($values['verify_code'])){
+                        $checkVerifyCode = false;
+                        $this->renderJsonOutput(array('status' => EApiViewService::RESPONSE_NO, 'errorCode' => ErrorList::BAD_REQUEST, 'errorMsg' => '没有输入验证码'));
+                    }else{
+                        $checkVerifyCode = true;
+                    }
+                    $bookingMgr = new BookingManager();
+                    $output = $bookingMgr->apiCreateNewQuick($values, $checkVerifyCode);
+                } else {
+                    $output['error'] = 'missing parameters';
+                }
+            break;
             case 'bookingfile':
                 if ($api >= 4) {
                     if (isset($post['bookingFile'])) {
