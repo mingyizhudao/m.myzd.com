@@ -5,6 +5,7 @@
  */
 $this->setPageTitle('名医主刀');
 $this->show_footer = false;
+$urlGetSmsVerifyCode = $this->createAbsoluteUrl('/auth/sendSmsVerifyCode');
 ?>
 <style type="text/css">
     .y-color{
@@ -56,7 +57,7 @@ $this->show_footer = false;
        background: url('http://static.mingyizhudao.com/147763299353754') 14px center no-repeat;
        background-size: contain;
        display: inline-block;
-       width: 150px;
+       width: 120px;
        height: 30px;
         float: left;
         margin: 5px 0;
@@ -121,12 +122,29 @@ $this->show_footer = false;
     .w-b-3 li span{
         display: inline-block;
         width: 30%;
+        float: left;
     }
-    .w-b-3 li input{
+    .w-b-3 li>div{
+        width: 70%;
+        display: inline-block;
+        float: left;
+    }
+    .w-b-3 li>input, .w-b-3 li>div input{
         width: 70%;
         height: 30px;
         border-radius: 5px;
-
+    }
+    .w-b-3 li>div a{    
+        color: #333;
+        display: inline-block;
+        border: 1px rgba(239,202,36,1) solid;
+        border-radius: 5px;
+        width: 25%;
+        font-size: 12px;
+        height: 25px;
+        line-height: 25px;
+        background: rgba(239,202,36,1);
+        text-align: center;
     }
     .w-b-3 p{
         padding: 10px;
@@ -176,6 +194,7 @@ $this->show_footer = false;
         border-left: 4px solid rgba(25,175,166,1);
         padding: 0 5px;
         text-align: left;
+        margin-bottom: 5px;
     }
     .w-b-6 video{
         position: relative;
@@ -246,8 +265,15 @@ $this->show_footer = false;
         <form>
             <ul>
                 <li><span>姓名：</span><input placeholder="请输入您的姓名" type="" name=""></li>
-                <li><span>电话：</span><input placeholder="请输入您的电话" type="" name=""></li>
-                <li><span>所在城市：</span><input placeholder="请选择您所在的城市" type="" name=""></li>
+                <li><span>电话：</span><input id="booking_mobile" placeholder="请输入您的电话" type="" name=""></li>
+                <!-- <li><span>所在城市：</span><input placeholder="请选择您所在的城市" type="" name=""></li> -->
+                <li>
+                    <span>验证码：</span>
+                    <div>
+                        <input placeholder="请输入验证码" type="" name="">
+                        <a id="btn-sendSmsCode">验证码</a>
+                    </div>
+                </li>
                 <li><span>预约医生：</span><input placeholder="请输入您想预约的主刀医生，没有可不填" type="" name=""></li>
             </ul>
             <p>
@@ -332,5 +358,51 @@ $this->show_footer = false;
                this.pause();
             }
         });
+
+        
+
+        
+        $("#btn-sendSmsCode").click(function (e) {
+            e.preventDefault();
+            checkCaptchaCode($(this));
+        });
+  
+
     });
+
+    function checkCaptchaCode(domBtn) {
+        var domMobile = $("#booking_mobile");
+        var mobile = domMobile.val();
+
+        var smsParams = {
+            AuthSmsVerify: {
+                mobile: mobile,
+                actionType: 200 // the action_type, login:102, fast booking:200
+            }
+        };
+        if (mobile.length === 0) {
+            
+            $('.mobileTip').show();
+            setTimeout(function () {
+                $(".mobileTip").hide();
+            }, 1000);
+        } else if (domMobile.hasClass("error")) {
+
+        } else {
+            $('#booking_captcha_code-error').remove();
+            //check图形验证码
+            $.ajax({
+                type: 'post',
+                url: '<?php echo $urlGetSmsVerifyCode ?>',
+                data: smsParams,
+                success: function (data) {
+                    if (data.status == 'ok') {
+                        // sendSmsVerifyCode(domBtn, mobile);
+                    } else {
+                        // $('#captchaCode').after('<div id="booking_captcha_code-error" class="error">' + data.error + '</div>');
+                    }
+                }
+            });
+        }
+    }
 </script>
