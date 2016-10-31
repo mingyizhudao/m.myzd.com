@@ -94,7 +94,7 @@ class BookingManager {
                 //不存在自动注册
                 else{
                     $userMR = new UserManager();
-                    $user = $userMR->createUser($mobile);
+                    $user = $userMR->createUserPatient($values['mobile']);
                     if (empty($user)) {
                          // error, so return errors.
                         $output['status'] = EApiViewService::RESPONSE_NO;
