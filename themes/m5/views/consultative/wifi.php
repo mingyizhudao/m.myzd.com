@@ -5,7 +5,7 @@
  */
 $this->setPageTitle('名医主刀');
 $this->show_footer = false;
-$urlGetSmsVerifyCode = $this->createAbsoluteUrl('/auth/sendSmsVerifyCode');
+$urlGetSmsVerifyCode = $this->createAbsoluteUrl('/api/smsverifycode');
 ?>
 <style type="text/css">
     .y-color{
@@ -375,9 +375,9 @@ $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/auth/sendSmsVerifyCode');
         var mobile = domMobile.val();
 
         var smsParams = {
-            AuthSmsVerify: {
+            smsVerifyCode: {
                 mobile: mobile,
-                actionType: 200 // the action_type, login:102, fast booking:200
+                action_type: 200 // the action_type, login:102, fast booking:200
             }
         };
         if (mobile.length === 0) {
@@ -393,7 +393,7 @@ $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/auth/sendSmsVerifyCode');
             //check图形验证码
             $.ajax({
                 type: 'post',
-                url: '<?php echo $urlGetSmsVerifyCode ?>',
+                url: '<?php echo $urlGetSmsVerifyCode ?>'+'?api=5',
                 data: smsParams,
                 success: function (data) {
                     if (data.status == 'ok') {
