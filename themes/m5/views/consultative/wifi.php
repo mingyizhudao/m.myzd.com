@@ -105,6 +105,7 @@ $urlGetBooking = $this->createAbsoluteUrl('/api/quickbooking');
     .w-b-2{
         text-align: center;
         padding: 0 20px;
+        margin-top: 30px;
     }
     .w-b-2 ul li{
         text-align: left;
@@ -181,6 +182,9 @@ $urlGetBooking = $this->createAbsoluteUrl('/api/quickbooking');
     .w-b-4{
         text-align: center;
         padding: 0 10px;
+    }
+    .w-b-4 >img{
+        margin: 20px 0;
     }
     .w-b-4 .w-b-4-2l img{
         margin: 20px 0;
@@ -336,11 +340,11 @@ $urlGetBooking = $this->createAbsoluteUrl('/api/quickbooking');
                 <p>成立至今帮助<span class="g-color-t">数万患者</span>及时获得手术</p>
                 <div>
                     <p>案例一 是什么夺去了11岁小女孩奔跑的权利？</p>
-                    <video class="w6video" x-webkit-airplay="true" webkit-playsinline="" playsinline="true" preload="none" poster="http://static.mingyizhudao.com/147764536727257" src="http://222.73.3.72/vhot2.qqvideo.tc.qq.com/l0326dsrvqi.m701.mp4?vkey=495E22F1C26CF0DF6FCFF315D3AA4E304D037E9F059D1192AAA866A210DD5701AC0E77782B025EFF3A005CFA886F7C28AFD7B359C5BD8D85B49D28854F8B86A6A9B4B56F1D10B5973BE952D2CA3B45BB314EDEE6BF4E6777&br=29&platform=2&fmt=auto&level=0&sdtfrom=v3010&guid=98bc1931e016862d615374312bc8ff22"></video>
+                    <iframe frameborder="0" width="100%" src="http://v.qq.com/iframe/player.html?vid=l0326dsrvqi&tiny=0&auto=0" allowfullscreen></iframe>
                 </div>
                 <div>
                     <p>案例二 扭曲的人生：名医主刀还我18年正直梦！（上）</p>
-                    <video class="w6video" x-webkit-airplay="true" webkit-playsinline="" playsinline="true" preload="none" poster="http://static.mingyizhudao.com/147764536308615" src="http://222.73.132.153/vhot2.qqvideo.tc.qq.com/y0332exruz4.m701.mp4?vkey=98396AAC66D6A100A0E3A11FF6E67B5AE71CACD0FB3EEEE9F1A1ED4F56696DDAB35E29551CE5C22CF6340AF36EA35163939ED6884EEA1E1106288CB930B44C5AA933386B5EA555FBD39813DAB1F142F55C69A723B105CB1F&br=29&platform=2&fmt=auto&level=0&sdtfrom=v3010&guid=98bc1931e016862d615374312bc8ff22"></video>
+                    <iframe frameborder="0" width="100%" src="http://v.qq.com/iframe/player.html?vid=y0332exruz4&tiny=0&auto=0" allowfullscreen></iframe>
                 </div>
                 <div class="w-6-link">
                     <i></i>
@@ -381,15 +385,15 @@ $urlGetBooking = $this->createAbsoluteUrl('/api/quickbooking');
             window.open('http://dct.zoosnet.net/LR/Chatpre.aspx?id=DCT73779034&lng=cn', '_blank');
             // location.href = 'http://dct.zoosnet.net/LR/Chatpre.aspx?id=DCT73779034&lng=cn';
         });
-        $('.w6video').click(function(){
+        // $('.w6video').click(function(){
 
-            if (this.paused) {
-               this.play();
-               this.controls = 'controls';
-            } else {
-               this.pause();
-            }
-        });
+        //     if (this.paused) {
+        //        this.play();
+        //        this.controls = 'controls';
+        //     } else {
+        //        this.pause();
+        //     }
+        // });
 
         
         $("#btn-sendSmsCode").click(function (e) {
