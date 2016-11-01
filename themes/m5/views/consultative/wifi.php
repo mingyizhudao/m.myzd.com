@@ -375,6 +375,12 @@ $urlGetBooking = $this->createAbsoluteUrl('/api/quickbooking');
     });
 
     function checkCaptchaCode(domBtn) {
+        var domMobile = $("#booking_mobile");
+        var mobile = domMobile.val();
+        if (mobile.length === 0) {
+            J.showToast('手机号不得为空', '', '1500');
+            return false;
+        }
         var smsParams = {
             smsVerifyCode: {
                 mobile: mobile,
