@@ -316,8 +316,8 @@ $urlGetBooking = $this->createAbsoluteUrl('/api/quickbooking');
             </div>
             <div class="w-b-4">
                 <h4>别让等待延误了生命健康</h4>
-                <p><span class="g-color-t">12h内</span>确认面诊时间，<span class="g-color-t">7天内</span>筹备住院手术</p>
-                <img src="http://static.mingyizhudao.com/147764030179738">
+                <p><span class="g-color-t">12h内</span>预估面诊时间，<span class="g-color-t">7天内</span>筹备住院手术</p>
+                <img src="http://static.mingyizhudao.com/147799414536383">
                 <div class="w-b-4-2l">
                     <div>
                         <img src="http://static.mingyizhudao.com/147764095578977">
@@ -356,7 +356,7 @@ $urlGetBooking = $this->createAbsoluteUrl('/api/quickbooking');
                 </div>
             </div>
             <div class="w-b-7">
-                <img class="online-adv" src="http://static.mingyizhudao.com/147764327385872">
+                <img class="online-adv" src="http://static.mingyizhudao.com/147799406273789">
             </div>
         </div>
         <div class="w-b-8">
