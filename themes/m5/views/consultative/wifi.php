@@ -6,6 +6,7 @@
 $this->setPageTitle('名医主刀');
 $this->show_footer = false;
 $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/api/smsverifycode');
+$urlGetBooking = $this->createAbsoluteUrl('/api/quickbooking');
 ?>
 <style type="text/css">
     .y-color{
@@ -134,7 +135,7 @@ $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/api/smsverifycode');
         height: 30px;
         border-radius: 5px;
     }
-    .w-b-3 li>div a{    
+    .w-b-3 li>div button{    
         color: #333;
         display: inline-block;
         border: 1px rgba(239,202,36,1) solid;
@@ -145,6 +146,7 @@ $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/api/smsverifycode');
         line-height: 25px;
         background: rgba(239,202,36,1);
         text-align: center;
+        padding: 0;
     }
     .w-b-3 p{
         padding: 10px;
@@ -264,20 +266,20 @@ $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/api/smsverifycode');
         </div>
         <form>
             <ul>
-                <li><span>姓名：</span><input placeholder="请输入您的姓名" type="" name=""></li>
+                <li><span>姓名：</span><input id="booking_name" placeholder="请输入您的姓名" type="" name=""></li>
                 <li><span>电话：</span><input id="booking_mobile" placeholder="请输入您的电话" type="" name=""></li>
                 <!-- <li><span>所在城市：</span><input placeholder="请选择您所在的城市" type="" name=""></li> -->
                 <li>
                     <span>验证码：</span>
                     <div>
-                        <input placeholder="请输入验证码" type="" name="">
-                        <a id="btn-sendSmsCode">验证码</a>
+                        <input id="booking_code" placeholder="请输入验证码" type="" name="">
+                        <button id="btn-sendSmsCode">验证码</button>
                     </div>
                 </li>
-                <li><span>预约医生：</span><input placeholder="请输入您想预约的主刀医生，没有可不填" type="" name=""></li>
+                <li><span>预约医生：</span><input id="booking_doctor" placeholder="请输入您想预约的主刀医生，没有可不填" type="" name=""></li>
             </ul>
             <p>
-                <button class="w-btn-rx">提交预约</button>
+                <button id="btn-booking" class="w-btn-rx">提交预约</button>
             </p>
         </form>
     </div>
@@ -360,49 +362,90 @@ $urlGetSmsVerifyCode = $this->createAbsoluteUrl('/api/smsverifycode');
         });
 
         
-
-        
         $("#btn-sendSmsCode").click(function (e) {
             e.preventDefault();
             checkCaptchaCode($(this));
         });
-  
 
+        $("#btn-booking").click(function (e) {
+            e.preventDefault();
+            commitBookingInfo();
+        });
+  
     });
 
     function checkCaptchaCode(domBtn) {
-        var domMobile = $("#booking_mobile");
-        var mobile = domMobile.val();
-
         var smsParams = {
             smsVerifyCode: {
                 mobile: mobile,
                 action_type: 200 // the action_type, login:102, fast booking:200
             }
         };
-        if (mobile.length === 0) {
-            
-            $('.mobileTip').show();
-            setTimeout(function () {
-                $(".mobileTip").hide();
-            }, 1000);
-        } else if (domMobile.hasClass("error")) {
-
-        } else {
-            $('#booking_captcha_code-error').remove();
-            //check图形验证码
-            $.ajax({
-                type: 'post',
-                url: '<?php echo $urlGetSmsVerifyCode ?>'+'?api=5',
-                data: smsParams,
-                success: function (data) {
-                    if (data.status == 'ok') {
-                        // sendSmsVerifyCode(domBtn, mobile);
-                    } else {
-                        // $('#captchaCode').after('<div id="booking_captcha_code-error" class="error">' + data.error + '</div>');
-                    }
+        $.ajax({
+            type: 'post',
+            url: '<?php echo $urlGetSmsVerifyCode ?>',
+            data: smsParams,
+            success: function (data) {
+                if (data.status) {
+                    J.showToast('验证码已发送', '', '1500');
+                    $(domBtn).prop('disabled', true);
+                    $(domBtn).html('已发送');
+                    setTimeout(function () {
+                        $("#btn-sendSmsCode").prop('disabled', false);
+                        $("#btn-sendSmsCode").html('验证码');
+                    }, 60000);
+                    return true;
+                } else {
+                    console.log('err',data);
+                    J.showToast('获取验证码失败，请重试', '', '1500');
+                    return false;
                 }
-            });
-        }
+            }
+        });
     }
+
+    function commitBookingInfo() {
+        var domMobile = $("#booking_mobile");
+        var mobile = domMobile.val();
+        if (mobile.length === 0) {
+            J.showToast('手机号不得为空', '', '1500');
+            return false;
+        }
+        var domVerify = $("#booking_code");
+        var verify = domVerify.val();
+        if (verify.length === 0) {
+            J.showToast('验证码不得为空', '', '1500');
+            return false;
+        }
+        var domName = $("#booking_name");
+        var name = domName.val();
+        if (name.length === 0) {
+            J.showToast('姓名不得为空', '', '1500');
+            return false;
+        }
+        var docName = $("#booking_doctor");
+        var doctor = docName.val();
+
+        var formdata = {
+            booking: {
+                mobile: mobile,
+                verify_code: verify,
+                contact_name: name,
+                doctor_name: doctor 
+            }
+        };
+        $.ajax({
+            type: 'post',
+            url: '<?php echo $urlGetBooking ?>',
+            data: formdata,
+            success: function (data) {
+                if (data.status == 'ok') {
+                    J.showToast('预约成功！我们的客服人员会尽早联系你！', '', '1500');
+                }else{
+                    J.showToast(data.errorMsg,'','1500');
+                }
+            }
+        });
+    }
+    
 </script>
