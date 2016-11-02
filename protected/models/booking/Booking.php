@@ -379,6 +379,8 @@ class Booking extends EActiveRecord {
                 return "HP";
             case StatCode::BK_TYPE_QUICKBOOK :
                 return "QB";
+            case StatCode::BK_TYPE_WIFI :
+                return "WF";    
             default:
                 return "AA";
         }
