@@ -158,6 +158,7 @@ $urlGetBooking = $this->createAbsoluteUrl('/api/quickbooking');
         width: 70%;
         height: 30px;
         border-radius: 5px;
+        padding: 0 5px;
     }
     .w-b-3 li>div button{    
         color: #333;
