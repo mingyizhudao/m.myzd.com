@@ -98,7 +98,7 @@ $this->show_footer = false;
             $('#freePhone').css('display','block');
         }
         $('#freePhone').click(function () {
-            location.href = 'http://p.qiao.baidu.com/im/index?siteid=9290674&ucid=10135139';
+            location.href = 'http://dct.zoosnet.net/LR/Chatpre.aspx?id=DCT73779034&lng=cn';
         });
     });
 </script>

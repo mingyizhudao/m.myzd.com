@@ -10,9 +10,21 @@ $urlGetBooking = $this->createAbsoluteUrl('/api/quickbooking');
 ?>
 <style type="text/css">
     .wifi-contain{display:box;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex;-webkit-flex-direction:column;-moz-flex-direction:column;-ms-flex-direction:column;-o-flex-direction:column;flex-direction:column;height:100%}.mid-contain{-webkit-box-flex:1;-moz-box-flex:1;-webkit-flex:1;-ms-flex:1;flex:1;overflow-y:scroll}.y-color{background:rgba(239,202,36,1)}.g-color{background:rgba(25,175,166,1)}.d-color-t{color:#333}.w-color-t{color:#fff}.l-color-t{color:rgba(239,202,36,1)}.g-color-t{color:rgba(25,175,166,1)}.f-size-l{font-size:18px}.w-btn{background:rgba(239,202,36,1);height:40px;border-radius:20px;color:#000}.w-btn-rx{background:rgba(239,202,36,1);height:40px;border-radius:5px;color:#000}h3,h4{font-weight:bold}.w-b-1{background:url('http://static.mingyizhudao.com/147763323241176') no-repeat;background-size:cover;text-align:center}.w-b-1 .w-b-logo{background:url('http://static.mingyizhudao.com/147763299353754') 14px center no-repeat;background-size:contain;display:inline-block;width:120px;height:30px;float:left;margin:5px 0}.w-b-1>p{background:rgba(255,255,255,.5);height:40px;text-align:right;line-height:40px;padding:0 10px 0 0}.w-b-1>div{text-align:center;margin:50px 0 60px 0}.w-b-1>button{width:250px;margin-bottom:20px}.w-b-2{text-align:center;padding:0 20px;margin-top:30px}.w-b-2 ul li{text-align:left;line-height:30px}.w-b-2 li span{display:inline-block;width:18px;height:18px;border-radius:9px;margin-right:5px;text-align:center;line-height:18px;color:#fff}.w-b-2 img{margin:10px 0}.w-b-3{padding:10px 0;text-align:center}.w-b-3>div{background:url('http://static.mingyizhudao.com/147763840040514') no-repeat;height:80px;background-size:cover;line-height:110px;text-align:center;color:#fff}.w-b-3 ul{margin:20px 15px 15px 15px;text-align:left}.w-b-3 li{line-height:40px}.w-b-3 li span{display:inline-block;width:30%;float:left}.w-b-3 li>div{width:70%;display:inline-block;float:left}.w-b-3 li>input,.w-b-3 li>div input{width:70%;height:30px;border-radius:5px;padding:0 5px}.w-b-3 li>div button{color:#333;display:inline-block;border:1px rgba(239,202,36,1) solid;border-radius:5px;width:25%;font-size:12px;height:25px;line-height:25px;background:rgba(239,202,36,1);text-align:center;padding:0}.w-b-3 p{padding:10px}.w-b-3 button{width:100%}.w-b-4{text-align:center;padding:0 10px}.w-b-4>img{margin:20px 0}.w-b-4 .w-b-4-2l img{margin:20px 0;height:100px}.w-b-4-2l>div{float:left;padding:0 20px;width:50%}.w-b-4-2l:after{content:'';display:block;clear:both}.w-b-5{background:url('http://static.mingyizhudao.com/147764125988461') no-repeat;background-size:cover;height:180px;padding:80px 30px;color:#fff}.w-b-5 button{width:130px;margin-top:10px}.w-b-6{text-align:center;padding:10px}.w-b-6>div{margin-top:30px}.w-b-6>div p{border-left:4px solid rgba(25,175,166,1);padding:0 5px;text-align:left;margin-bottom:5px}.w-b-6 video{position:relative;display:block;top:0;left:0;width:100%;background:#000}.w-b-6 .w-6-link{text-align:left}.w-b-6 i{display:inline-block;background:url('http://static.mingyizhudao.com/147764222612476') no-repeat;background-size:contain;width:20px;height:20px}.w-b-7{margin:50px 0 10px 0}.w-b-8{padding:10px 20px;background-color:#858585;height:60px}.w-b-8 button{background-color:#19afa6;width:100%}.w-b-8 i{display:inline-block;background:url('http://static.mingyizhudao.com/147764376732564') no-repeat;background-size:cover;width:15px;height:15px;margin-right:5px}
+    .float-link{
+        background: url('http://static.mingyizhudao.com/147815645636315') no-repeat;
+        background-size: cover;
+        display: block;
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        z-index: 9;
+        top: 50%;
+        right: 5px;
+    }
 </style>
 <article class="active" data-scroll="true" class="wifi-page">
     <div class="wifi-contain">
+        <a class="float-link online-adv"></a>
         <div class="mid-contain">
             <div class="w-b-1">
                 <p class="d-color-t f-size-l"><i class="w-b-logo"></i>做手术就找名医主刀</p>
