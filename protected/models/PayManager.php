@@ -61,7 +61,6 @@ class PayManager {
             //exception
             throw new CException($payment->getErrors());
         }
-
         $pingCharge = \Pingpp\Charge::create($requestArray);
         $payment->setPingChargeId($pingCharge['id']);
         $payment->update(array('ping_charge_id'));
